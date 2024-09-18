@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import type { Media } from "../../payload-types";
+
+interface Props {
+  headline: string;
+  goal: number;
+  description: string;
+  img: string | Media;
+}
+
+const { headline, goal, description, img } = Astro.props;
+---
+
+<div
+  class="mx-auto flex max-w-md flex-col items-center gap-3 rounded-xl p-6 shadow-[0px_0px_30px_20px_#0ea5e928]"
+>
+  <h3 class="mb-4 py-4 text-center font-quicksand text-xl font-semibold">
+    {headline}
+  </h3>
+  {
+    typeof img !== "string" ? (
+      <Image
+        src={img.sizes!.thumbnail!.url!}
+        alt={img!.alt!}
+        class="mx-auto rounded-xl"
+        width={img.sizes!.thumbnail!.width!}
+        height={img.sizes!.thumbnail!.height!}
+      />
+    ) : (
+      <div>Error fetching image</div>
+    )
+  }
+  <p class="my-4">{description}</p>
+  <div class="text-lg font-semibold">
+    Goal: <span class="text-red-900">${goal}</span>
+  </div>
+  <button class="secondary-button">Donate</button>
+</div>

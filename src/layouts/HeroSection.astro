@@ -1,0 +1,15 @@
+---
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
+const data = await res.json();
+---
+
+<div
+  class="flex h-screen flex-col justify-end bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
+>
+  <div
+    lang="bo"
+    class="height-4 absolute bottom-44 right-0 w-[295px] p-10 text-right font-tibetan text-4xl leading-relaxed text-white md:w-full md:bg-red-900/60 md:text-center md:text-4xl"
+    aria-label="Name of the monastery in Tibetan"
+    set:html={data.title}
+  />
+</div>

@@ -1,0 +1,35 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<section class="section-padding bg-yellow-600 text-center text-white">
+  <SectionTitle title="Newsletter" color="white" />
+  <p>
+    Want to receive news, tidbits, philosophy & more?<br /> Sign up for our
+    newsletter!
+  </p>
+  <form
+    action=""
+    class="mx-auto mt-6 max-w-md rounded-xl bg-white p-4 shadow-md"
+  >
+    <div class="mb-4">
+      <label for="name" class="block text-gray-600">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        class="w-full rounded-xl border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="email" class="block text-gray-600">Email</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        class="w-full rounded-xl border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+      />
+    </div>
+    <button type="submit" class="primary-button"> Sign Up</button>
+  </form>
+</section>

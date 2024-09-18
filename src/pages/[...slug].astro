@@ -1,0 +1,30 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import type { Page } from "../../payload-types";
+
+export async function getStaticPaths() {
+  try {
+    const response = await fetch(`${import.meta.env.CMS_API_URL}/pages`);
+
+    if (!response.ok) {
+      throw Error("Error fetching data.");
+    }
+
+    const data = await response.json();
+    const pages: Page[] = data.docs;
+
+    return pages.map(({ slug, title, contentHtml }) => ({
+      params: { slug },
+      props: { title, contentHtml },
+    }));
+  } catch (error: any) {
+    throw Error(error);
+  }
+}
+
+const { title, contentHtml } = Astro.props;
+---
+
+<PageLayout title={title}>
+  <div set:html={contentHtml} class="section-padding" />
+</PageLayout>

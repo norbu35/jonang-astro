@@ -1,0 +1,10 @@
+---
+import QuotePreact from "./QuotePreact.tsx";
+import type { Quote } from "../../payload-types";
+
+const response = await fetch(`${import.meta.env.CMS_API_URL}/quotes`);
+const data = await response.json();
+const quotes: Quote[] = data.docs;
+---
+
+<QuotePreact client:load quotes={quotes} length={data.totalDocs} />

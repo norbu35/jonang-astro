@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import type { SiteTitle } from "../../payload-types";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
+const data: SiteTitle = await res.json();
+---
+
+<div class="px-4 py-12 text-center text-red-900">
+  <h1
+    class="mb-12 font-siteTitle text-4xl md:mb-16 md:text-4xl"
+    set:html={data.secondaryTitle}
+  />
+  <div class="mx-auto w-40">
+    {
+      typeof data.logo !== "string" ? (
+        <Image
+          src={data.logo!.url!}
+          alt={data.logo!.alt!}
+          width={data.logo!.width!}
+          height={data.logo!.height!}
+          class="mx-auto"
+        />
+      ) : (
+        <div>Error fetching image</div>
+      )
+    }
+  </div>
+  <div class="mt-4 italic md:text-lg" set:html={data.subheading} />
+</div>

@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/prominence`);
+const data = await res.json();
+---
+
+<section
+  class="mx-auto mb-12 flex max-w-5xl flex-col items-center gap-8 md:mb-0 md:flex-row md:gap-0 lg:gap-4 lg:py-12 xl:py-20"
+>
+  <figure class="shrink-0 md:w-1/2 lg:relative lg:right-[13px]">
+    <Image
+      src={data.photo.url}
+      alt={data.photo.alt}
+      width="576"
+      height="762"
+      class="mx-auto lg:shadow-[-50px_-50px_0_-40px_#7f1d1d,_50px_50px_0_-40px_#7f1d1d]"
+    />
+    <figcaption
+      class="border-r-yellow-500 bg-red-900 px-4 py-3 text-center text-sm text-white md:py-4 lg:float-right lg:mr-[-10px] lg:w-[440px] lg:border-r-yellow-500"
+      set:html={data.photoCaption}
+    />
+  </figure>
+  <figure class="px-8">
+    <blockquote class="text-justify">
+      <p
+        class="italic first-letter:font-garamond first-letter:text-4xl first-letter:font-bold"
+        set:html={data.mainText}
+      />
+    </blockquote>
+    {
+      data.quoteSource && (
+        <figcaption class="mt-12 text-right">
+          &ndash;<cite class="text-sm">{data.quoteSource}</cite>
+        </figcaption>
+      )
+    }
+  </figure>
+</section>

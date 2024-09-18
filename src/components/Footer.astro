@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import type { Footer } from "../../payload-types";
+
+import NewsLetter from "./NewsLetter.astro";
+import Quote from "./Quote.astro";
+
+import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
+import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/footer`);
+const data: Footer = await res.json();
+---
+
+<Quote />
+<NewsLetter />
+<footer class="flex flex-col items-center gap-10 p-6 px-4 pb-4 xl:pt-10">
+  <div class="flex flex-col gap-10 xl:flex-row">
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex flex-row gap-4">
+        <Image class="mx-auto" src={kalachakraIcon} alt="" width="125" />
+        <Image class="mx-auto" src={kalachakraMantra} alt="" height="150" />
+      </div>
+      <div class="mt-2 max-w-[345px] text-center text-xs italic">
+        <div class="text-sx mb-2 font-bold not-italic">
+          OṂ HA KṢA MA LA VA RA YA SVĀHĀ
+        </div>
+        {data.blessing}
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-6 text-sm md:flex-row md:gap-16">
+      <address class="not-italic">
+        <div class="leading-tight" set:html={data.addressHtml} />
+        <div class="mt-4 leading-tight">
+          {data.email}<br />
+          {data.phone}
+        </div>
+      </address>
+      <button
+        class="secondary-button rounded bg-yellow-500 text-black drop-shadow-lg hover:bg-yellow-600"
+        ><a href="/donate">Donate</a>
+      </button>
+    </div>
+
+    <div class="text-center text-sm xl:mt-6">
+      <div>
+        <a href="#">Sitemap</a>
+        <span>|</span>
+        <a href="#">Cookie & Privacy Policy</a>
+      </div>
+      <div class="mt-4 text-xs">
+        &copy 2023 Jonang Monastery | made by norbu
+      </div>
+    </div>
+  </div>
+</footer>

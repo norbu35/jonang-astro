@@ -1,0 +1,24 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+import NewsCard from "../components/NewsCard.astro";
+import type { News } from "../../payload-types";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/news`);
+const data = await res.json();
+---
+
+<section class="section-padding bg-gray-100">
+  <SectionTitle title="Latest News" color="darkgrey" />
+  <div class="cards-grid pt-0 lg:grid-cols-4">
+    {
+      data.docs.map((news: News) => (
+        <NewsCard
+          img={news.image}
+          header={news.headline}
+          body={news.bodyHtml!}
+          date={new Date(news.createdAt).toLocaleDateString()}
+        />
+      ))
+    }
+  </div>
+</section>

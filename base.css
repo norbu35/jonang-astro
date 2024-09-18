@@ -1,0 +1,115 @@
+@import "./src/assets/fonts/stylesheet.css";
+
+@tailwind base;
+
+@layer base {
+  h2 {
+    @apply text-3xl my-4;
+  }
+
+  h3 {
+    @apply text-2xl my-4;
+  }
+
+  h4 {
+    @apply text-xl my-3;
+  }
+
+  h5 {
+    @apply text-lg font-semibold my-2;
+  }
+
+  h6 {
+    @apply text-lg my-2;
+  }
+
+  p {
+    @apply my-4 md:my-5;
+  }
+
+  ul {
+    @apply mb-4 list-disc list-inside;
+
+    li {
+      @apply my-2;
+    }
+  }
+
+  ol {
+    @apply mb-4 list-decimal list-inside;
+
+    li {
+      @apply my-2;
+    }
+  }
+
+  .stop-scrolling {
+    @apply h-full overflow-hidden;
+  }
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+  .primary-button {
+    @apply hover:bg-red-800 focus:shadow-red-900 focus:outline-none active:bg-red-900 mx-auto h-10 w-28 rounded-lg bg-red-900 font-button my-4 text-white;
+  }
+
+  .secondary-button {
+    @apply mx-auto h-10 w-28 rounded-lg bg-yellow-600 font-button my-4 hover:bg-yellow-500 focus:shadow-yellow-600 focus:outline-none active:bg-yellow-500;
+  }
+
+  .cards-flex {
+    @apply flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8;
+  }
+
+  .cards-grid {
+    @apply grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 place-items-center;
+  }
+
+  .section-padding {
+    @apply px-8 py-12 md:p-16 lg:p-28;
+  }
+
+  .section-header {
+    @apply mb-10 font-sectionTitle text-center md:mb-12 font-semibold lg:mb-24;
+  }
+
+  .article-container {
+    @apply p-6;
+  }
+}
+
+@layer utilities {
+  .debug {
+    @apply [&>*]:border-[1px] [&>*]:border-red-500;
+  }
+
+  .hide {
+    @apply max-h-0 opacity-0;
+  }
+
+  .transition {
+    @apply transition-all duration-500 ease-in-out motion-reduce:transition-none;
+  }
+
+  .parallax {
+    background-image: url("/src/assets/images/rite-sutra.webp");
+    min-height: 80vh;
+    background-position-x: 49%;
+    background-position-y: bottom;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media only screen and (min-width: 768px) {
+      background-image: url("/src/assets/images/main-entrance.webp");
+    }
+  }
+
+  .focus {
+    @apply focus:outline-none focus:outline-2 focus:outline-red-900 focus:outline-offset-4;
+  }
+}

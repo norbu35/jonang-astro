@@ -1,0 +1,30 @@
+---
+import Card from "../components/Card.astro";
+
+let cards;
+try {
+  const response = await fetch(`${import.meta.env.CMS_API_URL}/cards`);
+
+  if (!response.ok) {
+    throw Error("Error fetching data.");
+  }
+
+  const data = await response.json();
+  cards = data.docs;
+} catch (error: any) {
+  throw Error(error);
+}
+---
+
+<section class="cards-flex section-padding bg-gray-100">
+  {
+    cards.map((card: any) => (
+      <Card
+        img={card.image}
+        header={card.header}
+        body={card.body}
+        link={`/${card.link.slug}`}
+      />
+    ))
+  }
+</section>
