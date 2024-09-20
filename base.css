@@ -112,4 +112,15 @@
   .focus {
     @apply focus:outline-none focus:outline-2 focus:outline-red-900 focus:outline-offset-4;
   }
+
+  .hidden {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+
+  .visible {
+    height: auto;
+    transition: height 0.5s ease-in-out;
+  }
 }

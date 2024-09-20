@@ -10,13 +10,15 @@ interface Props {
     id?: string | null | undefined;
   }[];
   bio: string;
+  id: string;
 }
 
-const { img, name, roles, bio } = Astro.props;
+const { img, name, roles, bio, id } = Astro.props;
 ---
 
-<div
-  class="mx-auto flex w-64 flex-col justify-center border-4 border-white bg-red-900 p-4 pb-4 text-center"
+<bio-card
+  data-id={id}
+  class="mx-auto flex w-80 flex-col justify-center border-4 border-red bg-red-900 p-4 pb-4 text-center"
 >
   <div>
     {
@@ -33,17 +35,103 @@ const { img, name, roles, bio } = Astro.props;
       )
     }
     <div
-      class="relative left-1/2 mb-2 mt-4 flex h-14 w-72 -translate-x-1/2 items-center justify-center bg-white text-xl font-bold text-red-950"
+      class="relative left-1/2 mb-2 mt-4 flex h-14 w-72 -translate-x-1/2 items-center justify-center text-xl font-bold text-white"
     >
       {name}
     </div>
     <div
-      class="font-quicskand mb-4 flex h-14 flex-col items-center justify-center text-lg font-semibold text-white"
+      class="font-quicskand mb-4 flex h-14 flex-col items-center justify-center text-lg font-semibold"
     >
       {roles.map((el) => <div>{el.role}</div>)}
     </div>
-    <p class="hidden">{bio}</p>
-    <button class="secondary-button my-0 text-black">Biography</button>
+    <button id={`bioButton-${id}`} class="secondary-button my-0 text-white">
+      <span class="button-text">Show Bio</span>
+    </button>
+    <div
+      id={`bio-${id}`}
+      set:html={bio}
+      class="hidden transition-all duration-500 ease-linear max-h-0 opacity-0"
+    />
   </div>
-</div>
-<script></script>
+</bio-card>
+
+<script>
+  class BioCard extends HTMLElement {
+    connectedCallback() {
+      const bioElement: HTMLElement = document.querySelector(
+        `#bio-${this.dataset.id}`,
+      )!;
+      const bioButton = document.querySelector(
+        `#bioButton-${this.dataset.id}`,
+      )!;
+      const buttonText = bioButton.querySelector(".button-text")!;
+
+      bioButton?.addEventListener("click", () => {
+        if (bioElement?.classList.contains("hidden")) {
+          bioElement.classList.remove("hidden");
+          bioElement.style.maxHeight = `${bioElement.scrollHeight}px`;
+          setTimeout(() => {
+            bioElement.style.opacity = "1";
+            buttonText.classList.remove("fade-out");
+            buttonText.innerHTML = "Hide Bio";
+            buttonText.classList.add("fade-in");
+          }, 10);
+        } else {
+          // Fade out button text
+          buttonText.classList.remove("fade-in");
+          buttonText.classList.add("fade-out");
+
+          setTimeout(() => {
+            bioElement.style.opacity = "0";
+            setTimeout(() => {
+              bioElement.style.maxHeight = "0";
+              buttonText.innerHTML = "Show Bio";
+              buttonText.classList.remove("fade-out");
+              buttonText.classList.add("fade-in");
+              setTimeout(() => {
+                bioElement.classList.add("hidden");
+              }, 500);
+            }, 500);
+          }, 500);
+        }
+      });
+
+      bioElement?.addEventListener("click", () => {
+        bioElement.style.opacity = "0";
+        buttonText.classList.remove("fade-in");
+        buttonText.classList.add("fade-out");
+        setTimeout(() => {
+          bioElement.style.maxHeight = "0";
+          buttonText.innerHTML = "Show Bio";
+          buttonText.classList.remove("fade-out");
+          buttonText.classList.add("fade-in");
+          setTimeout(() => {
+            bioElement.classList.add("hidden");
+          }, 500);
+        }, 500);
+      });
+    }
+  }
+
+  customElements.define("bio-card", BioCard);
+</script>
+
+<style>
+  .hidden {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+  .visible {
+    height: auto;
+    transition: height 0.5s ease-in-out;
+  }
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
