@@ -99,6 +99,17 @@ const { img, name, roles, bio, id } = Astro.props;
           }, 500);
         }
       });
+
+      bioElement?.addEventListener("click", () => {
+        bioElement.style.opacity = "0";
+        setTimeout(() => {
+          bioElement.style.maxHeight = "0";
+          buttonText.innerHTML = "Show Bio";
+          setTimeout(() => {
+            bioElement.classList.add("hidden");
+          }, 500);
+        }, 500);
+      });
     }
   }
 
