@@ -1,18 +1,27 @@
 ---
+import type { Activity } from "../../payload-types";
 import SectionTitle from "../components/SectionTitle.astro";
 import { Image } from "astro:assets";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/activities`);
-const data = await res.json();
+const data: Activity = await res.json();
 ---
 
 <section class="flex-col bg-gray-200 md:flex md:flex-row-reverse">
   <div class="md:md:w-1/2">
-    <Image
-      src={data.image}
-      alt="Our Jonang Gyaltseb holding a lecture for the students"
-      class="h-full w-full object-cover"
-    />
+    {
+      typeof data.image !== "string" ? (
+        <Image
+          src={data.image!.url!}
+          alt={data.image!.alt!}
+          width={data.image!.width!}
+          height={data.image!.height!}
+          class="h-full w-full object-cover"
+        />
+      ) : (
+        <div>Error fetching image</div>
+      )
+    }
   </div>
   <div class="section-padding text-justify font-body md:w-1/2">
     <SectionTitle title="Activities" color="darkgrey" />
