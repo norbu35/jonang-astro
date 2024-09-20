@@ -18,18 +18,21 @@ const { img, name, roles, bio, id } = Astro.props;
 
 <bio-card
   data-id={id}
-  class="mx-auto flex w-80 flex-col justify-center border-4 border-red bg-red-900 text-center pb-6"
+  class="mx-auto flex w-80 lg:w-[40rem] flex-col justify-center border-4 border-red bg-red-900 text-center pb-6"
 >
-  <div class="relative">
+  <div class="relative w-full">
     {
       typeof img !== "string" ? (
-        <Image
-          src={img.sizes!.card!.url!}
-          alt={img.alt}
-          class="w-full h-auto object-cover"
-          width={img.sizes!.card!.width!}
-          height={img.sizes!.card!.height!}
-        />
+        <picture>
+          <source media="(min-width: 1024px)" srcset={img.url!} />
+          <Image
+            src={img.sizes!.card!.url!}
+            alt={img.alt}
+            class="w-full h-auto object-cover"
+            width={img.sizes!.card!.width!}
+            height={img.sizes!.card!.height!}
+          />
+        </picture>
       ) : (
         <div>Error fetching image</div>
       )
@@ -37,15 +40,15 @@ const { img, name, roles, bio, id } = Astro.props;
     <div
       class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-6 text-white"
     >
-      <div class="text-2xl font-extrabold text-white shadow-lg">
+      <div class="lg:hidden text-2xl font-extrabold text-white shadow-lg">
         {name}
       </div>
       <div
-        class="flex flex-col items-center justify-center text-lg font-semibold mt-2 shadow-md"
+        class="lg:hidden flex flex-col items-center justify-center text-lg font-semibold mt-2 shadow-md"
       >
         {
           roles.map((el) => (
-            <div class="bg-white/10 p-1 px-3 rounded-md z-10">{el.role}</div>
+            <div class="bg-white/30 p-1 px-3 rounded-md z-10">{el.role}</div>
           ))
         }
       </div>
@@ -54,19 +57,28 @@ const { img, name, roles, bio, id } = Astro.props;
       class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-red-900 to-transparent"
     >
     </div>
-    <!-- Fade effect -->
   </div>
   <button
     id={`bioButton-${id}`}
-    class="secondary-button text-white bg-yellow-600 px-4 py-2 rounded-md transition-all duration-300 hover:bg-yellow-500 focus:bg-yellow-700 focus:outline-none focus:ring focus:ring-yellow-300"
+    class="secondary-button lg:hidden text-white bg-yellow-600 px-4 py-2 rounded-md transition-all duration-300 hover:bg-yellow-500 focus:bg-yellow-700 focus:outline-none focus:ring focus:ring-yellow-300"
   >
     <span class="button-text">Show Bio</span>
   </button>
-  <div
-    id={`bio-${id}`}
-    set:html={bio}
-    class="hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 text-justify px-4"
-  />
+  <div>
+    <div class="hidden lg:flex lg:visible flex-col gap-12 py-6">
+      <div class="text-4xl font-extrabold">{name}</div>
+      <div
+        class="text-2xl text-red-950 bg-white/80 p-2 flex flex-col justify-center"
+      >
+        {roles.map((el) => <div class="">{el.role}</div>)}
+      </div>
+    </div>
+    <div
+      id={`bio-${id}`}
+      set:html={bio}
+      class="hidden lg:block transition-all duration-500 ease-in-out max-h-0 lg:max-h-full lg:h-full opacity-0 lg:opacity-100 text-justify px-4"
+    />
+  </div>
 </bio-card>
 
 <script>
@@ -80,7 +92,7 @@ const { img, name, roles, bio, id } = Astro.props;
       )!;
       const buttonText = bioButton.querySelector(".button-text")!;
 
-      bioButton?.addEventListener("click", () => {
+      const toggleBio = () => {
         if (bioElement?.classList.contains("hidden")) {
           bioElement.classList.remove("hidden");
           bioElement.style.maxHeight = `${bioElement.scrollHeight}px`;
@@ -98,32 +110,41 @@ const { img, name, roles, bio, id } = Astro.props;
             }, 500);
           }, 500);
         }
+      };
+
+      const resetBioForLargeScreens = () => {
+        if (window.innerWidth >= 1024) {
+          bioElement.classList.remove("hidden");
+          bioElement.style.opacity = "1";
+          bioElement.style.maxHeight = "100%";
+        } else {
+          if (!bioElement.classList.contains("hidden")) {
+            bioElement.classList.add("hidden");
+            bioElement.style.maxHeight = "0";
+            bioElement.style.opacity = "0";
+          }
+        }
+      };
+
+      bioButton?.addEventListener("click", toggleBio);
+      bioElement?.addEventListener("click", () => {
+        if (window.innerWidth < 1024) {
+          bioElement.style.opacity = "0";
+          setTimeout(() => {
+            bioElement.style.maxHeight = "0";
+            buttonText.innerHTML = "Show Bio";
+            setTimeout(() => {
+              bioElement.classList.add("hidden");
+            }, 500);
+          }, 500);
+        }
       });
 
-      bioElement?.addEventListener("click", () => {
-        bioElement.style.opacity = "0";
-        setTimeout(() => {
-          bioElement.style.maxHeight = "0";
-          buttonText.innerHTML = "Show Bio";
-          setTimeout(() => {
-            bioElement.classList.add("hidden");
-          }, 500);
-        }, 500);
-      });
+      window.addEventListener("resize", resetBioForLargeScreens);
+
+      resetBioForLargeScreens();
     }
   }
 
   customElements.define("bio-card", BioCard);
 </script>
-
-<style>
-  .hidden {
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-  }
-  .visible {
-    height: auto;
-    transition: height 0.5s ease-in-out;
-  }
-</style>

@@ -66,7 +66,7 @@
   }
 
   .cards-grid {
-    @apply grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 place-items-center;
+    @apply grid grid-cols-1 gap-6 md:grid-cols-1 lg:grid-cols-3 place-items-center;
   }
 
   .section-padding {
@@ -111,5 +111,15 @@
 
   .focus {
     @apply focus:outline-none focus:outline-2 focus:outline-red-900 focus:outline-offset-4;
+  }
+
+  .hidden {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+  .visible {
+    height: auto;
+    transition: height 0.5s ease-in-out;
   }
 }
