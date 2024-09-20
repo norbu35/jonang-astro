@@ -50,7 +50,7 @@ const { img, name, roles, bio, id } = Astro.props;
     <div
       id={`bio-${id}`}
       set:html={bio}
-      class="hidden transition-all duration-500 ease-linear max-h-0 opacity-0"
+      class="hidden transition-all duration-300 ease-linear max-h-0 opacity-0"
     />
   </div>
 </bio-card>
@@ -90,9 +90,9 @@ const { img, name, roles, bio, id } = Astro.props;
               buttonText.classList.add("fade-in");
               setTimeout(() => {
                 bioElement.classList.add("hidden");
-              }, 500);
-            }, 500);
-          }, 500);
+              }, 300);
+            }, 300);
+          }, 300);
         }
       });
 
