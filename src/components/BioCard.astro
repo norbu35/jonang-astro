@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import type { Media } from "../../payload-types";
 
 interface Props {
@@ -14,6 +13,31 @@ interface Props {
 }
 
 const { img, name, roles, bio, id } = Astro.props;
+
+let sizesObj;
+let srcset;
+let sizes;
+
+if (typeof img !== "string") {
+  sizesObj = img.sizes as {
+    thumbnail?: { url: string; width: number };
+    card?: { url: string; width: number };
+    tablet?: { url: string; width: number };
+  };
+
+  const widths = Object.values(sizesObj)
+    .map((size) => size?.width)
+    .filter((width): width is number => width !== null && width !== undefined);
+
+  srcset = Object.values(sizesObj)
+    .map((size) => `${size?.url} ${size?.width}w`)
+    .filter(Boolean)
+    .join(", ");
+
+  sizes = widths
+    .map((width) => `(max-width: ${width}px) ${width}px`)
+    .join(", ");
+}
 ---
 
 <bio-card
@@ -22,19 +46,14 @@ const { img, name, roles, bio, id } = Astro.props;
 >
   <div class="relative w-full">
     {
-      typeof img !== "string" ? (
-        <picture>
-          <source media="(min-width: 1024px)" srcset={img.url!} />
-          <Image
-            src={img.sizes!.card!.url!}
-            alt={img.alt}
-            class="w-full h-auto object-cover"
-            width={img.sizes!.card!.width!}
-            height={img.sizes!.card!.height!}
-          />
-        </picture>
-      ) : (
-        <div>Error fetching image</div>
+      sizesObj && typeof img !== "string" && (
+        <img
+          src={img.url!}
+          srcset={srcset}
+          sizes={sizes}
+          alt={img.alt}
+          class="w-full h-auto object-cover"
+        />
       )
     }
     <div
@@ -141,8 +160,6 @@ const { img, name, roles, bio, id } = Astro.props;
       });
 
       window.addEventListener("resize", resetBioForLargeScreens);
-
-      resetBioForLargeScreens();
     }
   }
 

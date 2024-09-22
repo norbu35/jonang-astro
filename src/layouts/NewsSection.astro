@@ -9,7 +9,7 @@ const data = await res.json();
 
 <section class="section-padding bg-gray-100">
   <SectionTitle title="Latest News" color="darkgrey" />
-  <div class="cards-grid pt-0 lg:grid-cols-4">
+  <div class="cards-grid lg:grid-cols-3 justify-center">
     {
       data.docs.map((news: News) => (
         <NewsCard
