@@ -316,7 +316,7 @@ function isPage(object: any): object is Page {
   const topButton = document.querySelector("#topButton")!;
 
   let prevScrollPos = window.scrollY;
-  let isMenuOpen = false;
+  let menuVisible = false;
 
   function handleScroll() {
     window.requestAnimationFrame(() => {
@@ -343,9 +343,9 @@ function isPage(object: any): object is Page {
   }
 
   function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
+    menuVisible = !menuVisible;
 
-    if (!isMenuOpen) {
+    if (!menuVisible) {
       document.body.classList.add("stop-scrolling");
       header.classList.add("h-screen", "max-h-full");
       menu.setAttribute("aria-hidden", "false");
