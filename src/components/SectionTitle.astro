@@ -1,9 +1,10 @@
 ---
-const { title, color } = Astro.props;
+const { title, titleColor, iconColor } = Astro.props;
 
 interface Props {
   title: string;
-  color: string;
+  titleColor?: string;
+  iconColor: string;
 }
 
 const colorMap: Record<string, string> = {
@@ -29,7 +30,7 @@ const colorMap: Record<string, string> = {
     viewBox="0 0 459.15 610.72"
     style="enable-background:new 0 0 459.15 610.72;"
     xml:space="preserve"
-    fill={colorMap[color]}
+    fill={colorMap[iconColor]}
     aria-hidden="true"
   >
     <g>
@@ -90,5 +91,5 @@ const colorMap: Record<string, string> = {
       ></path>
     </g>
   </svg>
-  <h2 class="text-3xl lg:text-4xl">{title}</h2>
+  <h2 class={`text-3xl lg:text-4xl text-[${titleColor}]`}>{title}</h2>
 </div>

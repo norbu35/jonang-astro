@@ -1,5 +1,6 @@
 ---
 import type { Media } from "../../payload-types";
+import { Image } from "astro:assets";
 
 interface Props {
   img: Media | string;
@@ -15,7 +16,7 @@ interface Props {
 const { img, name, roles, bio, id } = Astro.props;
 
 let sizesObj;
-let srcset;
+let widths;
 let sizes;
 
 if (typeof img !== "string") {
@@ -25,14 +26,9 @@ if (typeof img !== "string") {
     tablet?: { url: string; width: number };
   };
 
-  const widths = Object.values(sizesObj)
+  let widths = Object.values(sizesObj)
     .map((size) => size?.width)
     .filter((width): width is number => width !== null && width !== undefined);
-
-  srcset = Object.values(sizesObj)
-    .map((size) => `${size?.url} ${size?.width}w`)
-    .filter(Boolean)
-    .join(", ");
 
   sizes = widths
     .map((width) => `(max-width: ${width}px) ${width}px`)
@@ -47,12 +43,13 @@ if (typeof img !== "string") {
   <div class="relative w-full">
     {
       sizesObj && typeof img !== "string" && (
-        <img
+        <Image
           src={img.url!}
-          srcset={srcset}
+          widths={widths}
           sizes={sizes}
           alt={img.alt}
-          class="w-full h-auto object-cover"
+          width={img.width!}
+          height={img.height!}
         />
       )
     }
@@ -85,7 +82,7 @@ if (typeof img !== "string") {
   </button>
   <div>
     <div class="hidden lg:flex lg:visible flex-col gap-12 py-6">
-      <div class="text-4xl font-extrabold">{name}</div>
+      <div class="text-4xl font-extrabold text-white">{name}</div>
       <div
         class="text-2xl text-red-950 bg-white/80 p-2 flex flex-col justify-center"
       >
@@ -95,7 +92,7 @@ if (typeof img !== "string") {
     <div
       id={`bio-${id}`}
       set:html={bio}
-      class="hidden lg:block transition-all duration-500 ease-in-out max-h-0 lg:max-h-full lg:h-full opacity-0 lg:opacity-100 text-justify px-4"
+      class="hidden lg:block transition-all text-white duration-500 ease-in-out max-h-0 lg:max-h-full lg:h-full opacity-0 lg:opacity-100 text-justify px-4"
     />
   </div>
 </bio-card>

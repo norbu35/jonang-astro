@@ -7,11 +7,8 @@ const data = await res.json();
 
 <section>
   <div class="parallax"></div>
-  <div
-    class="section-padding bg-yellow-600 text-center text-white"
-    id="welcome"
-  >
-    <SectionTitle title="Welcome" color="red" />
+  <div class="section-padding bg-yellow-600 text-center" id="welcome">
+    <SectionTitle title="Welcome" iconColor="red" titleColor="blac" />
     <p
       class="mx-auto max-w-sm text-justify font-garamond text-xl md:max-w-lg lg:max-w-3xl"
       set:html={data.body}

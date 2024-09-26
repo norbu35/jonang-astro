@@ -1,32 +1,27 @@
 ---
-import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import type { Teacher } from "../../../payload-types";
+import BioCard from "../../components/BioCard.astro";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/teachers`);
 const data = await res.json();
 ---
 
 <PageLayout title="Jonang Teachers">
-  <div class="section-padding">
+  <div class="flex flex-col bg-red-900 gap-6 lg:gap-12 py-12 lg:py-24">
     {
       data.docs
         .sort(
           (a: Teacher, b: Teacher) => a.orderOfAppearance - b.orderOfAppearance,
         )
         .map((teacher: Teacher) => (
-          <div>
-            {typeof teacher.portrait !== "string" ? (
-              <Image
-                src={teacher.portrait!.url!}
-                alt={teacher.portrait!.alt!}
-                width={teacher.portrait!.width!}
-                height={teacher.portrait!.height!}
-              />
-            ) : (
-              <div>Could not fetch image</div>
-            )}
-          </div>
+          <BioCard
+            img={teacher!.portrait!}
+            name={teacher.name}
+            roles={teacher.roles!}
+            bio={teacher.bioHtml!}
+            id={teacher.id}
+          />
         ))
     }
   </div>

@@ -8,8 +8,8 @@ const res = await fetch(`${import.meta.env.CMS_API_URL}/donations`);
 const data = await res.json();
 ---
 
-<section class="section-padding bg-gray-100">
-  <SectionTitle title="Support Us" color="red" />
+<section class="section-padding bg-red-900">
+  <SectionTitle title="Support Us" iconColor="white" titleColor="white" />
   <div class="cards-grid">
     {
       data.docs.map((item: Donation) => (
