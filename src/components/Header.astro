@@ -78,7 +78,7 @@ function isPage(object: any): object is Page {
                 {field.sublinks?.map((sublink) => (
                   <li class="list-none text-lg">
                     {isPage(sublink.page) &&
-                    sublink.navigationType !== "page" ? (
+                    sublink.navigationType === "page" ? (
                       <a
                         href={`/${sublink.page.slug}`}
                         class="hover:text-yellow-500"

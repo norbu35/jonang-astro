@@ -7,6 +7,10 @@
     scroll-behavior: somoth;
   }
 
+  h1 {
+    @apply text-4xl my-4;
+  }
+
   h2 {
     @apply text-3xl my-4;
   }
