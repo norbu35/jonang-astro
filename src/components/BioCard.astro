@@ -148,18 +148,18 @@ if (typeof img !== "string") {
       };
 
       bioButton?.addEventListener("click", toggleBio);
-      bioElement?.addEventListener("click", () => {
-        if (window.innerWidth < 1024) {
-          bioElement.style.opacity = "0";
-          setTimeout(() => {
-            bioElement.style.maxHeight = "0";
-            buttonText.innerHTML = "Show Bio";
-            setTimeout(() => {
-              bioElement.classList.add("hidden");
-            }, 500);
-          }, 500);
-        }
-      });
+      // bioElement?.addEventListener("click", () => {
+      //   if (window.innerWidth < 1024) {
+      //     bioElement.style.opacity = "0";
+      //     setTimeout(() => {
+      //       bioElement.style.maxHeight = "0";
+      //       buttonText.innerHTML = "Show Bio";
+      //       setTimeout(() => {
+      //         bioElement.classList.add("hidden");
+      //       }, 500);
+      //     }, 500);
+      //   }
+      // });
 
       window.addEventListener("resize", resetBioForLargeScreens);
     }
