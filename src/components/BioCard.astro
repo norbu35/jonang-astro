@@ -38,7 +38,8 @@ if (typeof img !== "string") {
 
 <bio-card
   data-id={id}
-  class="mx-auto flex w-80 lg:w-[40rem] flex-col justify-center border-4 border-red bg-red-900 text-center pb-6"
+  class="mx-auto flex w-80 md:w-[40rem] flex-col justify-center border-4 border-red bg-red-900 text-center pb-6"
+  id={id}
 >
   <div class="relative w-full">
     {
@@ -54,17 +55,21 @@ if (typeof img !== "string") {
       )
     }
     <div
-      class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-6 text-white"
+      class="absolute bottom-0 left-0 w-full flex flex-col gap-4 md:gap-12 bg-gradient-to-t from-black/60 to-transparent p-6 text-white"
     >
-      <div class="lg:hidden text-2xl font-extrabold text-white shadow-lg">
+      <div
+        class="lg:hidden text-2xl md:text-4xl font-extrabold text-white shadow-lg"
+      >
         {name}
       </div>
       <div
-        class="lg:hidden flex flex-col items-center justify-center text-lg font-semibold mt-2 shadow-md"
+        class="lg:hidden flex flex-col items-center justify-center text-lg md:text-2xl font-semibold mt-2 shadow-md gap-1"
       >
         {
           roles.map((el) => (
-            <div class="bg-white/30 p-1 px-3 rounded-md z-10">{el.role}</div>
+            <div class="w-44 md:w-56 bg-white/30 p-1 px-3 rounded-md z-10">
+              {el.role}
+            </div>
           ))
         }
       </div>
@@ -76,7 +81,7 @@ if (typeof img !== "string") {
   </div>
   <button
     id={`bioButton-${id}`}
-    class="secondary-button lg:hidden text-white bg-yellow-600 px-4 py-2 rounded-md transition-all duration-300 hover:bg-yellow-500 focus:bg-yellow-700 focus:outline-none focus:ring focus:ring-yellow-300"
+    class="secondary-button my-1 md:my-4 lg:hidden text-white bg-yellow-600 px-4 py-2 rounded-md transition-all duration-300 hover:bg-yellow-500 focus:bg-yellow-700 focus:outline-none focus:ring focus:ring-yellow-300"
   >
     <span class="button-text">Show Bio</span>
   </button>
@@ -84,15 +89,15 @@ if (typeof img !== "string") {
     <div class="hidden lg:flex lg:visible flex-col gap-12 py-6">
       <div class="text-4xl font-extrabold text-white">{name}</div>
       <div
-        class="text-2xl text-red-950 bg-white/80 p-2 flex flex-col justify-center"
+        class="text-2xl text-red-950 bg-white/80 p-2 flex flex-col justify-center gap-2"
       >
-        {roles.map((el) => <div class="">{el.role}</div>)}
+        {roles.map((el) => <div class="text-center">{el.role}</div>)}
       </div>
     </div>
     <div
       id={`bio-${id}`}
       set:html={bio}
-      class="hidden lg:block transition-all duration-500 ease-in-out max-h-0 lg:max-h-full lg:h-full opacity-0 lg:opacity-100 text-justify px-4"
+      class="hidden lg:block transition-all duration-500 ease-in-out max-h-0 lg:max-h-full lg:h-full opacity-0 lg:opacity-100 text-white text-justify px-4"
     />
   </div>
 </bio-card>

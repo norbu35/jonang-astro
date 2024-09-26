@@ -9,6 +9,28 @@ const data = await res.json();
 
 <PageLayout title="Jonang Teachers">
   <div class="flex flex-col bg-red-900 gap-6 lg:gap-12 py-12 lg:py-24">
+    <div class="flex flex-col md:flex-row justify-center">
+      <ul class="flex flex-col md:flex-row">
+        {
+          data.docs
+            .sort(
+              (a: Teacher, b: Teacher) =>
+                a.orderOfAppearance - b.orderOfAppearance,
+            )
+            .map((teacher: Teacher) => (
+              <li class="list-none my-0 text-center lg:mx-12">
+                <a
+                  href={`#${teacher.id}`}
+                  class="block bg-red-900 text-white text-lg md:text-md lg:text-xl font-semibold lg:font-bold px-4 md:px-0 py-1 rounded-md transition-all duration-300 hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-300"
+                >
+                  {teacher.name}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+
     {
       data.docs
         .sort(
@@ -16,7 +38,7 @@ const data = await res.json();
         )
         .map((teacher: Teacher) => (
           <BioCard
-            img={teacher!.portrait!}
+            img={teacher.portrait!}
             name={teacher.name}
             roles={teacher.roles!}
             bio={teacher.bioHtml!}

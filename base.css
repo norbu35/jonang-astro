@@ -3,6 +3,10 @@
 @tailwind base;
 
 @layer base {
+  html {
+    scroll-behavior: somoth;
+  }
+
   h2 {
     @apply text-3xl my-4;
   }
