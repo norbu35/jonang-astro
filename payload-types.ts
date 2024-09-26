@@ -364,14 +364,14 @@ export interface PayloadMigration {
 export interface Header {
   id: string;
   navigation: {
-    navigationType?: ('page' | 'label' | 'link') | null;
+    navigationType?: ('page' | 'label' | 'linkInternal' | 'linkExternal') | null;
     page?: (string | null) | Page;
     label?: string | null;
     linkLabel?: string | null;
     url?: string | null;
     sublinks?:
       | {
-          navigationType?: ('page' | 'link') | null;
+          navigationType?: ('page' | 'linkInternal' | 'linkExternal') | null;
           page?: (string | null) | Page;
           linkLabel?: string | null;
           url?: string | null;
@@ -475,4 +475,9 @@ export interface Footer {
   addressHtml?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
 }
