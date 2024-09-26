@@ -8,9 +8,9 @@ const data = await res.json();
 <section>
   <div class="parallax"></div>
   <div class="section-padding bg-yellow-600 text-center" id="welcome">
-    <SectionTitle title="Welcome" iconColor="red" titleColor="blac" />
+    <SectionTitle title="Welcome" iconColor="red" titleColor="white" />
     <p
-      class="mx-auto max-w-sm text-justify font-garamond text-xl md:max-w-lg lg:max-w-3xl"
+      class="mx-auto max-w-sm text-justify text-white font-garamond text-xl md:max-w-lg lg:max-w-3xl"
       set:html={data.body}
     />
     <button class="primary-button mt-12 h-12 w-40"
