@@ -67,6 +67,9 @@ const { title } = Astro.props;
         <div class="max-w-[70rem] lg:mx-auto">
           <slot />
         </div>
+        <div class="w-full">
+          <slot name="full=width" />
+        </div>
       </section>
     </main>
     <NewsSection />

@@ -4,7 +4,13 @@
 
 @layer base {
   html {
-    scroll-behavior: somoth;
+    font-size: 16px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-800 bg-white antialiased font-sans;
   }
 
   h1 {
@@ -54,11 +60,13 @@
   .stop-scrolling {
     @apply h-full overflow-hidden;
   }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 @tailwind components;
-
-@tailwind utilities;
 
 @layer components {
   .primary-button {
@@ -90,6 +98,8 @@
   }
 }
 
+@tailwind utilities;
+
 @layer utilities {
   .debug {
     @apply [&>*]:border-[1px] [&>*]:border-red-500;
@@ -101,6 +111,10 @@
 
   .transition {
     @apply transition-all duration-500 ease-in-out motion-reduce:transition-none;
+  }
+
+  .hover-scale {
+    @apply transform transition-transform duration-300 ease-in-out hover:scale-105;
   }
 
   .parallax {
