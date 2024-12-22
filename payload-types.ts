@@ -7,6 +7,9 @@
  */
 
 export interface Config {
+  auth: {
+    users: UserAuthOperations;
+  };
   collections: {
     users: User;
     media: Media;
@@ -18,8 +21,34 @@ export interface Config {
     cards: Card;
     donations: Donation;
     quotes: Quote;
+    "payload-locked-documents": PayloadLockedDocument;
     "payload-preferences": PayloadPreference;
     "payload-migrations": PayloadMigration;
+  };
+  collectionsJoins: {};
+  collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    portraits: PortraitsSelect<false> | PortraitsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    newsletters: NewslettersSelect<false> | NewslettersSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
+    teachers: TeachersSelect<false> | TeachersSelect<true>;
+    cards: CardsSelect<false> | CardsSelect<true>;
+    donations: DonationsSelect<false> | DonationsSelect<true>;
+    quotes: QuotesSelect<false> | QuotesSelect<true>;
+    "payload-locked-documents":
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    "payload-preferences":
+      | PayloadPreferencesSelect<false>
+      | PayloadPreferencesSelect<true>;
+    "payload-migrations":
+      | PayloadMigrationsSelect<false>
+      | PayloadMigrationsSelect<true>;
+  };
+  db: {
+    defaultIDType: string;
   };
   globals: {
     header: Header;
@@ -28,6 +57,40 @@ export interface Config {
     prominence: Prominence;
     activities: Activity;
     footer: Footer;
+  };
+  globalsSelect: {
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    siteTitle: SiteTitleSelect<false> | SiteTitleSelect<true>;
+    introText: IntroTextSelect<false> | IntroTextSelect<true>;
+    prominence: ProminenceSelect<false> | ProminenceSelect<true>;
+    activities: ActivitiesSelect<false> | ActivitiesSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
+  locale: null;
+  user: User & {
+    collection: "users";
+  };
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
+  };
+}
+export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
   };
 }
 /**
@@ -53,10 +116,14 @@ export interface User {
  */
 export interface Media {
   id: string;
+  /**
+   * A text describing the image, for screen readers and in cases where the image can't be rendered. Also used as a descriptor for images on the CMS.
+   */
   alt: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
+  thumbnailURL?: string | null;
   filename?: string | null;
   mimeType?: string | null;
   filesize?: number | null;
@@ -97,10 +164,14 @@ export interface Media {
  */
 export interface Portrait {
   id: string;
+  /**
+   * The name of the person, to be used as a label for the image.
+   */
   alt: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
+  thumbnailURL?: string | null;
   filename?: string | null;
   mimeType?: string | null;
   filesize?: number | null;
@@ -141,7 +212,13 @@ export interface Portrait {
  */
 export interface Page {
   id: string;
+  /**
+   * A short web address slug
+   */
   slug: string;
+  /**
+   * The title will be shown on top of the page as a heading.
+   */
   title: string;
   content: {
     root: {
@@ -162,7 +239,10 @@ export interface Page {
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: string | Media | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -227,7 +307,13 @@ export interface News {
 export interface Teacher {
   id: string;
   name: string;
+  /**
+   * The order in which the teacher appears, lower number comes first.
+   */
   orderOfAppearance: number;
+  /**
+   * Role of the teacher at the monastery.
+   */
   roles: {
     role?: string | null;
     id?: string | null;
@@ -258,7 +344,13 @@ export interface Teacher {
  */
 export interface Card {
   id: string;
+  /**
+   * 50 characters left.
+   */
   header: string;
+  /**
+   * 120 characters left.
+   */
   body: string;
   image: string | Media;
   link: string | Page;
@@ -284,6 +376,9 @@ export interface Donation {
  */
 export interface Quote {
   id: string;
+  /**
+   * A short label to show as the name of the quote.
+   */
   title: string;
   quote: {
     root: {
@@ -301,6 +396,9 @@ export interface Quote {
     [k: string]: unknown;
   };
   quoteHtml?: string | null;
+  /**
+   * Check this box to enable adding the quote in its source language.
+   */
   addSourceLanguage?: boolean | null;
   originalQuote?: {
     root: {
@@ -318,8 +416,66 @@ export interface Quote {
     [k: string]: unknown;
   } | null;
   originalQuoteHtml?: string | null;
+  /**
+   * Two-letter ISO language code of the source language
+   */
   originalQuoteLang?: string | null;
   source?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: string;
+  document?:
+    | ({
+        relationTo: "users";
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: "media";
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: "portraits";
+        value: string | Portrait;
+      } | null)
+    | ({
+        relationTo: "pages";
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: "newsletters";
+        value: string | Newsletter;
+      } | null)
+    | ({
+        relationTo: "news";
+        value: string | News;
+      } | null)
+    | ({
+        relationTo: "teachers";
+        value: string | Teacher;
+      } | null)
+    | ({
+        relationTo: "cards";
+        value: string | Card;
+      } | null)
+    | ({
+        relationTo: "donations";
+        value: string | Donation;
+      } | null)
+    | ({
+        relationTo: "quotes";
+        value: string | Quote;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: "users";
+    value: string | User;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -359,67 +515,366 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portraits_select".
+ */
+export interface PortraitsSelect<T extends boolean = true> {
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  slug?: T;
+  title?: T;
+  content?: T;
+  contentHtml?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletters_select".
+ */
+export interface NewslettersSelect<T extends boolean = true> {
+  body?: T;
+  bodyHtml?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  slug?: T;
+  headline?: T;
+  body?: T;
+  image?: T;
+  bodyHtml?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teachers_select".
+ */
+export interface TeachersSelect<T extends boolean = true> {
+  name?: T;
+  orderOfAppearance?: T;
+  roles?:
+    | T
+    | {
+        role?: T;
+        id?: T;
+      };
+  portrait?: T;
+  bio?: T;
+  bioHtml?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cards_select".
+ */
+export interface CardsSelect<T extends boolean = true> {
+  header?: T;
+  body?: T;
+  image?: T;
+  link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations_select".
+ */
+export interface DonationsSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  image?: T;
+  goal?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes_select".
+ */
+export interface QuotesSelect<T extends boolean = true> {
+  title?: T;
+  quote?: T;
+  quoteHtml?: T;
+  addSourceLanguage?: T;
+  originalQuote?: T;
+  originalQuoteHtml?: T;
+  originalQuoteLang?: T;
+  source?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents_select".
+ */
+export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences_select".
+ */
+export interface PayloadPreferencesSelect<T extends boolean = true> {
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations_select".
+ */
+export interface PayloadMigrationsSelect<T extends boolean = true> {
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * The part of the website which appears at the top (for desktop computers) or at the bottom of the screen (for mobile phones) and contains the logo and the navigation links.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
   id: string;
+  /**
+   * Each navigation item can be a link on click, a link on click and also expand on hover (desktop) or expand by button (mobile), or just a label which doesn't link but expands.
+   */
   navigation: {
     navigationType?:
       | ("page" | "label" | "linkInternal" | "linkExternal")
       | null;
+    /**
+     * Select the page to link to.
+     */
     page?: (string | null) | Page;
+    /**
+     * Provide the label which will appear in the navigation menu.
+     */
     label?: string | null;
+    /**
+     * Provide a label which will be used to show the link in the menu.
+     */
     linkLabel?: string | null;
-    url?: string | null;
+    url: string;
+    /**
+     * If the navigation item should have a dropdown submenu which contains more links, add them here. The submenu appears on hover (desktop) or by clicking an expand button (mobile).
+     */
     sublinks?:
       | {
           navigationType?: ("page" | "linkInternal" | "linkExternal") | null;
+          /**
+           * Select the page to link to.
+           */
           page?: (string | null) | Page;
           linkLabel?: string | null;
-          url?: string | null;
+          url: string;
           id?: string | null;
         }[]
       | null;
     id?: string | null;
   }[];
+  /**
+   * The logo which appears on the left side of the Header.
+   */
   logo: string | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
+ * The main title of the website which appears at the top.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "siteTitle".
  */
 export interface SiteTitle {
   id: string;
+  /**
+   * 60 characters left.
+   */
   title: string;
   secondaryTitle?: string | null;
-  logo?: string | Media | null;
+  logo?: (string | null) | Media;
   subheading?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
+ * The first introductory body of text.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "introText".
  */
 export interface IntroText {
   id: string;
   body: string;
+  /**
+   * A page which the button below the text should lead to.
+   */
   buttonLink: string | Page;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
+ * A photo of and a body of text about a prominent person, appearing directly after the introductory text.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "prominence".
  */
 export interface Prominence {
   id: string;
   photo: string | Portrait;
+  /**
+   * A caption to go under the photo, good for stating the title of the prominent person.
+   */
   photoCaption: string;
+  /**
+   * A larger body of text, which for example can be a short biography or a quote made by the prominent person.
+   */
   mainText: string;
+  /**
+   * Check this box if the text is a quote, and you want to add a quote source.
+   */
   isQuote?: boolean | null;
+  /**
+   * A citation which will appear under the quote.
+   */
   quoteSource?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -451,6 +906,8 @@ export interface Activity {
   createdAt?: string | null;
 }
 /**
+ * Part of the website which appears at the bottom, and contains contact info, legal info, and possibly links for ease of access.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer".
  */
@@ -477,5 +934,109 @@ export interface Footer {
   addressHtml?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  navigation?:
+    | T
+    | {
+        navigationType?: T;
+        page?: T;
+        label?: T;
+        linkLabel?: T;
+        url?: T;
+        sublinks?:
+          | T
+          | {
+              navigationType?: T;
+              page?: T;
+              linkLabel?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siteTitle_select".
+ */
+export interface SiteTitleSelect<T extends boolean = true> {
+  title?: T;
+  secondaryTitle?: T;
+  logo?: T;
+  subheading?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "introText_select".
+ */
+export interface IntroTextSelect<T extends boolean = true> {
+  body?: T;
+  buttonLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prominence_select".
+ */
+export interface ProminenceSelect<T extends boolean = true> {
+  photo?: T;
+  photoCaption?: T;
+  mainText?: T;
+  isQuote?: T;
+  quoteSource?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities_select".
+ */
+export interface ActivitiesSelect<T extends boolean = true> {
+  description?: T;
+  image?: T;
+  descriptionHtml?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  address?: T;
+  email?: T;
+  phone?: T;
+  blessing?: T;
+  addressHtml?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "auth".
+ */
+export interface Auth {
+  [k: string]: unknown;
+}
+
+declare module "payload" {
+  export interface GeneratedTypes extends Config {}
 }
 

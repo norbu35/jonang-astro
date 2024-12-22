@@ -28,3 +28,14 @@ const { title, contentHtml } = Astro.props;
 <PageLayout title={title}>
   <div set:html={contentHtml} class="section-padding" />
 </PageLayout>
+
+<style is:global>
+  h1 {
+    margin-bottom: 1.5em;
+  }
+
+  h2 {
+    margin-top: 1.75em;
+    margin-bottom: 1em;
+  }
+</style>
