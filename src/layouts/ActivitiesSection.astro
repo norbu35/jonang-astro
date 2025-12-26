@@ -7,8 +7,8 @@ const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/activities`);
 const data: Activity = await res.json();
 ---
 
-<section class="flex-col bg-gray-200 md:flex md:flex-row-reverse">
-  <div class="md:md:w-1/2">
+<section class="flex flex-col bg-surface-muted md:flex-row-reverse">
+  <div class="md:w-1/2">
     {
       typeof data.image !== "string" ? (
         <Image
@@ -23,10 +23,10 @@ const data: Activity = await res.json();
       )
     }
   </div>
-  <div class="section-padding text-justify font-body md:w-1/2">
+  <div class="section-padding textured-panel text-left font-body text-ink md:w-1/2">
     <SectionTitle title="Activities" iconColor="darkgrey" titleColor="black" />
     <p
-      class="mx-auto text-center lg:max-w-3xl"
+      class="drop-cap lead-text mx-auto max-w-xl text-left md:max-w-2xl"
       set:html={data.descriptionHtml}
     />
   </div>

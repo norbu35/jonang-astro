@@ -9,13 +9,17 @@ interface Props {
 
 const colorMap: Record<string, string> = {
   white: "#fff",
-  black: "#000",
-  lightgrey: "#d3d3d3",
-  red: "#7f1d1d",
+  black: "#211814",
+  lightgrey: "#e7d7c5",
+  red: "#631414",
   blue: "#1e3a8a",
-  yellow: "#a16207",
-  darkgrey: "#1f2937",
+  yellow: "#c9994c",
+  saffron: "#dba453",
+  gold: "#c9994c",
+  darkgrey: "#3a2f2a",
 };
+
+const resolvedTitleColor = colorMap[titleColor ?? "black"] ?? colorMap.black;
 ---
 
 <div class="section-header">
@@ -91,5 +95,10 @@ const colorMap: Record<string, string> = {
       ></path>
     </g>
   </svg>
-  <h2 class={`text-3xl lg:text-4xl text-${titleColor}`}>{title}</h2>
+  <h2
+    class="text-3xl lg:text-4xl font-sectionTitle"
+    style={`color: ${resolvedTitleColor};`}
+  >
+    {title}
+  </h2>
 </div>

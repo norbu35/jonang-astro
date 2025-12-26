@@ -13,8 +13,8 @@ function QuotePreact(
   }, []);
 
   return (
-    <figure class="mx-auto max-w-lg px-6 py-12 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
-      <blockquote class="flex flex-col flex-wrap items-center justify-center gap-y-4 text-lg md:flex-row md:gap-x-12 md:text-xl xl:gap-x-24 xl:gap-y-8">
+    <figure class="mx-auto max-w-lg px-6 py-12 font-quote text-ink md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
+      <blockquote class="flex flex-col flex-wrap items-center justify-center gap-y-4 text-lg text-ink/90 md:flex-row md:gap-x-12 md:text-xl xl:gap-x-24 xl:gap-y-8">
         {quote?.originalQuoteHtml
           ? (
             <div
@@ -32,7 +32,7 @@ function QuotePreact(
           />
         )}
       </blockquote>
-      <figcaption class="mr-4 mt-12 text-right text-lg md:mt-20 md:text-xl">
+      <figcaption class="mr-4 mt-12 text-right text-lg text-muted md:mt-20 md:text-xl">
         <cite>{quote?.source}</cite>
       </figcaption>
     </figure>

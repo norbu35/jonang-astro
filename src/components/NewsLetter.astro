@@ -2,33 +2,33 @@
 import SectionTitle from "./SectionTitle.astro";
 ---
 
-<section class="section-padding bg-yellow-600 text-center text-white">
-  <SectionTitle title="Newsletter" iconColor="white" titleColor="white" />
-  <p>
+<section class="section-padding bg-surface-muted text-center text-ink">
+  <SectionTitle title="Newsletter" iconColor="red" titleColor="black" />
+  <p class="text-muted">
     Want to receive news, tidbits, philosophy & more?<br /> Sign up for our newsletter!
   </p>
   <form
     action=""
-    class="mx-auto mt-6 max-w-md rounded-xl bg-white p-4 shadow-md"
+    class="mx-auto mt-6 max-w-md p-6 surface-card"
   >
     <div class="mb-4">
-      <label for="name" class="block text-gray-600">Name</label>
+      <label for="name" class="block text-sm font-semibold text-muted">Name</label>
       <input
         type="text"
         name="name"
         id="name"
-        class="w-full rounded-xl border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+        class="mt-2 w-full rounded-lg border border-border/70 px-3 py-2 text-ink focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
       />
     </div>
     <div class="mb-4">
-      <label for="email" class="block text-gray-600">Email</label>
+      <label for="email" class="block text-sm font-semibold text-muted">Email</label>
       <input
         type="text"
         name="email"
         id="email"
-        class="w-full rounded-xl border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+        class="mt-2 w-full rounded-lg border border-border/70 px-3 py-2 text-ink focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
       />
     </div>
-    <button type="submit" class="primary-button"> Sign Up</button>
+    <button type="submit" class="primary-button mt-4 w-full">Sign Up</button>
   </form>
 </section>

@@ -14,42 +14,49 @@ const data: Footer = await res.json();
 
 <Quote />
 <NewsLetter />
-<footer class="flex flex-col items-center gap-10 p-6 px-4 pb-4 xl:pt-10">
-  <div class="flex flex-col gap-10 xl:flex-row">
-    <div class="flex flex-col items-center gap-2">
+<footer class="relative flex flex-col items-center gap-10 border-t border-border/40 bg-ink/85 px-6 pb-6 pt-10 text-surface before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-saffron/70 before:to-transparent before:content-['']">
+  <div class="mx-auto w-full max-w-6xl grid gap-10 text-sm text-surface/80 md:grid-cols-[1.2fr_1fr] md:items-start">
+    <div class="flex flex-col items-center gap-4 md:items-start">
+      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-surface/70">
+        Blessing
+      </div>
       <div class="flex flex-row gap-4">
         <Image class="mx-auto" src={kalachakraIcon} alt="" width="125" />
-        <Image class="mx-auto" src={kalachakraMantra} alt="" height="150" />
+        <Image class="mx-auto invert" src={kalachakraMantra} alt="" height="150" />
       </div>
-      <div class="mt-2 max-w-[345px] text-center text-xs italic">
-        <div class="text-sx mb-2 font-bold not-italic">
+      <div class="max-w-[420px] text-center text-sm italic text-surface/80 md:text-left">
+        <div class="mb-2 text-xs font-bold not-italic text-surface">
           OṂ HA KṢA MA LA VA RA SVĀHĀ
         </div>
         {data.blessing}
       </div>
     </div>
 
-    <div class="flex flex-col items-center gap-6 text-sm md:flex-row md:gap-16">
-      <address class="not-italic">
-        <div class="leading-tight" set:html={data.addressHtml} />
-        <div class="mt-4 leading-tight">
+    <div class="flex flex-col items-center gap-6 md:items-start">
+      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-surface/70">
+        Contact
+      </div>
+      <address class="not-italic text-base text-surface/85">
+        <div class="leading-relaxed" set:html={data.addressHtml} />
+        <div class="mt-4 leading-relaxed text-surface">
           {data.email}<br />
           {data.phone}
         </div>
       </address>
-      <button
-        class="secondary-button rounded bg-yellow-500 text-black drop-shadow-lg hover:bg-yellow-600"
-        ><a href="/donate">Donate</a>
+      <button class="secondary-button">
+        <a href="/donate">Donate</a>
       </button>
     </div>
   </div>
 
-  <div class="text-center text-sm xl:mt-6">
+  <div class="text-center text-sm text-surface/80 xl:mt-8">
     <div>
-      <a href="#">Sitemap</a>
-      <span>|</span>
-      <a href="#">Cookie & Privacy Policy</a>
+      <a href="#" class="transition-colors hover:text-gold">Sitemap</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="transition-colors hover:text-gold">Cookie & Privacy Policy</a>
     </div>
-    <div class="mt-4 text-xs">&copy 2024 Jonang Monastery | made by norbu</div>
+    <div class="mt-4 text-xs text-surface/60">
+      &copy 2024 Jonang Monastery | made by norbu
+    </div>
   </div>
 </footer>

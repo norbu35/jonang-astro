@@ -12,9 +12,9 @@ interface Props {
 const { img, header, body, date } = Astro.props;
 ---
 
-<div class="w-full max-w-xs transform transition-transform hover-scale">
+<div class="group w-full max-w-sm overflow-hidden surface-card surface-card-hover">
   <a href="#">
-    <div class="relative">
+    <div class="relative aspect-[4/3]">
       <svg
         class="absolute bottom-[-15px] left-2/4 mx-auto w-20 translate-x-[-50%]"
         id="Layer_1"
@@ -40,7 +40,7 @@ const { img, header, body, date } = Astro.props;
             alt={img.alt!}
             width={img.sizes!.thumbnail!.width!}
             height={img.sizes!.thumbnail!.height!}
-            class="h-full rounded-xl rounded-b-none"
+            class="h-full w-full rounded-t-2xl object-cover"
             widths={[240, 440]}
             sizes={`(max-width: 375px) 240px, (max-width:450px) 440px`}
           />
@@ -49,17 +49,17 @@ const { img, header, body, date } = Astro.props;
         )
       }
     </div>
-    <div
-      class="rounded-xl rounded-t-none bg-white p-6 text-center text-gray-600"
-    >
-      <div class="font-quicksand text-red-900">{date}</div>
+    <div class="rounded-b-2xl bg-white/95 px-6 pb-6 pt-8 text-center text-ink">
+      <div class="font-button text-xs uppercase tracking-[0.2em] text-accent">
+        {date}
+      </div>
       <div
-        class="mb-4 mt-2 overflow-hidden font-quicksand text-lg font-semibold leading-tight md:h-12"
+        class="mb-4 mt-3 overflow-hidden font-display text-lg font-semibold leading-tight text-ink md:h-12"
       >
         {header}
       </div>
       <div
-        class="align-center h-32 overflow-hidden text-gray-500 md:flex md:items-center"
+        class="align-center h-32 overflow-hidden text-sm text-muted md:flex md:items-center"
         set:html={body}
       />
     </div>

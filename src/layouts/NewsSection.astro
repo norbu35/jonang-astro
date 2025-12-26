@@ -7,18 +7,20 @@ const res = await fetch(`${import.meta.env.CMS_API_URL}/news`);
 const data = await res.json();
 ---
 
-<section class="section-padding bg-gray-100">
-  <SectionTitle title="Latest News" iconColor="darkgrey" titleColor="black" />
-  <div class="cards-grid lg:grid-cols-3 justify-center justify-items-center">
-    {
-      data.docs.map((news: News) => (
-        <NewsCard
-          img={news.image}
-          header={news.headline}
-          body={news.bodyHtml!}
-          date={new Date(news.createdAt).toLocaleDateString()}
-        />
-      ))
-    }
+<section class="section-padding border-t border-border/60 bg-surface textured-panel">
+  <div class="mx-auto max-w-6xl">
+    <SectionTitle title="Latest News" iconColor="darkgrey" titleColor="black" />
+    <div class="cards-grid">
+      {
+        data.docs.map((news: News) => (
+          <NewsCard
+            img={news.image}
+            header={news.headline}
+            body={news.bodyHtml!}
+            date={new Date(news.createdAt).toLocaleDateString()}
+          />
+        ))
+      }
+    </div>
   </div>
 </section>

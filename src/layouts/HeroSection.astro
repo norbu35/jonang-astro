@@ -4,12 +4,19 @@ const data = await res.json();
 ---
 
 <div
-  class="flex h-screen flex-col justify-end bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
+  class="relative isolate flex min-h-[80vh] flex-col justify-end overflow-hidden bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:min-h-[90vh] md:bg-[url('/src/assets/images/yard-ritual.webp')]"
 >
   <div
-    lang="bo"
-    class="height-4 absolute bottom-44 right-0 w-[295px] p-10 text-right font-tibetan text-4xl leading-relaxed text-white md:w-full md:bg-red-900/60 md:text-center md:text-4xl"
-    aria-label="Name of the monastery in Tibetan"
-    set:html={data.title}
-  />
+    class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative z-10 w-full px-6 pb-24 md:px-10 md:pb-14">
+    <div
+      lang="bo"
+      class="mx-auto w-full max-w-5xl rounded-2xl bg-black/35 px-6 py-6 text-right font-tibetan text-3xl leading-relaxed text-white backdrop-blur-[2px] md:bg-black/25 md:px-10 md:text-center md:text-5xl lg:text-6xl"
+      aria-label="Name of the monastery in Tibetan"
+      set:html={data.title}
+    />
+  </div>
 </div>

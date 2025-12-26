@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import PageLayout from "../../layouts/PageLayout.astro";
+import SectionDivider from "../../components/SectionDivider.astro";
+import type { Media } from "../../../payload-types";
+
+const response = await fetch(`${import.meta.env.CMS_API_URL}/media`);
+const data = await response.json();
+const items: Media[] = data.docs ?? [];
+---
+
+<PageLayout title="Photo Gallery">
+  <Fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/photoswipe@5/dist/photoswipe.css"
+    />
+  </Fragment>
+  <section class="section-padding textured-panel">
+    <div class="mx-auto max-w-6xl">
+      <p class="section-intro callout drop-cap text-left text-ink/85">
+        A quiet glimpse into
+        <span class="pill">daily life</span>, <span class="pill">ritual</span>,
+        and <span class="pill">study</span> at the monastery.
+      </p>
+      <SectionDivider class="section-divider--muted" />
+      <div
+        id="gallery"
+        class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 md:mt-10"
+      >
+        {
+          items.map((item) => {
+            const thumb = item.sizes?.card ?? item.sizes?.thumbnail;
+            const thumbUrl = thumb?.url ?? item.url;
+            const thumbWidth = thumb?.width ?? item.width ?? 960;
+            const thumbHeight = thumb?.height ?? item.height ?? 720;
+
+            if (!item.url || !thumbUrl) {
+              return null;
+            }
+
+            return (
+              <a
+                href={item.url}
+                data-pswp-width={thumbWidth}
+                data-pswp-height={thumbHeight}
+                class="group overflow-hidden surface-card surface-card-hover"
+              >
+                <Image
+                  src={thumbUrl}
+                  alt={item.alt}
+                  width={thumbWidth}
+                  height={thumbHeight}
+                  class="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-52"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script is:inline type="module">
+  import PhotoSwipeLightbox from "https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#gallery",
+    children: "a",
+    pswpModule: () =>
+      import("https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js"),
+  });
+
+  lightbox.init();
+</script>

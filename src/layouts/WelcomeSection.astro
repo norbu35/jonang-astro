@@ -7,13 +7,13 @@ const data = await res.json();
 
 <section>
   <div class="parallax"></div>
-  <div class="section-padding bg-yellow-600 text-center" id="welcome">
-    <SectionTitle title="Welcome" iconColor="red" titleColor="white" />
+  <div class="section-padding bg-surface-muted text-center textured-panel" id="welcome">
+    <SectionTitle title="Welcome" iconColor="red" titleColor="black" />
     <p
-      class="mx-auto max-w-sm text-justify text-white font-garamond text-xl md:max-w-lg lg:max-w-3xl"
+      class="callout drop-cap lead-text mx-auto max-w-sm text-left font-garamond text-ink/90 md:max-w-lg lg:max-w-3xl"
       set:html={data.body}
     />
-    <button class="primary-button mt-12 h-12 w-40"
+    <button class="primary-button mt-10"
       ><a href={data.buttonLink.slug}>About Us</a></button
     >
   </div>

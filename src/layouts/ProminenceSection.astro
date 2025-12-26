@@ -6,31 +6,31 @@ const data = await res.json();
 ---
 
 <section
-  class="mx-auto mb-12 flex max-w-5xl flex-col items-center gap-8 md:mb-0 md:flex-row md:gap-0 lg:gap-4 lg:py-12 xl:py-20"
+  class="section-padding mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row md:items-start"
 >
-  <figure class="shrink-0 md:w-1/2 lg:relative lg:right-[13px]">
+  <figure class="shrink-0 md:w-1/2">
     <Image
       src={data.photo.url}
       alt={data.photo.alt}
       width="576"
       height="762"
-      class="mx-auto lg:shadow-[-50px_-50px_0_-40px_#7f1d1d,_50px_50px_0_-40px_#7f1d1d]"
+      class="mx-auto rounded-2xl shadow-card ring-1 ring-border/70"
     />
     <figcaption
-      class="border-r-yellow-500 bg-red-900 px-4 py-3 text-center text-sm text-white md:py-4 lg:float-right lg:mr-[-10px] lg:w-[440px] lg:border-r-yellow-500"
+      class="rounded-b-2xl bg-accent/90 px-4 py-3 text-center text-sm text-white shadow-soft md:py-4 lg:float-right lg:mr-[-10px] lg:w-[440px]"
       set:html={data.photoCaption}
     />
   </figure>
   <figure class="px-8">
-    <blockquote class="text-justify">
+    <blockquote class="callout text-left">
       <p
-        class="italic first-letter:font-garamond first-letter:text-4xl first-letter:font-bold"
+        class="lead-text italic text-ink/90 first-letter:font-garamond first-letter:text-4xl first-letter:font-bold"
         set:html={data.mainText}
       />
     </blockquote>
     {
       data.quoteSource && (
-        <figcaption class="mt-12 text-right">
+        <figcaption class="mt-10 text-right text-muted">
           &ndash;<cite class="text-sm">{data.quoteSource}</cite>
         </figcaption>
       )

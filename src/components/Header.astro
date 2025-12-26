@@ -27,157 +27,27 @@ function isPage(object: any): object is Page {
 <header
   id="header"
   aria-label="Site header"
-  class="z-30 opacity-1 fixed bottom-0 flex h-16 max-h-16 w-full flex-col justify-between border-t border-gray-300 bg-white p-2 transition md:top-0 md:h-20 md:max-h-20 md:justify-between md:shadow-lg lg:h-24 lg:max-h-24"
+  class="fixed bottom-0 z-[9999] isolate flex h-20 max-h-20 w-full flex-col justify-between border-t border-border/70 bg-surface/95 text-ink shadow-soft backdrop-blur transition md:top-0 md:h-20 md:max-h-20 md:border-b md:border-t-0 lg:h-24 lg:max-h-24 relative before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-saffron/80 before:to-transparent before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(700px_260px_at_12%_-20%,rgb(var(--saffron)_/_0.25),transparent_60%)] after:content-['']"
 >
   <!-- Mobile menu -->
   <nav
     id="menu"
-    class="flex h-0 flex-col items-center justify-center overflow-hidden text-center font-semibold text-gray-600 transition md:hidden"
+    class="mobile-menu relative z-10 flex w-full flex-col items-center justify-center overflow-hidden bg-surface/95 px-6 text-center font-semibold text-muted backdrop-blur md:hidden"
     aria-label="Navigation menu"
     aria-hidden="true"
     tabindex="0"
   >
-    <ul
-      class="bottom-0 flex h-full w-full origin-bottom list-none flex-col items-center justify-center font-headerLinks"
-    >
-      {
-        data.navigation.map((field) => (
-          <li class="focus text-2xl">
-            {field.page && typeof field.page !== "string" ? (
-              <a href={`/${field.page.slug}`} class="hover:text-yellow-500">
-                {field.page.title}
-              </a>
-            ) : field.url ? (
-              <a href={field.url} target="_blank" class="hover:text-yellow-500">
-                {field.linkLabel}
-                <svg
-                  class="inline"
-                  width="18px"
-                  height="18px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g id="Interface / External_Link">
-                    <path
-                      id="Vector"
-                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                      stroke="#000000"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                </svg>
-              </a>
-            ) : (
-              <div aria-label={field.label}>{field.label}</div>
-            )}
-            {field.sublinks?.length !== 0 && (
-              <ul aria-label="submenu">
-                {field.sublinks?.map((sublink) => (
-                  <li class="list-none text-lg">
-                    {isPage(sublink.page) &&
-                    sublink.navigationType === "page" ? (
-                      <a
-                        href={`/${sublink.page.slug}`}
-                        class="hover:text-yellow-500"
-                      >
-                        {sublink.page.title}
-                      </a>
-                    ) : sublink.navigationType === "linkInternal" ? (
-                      <a href={sublink.url} class="hover:text-yellow-500">
-                        {sublink.linkLabel}
-                      </a>
-                    ) : sublink.navigationType === "linkExternal" ? (
-                      <a
-                        href={sublink.url}
-                        target="_blank"
-                        class="hover:text-yellow-500"
-                      >
-                        {sublink.linkLabel}
-                        <svg
-                          class="inline"
-                          width="18px"
-                          height="18px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="Interface / External_Link">
-                            <path
-                              id="Vector"
-                              d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                              stroke="#000000"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
-                          </g>
-                        </svg>
-                      </a>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))
-      }
-      <a
-        href="/donate"
-        class="mt-12 h-[3rem] w-[8rem] rounded bg-yellow-500 text-xl drop-shadow-lg hover:bg-yellow-600 flex items-center justify-center"
-      >
-        Donate
-      </a>
-    </ul>
-  </nav>
-  <div class="flex h-[48px] w-full items-center justify-between md:h-full">
-    <!-- Logo -->
-    <div class="basis-3/4 md:basis-1/3">
-      <a
-        href="/"
-        class="focus flex items-center justify-start gap-4"
-        aria-label="Homepage"
-      >
-        <div class="md:w-18 w-16 lg:w-20" aria-hidden="true">
-          {
-            typeof data.logo !== "string" ? (
-              <Image
-                src={data!.logo.url!}
-                alt={data.logo.alt}
-                width={data.logo.width!}
-                height={data.logo.height!}
-                class="float-right w-[80%]"
-              />
-            ) : (
-              <div>Error fetching data</div>
-            )
-          }
-        </div>
-        <div
-          class="font-siteTitle text-[18px] leading-6 text-gray-700 lg:text-[24px] lg:leading-8"
-          aria-hidden="true"
-        >
-          Jonang Takten<br /> Phuntsok Choeling
-        </div>
-      </a>
-    </div>
-    <!-- Large menu -->
-    <nav
-      class="z-30 mr-2 hidden h-0 items-center font-semibold text-gray-600 md:flex md:h-full xl:mr-12 xl:text-[18px]"
-    >
+    <div class="surface-card w-full max-w-sm px-6 py-8">
       <ul
-        id="nav"
-        class="z-20 my-0 h-full list-none items-center justify-evenly gap-3 font-headerLinks text-[16px] md:flex lg:gap-4 lg:text-xl xl:gap-6"
+        class="flex w-full list-none flex-col items-center justify-center gap-4 font-headerLinks"
       >
         {
           data.navigation.map((field) => (
-            <li class="group flex h-full items-center justify-center mx-2">
+            <li class="focus text-lg text-ink">
               {field.page && typeof field.page !== "string" ? (
                 <a
                   href={`/${field.page.slug}`}
-                  class="focus rounded hover:text-yellow-500"
+                  class="nav-link text-lg"
                 >
                   {field.page.title}
                 </a>
@@ -185,40 +55,61 @@ function isPage(object: any): object is Page {
                 <a
                   href={field.url}
                   target="_blank"
-                  class="hover:text-yellow-500"
+                  class="nav-link text-lg"
                 >
                   {field.linkLabel}
+                  <svg
+                    class="inline"
+                    width="18px"
+                    height="18px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Interface / External_Link">
+                      <path
+                        id="Vector"
+                        d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                  </svg>
                 </a>
               ) : (
                 <div
                   aria-label={field.label}
-                  tabindex="0"
-                  class="focus rounded"
+                  class="nav-link text-lg"
                 >
                   {field.label}
                 </div>
               )}
               {field.sublinks?.length !== 0 && (
-                <ul class="group absolute z-0 -left-full -top-full flex flex-col gap-2 bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-12">
+                <ul aria-label="submenu" class="mt-2 flex flex-col gap-2">
                   {field.sublinks?.map((sublink) => (
-                    <li class="list-none text-lg">
+                    <li class="list-none text-sm text-muted">
                       {isPage(sublink.page) &&
                       sublink.navigationType === "page" ? (
                         <a
                           href={`/${sublink.page.slug}`}
-                          class="hover:text-yellow-500"
+                          class="nav-link text-sm"
                         >
                           {sublink.page.title}
                         </a>
                       ) : sublink.navigationType === "linkInternal" ? (
-                        <a href={sublink.url} class="hover:text-yellow-500">
+                        <a
+                          href={sublink.url}
+                          class="nav-link text-sm"
+                        >
                           {sublink.linkLabel}
                         </a>
                       ) : sublink.navigationType === "linkExternal" ? (
                         <a
                           href={sublink.url}
                           target="_blank"
-                          class="hover:text-yellow-500"
+                          class="nav-link text-sm"
                         >
                           {sublink.linkLabel}
                           <svg
@@ -231,13 +122,13 @@ function isPage(object: any): object is Page {
                           >
                             <g id="Interface / External_Link">
                               <path
-                                id="Vector"
+                              id="Vector"
                                 d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
-                                stroke="#000000"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
                             </g>
                           </svg>
                         </a>
@@ -249,13 +140,145 @@ function isPage(object: any): object is Page {
             </li>
           ))
         }
-        <a
-          href="/donate"
-          class="h-10 w-28 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 flex items-center justify-center"
-        >
-          Donate
-        </a>
       </ul>
+      <a
+        href="/donate"
+        class="primary-button mt-8 w-full text-sm shadow-card"
+      >
+        Donate
+      </a>
+    </div>
+  </nav>
+  <div class="container relative z-10 flex h-[64px] w-full items-center justify-between md:h-full">
+    <!-- Logo -->
+    <div class="basis-3/4 md:basis-1/3">
+      <a
+        href="/"
+        class="focus flex items-center justify-start gap-4"
+        aria-label="Homepage"
+      >
+        <div
+          class="md:w-18 flex w-16 items-center justify-center rounded-full bg-white/80 p-1.5 shadow-soft ring-1 ring-border/70 lg:w-20"
+          aria-hidden="true"
+        >
+          {
+            typeof data.logo !== "string" ? (
+              <Image
+                src={data!.logo.url!}
+                alt={data.logo.alt}
+                width={data.logo.width!}
+                height={data.logo.height!}
+                class="w-[80%]"
+              />
+            ) : (
+              <div>Error fetching data</div>
+            )
+          }
+        </div>
+        <div
+          class="font-siteTitle text-[18px] leading-6 text-ink tracking-[0.02em] lg:text-[24px] lg:leading-8"
+          aria-hidden="true"
+        >
+          Jonang Takten<br /> Phuntsok Choeling
+        </div>
+      </a>
+    </div>
+    <!-- Large menu -->
+    <nav
+      class="z-30 mr-2 hidden h-0 items-center font-medium text-muted md:flex md:h-full md:overflow-visible xl:mr-12 xl:text-[18px]"
+    >
+      <ul
+        id="nav"
+        class="nav-surface z-20 my-0 flex h-full list-none items-center gap-1 font-headerLinks md:overflow-visible"
+      >
+        {
+          data.navigation.map((field) => (
+            <li class="group relative flex h-full items-center justify-center">
+              {field.page && typeof field.page !== "string" ? (
+                <a
+                  href={`/${field.page.slug}`}
+                  class="nav-link"
+                >
+                  {field.page.title}
+                </a>
+              ) : field.url ? (
+                <a
+                  href={field.url}
+                  target="_blank"
+                  class="nav-link"
+                >
+                  {field.linkLabel}
+                </a>
+              ) : (
+                <div
+                  aria-label={field.label}
+                  tabindex="0"
+                  class="nav-link"
+                >
+                  {field.label}
+                </div>
+              )}
+              {field.sublinks?.length !== 0 && (
+                <ul class="absolute left-1/2 top-full z-[1000] mt-4 min-w-[220px] -translate-x-1/2 translate-y-2 flex flex-col gap-2 rounded-2xl border border-border/70 bg-white/95 px-8 pb-4 pt-8 opacity-0 shadow-card backdrop-blur transition-all duration-200 ease-linear invisible group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible lg:px-6 lg:pb-6 lg:pt-12">
+                  {field.sublinks?.map((sublink) => (
+                    <li class="list-none text-sm text-muted">
+                      {isPage(sublink.page) &&
+                      sublink.navigationType === "page" ? (
+                        <a
+                          href={`/${sublink.page.slug}`}
+                          class="nav-link text-sm"
+                        >
+                          {sublink.page.title}
+                        </a>
+                      ) : sublink.navigationType === "linkInternal" ? (
+                        <a
+                          href={sublink.url}
+                          class="nav-link text-sm"
+                        >
+                          {sublink.linkLabel}
+                        </a>
+                      ) : sublink.navigationType === "linkExternal" ? (
+                        <a
+                          href={sublink.url}
+                          target="_blank"
+                          class="nav-link text-sm"
+                        >
+                          {sublink.linkLabel}
+                          <svg
+                            class="inline"
+                            width="18px"
+                            height="18px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="Interface / External_Link">
+                              <path
+                              id="Vector"
+                                d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            </g>
+                          </svg>
+                        </a>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href="/donate"
+        class="primary-button ml-3 shadow-card"
+      >
+        Donate
+      </a>
     </nav>
     <!-- controls -->
     <div class="flex items-center gap-4 md:hidden">
@@ -281,15 +304,15 @@ function isPage(object: any): object is Page {
             class="duration-30 transition-all0 flex h-[21px] w-[28px] origin-center transform flex-col justify-between overflow-hidden"
           >
             <div
-              class="h-[3px] w-9 origin-left transform rounded-xl bg-black transition-all duration-300 group-focus:translate-x-10"
+              class="h-[3px] w-9 origin-left transform rounded-xl bg-ink transition-all duration-300 group-focus:translate-x-10"
             >
             </div>
             <div
-              class="h-[3px] w-9 transform rounded-xl bg-black transition-all delay-75 duration-300 group-focus:translate-x-10"
+              class="h-[3px] w-9 transform rounded-xl bg-ink transition-all delay-75 duration-300 group-focus:translate-x-10"
             >
             </div>
             <div
-              class="h-[3px] w-9 origin-left transform rounded-xl bg-black transition-all delay-150 duration-300 group-focus:translate-x-10"
+              class="h-[3px] w-9 origin-left transform rounded-xl bg-ink transition-all delay-150 duration-300 group-focus:translate-x-10"
             >
             </div>
 
@@ -297,11 +320,11 @@ function isPage(object: any): object is Page {
               class="absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition-all duration-500 group-focus:w-14 group-focus:translate-x-0"
             >
               <div
-                class="absolute h-[3px] w-7 rotate-0 transform bg-black transition-all delay-300 duration-500 group-focus:rotate-45"
+                class="absolute h-[3px] w-7 rotate-0 transform bg-ink transition-all delay-300 duration-500 group-focus:rotate-45"
               >
               </div>
               <div
-                class="absolute h-[3px] w-7 -rotate-0 transform bg-black transition-all delay-300 duration-500 group-focus:-rotate-45"
+                class="absolute h-[3px] w-7 -rotate-0 transform bg-ink transition-all delay-300 duration-500 group-focus:-rotate-45"
               >
               </div>
             </div>
@@ -349,23 +372,19 @@ function isPage(object: any): object is Page {
   function toggleMenu() {
     menuVisible = !menuVisible;
 
-    if (!menuVisible) {
+    if (menuVisible) {
       document.body.classList.add("stop-scrolling");
       header.classList.add("h-screen", "max-h-full");
       menu.setAttribute("aria-hidden", "false");
       menuButton.setAttribute("aria-expanded", "true");
-      menu.classList.add("h-full");
-      menu.addEventListener("click", handleMenuClick);
+      menu.classList.add("mobile-menu--open");
     } else {
       document.body.classList.remove("stop-scrolling");
       menuButton.blur();
       menu.setAttribute("aria-hidden", "true");
       menuButton.setAttribute("aria-expanded", "false");
-      menu.classList.remove("h-full");
+      menu.classList.remove("mobile-menu--open");
       header.classList.remove("h-screen", "max-h-full");
-      setTimeout(() => {
-        header.classList.add("max-h-16");
-      }, 500);
     }
   }
 

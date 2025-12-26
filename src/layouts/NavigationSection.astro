@@ -1,5 +1,7 @@
 ---
 import Card from "../components/Card.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import type { Page } from "../../payload-types";
 
 let cards;
 try {
@@ -14,17 +16,48 @@ try {
 } catch (error: any) {
   throw Error(error);
 }
+
+function isPage(object: unknown): object is Page {
+  return (
+    typeof object === "object" &&
+    object !== null &&
+    "slug" in object &&
+    typeof (object as Page).slug === "string"
+  );
+}
+
+function resolveCardLink(card: any): string {
+  if (isPage(card.link)) {
+    return `/${card.link.slug}`;
+  }
+
+  const header = typeof card.header === "string" ? card.header.toLowerCase() : "";
+  if (header.includes("gallery") || header.includes("photo")) {
+    return "/gallery";
+  }
+
+  return "/";
+}
 ---
 
-<section class="cards-flex section-padding bg-gray-100">
-  {
-    cards.map((card: any) => (
-      <Card
-        img={card.image}
-        header={card.header}
-        body={card.body}
-        link={`/${card.link.slug}`}
-      />
-    ))
-  }
+<section class="section-padding bg-surface textured-panel">
+  <div class="mx-auto max-w-6xl">
+    <SectionTitle title="Explore" iconColor="darkgrey" titleColor="black" />
+    <p class="section-intro">
+      Discover <span class="pill">teachings</span>, <span class="pill">programs</span>,
+      and <span class="pill">community life</span> across the monastery.
+    </p>
+    <div class="cards-grid">
+      {
+        cards.map((card: any) => (
+          <Card
+            img={card.image}
+            header={card.header}
+            body={card.body}
+            link={resolveCardLink(card)}
+          />
+        ))
+      }
+    </div>
+  </div>
 </section>

@@ -7,9 +7,14 @@ const { title } = Astro.props;
 ---
 
 <div
-  class="flex h-40 items-center justify-center bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:mt-20 md:h-52 lg:mt-[96px] lg:h-60"
+  class="relative flex h-44 items-center justify-center overflow-hidden bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:h-52 lg:h-60"
 >
-  <h1 class="font-quicksand text-center text-4xl font-semibold text-white mb-0">
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/30 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+  <h1 class="relative z-10 mb-0 text-center font-display text-4xl font-semibold text-white md:text-5xl">
     {title}
   </h1>
 </div>

@@ -13,14 +13,14 @@ const { img, header, body, link } = Astro.props;
 ---
 
 <astro-card
-  class="focus w-full max-w-xs rounded hover-scale"
+  class="focus group w-full max-w-sm overflow-hidden surface-card surface-card-hover"
   tabindex="0"
   id="card"
   data-link={link}
   role="link"
 >
   <a href={link} tabindex="-1">
-    <div class="relative">
+    <div class="relative aspect-[4/3]">
       <svg
         class="absolute bottom-[-15px] left-2/4 mx-auto w-20 translate-x-[-50%]"
         id="Layer_1"
@@ -47,27 +47,27 @@ const { img, header, body, link } = Astro.props;
             alt={img.alt!}
             width={img.sizes!.thumbnail!.width!}
             height={img.sizes!.thumbnail!.height!}
-            class="h-full rounded-t-xl"
+            class="h-full w-full rounded-t-2xl object-cover"
           />
         ) : (
           <div>Error fetching image.</div>
         )
       }
     </div>
-    <div class="rounded-b-xl bg-white p-6 text-center text-gray-600">
+    <div class="rounded-b-2xl bg-white/95 px-6 pb-6 pt-8 text-center text-ink">
       <div
-        class="font-quicksand place-items-center py-4 text-xl font-semibold leading-tight md:h-12"
+        class="font-display place-items-center text-lg font-semibold leading-tight text-ink md:h-12 md:text-xl"
       >
         {header}
       </div>
       <div
-        class="hidden h-28 items-center justify-center overflow-hidden md:flex md:items-center"
+        class="hidden h-28 items-center justify-center overflow-hidden text-sm text-muted md:flex md:items-center"
       >
         {body}
       </div>
       <button
         aria-label="Learn More"
-        class="primary-button mb-2 hidden md:block"
+        class="primary-button mt-4 hidden md:inline-flex"
         ><a href={link}>Learn More</a></button
       >
     </div>
