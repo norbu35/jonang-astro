@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import preact from "@astrojs/preact";
 
 export default defineConfig({
+  site: "https://jonang.in",
   integrations: [preact()],
   vite: {
     plugins: tailwindcss(),

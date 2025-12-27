@@ -1,7 +1,7 @@
 ---
 import Card from "../components/Card.astro";
 import SectionTitle from "../components/SectionTitle.astro";
-import { resolveStaticPageHref } from "../data/staticPages";
+import { normalizeGalleryHref, resolveStaticPageHref } from "../data/staticPages";
 import type { Page } from "../../payload-types";
 
 let cards;
@@ -32,17 +32,17 @@ function resolvePageLink(page: Page): string {
 }
 
 function resolveCardLink(card: any): string {
+  const header = typeof card.header === "string" ? card.header.toLowerCase() : "";
+  if (header.includes("gallery") || header.includes("photo")) {
+    return normalizeGalleryHref("gallery");
+  }
+
   if (isPage(card.link)) {
     return resolvePageLink(card.link);
   }
 
   if (typeof card.link === "string" && card.link.length > 0) {
-    return card.link;
-  }
-
-  const header = typeof card.header === "string" ? card.header.toLowerCase() : "";
-  if (header.includes("gallery") || header.includes("photo")) {
-    return "/gallery";
+    return normalizeGalleryHref(card.link);
   }
 
   return "/";

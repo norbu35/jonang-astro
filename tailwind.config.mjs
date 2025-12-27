@@ -10,7 +10,7 @@ export default {
         headerLinks: ["Quicksand", "sans-serif"],
         siteTitle: ["Bodoni Moda", "serif"],
         sectionTitle: ["Bodoni Moda", "serif"],
-        tibetan: ["Noto Serif Tibetan", "serif"],
+        tibetan: ["Monlam Uni Ouchan3", "Noto Serif Tibetan", "serif"],
         body: ["Open Sans", "system-ui", "sans-serif"],
         button: ["Quicksand", "sans-serif"],
         quote: ["Cormorant Garamond", "serif"],

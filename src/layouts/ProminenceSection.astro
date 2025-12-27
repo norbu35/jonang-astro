@@ -3,30 +3,49 @@ import { Image } from "astro:assets";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/prominence`);
 const data = await res.json();
+
+const paragraphs = (data.mainText ?? "")
+  .split(/\n+/)
+  .map((paragraph) => paragraph.trim())
+  .filter(Boolean);
 ---
 
 <section
   class="section-padding mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row md:items-start"
 >
   <figure class="shrink-0 md:w-1/2">
-    <Image
-      src={data.photo.url}
-      alt={data.photo.alt}
-      width="576"
-      height="762"
-      class="mx-auto rounded-2xl shadow-card ring-1 ring-border/70"
-    />
-    <figcaption
-      class="rounded-b-2xl bg-accent/90 px-4 py-3 text-center text-sm text-white shadow-soft md:py-4 lg:float-right lg:mr-[-10px] lg:w-[440px]"
-      set:html={data.photoCaption}
-    />
-  </figure>
-  <figure class="px-8">
-    <blockquote class="callout text-left">
-      <p
-        class="lead-text italic text-ink/90 first-letter:font-garamond first-letter:text-4xl first-letter:font-bold"
-        set:html={data.mainText}
+    <div class="mx-auto overflow-hidden rounded-2xl shadow-card ring-1 ring-border/70">
+      <Image
+        src={data.photo.url}
+        alt={data.photo.alt}
+        width="576"
+        height="762"
+        class="w-full"
       />
+      <figcaption
+        class="w-full bg-accent/90 px-4 py-3 text-center text-sm text-white md:py-4"
+        set:html={data.photoCaption}
+      />
+    </div>
+  </figure>
+  <figure class="px-6 md:px-8">
+    <blockquote class="callout text-left">
+      <div class="space-y-5 md:space-y-6">
+        {paragraphs.map((paragraph, index) => (
+          <p
+            class:list={[
+              "m-0",
+              "text-base",
+              "leading-relaxed",
+              "italic",
+              "text-ink/90",
+              index === 0 &&
+                "first-letter:font-garamond first-letter:text-4xl first-letter:font-bold",
+            ]}
+            set:html={paragraph}
+          />
+        ))}
+      </div>
     </blockquote>
     {
       data.quoteSource && (

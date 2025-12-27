@@ -7,14 +7,17 @@ const { title } = Astro.props;
 ---
 
 <div
-  class="relative flex h-44 items-center justify-center overflow-hidden bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:h-52 lg:h-60"
+  class="title-banner relative flex h-44 items-center justify-center overflow-hidden bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:h-52 lg:h-60"
 >
-  <div
-    class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/30 to-transparent"
-    aria-hidden="true"
-  >
+  <div class="title-banner__overlay" aria-hidden="true"></div>
+  <div class="title-banner__frame" aria-hidden="true">
+    <span class="title-banner__corner title-banner__corner--tl"></span>
+    <span class="title-banner__corner title-banner__corner--tr"></span>
+    <span class="title-banner__corner title-banner__corner--bl"></span>
+    <span class="title-banner__corner title-banner__corner--br"></span>
   </div>
-  <h1 class="relative z-10 mb-0 text-center font-display text-4xl font-semibold text-white md:text-5xl">
+  <div class="title-banner__ornament" aria-hidden="true"></div>
+  <h1 class="title-banner__title relative z-10 text-center font-display text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
     {title}
   </h1>
 </div>

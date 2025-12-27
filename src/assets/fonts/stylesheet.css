@@ -49,6 +49,16 @@
 }
 
 @font-face {
+  font-family: "Monlam Uni Ouchan3";
+  src:
+    local("Monlam Uni Ouchan3"),
+    url("MonlamUniOuchan3-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Roboto";
   src:
     local("Roboto Bold"),

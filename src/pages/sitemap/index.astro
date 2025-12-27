@@ -1,0 +1,53 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import RichTextSection from "../../components/RichTextSection.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
+
+const mainLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: STATIC_PAGE_PATHS.aboutUs },
+  { label: "Teachers", href: "/teachers" },
+  { label: "Photo Gallery", href: STATIC_PAGE_PATHS.gallery },
+  { label: "Donate", href: "/donate" },
+];
+
+const teachingLinks = [
+  { label: "Jonang Doctrine", href: STATIC_PAGE_PATHS.jonangDoctrine },
+  { label: "Beginner's Introduction", href: STATIC_PAGE_PATHS.jonangBeginners },
+  { label: "Kalachakra Practice", href: STATIC_PAGE_PATHS.kalachakra },
+  { label: "Curriculum", href: STATIC_PAGE_PATHS.curriculum },
+];
+---
+
+<PageLayout title="Sitemap">
+  <RichTextSection>
+    <nav aria-label="Sitemap">
+      <p>
+        Use this sitemap to quickly find key pages across the Jonang Monastery
+        website.
+      </p>
+      <div class="grid gap-10 md:grid-cols-2">
+        <div>
+          <h2>Main pages</h2>
+          <ul>
+            {mainLinks.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2>Teachings</h2>
+          <ul>
+            {teachingLinks.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </RichTextSection>
+</PageLayout>

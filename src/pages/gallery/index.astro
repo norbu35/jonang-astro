@@ -26,7 +26,7 @@ const items: Media[] = data.docs ?? [];
       <SectionDivider class="section-divider--muted" />
       <div
         id="gallery"
-        class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 md:mt-10"
+        class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mt-10"
       >
         {
           items.map((item) => {
@@ -34,6 +34,41 @@ const items: Media[] = data.docs ?? [];
             const thumbUrl = thumb?.url ?? item.url;
             const thumbWidth = thumb?.width ?? item.width ?? 960;
             const thumbHeight = thumb?.height ?? item.height ?? 720;
+            const fullAsset =
+              item.url && item.width && item.height
+                ? { url: item.url, width: item.width, height: item.height }
+                : item.sizes?.tablet?.url &&
+                    item.sizes?.tablet?.width &&
+                    item.sizes?.tablet?.height
+                  ? {
+                      url: item.sizes.tablet.url,
+                      width: item.sizes.tablet.width,
+                      height: item.sizes.tablet.height,
+                    }
+                  : item.sizes?.card?.url &&
+                      item.sizes?.card?.width &&
+                      item.sizes?.card?.height
+                    ? {
+                        url: item.sizes.card.url,
+                        width: item.sizes.card.width,
+                        height: item.sizes.card.height,
+                      }
+                    : item.sizes?.thumbnail?.url &&
+                        item.sizes?.thumbnail?.width &&
+                        item.sizes?.thumbnail?.height
+                      ? {
+                          url: item.sizes.thumbnail.url,
+                          width: item.sizes.thumbnail.width,
+                          height: item.sizes.thumbnail.height,
+                        }
+                      : {
+                          url: thumbUrl,
+                          width: thumbWidth,
+                          height: thumbHeight,
+                        };
+            const fullUrl = fullAsset.url ?? thumbUrl;
+            const fullWidth = fullAsset.width ?? thumbWidth;
+            const fullHeight = fullAsset.height ?? thumbHeight;
 
             if (!item.url || !thumbUrl) {
               return null;
@@ -41,20 +76,24 @@ const items: Media[] = data.docs ?? [];
 
             return (
               <a
-                href={item.url}
-                data-pswp-width={thumbWidth}
-                data-pswp-height={thumbHeight}
-                class="group overflow-hidden surface-card surface-card-hover"
+                href={fullUrl}
+                data-pswp-width={fullWidth}
+                data-pswp-height={fullHeight}
+                data-pswp-msrc={thumbUrl}
+                data-pswp-cropped="true"
+                class="group overflow-hidden surface-card surface-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
               >
-                <Image
-                  src={thumbUrl}
-                  alt={item.alt}
-                  width={thumbWidth}
-                  height={thumbHeight}
-                  class="h-44 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-52"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div class="aspect-[4/3] w-full">
+                  <Image
+                    src={thumbUrl}
+                    alt={item.alt}
+                    width={thumbWidth}
+                    height={thumbHeight}
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </a>
             );
           })
@@ -70,6 +109,8 @@ const items: Media[] = data.docs ?? [];
   const lightbox = new PhotoSwipeLightbox({
     gallery: "#gallery",
     children: "a",
+    showHideAnimationType: "fade",
+    bgOpacity: 0.9,
     pswpModule: () =>
       import("https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js"),
   });

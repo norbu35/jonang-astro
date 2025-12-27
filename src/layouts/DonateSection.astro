@@ -11,7 +11,7 @@ const data = await res.json();
 <section class="section-padding accent-panel text-white textured-panel textured-panel--dark">
   <div class="mx-auto max-w-6xl">
     <SectionTitle title="Support Us" iconColor="saffron" titleColor="white" />
-    <div class="cards-grid">
+    <div class={`cards-grid ${data.docs.length === 1 ? "lg:grid-cols-1" : ""}`.trim()}>
       {
         data.docs.map((item: Donation) => (
           <DonateCard
