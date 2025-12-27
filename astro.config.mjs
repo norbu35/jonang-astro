@@ -1,16 +1,13 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-
+import tailwindcss from "@tailwindcss/vite";
 import preact from "@astrojs/preact";
 
 export default defineConfig({
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    preact(),
-  ],
+  integrations: [preact()],
+  vite: {
+    plugins: tailwindcss(),
+  },
   image: {
     service: passthroughImageService(),
     domains: ["167.172.54.89", "cms.jonang.in", "localhost"],

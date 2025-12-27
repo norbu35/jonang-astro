@@ -1,5 +1,6 @@
 ---
 import SectionTitle from "../components/SectionTitle.astro";
+import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/introText`);
 const data = await res.json();
@@ -13,8 +14,8 @@ const data = await res.json();
       class="callout drop-cap lead-text mx-auto max-w-sm text-left font-garamond text-ink/90 md:max-w-lg lg:max-w-3xl"
       set:html={data.body}
     />
-    <button class="primary-button mt-10"
-      ><a href={data.buttonLink.slug}>About Us</a></button
-    >
+    <button class="primary-button mt-10">
+      <a href={STATIC_PAGE_PATHS.aboutUs}>About Us</a>
+    </button>
   </div>
 </section>

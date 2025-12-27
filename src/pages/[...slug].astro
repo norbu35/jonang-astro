@@ -1,5 +1,7 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import RichTextSection from "../components/RichTextSection.astro";
+import { STATIC_PAGE_SLUGS } from "../data/staticPages";
 import type { Page } from "../../payload-types";
 
 export async function getStaticPaths() {
@@ -13,37 +15,23 @@ export async function getStaticPaths() {
     const data = await response.json();
     const pages: Page[] = data.docs;
 
-    return pages.map(({ slug, title, contentHtml }) => ({
-      params: { slug },
-      props: { title, contentHtml },
-    }));
+    return pages
+      .filter((page) => page.slug && !STATIC_PAGE_SLUGS.has(page.slug))
+      .map(({ slug, title, contentHtml }) => ({
+        params: { slug },
+        props: { title, contentHtml },
+      }));
   } catch (error: any) {
     throw Error(error);
   }
 }
 
 const { title, contentHtml } = Astro.props;
+ 
 ---
 
 <PageLayout title={title}>
-  <section class="section-padding textured-panel">
-    <div class="rich-text mx-auto max-w-3xl" set:html={contentHtml} />
-  </section>
+  <RichTextSection>
+    <Fragment set:html={contentHtml} />
+  </RichTextSection>
 </PageLayout>
-
-<script is:inline>
-  const lists = document.querySelectorAll(".rich-text ol");
-
-  lists.forEach((list) => {
-    const items = Array.from(list.querySelectorAll("li"));
-    if (!items.length) return;
-
-    const matches = items.filter((item) =>
-      /^\s*\d+[\.\)]\s+/.test(item.textContent ?? ""),
-    ).length;
-
-    if (matches >= 2 || (items.length === 1 && matches === 1)) {
-      list.classList.add("is-manual-numbered");
-    }
-  });
-</script>

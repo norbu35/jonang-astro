@@ -1,0 +1,38 @@
+---
+interface Props {
+  className?: string;
+  contentClassName?: string;
+}
+
+const { className = "", contentClassName = "" } = Astro.props;
+const sectionClass = ["section-padding", "textured-panel", className]
+  .filter(Boolean)
+  .join(" ");
+const contentClass = ["rich-text", "mx-auto", "max-w-3xl", contentClassName]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<section class={sectionClass}>
+  <div class={contentClass}>
+    <slot />
+  </div>
+</section>
+
+<script is:inline>
+  const lists = document.querySelectorAll(".rich-text ol, .rich-text ul");
+  const manualNumberPattern = /^\s*\d{1,2}(?:[.)-:]|\s)\s*/;
+
+  lists.forEach((list) => {
+    const items = Array.from(list.querySelectorAll("li"));
+    if (!items.length) return;
+
+    const matches = items.filter((item) =>
+      manualNumberPattern.test(item.textContent ?? ""),
+    ).length;
+
+    if (matches >= 2 || (items.length === 1 && matches === 1)) {
+      list.classList.add("is-manual-numbered");
+    }
+  });
+</script>
