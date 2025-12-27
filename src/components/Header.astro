@@ -257,7 +257,7 @@ function hasSublinks(item: NavLink) {
   const menuPanel = document.querySelector("#mobileMenuPanel");
   const menuOverlay = document.querySelector("#mobileMenuOverlay");
 
-  function setMenuOpen(isOpen) {
+  function setMenuOpen(isOpen: boolean) {
     if (!menuButton || !menuPanel || !menuOverlay) return;
 
     menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
