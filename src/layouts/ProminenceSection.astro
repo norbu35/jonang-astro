@@ -4,9 +4,9 @@ import { Image } from "astro:assets";
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/prominence`);
 const data = await res.json();
 
-const paragraphs = (data.mainText ?? "")
+const paragraphs: string[] = (data.mainText ?? "")
   .split(/\n+/)
-  .map((paragraph) => paragraph.trim())
+  .map((paragraph: string) => paragraph.trim())
   .filter(Boolean);
 ---
 
@@ -31,7 +31,7 @@ const paragraphs = (data.mainText ?? "")
   <figure class="px-6 md:px-8">
     <blockquote class="callout text-left">
       <div class="space-y-5 md:space-y-6">
-        {paragraphs.map((paragraph, index) => (
+        {paragraphs.map((paragraph: string, index: number) => (
           <p
             class:list={[
               "m-0",
