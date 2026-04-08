@@ -4,15 +4,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "system-ui", "sans-serif"],
+        sans: ["Manrope", "Open Sans", "system-ui", "sans-serif"],
         serif: ["Cormorant Garamond", "serif"],
-        display: ["Bodoni Moda", "serif"],
-        headerLinks: ["Quicksand", "sans-serif"],
-        siteTitle: ["Bodoni Moda", "serif"],
-        sectionTitle: ["Bodoni Moda", "serif"],
+        display: ["Noto Serif", "Bodoni Moda", "Cormorant Garamond", "serif"],
+        headerLinks: ["Manrope", "Quicksand", "sans-serif"],
+        siteTitle: ["Noto Serif", "Bodoni Moda", "serif"],
+        sectionTitle: ["Noto Serif", "Bodoni Moda", "serif"],
         tibetan: ["Monlam Uni Ouchan3", "Noto Serif Tibetan", "serif"],
-        body: ["Open Sans", "system-ui", "sans-serif"],
-        button: ["Quicksand", "sans-serif"],
+        body: ["Manrope", "Open Sans", "system-ui", "sans-serif"],
+        button: ["Manrope", "Quicksand", "sans-serif"],
         quote: ["Cormorant Garamond", "serif"],
         garamond: ["Cormorant Garamond", "serif"],
       },
@@ -28,8 +28,8 @@ export default {
         border: "rgb(var(--border) / <alpha-value>)",
       },
       boxShadow: {
-        soft: "0 14px 30px -22px rgba(35, 24, 20, 0.4)",
-        card: "0 30px 60px -42px rgba(35, 24, 20, 0.55)",
+        soft: "0 20px 40px -28px rgba(87, 0, 19, 0.22)",
+        card: "0 34px 70px -44px rgba(87, 0, 19, 0.26)",
       },
     },
   },

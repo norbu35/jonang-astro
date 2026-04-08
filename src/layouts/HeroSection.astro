@@ -4,20 +4,20 @@ const data = await res.json();
 ---
 
 <div
-  class="relative isolate flex min-h-[80vh] flex-col justify-end overflow-hidden md:min-h-[90vh]"
+  class="relative isolate flex min-h-[82vh] flex-col justify-end overflow-hidden md:min-h-[92vh]"
 >
   <div
     class="hero-kenburns absolute inset-0 bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent"
+    class="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/35 to-transparent"
     aria-hidden="true"
   >
   </div>
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div
-      class="absolute -top-12 right-[-8%] h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,248,220,0.9),rgba(255,208,120,0.35)_45%,rgba(255,208,120,0.1)_65%,transparent_75%)] blur-2xl opacity-90 mix-blend-screen"
+      class="absolute -top-12 right-[-8%] h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,232,168,0.85),rgba(233,195,73,0.32)_45%,rgba(233,195,73,0.08)_65%,transparent_75%)] blur-2xl opacity-85 mix-blend-screen"
     ></div>
     <div
       class="absolute top-24 right-[10%] h-1.5 w-36 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.7),transparent)] blur-sm opacity-70 mix-blend-screen"
@@ -26,10 +26,10 @@ const data = await res.json();
       class="absolute top-32 right-[22%] h-2 w-24 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,226,160,0.6),transparent)] blur-sm opacity-60 mix-blend-screen"
     ></div>
   </div>
-  <div class="relative z-10 w-full px-6 pb-24 md:px-10 md:pb-14">
+  <div class="relative z-10 w-full px-6 pb-20 md:px-10 md:pb-16">
     <div
       lang="bo"
-      class="mx-auto w-full max-w-5xl rounded-2xl bg-black/35 px-6 py-6 text-right font-tibetan text-2xl leading-relaxed text-white backdrop-blur-[2px] md:bg-black/25 md:px-10 md:text-center md:text-4xl lg:text-5xl"
+      class="editorial-shell mr-0 ml-auto w-full max-w-4xl rounded-2xl bg-black/34 px-6 py-6 text-right font-tibetan text-2xl leading-relaxed text-white backdrop-blur-[2px] md:mr-14 md:px-10 md:text-right md:text-4xl lg:mr-20 lg:text-5xl"
       aria-label="Name of the monastery in Tibetan"
       set:html={data.title}
     />

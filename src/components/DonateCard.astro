@@ -20,7 +20,7 @@ const { headline, goal, description, img } = Astro.props;
   </h3>
   {
     typeof img !== "string" ? (
-      <div class="w-full overflow-hidden rounded-xl aspect-[4/3] bg-surface-muted/40">
+      <div class="w-full overflow-hidden rounded-xl aspect-[4/3] bg-surface-muted/70">
         <Image
           src={img.sizes!.thumbnail!.url!}
           alt={img!.alt!}

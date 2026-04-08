@@ -9,13 +9,15 @@ const data = await res.json();
 <section>
   <div class="parallax"></div>
   <div class="section-padding bg-surface-muted text-center textured-panel" id="welcome">
+    <div class="editorial-shell tonal-block px-4 py-10 md:px-12 md:py-14">
     <SectionTitle title="Welcome" iconColor="red" titleColor="black" />
     <p
-      class="callout drop-cap lead-text mx-auto max-w-sm text-left font-garamond text-ink/90 md:max-w-lg lg:max-w-3xl"
+      class="callout drop-cap lead-text mx-auto max-w-sm text-left font-garamond text-ink/90 md:max-w-xl lg:max-w-3xl"
       set:html={data.body}
     />
     <button class="primary-button mt-10">
       <a href={STATIC_PAGE_PATHS.aboutUs}>About Us</a>
     </button>
+    </div>
   </div>
 </section>
