@@ -1,52 +1,26 @@
 ---
+import { PRIMARY_NAVIGATION } from "../data/navigation";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
-type NavLink = {
-  label: string;
-  href?: string;
-  external?: boolean;
-  sublinks?: {
-    label: string;
-    href: string;
-    external?: boolean;
-  }[];
-};
-
-const navigation: NavLink[] = [
-  {
-    label: "About",
-    href: STATIC_PAGE_PATHS.aboutUs,
-  },
-  {
-    label: "Teachings",
-    href: STATIC_PAGE_PATHS.jonangDoctrine,
-    sublinks: [
-      {
-        label: "Beginner's Introduction",
-        href: STATIC_PAGE_PATHS.jonangBeginners,
-      },
-      {
-        label: "Kalachakra Curriculum",
-        href: STATIC_PAGE_PATHS.kalachakra,
-      },
-      {
-        label: "Monastery Curriculum",
-        href: STATIC_PAGE_PATHS.curriculum,
-      },
-    ],
-  },
-  {
-    label: "Teachers",
-    href: "/teachers",
-  },
-  {
-    label: "Gallery",
-    href: STATIC_PAGE_PATHS.gallery,
-  },
-];
-
-function hasSublinks(item: NavLink) {
+function hasSublinks(item: (typeof PRIMARY_NAVIGATION)[number]) {
   return Array.isArray(item.sublinks) && item.sublinks.length > 0;
+}
+
+function normalizePath(path: string) {
+  return path.replace(/\/+$/, "") || "/";
+}
+
+const pathname = normalizePath(Astro.url.pathname);
+
+function isActivePath(href?: string) {
+  if (!href) return false;
+  const target = normalizePath(href);
+  return pathname === target || (target !== "/" && pathname.startsWith(`${target}/`));
+}
+
+function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
+  if (isActivePath(item.href)) return true;
+  return item.sublinks?.some((sublink) => isActivePath(sublink.href)) ?? false;
 }
 ---
 
@@ -93,16 +67,18 @@ function hasSublinks(item: NavLink) {
       aria-label="Primary"
     >
       <ul class="nav-surface flex list-none items-center gap-1 m-0">
-        {navigation.map((item) => (
+        {PRIMARY_NAVIGATION.map((item) => (
           <li class="group relative list-none m-0">
             {item.href ? (
               <a
                 href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noreferrer" : undefined}
-                class="nav-link flex items-center gap-2"
+                class:list={[
+                  "nav-link flex items-center gap-2",
+                  isActiveItem(item) && "nav-link-active",
+                ]}
+                aria-current={isActivePath(item.href) ? "page" : undefined}
               >
-                {item.label}
+                {item.shortLabel ?? item.label}
                 {hasSublinks(item) && (
                   <svg
                     class="h-3 w-3 text-ink/60 transition-transform duration-300 group-hover:rotate-180"
@@ -126,7 +102,7 @@ function hasSublinks(item: NavLink) {
                 class="nav-link flex items-center gap-2"
                 aria-label={item.label}
               >
-                {item.label}
+                {item.shortLabel ?? item.label}
                 {hasSublinks(item) && (
                   <svg
                     class="h-3 w-3 text-ink/60 transition-transform duration-300 group-hover:rotate-180"
@@ -156,9 +132,11 @@ function hasSublinks(item: NavLink) {
                         {sublink ? (
                           <a
                             href={sublink.href}
-                            target={sublink.external ? "_blank" : undefined}
-                            rel={sublink.external ? "noreferrer" : undefined}
-                            class="nav-link w-full justify-start text-sm"
+                            class:list={[
+                              "nav-link w-full justify-start text-sm",
+                              isActivePath(sublink.href) && "nav-link-active",
+                            ]}
+                            aria-current={isActivePath(sublink.href) ? "page" : undefined}
                           >
                             {sublink.label}
                           </a>
@@ -172,7 +150,7 @@ function hasSublinks(item: NavLink) {
           </li>
         ))}
       </ul>
-      <a href="/donate" class="primary-button ml-2 shadow-card">Donate</a>
+      <a href={STATIC_PAGE_PATHS.donate} class="primary-button ml-2 shadow-card">Donate</a>
     </nav>
 
     <button
@@ -209,14 +187,16 @@ function hasSublinks(item: NavLink) {
     >
       <nav aria-label="Mobile primary" class="flex flex-col gap-6">
         <ul class="flex list-none flex-col gap-4 text-lg text-ink m-0">
-          {navigation.map((item) => (
+          {PRIMARY_NAVIGATION.map((item) => (
             <li class="list-none m-0">
               {item.href ? (
                 <a
                   href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noreferrer" : undefined}
-                  class="block rounded-2xl px-4 py-3 font-semibold text-ink transition-colors hover:bg-surface-muted/80"
+                  class:list={[
+                    "block rounded-2xl px-4 py-3 font-semibold text-ink transition-colors hover:bg-surface-muted/80",
+                    isActiveItem(item) && "bg-surface-muted/80",
+                  ]}
+                  aria-current={isActivePath(item.href) ? "page" : undefined}
                 >
                   {item.label}
                 </a>
@@ -232,9 +212,11 @@ function hasSublinks(item: NavLink) {
                       {sublink ? (
                         <a
                           href={sublink.href}
-                          target={sublink.external ? "_blank" : undefined}
-                          rel={sublink.external ? "noreferrer" : undefined}
-                          class="block rounded-xl px-3 py-2 transition-colors hover:bg-surface-muted/80"
+                          class:list={[
+                            "block rounded-xl px-3 py-2 transition-colors hover:bg-surface-muted/80",
+                            isActivePath(sublink.href) && "bg-surface-muted/80 text-ink",
+                          ]}
+                          aria-current={isActivePath(sublink.href) ? "page" : undefined}
                         >
                           {sublink.label}
                         </a>
@@ -246,7 +228,7 @@ function hasSublinks(item: NavLink) {
             </li>
           ))}
         </ul>
-        <a href="/donate" class="primary-button w-full text-center">Donate</a>
+        <a href={STATIC_PAGE_PATHS.donate} class="primary-button w-full text-center">Donate</a>
       </nav>
     </div>
   </div>

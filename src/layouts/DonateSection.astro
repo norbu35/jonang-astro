@@ -2,23 +2,43 @@
 import SectionTitle from "../components/SectionTitle.astro";
 import DonateCard from "../components/DonateCard.astro";
 
-import type { Donation } from "../../payload-types";
+import sustenanceImage from "../assets/images/young-students.webp";
+import healthcareImage from "../assets/images/lecture.webp";
+import upkeepImage from "../assets/images/housing-landscape.webp";
 
-const res = await fetch(`${import.meta.env.CMS_API_URL}/donations`);
-const data = await res.json();
+const causes = [
+  {
+    headline: "Monastic Sustenance",
+    goal: "Ongoing Need",
+    description: "Provide daily meals, clothing, and living supplies for the refugee monks. Your support directly sustains those dedicating their lives to study.",
+    imgStatic: sustenanceImage, 
+  },
+  {
+    headline: "Healthcare & Medicine",
+    goal: "Crucial Care",
+    description: "The cost of reliable medical care places a daily burden upon the monastery. Help supply necessary medicine for elderly and ailing practitioners.",
+    imgStatic: healthcareImage,
+  },
+  {
+    headline: "Building Upkeep",
+    goal: "Urgent Maintenance",
+    description: "Contribute to the continuous repair of dilapidated monastic buildings. This ensures a safe, warm shelter for the community to live and pray in.",
+    imgStatic: upkeepImage,
+  }
+];
 ---
 
-<section class="section-padding accent-panel text-white textured-panel textured-panel--dark">
-  <div class="mx-auto max-w-6xl">
-    <SectionTitle title="Support Us" iconColor="saffron" titleColor="white" />
-    <div class={`cards-grid ${data.docs.length === 1 ? "lg:grid-cols-1" : ""}`.trim()}>
+<section class="section-padding bg-surface-muted ring-1 ring-border/20 shadow-inner">
+  <div class="mx-auto max-w-[85rem] px-4 md:px-8">
+    <SectionTitle title="Support the Tradition" iconColor="saffron" titleColor="ink" />
+    <div class="cards-grid mt-10 md:mt-16 xl:grid-cols-3">
       {
-        data.docs.map((item: Donation) => (
+        causes.map((item) => (
           <DonateCard
             headline={item.headline}
             goal={item.goal}
             description={item.description}
-            img={item.image}
+            imgStatic={item.imgStatic}
           />
         ))
       }

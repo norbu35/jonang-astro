@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import type { Footer } from "../../payload-types";
+import { FOOTER_NAVIGATION } from "../data/navigation";
+import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
-import NewsLetter from "./NewsLetter.astro";
 import Quote from "./Quote.astro";
 
 import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
@@ -13,9 +14,8 @@ const data: Footer = await res.json();
 ---
 
 <Quote />
-<NewsLetter />
 <footer class="relative flex flex-col items-center gap-10 bg-accent px-6 pb-6 pt-10 text-surface before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-saffron/50 before:to-transparent before:content-['']">
-  <div class="mx-auto w-full max-w-6xl grid gap-10 text-sm text-surface/80 md:grid-cols-[1.2fr_1fr] md:items-start">
+  <div class="mx-auto grid w-full max-w-6xl gap-10 text-sm text-surface/80 md:grid-cols-[1.1fr_1fr_0.95fr] md:items-start">
     <div class="flex flex-col items-center gap-4 md:items-start">
       <div class="text-xs font-semibold uppercase tracking-[0.2em] text-surface/70">
         Blessing
@@ -32,6 +32,27 @@ const data: Footer = await res.json();
       </div>
     </div>
 
+    <div class="grid gap-8 sm:grid-cols-2">
+      {FOOTER_NAVIGATION.map((section) => (
+        <div class="flex flex-col items-center gap-4 md:items-start">
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-surface/70">
+            {section.heading}
+          </div>
+          <nav aria-label={section.heading} class="w-full">
+            <ul class="m-0 flex list-none flex-col gap-3 text-sm">
+              {section.links.map((link) => (
+                <li class="m-0 list-none">
+                  <a class="transition-colors hover:text-gold" href={link.href}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      ))}
+    </div>
+
     <div class="flex flex-col items-center gap-6 md:items-start">
       <div class="text-xs font-semibold uppercase tracking-[0.2em] text-surface/70">
         Contact
@@ -43,20 +64,16 @@ const data: Footer = await res.json();
           {data.phone}
         </div>
       </address>
-      <button class="secondary-button">
-        <a href="/donate">Donate</a>
-      </button>
+      <a href={STATIC_PAGE_PATHS.donate} class="secondary-button">Donate</a>
     </div>
   </div>
 
   <div class="text-center text-sm text-surface/80 xl:mt-8">
     <div>
-      <a href="/sitemap" class="transition-colors hover:text-gold">Sitemap</a>
-      <span class="mx-2">|</span>
-      <a href="#" class="transition-colors hover:text-gold">Cookie & Privacy Policy</a>
+      <a href={STATIC_PAGE_PATHS.sitemap} class="transition-colors hover:text-gold">Sitemap</a>
     </div>
     <div class="mt-4 text-xs text-surface/60">
-      &copy 2024 Jonang Monastery | made by norbu
+      &copy {new Date().getFullYear()} Jonang Monastery | made by norbu
     </div>
   </div>
 </footer>

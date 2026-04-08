@@ -1,43 +1,42 @@
 ---
 import { Image } from "astro:assets";
-import type { Media } from "../../payload-types";
 
 interface Props {
   headline: string;
-  goal: number;
+  goal: string;
   description: string;
-  img: string | Media;
+  imgStatic: ImageMetadata;
 }
 
-const { headline, goal, description, img } = Astro.props;
+const { headline, goal, description, imgStatic } = Astro.props;
 ---
 
 <div
-  class="mx-auto flex max-w-md flex-col items-center gap-4 p-6 text-ink surface-card surface-card-hover"
+  class="editorial-card group flex flex-col items-center gap-5 text-center transition-all"
 >
-  <h3 class="text-center font-display text-2xl font-semibold md:text-3xl">
+  <div class="relative w-full aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-border/20 shadow-sm mb-2">
+    <Image
+      src={imgStatic}
+      alt={headline}
+      class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      width={600}
+    />
+    <div class="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-4 left-0 right-0 text-white flex flex-col text-sm tracking-widest uppercase font-semibold text-center drop-shadow-md">
+      <span class="text-gold/90 text-xs mb-1">Fund Focus</span>
+      {goal}
+    </div>
+  </div>
+  
+  <h3 class="font-display text-2xl font-medium text-ink m-0">
     {headline}
   </h3>
-  {
-    typeof img !== "string" ? (
-      <div class="w-full overflow-hidden rounded-xl aspect-[4/3] bg-surface-muted/70">
-        <Image
-          src={img.sizes!.thumbnail!.url!}
-          alt={img!.alt!}
-          class="h-full w-full object-cover"
-          width={img.sizes!.thumbnail!.width!}
-          height={img.sizes!.thumbnail!.height!}
-        />
-      </div>
-    ) : (
-      <div>Error fetching image</div>
-    )
-  }
-  <p class="text-sm text-muted">{description}</p>
-  <div class="text-lg font-semibold text-ink">
-    Goal: <span class="text-accent">${goal}</span>
-  </div>
-  <button class="secondary-button mt-2">
-    <a href="/donate">Donate</a>
-  </button>
+  
+  <p class="text-[0.95rem] text-muted leading-relaxed flex-1 m-0 mb-2">
+    {description}
+  </p>
+  
+  <a href="/donate" class="w-full secondary-button text-gold ring-gold/30 hover:bg-gold/5 focus-visible:ring-gold/40">
+    Make a Gift
+  </a>
 </div>

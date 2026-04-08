@@ -38,66 +38,44 @@ if (typeof img !== "string") {
 
 <bio-card
   data-id={id}
-  class="mx-auto flex w-80 md:w-[40rem] flex-col justify-center overflow-hidden rounded-2xl bg-white/6 text-center shadow-card ring-1 ring-white/12"
+  class="group mx-auto mb-24 flex w-full flex-col items-start gap-8 text-left md:mb-32 md:grid md:grid-cols-[minmax(20rem,1.2fr)_2fr] md:gap-12 lg:gap-20 hover-lift"
   id={id}
 >
-  <div class="relative w-full">
+  <div class="relative w-full shrink-0 md:aspect-3/4 ring-1 ring-ink/5 overflow-hidden rounded-[1.35rem]">
     {
       sizesObj && typeof img !== "string" && (
         <Image
           src={img.url!}
           widths={widths}
           sizes={sizes}
-          alt={img.alt}
+          alt={img.alt || name}
           width={img.width!}
           height={img.height!}
+          class="h-full w-full object-cover image-zoom"
         />
       )
     }
-    <div
-      class="absolute bottom-0 left-0 w-full flex flex-col gap-4 bg-gradient-to-t from-black/70 to-transparent p-6 text-white md:gap-12"
-    >
-      <div
-        class="text-2xl font-extrabold text-white shadow-lg md:text-4xl lg:hidden"
-      >
-        {name}
-      </div>
-      <div
-        class="mt-2 flex flex-col items-center justify-center gap-2 text-lg font-semibold shadow-md md:text-2xl lg:hidden"
-      >
-        {
-          roles.map((el) => (
-            <div class="z-10 w-44 rounded-md bg-white/15 p-1 px-3 text-surface md:w-56">
-              {el.role}
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    <div
-      class="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/80 to-transparent"
-    >
-    </div>
   </div>
-  <div class="px-4 pb-6 pt-4">
+  
+  <div class="w-full px-2 md:px-0 md:pt-4">
+    <h2 class="mt-0! mb-3 text-center font-display text-5xl font-medium text-ink md:text-left lg:text-[4.5rem] tracking-tight leading-none">{name}</h2>
+    <div class="mb-10 flex flex-wrap justify-center gap-4 md:justify-start">
+      {roles.map((el) => (
+        <span class="text-xs tracking-[0.2em] font-semibold uppercase text-saffron/90">{el.role}</span>
+      ))}
+    </div>
+
     <button
       id={`bioButton-${id}`}
-      class="bio-toggle mx-auto my-3 w-full max-w-[220px] lg:hidden"
+      class="bio-toggle mx-auto my-6 flex w-full max-w-55 md:hidden"
     >
       <span class="button-text">Show Bio</span>
     </button>
-    <div class="hidden flex-col gap-10 py-6 lg:flex lg:visible">
-      <div class="text-4xl font-extrabold text-white">{name}</div>
-      <div
-        class="flex flex-col justify-center gap-2 rounded-xl bg-white/90 p-3 text-2xl text-ink"
-      >
-        {roles.map((el) => <div class="text-center">{el.role}</div>)}
-      </div>
-    </div>
+
     <div
       id={`bio-${id}`}
       set:html={bio}
-      class="hidden max-h-0 text-left text-surface/80 opacity-0 transition-all duration-500 ease-in-out lg:block lg:h-full lg:max-h-full lg:opacity-100"
+      class="rich-text hidden max-h-0 opacity-0 transition-opacity duration-500 ease-in-out md:block md:h-auto md:max-h-none md:opacity-100"
     />
   </div>
 </bio-card>
@@ -134,15 +112,16 @@ if (typeof img !== "string") {
       };
 
       const resetBioForLargeScreens = () => {
-        if (window.innerWidth >= 1024) {
+        if (window.innerWidth >= 768) {
           bioElement.classList.remove("hidden");
           bioElement.style.opacity = "1";
-          bioElement.style.maxHeight = "100%";
+          bioElement.style.maxHeight = "none";
         } else {
           if (!bioElement.classList.contains("hidden")) {
             bioElement.classList.add("hidden");
             bioElement.style.maxHeight = "0";
             bioElement.style.opacity = "0";
+            buttonText.innerHTML = "Show Bio";
           }
         }
       };

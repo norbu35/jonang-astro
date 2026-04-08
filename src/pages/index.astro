@@ -144,11 +144,10 @@ const pathways = [
       <SiteTitle />
       <SectionDivider />
 
-      <section class="section-padding">
+      <section class="section-padding reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-intro">
             <div>
-              <span class="editorial-kicker">A Living Mandala</span>
               <h2>A lineage nearly lost, still teaching in full voice</h2>
               <p class="editorial-lede">
                 The Jonang tradition preserves one of Tibetan Buddhism's most
@@ -165,7 +164,7 @@ const pathways = [
               </p>
             </div>
             <aside class="editorial-panel">
-              <span class="editorial-kicker">Why Jonang</span>
+              <h3 class="mt-0">Why Jonang matters now</h3>
               <ul class="editorial-checklist">
                 <li>Home of the complete Kalachakra completion-stage lineage</li>
                 <li>Known for a rigorous articulation of other-emptiness</li>
@@ -178,7 +177,6 @@ const pathways = [
           <div class="editorial-grid">
             {pillars.map((pillar) => (
               <article class="editorial-card">
-                <span class="editorial-kicker">Core Pillar</span>
                 <h3>{pillar.title}</h3>
                 <p>{pillar.body}</p>
               </article>
@@ -187,11 +185,10 @@ const pathways = [
         </div>
       </section>
 
-      <section class="section-padding bg-surface-muted/70 textured-panel">
+      <section class="section-padding bg-surface-muted/70 textured-panel reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-grid--two items-start">
             <div>
-              <span class="editorial-kicker">Lineage and Survival</span>
               <h2>From Shambhala legend to modern recognition</h2>
               <p>
                 Jonang memory is carried through sacred narrative, historical
@@ -229,7 +226,7 @@ const pathways = [
         </div>
       </section>
 
-      <section class="section-padding">
+      <section class="section-padding reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-grid--two items-center">
             <div class="editorial-figure">
@@ -245,7 +242,6 @@ const pathways = [
               </figcaption>
             </div>
             <div>
-              <span class="editorial-kicker">Practice and Realization</span>
               <h2>Kalachakra as cosmology, contemplation, and lived path</h2>
               <p>
                 The Kalachakra cycle is not simply one subject among many. In
@@ -281,11 +277,10 @@ const pathways = [
         </div>
       </section>
 
-      <section class="section-padding bg-surface-muted/70 textured-panel">
+      <section class="section-padding bg-surface-muted/70 textured-panel reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-grid--two items-center">
             <div>
-              <span class="editorial-kicker">Living Geography</span>
               <h2>Sacred sites, exile institutions, and global renewal</h2>
               <p>
                 The tradition's story now stretches from the historical valleys
@@ -349,10 +344,10 @@ const pathways = [
         </div>
       </section>
 
-      <section class="section-padding">
+      <section class="section-padding reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-quote">
-            <span class="editorial-kicker text-white/70">Reading the Tradition</span>
+            <h2 class="mt-0 text-white">Reading the tradition</h2>
             <p>
               Jonang is best approached as a living union of history,
               contemplative training, and philosophical daring, not as an
@@ -361,7 +356,6 @@ const pathways = [
           </div>
 
           <div>
-            <span class="editorial-kicker">Continue Exploring</span>
             <h2>Four ways into the site</h2>
             <div class="editorial-link-grid">
               {pathways.map((item) => (
@@ -369,7 +363,6 @@ const pathways = [
                   <a href={item.href}>
                     <h3>{item.label}</h3>
                     <p>{item.body}</p>
-                    <span class="editorial-kicker">Open section</span>
                   </a>
                 </article>
               ))}
@@ -378,7 +371,6 @@ const pathways = [
 
           <div class="editorial-grid--two items-center">
             <div>
-              <span class="editorial-kicker">Study and Preservation</span>
               <h2>Texts, teachers, and training still held in full</h2>
               <p>
                 What distinguishes the site today is not only memory of a lost
@@ -402,5 +394,9 @@ const pathways = [
       <DonateSection />
     </main>
     <Footer />
+    <script>
+      import { initScrollReveal } from "../scripts/scrollReveal.js";
+      document.addEventListener("DOMContentLoaded", initScrollReveal);
+    </script>
   </body>
 </html>

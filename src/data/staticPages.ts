@@ -4,7 +4,10 @@ export const STATIC_PAGE_PATHS = {
   jonangBeginners: "/jonang-doctrine/beginners-introduction",
   kalachakra: "/kalachakra",
   curriculum: "/curriculum",
+  teachers: "/teachers",
   gallery: "/gallery",
+  donate: "/donate",
+  sitemap: "/sitemap",
 } as const;
 
 export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
@@ -13,10 +16,13 @@ export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
   "jonang-doctrine/beginners-introduction": STATIC_PAGE_PATHS.jonangBeginners,
   kalachakra: STATIC_PAGE_PATHS.kalachakra,
   curriculum: STATIC_PAGE_PATHS.curriculum,
+  teachers: STATIC_PAGE_PATHS.teachers,
   gallery: STATIC_PAGE_PATHS.gallery,
   "photo-gallery": STATIC_PAGE_PATHS.gallery,
   photogallery: STATIC_PAGE_PATHS.gallery,
   "photo_gallery": STATIC_PAGE_PATHS.gallery,
+  donate: STATIC_PAGE_PATHS.donate,
+  sitemap: STATIC_PAGE_PATHS.sitemap,
 };
 
 export const STATIC_PAGE_SLUGS = new Set(Object.keys(STATIC_PAGE_BY_SLUG));

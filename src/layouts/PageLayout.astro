@@ -62,13 +62,15 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <main class="pt-[var(--header-offset)]">
+    <main class="pt-(--header-offset)">
       <section>
         <TitleBanner title={title} />
         <SectionDivider class="section-divider--page" />
-        <div class="section-padding max-w-[74rem] lg:mx-auto editorial-offset">
-          <slot />
-        </div>
+        {Astro.slots.has('default') && (
+          <div class="section-padding max-w-296 lg:mx-auto editorial-offset">
+            <slot />
+          </div>
+        )}
         <div class="w-full">
           <slot name="full=width" />
         </div>

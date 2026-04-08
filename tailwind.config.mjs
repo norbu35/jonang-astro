@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Manrope", "Open Sans", "system-ui", "sans-serif"],
-        serif: ["Cormorant Garamond", "serif"],
-        display: ["Noto Serif", "Bodoni Moda", "Cormorant Garamond", "serif"],
-        headerLinks: ["Manrope", "Quicksand", "sans-serif"],
-        siteTitle: ["Noto Serif", "Bodoni Moda", "serif"],
-        sectionTitle: ["Noto Serif", "Bodoni Moda", "serif"],
+        sans: ["Outfit", "Open Sans", "system-ui", "sans-serif"],
+        serif: ["Playfair Display", "Cormorant Garamond", "serif"],
+        display: ["Playfair Display", "Noto Serif", "Bodoni Moda", "serif"],
+        headerLinks: ["Outfit", "Manrope", "Quicksand", "sans-serif"],
+        siteTitle: ["Playfair Display", "Noto Serif", "serif"],
+        sectionTitle: ["Playfair Display", "Noto Serif", "serif"],
         tibetan: ["Monlam Uni Ouchan3", "Noto Serif Tibetan", "serif"],
-        body: ["Manrope", "Open Sans", "system-ui", "sans-serif"],
-        button: ["Manrope", "Quicksand", "sans-serif"],
-        quote: ["Cormorant Garamond", "serif"],
+        body: ["Outfit", "Manrope", "system-ui", "sans-serif"],
+        button: ["Outfit", "Manrope", "sans-serif"],
+        quote: ["Playfair Display", "Cormorant Garamond", "serif"],
         garamond: ["Cormorant Garamond", "serif"],
       },
       colors: {
@@ -28,8 +28,18 @@ export default {
         border: "rgb(var(--border) / <alpha-value>)",
       },
       boxShadow: {
-        soft: "0 20px 40px -28px rgba(87, 0, 19, 0.22)",
-        card: "0 34px 70px -44px rgba(87, 0, 19, 0.26)",
+        soft: "0 10px 30px -10px rgba(0, 0, 0, 0.08)",
+        card: "0 20px 40px -15px rgba(0, 0, 0, 0.12)",
+        glow: "0 0 20px rgba(var(--saffron), 0.3)",
+      },
+      keyframes: {
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
       },
     },
   },
