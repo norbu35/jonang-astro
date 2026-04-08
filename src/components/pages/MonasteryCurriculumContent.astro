@@ -1,112 +1,125 @@
-<p>
-  The Jonang Monastery offers a comprehensive monastic curriculum designed to
-  foster both academic and spiritual growth among its students. The curriculum
-  includes:
-</p>
-<h2>Core Subjects</h2>
-<ul class="bullet">
-  <li value="1">
-    <strong>Tibetan Language</strong>: Instruction in the Tibetan language is
-    essential for understanding the rich literary and spiritual heritage of
-    Buddhism.
-  </li>
-  <li value="2">
-    <strong>Tibetan Calligraphy</strong>: Students learn the art of Tibetan
-    calligraphic handwriting, which is integral to Buddhist texts and prayers.
-  </li>
-  <li value="3">
-    <strong>Tibetan History</strong>: Courses cover the historical context of Tibet
-    and its cultural evolution.
-  </li>
-  <li value="4">
-    <strong>History of Tibetan Religion</strong>: This subject explores the
-    development of Buddhism in Tibet, focusing on its unique traditions and
-    practices.
-  </li>
-  <li value="5">
-    <strong>Epistemology</strong>: Students engage with the philosophy of
-    knowledge, examining how understanding is developed within Buddhist
-    teachings.
-  </li>
-</ul>
-<h2>Ritual and Practice</h2>
-<ul class="bullet">
-  <li value="1">
-    <strong>Prayers and Ritual Performance</strong>: The curriculum includes
-    learning various prayers and the performance of rituals essential to Tibetan
-    Buddhism.
-  </li>
-  <li value="2">
-    <strong>Ritual Instruments</strong>: Students are trained in the use of
-    traditional ritual instruments, enhancing their understanding of ceremonial
-    practices.
-  </li>
-  <li value="3">
-    <strong>Religious Dance</strong>: Instruction in traditional religious dances,
-    which are significant in various ceremonies.
-  </li>
-  <li value="4">
-    <strong>Mandala Drawing</strong>: Students learn the intricate art of mandala
-    drawing, symbolizing the universe in Buddhist tradition.
-  </li>
-  <li value="5">
-    <strong>Chanting</strong>: The practice of chanting is emphasized, as it plays
-    a crucial role in daily rituals and meditative practices.
-  </li>
-</ul>
-<h2>Buddhist Study Course</h2>
-<p>
-  The Buddhist study course comprises both <strong>scriptural study</strong> and
-  <strong>meditative practice</strong>:
-</p>
-<ul class="bullet">
-  <li value="1">
-    <strong>Scriptural Study</strong>: Following the tradition of other Buddhist
-    schools, students engage with the five great treaties (Gzhung, Chen, Bka',
-    Pod, and Inga), which form the foundation of Buddhist teachings.
-  </li>
-  <li value="2">
-    <strong>Meditative Practice</strong>: A unique aspect of the Jonang curriculum
-    is the rigorous three-and-a-half-year retreat focused on the
-    <strong>Six Yogas of the Kalachakra Tantra</strong>. This retreat is distinct
-    from those offered by other schools, providing students with profound
-    insights into advanced meditation techniques.
-  </li>
-</ul>
-<h3>Student Demographics</h3>
-<p>
-  The Jonang Monastery currently accommodates approximately
-  <strong>120 students and staff members</strong>. Among them:
-</p>
-<ul class="bullet">
-  <li value="1">
-    <strong>Students from Assam and Mon Tawang</strong>: About
-    <strong>70 students</strong> hail from these regions, where access to education
-    is severely limited due to a lack of transportation. Many parents hold
-    strong faith in Dharma, encouraging their children to pursue monastic life.
-  </li>
-  <li value="2">
-    <ul class="bullet">
-      <li value="1">
-        <strong>Community Outreach</strong>: Senior lamas from the monastery have
-        made multiple visits to these areas to recruit students, often gathering
-        <strong>10-20 children</strong> in several batches.
-      </li>
+---
+const studyAreas = [
+  "Pramana, Paramita, Madhyamaka, Abhidharma, and Vinaya",
+  "Jonang commentarial traditions and doctrinal interpretation",
+  "Ritual performance, liturgical instruments, and chanting",
+  "Mandala construction, calligraphy, grammar, and poetics",
+  "English, Hindi, mathematics, and physics",
+];
+
+const path = [
+  {
+    title: "Foundational literacy",
+    body:
+      "Students first need language, memory, discipline, and textual competence. Tibetan language, calligraphy, grammar, and recitation build the base for everything that follows.",
+  },
+  {
+    title: "Scholastic formation",
+    body:
+      "Study expands into the major Buddhist topics and Jonang-specific philosophical frameworks, creating a disciplined capacity for reasoning and debate.",
+  },
+  {
+    title: "Ritual and artistic training",
+    body:
+      "Students learn ritual instruments, chanting, religious dance, and mandala arts so the liturgical body of the tradition can be carried forward accurately.",
+  },
+  {
+    title: "Tantric maturation",
+    body:
+      "The path culminates in retreat-based practice, especially the Kalachakra yogic system, where theory and ritual must become direct contemplative realization.",
+  },
+];
+---
+
+<div class="page-stack">
+  <section class="editorial-intro">
+    <div>
+      <span class="editorial-kicker">Study Path</span>
+      <h2>A curriculum designed to form scholars, ritual specialists, and practitioners</h2>
+      <p class="editorial-lede">
+        Jonang education is not divided into disconnected tracks. A student is
+        expected to grow through language, philosophy, ritual precision, and
+        contemplative discipline as parts of one integrated formation.
+      </p>
+      <p>
+        The monastery's curriculum therefore combines long scholastic study with
+        artistic, liturgical, and meditative training. The intended result is a
+        practitioner who can read deeply, serve ritually, think clearly, and
+        mature in retreat.
+      </p>
+    </div>
+    <aside class="editorial-panel">
+      <span class="editorial-kicker">Orientation</span>
+      <p>
+        The educational model described by the monastery stretches across many
+        years. It is closer to a full monastic formation than to a short course
+        of religious study.
+      </p>
+    </aside>
+  </section>
+
+  <section>
+    <span class="editorial-kicker">Curriculum Map</span>
+    <h2>The major domains of training</h2>
+    <ul class="editorial-checklist">
+      {studyAreas.map((area) => (
+        <li>{area}</li>
+      ))}
     </ul>
-  </li>
-  <li value="2">
-    <strong>Students from Outer Mongolia</strong>: Approximately
-    <strong>30 students</strong> come from Outer Mongolia, where their families are
-    devout followers of Buddhism. For these children, pursuing a monastic life
-    is viewed as a significant honor. Notably,
-    <strong>twelve of these students are orphans</strong>, aged between
-    <strong>6 to 18 years</strong>.
-  </li>
-  <li value="3">
-    <strong>Newcomers from Tibet</strong>: The monastery also welcomes around
-    <strong>20 monks</strong> from Tibet. These individuals have made the difficult
-    decision to leave their homeland in search of basic human rights, including
-    <strong>freedom of speech</strong> and the opportunity to practice their faith
-    freely.
-  </li>
-</ul>
+  </section>
+
+  <section>
+    <span class="editorial-kicker">Educational Arc</span>
+    <h2>How the training unfolds</h2>
+    <ol class="editorial-steps">
+      {path.map((step) => (
+        <li>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="editorial-grid--two items-start">
+    <article class="editorial-panel">
+      <span class="editorial-kicker">Sutra and Reasoning</span>
+      <p>
+        Jonang students work through the great Buddhist subjects not as
+        historical artifacts, but as tools for clarifying view, refining
+        reasoning, and preparing for the subtler claims of tantra and
+        Buddha-nature doctrine.
+      </p>
+    </article>
+    <article class="editorial-panel">
+      <span class="editorial-kicker">Ritual and Embodiment</span>
+      <p>
+        Ritual performance is not secondary decoration. Learning instruments,
+        chant, and mandala construction ensures that the sensory and ceremonial
+        body of the tradition remains accurate and transmissible.
+      </p>
+    </article>
+  </section>
+
+  <section class="editorial-panel editorial-panel--accent">
+    <span class="editorial-kicker text-white/70">Retreat Horizon</span>
+    <h2 class="mt-0 text-white">The three-and-a-half-year retreat as culmination</h2>
+    <p class="text-white/88">
+      The curriculum points toward an advanced retreat discipline centered on
+      the Six Yogas of the Kalachakra Tantra. This is what gives the training
+      its distinctive depth: the school does not stop at literacy or ritual
+      competence, but pushes toward contemplative realization.
+    </p>
+  </section>
+
+  <section class="editorial-panel">
+    <span class="editorial-kicker">Outcome</span>
+    <h2>A formation rooted in both world knowledge and liberated vision</h2>
+    <p>
+      The curriculum aims to prepare students for two worlds at once: the
+      internal world of doctrine, meditation, and ritual, and the external world
+      of language, education, and practical responsibility. This dual emphasis
+      is one of the reasons the monastery continues to matter in exile.
+    </p>
+  </section>
+</div>
