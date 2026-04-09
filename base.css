@@ -959,6 +959,103 @@
       animation: none;
       transform: none;
     }
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Artisan Card Effects */
+  .artisan-card {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+  }
+  .artisan-card:hover {
+    @apply -translate-y-2 shadow-[0_20px_40px_rgba(112,16,35,0.12)];
+  }
+  .artisan-card::after {
+    content: '';
+    @apply absolute inset-0 transition-all duration-500 ease-out pointer-events-none z-10;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(var(--gold) / 0);
+  }
+  .artisan-card:hover::after {
+    box-shadow: inset 0 0 0 1px rgba(var(--gold) / 0.4);
+    inset: 4px;
+  }
+
+  /* Mandala Watermark */
+  .mandala-watermark {
+    @apply absolute -top-5 -right-5 w-[150px] h-[150px] opacity-[0.04] transition-all duration-500 ease-out pointer-events-none;
+  }
+  .artisan-card:hover .mandala-watermark {
+    @apply opacity-[0.09] rotate-12 scale-110;
+  }
+
+  /* Thangka Frame */
+  .thangka-frame {
+    @apply relative p-3 bg-gold shadow-2xl transition-transform duration-700 ease-out rounded-sm;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 4px);
+  }
+  .thangka-frame::before {
+    content: '';
+    @apply absolute inset-1 border border-white/40 pointer-events-none;
+  }
+  .thangka-frame::after {
+    content: '';
+    @apply absolute inset-2 bg-accent -z-10;
+  }
+  
+  /* Pecha Backdrop */
+  .pecha-backdrop {
+    @apply absolute -inset-x-6 -inset-y-4 bg-surface-muted shadow-lg rounded-sm transform -rotate-1 -z-10;
+    background-image: 
+      linear-gradient(to right, rgba(var(--gold) / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--gold) / 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-left: 8px solid rgb(var(--accent));
+  }
+  .pecha-backdrop::after {
+    content: '';
+    @apply absolute right-2.5 top-2.5 bottom-2.5 w-[2px] bg-gold/20;
+  }
+
+  /* Fresco Wall */
+  .fresco-wall {
+    @apply relative py-24 px-8 bg-surface-muted shadow-inner rounded-sm overflow-hidden;
+    background-image: 
+      radial-gradient(ellipse at top right, rgba(var(--gold)/0.1), transparent 60%),
+      linear-gradient(180deg, transparent 0%, rgba(var(--accent)/0.05) 100%);
+  }
+  
+  .fresco-image-blend {
+    @apply absolute md:-right-[10%] md:-bottom-[10%] w-full h-full md:w-[60%] md:h-[120%] bg-cover bg-center mix-blend-multiply opacity-60 transition-opacity duration-1000 ease-out;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  }
+  @media (max-width: 767px) {
+    .fresco-image-blend {
+       mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
+       opacity: 0.15;
+    }
+  }
+  .fresco-wall:hover .fresco-image-blend {
+    @apply opacity-80;
+  }
+  @media (max-width: 767px) {
+    .fresco-wall:hover .fresco-image-blend {
+      @apply opacity-20;
+    }
+  }
+
+  /* Mandala Centerpiece */
+  .mandala-ring {
+    @apply absolute inset-0 border-2 border-dashed border-gold/40 rounded-full animate-slow-spin;
+  }
+  .mandala-ring-inner {
+    @apply absolute inset-5 border border-solid border-accent/20 rounded-full animate-[slowSpin_40s_linear_infinite_reverse];
   }
 }
 

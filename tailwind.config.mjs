@@ -10,7 +10,7 @@ export default {
         headerLinks: ["Outfit", "Manrope", "Quicksand", "sans-serif"],
         siteTitle: ["Playfair Display", "Noto Serif", "serif"],
         sectionTitle: ["Playfair Display", "Noto Serif", "serif"],
-        tibetan: ["Monlam Uni Ouchan3", "Noto Serif Tibetan", "serif"],
+        tibetan: ["Noto Serif Tibetan", "Monlam Uni Ouchan3", "serif"],
         body: ["Outfit", "Manrope", "system-ui", "sans-serif"],
         button: ["Outfit", "Manrope", "sans-serif"],
         quote: ["Playfair Display", "Cormorant Garamond", "serif"],
@@ -37,9 +37,33 @@ export default {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        drawLine: {
+          to: { strokeDashoffset: "0" },
+        },
+        drawKnot: {
+          to: { strokeDashoffset: "0" },
+        },
+        slowSpin: {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        revealUp: {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+        float: "float 6s ease-in-out infinite",
+        "draw-line": "drawLine 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+        "draw-knot": "drawKnot 2s ease-in-out forwards",
+        "slow-spin": "slowSpin 60s linear infinite",
+        "slow-spin-reverse": "slowSpin 40s linear infinite reverse",
+        "reveal-up": "revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
       },
     },
   },
