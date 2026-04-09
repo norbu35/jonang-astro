@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import AnimatedDivider from "./AnimatedDivider.astro";
+
+interface Props {
+  title: string;
+  body: string;
+  imageSrc: any; // ImageMetadata
+  imageAlt: string;
+  reverse?: boolean;
+}
+
+const { title, body, imageSrc, imageAlt, reverse = false } = Astro.props;
+---
+
+<div class={`relative max-w-4xl mx-auto flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} my-24`}>
+  
+  <!-- Image Layer (Background) -->
+  <div class={`relative w-full md:w-[65%] z-0 group ${reverse ? 'md:-ml-8' : 'md:-mr-8'}`}>
+    <div class="thangka-frame w-full aspect-[4/3]">
+      <div class="relative z-10 border-2 border-[#D4AF37] w-full h-full overflow-hidden">
+        <Image src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" width={800} />
+        <div class="absolute inset-0 bg-accent/10 transition-opacity duration-500 group-hover:opacity-0"></div>
+      </div>
+    </div>
+    <!-- Tibetan Cloud Ornament -->
+    <svg class={`absolute -top-4 ${reverse ? '-left-4' : '-right-4'} w-12 h-12 text-gold opacity-90 animate-float`} viewBox="0 0 100 100" fill="currentColor">
+      <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" opacity="0.8"/>
+      <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" fill="none" stroke="#Fdfbf7" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <!-- Text Layer (Foreground Overlap) -->
+  <div class={`relative w-full md:w-[50%] z-10 mt-[-2rem] md:mt-16 artisan-card bg-white p-8 md:p-10 shadow-card ${reverse ? 'md:mr-auto' : 'md:ml-auto'}`}>
+    <div class="pecha-backdrop hidden md:block"></div>
+    
+    <svg class="mandala-watermark text-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+      <circle cx="50" cy="50" r="40"/>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"/>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"/>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"/>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"/>
+    </svg>
+    
+    <h4 class="font-display text-accent uppercase tracking-widest text-lg relative z-10 m-0">{title}</h4>
+    
+    <AnimatedDivider type="knot" class="!my-4 justify-start" />
+    
+    <p class="font-garamond text-xl text-ink/80 m-0 relative z-10 leading-relaxed">{body}</p>
+  </div>
+
+</div>
