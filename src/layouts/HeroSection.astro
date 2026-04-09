@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logoImage from "../assets/icons/logo.webp";
+
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
 const data = await res.json();
 ---
@@ -26,8 +29,8 @@ const data = await res.json();
   </div>
   
   <div class="relative z-10 w-full px-6 md:px-16 lg:px-24 max-w-3xl">
-    <div class="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full border-2 border-white/80 bg-accent text-3xl text-white shadow-[0_0_30px_rgba(255,232,168,0.3)] mb-6 md:mb-8">
-      ☸
+    <div class="flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-full border-2 border-white/80 bg-white shadow-[0_0_30px_rgba(255,232,168,0.3)] mb-6 md:mb-8 overflow-hidden">
+      <Image src={logoImage} alt="Jonang Monastery Logo" class="h-full w-full object-contain p-1.5" />
     </div>
     
     <div
