@@ -8,7 +8,7 @@ interface Props {
 const { title, body, imageSrc } = Astro.props;
 ---
 
-<div class="fresco-wall animate-reveal-up my-24 mx-auto max-w-5xl">
+<div class="fresco-wall animate-reveal-up mx-auto max-w-5xl">
   <div class="fresco-image-blend" style={`background-image: url('${imageSrc.src}');`}></div>
   <div class="relative z-10 max-w-[85%] md:max-w-[50%] ml-4 md:ml-8">
     <h4 class="font-display text-4xl md:text-5xl text-accent mb-4 leading-tight">{title}</h4>
