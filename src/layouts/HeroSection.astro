@@ -4,34 +4,46 @@ const data = await res.json();
 ---
 
 <div
-  class="relative isolate flex min-h-[82vh] flex-col justify-end overflow-hidden md:min-h-[92vh]"
+  class="relative isolate flex min-h-[82vh] flex-col justify-start pt-[15vh] overflow-hidden md:min-h-[92vh]"
 >
   <div
-    class="hero-kenburns absolute inset-0 bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
+    class="hero-kenburns absolute inset-0 bg-[url('/src/assets/images/main-entrance.webp')] bg-cover bg-bottom md:bg-center"
     aria-hidden="true"
   ></div>
   <div
-    class="absolute inset-0 bg-gradient-to-t from-ink/82 via-ink/35 to-transparent"
+    class="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/60 to-transparent md:bg-none"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
+  <div
+    class="absolute inset-0 hidden md:block bg-gradient-to-r from-ink/95 via-ink/70 to-transparent"
+    aria-hidden="true"
+  ></div>
+  
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div
       class="absolute -top-12 right-[-8%] h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,232,168,0.85),rgba(233,195,73,0.32)_45%,rgba(233,195,73,0.08)_65%,transparent_75%)] blur-2xl opacity-85 mix-blend-screen"
     ></div>
-    <div
-      class="absolute top-24 right-[10%] h-1.5 w-36 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.7),transparent)] blur-sm opacity-70 mix-blend-screen"
-    ></div>
-    <div
-      class="absolute top-32 right-[22%] h-2 w-24 rotate-12 bg-[linear-gradient(90deg,transparent,rgba(255,226,160,0.6),transparent)] blur-sm opacity-60 mix-blend-screen"
-    ></div>
   </div>
-  <div class="relative z-10 w-full px-6 pb-20 md:px-10 md:pb-16">
+  
+  <div class="relative z-10 w-full px-6 md:px-16 lg:px-24 max-w-3xl">
+    <div class="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full border-2 border-white/80 bg-accent text-3xl text-white shadow-[0_0_30px_rgba(255,232,168,0.3)] mb-6 md:mb-8">
+      ☸
+    </div>
+    
     <div
       lang="bo"
-      class="editorial-shell mr-0 ml-auto w-full max-w-4xl rounded-2xl bg-black/34 px-6 py-6 text-right font-tibetan text-2xl leading-relaxed text-white backdrop-blur-[2px] md:mr-14 md:px-10 md:text-right md:text-4xl lg:mr-20 lg:text-5xl"
+      class="font-tibetan text-3xl leading-[1.3] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] md:text-4xl lg:text-5xl mb-4 md:mb-6"
       aria-label="Name of the monastery in Tibetan"
       set:html={data.title}
     />
+    
+    <div class="h-[2px] w-16 bg-gold my-4 md:my-6"></div>
+    
+    <h2 class="font-display text-3xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] md:text-4xl lg:text-[2.8rem] leading-tight mb-4">
+      Main Jonang Takten Phuntsok Choeling
+    </h2>
+    <p class="font-garamond text-lg md:text-xl tracking-[0.1em] text-white/90 uppercase drop-shadow-[0_2px_5px_rgba(0,0,0,0.5)]">
+      The Jonang Monastery in Shimla
+    </p>
   </div>
 </div>
