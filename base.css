@@ -1030,23 +1030,23 @@
   }
   
   .fresco-image-blend {
-    @apply absolute md:-right-[10%] md:-bottom-[10%] w-full h-full md:w-[60%] md:h-[120%] bg-cover bg-center mix-blend-multiply opacity-60 transition-opacity duration-1000 ease-out;
-    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+    @apply absolute md:-right-[10%] md:-bottom-[10%] w-full h-full md:w-[60%] md:h-[120%] bg-cover bg-center mix-blend-multiply opacity-[0.7] transition-opacity duration-1000 ease-out;
+    mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
   }
   @media (max-width: 767px) {
     .fresco-image-blend {
-       mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
-       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, transparent 100%);
-       opacity: 0.15;
+       mask-image: linear-gradient(to bottom, transparent 10%, black 50%, transparent 90%);
+       -webkit-mask-image: linear-gradient(to bottom, transparent 10%, black 50%, transparent 90%);
+       opacity: 0.35;
     }
   }
   .fresco-wall:hover .fresco-image-blend {
-    @apply opacity-80;
+    @apply opacity-[0.85];
   }
   @media (max-width: 767px) {
     .fresco-wall:hover .fresco-image-blend {
-      @apply opacity-20;
+      @apply opacity-[0.5];
     }
   }
 
