@@ -16,30 +16,38 @@ To avoid repetitive and rigid layouts, the design system utilizes 4 distinct, co
 - **Purpose:** For punctuating important sections with deep, temple-inspired immersion (e.g., historical narratives).
 - **Visuals:** Breaks the grid. Images are set inside traditional Tibetan Thangka-style brocade frames with subtle diagonal stitching textures. Text is presented on an overlapping card styled like a traditional Tibetan *pecha* (loose-leaf manuscript) with a red cloth binding edge and aged paper texture. Floating stylized Tibetan clouds overlap the frame.
 - **Interactivity:** Image overlays fade out on hover, and the Thangka frame scales slightly.
+- **Responsive Strategy:** On mobile, the overlapping Pecha card un-stacks and sits directly below the Thangka frame with a negative top margin (e.g., `-2rem`) to maintain a slight, manageable overlap without breaking horizontal scroll.
 
 ### 3. The Fresco Mural (Cardless/Blended)
 - **Purpose:** For seamless, atmospheric storytelling without the boundaries of cards or boxes.
 - **Visuals:** Text sits directly on a heavily textured, plaster-like background (`mix-blend-mode` multiply on noise/gradients). The accompanying image is blended seamlessly into the wall using radial gradient masks, making it feel like an ancient painted mural.
 - **Interactivity:** The blended image becomes slightly more opaque on hover.
+- **Responsive Strategy:** On mobile, the blended image shifts from the side to become a subtle full-bleed background behind the text, heavily faded to maintain text legibility.
+- **Content Constraint:** Requires images with natural negative space or dark/muted edges that can fade out smoothly via gradient masks.
 
 ### 4. The Sacred Centerpiece (Symmetrical Mandala)
 - **Purpose:** For singular, important topics or portraits where a grounded, meditative focus is desired.
 - **Visuals:** A highly symmetrical layout centered around a large, circular image. It features slowly rotating outer dashed/solid rings and four traditional directional markers (dots).
 - **Interactivity:** The central image scales slightly on hover, and the rotating rings change color intensity.
+- **Content Constraint:** Requires images that work well in a 1:1 circular crop (portraits or central focal points).
 
 ## Global Architecture & Visual Directives
 
-- **Textures:** Subtle paper/canvas textures in backgrounds (e.g., fractal noise filters, radial gradients).
+- **Textures:** Pre-rendered, seamless noise PNGs/WebPs for background textures to ensure high scrolling performance. (Do NOT use live SVG `<feTurbulence>` filters as they cause severe scroll jank on mobile).
 - **Typography:** Elegant typography with drop caps (`Playfair Display`, `Cormorant Garamond`) for introductory paragraphs.
 - **Dividers:** Stylized section dividers replacing simple lines (e.g., Lotus motifs, Endless Knots that "draw" themselves via SVG stroke animations).
-- **Entrance Animations:** Subtle reveal animations (elements floating up and fading in softly).
-- **Alive Backgrounds:** Very slow, faint floating gradients or light effects to ensure the page never feels completely static.
+- **Color System Integration:** All artisan elements (borders, watermarks, background tints) MUST use the existing Tailwind CSS variables defined in `base.css` (e.g., `var(--accent)`, `var(--gold)`, `var(--saffron)`, `var(--surface-muted)`). No hardcoded hex values.
+- **Accessibility & Motion:**
+  - Enforce `prefers-reduced-motion: reduce`.
+  - For users who prefer reduced motion, all continuous floating, spinning (mandala rings), and SVG drawing animations MUST pause or disable entirely, presenting the static artisan layouts.
+  - Maintain WCAG AA contrast ratios for all text over textured backgrounds.
 
 ## Implementation Strategy
 
 1. **Extend Base Styles (`base.css` / Tailwind Config):**
    - Add new animation keyframes (`float`, `drawLine`, `drawKnot`, `revealUp`, `slowSpin`).
-   - Define utility classes for the 4 treatments (e.g., `.artisan-card`, `.thangka-frame`, `.pecha-backdrop`, `.fresco-wall`, `.mandala-container`).
+   - Add the `prefers-reduced-motion` media query to disable these animations when appropriate.
+   - Define utility classes for the 4 treatments hooking into the theme variables (e.g., `.artisan-card`, `.thangka-frame`, `.pecha-backdrop`, `.fresco-wall`, `.mandala-container`).
    
 2. **Create/Update Components (`src/components/`):**
    - Create `AnimatedDivider.astro` with inline SVGs for Lotus and Endless Knot to allow CSS stroke animations.
