@@ -4,7 +4,10 @@ import { Image } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SiteTitle from "../components/SiteTitle.astro";
-import SectionDivider from "../components/SectionDivider.astro";
+import AnimatedDivider from "../components/AnimatedDivider.astro";
+import ThangkaCollageSection from "../components/ThangkaCollageSection.astro";
+import FrescoMuralSection from "../components/FrescoMuralSection.astro";
+import SacredCenterpiece from "../components/SacredCenterpiece.astro";
 import HeroSection from "../layouts/HeroSection.astro";
 import DonateSection from "../layouts/DonateSection.astro";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
@@ -13,6 +16,7 @@ import teachingImage from "../assets/images/lecture.webp";
 import studentsImage from "../assets/images/young-students.webp";
 import landscapeImage from "../assets/images/housing-landscape.webp";
 import libraryImage from "../assets/images/teacher-library.webp";
+import riteSutraImage from "../assets/images/rite-sutra.webp";
 
 import "../../base.css";
 
@@ -31,33 +35,6 @@ const pillars = [
     title: "Survival and resurgence",
     body:
       "Though suppressed in Central Tibet during the seventeenth century, Jonang survived in eastern Tibetan regions and now re-emerges globally through study, retreat, and teaching.",
-  },
-];
-
-const timeline = [
-  {
-    year: "11th century",
-    title: "Kalachakra enters Tibet",
-    body:
-      "The Dro lineage of the Kalachakra took shape through Indian and Kashmiri masters and Tibetan translators, establishing the basis for later Jonang transmission.",
-  },
-  {
-    year: "1294",
-    title: "Jonang becomes a distinct institution",
-    body:
-      "Kunpang Tukje Tsondru settled in the Jomonang valley and gathered the transmissions that would define the Jonang school.",
-  },
-  {
-    year: "14th-17th centuries",
-    title: "A golden age of thought and art",
-    body:
-      "Dolpopa systematized Zhentong and Jetsun Taranatha expanded the school's reach, architecture, practice cycles, and historiography.",
-  },
-  {
-    year: "17th century onward",
-    title: "Suppression, survival, and return",
-    body:
-      "The tradition lost its major Central Tibetan institutions, survived in Amdo and Kham, and was formally recognized again in the modern era.",
   },
 ];
 
@@ -142,14 +119,14 @@ const pathways = [
     <HeroSection />
     <main>
       <SiteTitle />
-      <SectionDivider />
+      <AnimatedDivider type="lotus" />
 
       <section class="section-padding reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-intro">
             <div>
               <h2>A lineage nearly lost, still teaching in full voice</h2>
-              <p class="editorial-lede">
+              <p class="editorial-lede artisan-dropcap">
                 The Jonang tradition preserves one of Tibetan Buddhism's most
                 distinctive unions of philosophy and tantric practice: the
                 Zhentong view of luminous Buddha-nature and the complete Dro
@@ -176,7 +153,7 @@ const pathways = [
 
           <div class="editorial-grid">
             {pillars.map((pillar) => (
-              <article class="editorial-card">
+              <article class="editorial-card artisan-card">
                 <h3>{pillar.title}</h3>
                 <p>{pillar.body}</p>
               </article>
@@ -185,96 +162,25 @@ const pathways = [
         </div>
       </section>
 
-      <section class="section-padding bg-surface-muted/70 textured-panel reveal-on-scroll">
-        <div class="page-stack">
-          <div class="editorial-grid--two items-start">
-            <div>
-              <h2>From Shambhala legend to modern recognition</h2>
-              <p>
-                Jonang memory is carried through sacred narrative, historical
-                transmission, and monastic continuity. The result is a tradition
-                that links Indian tantric roots, Tibetan philosophical
-                creativity, periods of persecution, and a modern global
-                renaissance.
-              </p>
-            </div>
-            <div class="grid gap-4 md:grid-cols-3">
-              <div class="editorial-stat">
-                <strong>1294</strong>
-                <p>Jonang established in the Jomonang valley</p>
-              </div>
-              <div class="editorial-stat">
-                <strong>1615</strong>
-                <p>Taranatha founds Takten Phuntsok Ling</p>
-              </div>
-              <div class="editorial-stat">
-                <strong>2011</strong>
-                <p>Recognized publicly as an independent tradition</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="editorial-timeline">
-            {timeline.map((item) => (
-              <article class="editorial-timeline-item">
-                <span class="editorial-timeline-year">{item.year}</span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AnimatedDivider type="lotus" />
 
       <section class="section-padding reveal-on-scroll">
-        <div class="page-stack">
-          <div class="editorial-grid--two items-center">
-            <div class="editorial-figure">
-              <Image
-                src={teachingImage}
-                alt="A monk teaching in a monastery setting"
-                widths={[640, 960, 1280]}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <figcaption class="editorial-caption">
-                Doctrine in Jonang is never purely abstract. Study remains tied
-                to practice, transmission, and contemplative maturation.
-              </figcaption>
-            </div>
-            <div>
-              <h2>Kalachakra as cosmology, contemplation, and lived path</h2>
-              <p>
-                The Kalachakra cycle is not simply one subject among many. In
-                Jonang it provides the ritual, meditative, and subtle-body
-                framework through which the school understands the relationship
-                between cosmos, body, awareness, and awakening.
-              </p>
-              <ol class="editorial-steps">
-                <li>
-                  <h3>Preparation</h3>
-                  <p>
-                    Training begins with preliminaries, refuge, bodhicitta,
-                    purification, and the generation stage.
-                  </p>
-                </li>
-                <li>
-                  <h3>Dark retreat discipline</h3>
-                  <p>
-                    Completion-stage training emphasizes controlled retreat,
-                    subtle-body practice, and signs of meditative stabilization.
-                  </p>
-                </li>
-                <li>
-                  <h3>Embodied realization</h3>
-                  <p>
-                    The six vajra yogas aim at direct transformation through the
-                    channels, winds, drops, and the clear light nature of mind.
-                  </p>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
+        <FrescoMuralSection
+          title="From Shambhala legend to modern recognition"
+          body="Jonang memory is carried through sacred narrative, historical transmission, and monastic continuity. The result is a tradition that links Indian tantric roots, Tibetan philosophical creativity, periods of persecution, and a modern global renaissance."
+          imageSrc={riteSutraImage} 
+        />
+      </section>
+
+      <AnimatedDivider type="lotus" />
+
+      <section class="section-padding reveal-on-scroll">
+        <ThangkaCollageSection
+          title="Kalachakra as cosmology, contemplation, and lived path"
+          body="The Kalachakra cycle is not simply one subject among many. In Jonang it provides the ritual, meditative, and subtle-body framework through which the school understands the relationship between cosmos, body, awareness, and awakening."
+          imageSrc={teachingImage}
+          imageAlt="A monk teaching in a monastery setting"
+        />
       </section>
 
       <section class="section-padding bg-surface-muted/70 textured-panel reveal-on-scroll">
@@ -289,7 +195,7 @@ const pathways = [
                 West.
               </p>
               <div class="editorial-grid md:grid-cols-2">
-                <article class="editorial-card">
+                <article class="editorial-card artisan-card">
                   <h3>Dzamthang</h3>
                   <p>
                     A major stronghold in eastern Tibet where monasteries,
@@ -297,7 +203,7 @@ const pathways = [
                     lineage after suppression.
                   </p>
                 </article>
-                <article class="editorial-card">
+                <article class="editorial-card artisan-card">
                   <h3>Shimla</h3>
                   <p>
                     Main Jonang Takten Phuntsok Choeling now serves as a living
@@ -305,7 +211,7 @@ const pathways = [
                     exile.
                   </p>
                 </article>
-                <article class="editorial-card">
+                <article class="editorial-card artisan-card">
                   <h3>Mongolia</h3>
                   <p>
                     Through the legacy of Zanabazar and the Jebtsundampa line,
@@ -313,7 +219,7 @@ const pathways = [
                     of the Mongolian Buddhist world.
                   </p>
                 </article>
-                <article class="editorial-card">
+                <article class="editorial-card artisan-card">
                   <h3>International study</h3>
                   <p>
                     New programs and translations now make teachings once hidden
@@ -359,7 +265,7 @@ const pathways = [
             <h2>Four ways into the site</h2>
             <div class="editorial-link-grid">
               {pathways.map((item) => (
-                <article class="editorial-link-card">
+                <article class="editorial-link-card artisan-card">
                   <a href={item.href}>
                     <h3>{item.label}</h3>
                     <p>{item.body}</p>
@@ -369,28 +275,20 @@ const pathways = [
             </div>
           </div>
 
-          <div class="editorial-grid--two items-center">
-            <div>
-              <h2>Texts, teachers, and training still held in full</h2>
-              <p>
-                What distinguishes the site today is not only memory of a lost
-                school, but the continuity of living teachers, long-term
-                curriculum, ritual practice, retreat, and translation work.
-              </p>
-            </div>
-            <div class="editorial-figure">
-              <Image
-                src={libraryImage}
-                alt="Bookshelves and sacred texts in the monastery library"
-                widths={[640, 960, 1280]}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
+          <AnimatedDivider type="lotus" />
+
+          <section class="section-padding reveal-on-scroll">
+            <SacredCenterpiece
+              title="Texts, teachers, and training still held in full"
+              body="What distinguishes the site today is not only memory of a lost school, but the continuity of living teachers, long-term curriculum, ritual practice, retreat, and translation work."
+              imageSrc={libraryImage}
+              imageAlt="Bookshelves and sacred texts in the monastery library"
+            />
+          </section>
         </div>
       </section>
 
-      <SectionDivider />
+      <AnimatedDivider type="knot" />
       <DonateSection />
     </main>
     <Footer />
