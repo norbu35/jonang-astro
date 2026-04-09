@@ -1,0 +1,252 @@
+<style>
+  /* Base Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes drawKnot {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-reveal {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+
+  /* Card Hover Effects */
+  .artisan-card-interactive {
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .artisan-card-interactive:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(112, 16, 35, 0.12);
+  }
+
+  /* Mandala Watermark */
+  .mandala-watermark {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    opacity: 0.04;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+  .artisan-card-interactive:hover .mandala-watermark {
+    opacity: 0.09;
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  /* SVG Line Animation */
+  .animated-divider path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawLine 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+  }
+  .knot-path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawKnot 2s ease-in-out forwards;
+    animation-delay: 1s;
+  }
+
+  /* Temple Collage Elements */
+  .thangka-frame {
+    position: relative;
+    padding: 12px;
+    background: #A87E0C;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 4px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border-radius: 2px;
+  }
+  .thangka-frame::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255,255,255,0.4);
+    pointer-events: none;
+  }
+  .thangka-frame::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background: #701023;
+    z-index: 0;
+  }
+  .thangka-inner {
+    position: relative;
+    z-index: 1;
+    border: 2px solid #D4AF37;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  .image-wrapper:hover .thangka-frame {
+    transform: scale(1.03) translateY(-5px);
+  }
+  
+  .collage-overlap {
+    position: relative;
+    z-index: 10;
+    margin-top: -4rem; 
+    margin-left: 3rem;
+  }
+  
+  /* Pecha (Tibetan Manuscript) Backdrop */
+  .pecha-backdrop {
+    position: absolute;
+    inset: -1.5rem -2.5rem;
+    background: #F4E8D1; /* aged paper color */
+    background-image: 
+      linear-gradient(to right, rgba(168,126,12,0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(168,126,12,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    box-shadow: 2px 4px 15px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    border-left: 8px solid #701023; /* Pecha edge binding */
+    transform: rotate(-1.5deg);
+    z-index: -1;
+  }
+  .pecha-backdrop::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: rgba(168,126,12,0.2);
+  }
+</style>
+
+<h2>Buddhist Temple Collage (Interleaved)</h2>
+<p class="subtitle">A traditional "rigid" card layout followed by an immersive, temple-inspired collage section.</p>
+
+<div class="mockup" style="background-color: #Fdfbf7; background-image: url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E'); padding: 3rem; border: 1px solid #E6E6E2; border-radius: 8px; position: relative; overflow: hidden;">
+
+  <!-- ========================================== -->
+  <!-- SECTION 1: Clean, Rigid Artisan Grid       -->
+  <!-- ========================================== -->
+  <div class="animate-reveal">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #701023; margin-bottom: 2rem; border-bottom: 1px solid #A87E0C; padding-bottom: 0.5rem; display: inline-block;">Standard Flow</h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+      <div class="artisan-card-interactive" style="background: white; padding: 2rem; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+        <div style="position: absolute; inset: 4px; border: 1px solid #E6E6E2; pointer-events: none;"></div>
+        <h4 style="font-family: 'Playfair Display', serif; color: #701023; margin-top: 0; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">Philosophy</h4>
+        <div style="width: 30px; height: 1px; background: #A87E0C; margin: 1rem auto;"></div>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #555; text-align: center; margin: 0;">The Zhentong view of luminous Buddha-nature.</p>
+      </div>
+      
+      <div class="artisan-card-interactive" style="background: white; padding: 2rem; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+        <div style="position: absolute; inset: 4px; border: 1px solid #E6E6E2; pointer-events: none;"></div>
+        <h4 style="font-family: 'Playfair Display', serif; color: #701023; margin-top: 0; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">Lineage</h4>
+        <div style="width: 30px; height: 1px; background: #A87E0C; margin: 1rem auto;"></div>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #555; text-align: center; margin: 0;">Preserving the complete Dro lineage of Kalachakra.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Lotus Divider (Transition) -->
+  <div style="display: flex; align-items: center; justify-content: center; margin: 3rem 0; color: #A87E0C;" class="animate-reveal delay-100">
+    <svg class="animated-divider" width="300" height="30" viewBox="0 0 300 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 0,15 L 120,15" />
+      <path d="M 150,5 C 150,5 160,10 160,15 C 160,20 150,25 150,25 C 150,25 140,20 140,15 C 140,10 150,5 150,5 Z" />
+      <path d="M 140,15 C 128,12 125,15 125,15 C 125,15 128,18 140,15 Z" />
+      <path d="M 160,15 C 172,12 175,15 175,15 C 175,15 172,18 160,15 Z" />
+      <path d="M 180,15 L 300,15" />
+    </svg>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: Temple Collage (Highlight)      -->
+  <!-- ========================================== -->
+  <div class="animate-reveal delay-200">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #701023; margin-bottom: 2rem; border-bottom: 1px solid #A87E0C; padding-bottom: 0.5rem; display: inline-block;">Immersive Highlight</h3>
+    
+    <div style="margin-top: 2rem; position: relative; max-width: 800px; margin-left: auto; margin-right: auto; height: 420px;">
+      
+      <!-- Thangka Style Image Frame (Background layer in collage) -->
+      <div class="image-wrapper" style="position: absolute; right: 0; top: 0; width: 65%; height: 320px; z-index: 1; cursor: pointer;">
+         <div class="thangka-frame" style="width: 100%; height: 100%;">
+           <div class="thangka-inner" style="background-image: url('https://images.unsplash.com/photo-1544833058-bf6e49221087?auto=format&fit=crop&q=80&w=800');">
+             <div style="position: absolute; inset: 0; background: rgba(112, 16, 35, 0.1); transition: opacity 0.5s ease;" class="image-overlay"></div>
+           </div>
+         </div>
+         
+         <!-- Floating clouds ornament (Tibetan style) overlapping frame -->
+         <svg style="position: absolute; top: -15px; right: -15px; width: 50px; height: 50px; color: #A87E0C; opacity: 0.9; animation: float 8s ease-in-out infinite;" viewBox="0 0 100 100" fill="currentColor">
+           <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" opacity="0.8"/>
+           <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" fill="none" stroke="#Fdfbf7" stroke-width="2"/>
+         </svg>
+      </div>
+
+      <!-- Text Card overlapping the image (Foreground layer) -->
+      <div class="artisan-card-interactive collage-overlap" style="position: absolute; left: 0; top: 120px; width: 50%; background: white; padding: 2.5rem 2rem; box-shadow: 0 15px 40px rgba(0,0,0,0.12); z-index: 2; border-radius: 2px;">
+        
+        <!-- Tibetan Manuscript (Pecha) Backdrop effect -->
+        <div class="pecha-backdrop"></div>
+        
+        <svg class="mandala-watermark" viewBox="0 0 100 100" fill="none" stroke="#A87E0C" stroke-width="1">
+          <circle cx="50" cy="50" r="40"/>
+          <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"/>
+          <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"/>
+          <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"/>
+          <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"/>
+        </svg>
+        
+        <h4 style="font-family: 'Playfair Display', serif; color: #701023; margin-top: 0; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1rem; position: relative; z-index: 10;">Sacred Narrative</h4>
+        
+        <!-- Endless Knot Divider left-aligned -->
+        <div style="display: flex; justify-content: flex-start; margin: 1rem 0; color: #A87E0C;">
+          <svg width="30" height="20" viewBox="0 0 40 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="knot-path" d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10" />
+          </svg>
+        </div>
+        
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #555; margin-bottom: 0; position: relative; z-index: 10;">From Shambhala legend to modern recognition, Jonang memory is carried through living monastic continuity.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.image-wrapper').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const overlay = el.querySelector('.image-overlay');
+      if(overlay) overlay.style.opacity = '0';
+    });
+    el.addEventListener('mouseleave', () => {
+      const overlay = el.querySelector('.image-overlay');
+      if(overlay) overlay.style.opacity = '1';
+    });
+  });
+</script>
+
+<div class="options" style="margin-top: 2rem;">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✨</div>
+    <div class="content">
+      <h3>This is perfect!</h3>
+      <p>Love the Thangka-inspired frame, Pecha manuscript backing, and how it interleaves with standard clean cards.</p>
+    </div>
+  </div>
+</div>

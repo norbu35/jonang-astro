@@ -1,0 +1,190 @@
+<style>
+  /* Base Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes drawKnot {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-reveal {
+    opacity: 0;
+    animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+
+  /* Card Hover Effects */
+  .artisan-card-interactive {
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .artisan-card-interactive:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(112, 16, 35, 0.08);
+  }
+  .artisan-card-interactive::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(168, 126, 12, 0);
+    transition: all 0.5s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .artisan-card-interactive:hover::after {
+    box-shadow: inset 0 0 0 1px rgba(168, 126, 12, 0.4);
+    inset: 4px;
+  }
+
+  /* Mandala Watermark */
+  .mandala-watermark {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    opacity: 0.03;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+  .artisan-card-interactive:hover .mandala-watermark {
+    opacity: 0.08;
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  /* SVG Line Animation */
+  .animated-divider path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: drawLine 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+  }
+  .knot-path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawKnot 2s ease-in-out forwards;
+    animation-delay: 1s;
+  }
+</style>
+
+<h2>Option A + B: Buddhist Artisan</h2>
+<p class="subtitle">Infusing the design with subtle spiritual motifs (Lotus, Endless Knot, Mandala).</p>
+
+<div class="mockup" style="background-color: #Fdfbf7; background-image: url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E'), radial-gradient(circle at 50% 0%, rgba(168, 126, 12, 0.05) 0%, transparent 60%); background-attachment: fixed; padding: 4rem 3rem; border: 1px solid #E6E6E2; border-radius: 8px; position: relative; overflow: hidden;">
+
+  <!-- Subtle moving background element -->
+  <div style="position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; background: radial-gradient(circle at center, rgba(112, 16, 35, 0.02) 0%, transparent 50%); animation: float 15s ease-in-out infinite; pointer-events: none; z-index: 0;"></div>
+
+  <div style="max-width: 600px; margin: 0 auto; position: relative; z-index: 1;" class="animate-reveal">
+    
+    <!-- Animated Lotus Divider -->
+    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; color: #A87E0C;">
+      <svg class="animated-divider" width="300" height="30" viewBox="0 0 300 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 0,15 L 120,15" />
+        <!-- Central Lotus Motif -->
+        <path d="M 150,5 C 150,5 160,10 160,15 C 160,20 150,25 150,25 C 150,25 140,20 140,15 C 140,10 150,5 150,5 Z" />
+        <path d="M 140,15 C 128,12 125,15 125,15 C 125,15 128,18 140,15 Z" />
+        <path d="M 160,15 C 172,12 175,15 175,15 C 175,15 172,18 160,15 Z" />
+        <path d="M 180,15 L 300,15" />
+      </svg>
+    </div>
+
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #701023; text-align: center; margin-bottom: 1.5rem; position: relative;">
+      The Kalachakra Lineage
+    </h3>
+
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; line-height: 1.8; color: #19191E; text-align: justify; position: relative;">
+      <!-- Subtle background mandala behind text -->
+      <svg style="position: absolute; top: 0; left: 0; width: 100px; height: 100px; opacity: 0.04; pointer-events: none;" viewBox="0 0 100 100" fill="none" stroke="#701023" stroke-width="0.5">
+        <circle cx="50" cy="50" r="40" />
+        <circle cx="50" cy="50" r="30" />
+        <path d="M 50,10 L 50,90 M 10,50 L 90,50 M 21.7,21.7 L 78.3,78.3 M 21.7,78.3 L 78.3,21.7" />
+      </svg>
+      <span style="float: left; font-size: 4.5rem; line-height: 0.8; padding-right: 0.5rem; color: #A87E0C; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(168,126,12,0.3);">J</span>onang became the principal institutional home of the Dro lineage of the Kalachakra Tantra and its completion-stage yogas. The tradition is known for its Great Madhyamaka articulation of other-emptiness, presenting Buddha-nature as luminous, present, and empty of adventitious obscurations.
+    </p>
+
+  </div>
+
+  <div style="margin-top: 5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; position: relative; z-index: 1;">
+    
+    <!-- Interactive Artisan Card -->
+    <div class="artisan-card-interactive animate-reveal delay-200" style="background: white; padding: 2.5rem 2rem; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+      <div style="position: absolute; inset: 6px; border: 1px solid #E6E6E2; pointer-events: none; transition: border-color 0.3s ease;" class="card-inner-border"></div>
+      
+      <!-- Decorative Mandala Watermark -->
+      <svg class="mandala-watermark" viewBox="0 0 100 100" fill="none" stroke="#A87E0C" stroke-width="1">
+        <circle cx="50" cy="50" r="40"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(180 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(225 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(270 50 50)"/>
+        <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(315 50 50)"/>
+      </svg>
+
+      <!-- Cloud/Lotus Corners instead of strict geometric ones -->
+      <svg style="position: absolute; top: 8px; left: 8px; width: 16px; height: 16px; color: #A87E0C;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
+      <svg style="position: absolute; top: 8px; right: 8px; width: 16px; height: 16px; color: #A87E0C; transform: scaleX(-1);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
+      <svg style="position: absolute; bottom: 8px; left: 8px; width: 16px; height: 16px; color: #A87E0C; transform: scaleY(-1);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
+      <svg style="position: absolute; bottom: 8px; right: 8px; width: 16px; height: 16px; color: #A87E0C; transform: scale(-1, -1);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
+      
+      <h4 style="font-family: 'Playfair Display', serif; color: #701023; margin-top: 0; text-align: center; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.95rem; position: relative; z-index: 10;">Historical Roots</h4>
+      
+      <!-- Endless Knot Divider -->
+      <div style="display: flex; justify-content: center; margin: 1.25rem 0; color: #A87E0C;">
+        <svg width="30" height="20" viewBox="0 0 40 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Abstract representation of endless knot -->
+          <path class="knot-path" d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10" />
+        </svg>
+      </div>
+      
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #555; text-align: center; margin-bottom: 0; position: relative; z-index: 10;">Explore the philosophical identity and modern resurgence of the Jonang school.</p>
+    </div>
+
+    <!-- Image with artisan frame -->
+    <div class="artisan-card-interactive animate-reveal delay-300" style="padding: 1rem; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.04); cursor: pointer;">
+       <div style="aspect-ratio: 4/3; background-image: url('https://images.unsplash.com/photo-1544833058-bf6e49221087?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center; border: 1px solid #E6E6E2; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+         <div style="position: absolute; inset: 0; background: rgba(112, 16, 35, 0.1); transition: opacity 0.5s ease;" class="image-overlay"></div>
+       </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.artisan-card-interactive').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const overlay = el.querySelector('.image-overlay');
+      if(overlay) overlay.style.opacity = '0';
+    });
+    el.addEventListener('mouseleave', () => {
+      const overlay = el.querySelector('.image-overlay');
+      if(overlay) overlay.style.opacity = '1';
+    });
+  });
+</script>
+
+<div class="options" style="margin-top: 2rem;">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✨</div>
+    <div class="content">
+      <h3>This is perfect</h3>
+      <p>Clean, spiritual, and subtly alive. Let's design the site with this.</p>
+    </div>
+  </div>
+</div>
