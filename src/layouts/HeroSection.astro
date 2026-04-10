@@ -1,4 +1,6 @@
 ---
+import mainEntranceImg from '../assets/images/main-entrance.webp';
+
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
 const data = await res.json();
 ---
@@ -7,7 +9,8 @@ const data = await res.json();
   class="relative isolate flex min-h-[82vh] w-full flex-col justify-start items-end overflow-hidden md:min-h-[92vh] pt-[15vh] md:pt-[18vh]"
 >
   <div
-    class="hero-kenburns absolute inset-0 bg-[url('/src/assets/images/main-entrance.webp')] bg-cover bg-bottom"
+    class="hero-kenburns absolute inset-0 bg-cover bg-bottom"
+    style={`background-image: url('${mainEntranceImg.src}')`}
     aria-hidden="true"
   ></div>
   
