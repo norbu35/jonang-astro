@@ -10,49 +10,72 @@ const paragraphs: string[] = (data.mainText ?? "")
   .filter(Boolean);
 ---
 
-<section
-  class="section-padding editorial-shell mx-auto flex max-w-6xl flex-col items-center gap-10 md:flex-row md:items-start"
->
-  <figure class="shrink-0 md:w-1/2">
-    <div class="mx-auto overflow-hidden rounded-2xl shadow-card ring-1 ring-border/20">
-      <Image
-        src={data.photo.url}
-        alt={data.photo.alt}
-        width="576"
-        height="762"
-        class="w-full"
-      />
-      <figcaption
-        class="w-full bg-accent/88 px-4 py-3 text-center text-sm text-white md:py-4"
-        set:html={data.photoCaption}
-      />
-    </div>
-  </figure>
-  <figure class="px-2 md:px-8 md:pt-8 lg:pt-12">
-    <blockquote class="callout text-left">
-      <div class="space-y-5 md:space-y-6">
+<section class="section-padding bg-surface-subtle/60 border-y border-border relative overflow-hidden">
+  <!-- Subtle decorative background ambient glow -->
+  <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/10 blur-3xl rounded-full" aria-hidden="true"></div>
+
+  <div class="container max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 relative z-10">
+    
+    <!-- Portrait Figure with Brocade/Gold Frame -->
+    <figure class="w-full md:w-5/12 shrink-0">
+      <div class="surface-card overflow-hidden shadow-card border-2 border-gold/40 rounded-2xl bg-surface">
+        {
+          data?.photo?.url ? (
+            <Image
+              src={data.photo.url}
+              alt={data.photo.alt || "Lineage Master"}
+              width="576"
+              height="762"
+              class="w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.02]"
+            />
+          ) : (
+            <div class="w-full aspect-[3/4] bg-surface-subtle flex items-center justify-center text-muted">
+              Lineage Head Portrait
+            </div>
+          )
+        }
+        {
+          data.photoCaption && (
+            <figcaption
+              class="w-full bg-accent text-white px-5 py-3.5 text-center text-sm font-medium tracking-wide border-t border-gold/30"
+              set:html={data.photoCaption}
+            />
+          )
+        }
+      </div>
+    </figure>
+
+    <!-- Discourse Quote & Spiritual Direction -->
+    <div class="w-full md:w-7/12 flex flex-col justify-center space-y-6 md:pt-4">
+      <div class="badge badge-saffron self-start shadow-xs">
+        <span class="badge-dot"></span>
+        Words of Blessing & Guidance
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight m-0">
+        Spiritual Vision for the Jonang Tradition
+      </h2>
+
+      <blockquote class="callout border-l-4 border-l-accent-secondary bg-surface p-6 sm:p-8 rounded-r-2xl shadow-xs space-y-4 my-2">
         {paragraphs.map((paragraph: string, index: number) => (
           <p
             class:list={[
-              "m-0",
-              "text-base",
-              "leading-relaxed",
-              "italic",
-              "text-ink/90",
-              index === 0 &&
-                "first-letter:font-garamond first-letter:text-4xl first-letter:font-bold",
+              "m-0 text-base sm:text-lg leading-relaxed text-ink font-display",
+              index === 0 && "drop-cap text-lg sm:text-xl",
             ]}
             set:html={paragraph}
           />
         ))}
-      </div>
-    </blockquote>
-    {
-      data.quoteSource && (
-        <figcaption class="mt-10 text-right text-muted">
-          &ndash;<cite class="text-sm">{data.quoteSource}</cite>
-        </figcaption>
-      )
-    }
-  </figure>
+      </blockquote>
+
+      {
+        data.quoteSource && (
+          <div class="text-right text-sm font-semibold uppercase tracking-widest text-accent-secondary pr-2">
+            — <cite class="not-italic text-ink font-bold">{data.quoteSource}</cite>
+          </div>
+        )
+      }
+    </div>
+
+  </div>
 </section>
