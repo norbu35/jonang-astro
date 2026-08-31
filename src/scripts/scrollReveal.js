@@ -1,27 +1,40 @@
 export function initScrollReveal() {
+  if (typeof window === "undefined") return;
+
+  // Respect user preference for reduced motion
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    return;
+  }
+
   const options = {
     root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
+    rootMargin: "0px 0px -40px 0px",
+    threshold: 0.08,
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
-      // If element is in viewport, add the animation class
       if (entry.isIntersecting) {
         entry.target.classList.add("animate-fade-in-up");
         entry.target.classList.remove("opacity-0");
-        // Once animated, we don't need to observe it anymore
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, options);
 
-  // Grab all elements with the reveal-on-scroll class
   const revealElements = document.querySelectorAll(".reveal-on-scroll");
   revealElements.forEach((el) => {
-    // Ensure they start hidden
-    el.classList.add("opacity-0");
-    observer.observe(el);
+    // Only hide if not already in initial viewport to prevent flash
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add("animate-fade-in-up");
+    } else {
+      el.classList.add("opacity-0");
+      observer.observe(el);
+    }
   });
 }

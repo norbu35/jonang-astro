@@ -68,12 +68,21 @@ const data: Footer = await res.json();
     </div>
   </div>
 
-  <div class="text-center text-sm text-surface/80 xl:mt-8">
-    <div>
+  <div class="text-center text-sm text-surface/80 xl:mt-8 space-y-3">
+    <div class="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-surface/70">
       <a href={STATIC_PAGE_PATHS.sitemap} class="transition-colors hover:text-gold">Sitemap</a>
+      <span>·</span>
+      <a href={STATIC_PAGE_PATHS.donate} class="transition-colors hover:text-gold">Support Monks</a>
+      <span>·</span>
+      <a href={STATIC_PAGE_PATHS.aboutUs} class="transition-colors hover:text-gold">About Sanjauli</a>
     </div>
-    <div class="mt-4 text-xs text-surface/60">
-      &copy {new Date().getFullYear()} Jonang Monastery | made by norbu
+    <div class="mt-4 text-xs text-surface/70 space-y-1">
+      <div>
+        &copy; {new Date().getFullYear()} Main Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery. All rights reserved.
+      </div>
+      <div class="text-[11px] text-surface/50">
+        Registered Society under the Societies Registration Act · Sanjauli, Shimla, Himachal Pradesh 171006, India
+      </div>
     </div>
   </div>
 </footer>

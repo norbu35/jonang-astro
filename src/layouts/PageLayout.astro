@@ -17,7 +17,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{title} | Main Jonang Takten Phuntsok Choeling</title>
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -26,37 +26,36 @@ const { title } = Astro.props;
     <!-- open graph-->
     <meta
       property="og:title"
-      content="The main Jonang Takten Phuntsok Choeling Monastery"
+      content={`${title} | Main Jonang Takten Phuntsok Choeling`}
     />
-    <meta property="og:site_name" content="Jonang Monastery" />
-    <meta property="og:url" content="https://jonang.netlify.app" />
+    <meta property="og:site_name" content="Main Jonang Takten Phuntsok Choeling" />
+    <meta property="og:url" content="https://jonang.in" />
     <meta
       property="og:description"
-      content="Welcome to Main Jonang Takten Phuntsok Choeling, a Buddhist monastery in Shimla, India, following the Jonang tradition."
+      content="Main Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery in Sanjauli, Shimla. Preserving the definitive Shentong view and unbroken Kalachakra Six Yogas."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://jonang.netlify.app/logo512x512.jpg"
+      content="https://jonang.in/logo512x512.jpg"
     />
     <!-- twitter card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@jonang" />
     <meta
       name="twitter:title"
-      content="Welcome to the main Jonang Takten Phuntsok Choeling Monastery in Shimla"
+      content={`${title} | Main Jonang Takten Phuntsok Choeling`}
     />
     <meta
       name="twitter:description"
-      content="We are a Buddhist monastery situated in the serene landscapes of Shimla, northern India, dedicated to preserving and propagating the ancient Jonang tradition. Rooted in profound teachings, our monastery, named Main Jonang Takten Phentsok Choeling, has a rich history marked by the guidance of revered figures such as Lama Jinpa Gyatso and successive abbots like Choeji Nangwa Rinpoche and Geshe Kunga Rinchen. Embracing a comprehensive curriculum, we offer studies in sutras and mantras, Tibetan calligraphy, English, Hindi, mathematics, and physics. Our commitment extends beyond academic pursuits, fostering both spiritual and intellectual growth for our diverse student community. Join us on a transformative journey, where tradition meets modern education in the heart of the Himalayas."
+      content="Main Jonang Takten Phuntsok Choeling in Shimla, India: Shentong Madhyamaka, Kalachakra completion stage practice, and 18-year monastic curriculum."
     />
     <meta
       name="twitter:image"
-      content="https://jonang.netlify.app/logo512x512.jpg"
+      content="https://jonang.in/logo512x512.jpg"
     />
     <meta
       name="twitter:image:alt"
-      content="Altar adorned with the sacred Kalachakra symbol, a complex wheel representing the cosmic cycles and teachings in Tibetan Buddhism."
+      content="Emblem and monastic seal of Main Jonang Takten Phuntsok Choeling"
     />
     <slot name="head" />
   </head>
@@ -67,17 +66,16 @@ const { title } = Astro.props;
         <TitleBanner title={title} />
         <SectionDivider class="section-divider--page" />
         {Astro.slots.has('default') && (
-          <div class="section-padding max-w-296 lg:mx-auto editorial-offset">
+          <div class="section-padding max-w-6xl lg:mx-auto editorial-offset">
             <slot />
           </div>
         )}
         <div class="w-full">
+          <slot name="full-width" />
           <slot name="full=width" />
         </div>
       </section>
     </main>
     <Footer />
   </body>
-
-
 </html>

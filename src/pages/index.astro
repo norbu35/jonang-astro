@@ -24,60 +24,60 @@ import "../../base.css";
 
 const historicalTimeline = [
   {
-    era: "13th – 14th Century",
-    title: "Consolidation in Jomonang Valley",
-    desc: "Kunpang Tukje Tsondru gathers the Kalachakra transmissions of the Dro lineage and founds the sacred retreat hermitage at Jomonang.",
+    era: "1294",
+    title: "Establishment in Jomonang Valley",
+    desc: "Kunpang Tukje Tsondru (1243–1313) brings together seventeen Dro lineage transmissions of the Kālacakra Tantra and founds the Jonang hermitage in Tsang.",
   },
   {
     era: "1292 – 1361",
     title: "Dolpopa & the Great Kumbum",
-    desc: "Kunchen Dolpopa Sherab Gyaltsen constructs the Monumental Kumbum of Jomonang and composes 'Mountain Doctrine' (Ri chos nges don rgya mtsho), defining the Shentong Great Madhyamaka.",
+    desc: "Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors 'Mountain Doctrine' (Ri chos nges don rgya mtsho), formulating the Shentong Madhyamaka view.",
   },
   {
     era: "1575 – 1634",
-    title: "Jetsun Taranatha’s Renaissance",
-    desc: "The omniscient historian and tantric master revitalizes the school, establishes Takten Damcho Ling Monastery, and composes definitive Six Yogas meditation manuals.",
+    title: "Jetsun Tāranātha",
+    desc: "The scholar and historian establishes Takten Damcho Ling Monastery (1615), writes definitive guides on the Six-fold Vajrayoga, and compiles the 'History of Buddhism in India'.",
   },
   {
     era: "17th – 20th Century",
-    title: "Suppression & Eastern Preservation",
-    desc: "Following political displacement in Central Tibet, the lineage is safeguarded through remote sanctuary networks in Amdo and Dzamthang.",
+    title: "Suppression & Amdo Transmission",
+    desc: "Following conversion of Central Tibetan monasteries by the Ganden Phodrang government, the lineage is preserved continuously at Dzamthang, Ngawa, and Golok in Amdo.",
   },
   {
     era: "1960s – Present",
-    title: "Exile Re-emergence & Recognition",
-    desc: "Lama Jinpa Gyatso establishes the Shimla seat; in 1990 His Holiness the 14th Dalai Lama formally bestows the title Main Jonang Takten Phuntsok Choeling.",
+    title: "Exile Re-establishment in Shimla",
+    desc: "Lama Jinpa Gyatso establishes the Shimla monastery. In 1990, the 14th Dalai Lama designates it Main Jonang Takten Phuntsok Choeling and appoints the 9th Khalkha Jetsun Dhampa as head of the tradition in 1997.",
   },
 ];
 
 const portals = [
   {
     href: STATIC_PAGE_PATHS.aboutUs,
-    label: "The Living Monastery",
+    label: "Monastery & Community",
     tibetan: "དགོན་པ།",
-    body: "The community in Sanjauli, Shimla: succession of lineage abbots, resident sangha, and Himalayan borderland students.",
-    badge: "Community & Lineage",
+    body: "History in Sanjauli, Shimla: succession of lineage abbots, resident sangha, and student demographics from the Himalayan borderlands.",
+    badge: "Monastic Seat",
   },
   {
     href: STATIC_PAGE_PATHS.jonangDoctrine,
-    label: "The Shentong Doctrine",
+    label: "Shentong Philosophy",
     tibetan: "གཞན་སྟོང་།",
-    body: "The Three Turnings of the Dharma Wheel, Buddha-nature (Tathagatagarbha), and the definitive Other-Emptiness view.",
-    badge: "Philosophy",
+    body: "The Three Turnings of the Dharma Wheel, Tathāgatagarbha sutras, and the Madhyamaka distinction between Rangtong and Shentong.",
+    badge: "Doctrinal Framework",
   },
   {
     href: STATIC_PAGE_PATHS.kalachakra,
-    label: "The Kalachakra Path",
+    label: "Kālacakra Tantra",
     tibetan: "དུས་ཀྱི་འཁོར་ལོ།",
-    body: "The unbroken Dro lineage: 100k preliminary accumulations, dark retreat isolations, and the Six-fold Vajrayoga (Jordruk).",
-    badge: "Tantric Practice",
+    body: "The Dro lineage completion stage: preliminary accumulations, three isolations, and the Six-fold Vajrayoga (Sbyor drug).",
+    badge: "Tantric System",
   },
   {
     href: STATIC_PAGE_PATHS.curriculum,
-    label: "18-Year Syllabus",
+    label: "18-Year Curriculum",
     tibetan: "བསླབ་གཞི།",
-    body: "From Tibetan literacy and the Five Great Treatises to sacred sand mandalas, liturgical music, and multi-year retreat.",
-    badge: "Education",
+    body: "Progressive study of Tibetan grammar, Buddhist epistemology (Pramāṇa), the Five Great Treatises, and monastic ritual arts.",
+    badge: "Academic Study",
   },
 ];
 ---
@@ -89,7 +89,7 @@ const portals = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Main Jonang Takten Phuntsok Choeling — The primary seat of the Jonang tradition in exile. Preserving the definitive Shentong philosophy and the unbroken Kalachakra Six Yogas."
+      content="Main Jonang Takten Phuntsok Choeling — Head seat of the Jonang tradition in exile. Preserving Shentong Madhyamaka philosophy and the Kālacakra Six-fold Vajrayoga."
     />
     <meta
       name="keywords"
@@ -105,7 +105,7 @@ const portals = [
     <meta property="og:url" content="https://jonang.in" />
     <meta
       property="og:description"
-      content="The central seat of the Jonang lineage in exile: profound Shentong philosophy, Kalachakra completion stage, and monastic training in Shimla, India."
+      content="Main Jonang Takten Phuntsok Choeling in Shimla, India: Shentong Madhyamaka, Kālacakra completion stage practice, and 18-year monastic curriculum."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://jonang.in/logo512x512.jpg" />
@@ -115,7 +115,7 @@ const portals = [
     <HeroSection />
     
     <main>
-      <!-- I. Highlighted Lineage Head Blessing Showcase -->
+      <!-- I. Lineage Head & Historical Overview -->
       <ProminenceSection />
 
       <AnimatedDivider type="knot" />
@@ -210,8 +210,8 @@ const portals = [
       <!-- IV. Narrative Chapter 3: Fresco Mural & Thangka Highlights -->
       <section class="section-padding reveal-on-scroll">
         <FrescoMuralSection
-          title="From Ancient Shambhala to Global Renewal"
-          body="Jonang wisdom unites the celestial mandala of Shambhala, Indian tantric treatises, and Tibetan monastic rigor. Preserved through eras of seclusion, this heritage now speaks to scholars, translators, and meditators worldwide."
+          title="Indian Sources and Tibetan Exegesis"
+          body="The Jonang curriculum integrates the Kālacakra Tantra, Indian commentaries (Vimalaprabhā), and Tibetan epistemology. Maintained continuously in Tsang and Amdo, these root texts and commentaries form the basis of contemporary monastic education in Shimla."
           imageSrc={riteSutraImage} 
         />
       </section>
@@ -220,14 +220,14 @@ const portals = [
 
       <section class="section-padding reveal-on-scroll">
         <ThangkaCollageSection
-          title="The Wheel of Time: Subtle Body & Cosmos"
-          body="The Kalachakra Tantra is the living pulse of Jonang. Through the Six-fold Vajrayoga (Jordruk), practitioners transform subtle energy channels (nadis), winds (prana), and drops (bindu) into immutable bliss and pristine empty form."
+          title="Kālacakra: Subtle Physiology and Completion Stage"
+          body="The Kālacakra Tantra forms the core practice of the Jonang school. Through the Six-fold Vajrayoga (Sbyor drug), practitioners direct subtle channels (nāḍī), winds (prāṇa), and drops (bindu) to realize immutable bliss (akṣara) and empty form (śūnyatābimba)."
           imageSrc={teachingImage}
-          imageAlt="Monastic master conducting a philosophical lecture"
+          imageAlt="Monastic instructor conducting a lecture on Buddhist epistemology"
         />
       </section>
 
-      <!-- V. Narrative Chapter 4: The Living Community Demographics -->
+      <!-- V. Narrative Chapter 4: Monastic Community & Demographics -->
       <section class="section-padding bg-surface-subtle/70 border-y border-border reveal-on-scroll">
         <div class="max-w-6xl mx-auto space-y-12">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -235,30 +235,30 @@ const portals = [
             <div class="lg:col-span-6 space-y-6">
               <div class="badge badge-crimson">
                 <span class="badge-dot"></span>
-                The Monastic Community
+                Monastic Demographics
               </div>
               <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight">
-                A Living Sanctuary for Himalayan Monks
+                Resident Sangha and Student Body
               </h2>
               <p class="text-sm sm:text-base text-muted leading-relaxed">
-                Main Jonang Takten Phuntsok Choeling in Shimla provides complete room, board, medical care, and tuition-free education for approximately <strong>120 resident monks and staff members</strong> from across the Buddhist world:
+                Main Jonang Takten Phuntsok Choeling in Shimla provides room, board, healthcare, and monastic education for approximately <strong>120 resident monks and staff members</strong>:
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
                   <span class="text-2xl font-display font-bold text-accent block">~70</span>
                   <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Assam & Tawang</span>
-                  <span class="text-[11px] text-muted block">Himalayan Borderlands</span>
+                  <span class="text-[11px] text-muted block">Himalayan Border Regions</span>
                 </div>
                 <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
                   <span class="text-2xl font-display font-bold text-accent-secondary block">~30</span>
-                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Outer Mongolia</span>
-                  <span class="text-[11px] text-muted block">Incl. 12 young orphans</span>
+                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Mongolia</span>
+                  <span class="text-[11px] text-muted block">Including 12 under monastic care</span>
                 </div>
                 <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
                   <span class="text-2xl font-display font-bold text-accent-tertiary block">~20</span>
                   <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Tibet</span>
-                  <span class="text-[11px] text-muted block">Lineage Scholars</span>
+                  <span class="text-[11px] text-muted block">Senior Shedra Scholars</span>
                 </div>
               </div>
             </div>
@@ -267,7 +267,7 @@ const portals = [
               <div class="surface-card overflow-hidden rounded-2xl">
                 <Image
                   src={landscapeImage}
-                  alt="Monastic buildings nestled in the Shimla mountains"
+                  alt="Monastic buildings situated in Sanjauli, Shimla"
                   width={600}
                   height={450}
                   class="w-full h-full object-cover"
@@ -276,7 +276,7 @@ const portals = [
               <div class="surface-card overflow-hidden rounded-2xl">
                 <Image
                   src={studentsImage}
-                  alt="Resident young monastic students"
+                  alt="Resident monastic students during morning study"
                   width={600}
                   height={450}
                   class="w-full h-full object-cover"
@@ -288,19 +288,19 @@ const portals = [
         </div>
       </section>
 
-      <!-- VI. Narrative Chapter 5: Four Sacred Portals -->
+      <!-- VI. Narrative Chapter 5: Four Portals -->
       <section class="section-padding reveal-on-scroll">
         <div class="max-w-6xl mx-auto space-y-10">
           <div class="text-center space-y-2 max-w-2xl mx-auto">
             <div class="badge badge-saffron">
               <span class="badge-dot"></span>
-              Portals of Discovery
+              Curricular & Doctrinal Index
             </div>
             <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal">
-              Explore the Tradition
+              Tradition Documentation
             </h2>
             <p class="text-muted text-sm sm:text-base">
-              Journey deeper into the philosophy, meditative yogas, academic curriculum, and institutional history.
+              Direct access to philosophical tenets, meditation manuals, curriculum, and historical records.
             </p>
           </div>
 
@@ -322,7 +322,7 @@ const portals = [
                     <p class="text-xs text-muted leading-relaxed">{portal.body}</p>
                   </div>
                   <span class="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Enter Portal <span>→</span>
+                    View Section <span>→</span>
                   </span>
                 </a>
               ))
@@ -333,13 +333,13 @@ const portals = [
 
       <AnimatedDivider type="lotus" />
 
-      <!-- VII. Sacred Centerpiece: Texts, Teachers & Practice Held in Full -->
+      <!-- VII. Centerpiece: Texts, Teachers & Practice Held in Full -->
       <section class="section-padding reveal-on-scroll">
         <SacredCenterpiece
-          title="Texts, Teachers, and Training Still Held in Full"
-          body="What distinguishes Main Jonang Takten Phuntsok Choeling is not merely the historical memory of a rare tradition, but the continuous living reality of qualified masters, long-term retreats, liturgical disciplines, and comprehensive education."
+          title="Lineage Transmission and Textual Preservation"
+          body="Main Jonang Takten Phuntsok Choeling maintains lineage transmissions through resident lineage holders, structured multi-year retreats, liturgical cycles, and an eighteen-year curriculum in Buddhist philosophy."
           imageSrc={libraryImage}
-          imageAlt="Monastery sacred scripture library"
+          imageAlt="Monastery scripture library and canonical collections"
         />
       </section>
 

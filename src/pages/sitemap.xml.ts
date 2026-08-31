@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
-const SITE_URL = import.meta.env.SITE ?? "https://jonang.netlify.app";
+const SITE_URL = import.meta.env.SITE ?? "https://jonang.in";
 
 const paths = [
   "/",
