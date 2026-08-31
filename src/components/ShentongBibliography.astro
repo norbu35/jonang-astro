@@ -1,0 +1,307 @@
+---
+const bibliography = [
+  {
+    title: "The Buddha from Dölpo: A Study of the Life and Thought of the Tibetan Master Dölpopa Sherab Gyaltsen",
+    author: "Cyrus Stearns",
+    year: "2010",
+    publisher: "Snow Lion / Shambhala Publications",
+    category: "Monograph & Biography",
+    desc: "The definitive biographical and doctrinal study of Kunchen Dolpopa, detailing the origins of the Shentong system and the Great Kumbum of Jomonang.",
+    link: "https://www.shambhala.com/the-buddha-from-dolpo-3211.html",
+  },
+  {
+    title: "The Essence of Other-Emptiness",
+    author: "Jetsun Taranatha (Trans. Jeffrey Hopkins)",
+    year: "2007",
+    publisher: "Snow Lion Publications",
+    category: "Root Translation",
+    desc: "Taranatha’s definitive commentary synthesizing the Jonang hermeneutical framework and vindicating the Other-Emptiness view against mischaracterizations.",
+    link: "https://www.shambhala.com/the-essence-of-other-emptiness-2993.html",
+  },
+  {
+    title: "Mountain Dharma (Ri chos nges don rgya mtsho)",
+    author: "Dolpopa Sherab Gyaltsen (Trans. Rime Lodrö / Ives Waldo)",
+    year: "2012",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Master Treatise",
+    desc: "The monumental encyclopedic treatise of Dolpopa establishing the Shentong Great Madhyamaka via extensive sutric and tantric citations.",
+    link: "https://www.amazon.com/dp/9937833587",
+  },
+  {
+    title: "The Buddha Within: Tathagatagarbha Doctrine According to the Shentong Interpretation of the Ratnagotravibhaga",
+    author: "S.K. Hookham",
+    year: "1991",
+    publisher: "State University of New York (SUNY) Press",
+    category: "Seminal Scholarly Study",
+    desc: "Pioneering academic study presenting the Shentong interpretation of Buddha-nature and the Uttaratantra Shastra.",
+    link: "https://sunypress.edu/Books/T/The-Buddha-Within",
+  },
+  {
+    title: "The Philosophical Grounds and Literary History of Zhentong",
+    author: "Michael R. Sheehy & Klaus-Dieter Mathes (Eds.)",
+    year: "2019",
+    publisher: "The Foundation for Buddhist Research / Wisdom Publications",
+    category: "Scholarly Anthology",
+    desc: "Comprehensive collection of modern scholarly essays mapping the historical trajectories, philosophical nuances, and lineages of Shentong.",
+    link: "https://www.google.com/search?q=The+Philosophical+Grounds+and+Literary+History+of+Zhentong+Sheehy+Mathes",
+  },
+  {
+    title: "The Great Middle Way: Clarifying the Jonang View of Other-Emptiness",
+    author: "Khentrul Jamphel Lodrö Rinpoche",
+    year: "2015",
+    publisher: "Tibetan Buddhist Rimé Institute",
+    category: "Contemporary Lineage",
+    desc: "Detailed contemporary exposition by a qualified Jonang master explaining the practical and analytical realization of Shentong.",
+    link: "https://khentrulrinpoche.com/the-great-middle-way/",
+  },
+  {
+    title: "Luminous Heart: Essential Writings of Rangjung Dorje, the Third Karmapa",
+    author: "Rangjung Dorje (Trans. Karl Brunnhölzl)",
+    year: "2009",
+    publisher: "Snow Lion / Shambhala Publications",
+    category: "Kagyu-Jonang Synthesis",
+    desc: "Translations of the Third Karmapa’s root texts demonstrating the harmony between Shentong and the Mahamudra view of primordial mind.",
+    link: "https://www.shambhala.com/luminous-heart-2900.html",
+  },
+  {
+    title: "Maitripa's Writings on the View; The Main Indian Source of the Tibetan Views of Other Emptiness and Mahamudra",
+    author: "Tony Duff",
+    year: "2010",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Indian Sources",
+    desc: "Translations and analysis of Indian Mahasiddha Maitripa’s Amanasikara cycle, the direct precursor to Tibetan Shentong.",
+    link: "https://www.amazon.com/dp/993783351X",
+  },
+  {
+    title: "The Lion's Roar that Proclaims Zhentong",
+    author: "Ju Mipham Namgyal (Trans. Tony Duff)",
+    year: "2010",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Nyingma-Shentong Treatise",
+    desc: "The renowned 19th-century polymath Jamgon Mipham Rinpoche’s brilliant defense of the Great Madhyamaka of Other-Emptiness.",
+    link: "https://www.amazon.com/dp/9937833501",
+  },
+  {
+    title: "Mipam on Buddha-nature: The Ground of the Nyingma Tradition",
+    author: "Douglas S. Duckworth",
+    year: "2008",
+    publisher: "State University of New York (SUNY) Press",
+    category: "Comparative Study",
+    desc: "Explores the philosophical intersection of Tathagatagarbha, the Jonang Shentong view, and the Dzogchen framework in Mipham's writings.",
+    link: "https://sunypress.edu/Books/M/Mipam-on-Buddha-Nature",
+  },
+  {
+    title: "An Instruction to Lhajé Tsultrim Ö",
+    author: "Dolpopa Sherab Gyaltsen (Trans. Cyrus Stearns)",
+    year: "2000",
+    publisher: "Journal of the International Association of Buddhist Studies",
+    category: "Direct Instructions",
+    desc: "Essential pith instruction letter composed by Dolpopa directly transmitting the realization of unconditioned luminous reality.",
+    link: "https://www.google.com/search?q=An+Instruction+to+Lhaje+Tsultrim+O+Dolpopa+Cyrus+Stearns",
+  },
+  {
+    title: "Instructions for Practicing the View of Other Emptiness",
+    author: "Jamgon Kongtrul Lodro Thaye (Trans. Tony Duff)",
+    year: "2011",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Meditation Manual",
+    desc: "Practical manual of oral instructions showing how to apply the Shentong view in direct contemplative meditation.",
+    link: "https://www.amazon.com/dp/9937833552",
+  },
+  {
+    title: "Opening the Wisdom Door of the Rangtong and Shentong Views",
+    author: "Khenchen Palden Sherab & Khenpo Tsewang Dongyal Rinpoche",
+    year: "2007",
+    publisher: "Dharma Samudra",
+    category: "Introductory Guide",
+    desc: "Accessible teachings bridging the classical Madhyamaka analytical negation with the direct realization of luminous wisdom.",
+    link: "https://www.amazon.com/dp/0982092238",
+  },
+  {
+    title: "Prajñāpāramitā, Indian 'gzhan stong pas', and the Beginning of Tibetan gzhan stong",
+    author: "Karl Brunnhölzl",
+    year: "2011",
+    publisher: "Universität Wien (ISTB)",
+    category: "Academic Monograph",
+    desc: "Rigorous historical-critical inquiry into the Indian roots of Shentong terminology in Sanskrit Prajnaparamita commentaries.",
+    link: "https://www.istb.univie.ac.at/",
+  },
+  {
+    title: "A Juggernaut of the Non-Dual View: Ultimate Teachings of the Second Drukchen Gyalwang Je",
+    author: "Tony Duff",
+    year: "2011",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Drukpa Lineage Treatises",
+    desc: "Exploration of the Second Drukchen Rinpoche’s teachings affirming the non-dual luminous nature of awareness.",
+    link: "https://www.amazon.com/dp/9937833544",
+  },
+  {
+    title: "The Sutra of Queen Śrīmālā of the Lion's Roar (Śrīmālādevī Siṃhanāda Sūtra)",
+    author: "Canonical Mahayana Sutra",
+    year: "Canonical",
+    publisher: "BDK English Tripitaka / Motilal Banarsidass",
+    category: "Canonical Scripture",
+    desc: "One of the supreme Third Turning Tathagatagarbha scriptures demonstrating that Buddha-nature is present in all sentient beings.",
+    link: "https://bdkamerica.org/product/the-sutra-of-queen-srimala-of-the-lions-roar-and-the-vimalakirti-sutra/",
+  },
+  {
+    title: "The Theory and Practice of Other Emptiness Taught Through Milarepa's Songs",
+    author: "Tony Duff",
+    year: "2011",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Yogic Songs",
+    desc: "Unpacking the spontaneous realization songs (dohas) of Jetsun Milarepa in the light of the Shentong experiential view.",
+    link: "https://www.amazon.com/dp/9937833560",
+  },
+  {
+    title: "The Dharma Handbook with Commentary",
+    author: "Tashi Nyima",
+    year: "2018",
+    publisher: "Universal Compassion Buddhist Society",
+    category: "Contemporary Commentary",
+    desc: "Practical manual contextualizing the Shentong Middle Way for contemporary Buddhist students and practitioners.",
+    link: "https://www.google.com/search?q=The+Dharma+Handbook+with+Commentary+Tashi+Nyima",
+  },
+  {
+    title: "Rangtong & Shentong Views: A Brief Explanation of the One Taste of the Second and Third Turnings",
+    author: "Jamgon Kongtrul Lodro Thaye",
+    year: "Classical",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Philosophical Synthesis",
+    desc: "Concise root text demonstrating the unified non-contradictory intention behind both turning cycles of the Wheel of Dharma.",
+    link: "https://www.google.com/search?q=Rangtong+and+Shentong+Views+Jamgon+Kongtrul",
+  },
+  {
+    title: "Dolpopa's Mountain Dharma: The Birth of the Shentong View",
+    author: "Kunchen Dolpopa Sherab Gyaltsen",
+    year: "14th Century / Trans. 2011",
+    publisher: "Padma Karpo Translation Committee",
+    category: "Primary Source",
+    desc: "The historical and hermeneutical genesis of the Shentong system formulated during Dolpopa's retreat at Jomonang.",
+    link: "https://www.google.com/search?q=Dolpopa+Mountain+Dharma+Birth+of+the+Shentong+View",
+  },
+];
+---
+
+<section class="surface-card p-6 sm:p-8 md:p-10 space-y-6 my-10 relative overflow-hidden" id="bibliography">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
+    <div class="space-y-1">
+      <div class="badge badge-saffron">
+        <span class="badge-dot"></span>
+        Scholarly Archive
+      </div>
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Bibliography on Shentong (Other-Emptiness)
+      </h3>
+      <p class="text-xs sm:text-sm text-muted">
+        Curated reading list of canonical scriptures, classical Jonang masterworks, and modern academic translations compiled by Jens Näsström.
+      </p>
+    </div>
+
+    <div class="text-xs font-mono text-muted/80 bg-surface-subtle px-3 py-1.5 rounded-lg border border-border shrink-0 self-start sm:self-center">
+      {bibliography.length} Selected Works
+    </div>
+  </div>
+
+  <!-- Interactive Filter Search Container -->
+  <div class="relative">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-xs font-semibold text-accent uppercase tracking-wider">Explore Shelf:</span>
+      <span class="text-xs text-muted">Scroll horizontally or browse publications below with direct links to editions.</span>
+    </div>
+
+    <!-- Horizontal Scrolling Shelf -->
+    <div class="flex gap-5 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-accent-secondary/30">
+      {
+        bibliography.map((book, idx) => (
+          <article class="surface-card p-5 w-76 sm:w-84 shrink-0 snap-start flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift bg-surface shadow-xs">
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-[11px] font-mono text-muted">
+                <span class="font-bold text-accent">#{String(idx + 1).padStart(2, '0')}</span>
+                <span class="text-accent-secondary font-semibold">{book.year}</span>
+              </div>
+              
+              <h4 class="font-display text-base font-bold text-ink leading-snug line-clamp-2">
+                {book.title}
+              </h4>
+              
+              <p class="text-xs font-semibold text-ink/80">
+                {book.author}
+              </p>
+              
+              <span class="badge badge-neutral text-[10px] inline-block mb-1">
+                {book.category}
+              </span>
+              
+              <p class="text-xs text-muted leading-relaxed line-clamp-3">
+                {book.desc}
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-border flex items-center justify-between">
+              <span class="text-[10px] text-muted font-mono truncate max-w-[140px]">
+                {book.publisher}
+              </span>
+              <a
+                href={book.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-secondary text-[11px] py-1 px-2.5 rounded hover:text-accent font-semibold transition flex items-center gap-1"
+                aria-label={`View ${book.title}`}
+              >
+                Find Edition ↗
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Detailed Table / Grid for Comprehensive Browsing -->
+  <details class="group mt-6 pt-4 border-t border-border">
+    <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-accent flex items-center gap-2 hover:text-accent-hover transition select-none">
+      <span>View Complete Index as Catalog Table ({bibliography.length} Entries)</span>
+      <span class="group-open:rotate-180 transition-transform">▼</span>
+    </summary>
+    
+    <div class="overflow-x-auto mt-4">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead>
+          <tr class="bg-surface-subtle border-b border-border text-ink font-display">
+            <th class="p-3">#</th>
+            <th class="p-3">Title & Overview</th>
+            <th class="p-3">Author / Translator</th>
+            <th class="p-3">Publisher & Year</th>
+            <th class="p-3 text-right">Resource Link</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border">
+          {
+            bibliography.map((b, i) => (
+              <tr class="hover:bg-surface-subtle/40 transition-colors">
+                <td class="p-3 font-mono font-bold text-accent align-top">{i + 1}</td>
+                <td class="p-3 align-top">
+                  <div class="font-bold text-ink mb-0.5">{b.title}</div>
+                  <div class="text-[11px] text-muted">{b.desc}</div>
+                </td>
+                <td class="p-3 text-ink align-top font-medium">{b.author}</td>
+                <td class="p-3 text-muted align-top">{b.publisher} ({b.year})</td>
+                <td class="p-3 text-right align-top">
+                  <a
+                    href={b.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-accent hover:underline font-semibold text-[11px]"
+                  >
+                    View Resource ↗
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>

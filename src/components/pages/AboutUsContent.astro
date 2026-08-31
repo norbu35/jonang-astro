@@ -51,6 +51,48 @@ const abbots = [
   },
 ];
 
+const weeklyPrayers = [
+  {
+    day: "Monday",
+    prayers: "Lama Chodpa (Guru Puja) & Medicine Buddha (Menlha) Prayers",
+    purpose: "Healing, dispelling illness and spiritual obstacles, and venerating the lineage masters.",
+    tibetan: "བླ་མ་མཆོད་པ་དང་སྨན་བླ།",
+  },
+  {
+    day: "Tuesday",
+    prayers: "Āryasaṃghāṭasūtra (Aryanamasanghati) & Kalachakra Ngondro",
+    purpose: "Accumulating vast transcendent merit, reciting canonical sutras, and preliminary tantric purification.",
+    tibetan: "འཕགས་པ་ཟུང་གི་མདོ་དང་དུས་འཁོར་སྔོན་འགྲོ།",
+  },
+  {
+    day: "Wednesday",
+    prayers: "Noble Tara (Drolma), Sitatapatra (Dukar), Mahakala (Gonpo) & Palden Lhamo Tsulkha",
+    purpose: "Averting hindrances, protective deity supplications (Dharmapalas), and generating compassionate activity.",
+    tibetan: "སྒྲོལ་མ། གདུགས་དཀར། མགོན་པོ་དང་དཔལ་ལྡན་ལྷ་མོའི་ཚོགས་མཆོད།",
+  },
+];
+
+const annualActivities = [
+  {
+    tibetanDate: "First Month (1st Day) — Losar",
+    gregorian: "Tibetan New Year",
+    event: "Dharma Protector (Dharmapala) Prayers",
+    desc: "Commencement of the New Year with intensive invocation of protective lineage guardians (Mahakala, Palden Lhamo) for global peace and the dispelling of adversity.",
+  },
+  {
+    tibetanDate: "First Month (8th Day)",
+    gregorian: "Annual Commemoration",
+    event: "H.H. 9th Khalkha Jetsun Dhampa Jampal Namdrol’s Parinirvana Day",
+    desc: "Solemn prayer festival commemorating the life, realization, and legacy of the 9th Khalkha Jetsun Dhampa, spiritual head of the Jonang lineage.",
+  },
+  {
+    tibetanDate: "First Month (13th – 15th Days)",
+    gregorian: "Chotrul Monlam Days",
+    event: "Tripiṭaka Chanting (Full Kangyur Continuous Reading)",
+    desc: "The entire monastic assembly reads the 108 volumes of the sacred Kangyur (Words of the Buddha) aloud in unison over three days of merit multiplication.",
+  },
+];
+
 const curriculumPillars = [
   "Sutra studies through the Five Great Treatises (Gzhung Chen Bka' Pod Lnga) and definitive Jonang Shentong commentaries",
   "Mantra studies centered on the Kalachakra generation stage deity yoga, ritual sand mandalas, sacred dance (Cham), and chanting",
@@ -194,6 +236,68 @@ const curriculumPillars = [
           Senior practitioners and scholars who journeyed from eastern Tibet to study classical Shentong philosophy and preserve the lineage in exile.
         </p>
       </div>
+    </div>
+  </div>
+
+  <!-- Weekly Activities & Daily Prayers -->
+  <div class="surface-card p-6 sm:p-8 space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Liturgical Schedule
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Weekly Activities & Communal Prayers
+    </h3>
+
+    <p class="text-sm text-muted">
+      The resident sangha conducts regular communal liturgies dedicated to world peace, removing obstacles, and health:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+      {
+        weeklyPrayers.map((w) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-accent mb-1">
+                <span class="font-bold uppercase tracking-wider">{w.day}</span>
+                <span class="text-accent-secondary font-tibetan">{w.tibetan}</span>
+              </div>
+              <h4 class="font-display text-base font-bold text-ink mb-1">{w.prayers}</h4>
+              <p class="text-xs text-muted leading-relaxed">{w.purpose}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Annual Religious Activities -->
+  <div class="space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Sacred Calendar
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Annual Religious Ceremonies & Monlam Assemblies
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        annualActivities.map((a) => (
+          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent hover-lift">
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">
+                {a.tibetanDate}
+              </span>
+              <h4 class="font-display text-lg font-bold text-ink mb-1">{a.event}</h4>
+              <span class="badge badge-neutral text-[10px] mb-2">{a.gregorian}</span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">{a.desc}</p>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 

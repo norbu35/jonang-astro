@@ -89,6 +89,33 @@ const sixYogas = [
     desc: "Complete non-dual union of immutable great bliss (mahasukha) and pristine empty form (sunyata), actualizing full enlightenment in a single lifetime.",
   },
 ];
+
+const retreatSchedule = [
+  {
+    sno: "01",
+    name: "Common Kalachakra Ngöndro",
+    tibetan: "ཐུན་མོང་སྔོན་འགྲོ།",
+    duration: "6 Months",
+    textName: "Gomrim, Thongthong & Lanthap",
+    desc: "Accumulating the fivefold 100k foundational practices (Refuge, Bodhicitta, Vajrasattva, Mandala, Guru Yoga) utilizing the classical meditation manual.",
+  },
+  {
+    sno: "02",
+    name: "Extraordinary Kalachakra Ngöndro",
+    tibetan: "ཐུན་མིན་སྔོན་འགྲོ།",
+    duration: "3 Months",
+    textName: "Gomrim, Thongthong & Lanthap",
+    desc: "Uncommon preliminary physical postures, subtle body channel purification, and Guru Yoga focused specifically on the Kalachakra lineage masters.",
+  },
+  {
+    sno: "03",
+    name: "Kalachakra Generation Stage",
+    tibetan: "དུས་འཁོར་བསྐྱེད་རིམ།",
+    duration: "2 Months",
+    textName: "Gomrim, Thongthong & Lanthap",
+    desc: "Detailed deity generation, self-visualization, and preliminary dark retreat preparation according to the root commentaries.",
+  },
+];
 ---
 
 <div class="space-y-12">
@@ -223,6 +250,47 @@ const sixYogas = [
               <span class="text-xs italic text-muted block mb-2">{yoga.sanskrit}</span>
               <span class="badge badge-neutral text-[11px] mb-3">{yoga.focus}</span>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">{yoga.desc}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Retreat Schedule & Root Text Manuals -->
+  <div class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent-secondary">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Retreat Manuals & Durations
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Kalachakra Solitary Retreat Schedule & Root Texts
+    </h3>
+
+    <p class="text-sm text-muted leading-relaxed">
+      Formal retreatants follow a precise progression guided by the classical Jonang practice manuals:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+      {
+        retreatSchedule.map((r) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
+                <span class="font-bold text-accent">Stage {r.sno}</span>
+                <span class="text-accent-secondary font-semibold font-mono">{r.duration}</span>
+              </div>
+              <h4 class="font-display text-lg font-bold text-ink mb-1">{r.name}</h4>
+              <span class="text-xs font-tibetan text-accent-secondary block mb-2">{r.tibetan}</span>
+              
+              <div class="p-3 rounded-lg bg-surface border border-border space-y-1 mb-2">
+                <span class="text-[10px] uppercase font-bold text-accent block">Name of Text:</span>
+                <span class="font-semibold text-xs text-ink">{r.textName}</span>
+                <span class="text-[11px] text-muted block italic">(Stages of Meditation, Direct Perception & Supplement)</span>
+              </div>
+
+              <p class="text-xs text-muted leading-relaxed">{r.desc}</p>
             </div>
           </div>
         ))

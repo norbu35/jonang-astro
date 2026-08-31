@@ -36,6 +36,36 @@ const syllabusStages = [
   },
 ];
 
+const sutraFoundations = [
+  {
+    sno: "1",
+    name: "Duta (Collected Topics)",
+    tibetan: "བསྡུས་གྲྭ།",
+    duration: "2 Years",
+    mainText: "Bamda's Duta (by Bamda Gelek Gyatso)",
+    partText: "Yongzin Rinpoche's Text",
+    desc: "Foundational logic, definitions, classifications of phenomena, and formal Tibetan debating methodology.",
+  },
+  {
+    sno: "2",
+    name: "Takrig (Signs & Reasoning)",
+    tibetan: "རྟགས་རིགས།",
+    duration: "1 Year",
+    mainText: "Tsoknyi Gyamtso's Takrig",
+    partText: "Yongzin Rinpoche's Text",
+    desc: "Classification of logical proofs, valid reasons, correct relationships, and fallacious arguments.",
+  },
+  {
+    sno: "3",
+    name: "Lorig (Mind & Awareness)",
+    tibetan: "བློ་རིག",
+    duration: "1 Year",
+    mainText: "Bamda's Lorig",
+    partText: "Yongzin Rinpoche's Text",
+    desc: "Epistemological study of consciousness, direct perception, inferential cognition, doubt, and mistaken mental states.",
+  },
+];
+
 const fiveTreatises = [
   {
     title: "Pramāṇa (Epistemology & Logic)",
@@ -152,6 +182,52 @@ const ritualArts = [
             </div>
             <div class="pt-3 border-t border-border text-[11px] font-semibold uppercase tracking-wider text-accent">
               {s.focus}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Foundational Sutra & Dialectics Syllabus (Studying Sutra Part) -->
+  <div class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Foundational Sutra Dialectics
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Studying Sutra Part: Logic, Mind & Epistemology
+    </h3>
+
+    <p class="text-sm text-muted leading-relaxed">
+      Before embarking on the Five Great Treatises, students undergo a rigorous four-year foundational sequence mastering logic, cognitive theory, and debate manuals:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+      {
+        sutraFoundations.map((item) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
+                <span class="font-bold text-accent">Stage {item.sno}</span>
+                <span class="text-accent-secondary font-semibold font-mono">{item.duration}</span>
+              </div>
+              <h4 class="font-display text-lg font-bold text-ink mb-1">{item.name}</h4>
+              <span class="text-xs font-tibetan text-accent-secondary block mb-2">{item.tibetan}</span>
+              
+              <div class="space-y-1.5 text-xs">
+                <div class="p-2 rounded bg-surface border border-border">
+                  <span class="text-[10px] uppercase font-bold text-accent block">Main Text:</span>
+                  <span class="font-medium text-ink">{item.mainText}</span>
+                </div>
+                <div class="p-2 rounded bg-surface border border-border">
+                  <span class="text-[10px] uppercase font-bold text-muted block">Supplementary Text:</span>
+                  <span class="text-muted">{item.partText}</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-muted leading-relaxed pt-2">{item.desc}</p>
             </div>
           </div>
         ))
