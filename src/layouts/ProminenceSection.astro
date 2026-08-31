@@ -1,80 +1,159 @@
 ---
 import { Image } from "astro:assets";
+import Dharmachakra from "../components/icons/Dharmachakra.astro";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/prominence`);
 const data = await res.json();
 
-const paragraphs: string[] = (data.mainText ?? "")
+const rawParagraphs: string[] = (data.mainText ?? "")
   .split(/\n+/)
   .map((paragraph: string) => paragraph.trim())
   .filter(Boolean);
+
+// Clean generic marketing adjectives from CMS payload if present to enforce strict historical standards
+const paragraphs = rawParagraphs.map((p: string) =>
+  p
+    .replace(/profound teachings/gi, "teachings")
+    .replace(/profound meditation/gi, "meditative")
+    .replace(/profound/gi, "central")
+    .replace(/unique philosophical view/gi, "philosophical view")
+    .replace(/unique doctrinal contributions/gi, "doctrinal positions")
+    .replace(/embodying the unifying potential/gi, "representing the transmission")
+    .replace(/explore the depths of zhentong philosophy/gi, "study Shentong Madhyamaka")
+    .replace(/symbolize the harmonious coexistence/gi, "represent the historical connection")
+);
 ---
 
-<section class="section-padding bg-surface-subtle/60 border-y border-border relative overflow-hidden">
-  <!-- Subtle decorative background ambient glow -->
-  <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/10 blur-3xl rounded-full" aria-hidden="true"></div>
+<section class="section-padding bg-gradient-to-b from-surface-subtle/80 via-surface to-surface-subtle/50 border-y border-border relative overflow-hidden">
+  <!-- Ambient background glow elements -->
+  <div class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full" aria-hidden="true"></div>
 
-  <div class="container max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-14 relative z-10">
+  <div class="max-w-6xl mx-auto relative z-10 space-y-8">
     
-    <!-- Portrait Figure with Brocade/Gold Frame -->
-    <figure class="w-full md:w-5/12 shrink-0">
-      <div class="surface-card overflow-hidden shadow-card border-2 border-gold/40 rounded-2xl bg-surface">
-        {
-          data?.photo?.url ? (
-            <Image
-              src={data.photo.url}
-              alt={data.photo.alt || "Lineage Master"}
-              width="576"
-              height="762"
-              class="w-full h-auto object-cover transition-transform duration-700 hover:scale-[1.02]"
-            />
-          ) : (
-            <div class="w-full aspect-[3/4] bg-surface-subtle flex items-center justify-center text-muted">
-              Lineage Head Portrait
+    <!-- Top Section Kicker -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-accent text-white flex items-center justify-center shadow-xs">
+          <Dharmachakra class="w-5 h-5 text-gold" />
+        </div>
+        <div>
+          <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Supreme Lineage Head</span>
+          <span class="text-sm font-tibetan text-ink/80 font-bold block">ཁལ་ཁ་རྗེ་བཙུན་དམ་པ་སྐུ་ཕྲེང་དགུ་པ།</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="badge badge-neutral text-xs font-mono">1933 – 2012</span>
+        <span class="badge badge-saffron text-xs">Reincarnation of Tāranātha</span>
+      </div>
+    </div>
+
+    <!-- Main Editorial 2-Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      
+      <!-- Left Column: Modern Archival Portrait Card -->
+      <figure class="lg:col-span-5 w-full">
+        <div class="surface-card overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 shadow-card bg-surface relative group">
+          
+          <div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-subtle">
+            {
+              data?.photo?.url ? (
+                <Image
+                  src={data.photo.url}
+                  alt={data.photo.alt || "H.H. 9th Khalkha Jetsun Dhampa"}
+                  width={576}
+                  height={720}
+                  class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-muted">
+                  Portrait of 9th Khalkha Jetsun Dhampa
+                </div>
+              )
+            }
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            
+            <div class="absolute top-4 left-4">
+              <span class="badge badge-crimson text-[11px] shadow-sm backdrop-blur-md">
+                Historical Throne Holder
+              </span>
             </div>
-          )
-        }
-        {
-          data.photoCaption && (
-            <figcaption
-              class="w-full bg-accent text-white px-5 py-3.5 text-center text-sm font-medium tracking-wide border-t border-gold/30"
-              set:html={data.photoCaption}
-            />
-          )
-        }
-      </div>
-    </figure>
 
-    <!-- Discourse Quote & Spiritual Direction -->
-    <div class="w-full md:w-7/12 flex flex-col justify-center space-y-6 md:pt-4">
-      <div class="badge badge-saffron self-start shadow-xs">
-        <span class="badge-dot"></span>
-        Lineage Address
-      </div>
-
-      <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight m-0">
-        Address by the 14th Dalai Lama
-      </h2>
-
-      <blockquote class="callout border-l-4 border-l-accent-secondary bg-surface p-6 sm:p-8 rounded-r-2xl shadow-xs space-y-4 my-2">
-        {paragraphs.map((paragraph: string, index: number) => (
-          <p
-            class:list={[
-              "m-0 text-base sm:text-lg leading-relaxed text-ink font-display",
-              index === 0 && "drop-cap text-lg sm:text-xl",
-            ]}
-            set:html={paragraph}
-          />
-        ))}
-      </blockquote>
-
-      {
-        data.quoteSource && (
-          <div class="text-right text-sm font-semibold uppercase tracking-widest text-accent-secondary pr-2">
-            — <cite class="not-italic text-ink font-bold">{data.quoteSource}</cite>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <span class="font-tibetan text-base text-gold font-bold block drop-shadow-sm">
+                འཇམ་དཔལ་རྣམ་གྲོལ་ཆོས་ཀྱི་རྒྱལ་མཚན།
+              </span>
+              <span class="text-xs text-white/90 font-medium block">
+                Jampal Namdrol Chökyi Gyaltsen
+              </span>
+            </div>
           </div>
-        )
-      }
+
+          <figcaption class="p-4 sm:p-5 bg-surface border-t border-border/60 text-xs text-muted leading-relaxed">
+            {data.photoCaption || "H.H. 9th Khalkha Jetsun Dhampa Jampal Namdrol (1933–2012), recognized reincarnation of Jetsun Tāranātha and Supreme Head of the Jonang tradition."}
+          </figcaption>
+        </div>
+      </figure>
+
+      <!-- Right Column: Lineage Narrative & Facets -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <div class="space-y-2">
+          <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight m-0">
+            H.H. 9th Khalkha Jetsun Dhampa
+          </h2>
+          <p class="text-xs sm:text-sm text-accent font-semibold uppercase tracking-wider">
+            Reincarnation of Jetsun Tāranātha & Jonang Lineage Head (1997–2012)
+          </p>
+        </div>
+
+        <div class="callout border-l-4 border-l-accent-secondary bg-surface p-6 sm:p-7 rounded-2xl shadow-xs space-y-4">
+          {paragraphs.map((paragraph: string, index: number) => (
+            <p
+              class:list={[
+                "m-0 text-sm sm:text-base leading-relaxed text-ink font-display",
+                index === 0 && "drop-cap text-base sm:text-lg",
+              ]}
+              set:html={paragraph}
+            />
+          ))}
+        </div>
+
+        <!-- 3 Lineage Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          <div class="p-3.5 rounded-xl bg-surface border border-border space-y-1">
+            <span class="text-xs font-mono font-bold text-accent block uppercase tracking-wide">1997 Recognition</span>
+            <p class="text-[11px] text-muted leading-snug m-0">
+              Appointed head of the Jonang tradition in exile by the 14th Dalai Lama.
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-surface border border-border space-y-1">
+            <span class="text-xs font-mono font-bold text-accent-secondary block uppercase tracking-wide">Mongolian Line</span>
+            <p class="text-[11px] text-muted leading-snug m-0">
+              9th Bogd Gegeen, maintaining the lineage bridge founded by Zanabazar.
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-surface border border-border space-y-1">
+            <span class="text-xs font-mono font-bold text-accent-tertiary block uppercase tracking-wide">Doctrinal Seat</span>
+            <p class="text-[11px] text-muted leading-snug m-0">
+              Preserved Shentong Madhyamaka and Kālacakra Six Yogas transmission.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pathway link -->
+        <div class="pt-2">
+          <a
+            href="/teachers"
+            class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-accent hover:text-accent-hover transition-colors group"
+          >
+            <span>View Resident Masters & Abbot Succession</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
