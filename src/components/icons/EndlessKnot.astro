@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+  size?: number | string;
+}
+
+const { class: className = "w-8 h-8 text-gold", size = 32 } = Astro.props;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="3"
+  stroke-linejoin="round"
+  stroke-linecap="round"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path d="M50 15 L85 50 L50 85 L15 50 Z" />
+  <path d="M50 30 L70 50 L50 70 L30 50 Z" />
+  <path d="M35 35 L65 65" />
+  <path d="M65 35 L35 65" />
+  <path d="M50 15 L50 30" />
+  <path d="M50 70 L50 85" />
+  <path d="M15 50 L30 50" />
+  <path d="M70 50 L85 50" />
+</svg>

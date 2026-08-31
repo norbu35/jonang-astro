@@ -1,109 +1,222 @@
 ---
-const treatises = [
-  { name: "Pramana", subject: "Valid Cognition & Epistemology", author: "Dignaga & Dharmakirti" },
-  { name: "Prajnaparamita", subject: "Perfection of Wisdom & Bodhisattva Paths", author: "Maitreya / Asanga" },
-  { name: "Madhyamaka", subject: "Middle Way & Definitive Shentong View", author: "Nagarjuna / Dolpopa" },
-  { name: "Abhidharma", subject: "Phenomenology, Mind Factors & Cosmology", author: "Vasubandhu" },
-  { name: "Vinaya", subject: "Monastic Ethics, Discipline & Vows", author: "Gunaprabha" },
+import Dharmachakra from "../icons/Dharmachakra.astro";
+
+const syllabusStages = [
+  {
+    stage: "Stage 01",
+    years: "Years 1 – 4",
+    title: "Foundational Languages & Memorization",
+    tibetan: "གཞི་རིམ་བསླབ་གཞི།",
+    curriculum: "Tibetan orthography (Uchen/Umey calligraphy), classical Tibetan grammar (Sum rtags), ritual memorization, conversational English, Hindi, and basic arithmetic.",
+    focus: "Literacy & Memorization",
+  },
+  {
+    stage: "Stage 02",
+    years: "Years 5 – 8",
+    title: "Epistemology, Logic & Dialectics",
+    tibetan: "ཚད་མ་དང་བསྡུས་གྲྭ།",
+    curriculum: "Collected Topics (bsdus grwa), Mind & Awareness (lorig), Signs & Reasoning (tarik), and Buddhist Epistemology (Pramana) through rigorous daily debating courtyard assemblies.",
+    focus: "Debate & Dialectics",
+  },
+  {
+    stage: "Stage 03",
+    years: "Years 9 – 14",
+    title: "The Five Great Treatises & Shentong",
+    tibetan: "གཞུང་ཆེན་བཀའ་པོད་ལྔ།",
+    curriculum: "Mastery of Prajnaparamita, Madhyamaka, Abhidharma, Vinaya, alongside Dolpopa’s 'Mountain Doctrine' and definitive Shentong commentaries.",
+    focus: "Scholastic Philosophy",
+  },
+  {
+    stage: "Stage 04",
+    years: "Years 15 – 18",
+    title: "Ritual Arts, Music & Solitary Retreat",
+    tibetan: "དཀྱིལ་ཆོག་དང་སྒྲུབ་པ།",
+    curriculum: "Sacred sand mandala drafting, ritual instruments (dungchen, gyaling, nga, rolmo), sacred cham mask dance, culminating in the 3.5-year solitary Kalachakra retreat.",
+    focus: "Tantra & Realization",
+  },
+];
+
+const fiveTreatises = [
+  {
+    title: "Pramāṇa (Epistemology & Logic)",
+    tibetan: "ཚད་མ།",
+    text: "Dharmakīrti’s Pramāṇavārttika (Commentary on Valid Cognition)",
+    desc: "Rigorous training in valid cognition, formal syllogisms, logic, and perception to refute fallacies and establish rational discernment.",
+  },
+  {
+    title: "Prajñāpāramitā (Perfection of Wisdom)",
+    tibetan: "ཕར་ཕྱིན།",
+    text: "Maitreya’s Abhisamayālaṅkāra (Ornament of Realization)",
+    desc: "Detailed mapping of the bodhisattva grounds (bhumis), spiritual paths (margas), and realizations leading to omniscience.",
+  },
+  {
+    title: "Madhyamaka (The Middle Way)",
+    tibetan: "དབུ་མ།",
+    text: "Candrakīrti’s Madhyamakāvatāra & Dolpopa’s Mountain Doctrine",
+    desc: "Deconstructs all extremes of eternalism and nihilism, presenting the definitive union of freedom from fabrications and primordial luminous awareness.",
+  },
+  {
+    title: "Abhidharma (Cosmology & Psychology)",
+    tibetan: "མངོན་པ།",
+    text: "Vasubandhu’s Abhidharmakośa (Treasury of Higher Knowledge)",
+    desc: "Systematic analysis of mental factors, consciousness, karma, cosmology, and the mechanics of samsaric rebirth.",
+  },
+  {
+    title: "Vinaya (Monastic Ethics & Discipline)",
+    tibetan: "འདུལ་བ།",
+    text: "Guṇaprabha’s Vinayasūtra (Root Discipline)",
+    desc: "Detailed study of individual liberation vows (Pratimoksha), monastic jurisprudence, and community ethical integrity.",
+  },
 ];
 
 const ritualArts = [
-  { name: "Liturgical Chanting (dbyangs)", desc: "Mastering deep, resonant tonal cadences of the ancient Jonang melodic lineage." },
-  { name: "Monastic Instrumentation", desc: "Training in long horn (dungchen), oboe (gyaling), frame drum (nga), and cymbals (silnyen/rolmo)." },
-  { name: "Sand Mandala Drafting", desc: "Complex geometric measurements and mineral sand placement for the Kalachakra mandala." },
-  { name: "Sacred Cham Choreography", desc: "Ritual religious dance performed during major prayer festivals and annual assemblies." },
+  {
+    name: "Liturgical Instruments",
+    tibetan: "རོལ་མོ་དང་དུང་རྒྱ།",
+    items: "Dungchen (long horns), Gyaling (reed oboes), Nga (ceremonial frame drums), and Rolmo / Silnyen (cymbals).",
+  },
+  {
+    name: "Sacred Sand Mandala",
+    tibetan: "རྡུལ་ཚོན་དཀྱིལ་འཁོར།",
+    items: "Geometrical drafting and mineral sand placement for the Kalachakra and peaceful/wrathful mandalas.",
+  },
+  {
+    name: "Sacred Chām Dance",
+    tibetan: "འཆམ་གར།",
+    items: "Ritual mask dances embodying protective deities and lineage protectors, performing meditative bodily yoga.",
+  },
+  {
+    name: "Butter Sculptures (Torma)",
+    tibetan: "གཏོར་མ་བཅའ་བཟོ།",
+    items: "Intricate symbolic offerings hand-sculpted from roasted barley flour and colored butter.",
+  },
 ];
 ---
 
 <div class="space-y-12">
-  <!-- Introductory Lead -->
+  <!-- Educational Mission Header -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
     <div class="badge badge-crimson">
       <span class="badge-dot"></span>
-      18-Year Curriculum
+      Monastic Syllabus
     </div>
 
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
-      Scholastic Treatises, Ritual Arts & Meditative Retreat
+      The 18-Year Progressive Monastic Curriculum
     </h2>
 
     <p class="lead text-base sm:text-lg text-muted">
-      The monastic curriculum at Main Jonang Takten Phuntsok Choeling integrates classical Buddhist scholasticism, tantric ritual arts, and foundational modern education across an eighteen-year progressive syllabus.
+      Main Jonang Takten Phuntsok Choeling provides a comprehensive 18-year curriculum integrating Tibetan classical grammar, Buddhist dialectics, the Five Great Treatises, sacred ritual arts, and multi-year solitary retreat.
     </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+      <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
+        <span class="text-xs font-semibold text-accent uppercase block">Duration</span>
+        <span class="text-2xl font-display font-bold text-ink block">18 Years</span>
+        <span class="text-[11px] text-muted block">Primary through Acharya</span>
+      </div>
+      <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
+        <span class="text-xs font-semibold text-accent-secondary uppercase block">Sangha Body</span>
+        <span class="text-2xl font-display font-bold text-ink block">~120 Monks</span>
+        <span class="text-[11px] text-muted block">100% Tuition-Free Support</span>
+      </div>
+      <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
+        <span class="text-xs font-semibold text-accent-tertiary uppercase block">Culmination</span>
+        <span class="text-2xl font-display font-bold text-ink block">3.5 Years</span>
+        <span class="text-[11px] text-muted block">Solitary Kalachakra Retreat</span>
+      </div>
+    </div>
   </div>
 
-  <!-- 1. The Five Great Treatises -->
+  <!-- Interactive 18-Year Roadmap Timeline -->
   <div class="space-y-6">
-    <div class="badge badge-saffron">
-      <span class="badge-dot"></span>
-      Scholastic Core
+    <div class="flex items-center gap-3">
+      <Dharmachakra class="w-7 h-7 text-accent-secondary" />
+      <h3 class="text-2xl font-display text-ink m-0">
+        The Four Academic Epochs
+      </h3>
     </div>
 
-    <h3 class="text-2xl font-display text-ink">
-      The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
-    </h3>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
-        treatises.map((t) => (
-          <div class="surface-card p-5 space-y-2 border-t-4 border-t-accent">
-            <h4 class="font-display text-lg font-bold text-ink">{t.name}</h4>
-            <p class="text-xs font-semibold text-accent uppercase tracking-wider">{t.subject}</p>
-            <p class="text-xs text-muted">Root Masters: {t.author}</p>
+        syllabusStages.map((s) => (
+          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift">
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs font-mono text-muted">
+                <span class="font-bold text-accent">{s.stage}</span>
+                <span class="text-accent-secondary font-semibold font-mono">{s.years}</span>
+              </div>
+              <h4 class="font-display text-lg font-bold text-ink leading-snug">{s.title}</h4>
+              <span class="text-xs font-tibetan text-accent-secondary font-bold block">{s.tibetan}</span>
+              <p class="text-xs text-muted leading-relaxed pt-1">{s.curriculum}</p>
+            </div>
+            <div class="pt-3 border-t border-border text-[11px] font-semibold uppercase tracking-wider text-accent">
+              {s.focus}
+            </div>
           </div>
         ))
       }
     </div>
   </div>
 
-  <!-- 2. Ritual Arts & Disciplines -->
+  <!-- The Five Great Treatises -->
   <div class="surface-card p-6 sm:p-8 space-y-6">
-    <div class="badge badge-lapis">
+    <div class="badge badge-saffron">
       <span class="badge-dot"></span>
-      Liturgical Disciplines
+      Dialectical Corpus
     </div>
 
     <h3 class="text-2xl font-display text-ink font-normal">
-      Ritual Arts, Calligraphy & Sacred Music
+      The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
     </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        ritualArts.map((art) => (
-          <div class="p-4 rounded-xl bg-surface-subtle border border-border space-y-1">
-            <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
-            <p class="text-xs sm:text-sm text-muted leading-relaxed">{art.desc}</p>
+        fiveTreatises.map((t) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 shadow-xs">
+            <div class="flex justify-between items-start">
+              <h4 class="font-display text-base font-bold text-ink">{t.title}</h4>
+              <span class="text-xs font-tibetan text-accent-secondary font-bold">{t.tibetan}</span>
+            </div>
+            <p class="text-xs font-semibold text-accent">{t.text}</p>
+            <p class="text-xs text-muted leading-relaxed">{t.desc}</p>
           </div>
         ))
       }
     </div>
   </div>
 
-  <!-- 3. Meditative Retreat Track -->
-  <div class="surface-card p-6 sm:p-8 space-y-4">
+  <!-- Sacred Liturgical Arts & Instruments -->
+  <div class="space-y-6">
+    <div class="badge badge-lapis">
+      <span class="badge-dot"></span>
+      Tantric Arts & Ritual Crafts
+    </div>
+
+    <h3 class="text-2xl font-display text-ink font-normal">
+      Liturgical Arts & Sacred Music
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        ritualArts.map((art) => (
+          <div class="p-6 rounded-xl bg-surface border border-border space-y-2 shadow-xs">
+            <div class="flex justify-between items-center mb-1">
+              <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
+            </div>
+            <span class="text-xs font-tibetan text-accent font-semibold block">{art.tibetan}</span>
+            <p class="text-xs text-muted leading-relaxed">{art.items}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Meditative Retreat Track -->
+  <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
     <h3 class="text-2xl font-display text-ink">Intensive 3.5-Year Solitary Retreat</h3>
     <p class="text-sm sm:text-base text-muted leading-relaxed">
       Senior monks who have completed the requisite scholastic foundations enter the dedicated retreat center for a minimum <strong>three-and-a-half-year retreat</strong>. This intensive period is dedicated entirely to Generation Stage deity yoga, the Three Isolations dark retreat, and the completion-stage <strong>Six Yogas of the Kalachakra Tantra</strong> under the daily direction of the retreat master.
     </p>
-  </div>
-
-  <!-- 4. Community Demographics -->
-  <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
-    <div class="badge badge-neutral mb-2">Resident Sangha</div>
-    <h3 class="text-2xl font-display text-ink">Student Demographics & Care</h3>
-    <p class="text-sm sm:text-base text-muted leading-relaxed">
-      The monastery accommodates approximately <strong>120 resident students and staff members</strong>:
-    </p>
-    <ul class="text-xs sm:text-sm text-muted space-y-2 list-none p-0">
-      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
-        <strong>Assam & Mon Tawang (~70 students):</strong> Monks from remote Himalayan border regions where transportation and educational access are limited.
-      </li>
-      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
-        <strong>Outer Mongolia (~30 students):</strong> Monks with historical ties to the Jonang lineage of Jetsun Taranatha, including 12 young orphans aged 6–18 supported under full monastic care.
-      </li>
-      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
-        <strong>Tibet (~20 monks):</strong> Monks from Tibet who have arrived to study classical Jonang philosophy and practice freely in exile.
-      </li>
-    </ul>
   </div>
 </div>

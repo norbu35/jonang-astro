@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+  size?: number | string;
+}
+
+const { class: className = "w-8 h-8 text-accent", size = 32 } = Astro.props;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  fill="none"
+  stroke="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <!-- Central Blossom -->
+  <path d="M50 82 C50 82, 25 58, 30 35 C35 22, 50 18, 50 18 C50 18, 65 22, 70 35 C75 58, 50 82, 50 82 Z" fill="currentColor" fill-opacity="0.15" stroke-width="2" />
+  
+  <!-- Left Petals -->
+  <path d="M50 82 C50 82, 12 50, 8 32 C4 14, 30 22, 50 42" stroke-width="2" stroke-linecap="round" />
+  <path d="M50 82 C50 82, 4 64, 4 46 C4 28, 22 32, 40 52" stroke-width="1.75" stroke-linecap="round" />
+  
+  <!-- Right Petals -->
+  <path d="M50 82 C50 82, 88 50, 92 32 C96 14, 70 22, 50 42" stroke-width="2" stroke-linecap="round" />
+  <path d="M50 82 C50 82, 96 64, 96 46 C96 28, 78 32, 60 52" stroke-width="1.75" stroke-linecap="round" />
+  
+  <!-- Calyx Base Dot -->
+  <circle cx="50" cy="84" r="3.5" fill="currentColor" stroke="none" />
+</svg>

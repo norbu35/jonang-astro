@@ -10,6 +10,8 @@ import SacredCenterpiece from "../components/SacredCenterpiece.astro";
 import HeroSection from "../layouts/HeroSection.astro";
 import ProminenceSection from "../layouts/ProminenceSection.astro";
 import DonateSection from "../layouts/DonateSection.astro";
+import Dharmachakra from "../components/icons/Dharmachakra.astro";
+import LotusFlower from "../components/icons/LotusFlower.astro";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
 import teachingImage from "../assets/images/lecture.webp";
@@ -20,48 +22,62 @@ import riteSutraImage from "../assets/images/rite-sutra.webp";
 
 import "../../base.css";
 
-const pillars = [
+const historicalTimeline = [
   {
-    title: "Kalachakra lineage",
-    body:
-      "Jonang became the principal institutional home of the Dro lineage of the Kalachakra Tantra and its completion-stage yogas.",
+    era: "13th – 14th Century",
+    title: "Consolidation in Jomonang Valley",
+    desc: "Kunpang Tukje Tsondru gathers the Kalachakra transmissions of the Dro lineage and founds the sacred retreat hermitage at Jomonang.",
   },
   {
-    title: "Zhentong philosophy",
-    body:
-      "The tradition is known for its Great Madhyamaka articulation of other-emptiness, presenting Buddha-nature as luminous, present, and empty of adventitious obscurations.",
+    era: "1292 – 1361",
+    title: "Dolpopa & the Great Kumbum",
+    desc: "Kunchen Dolpopa Sherab Gyaltsen constructs the Monumental Kumbum of Jomonang and composes 'Mountain Doctrine' (Ri chos nges don rgya mtsho), defining the Shentong Great Madhyamaka.",
   },
   {
-    title: "Survival and resurgence",
-    body:
-      "Though suppressed in Central Tibet during the seventeenth century, Jonang survived in eastern Tibetan regions and now re-emerges globally through study, retreat, and teaching.",
+    era: "1575 – 1634",
+    title: "Jetsun Taranatha’s Renaissance",
+    desc: "The omniscient historian and tantric master revitalizes the school, establishes Takten Damcho Ling Monastery, and composes definitive Six Yogas meditation manuals.",
+  },
+  {
+    era: "17th – 20th Century",
+    title: "Suppression & Eastern Preservation",
+    desc: "Following political displacement in Central Tibet, the lineage is safeguarded through remote sanctuary networks in Amdo and Dzamthang.",
+  },
+  {
+    era: "1960s – Present",
+    title: "Exile Re-emergence & Recognition",
+    desc: "Lama Jinpa Gyatso establishes the Shimla seat; in 1990 His Holiness the 14th Dalai Lama formally bestows the title Main Jonang Takten Phuntsok Choeling.",
   },
 ];
 
-const pathways = [
+const portals = [
   {
     href: STATIC_PAGE_PATHS.aboutUs,
-    label: "The Monastery",
-    body:
-      "Read the story of Main Jonang Takten Phuntsok Choeling in Shimla and its role as a living center in exile.",
+    label: "The Living Monastery",
+    tibetan: "དགོན་པ།",
+    body: "The community in Sanjauli, Shimla: succession of lineage abbots, resident sangha, and Himalayan borderland students.",
+    badge: "Community & Lineage",
   },
   {
     href: STATIC_PAGE_PATHS.jonangDoctrine,
-    label: "The Jonang Tradition",
-    body:
-      "Explore the historical roots, philosophical identity, and modern resurgence of the Jonang school.",
+    label: "The Shentong Doctrine",
+    tibetan: "གཞན་སྟོང་།",
+    body: "The Three Turnings of the Dharma Wheel, Buddha-nature (Tathagatagarbha), and the definitive Other-Emptiness view.",
+    badge: "Philosophy",
   },
   {
     href: STATIC_PAGE_PATHS.kalachakra,
-    label: "Kalachakra Practice",
-    body:
-      "Follow the distinctive place of Kalachakra in Jonang training, meditation, and subtle-body yogic practice.",
+    label: "The Kalachakra Path",
+    tibetan: "དུས་ཀྱི་འཁོར་ལོ།",
+    body: "The unbroken Dro lineage: 100k preliminary accumulations, dark retreat isolations, and the Six-fold Vajrayoga (Jordruk).",
+    badge: "Tantric Practice",
   },
   {
     href: STATIC_PAGE_PATHS.curriculum,
-    label: "Curriculum",
-    body:
-      "See how scholastic study, ritual training, retreat, and modern education are held together in one path of formation.",
+    label: "18-Year Syllabus",
+    tibetan: "བསླབ་གཞི།",
+    body: "From Tibetan literacy and the Five Great Treatises to sacred sand mandalas, liturgical music, and multi-year retreat.",
+    badge: "Education",
   },
 ];
 ---
@@ -73,100 +89,129 @@ const pathways = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Discover the Jonang tradition through its philosophy, Kalachakra lineage, living monastery in Shimla, and modern resurgence across Tibet, India, Mongolia, and the wider world."
+      content="Main Jonang Takten Phuntsok Choeling — The primary seat of the Jonang tradition in exile. Preserving the definitive Shentong philosophy and the unbroken Kalachakra Six Yogas."
     />
     <meta
       name="keywords"
-      content="Jonang, Tibetan Buddhism, Kalachakra, Zhentong, Shimla monastery"
+      content="Jonang, Tibetan Buddhism, Kalachakra, Shentong, Shimla monastery, Dolpopa, Taranatha"
     />
-    <title>Jonang Monastery</title>
+    <title>Main Jonang Takten Phuntsok Choeling | Tibetan Buddhist Monastery</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta
-      property="og:title"
-      content="Main Jonang Takten Phuntsok Choeling"
-    />
+    <meta property="og:title" content="Main Jonang Takten Phuntsok Choeling" />
     <meta property="og:site_name" content="Jonang Monastery" />
     <meta property="og:url" content="https://jonang.in" />
     <meta
       property="og:description"
-      content="A curated introduction to the Jonang tradition, its Kalachakra transmissions, philosophical heritage, and living monastic culture in Shimla."
+      content="The central seat of the Jonang lineage in exile: profound Shentong philosophy, Kalachakra completion stage, and monastic training in Shimla, India."
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://jonang.in/logo512x512.jpg"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@jonang" />
-    <meta
-      name="twitter:title"
-      content="Main Jonang Takten Phuntsok Choeling"
-    />
-    <meta
-      name="twitter:description"
-      content="A living refuge for the Jonang tradition, bringing together history, doctrine, Kalachakra practice, and contemporary monastic study."
-    />
-    <meta
-      name="twitter:image"
-      content="https://jonang.in/logo512x512.jpg"
-    />
+    <meta property="og:image" content="https://jonang.in/logo512x512.jpg" />
   </head>
   <body>
     <Header />
     <HeroSection />
+    
     <main>
+      <!-- I. Highlighted Lineage Head Blessing Showcase -->
       <ProminenceSection />
+
       <AnimatedDivider type="knot" />
+
+      <!-- II. Narrative Chapter 1: The Living Lineage Orientation -->
       <section class="section-padding reveal-on-scroll">
         <div class="page-stack">
           <div class="editorial-intro">
             <div>
-              <h2>A lineage nearly lost, still teaching in full voice</h2>
-              <p class="editorial-lede artisan-dropcap">
-                The Jonang tradition preserves one of Tibetan Buddhism's most
-                distinctive unions of philosophy and tantric practice: the
-                Zhentong view of luminous Buddha-nature and the complete Dro
-                lineage of the Kalachakra system.
+              <div class="badge badge-crimson mb-3">
+                <span class="badge-dot"></span>
+                The Definitive Middle Way
+              </div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight">
+                An Unbroken Lineage of Realization & Philosophy
+              </h2>
+              <p class="editorial-lede artisan-dropcap text-base sm:text-lg text-muted mt-4">
+                The Jonang tradition holds a singular place in Tibetan Buddhism, uniquely safeguarding the definitive Other-Emptiness (<em>Shentong</em>) view of primordial Buddha-nature and the complete completion-stage yogas of the Kalachakra Tantra.
               </p>
-              <p>
-                For centuries many believed the school had disappeared after the
-                upheavals of the seventeenth century. It survived instead in the
-                mountain regions of eastern Tibet, re-emerged in India and
-                Mongolia, and today continues through monasteries, retreat
-                centers, scholars, and teachers serving a global community.
+              <p class="text-ink">
+                Once assumed extinct following 17th-century political suppression in Central Tibet, the lineage persevered through resilient monastic sanctuaries in Amdo and Kham. Today, it flourishes once again in exile at Sanjauli, Shimla, and across international communities.
               </p>
             </div>
-            <aside class="editorial-panel">
-              <h3 class="mt-0">Why Jonang matters now</h3>
-              <ul class="editorial-checklist">
-                <li>Home of the complete Kalachakra completion-stage lineage</li>
-                <li>Known for a rigorous articulation of other-emptiness</li>
-                <li>Historically suppressed, now publicly resurgent</li>
-                <li>Alive today in Shimla, eastern Tibet, Mongolia, and beyond</li>
+            
+            <aside class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
+              <div class="flex items-center gap-3 text-accent-secondary">
+                <Dharmachakra class="w-8 h-8" />
+                <h3 class="m-0 text-xl font-display text-ink">Core Inheritances</h3>
+              </div>
+              <ul class="space-y-3 list-none p-0 m-0 text-sm text-muted">
+                <li class="flex items-start gap-2">
+                  <span class="text-accent font-bold mt-0.5">•</span>
+                  <span><strong>Kalachakra Vajrayoga:</strong> Complete Dro lineage completion-stage system.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent font-bold mt-0.5">•</span>
+                  <span><strong>Definitive Shentong:</strong> Non-dual luminous wisdom free of adventitious defilements.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-accent font-bold mt-0.5">•</span>
+                  <span><strong>Living Himalayan Seat:</strong> Comprehensive 18-year education for ~120 monks.</span>
+                </li>
               </ul>
             </aside>
           </div>
+        </div>
+      </section>
 
-          <div class="editorial-grid">
-            {pillars.map((pillar) => (
-              <article class="editorial-card artisan-card">
-                <h3>{pillar.title}</h3>
-                <p>{pillar.body}</p>
-              </article>
-            ))}
+      <!-- III. Narrative Chapter 2: The Living Timeline (Interactive Pecha Cards) -->
+      <section class="section-padding bg-surface-subtle/50 border-y border-border reveal-on-scroll">
+        <div class="max-w-6xl mx-auto space-y-10">
+          <div class="text-center space-y-3 max-w-2xl mx-auto">
+            <div class="badge badge-saffron">
+              <span class="badge-dot"></span>
+              Historical Continuity
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal">
+              Chronicles of the Jonang Lineage
+            </h2>
+            <p class="text-muted text-sm sm:text-base">
+              A historical trajectory spanning from the early Indian mahasiddhas through Tibetan golden summits, preservation in eastern retreats, to modern revival.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+              historicalTimeline.map((item, idx) => (
+                <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift border-t-4 border-t-accent relative overflow-hidden">
+                  <div class="absolute -right-2 -bottom-2 opacity-5 text-accent pointer-events-none">
+                    <LotusFlower size={96} />
+                  </div>
+                  <div>
+                    <span class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-widest block mb-1">
+                      {item.era}
+                    </span>
+                    <h3 class="text-lg font-display font-bold text-ink mb-2">{item.title}</h3>
+                    <p class="text-xs sm:text-sm text-muted leading-relaxed">{item.desc}</p>
+                  </div>
+                  <div class="text-xs font-mono font-semibold text-muted/60 pt-2 border-t border-border/60 flex items-center justify-between">
+                    <span>Phase 0{idx + 1}</span>
+                    <span>༄༅། །</span>
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>
 
       <AnimatedDivider type="lotus" />
 
+      <!-- IV. Narrative Chapter 3: Fresco Mural & Thangka Highlights -->
       <section class="section-padding reveal-on-scroll">
         <FrescoMuralSection
-          title="From Shambhala legend to modern recognition"
-          body="Jonang memory is carried through sacred narrative, historical transmission, and monastic continuity. The result is a tradition that links Indian tantric roots, Tibetan philosophical creativity, periods of persecution, and a modern global renaissance."
+          title="From Ancient Shambhala to Global Renewal"
+          body="Jonang wisdom unites the celestial mandala of Shambhala, Indian tantric treatises, and Tibetan monastic rigor. Preserved through eras of seclusion, this heritage now speaks to scholars, translators, and meditators worldwide."
           imageSrc={riteSutraImage} 
         />
       </section>
@@ -175,121 +220,135 @@ const pathways = [
 
       <section class="section-padding reveal-on-scroll">
         <ThangkaCollageSection
-          title="Kalachakra as cosmology, contemplation, and lived path"
-          body="The Kalachakra cycle is not simply one subject among many. In Jonang it provides the ritual, meditative, and subtle-body framework through which the school understands the relationship between cosmos, body, awareness, and awakening."
+          title="The Wheel of Time: Subtle Body & Cosmos"
+          body="The Kalachakra Tantra is the living pulse of Jonang. Through the Six-fold Vajrayoga (Jordruk), practitioners transform subtle energy channels (nadis), winds (prana), and drops (bindu) into immutable bliss and pristine empty form."
           imageSrc={teachingImage}
-          imageAlt="A monk teaching in a monastery setting"
+          imageAlt="Monastic master conducting a philosophical lecture"
         />
       </section>
 
-      <section class="section-padding bg-surface-muted/70 textured-panel reveal-on-scroll">
-        <div class="page-stack">
-          <div class="editorial-grid--two items-center">
-            <div>
-              <h2>Sacred sites, exile institutions, and global renewal</h2>
-              <p>
-                The tradition's story now stretches from the historical valleys
-                of Central Tibet to the sanctuary networks of Amdo and Kham, the
-                monastery in Shimla, and a renewed presence in Mongolia and the
-                West.
+      <!-- V. Narrative Chapter 4: The Living Community Demographics -->
+      <section class="section-padding bg-surface-subtle/70 border-y border-border reveal-on-scroll">
+        <div class="max-w-6xl mx-auto space-y-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div class="lg:col-span-6 space-y-6">
+              <div class="badge badge-crimson">
+                <span class="badge-dot"></span>
+                The Monastic Community
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight">
+                A Living Sanctuary for Himalayan Monks
+              </h2>
+              <p class="text-sm sm:text-base text-muted leading-relaxed">
+                Main Jonang Takten Phuntsok Choeling in Shimla provides complete room, board, medical care, and tuition-free education for approximately <strong>120 resident monks and staff members</strong> from across the Buddhist world:
               </p>
-              <div class="editorial-grid md:grid-cols-2">
-                <article class="editorial-card artisan-card">
-                  <h3>Dzamthang</h3>
-                  <p>
-                    A major stronghold in eastern Tibet where monasteries,
-                    retreat communities, and Kalachakra festivals preserved the
-                    lineage after suppression.
-                  </p>
-                </article>
-                <article class="editorial-card artisan-card">
-                  <h3>Shimla</h3>
-                  <p>
-                    Main Jonang Takten Phuntsok Choeling now serves as a living
-                    center of study, ritual training, and monastic education in
-                    exile.
-                  </p>
-                </article>
-                <article class="editorial-card artisan-card">
-                  <h3>Mongolia</h3>
-                  <p>
-                    Through the legacy of Zanabazar and the Jebtsundampa line,
-                    Jonang memory intersects with the broader cultural history
-                    of the Mongolian Buddhist world.
-                  </p>
-                </article>
-                <article class="editorial-card artisan-card">
-                  <h3>International study</h3>
-                  <p>
-                    New programs and translations now make teachings once hidden
-                    in isolated regions available to students across the world.
-                  </p>
-                </article>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
+                  <span class="text-2xl font-display font-bold text-accent block">~70</span>
+                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Assam & Tawang</span>
+                  <span class="text-[11px] text-muted block">Himalayan Borderlands</span>
+                </div>
+                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
+                  <span class="text-2xl font-display font-bold text-accent-secondary block">~30</span>
+                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Outer Mongolia</span>
+                  <span class="text-[11px] text-muted block">Incl. 12 young orphans</span>
+                </div>
+                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
+                  <span class="text-2xl font-display font-bold text-accent-tertiary block">~20</span>
+                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Tibet</span>
+                  <span class="text-[11px] text-muted block">Lineage Scholars</span>
+                </div>
               </div>
             </div>
-            <div class="grid gap-5">
-              <div class="editorial-figure">
+
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="surface-card overflow-hidden rounded-2xl">
                 <Image
                   src={landscapeImage}
-                  alt="Monastic buildings set in the Himalayan landscape"
-                  widths={[640, 960, 1280]}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  alt="Monastic buildings nestled in the Shimla mountains"
+                  width={600}
+                  height={450}
+                  class="w-full h-full object-cover"
                 />
               </div>
-              <div class="editorial-figure">
+              <div class="surface-card overflow-hidden rounded-2xl">
                 <Image
                   src={studentsImage}
-                  alt="Young monastic students gathered together"
-                  widths={[640, 960, 1280]}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  alt="Resident young monastic students"
+                  width={600}
+                  height={450}
+                  class="w-full h-full object-cover"
                 />
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
+      <!-- VI. Narrative Chapter 5: Four Sacred Portals -->
       <section class="section-padding reveal-on-scroll">
-        <div class="page-stack">
-          <div class="editorial-quote">
-            <h2 class="mt-0 text-white">Reading the tradition</h2>
-            <p>
-              Jonang is best approached as a living union of history,
-              contemplative training, and philosophical daring, not as an
-              isolated doctrinal curiosity.
+        <div class="max-w-6xl mx-auto space-y-10">
+          <div class="text-center space-y-2 max-w-2xl mx-auto">
+            <div class="badge badge-saffron">
+              <span class="badge-dot"></span>
+              Portals of Discovery
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal">
+              Explore the Tradition
+            </h2>
+            <p class="text-muted text-sm sm:text-base">
+              Journey deeper into the philosophy, meditative yogas, academic curriculum, and institutional history.
             </p>
           </div>
 
-          <div>
-            <h2>Four ways into the site</h2>
-            <div class="editorial-link-grid">
-              {pathways.map((item) => (
-                <article class="editorial-link-card artisan-card">
-                  <a href={item.href}>
-                    <h3>{item.label}</h3>
-                    <p>{item.body}</p>
-                  </a>
-                </article>
-              ))}
-            </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {
+              portals.map((portal) => (
+                <a
+                  href={portal.href}
+                  class="surface-card surface-card-hover p-6 flex flex-col justify-between space-y-4 group block text-left"
+                >
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                      <span class="badge badge-neutral text-[11px]">{portal.badge}</span>
+                      <span class="font-tibetan text-lg text-accent/80 font-bold">{portal.tibetan}</span>
+                    </div>
+                    <h3 class="text-xl font-display text-ink group-hover:text-accent transition-colors">
+                      {portal.label} →
+                    </h3>
+                    <p class="text-xs text-muted leading-relaxed">{portal.body}</p>
+                  </div>
+                  <span class="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Enter Portal <span>→</span>
+                  </span>
+                </a>
+              ))
+            }
           </div>
         </div>
       </section>
 
       <AnimatedDivider type="lotus" />
 
+      <!-- VII. Sacred Centerpiece: Texts, Teachers & Practice Held in Full -->
       <section class="section-padding reveal-on-scroll">
         <SacredCenterpiece
-          title="Texts, teachers, and training still held in full"
-          body="What distinguishes the site today is not only memory of a lost school, but the continuity of living teachers, long-term curriculum, ritual practice, retreat, and translation work."
+          title="Texts, Teachers, and Training Still Held in Full"
+          body="What distinguishes Main Jonang Takten Phuntsok Choeling is not merely the historical memory of a rare tradition, but the continuous living reality of qualified masters, long-term retreats, liturgical disciplines, and comprehensive education."
           imageSrc={libraryImage}
-          imageAlt="Bookshelves and sacred texts in the monastery library"
+          imageAlt="Monastery sacred scripture library"
         />
       </section>
 
       <AnimatedDivider type="knot" />
+
+      <!-- VIII. Monastic Patronage & Support Section -->
       <DonateSection />
     </main>
+    
     <Footer />
     <script>
       import { initScrollReveal } from "../scripts/scrollReveal.js";
@@ -297,3 +356,4 @@ const pathways = [
     </script>
   </body>
 </html>
+

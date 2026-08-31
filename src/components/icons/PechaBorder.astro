@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`relative border-t-2 border-b-2 border-accent py-2 my-6 ${className}`}>
+  <!-- Double gold pin-lines -->
+  <div class="absolute inset-x-0 top-1 border-t border-gold/60 pointer-events-none"></div>
+  <div class="absolute inset-x-0 bottom-1 border-b border-gold/60 pointer-events-none"></div>
+  
+  <!-- Left Corner Knot Ornament -->
+  <div class="absolute -top-2 left-2 text-accent bg-surface px-1">
+    <span class="text-xs font-mono">༄༅། །</span>
+  </div>
+  
+  <!-- Right Corner End Ornament -->
+  <div class="absolute -bottom-2 right-2 text-accent bg-surface px-1">
+    <span class="text-xs font-mono">། །</span>
+  </div>
+
+  <div class="px-6 py-2">
+    <slot />
+  </div>
+</div>

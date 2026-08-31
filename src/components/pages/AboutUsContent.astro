@@ -1,27 +1,53 @@
 ---
 import { Image } from "astro:assets";
+import Dharmachakra from "../icons/Dharmachakra.astro";
 
 import entranceImage from "../../assets/images/main-entrance.webp";
-import studentsImage from "../../assets/images/young-students.webp";
+
+const dalaiLamaVisits = [
+  {
+    year: "1990",
+    event: "Naming & Consecration",
+    desc: "His Holiness formally bestows the title 'Main Jonang Takten Phuntsok Choeling', establishing it as the official seat in exile.",
+  },
+  {
+    year: "1997",
+    event: "Prayer Assembly Blessing",
+    desc: "Presided over extensive liturgical assemblies and gave advice on preserving the unique Dro lineage transmissions.",
+  },
+  {
+    year: "2002",
+    event: "Kalachakra Empowerment",
+    desc: "Conferred the grand Kalachakra initiation, affirming the monastery's vital role in safeguarding completion-stage yogas.",
+  },
+  {
+    year: "2013",
+    event: "Monlam World Peace Prayer",
+    desc: "Blessed the international Jonang Monlam Chenmo assembly for world harmony, lineage longevity, and ethical education.",
+  },
+];
 
 const abbots = [
   {
     years: "1998 – 2008",
     name: "Choeji Nangwa Rinpoche",
+    role: "1st Lineage Abbot",
     note:
-      "First lineage abbot of the monastery, overseeing the formative years of expansion, residency, and curriculum development in India.",
+      "First lineage abbot of the monastery, overseeing the formative years of expansion, residency, and syllabus development in exile.",
   },
   {
     years: "2009 – 2014",
     name: "Geshe Kunga Rinchen",
+    role: "2nd Lineage Abbot",
     note:
-      "Appointed by His Holiness the 14th Dalai Lama as the second abbot, consolidating scriptural study and dialectical debate.",
+      "Appointed by His Holiness the 14th Dalai Lama as the second abbot, consolidating scriptural study and daily debating assemblies.",
   },
   {
     years: "2014 – Present",
     name: "Geshe Kunga Tsamchung",
+    role: "3rd & Current Abbot",
     note:
-      "The current lineage abbot, directing monastic education, ritual observance, long-term retreats, and community welfare.",
+      "The current lineage abbot, directing monastic education, liturgical disciplines, 3.5-year dark retreats, and community welfare.",
   },
 ];
 
@@ -49,25 +75,38 @@ const curriculumPillars = [
       Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla, serves as the central seat of the Jonang tradition in exile, dedicated to preserving the definitive Other-Emptiness (<em>Shentong</em>) philosophy and the unbroken Six Yogas of the Kalachakra Tantra.
     </p>
 
-    <p class="text-ink">
+    <p class="text-ink leading-relaxed">
       The monastery's origins trace back to the late 1960s through the tireless efforts of Lama Jinpa Gyatso. In 1990, His Holiness the 14th Dalai Lama formally bestowed its enduring title—<em>Main Jonang Takten Phuntsok Choeling</em>—establishing it as a recognized home of monastic education. The monastery later developed under the spiritual guidance of the 9th Khalkha Jetsun Dhampa Jampal Namdrol Chokyi Gyaltsen, head of the Jonang tradition until his passing in 2012.
     </p>
   </div>
 
-  <!-- Historical Milestones & Image Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <div class="space-y-4">
-      <div class="badge badge-saffron">
-        <span class="badge-dot"></span>
-        Institutional History
-      </div>
-      <h3 class="text-2xl font-display text-ink">Visits of His Holiness the Dalai Lama</h3>
-      <p class="text-sm sm:text-base text-muted leading-relaxed">
-        His Holiness the 14th Dalai Lama has visited the monastery on four historic occasions: conferring its name in 1990, presiding over sacred prayer assemblies in 1997, conducting a Kalachakra Empowerment in 2002, and blessing the Monlam World Peace Festival in 2013. These visits affirmed the monastery's vital mission to preserve the unique philosophical treatises and meditative yogas of the Jonang masters.
-      </p>
+  <!-- Historical Milestones: Four Visits of Dalai Lama -->
+  <div class="surface-card p-6 sm:p-8 space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Lineage Endorsement
     </div>
 
-    <div class="surface-card overflow-hidden">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Four Historic Visits of His Holiness the 14th Dalai Lama
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+      {
+        dalaiLamaVisits.map((v) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 hover-lift">
+            <span class="text-xl font-display font-bold text-accent block">{v.year}</span>
+            <h4 class="font-display text-base font-bold text-ink">{v.event}</h4>
+            <p class="text-xs text-muted leading-relaxed">{v.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Architecture & Atmosphere -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="surface-card overflow-hidden rounded-2xl">
       <Image
         src={entranceImage}
         alt="Entrance to Main Jonang Takten Phuntsok Choeling in Shimla"
@@ -76,28 +115,40 @@ const curriculumPillars = [
         height={420}
       />
     </div>
+
+    <div class="space-y-4">
+      <div class="badge badge-lapis">
+        <span class="badge-dot"></span>
+        Sanctuary Grounds
+      </div>
+      <h3 class="text-2xl font-display text-ink">Nestled in the Shimla Hills</h3>
+      <p class="text-sm sm:text-base text-muted leading-relaxed">
+        Perched in the forested hills of Sanjauli, Shimla (Himachal Pradesh, India), the monastery provides an ideal contemplative environment insulated from worldly distraction. Here, daily debating assemblies, liturgical ceremonies, scriptural lectures, and long-term dark retreats unfold uninterrupted.
+      </p>
+    </div>
   </div>
 
   <!-- Monastic Abbots Lineage Timeline -->
-  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
-    <div class="badge badge-lapis">
-      <span class="badge-dot"></span>
-      Succession of Abbots
+  <div class="space-y-6">
+    <div class="flex items-center gap-3">
+      <Dharmachakra class="w-7 h-7 text-accent-secondary" />
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Succession of Lineage Abbots (Khenpo Rinpoches)
+      </h3>
     </div>
 
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
-      Lineage Abbots (Khenpo Rinpoches)
-    </h3>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
         abbots.map((abbot) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
-            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider block">
-              {abbot.years}
-            </span>
-            <h4 class="font-display text-lg font-bold text-ink">{abbot.name}</h4>
-            <p class="text-xs text-muted leading-relaxed">{abbot.note}</p>
+          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent hover-lift">
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">
+                {abbot.years}
+              </span>
+              <h4 class="font-display text-xl font-bold text-ink">{abbot.name}</h4>
+              <span class="badge badge-neutral text-[11px] mb-2">{abbot.role}</span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">{abbot.note}</p>
+            </div>
           </div>
         ))
       }
@@ -105,26 +156,44 @@ const curriculumPillars = [
   </div>
 
   <!-- Resident Community & Demographics -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <div class="surface-card overflow-hidden order-2 md:order-1">
-      <Image
-        src={studentsImage}
-        alt="Resident young monastic students gathered together"
-        class="w-full h-auto object-cover"
-        width={640}
-        height={420}
-      />
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-accent-secondary">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Sangha Demographics & Orphan Care
     </div>
 
-    <div class="space-y-4 order-1 md:order-2">
-      <div class="badge badge-crimson">
-        <span class="badge-dot"></span>
-        Sangha Demographics
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      A Living Himalayan Sanctuary
+    </h3>
+
+    <p class="text-sm sm:text-base text-muted leading-relaxed">
+      The monastery currently provides full board, lodging, healthcare, and tuition-free education for approximately <strong>120 resident monks and staff members</strong>:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+        <span class="text-2xl font-display font-bold text-accent block">~70 Monks</span>
+        <h4 class="font-display text-base font-bold text-ink">Assam & Mon Tawang</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          Students from remote Himalayan border communities where educational infrastructure and monastic training access are scarce.
+        </p>
       </div>
-      <h3 class="text-2xl font-display text-ink">A Diverse Himalayan Community</h3>
-      <p class="text-sm sm:text-base text-muted leading-relaxed">
-        The monastery currently provides full board, lodging, healthcare, and tuition-free education for approximately 120 resident monks and staff. The student body includes ~70 monks from Assam and Mon Tawang, ~30 from Mongolia (including 12 orphans supported under full monastic care), and ~20 from Tibet who arrived to study the Jonang lineage freely in exile.
-      </p>
+
+      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+        <span class="text-2xl font-display font-bold text-accent-secondary block">~30 Monks</span>
+        <h4 class="font-display text-base font-bold text-ink">Outer Mongolia (12 Orphans)</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          Upholding the historical legacy of Jetsun Taranatha and Zanabazar. Includes 12 young orphans aged 6–18 raised under full monastic care.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+        <span class="text-2xl font-display font-bold text-accent-tertiary block">~20 Monks</span>
+        <h4 class="font-display text-base font-bold text-ink">Tibet Lineage Scholars</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          Senior practitioners and scholars who journeyed from eastern Tibet to study classical Shentong philosophy and preserve the lineage in exile.
+        </p>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,32 @@
+---
+interface Props {
+  class?: string;
+  size?: number | string;
+}
+
+const { class: className = "w-10 h-10 text-gold", size = 40 } = Astro.props;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 100 60"
+  fill="none"
+  stroke="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path
+    d="M75,35 C80,35 88,40 88,48 C88,54 82,58 75,58 L25,58 C15,58 8,50 8,40 C8,30 18,25 25,28 C28,18 38,12 48,16 C55,8 70,8 78,18 C84,18 90,24 90,32 C90,34 88,35 85,35 Z"
+    fill="currentColor"
+    fill-opacity="0.12"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M30,42 C38,40 45,46 52,44 C60,42 68,46 72,44"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+</svg>

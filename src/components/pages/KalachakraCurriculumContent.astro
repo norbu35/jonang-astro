@@ -1,54 +1,92 @@
 ---
+import Dharmachakra from "../icons/Dharmachakra.astro";
+
 const commonPreliminaries = [
-  { step: "01", name: "Refuge & Prostrations", detail: "100,000 accumulations purifying physical obscurations." },
-  { step: "02", name: "Bodhicitta Generation", detail: "100,000 accumulations cultivating altruistic awakening for all beings." },
-  { step: "03", name: "Vajrasattva Purification", detail: "100,000 recitations of the 100-syllable mantra." },
-  { step: "04", name: "Mandala Offerings", detail: "100,000 offerings accumulating vast merit and wisdom." },
-  { step: "05", name: "Guru Yoga", detail: "100,000 supplications unifying practitioner mind with the lineage master." },
+  {
+    step: "01",
+    name: "Refuge & Prostrations",
+    target: "100,000 Accumulations",
+    purification: "Purifies physical negative karma and physical obscurations through full body prostrations.",
+    tibetan: "སྐྱབས་འགྲོ་དང་ཕྱག",
+  },
+  {
+    step: "02",
+    name: "Bodhicitta Generation",
+    target: "100,000 Accumulations",
+    purification: "Cultivates unconditional altruistic aspiration for the awakening of all sentient beings.",
+    tibetan: "སེམས་བསྐྱེད།",
+  },
+  {
+    step: "03",
+    name: "Vajrasattva Mantra",
+    target: "100,000 Recitations",
+    purification: "Purifies verbal obscurations, broken samayas, and mental stains via the 100-syllable mantra.",
+    tibetan: "རྡོར་སེམས་ཡིག་བརྒྱ།",
+  },
+  {
+    step: "04",
+    name: "Mandala Offerings",
+    target: "100,000 Offerings",
+    purification: "Accumulates vast merit and wisdom through the symbolic cosmic offering of the universe.",
+    tibetan: "མཎྜལ་མཆོད་པ།",
+  },
+  {
+    step: "05",
+    name: "Guru Yoga",
+    target: "100,000 Supplications",
+    purification: "Unifies the practitioner’s mind with the enlightened wisdom mind of the root lineage master.",
+    tibetan: "བླ་མའི་རྣལ་འབྱོར།",
+  },
 ];
 
 const sixYogas = [
   {
     num: "1",
-    sanskrit: "Pratyahara",
-    tibetan: "Sor sdud",
+    sanskrit: "Pratyāhāra",
+    tibetan: "Sor sdud (སོར་སྡུད།)",
     name: "Withdrawal",
-    desc: "Drawing sensory consciousness inward from external objects to perceive the ten night and day signs of empty form.",
+    focus: "Sensory Detachment & Empty Signs",
+    desc: "Drawing sensory consciousness inward from external objects to perceive the ten night and day signs of empty form (smoke, mirage, fireflies, lamp, flame, moon, sun, vajra, bindu).",
   },
   {
     num: "2",
-    sanskrit: "Dhyana",
-    tibetan: "Bsam gtan",
+    sanskrit: "Dhyāna",
+    tibetan: "Bsam gtan (བསམ་གཏན།)",
     name: "Meditative Absorption",
-    desc: "Stabilizing unwavering single-pointed concentration upon the arisen empty forms.",
+    focus: "Single-Pointed Stabilization",
+    desc: "Stabilizing unwavering single-pointed concentration upon the arisen empty forms until awareness merges into the deity without distraction.",
   },
   {
     num: "3",
-    sanskrit: "Pranayama",
-    tibetan: "Srog rtsol",
-    name: "Breath Control",
-    desc: "Guiding subtle winds (prana) into the central channel (avadhuti) through vase retention breathing.",
+    sanskrit: "Prāṇāyāma",
+    tibetan: "Srog rtsol (སྲོག་རྩོལ།)",
+    name: "Breath Control & Vital Winds",
+    focus: "Vase Retention into Central Channel",
+    desc: "Guiding subtle winds (prana) into the central channel (avadhuti) through precise vase-retention breathing, arresting coarse respiration.",
   },
   {
     num: "4",
-    sanskrit: "Dharana",
-    tibetan: "'Dzin pa",
+    sanskrit: "Dhāraṇā",
+    tibetan: "'Dzin pa (འཛིན་པ།)",
     name: "Retention",
-    desc: "Binding the subtle winds and drops securely at the six main energy focal points along the central channel.",
+    focus: "Binding Winds at the Six Chakras",
+    desc: "Binding the purified subtle winds and drops securely at the six primary energy centers (chakras) along the central channel.",
   },
   {
     num: "5",
-    sanskrit: "Anusmriti",
-    tibetan: "Rjes dran",
-    name: "Recollection",
-    desc: "Igniting the inner heat (candali / tummo) to blaze through the channels, inducing the experience of sublime unconditioned bliss.",
+    sanskrit: "Anusmṛti",
+    tibetan: "Rjes dran (རྗེས་དྲན།)",
+    name: "Recollection & Inner Heat",
+    focus: "Candali / Tummo & Radiant Bliss",
+    desc: "Igniting the inner heat (candali / tummo) at the navel chakra, melting drops to blaze through the subtle channels and induce unconditioned bliss.",
   },
   {
     num: "6",
-    sanskrit: "Samadhi",
-    tibetan: "Ting nge 'dzin",
+    sanskrit: "Samādhi",
+    tibetan: "Ting nge 'dzin (ཏིང་ངེ་འཛིན།)",
     name: "Meditative Stabilization",
-    desc: "Complete non-dual union of immutable great bliss and pristine empty form, actualizing complete Buddhahood.",
+    focus: "Non-Dual Fruition / Buddhahood",
+    desc: "Complete non-dual union of immutable great bliss (mahasukha) and pristine empty form (sunyata), actualizing full enlightenment in a single lifetime.",
   },
 ];
 ---
@@ -69,71 +107,94 @@ const sixYogas = [
       The Jonang Kalachakra curriculum structures the contemplative path from foundational preliminary accumulations (<em>ngondro</em>) through generation stage deity yoga to the completion-stage Six-fold Vajrayoga (<em>sbyor drug</em>).
     </p>
 
-    <div class="callout my-4 text-sm">
-      <strong>Sacred Lineage Requirement:</strong> This overview documents the institutional training path followed in formal three-year to nine-year solitary retreats. Engaging in these practices requires receiving the Kalachakra empowerment (<em>wang</em>), scriptural transmission (<em>lung</em>), and experiential guidance (<em>tri</em>) directly from a qualified lineage master.
+    <div class="callout my-4 text-sm border-l-4 border-l-accent-secondary bg-surface p-5 rounded-r-xl">
+      <strong>Lineage Transmission Requirement:</strong> This overview documents the institutional training path followed in formal three-year to nine-year solitary retreats. Engaging in these practices requires receiving the Kalachakra empowerment (<em>wang</em>), scriptural transmission (<em>lung</em>), and experiential instruction (<em>tri</em>) directly from a qualified lineage master.
     </div>
   </div>
 
   <!-- I. Common Preliminaries -->
   <div class="space-y-6">
-    <div class="badge badge-saffron">
-      <span class="badge-dot"></span>
-      Phase I: Foundational Accumulations
+    <div class="flex items-center gap-3">
+      <Dharmachakra class="w-7 h-7 text-accent-secondary" />
+      <h3 class="text-2xl font-display text-ink m-0">
+        Phase I: Common Preliminaries (<em>thun mong gi sngon 'gro</em>)
+      </h3>
     </div>
+    <p class="text-sm text-muted">
+      Each candidate must complete 500,000 total preliminary accumulations to purify obscurations and cultivate spiritual momentum:
+    </p>
 
-    <h3 class="text-2xl font-display text-ink">
-      Common Preliminaries (<em>thun mong gi sngon 'gro</em>)
-    </h3>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {
         commonPreliminaries.map((p) => (
-          <div class="p-5 rounded-xl bg-surface border border-border space-y-2">
-            <span class="text-xs font-mono font-bold text-accent">{p.step}</span>
-            <h4 class="font-display text-base font-bold text-ink">{p.name}</h4>
-            <p class="text-xs text-muted leading-relaxed">{p.detail}</p>
+          <div class="surface-card p-6 space-y-3 border-t-4 border-t-accent hover-lift flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-xs font-mono font-bold text-accent">Stage 0{p.step}</span>
+                <span class="text-xs font-tibetan text-accent-secondary font-bold">{p.tibetan}</span>
+              </div>
+              <h4 class="font-display text-lg font-bold text-ink mb-1">{p.name}</h4>
+              <span class="badge badge-saffron text-[11px] mb-2">{p.target}</span>
+              <p class="text-xs text-muted leading-relaxed">{p.purification}</p>
+            </div>
           </div>
         ))
       }
     </div>
   </div>
 
-  <!-- II. Uncommon Preliminaries -->
-  <div class="surface-card p-6 sm:p-8 space-y-6">
+  <!-- II. Uncommon Preliminaries: Deity Yoga & Dark Retreat -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
     <div class="badge badge-lapis">
       <span class="badge-dot"></span>
-      Phase II: Deity Yoga & Dark Retreat
+      Phase II: Uncommon Preliminaries
     </div>
 
-    <h3 class="text-2xl font-display text-ink font-normal">
-      Uncommon Preliminaries (<em>thun mong ma yin pa'i sngon 'gro</em>)
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Deity Generation & Dark Retreat (<em>dben pa gsum</em>)
     </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3">
-        <h4 class="font-display text-lg font-bold text-ink">A. Generation Stage (<em>bskyed rim</em>)</h4>
-        <ul class="text-xs sm:text-sm text-muted space-y-2 list-none p-0">
-          <li class="border-b border-border/60 pb-2"><strong>Condensed Track:</strong> Connate Deity with Consort (<em>lhan skyes</em>) — 1,000,000 mantra recitations.</li>
-          <li class="border-b border-border/60 pb-2"><strong>Medium Track:</strong> Nine-Deity Mind Mandala (<em>lha dgu thugs dkyil</em>) — 1,000,000 recitations.</li>
-          <li><strong>Extensive Track:</strong> Four-Fold Approach & Accomplishment for the complete 636-Deity Mandala (<em>drug brgya so drug</em>) — 10,000,000 mantra recitations across one year.</li>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-6 rounded-2xl bg-surface-subtle border border-border space-y-4">
+        <h4 class="font-display text-xl font-bold text-ink">A. Generation Stage (<em>bskyed rim</em>)</h4>
+        <p class="text-xs text-muted leading-relaxed">
+          Structured into three progressive tracks depending on student capacity and retreat cycle:
+        </p>
+        <ul class="text-xs sm:text-sm text-muted space-y-3 list-none p-0">
+          <li class="p-3 rounded-lg bg-surface border border-border">
+            <strong class="text-ink">1. Condensed Track:</strong> Connate Deity with Consort (<em>lhan skyes</em>) — 1,000,000 mantra recitations.
+          </li>
+          <li class="p-3 rounded-lg bg-surface border border-border">
+            <strong class="text-ink">2. Medium Track:</strong> Nine-Deity Mind Mandala (<em>lha dgu thugs dkyil</em>) — 1,000,000 mantra recitations.
+          </li>
+          <li class="p-3 rounded-lg bg-surface border border-border">
+            <strong class="text-ink">3. Extensive Track:</strong> Four-Fold Approach & Accomplishment for the complete 636-Deity Mandala (<em>drug brgya so drug</em>) — 10,000,000 mantra recitations across one year.
+          </li>
         </ul>
       </div>
 
-      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3">
-        <h4 class="font-display text-lg font-bold text-ink">B. The Three Isolations (<em>dben pa gsum</em>)</h4>
-        <p class="text-xs sm:text-sm text-muted leading-relaxed">
-          Conducted in strict dark retreat (<em>mun khang</em>) to isolate the physical body, ordinary speech, and conceptual mind from external sensory distraction:
-        </p>
-        <div class="grid grid-cols-2 gap-3 pt-2">
-          <div class="p-3 rounded-lg bg-surface text-center border border-border">
-            <span class="text-xs text-muted block">Condensed</span>
-            <span class="font-bold text-ink text-sm">50 Days</span>
-          </div>
-          <div class="p-3 rounded-lg bg-surface text-center border border-border">
-            <span class="text-xs text-muted block">Extended</span>
-            <span class="font-bold text-ink text-sm">100 Days</span>
+      <div class="p-6 rounded-2xl bg-surface-subtle border border-border space-y-4 flex flex-col justify-between">
+        <div>
+          <h4 class="font-display text-xl font-bold text-ink">B. The Three Isolations (<em>dben pa gsum</em>)</h4>
+          <p class="text-xs sm:text-sm text-muted leading-relaxed">
+            Conducted in complete sensory deprivation within specialized dark retreat cells (<em>mun khang</em>). The practitioner isolates the physical body, ordinary speech, and discursive mind:
+          </p>
+          <div class="grid grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl bg-surface text-center border border-border space-y-1">
+              <span class="text-xs font-semibold text-accent uppercase block">Condensed Track</span>
+              <span class="font-display text-2xl font-bold text-ink block">50 Days</span>
+              <span class="text-[11px] text-muted block">Strict Dark Retreat</span>
+            </div>
+            <div class="p-4 rounded-xl bg-surface text-center border border-border space-y-1">
+              <span class="text-xs font-semibold text-accent-secondary uppercase block">Extended Track</span>
+              <span class="font-display text-2xl font-bold text-ink block">100 Days</span>
+              <span class="text-[11px] text-muted block">Full Sensory Isolation</span>
+            </div>
           </div>
         </div>
+        <p class="text-xs text-muted italic">
+          Dark retreat allows the subtle night signs of empty form (smoke, mirages, fireflies) to emerge naturally without coarse visual interference.
+        </p>
       </div>
     </div>
   </div>
@@ -142,24 +203,25 @@ const sixYogas = [
   <div class="space-y-6">
     <div class="badge badge-crimson">
       <span class="badge-dot"></span>
-      Phase III: Primary Practice
+      Phase III: Primary Completion Stage
     </div>
 
-    <h3 class="text-2xl font-display text-ink">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
       The Six-fold Vajrayoga (<em>dngos gzhi sbyor drug</em>)
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         sixYogas.map((yoga) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent">
+          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
                 <span class="font-bold text-accent">Branch 0{yoga.num}</span>
-                <span>{yoga.tibetan}</span>
+                <span class="text-accent-secondary font-semibold">{yoga.tibetan}</span>
               </div>
-              <h4 class="font-display text-lg font-bold text-ink">{yoga.name}</h4>
+              <h4 class="font-display text-xl font-bold text-ink mb-0.5">{yoga.name}</h4>
               <span class="text-xs italic text-muted block mb-2">{yoga.sanskrit}</span>
+              <span class="badge badge-neutral text-[11px] mb-3">{yoga.focus}</span>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">{yoga.desc}</p>
             </div>
           </div>
