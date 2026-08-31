@@ -1,101 +1,112 @@
 ---
 import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
-const firstStops = [
+const keyPillars = [
+  {
+    title: "Emptiness & Buddha-Nature",
+    description:
+      "Every sentient being is endowed with primordial Buddha-nature (Tathagatagarbha). The Jonang view clarifies that enlightenment is not a fabricated mental state, but the intrinsic, luminous nature of awareness revealed when adventitious stains are cleared.",
+  },
+  {
+    title: "The Kalachakra Six Yogas (Jordruk)",
+    description:
+      "Jonang holds the unbroken completion-stage transmission of the Kalachakra Tantra. The six-fold yogic system provides systematic methods for channeling subtle energies (prana, bindu) into direct realization.",
+  },
+  {
+    title: "The Shentong Philosophical View",
+    description:
+      "Systematized by Kunchen Dolpopa Sherab Gyaltsen in the 14th century, the Shentong (Other-Empty) view resolves the relationship between emptiness and luminous awareness across the Mahayana sutras and tantras.",
+  },
+  {
+    title: "Unified Dialectics & Contemplation",
+    description:
+      "Intellectual debate and silent meditation are practiced as mutually reinforcing pillars. Scholastic mastery of epistemology and treatises directly prepares the mind for long-term solitary retreat.",
+  },
+];
+
+const exploratoryPaths = [
   {
     href: STATIC_PAGE_PATHS.aboutUs,
-    title: "The Monastery",
-    body:
-      "Start here if you want to understand the living community in Shimla, its abbots, students, and educational life.",
+    title: "The Monastery & Community",
+    body: "Learn about the living community in Shimla, its resident abbots, Himalayan students, and day-to-day life.",
   },
   {
     href: STATIC_PAGE_PATHS.jonangDoctrine,
-    title: "The Jonang Tradition",
-    body:
-      "Go here for the best high-level overview of history, Zhentong philosophy, suppression, survival, and revival.",
+    title: "The Shentong Doctrine",
+    body: "Explore the Three Turnings of the Dharma Wheel and the definitive Other-Emptiness philosophy.",
   },
   {
     href: STATIC_PAGE_PATHS.kalachakra,
-    title: "Kalachakra Practice",
-    body:
-      "Read this when you want to understand why Jonang is so closely linked with Kalachakra and completion-stage practice.",
+    title: "Kalachakra Practice Path",
+    body: "Read the sequential outline of foundational preliminaries, dark retreats, and Six-fold Vajrayoga.",
   },
   {
     href: STATIC_PAGE_PATHS.curriculum,
-    title: "Curriculum",
-    body:
-      "Use this page to see how study, ritual, retreat, and modern subjects fit together in one monastic path.",
+    title: "18-Year Monastic Syllabus",
+    body: "Discover how classical treatises, Tibetan languages, ritual arts, and modern sciences are integrated.",
   },
 ];
 ---
 
-<div class="page-stack">
-  <section class="editorial-intro">
-    <div>
-      <h2>A first orientation to the Jonang world</h2>
-      <p class="editorial-lede">
-        The Jonang tradition can feel dense at first because it brings together
-        difficult philosophy, advanced tantric practice, and a complicated
-        political history. The simplest way in is to treat it as a living
-        tradition with three defining features.
-      </p>
+<div class="space-y-12">
+  <!-- Introductory Lead -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Orientation
     </div>
-    <aside class="editorial-panel">
-      <h3 class="mt-0">Three things to remember</h3>
-      <ul class="editorial-checklist">
-        <li>Jonang is a complete Tibetan Buddhist school, not a minor appendix</li>
-        <li>It is especially linked with Kalachakra and Zhentong</li>
-        <li>Its modern life is shaped by both survival and resurgence</li>
-      </ul>
-    </aside>
-  </section>
 
-  <section class="editorial-grid">
-    <article class="editorial-card">
-      <h3>History</h3>
-      <p>
-        Jonang emerges clearly in the thirteenth century, flourishes through
-        masters like Dolpopa and Taranatha, and then survives a period of
-        suppression by continuing in eastern Tibetan regions.
-      </p>
-    </article>
-    <article class="editorial-card">
-      <h3>View</h3>
-      <p>
-        The tradition is known for Zhentong, a way of speaking about ultimate
-        reality as empty of obscurations yet radiant with awakened qualities.
-      </p>
-    </article>
-    <article class="editorial-card">
-      <h3>Practice</h3>
-      <p>
-        Jonang is deeply associated with the Kalachakra Tantra, especially its
-        completion-stage yogas and retreat-based contemplative path.
-      </p>
-    </article>
-  </section>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+      Foundational Pillars of the Jonang Tradition
+    </h2>
 
-  <section class="editorial-panel">
-    <h2>How to read this site</h2>
-    <p>
-      If you are new, begin with the broad pages first and only then move into
-      the more technical material. The site is designed so that accessible
-      summaries lead naturally into deeper sections rather than requiring you to
-      master vocabulary at the start.
+    <p class="lead text-base sm:text-lg text-muted">
+      The Jonang tradition is an ancient school of Tibetan Buddhism celebrated for its definitive philosophy of Other-Emptiness (<em>Shentong</em>) and its unbroken practice lineage of the Kalachakra Tantra completion stage.
     </p>
-  </section>
 
-  <section>
-    <h2>Four strong first stops</h2>
-    <div class="editorial-link-grid">
-      {firstStops.map((item) => (
-        <article class="editorial-link-card">
-          <a href={item.href}>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </a>
-        </article>
-      ))}
+    <p class="text-ink">
+      Whether you are exploring Tibetan Buddhism for the first time or deepening your understanding of Madhyamaka philosophy, the Jonang path offers a complete, integrated system combining rigorous scriptural study, dialectical logic, and profound meditative training.
+    </p>
+  </div>
+
+  <!-- Four Pillars Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {
+      keyPillars.map((p, idx) => (
+        <div class="surface-card p-6 space-y-3 border-l-4 border-l-accent">
+          <div class="badge badge-neutral text-xs">Pillar 0{idx + 1}</div>
+          <h3 class="text-xl font-display text-ink font-normal">{p.title}</h3>
+          <p class="text-sm text-muted leading-relaxed">{p.description}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Navigation Pathways -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Recommended Exploration
     </div>
-  </section>
+
+    <h3 class="text-2xl font-display text-ink font-normal">
+      Explore Further
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {
+        exploratoryPaths.map((path) => (
+          <a
+            href={path.href}
+            class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent group transition-all block"
+          >
+            <h4 class="font-display text-lg text-ink group-hover:text-accent font-normal mb-1 transition-colors">
+              {path.title} →
+            </h4>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">{path.body}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </div>

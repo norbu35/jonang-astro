@@ -1,124 +1,123 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import SectionDivider from "../../components/SectionDivider.astro";
-import TitleBanner from "../../components/TitleBanner.astro";
-
-import "../../../base.css";
 ---
 
-<PageLayout title={"Donate"}>
-  <TitleBanner title="Support the Jonang Lineage" />
-
-  <section class="section-padding bg-surface">
-    <div class="mx-auto max-w-4xl relative">
+<PageLayout title="Support the Monastery">
+  <section class="section-padding">
+    <div class="mx-auto max-w-4xl space-y-10">
       
-      {/* Emotional Opening */}
-      <div class="text-center mb-16 md:mb-24">
-        <h2 class="text-3xl font-display font-medium text-ink md:text-4xl mb-8">
-          The Heart of Our Community
+      <!-- Context Callout -->
+      <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+        <div class="badge badge-crimson">
+          <span class="badge-dot"></span>
+          Monastic Sangha Support
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal">
+          Direct Support for Monastic Living & Education
         </h2>
-        <div class="font-quote text-2xl md:text-3xl leading-[1.6] text-ink/85 italic max-w-3xl mx-auto space-y-6">
-          <p>
-            The Jonang Takten Phuntsok Choeling Monastery is a very small, modest monastery of more than one hundred monks. 
-          </p>
-          <p class="text-xl md:text-2xl text-muted">
-            The majority of the monks are refugees from Tibet, India, and Mongolia. 
-            Coming from impoverished families, they are unable to pay for their food, 
-            shelter, or study, and rely entirely upon charitable donations to sustain 
-            their lifelong dedication to meditation and spiritual training.
-          </p>
-        </div>
-      </div>
 
-      <SectionDivider class="section-divider--muted max-w-[200px] mx-auto mb-16 md:mb-24" />
+        <p class="lead text-base sm:text-lg text-muted">
+          Main Jonang Takten Phuntsok Choeling is home to over one hundred monks from Tibet, Mongolia, and the remote Himalayan border regions of India.
+        </p>
 
-      {/* Ways to Donate - Split Cards */}
-      <div class="mb-12 text-center">
-        <h3 class="text-2xl font-display font-medium text-ink md:text-3xl mb-4">
-          Ways to Donate
-        </h3>
-        <p class="text-lg text-muted max-w-2xl mx-auto">
-          We deeply appreciate any contribution towards the upkeep of the monastery, the daily provision of an adequate diet, and essential medical care. 
+        <p class="text-ink">
+          The monastery provides complete room, board, healthcare, and an eighteen-year philosophical and meditative education free of charge to all enrolled students. Many monks arrive from impoverished families or remote communities lacking educational infrastructure, with twelve young orphans from Mongolia under full monastic care.
+        </p>
+
+        <p class="text-ink">
+          The monastery relies entirely on voluntary contributions and charitable patrons to cover the daily costs of nutritious meals, building repairs in the Himalayan climate, winter heating, and medical treatment.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-16">
+      <!-- Methods of Giving Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        {/* Bank Transfer Card */}
-        <div class="editorial-card hover-lift flex flex-col items-center text-center">
-          <div class="h-12 w-12 rounded-full bg-surface-muted ring-1 ring-border/50 flex items-center justify-center mb-6 text-accent">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
-            </svg>
+        <!-- Bank Transfer Card -->
+        <div class="surface-card p-6 sm:p-8 flex flex-col justify-between space-y-6 border-l-4 border-l-accent">
+          <div>
+            <div class="badge badge-saffron mb-4">International & Domestic Wire</div>
+            <h3 class="text-xl sm:text-2xl font-display text-ink mb-2">Direct Bank Transfer</h3>
+            <p class="text-sm text-muted mb-6">
+              Wire donations directly to the official society bank account in India. (Please check with your local bank regarding foreign exchange fees).
+            </p>
+
+            <div class="space-y-3 rounded-lg bg-surface-subtle p-4 border border-border text-sm font-mono">
+              <div class="flex flex-col sm:flex-row sm:justify-between py-1 border-b border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">Account Name</span>
+                <span class="font-semibold text-ink text-right">Jonang Takten Phuntsok Chosling Cultural Society</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">Bank Name</span>
+                <span class="font-semibold text-ink">State Bank of India</span>
+              </div>
+              <div class="flex justify-between items-center py-1 border-b border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">Account No.</span>
+                <span class="font-bold text-accent">4008 4616 933</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">SWIFT Code</span>
+                <span class="font-semibold text-ink">SBININBB104</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">IFSC Code</span>
+                <span class="font-semibold text-ink">SBIN 0000 691</span>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="text-muted text-xs uppercase font-sans font-semibold">Branch Code</span>
+                <span class="font-semibold text-ink">00691</span>
+              </div>
+            </div>
           </div>
-          <h4 class="text-xl font-medium text-ink md:text-2xl mb-3">Bank Transfer</h4>
-          <p class="text-muted text-sm mb-6 flex-1">
-            Wire your donation directly to our bank account in India. Standard international bank charges may apply.
+
+          <p class="text-xs text-muted">
+            After initiating a transfer, please send a brief notification email with your transfer reference to <a href="mailto:office@jonangmonastery.com" class="text-accent underline">office@jonangmonastery.com</a> so we may confirm receipt.
           </p>
-          
-          <div class="w-full bg-surface/50 rounded-xl p-5 text-sm text-ink/80 text-left space-y-2 ring-1 ring-border/20 shadow-inner">
-            <div class="flex justify-between border-b border-border/40 pb-2"><span class="font-semibold text-ink">Name:</span> <span class="text-right ml-4">Jonang Takten Phuntsok Chosling</span></div>
-            <div class="flex justify-between border-b border-border/40 py-2"><span class="font-semibold text-ink">Bank:</span> <span class="text-right ml-4">State Bank of India</span></div>
-            <div class="flex justify-between border-b border-border/40 py-2"><span class="font-semibold text-ink">Account No:</span> <span class="text-right ml-4 font-mono">4008 4616 933</span></div>
-            <div class="flex justify-between border-b border-border/40 py-2"><span class="font-semibold text-ink">SWIFT code:</span> <span class="text-right ml-4 font-mono">SBININBB104</span></div>
-            <div class="flex justify-between border-b border-border/40 py-2"><span class="font-semibold text-ink">IFSC code:</span> <span class="text-right ml-4 font-mono">SBIN 0000 691</span></div>
-            <div class="flex justify-between pt-2"><span class="font-semibold text-ink">Branch code:</span> <span class="text-right ml-4 font-mono">00691</span></div>
-          </div>
         </div>
 
-        {/* Cheque Card */}
-        <div class="editorial-card hover-lift flex flex-col items-center text-center">
-          <div class="h-12 w-12 rounded-full bg-surface-muted ring-1 ring-border/50 flex items-center justify-center mb-6 text-accent">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h4 class="text-xl font-medium text-ink md:text-2xl mb-3">Send a Cheque</h4>
-          <p class="text-muted text-sm mb-6 flex-1">
-            If you wish to post a physical donation to the monastery, please make cheques payable to our cultural society.
-          </p>
-          
-          <div class="w-full bg-surface/50 rounded-xl p-5 text-sm text-ink/80 text-left space-y-3 ring-1 ring-border/20 shadow-inner">
-            <div>
-              <span class="block font-semibold text-ink mb-1">Payable to:</span>
-              Jonang Takten Phuntsok Choeling Cultural Society
+        <!-- Cheque / Postal Donation Card -->
+        <div class="surface-card p-6 sm:p-8 flex flex-col justify-between space-y-6 border-l-4 border-l-accent-secondary">
+          <div>
+            <div class="badge badge-neutral mb-4">Postal Draft</div>
+            <h3 class="text-xl sm:text-2xl font-display text-ink mb-2">Cheque & Postal Delivery</h3>
+            <p class="text-sm text-muted mb-6">
+              Cheques or bank drafts should be drawn in favor of the registered cultural society and mailed to our office address in Shimla.
+            </p>
+
+            <div class="space-y-3 rounded-lg bg-surface-subtle p-4 border border-border text-sm">
+              <div>
+                <span class="text-muted text-xs uppercase font-sans font-semibold block mb-1">Payable To</span>
+                <p class="font-semibold text-ink">Jonang Takten Phuntsok Choeling Cultural Society</p>
+              </div>
+              <div class="pt-2 border-t border-border/60">
+                <span class="text-muted text-xs uppercase font-sans font-semibold block mb-1">Postal Address</span>
+                <address class="not-italic text-ink leading-relaxed font-sans text-sm">
+                  Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery<br />
+                  Sanjauli, Shimla, Himachal Pradesh<br />
+                  PIN: 171006, India
+                </address>
+              </div>
             </div>
-            <div class="pt-2 border-t border-border/40">
-              <span class="block font-semibold text-ink mb-1">Postal Address:</span>
-              Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery,<br/>
-              Sanjauli, Shimla, Himachal Pradesh,<br/>
-              171006, India
+          </div>
+
+          <!-- Contact Coordinates -->
+          <div class="pt-4 border-t border-border">
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-muted mb-2">Direct Monastery Inquiries</h4>
+            <div class="text-sm text-ink space-y-1">
+              <div><strong>Office Telephone:</strong> +91 177 2841410</div>
+              <div><strong>Mobile / Line:</strong> +91 177 2645280</div>
+              <div><strong>Email:</strong> <a href="mailto:office@jonangmonastery.com" class="text-accent hover:underline">office@jonangmonastery.com</a></div>
             </div>
           </div>
         </div>
 
       </div>
 
-      <div class="text-center bg-surface-muted ring-1 ring-border/30 rounded-2xl p-8 md:p-12 mb-8">
-        <h4 class="text-xl font-medium text-ink md:text-2xl mb-4">
-          Contact Us Regarding Your Gift
-        </h4>
-        <p class="mb-8 leading-relaxed text-muted max-w-2xl mx-auto">
-          If you wish to specify how you would like your donation to be used, please contact us. Also, when making a donation via bank transfer, we recommend alerting the monastery via e-mail so that we may confirm receipt.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-ink/90 font-medium">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-            +91 117 2841410
-          </div>
-          <a href="mailto:office@jonangmonastery.com" class="flex items-center gap-2 text-accent hover:text-accent-soft transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            office@jonangmonastery.com
-          </a>
-        </div>
+      <!-- Transparency Note -->
+      <div class="callout text-sm text-muted">
+        <strong>Specific Dedications:</strong> If you wish your contribution to be allocated toward a particular project—such as monk medical care, kitchen provisions, winter heating, or student study materials—please specify your intention in your bank transfer memo or accompanying email. Every donation is used strictly for its designated monastic purpose.
       </div>
 
     </div>
   </section>
 </PageLayout>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>

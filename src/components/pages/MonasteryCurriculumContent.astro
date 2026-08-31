@@ -1,120 +1,109 @@
 ---
-const studyAreas = [
-  "Pramana, Paramita, Madhyamaka, Abhidharma, and Vinaya",
-  "Jonang commentarial traditions and doctrinal interpretation",
-  "Ritual performance, liturgical instruments, and chanting",
-  "Mandala construction, calligraphy, grammar, and poetics",
-  "English, Hindi, mathematics, and physics",
+const treatises = [
+  { name: "Pramana", subject: "Valid Cognition & Epistemology", author: "Dignaga & Dharmakirti" },
+  { name: "Prajnaparamita", subject: "Perfection of Wisdom & Bodhisattva Paths", author: "Maitreya / Asanga" },
+  { name: "Madhyamaka", subject: "Middle Way & Definitive Shentong View", author: "Nagarjuna / Dolpopa" },
+  { name: "Abhidharma", subject: "Phenomenology, Mind Factors & Cosmology", author: "Vasubandhu" },
+  { name: "Vinaya", subject: "Monastic Ethics, Discipline & Vows", author: "Gunaprabha" },
 ];
 
-const path = [
-  {
-    title: "Foundational literacy",
-    body:
-      "Students first need language, memory, discipline, and textual competence. Tibetan language, calligraphy, grammar, and recitation build the base for everything that follows.",
-  },
-  {
-    title: "Scholastic formation",
-    body:
-      "Study expands into the major Buddhist topics and Jonang-specific philosophical frameworks, creating a disciplined capacity for reasoning and debate.",
-  },
-  {
-    title: "Ritual and artistic training",
-    body:
-      "Students learn ritual instruments, chanting, religious dance, and mandala arts so the liturgical body of the tradition can be carried forward accurately.",
-  },
-  {
-    title: "Tantric maturation",
-    body:
-      "The path culminates in retreat-based practice, especially the Kalachakra yogic system, where theory and ritual must become direct contemplative realization.",
-  },
+const ritualArts = [
+  { name: "Liturgical Chanting (dbyangs)", desc: "Mastering deep, resonant tonal cadences of the ancient Jonang melodic lineage." },
+  { name: "Monastic Instrumentation", desc: "Training in long horn (dungchen), oboe (gyaling), frame drum (nga), and cymbals (silnyen/rolmo)." },
+  { name: "Sand Mandala Drafting", desc: "Complex geometric measurements and mineral sand placement for the Kalachakra mandala." },
+  { name: "Sacred Cham Choreography", desc: "Ritual religious dance performed during major prayer festivals and annual assemblies." },
 ];
 ---
 
-<div class="page-stack">
-  <section class="editorial-intro">
-    <div>
-      <h2>A curriculum designed to form scholars, ritual specialists, and practitioners</h2>
-      <p class="editorial-lede">
-        Jonang education is not divided into disconnected tracks. A student is
-        expected to grow through language, philosophy, ritual precision, and
-        contemplative discipline as parts of one integrated formation.
-      </p>
-      <p>
-        The monastery's curriculum therefore combines long scholastic study with
-        artistic, liturgical, and meditative training. The intended result is a
-        practitioner who can read deeply, serve ritually, think clearly, and
-        mature in retreat.
-      </p>
+<div class="space-y-12">
+  <!-- Introductory Lead -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      18-Year Curriculum
     </div>
-    <aside class="editorial-panel">
-      <h3 class="mt-0">A long-form monastic education</h3>
-      <p>
-        The educational model described by the monastery stretches across many
-        years. It is closer to a full monastic formation than to a short course
-        of religious study.
-      </p>
-    </aside>
-  </section>
 
-  <section>
-    <h2>The major domains of training</h2>
-    <ul class="editorial-checklist">
-      {studyAreas.map((area) => (
-        <li>{area}</li>
-      ))}
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+      Scholastic Treatises, Ritual Arts & Meditative Retreat
+    </h2>
+
+    <p class="lead text-base sm:text-lg text-muted">
+      The monastic curriculum at Main Jonang Takten Phuntsok Choeling integrates classical Buddhist scholasticism, tantric ritual arts, and foundational modern education across an eighteen-year progressive syllabus.
+    </p>
+  </div>
+
+  <!-- 1. The Five Great Treatises -->
+  <div class="space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Scholastic Core
+    </div>
+
+    <h3 class="text-2xl font-display text-ink">
+      The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        treatises.map((t) => (
+          <div class="surface-card p-5 space-y-2 border-t-4 border-t-accent">
+            <h4 class="font-display text-lg font-bold text-ink">{t.name}</h4>
+            <p class="text-xs font-semibold text-accent uppercase tracking-wider">{t.subject}</p>
+            <p class="text-xs text-muted">Root Masters: {t.author}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- 2. Ritual Arts & Disciplines -->
+  <div class="surface-card p-6 sm:p-8 space-y-6">
+    <div class="badge badge-lapis">
+      <span class="badge-dot"></span>
+      Liturgical Disciplines
+    </div>
+
+    <h3 class="text-2xl font-display text-ink font-normal">
+      Ritual Arts, Calligraphy & Sacred Music
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        ritualArts.map((art) => (
+          <div class="p-4 rounded-xl bg-surface-subtle border border-border space-y-1">
+            <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">{art.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- 3. Meditative Retreat Track -->
+  <div class="surface-card p-6 sm:p-8 space-y-4">
+    <h3 class="text-2xl font-display text-ink">Intensive 3.5-Year Solitary Retreat</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed">
+      Senior monks who have completed the requisite scholastic foundations enter the dedicated retreat center for a minimum <strong>three-and-a-half-year retreat</strong>. This intensive period is dedicated entirely to Generation Stage deity yoga, the Three Isolations dark retreat, and the completion-stage <strong>Six Yogas of the Kalachakra Tantra</strong> under the daily direction of the retreat master.
+    </p>
+  </div>
+
+  <!-- 4. Community Demographics -->
+  <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
+    <div class="badge badge-neutral mb-2">Resident Sangha</div>
+    <h3 class="text-2xl font-display text-ink">Student Demographics & Care</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed">
+      The monastery accommodates approximately <strong>120 resident students and staff members</strong>:
+    </p>
+    <ul class="text-xs sm:text-sm text-muted space-y-2 list-none p-0">
+      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
+        <strong>Assam & Mon Tawang (~70 students):</strong> Monks from remote Himalayan border regions where transportation and educational access are limited.
+      </li>
+      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
+        <strong>Outer Mongolia (~30 students):</strong> Monks with historical ties to the Jonang lineage of Jetsun Taranatha, including 12 young orphans aged 6–18 supported under full monastic care.
+      </li>
+      <li class="p-3 rounded-lg bg-surface-subtle border border-border">
+        <strong>Tibet (~20 monks):</strong> Monks from Tibet who have arrived to study classical Jonang philosophy and practice freely in exile.
+      </li>
     </ul>
-  </section>
-
-  <section>
-    <h2>How the training unfolds</h2>
-    <ol class="editorial-steps">
-      {path.map((step) => (
-        <li>
-          <h3>{step.title}</h3>
-          <p>{step.body}</p>
-        </li>
-      ))}
-    </ol>
-  </section>
-
-  <section class="editorial-grid--two items-start">
-    <article class="editorial-panel">
-      <h3 class="mt-0">Sutra and reasoning</h3>
-      <p>
-        Jonang students work through the great Buddhist subjects not as
-        historical artifacts, but as tools for clarifying view, refining
-        reasoning, and preparing for the subtler claims of tantra and
-        Buddha-nature doctrine.
-      </p>
-    </article>
-    <article class="editorial-panel">
-      <h3 class="mt-0">Ritual and embodiment</h3>
-      <p>
-        Ritual performance is not secondary decoration. Learning instruments,
-        chant, and mandala construction ensures that the sensory and ceremonial
-        body of the tradition remains accurate and transmissible.
-      </p>
-    </article>
-  </section>
-
-  <section class="editorial-panel editorial-panel--accent">
-    <h2 class="mt-0 text-white">The three-and-a-half-year retreat as culmination</h2>
-    <p class="text-white/88">
-      The curriculum points toward an advanced retreat discipline centered on
-      the Six Yogas of the Kalachakra Tantra. This is what gives the training
-      its distinctive depth: the school does not stop at literacy or ritual
-      competence, but pushes toward contemplative realization.
-    </p>
-  </section>
-
-  <section class="editorial-panel">
-    <h2>A formation rooted in both world knowledge and liberated vision</h2>
-    <p>
-      The curriculum aims to prepare students for two worlds at once: the
-      internal world of doctrine, meditation, and ritual, and the external world
-      of language, education, and practical responsibility. This dual emphasis
-      is one of the reasons the monastery continues to matter in exile.
-    </p>
-  </section>
+  </div>
 </div>

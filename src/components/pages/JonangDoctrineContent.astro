@@ -1,186 +1,126 @@
 ---
-const doctrinalFrames = [
+const threeTurnings = [
   {
-    title: "Kalachakra as institutional heart",
-    body:
-      "Jonang became the principal institutional home of the Dro lineage of the Kalachakra Tantra and its completion-stage yogas.",
+    turning: "First Turning",
+    focus: "Four Noble Truths & Conventional Reality",
+    description:
+      "Taught at Varanasi. Establishes the foundational ethics, causality (karma), impermanence, and selflessness of persons to abandon coarse grasping.",
   },
   {
-    title: "Zhentong as signature view",
-    body:
-      "The school is especially known for articulating ultimate reality as empty of other: free of adventitious obscurations, yet not empty of awakened qualities.",
+    turning: "Second Turning",
+    focus: "Prajnaparamita & Emptiness of Inherent Nature (Rangtong)",
+    description:
+      "Taught at Vulture Peak. Demonstrates that all compounded phenomena, concepts, and conventional entities lack independent, inherent existence.",
   },
   {
-    title: "Survival through remoteness",
-    body:
-      "After suppression in Central Tibet, the lineage survived in the eastern regions of Amdo and Kham, preserving transmissions in monasteries and hermitages.",
+    turning: "Third Turning",
+    focus: "Tathagatagarbha & Definitive Other-Emptiness (Shentong)",
+    description:
+      "Taught at Vaishali and other sites. Elucidates the luminous, uncompounded nature of primordial wisdom (jnana), free from adventitious defilements yet complete with inseparable enlightened qualities.",
   },
 ];
 
-const timeline = [
+const lineagePillars = [
   {
-    year: "Early transmission",
-    title: "From India and Kashmir into Tibet",
-    body:
-      "The Kalachakra corpus, including the Vimalaprabha, entered Tibet through translators and scholars associated with the Dro lineage, laying the foundation for later Jonang identity.",
+    title: "Indian Masters & Transmissions",
+    content:
+      "Rooted in the treatises of Maitreya (Uttaratantra, Mahayanasutralankara) and Asanga, transmitted through Indian Mahasiddhas including Shavaripa, Maitripa, and Ghawadra before crossing the Himalayas.",
   },
   {
-    year: "13th-14th centuries",
-    title: "Institutional emergence in Jomonang",
-    body:
-      "Kunpang Tukje Tsondru consolidated multiple Kalachakra transmissions and established the valley community that gave the tradition its name.",
+    title: "Early Tibetan Translators",
+    content:
+      "Translated and preserved in Tibet by Yumo Mikyo Dorje and Dro Lotsawa Shesrab Drak, who unified the Kalachakra Mulatantra with the definitive Shentong view of ultimate reality.",
   },
   {
-    year: "Dolpopa",
-    title: "A philosophical and architectural summit",
-    body:
-      "Dolpopa Sherab Gyaltsen systematized Zhentong and interpreted the highest Mahayana teachings through a bold synthesis of sutra and tantra.",
+    title: "Dolpopa Sherab Gyaltsen (1292–1361)",
+    content:
+      "The omniscient master who systematically articulated the Shentong Madhyamaka in his masterpiece 'Mountain Doctrine' (Ri chos nges don rgya mtsho) and constructed the Great Kumbum of Jomonang.",
   },
   {
-    year: "Taranatha",
-    title: "A renaissance of history and tantra",
-    body:
-      "Jetsun Taranatha renewed the lineage through scholarship, practice manuals, historical works, and major institutional building projects.",
-  },
-  {
-    year: "17th century and after",
-    title: "Suppression and hidden continuity",
-    body:
-      "Political and sectarian pressures led to the confiscation of institutions and texts, but the lineage endured in eastern Tibetan strongholds.",
-  },
-  {
-    year: "Modern era",
-    title: "Recognition and global resurgence",
-    body:
-      "Jonang re-emerged publicly through the Rimé movement, modern translation projects, monastic restoration, and formal recognition as an independent school.",
+    title: "Jetsun Taranatha (1575–1634)",
+    content:
+      "Prolific historian, tantric adept, and scholar who revitalized the Jonang lineage, founded Takten Damcho Ling Monastery, and composed definitive meditation manuals for the Kalachakra Six Yogas.",
   },
 ];
 ---
 
-<div class="page-stack">
-  <section class="editorial-intro">
-    <div>
-      <h2>An intellectually rigorous school shaped by tantra, philosophy, and survival</h2>
-      <p class="editorial-lede">
-        Jonang occupies a singular place in Tibetan Buddhism. It is at once a
-        contemplative lineage centered on Kalachakra and a philosophical school
-        known for one of Tibet's most contested and creative accounts of
-        ultimate reality.
-      </p>
-      <p>
-        For a long period, outsiders and even many Tibetans assumed the
-        tradition had disappeared entirely. The modern picture is different:
-        Jonang endured through remote monastic networks, has reclaimed public
-        recognition, and now speaks again through monasteries, translations, and
-        global study communities.
-      </p>
+<div class="space-y-12">
+  <!-- Core Philosophical Vision Callout -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Great Madhyamaka
     </div>
-    <aside class="editorial-panel">
-      <h3 class="mt-0">Three orienting ideas</h3>
-      <ul class="editorial-checklist">
-        <li>The lineage grows out of the Kalachakra transmission stream</li>
-        <li>Its signature philosophy is Zhentong, or other-emptiness</li>
-        <li>Its history cannot be understood apart from political suppression and eastern survival</li>
-      </ul>
-    </aside>
-  </section>
 
-  <section>
-    <h2>What marks out the Jonang tradition</h2>
-    <div class="editorial-grid">
-      {doctrinalFrames.map((frame) => (
-        <article class="editorial-card">
-          <h3>{frame.title}</h3>
-          <p>{frame.body}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+      The Shentong (Other-Empty) View of Ultimate Reality
+    </h2>
 
-  <section class="editorial-panel">
-    <h2>Zhentong in plain language</h2>
-    <p>
-      In broad terms, Jonang teaches that relative phenomena are empty in the
-      familiar Madhyamaka sense: contingent, dependent, and lacking inherent
-      self-nature. But when Jonang masters speak of the ultimate, they do not
-      describe it as a mere negation. They describe the ultimate as empty of
-      what is adventitious, fabricated, and deceptive, while affirming the
-      presence of luminous awakened qualities.
+    <p class="lead text-base sm:text-lg text-muted">
+      The Jonang school represents the definitive exponent of the <em>Shentong</em> (Other-Emptiness) Great Middle Way, holding that while conventional phenomena are empty of inherent nature (<em>rangtong</em>), the ultimate reality—Buddha-nature (<em>Tathagatagarbha</em>)—is empty only of adventitious, transient obscurations (<em>shentong</em>).
     </p>
-    <div class="editorial-grid--two">
-      <article class="editorial-card">
-        <h3>Relative truth: empty of self</h3>
-        <p>
-          The world of conditioned appearances is dependently arisen, unstable,
-          and empty of intrinsic essence.
-        </p>
-      </article>
-      <article class="editorial-card">
-        <h3>Ultimate truth: empty of other</h3>
-        <p>
-          The awakened ground is empty of obscuring overlays, but not empty of
-          its own radiant, unconditioned qualities.
-        </p>
-      </article>
-    </div>
-    <p>
-      This stance drew criticism from rival schools, some of which accused
-      Jonang of slipping toward substantialism. Jonang thinkers responded by
-      insisting that they remained fully within a Buddhist framework of
-      dependent origination, non-egoic realization, and liberation from
-      conceptual fixation.
+
+    <p class="text-ink">
+      Rather than viewing emptiness as sheer non-existence or mere conceptual negation, Jonang masters articulate ultimate truth as non-dual, primordial luminous awareness (<em>prabhasvara-jnana</em>), perpetually endowed with unconditioned wisdom, compassion, and enlightened attributes inseparable from mind's true nature.
     </p>
-  </section>
+  </div>
 
-  <section>
-    <h2>From transmission to modern return</h2>
-    <div class="editorial-timeline">
-      {timeline.map((item) => (
-        <article class="editorial-timeline-item">
-          <span class="editorial-timeline-year">{item.year}</span>
-          <h3>{item.title}</h3>
-          <p>{item.body}</p>
-        </article>
-      ))}
+  <!-- The Three Turnings Framework -->
+  <div class="space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Scriptural Hermeneutics
     </div>
-  </section>
 
-  <section class="editorial-grid--two items-start">
-    <div>
-      <h2>Zanabazar and the Jebtsundampa paradox</h2>
-      <p>
-        One of the most revealing chapters of Jonang history unfolds in
-        Mongolia. The recognition of Zanabazar as the reincarnation of Taranatha
-        carried major political implications because it connected Jonang memory
-        to Mongolian spiritual authority at a moment when Gelug power was being
-        consolidated.
-      </p>
-      <p>
-        Later historiography often tried to smooth over this complexity. Modern
-        scholarship instead points to a more layered picture in which
-        artistic, institutional, and lineage histories continued to carry
-        Jonang traces far beyond Central Tibet.
-      </p>
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      The Three Turnings of the Dharma Wheel
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        threeTurnings.map((t) => (
+          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent">
+            <div>
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-accent block mb-1">
+                {t.turning}
+              </span>
+              <h4 class="font-display text-lg font-bold text-ink mb-2">{t.focus}</h4>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">{t.description}</p>
+            </div>
+          </div>
+        ))
+      }
     </div>
-    <aside class="editorial-panel editorial-panel--accent">
-      <h3 class="mt-0 text-white">Modern recognition</h3>
-      <p class="text-white/88">
-        The twentieth and twenty-first centuries saw the tradition return to
-        public visibility through the Rimé recovery of suppressed texts, the
-        rebuilding of institutions, and formal recognition as a complete school
-        of Tibetan Buddhism.
-      </p>
-    </aside>
-  </section>
+  </div>
 
-  <section class="editorial-panel">
-    <h2>A bridge between rigorous thought and contemplative depth</h2>
-    <p>
-      Jonang matters because it keeps several rare inheritances together at
-      once: a full Kalachakra completion-stage lineage, a daring and subtle
-      account of Buddha-nature, a major archive of historical writing, and a
-      record of survival through institutional rupture. It is both a subject for
-      scholarship and a living path of practice.
+  <!-- Unbroken Lineage Progression -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-lapis">
+      <span class="badge-dot"></span>
+      Lineage Line
+    </div>
+
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Transmission Lineage & Key Masters
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+      {
+        lineagePillars.map((pillar) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+            <h4 class="font-display text-lg font-bold text-ink">{pillar.title}</h4>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">{pillar.content}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Kalachakra Tantra Integration -->
+  <div class="surface-card p-6 sm:p-8 space-y-4">
+    <h3 class="text-2xl font-display text-ink">Union of Sutra and Tantra</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed">
+      In the Jonang tradition, high philosophical discourse is never separated from contemplative practice. The Shentong philosophical view directly informs and finds its experiential realization in the <strong>Six-fold Vajrayoga</strong> of the Kalachakra completion stage. Through systematic physical posture, breath retention, and subtle body yogas, the practitioner directly discovers the immutable bliss and emptiness articulated in the root sutras and tantras.
     </p>
-  </section>
+  </div>
 </div>

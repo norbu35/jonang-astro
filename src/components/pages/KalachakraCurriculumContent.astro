@@ -1,149 +1,170 @@
 ---
-const yogas = [
-  {
-    title: "Withdrawal and concentration",
-    body:
-      "The practitioner withdraws ordinary sensory fixation and learns to stabilize awareness around increasingly subtle luminous signs.",
-  },
-  {
-    title: "Vital wind discipline",
-    body:
-      "Subtle winds are guided through the central channel through advanced breath and posture disciplines.",
-  },
-  {
-    title: "Retention and recollection",
-    body:
-      "Conceptual turbulence is stilled while the practitioner develops the empty-form dimensions of deity realization.",
-  },
-  {
-    title: "Meditative stabilization",
-    body:
-      "Practice matures into immutable great bliss and direct realization of the clear-light dimension of awakening.",
-  },
+const commonPreliminaries = [
+  { step: "01", name: "Refuge & Prostrations", detail: "100,000 accumulations purifying physical obscurations." },
+  { step: "02", name: "Bodhicitta Generation", detail: "100,000 accumulations cultivating altruistic awakening for all beings." },
+  { step: "03", name: "Vajrasattva Purification", detail: "100,000 recitations of the 100-syllable mantra." },
+  { step: "04", name: "Mandala Offerings", detail: "100,000 offerings accumulating vast merit and wisdom." },
+  { step: "05", name: "Guru Yoga", detail: "100,000 supplications unifying practitioner mind with the lineage master." },
 ];
 
-const preliminaries = [
-  "Refuge and prostrations",
-  "Bodhicitta and intention training",
-  "Vajrasattva purification",
-  "Mandala offerings and guru yoga",
-  "Generation-stage deity practice as support for completion stage",
+const sixYogas = [
+  {
+    num: "1",
+    sanskrit: "Pratyahara",
+    tibetan: "Sor sdud",
+    name: "Withdrawal",
+    desc: "Drawing sensory consciousness inward from external objects to perceive the ten night and day signs of empty form.",
+  },
+  {
+    num: "2",
+    sanskrit: "Dhyana",
+    tibetan: "Bsam gtan",
+    name: "Meditative Absorption",
+    desc: "Stabilizing unwavering single-pointed concentration upon the arisen empty forms.",
+  },
+  {
+    num: "3",
+    sanskrit: "Pranayama",
+    tibetan: "Srog rtsol",
+    name: "Breath Control",
+    desc: "Guiding subtle winds (prana) into the central channel (avadhuti) through vase retention breathing.",
+  },
+  {
+    num: "4",
+    sanskrit: "Dharana",
+    tibetan: "'Dzin pa",
+    name: "Retention",
+    desc: "Binding the subtle winds and drops securely at the six main energy focal points along the central channel.",
+  },
+  {
+    num: "5",
+    sanskrit: "Anusmriti",
+    tibetan: "Rjes dran",
+    name: "Recollection",
+    desc: "Igniting the inner heat (candali / tummo) to blaze through the channels, inducing the experience of sublime unconditioned bliss.",
+  },
+  {
+    num: "6",
+    sanskrit: "Samadhi",
+    tibetan: "Ting nge 'dzin",
+    name: "Meditative Stabilization",
+    desc: "Complete non-dual union of immutable great bliss and pristine empty form, actualizing complete Buddhahood.",
+  },
 ];
 ---
 
-<div class="page-stack">
-  <section class="editorial-intro">
-    <div>
-      <h2>The Wheel of Time as the tradition's deepest practical inheritance</h2>
-      <p class="editorial-lede">
-        Many Tibetan schools transmit Kalachakra, but Jonang is widely regarded
-        as the principal holder of the complete Dro lineage and its completion-stage
-        yogas. This is one of the core reasons the school remains so important.
-      </p>
-      <p>
-        In Jonang, Kalachakra is not merely a ceremonial empowerment or a
-        symbolic mandala. It is a whole contemplative architecture that relates
-        the cosmos, the subtle body, meditative realization, and the path to
-        awakening.
-      </p>
+<div class="space-y-12">
+  <!-- Introductory Lead -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Tantric Completion Stage
     </div>
-    <aside class="editorial-panel">
-      <h3 class="mt-0">Practice requires guidance</h3>
-      <p>
-        This page is an introduction, not a practice manual. The completion
-        stage is traditionally entered only through empowerment, transmission,
-        instruction, and retreat under qualified guidance.
-      </p>
-    </aside>
-  </section>
 
-  <section class="editorial-grid--two items-start">
-    <div>
-      <h2>A system linking body, world, and awakening</h2>
-      <p>
-        Kalachakra works with correspondences between outer cycles and inner
-        experience. The body is not treated as incidental to realization. The
-        subtle channels, winds, and drops become part of the path, and the
-        practitioner learns to align contemplative transformation with a wider
-        vision of time, cosmos, and enlightened embodiment.
-      </p>
-      <p>
-        This is also why the tradition intersects so naturally with Tibetan
-        medicine and astrology: the same body-world mapping that serves tantric
-        practice also informs broader understandings of balance, energy, and
-        psycho-physical cultivation.
-      </p>
-    </div>
-    <aside class="editorial-panel editorial-panel--accent">
-      <h3 class="mt-0 text-white">Why Jonang is identified with Kalachakra</h3>
-      <p class="text-white/88">
-        Jonang is especially known for preserving not only the symbolic and
-        ritual dimensions of Kalachakra, but the demanding completion-stage
-        yogas that require retreat, discipline, and a long training arc.
-      </p>
-    </aside>
-  </section>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+      The Kalachakra Contemplative Path (Jordruk)
+    </h2>
 
-  <section>
-    <h2>Preparation and preliminary formation</h2>
-    <p>
-      Before a practitioner enters the deeper yogas, training begins with common
-      and uncommon preliminaries. These practices orient intention, purify
-      obscurations, establish devotion and stability, and prepare the mind-body
-      system for more subtle work.
+    <p class="lead text-base sm:text-lg text-muted">
+      The Jonang Kalachakra curriculum structures the contemplative path from foundational preliminary accumulations (<em>ngondro</em>) through generation stage deity yoga to the completion-stage Six-fold Vajrayoga (<em>sbyor drug</em>).
     </p>
-    <ul class="editorial-checklist">
-      {preliminaries.map((item) => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  </section>
 
-  <section>
-    <h2>The Six Vajra Yogas in approachable terms</h2>
-    <div class="editorial-grid md:grid-cols-2">
-      {yogas.map((yoga) => (
-        <article class="editorial-card">
-          <h3>{yoga.title}</h3>
-          <p>{yoga.body}</p>
-        </article>
-      ))}
+    <div class="callout my-4 text-sm">
+      <strong>Sacred Lineage Requirement:</strong> This overview documents the institutional training path followed in formal three-year to nine-year solitary retreats. Engaging in these practices requires receiving the Kalachakra empowerment (<em>wang</em>), scriptural transmission (<em>lung</em>), and experiential guidance (<em>tri</em>) directly from a qualified lineage master.
     </div>
-    <p>
-      Traditional retreat structures can stretch across years. Jonang sources
-      describe both rigorous sequence and the importance of signs of
-      realization, rather than treating practice as a checklist to be rushed
-      through.
-    </p>
-  </section>
+  </div>
 
-  <section class="editorial-grid--two items-start">
-    <div class="editorial-panel">
-      <h3 class="mt-0">Dark retreat and isolation</h3>
-      <p>
-        Jonang descriptions of practice often emphasize dark retreat and the
-        three isolations of body, speech, and mind. These settings reduce
-        ordinary sensory momentum so that subtler perceptions and meditative
-        signs can become workable.
-      </p>
+  <!-- I. Common Preliminaries -->
+  <div class="space-y-6">
+    <div class="badge badge-saffron">
+      <span class="badge-dot"></span>
+      Phase I: Foundational Accumulations
     </div>
-    <div class="editorial-panel">
-      <h3 class="mt-0">Medicine and cosmology</h3>
-      <p>
-        Because Kalachakra maps macrocosm and microcosm together, it also
-        intersects with Tibetan medical and astrological sciences. Practice and
-        physiology are not separate conceptual worlds here.
-      </p>
-    </div>
-  </section>
 
-  <section class="editorial-panel">
-    <h2>A public orientation to a guarded tradition</h2>
-    <p>
-      The value of a public introduction is to clarify why Kalachakra matters to
-      Jonang identity and why the lineage is treated with such seriousness. The
-      point is not access without preparation, but understanding why this
-      training remains one of the school's defining inheritances.
-    </p>
-  </section>
+    <h3 class="text-2xl font-display text-ink">
+      Common Preliminaries (<em>thun mong gi sngon 'gro</em>)
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        commonPreliminaries.map((p) => (
+          <div class="p-5 rounded-xl bg-surface border border-border space-y-2">
+            <span class="text-xs font-mono font-bold text-accent">{p.step}</span>
+            <h4 class="font-display text-base font-bold text-ink">{p.name}</h4>
+            <p class="text-xs text-muted leading-relaxed">{p.detail}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- II. Uncommon Preliminaries -->
+  <div class="surface-card p-6 sm:p-8 space-y-6">
+    <div class="badge badge-lapis">
+      <span class="badge-dot"></span>
+      Phase II: Deity Yoga & Dark Retreat
+    </div>
+
+    <h3 class="text-2xl font-display text-ink font-normal">
+      Uncommon Preliminaries (<em>thun mong ma yin pa'i sngon 'gro</em>)
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3">
+        <h4 class="font-display text-lg font-bold text-ink">A. Generation Stage (<em>bskyed rim</em>)</h4>
+        <ul class="text-xs sm:text-sm text-muted space-y-2 list-none p-0">
+          <li class="border-b border-border/60 pb-2"><strong>Condensed Track:</strong> Connate Deity with Consort (<em>lhan skyes</em>) — 1,000,000 mantra recitations.</li>
+          <li class="border-b border-border/60 pb-2"><strong>Medium Track:</strong> Nine-Deity Mind Mandala (<em>lha dgu thugs dkyil</em>) — 1,000,000 recitations.</li>
+          <li><strong>Extensive Track:</strong> Four-Fold Approach & Accomplishment for the complete 636-Deity Mandala (<em>drug brgya so drug</em>) — 10,000,000 mantra recitations across one year.</li>
+        </ul>
+      </div>
+
+      <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3">
+        <h4 class="font-display text-lg font-bold text-ink">B. The Three Isolations (<em>dben pa gsum</em>)</h4>
+        <p class="text-xs sm:text-sm text-muted leading-relaxed">
+          Conducted in strict dark retreat (<em>mun khang</em>) to isolate the physical body, ordinary speech, and conceptual mind from external sensory distraction:
+        </p>
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="p-3 rounded-lg bg-surface text-center border border-border">
+            <span class="text-xs text-muted block">Condensed</span>
+            <span class="font-bold text-ink text-sm">50 Days</span>
+          </div>
+          <div class="p-3 rounded-lg bg-surface text-center border border-border">
+            <span class="text-xs text-muted block">Extended</span>
+            <span class="font-bold text-ink text-sm">100 Days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- III. The Six Yogas of Kalachakra Completion Stage -->
+  <div class="space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Phase III: Primary Practice
+    </div>
+
+    <h3 class="text-2xl font-display text-ink">
+      The Six-fold Vajrayoga (<em>dngos gzhi sbyor drug</em>)
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        sixYogas.map((yoga) => (
+          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
+                <span class="font-bold text-accent">Branch 0{yoga.num}</span>
+                <span>{yoga.tibetan}</span>
+              </div>
+              <h4 class="font-display text-lg font-bold text-ink">{yoga.name}</h4>
+              <span class="text-xs italic text-muted block mb-2">{yoga.sanskrit}</span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed">{yoga.desc}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </div>

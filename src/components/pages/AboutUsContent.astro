@@ -6,171 +6,141 @@ import studentsImage from "../../assets/images/young-students.webp";
 
 const abbots = [
   {
-    years: "1998",
+    years: "1998 – 2008",
     name: "Choeji Nangwa Rinpoche",
     note:
-      "Recognized as the first lineage abbot of the monastery during the formative years of expansion in India.",
+      "First lineage abbot of the monastery, overseeing the formative years of expansion, residency, and curriculum development in India.",
   },
   {
-    years: "2009",
+    years: "2009 – 2014",
     name: "Geshe Kunga Rinchen",
     note:
-      "Appointed by His Holiness the 14th Dalai Lama as the second lineage abbot, helping consolidate study and institutional continuity.",
+      "Appointed by His Holiness the 14th Dalai Lama as the second abbot, consolidating scriptural study and dialectical debate.",
   },
   {
-    years: "2014-present",
+    years: "2014 – Present",
     name: "Geshe Kunga Tsamchung",
     note:
-      "The current lineage abbot, carrying forward the monastery's combined commitments to study, ritual life, and community care.",
+      "The current lineage abbot, directing monastic education, ritual observance, long-term retreats, and community welfare.",
   },
 ];
 
 const curriculumPillars = [
-  "Sutra studies through the five great topics and Jonang commentarial traditions",
-  "Mantra studies centered on Kalachakra ritual, chanting, and mandala disciplines",
-  "Tibetan language, calligraphy, grammar, and poetics",
-  "Modern subjects including English, Hindi, mathematics, and physics",
+  "Sutra studies through the Five Great Treatises (Gzhung Chen Bka' Pod Lnga) and definitive Jonang Shentong commentaries",
+  "Mantra studies centered on the Kalachakra generation stage deity yoga, ritual sand mandalas, sacred dance (Cham), and chanting",
+  "Tibetan language, literature, calligraphy (Uchen & Umey), grammar, and epistemology (Pramana)",
+  "Modern foundational curriculum covering English, Hindi, mathematics, and basic sciences",
 ];
 ---
 
-<div class="page-stack">
-  <section class="editorial-intro">
-    <div>
-      <h2>A living seat of preservation, education, and continuity</h2>
-      <p class="editorial-lede">
-        Main Jonang Takten Phuntsok Choeling is not only a monastery building in
-        the Himalayas. It is one of the primary places where a lineage once
-        thought erased continues to train students, transmit teachings, and hold
-        together memory, scholarship, and contemplative discipline.
-      </p>
-      <p>
-        The monastery's modern story begins with the efforts of Lama Jinpa
-        Gyatso and takes clearer public shape in 1990, when His Holiness the
-        14th Dalai Lama bestowed the monastery's enduring name. Since then it
-        has become a home for students and teachers from Tibet, Mongolia,
-        Tawang, Spiti, Dolpo, and other Himalayan border regions.
+<div class="space-y-12">
+  <!-- Introductory Overview -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Monastic Seat in Exile
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+      Preserving Lineage, Scholarship, and Contemplative Practice
+    </h2>
+
+    <p class="lead text-base sm:text-lg text-muted">
+      Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla, serves as the central seat of the Jonang tradition in exile, dedicated to preserving the definitive Other-Emptiness (<em>Shentong</em>) philosophy and the unbroken Six Yogas of the Kalachakra Tantra.
+    </p>
+
+    <p class="text-ink">
+      The monastery's origins trace back to the late 1960s through the tireless efforts of Lama Jinpa Gyatso. In 1990, His Holiness the 14th Dalai Lama formally bestowed its enduring title—<em>Main Jonang Takten Phuntsok Choeling</em>—establishing it as a recognized home of monastic education. The monastery later developed under the spiritual guidance of the 9th Khalkha Jetsun Dhampa Jampal Namdrol Chokyi Gyaltsen, head of the Jonang tradition until his passing in 2012.
+    </p>
+  </div>
+
+  <!-- Historical Milestones & Image Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="space-y-4">
+      <div class="badge badge-saffron">
+        <span class="badge-dot"></span>
+        Institutional History
+      </div>
+      <h3 class="text-2xl font-display text-ink">Visits of His Holiness the Dalai Lama</h3>
+      <p class="text-sm sm:text-base text-muted leading-relaxed">
+        His Holiness the 14th Dalai Lama has visited the monastery on four historic occasions: conferring its name in 1990, presiding over sacred prayer assemblies in 1997, conducting a Kalachakra Empowerment in 2002, and blessing the Monlam World Peace Festival in 2013. These visits affirmed the monastery's vital mission to preserve the unique philosophical treatises and meditative yogas of the Jonang masters.
       </p>
     </div>
-    <aside class="editorial-panel">
-      <h3 class="mt-0">At a glance</h3>
-      <ul class="editorial-checklist">
-        <li>Founded in its present Indian form in 1990</li>
-        <li>Named by His Holiness the 14th Dalai Lama</li>
-        <li>More than one hundred students and residents</li>
-        <li>Combines sutra, tantra, ritual, language, and modern subjects</li>
-      </ul>
-    </aside>
-  </section>
 
-  <section class="editorial-grid--two items-center">
-    <figure class="editorial-figure">
+    <div class="surface-card overflow-hidden">
       <Image
         src={entranceImage}
-        alt="Entrance to Main Jonang Takten Phuntsok Choeling"
-        widths={[640, 960, 1280]}
-        sizes="(max-width: 1024px) 100vw, 50vw"
+        alt="Entrance to Main Jonang Takten Phuntsok Choeling in Shimla"
+        class="w-full h-auto object-cover"
+        width={640}
+        height={420}
       />
-      <figcaption class="editorial-caption">
-        The monastery in Shimla functions as a living bridge between exile,
-        continuity, and renewal.
-      </figcaption>
-    </figure>
-    <div>
-      <h2>From naming and restoration to a stable seat of training</h2>
-      <p>
-        The Indian monastery is tied to a larger effort to restore Jonang
-        teachings after long historical suppression. In the late twentieth
-        century, the site in Shimla became a crucial home for this work. Public
-        ceremonies, renewed enrollments, and successive appointments of abbots
-        gave the institution the stable shape it needed to receive students and
-        carry a full curriculum.
-      </p>
-      <p>
-        This history matters because Jonang continuity is not only philosophical
-        or textual. It depends on living institutions where teachings can be
-        memorized, debated, chanted, practiced, and embodied across generations.
-      </p>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <h2>Abbots and continuity</h2>
-    <div class="editorial-timeline">
-      {abbots.map((abbot) => (
-        <article class="editorial-timeline-item">
-          <span class="editorial-timeline-year">{abbot.years}</span>
-          <h3>{abbot.name}</h3>
-          <p>{abbot.note}</p>
-        </article>
-      ))}
+  <!-- Monastic Abbots Lineage Timeline -->
+  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+    <div class="badge badge-lapis">
+      <span class="badge-dot"></span>
+      Succession of Abbots
     </div>
-  </section>
 
-  <section class="editorial-grid--two items-start">
-    <div>
-      <h2>An education shaped by both text and realization</h2>
-      <p>
-        The monastery's curriculum is designed to form students in several
-        dimensions at once. They do not study doctrine as isolated theory, nor
-        perform ritual as empty form. Jonang training is built to keep
-        philosophical clarity, liturgical precision, contemplative practice, and
-        practical education in one disciplined path.
-      </p>
-      <ul class="editorial-checklist">
-        {curriculumPillars.map((pillar) => (
-          <li>{pillar}</li>
-        ))}
-      </ul>
-    </div>
-    <aside class="editorial-panel editorial-panel--accent">
-      <h3 class="mt-0 text-white">An eighteen-year arc of study</h3>
-      <p class="text-white/88">
-        The educational model described by the monastery moves from literary
-        foundation and scholastic rigor into deeper ritual and tantric maturity.
-        The goal is not only to create competent scholars, but to form
-        practitioners capable of carrying sutra and mantra together.
-      </p>
-    </aside>
-  </section>
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+      Lineage Abbots (Khenpo Rinpoches)
+    </h3>
 
-  <section class="editorial-grid--two items-center">
-    <div>
-      <h2>A monastery shaped by many regions and life stories</h2>
-      <p>
-        The student body reflects the geography of the Jonang world today.
-        Students arrive from Himalayan borderlands, from Mongolia, and from
-        Tibetan communities that continue to seek educational and religious
-        freedom. The monastery therefore acts as both a traditional institution
-        and a place of refuge.
-      </p>
-      <p>
-        This diversity gives the monastery a wider significance. It is not only
-        preserving one local tradition, but gathering a dispersed lineage into a
-        common place of study and practice.
-      </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+      {
+        abbots.map((abbot) => (
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider block">
+              {abbot.years}
+            </span>
+            <h4 class="font-display text-lg font-bold text-ink">{abbot.name}</h4>
+            <p class="text-xs text-muted leading-relaxed">{abbot.note}</p>
+          </div>
+        ))
+      }
     </div>
-    <figure class="editorial-figure">
+  </div>
+
+  <!-- Resident Community & Demographics -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="surface-card overflow-hidden order-2 md:order-1">
       <Image
         src={studentsImage}
-        alt="Monastic students gathered together"
-        widths={[640, 960, 1280]}
-        sizes="(max-width: 1024px) 100vw, 50vw"
+        alt="Resident young monastic students gathered together"
+        class="w-full h-auto object-cover"
+        width={640}
+        height={420}
       />
-      <figcaption class="editorial-caption">
-        Students from multiple regions come to study, train, and sustain the
-        lineage in common.
-      </figcaption>
-    </figure>
-  </section>
+    </div>
 
-  <section class="editorial-panel">
-    <h2>A place where preservation is active, not nostalgic</h2>
-    <p>
-      Main Jonang Takten Phuntsok Choeling stands at the intersection of memory
-      and transmission. Its significance lies not in commemorating a vanished
-      school, but in continuing to educate monks, preserve texts, perform
-      rituals, and sustain a living path rooted in both scholastic precision and
-      contemplative depth.
+    <div class="space-y-4 order-1 md:order-2">
+      <div class="badge badge-crimson">
+        <span class="badge-dot"></span>
+        Sangha Demographics
+      </div>
+      <h3 class="text-2xl font-display text-ink">A Diverse Himalayan Community</h3>
+      <p class="text-sm sm:text-base text-muted leading-relaxed">
+        The monastery currently provides full board, lodging, healthcare, and tuition-free education for approximately 120 resident monks and staff. The student body includes ~70 monks from Assam and Mon Tawang, ~30 from Mongolia (including 12 orphans supported under full monastic care), and ~20 from Tibet who arrived to study the Jonang lineage freely in exile.
+      </p>
+    </div>
+  </div>
+
+  <!-- Eighteen-Year Syllabus Overview -->
+  <div class="surface-card p-6 sm:p-8 space-y-4">
+    <h3 class="text-2xl font-display text-ink">Eighteen-Year Educational Syllabus</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed mb-4">
+      Students undergo an 18-year progressive curriculum structured across primary grammar, foundational Buddhist epistemology (<em>Pramana</em>), the Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>), ritual arts (mandala drafting, cham dance, chanting), modern languages (English, Hindi), mathematics, sciences, and multi-year Kalachakra dark retreats.
     </p>
-  </section>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+      {curriculumPillars.map((pillar) => (
+        <li class="p-3.5 rounded-lg bg-surface-subtle border border-border text-sm text-ink flex items-start gap-2">
+          <span class="text-accent font-bold mt-0.5">•</span>
+          <span>{pillar}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
