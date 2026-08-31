@@ -64,7 +64,12 @@ const data: Footer = await res.json();
           {data.phone}
         </div>
       </address>
-      <a href={STATIC_PAGE_PATHS.donate} class="secondary-button">Donate</a>
+      <a
+        href={STATIC_PAGE_PATHS.donate}
+        class="inline-flex items-center justify-center rounded-lg bg-surface px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.08em] text-accent border border-gold/40 shadow-sm transition-all duration-300 hover:bg-gold hover:text-ink hover:border-gold hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+      >
+        Donate
+      </a>
     </div>
   </div>
 
