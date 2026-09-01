@@ -14,22 +14,12 @@ export const PRIMARY_NAVIGATION: NavLink[] = [
   {
     label: "The Monastery",
     shortLabel: "Monastery",
-    href: STATIC_PAGE_PATHS.aboutUs,
+    href: STATIC_PAGE_PATHS.monastery,
   },
   {
-    label: "The Jonang Tradition",
-    shortLabel: "Tradition",
-    href: STATIC_PAGE_PATHS.jonangDoctrine,
-    sublinks: [
-      {
-        label: "Overview & Philosophy",
-        href: STATIC_PAGE_PATHS.jonangDoctrine,
-      },
-      {
-        label: "Beginner's Introduction",
-        href: STATIC_PAGE_PATHS.jonangBeginners,
-      },
-    ],
+    label: "The Jonang Doctrine",
+    shortLabel: "Doctrine",
+    href: STATIC_PAGE_PATHS.doctrine,
   },
   {
     label: "Kalachakra Practice",
@@ -56,9 +46,8 @@ export const FOOTER_NAVIGATION = [
     heading: "Read the tradition",
     links: [
       { label: "Home", href: "/" },
-      { label: "The Monastery", href: STATIC_PAGE_PATHS.aboutUs },
-      { label: "The Jonang Tradition", href: STATIC_PAGE_PATHS.jonangDoctrine },
-      { label: "Beginner's Introduction", href: STATIC_PAGE_PATHS.jonangBeginners },
+      { label: "The Monastery", href: STATIC_PAGE_PATHS.monastery },
+      { label: "The Jonang Doctrine", href: STATIC_PAGE_PATHS.doctrine },
       { label: "Kalachakra Practice", href: STATIC_PAGE_PATHS.kalachakra },
       { label: "Curriculum", href: STATIC_PAGE_PATHS.curriculum },
     ],

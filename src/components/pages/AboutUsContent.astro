@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Dharmachakra from "../icons/Dharmachakra.astro";
+import VideoFeature from "../VideoFeature.astro";
 
 import entranceImage from "../../assets/images/main-entrance.webp";
 
@@ -30,45 +31,70 @@ const dalaiLamaVisits = [
 const abbots = [
   {
     years: "1998 – 2008",
-    name: "Choeji Nangwa Rinpoche",
-    role: "1st Lineage Abbot",
+    name: "Choekyi Nangpa Rinpoche",
+    role: "1st Lineage Abbot & Dorje Lopön",
     note:
-      "First lineage abbot of the monastery, overseeing the formative years of expansion, residency, and syllabus development in exile.",
+      "First lineage abbot of the monastery, overseeing formative expansion, shedra residency, and tantric ritual curriculum in exile. Later enthroned as Jonang Gyaltsab.",
   },
   {
     years: "2009 – 2014",
     name: "Geshe Kunga Rinchen",
     role: "2nd Lineage Abbot",
     note:
-      "Appointed by His Holiness the 14th Dalai Lama as the second abbot, consolidating scriptural study and daily debating assemblies.",
+      "Appointed by His Holiness the 14th Dalai Lama as second abbot, consolidating scholastic study, debate assemblies, and monastic administration.",
   },
   {
-    years: "2014 – Present",
+    years: "2014 – 2019",
     name: "Geshe Kunga Tsamchung",
-    role: "3rd & Current Abbot",
+    role: "3rd Lineage Abbot",
     note:
-      "The current lineage abbot, directing monastic education, liturgical disciplines, 3.5-year dark retreats, and community welfare.",
+      "Directed monastic education, liturgical disciplines, 3.5-year dark retreat cycles, and community welfare during a period of steady growth.",
+  },
+  {
+    years: "2019 – Present",
+    name: "Kunga Choephel Rinpoche",
+    role: "4th & Current Abbot",
+    note:
+      "The current lineage abbot appointed in accordance with the decree of His Holiness the Dalai Lama, overseeing monastic education, international centers, and sangha welfare.",
   },
 ];
 
 const weeklyPrayers = [
   {
     day: "Monday",
-    prayers: "Lama Chodpa (Guru Puja) & Medicine Buddha (Menlha) Prayers",
+    prayers: "Lama Chöpa (Guru Puja) & Medicine Buddha (Menlha) Prayers",
     purpose: "Healing, dispelling illness and spiritual obstacles, and venerating the lineage masters.",
     tibetan: "བླ་མ་མཆོད་པ་དང་སྨན་བླ།",
   },
   {
     day: "Tuesday",
-    prayers: "Āryasaṃghāṭasūtra (Aryanamasanghati) & Kalachakra Ngondro",
-    purpose: "Accumulating vast transcendent merit, reciting canonical sutras, and preliminary tantric purification.",
+    prayers: "Āryasaṅghāṭasūtra (Arya Sanghata Sutra) & Kālacakra Ngöndro",
+    purpose: "Accumulating vast transcendent merit, reciting canonical sūtras, and preliminary tantric purification.",
     tibetan: "འཕགས་པ་ཟུང་གི་མདོ་དང་དུས་འཁོར་སྔོན་འགྲོ།",
   },
   {
     day: "Wednesday",
-    prayers: "Noble Tara (Drolma), Sitatapatra (Dukar), Mahakala (Gonpo) & Palden Lhamo Tsulkha",
-    purpose: "Averting hindrances, protective deity supplications (Dharmapalas), and generating compassionate activity.",
+    prayers: "Noble Tārā (Drolma), Sitātapatrā (Dukar) & Dharmapāla Tsokchod",
+    purpose: "Averting hindrances, protective deity supplications (Mahākāla & Palden Lhamo), and compassionate activity.",
     tibetan: "སྒྲོལ་མ། གདུགས་དཀར། མགོན་པོ་དང་དཔལ་ལྡན་ལྷ་མོའི་ཚོགས་མཆོད།",
+  },
+  {
+    day: "Thursday",
+    prayers: "Prajñāpāramitā Hṛdaya (Heart Sūtra) & Dhyāna Contemplation",
+    purpose: "Subduing cognitive obscurations, realizing emptiness, and cultivating calm abiding meditation.",
+    tibetan: "ཤེས་རབ་སྙིང་པོ་དང་ཞི་གནས་བསྒོམ་པ།",
+  },
+  {
+    day: "Friday",
+    prayers: "Machik Labdrön Chöd (Severance) & Bardo Deliverance",
+    purpose: "Severing egocentric reification through the profound Chöd cycle and dedicating merit for departed souls.",
+    tibetan: "གཅོད་དང་བར་དོའི་སྨོན་ལམ།",
+  },
+  {
+    day: "Weekend",
+    prayers: "Jonang Monlam Chenmo & Shedra Dialectical Debating",
+    purpose: "Universal peace aspiration prayers, Kalachakra protective mantras, and rigorous evening debate assemblies.",
+    tibetan: "ཇོ་ནང་སྨོན་ལམ་ཆེན་མོ་དང་རྩོད་པ།",
   },
 ];
 
@@ -76,25 +102,43 @@ const annualActivities = [
   {
     tibetanDate: "First Month (1st Day) — Losar",
     gregorian: "Tibetan New Year",
-    event: "Dharma Protector (Dharmapala) Prayers",
-    desc: "Commencement of the New Year with intensive invocation of protective lineage guardians (Mahakala, Palden Lhamo) for global peace and the dispelling of adversity.",
+    event: "Dharma Protector (Dharmapāla) Prayers",
+    desc: "Commencement of the New Year with intensive invocation of protective lineage guardians (Mahākāla, Palden Lhamo) for global peace and the dispelling of adversity.",
   },
   {
     tibetanDate: "First Month (8th Day)",
     gregorian: "Annual Commemoration",
-    event: "H.H. 9th Khalkha Jetsun Dhampa Jampal Namdrol’s Parinirvana Day",
-    desc: "Solemn prayer festival commemorating the life, realization, and legacy of the 9th Khalkha Jetsun Dhampa, spiritual head of the Jonang lineage.",
+    event: "H.H. 9th Khalkha Jetsun Dampa Parinirvāṇa",
+    desc: "Solemn prayer festival commemorating the life, realization, and legacy of the 9th Khalkha Jetsun Dampa, spiritual head of the Jonang lineage.",
   },
   {
     tibetanDate: "First Month (13th – 15th Days)",
-    gregorian: "Chotrul Monlam Days",
+    gregorian: "Chötrul Düchen Days",
     event: "Tripiṭaka Chanting (Kangyur Recitation)",
-    desc: "The monastic assembly reads the 108 volumes of the canonical Kangyur in unison over three days.",
+    desc: "The monastic assembly reads the 108 volumes of the canonical Kangyur in unison over three continuous days.",
+  },
+  {
+    tibetanDate: "Fourth Month (15th Day)",
+    gregorian: "Saga Dawa Düchen",
+    event: "Buddha’s Birth, Enlightenment & Parinirvāṇa",
+    desc: "Vast accumulation of merit with 24-hour circumambulations, butter lamp offerings, and Kālacakra sand mandala ceremonies.",
+  },
+  {
+    tibetanDate: "Sixth Month (4th Day)",
+    gregorian: "Chökhor Düchen",
+    event: "First Turning of the Wheel of Dharma",
+    desc: "Celebrating the Buddha's first teaching of the Four Noble Truths at Sarnath with extensive dialectical debate assemblies.",
+  },
+  {
+    tibetanDate: "Ninth Month (22nd Day)",
+    gregorian: "Lhabab Düchen",
+    event: "Descent from the God Realm",
+    desc: "Commemorating the Buddha’s return to the human realm with holy confession liturgies and community sponsorships.",
   },
 ];
 ---
 
-<div class="space-y-12">
+<div class="section-padding max-w-6xl mx-auto space-y-12 pb-0 editorial-offset">
   <!-- Introductory Overview -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
     <div class="badge badge-crimson">
@@ -102,7 +146,7 @@ const annualActivities = [
       Monastic Seat in Exile
     </div>
 
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
       Preserving Lineage, Scholarship, and Contemplative Practice
     </h2>
 
@@ -113,6 +157,58 @@ const annualActivities = [
     <p class="text-ink leading-relaxed">
       The monastery's origins trace back to the late 1960s through the tireless efforts of Lama Jinpa Gyatso. In 1990, His Holiness the 14th Dalai Lama formally bestowed its enduring title—<em>Main Jonang Takten Phuntsok Choeling</em>—establishing it as a recognized home of monastic education. The monastery later developed under the spiritual guidance of the 9th Khalkha Jetsun Dhampa Jampal Namdrol Chokyi Gyaltsen, head of the Jonang tradition until his passing in 2012.
     </p>
+  </div>
+</div>
+
+<!-- Full-Width Featured Multimedia Ceremony: Tara Puja Assembly -->
+<section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll">
+  <!-- Ambient background glow elements -->
+  <div class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <VideoFeature
+      videoId="pr00n4no4Vc"
+      title="First Day of Tara Puja at Shimla Jonang Monastery"
+      tibetanTitle="༄༅། །ཇོ་ནང་དགོན་པའི་འཕགས་མ་སྒྲོལ་མའི་ཚོགས་མཆོད། །"
+      subtitle="Annual Liturgical Assemblies, Sacred Chanting & Tara Puja at Main Jonang Takten Phuntsok Choeling"
+      summary="Archival ceremony recording the commencement of the annual Noble Tārā Puja (Drolma Tsokchod) at Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla. The assembly of resident Geshes, monastic scholars, and students gather in the main prayer hall to chant the Praises to the Twenty-One Tārās, sound ritual horns and instruments, and dedicate collective merit for the welfare of all beings."
+      badge="Monastic Liturgy"
+      channelName="Shimla Jonang Buddhist Monastery"
+      channelUrl="https://www.youtube.com/watch?v=pr00n4no4Vc"
+      duration="Live Assembly Ceremony"
+      actionHref="#weekly-schedule"
+      actionLabel="View Monastery Liturgical Schedule"
+      id="monastery-documentary"
+    />
+  </div>
+</section>
+
+<div class="section-padding max-w-6xl mx-auto space-y-12 pt-0">
+  <!-- Architecture & Grounds (Location & Facilities) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="surface-card overflow-hidden rounded-2xl shadow-card border border-border">
+      <Image
+        src={entranceImage}
+        alt="Entrance to Main Jonang Takten Phuntsok Choeling in Shimla"
+        class="w-full h-auto aspect-[16/10] object-cover transition-transform duration-700 hover:scale-105"
+        width={640}
+        height={400}
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <div class="space-y-4">
+      <div class="badge badge-lapis">
+        <span class="badge-dot"></span>
+        Location & Facilities
+      </div>
+      <h3 class="text-2xl font-display text-ink">Sanjauli, Shimla</h3>
+      <p class="text-sm sm:text-base text-muted leading-relaxed">
+        Located in Sanjauli, Shimla (Himachal Pradesh, India), the monastery complex includes a main prayer hall (lhakhang), classrooms for the eighteen-year shedra, a library of classical canonical texts, and retreat quarters for three-year Kālacakra dark retreat practice.
+      </p>
+    </div>
   </div>
 
   <!-- Historical Milestones: Four Visits of Dalai Lama -->
@@ -139,30 +235,6 @@ const annualActivities = [
     </div>
   </div>
 
-  <!-- Architecture & Grounds -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <div class="surface-card overflow-hidden rounded-2xl">
-      <Image
-        src={entranceImage}
-        alt="Entrance to Main Jonang Takten Phuntsok Choeling in Shimla"
-        class="w-full h-auto object-cover"
-        width={640}
-        height={420}
-      />
-    </div>
-
-    <div class="space-y-4">
-      <div class="badge badge-lapis">
-        <span class="badge-dot"></span>
-        Location & Facilities
-      </div>
-      <h3 class="text-2xl font-display text-ink">Sanjauli, Shimla</h3>
-      <p class="text-sm sm:text-base text-muted leading-relaxed">
-        Located in Sanjauli, Shimla (Himachal Pradesh, India), the monastery complex includes a main prayer hall (lhakhang), classrooms for the eighteen-year shedra, a library of classical canonical texts, and retreat quarters for three-year Kālacakra dark retreat practice.
-      </p>
-    </div>
-  </div>
-
   <!-- Monastic Abbots Lineage Timeline -->
   <div class="space-y-6">
     <div class="flex items-center gap-3">
@@ -172,17 +244,17 @@ const annualActivities = [
       </h3>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
         abbots.map((abbot) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent hover-lift">
+          <div class="surface-card p-6 flex flex-col justify-between h-full space-y-3 border-t-4 border-t-accent hover-lift">
             <div>
               <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">
                 {abbot.years}
               </span>
-              <h4 class="font-display text-xl font-bold text-ink">{abbot.name}</h4>
-              <span class="badge badge-neutral text-[11px] mb-2">{abbot.role}</span>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed">{abbot.note}</p>
+              <h4 class="font-display text-xl font-bold text-ink mb-1">{abbot.name}</h4>
+              <span class="badge badge-neutral text-caption mb-2">{abbot.role}</span>
+              <p class="text-xs text-muted leading-relaxed">{abbot.note}</p>
             </div>
           </div>
         ))
@@ -233,7 +305,7 @@ const annualActivities = [
   </div>
 
   <!-- Weekly Activities & Daily Prayers -->
-  <div class="surface-card p-6 sm:p-8 space-y-6">
+  <div class="surface-card p-6 sm:p-8 space-y-6" id="weekly-schedule">
     <div class="badge badge-saffron">
       <span class="badge-dot"></span>
       Liturgical Schedule
@@ -250,7 +322,7 @@ const annualActivities = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
       {
         weeklyPrayers.map((w) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 hover-lift flex flex-col justify-between">
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 hover-lift flex flex-col justify-between h-full">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-accent mb-1">
                 <span class="font-bold uppercase tracking-wider">{w.day}</span>
@@ -279,13 +351,13 @@ const annualActivities = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
         annualActivities.map((a) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-3 border-t-4 border-t-accent hover-lift">
+          <div class="surface-card p-6 flex flex-col justify-between h-full space-y-3 border-t-4 border-t-accent hover-lift">
             <div>
               <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">
                 {a.tibetanDate}
               </span>
               <h4 class="font-display text-lg font-bold text-ink mb-1">{a.event}</h4>
-              <span class="badge badge-neutral text-[10px] mb-2">{a.gregorian}</span>
+              <span class="badge badge-neutral text-caption-xs mb-2">{a.gregorian}</span>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">{a.desc}</p>
             </div>
           </div>

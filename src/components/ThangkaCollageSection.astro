@@ -1,52 +1,56 @@
 ---
 import { Image } from "astro:assets";
-import AnimatedDivider from "./AnimatedDivider.astro";
 
 interface Props {
   title: string;
   body: string;
   imageSrc: any; // ImageMetadata
   imageAlt: string;
-  reverse?: boolean;
 }
 
-const { title, body, imageSrc, imageAlt, reverse = false } = Astro.props;
+const { title, body, imageSrc, imageAlt } = Astro.props;
 ---
 
-<div class={`relative max-w-4xl mx-auto flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+<div class="relative w-full min-h-[72vh] sm:min-h-[82vh] flex items-center justify-start overflow-hidden py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-surface-subtle rounded-2xl md:rounded-3xl border border-border shadow-2xl">
   
-  <!-- Image Layer (Background) -->
-  <div class={`relative w-full md:w-[65%] z-0 group ${reverse ? 'md:-ml-8' : 'md:-mr-8'}`}>
-    <div class="thangka-frame w-full aspect-[4/3]">
-      <div class="relative z-10 border-2 border-[#D4AF37] w-full h-full overflow-hidden">
-        <Image src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" width={800} />
-        <div class="absolute inset-0 bg-accent/10 transition-opacity duration-500 group-hover:opacity-0"></div>
-      </div>
-    </div>
-    <!-- Tibetan Cloud Ornament -->
-    <svg class={`absolute -top-4 ${reverse ? '-left-4' : '-right-4'} w-12 h-12 text-gold opacity-90 animate-float`} viewBox="0 0 100 100" fill="currentColor">
-      <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" opacity="0.8"/>
-      <path d="M70,40 C75,40 80,45 80,50 C80,55 75,60 70,60 L30,60 C20,60 15,50 20,40 C25,30 35,30 40,35 C45,25 60,25 65,35 C68,35 70,38 70,40 Z" fill="none" stroke="#Fdfbf7" stroke-width="2"/>
-    </svg>
+  <!-- Full-Bleed Sanctuary Background Image at 100% Natural Brightness (Zero Darkening Overlay) -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      widths={[640, 1024, 1600, 2000]}
+      sizes="100vw"
+      class="w-full h-full object-cover object-[center_30%] sm:object-[center_25%] transform scale-100 transition-transform duration-1000 ease-out"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 
-  <!-- Text Layer (Foreground Overlap) -->
-  <div class={`relative w-full md:w-[50%] z-10 mt-[-2rem] md:mt-16 artisan-card bg-white p-8 md:p-10 shadow-card ${reverse ? 'md:mr-auto' : 'md:ml-auto'}`}>
-    <div class="pecha-backdrop hidden md:block"></div>
+  <!-- Left-Directed Editorial Card with its Own Dedicated Background -->
+  <div class="relative z-10 w-full max-w-lg lg:max-w-xl text-left text-white space-y-5 sm:space-y-6 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl bg-[#500c0e]/92 sm:bg-[#500c0e]/90 backdrop-blur-xl border border-gold/50 shadow-2xl">
     
-    <svg class="mandala-watermark text-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
-      <circle cx="50" cy="50" r="40"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"/>
-    </svg>
-    
-    <h4 class="font-display text-accent uppercase tracking-widest text-lg relative z-10 m-0">{title}</h4>
-    
-    <AnimatedDivider type="knot" class="!my-4 justify-start" />
-    
-    <p class="font-garamond text-xl text-ink/80 m-0 relative z-10 leading-relaxed">{body}</p>
+    <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-gold/40 px-3.5 py-1.5 backdrop-blur-md shadow-md text-xs font-mono tracking-wider text-gold uppercase font-semibold">
+      <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+      The Kālacakra Tantra · དུས་འཁོར་རྫོགས་རིམ།
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-white font-normal leading-[1.15] tracking-tight drop-shadow-md mb-6 sm:mb-8">
+      {title}
+    </h2>
+
+    <p class="font-serif text-base sm:text-lg text-[#f0e6d8] leading-relaxed drop-shadow-sm">
+      {body}
+    </p>
+
+    <div class="pt-2 sm:pt-4">
+      <a
+        href="/kalachakra"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-gold-hover text-stone-950 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+      >
+        <span>Explore the Six-Fold Vajrayoga</span>
+        <span>→</span>
+      </a>
+    </div>
   </div>
 
 </div>

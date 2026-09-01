@@ -1,0 +1,115 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_METADATA } from "../data/site";
+import "../../base.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: "website" | "article";
+}
+
+const {
+  title,
+  description = SITE_METADATA.description,
+  image = "/logo512x512.jpg",
+  canonicalUrl = Astro.url.href,
+  type = "website",
+} = Astro.props;
+
+const pageTitle = title
+  ? `${title} | ${SITE_METADATA.name}`
+  : `${SITE_METADATA.name} | Tibetan Buddhist Monastery`;
+
+const resolvedImageUrl = new URL(image, SITE_METADATA.siteUrl).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BuddhistTemple",
+  "name": SITE_METADATA.name,
+  "alternateName": [SITE_METADATA.tibetanName, SITE_METADATA.shortName],
+  "description": SITE_METADATA.description,
+  "url": SITE_METADATA.siteUrl,
+  "logo": new URL("/logo512x512.jpg", SITE_METADATA.siteUrl).toString(),
+  "image": resolvedImageUrl,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sanjauli",
+    "addressLocality": "Shimla",
+    "addressRegion": "Himachal Pradesh",
+    "postalCode": "171006",
+    "addressCountry": "IN",
+  },
+  "telephone": SITE_METADATA.contact.phone,
+  "email": SITE_METADATA.contact.email,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={SITE_METADATA.keywords} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicons & App Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph (Facebook / Messaging) -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:site_name" content={SITE_METADATA.name} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:image" content={resolvedImageUrl} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImageUrl} />
+    <meta name="twitter:image:alt" content={SITE_METADATA.name} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+
+
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen bg-bg text-fg font-body antialiased flex flex-col justify-between">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-5 focus:py-3 focus:bg-[#500c0e] focus:text-[#fdbc2d] focus:font-bold focus:text-sm focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-[#fdbc2d] focus:border focus:border-white/30 focus:outline-none"
+    >
+      Skip to main content
+    </a>
+    <Header />
+    <slot />
+    <Footer />
+
+    <!-- High Performance Intersection Observer for Scroll Reveals -->
+    <script>
+      import { initScrollReveal } from "../scripts/scrollReveal.js";
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollReveal);
+      } else {
+        initScrollReveal();
+      }
+
+      document.addEventListener("astro:page-load", initScrollReveal);
+    </script>
+  </body>
+</html>

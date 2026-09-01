@@ -1,81 +1,54 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import type { ImageMetadata } from "astro";
+import BaseLayout from "./BaseLayout.astro";
 import TitleBanner from "../components/TitleBanner.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 
-import "../../base.css";
-
 interface Props {
   title: string;
+  description?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  tibetanTitle?: string;
+  fullBleed?: boolean;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  tibetanTitle,
+  fullBleed = false,
+} = Astro.props;
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Main Jonang Takten Phuntsok Choeling</title>
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <!-- open graph-->
-    <meta
-      property="og:title"
-      content={`${title} | Main Jonang Takten Phuntsok Choeling`}
-    />
-    <meta property="og:site_name" content="Main Jonang Takten Phuntsok Choeling" />
-    <meta property="og:url" content="https://jonang.in" />
-    <meta
-      property="og:description"
-      content="Main Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery in Sanjauli, Shimla. Preserving the definitive Shentong view and unbroken Kalachakra Six Yogas."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://jonang.in/logo512x512.jpg"
-    />
-    <!-- twitter card -->
-    <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:title"
-      content={`${title} | Main Jonang Takten Phuntsok Choeling`}
-    />
-    <meta
-      name="twitter:description"
-      content="Main Jonang Takten Phuntsok Choeling in Shimla, India: Shentong Madhyamaka, Kalachakra completion stage practice, and 18-year monastic curriculum."
-    />
-    <meta
-      name="twitter:image"
-      content="https://jonang.in/logo512x512.jpg"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Emblem and monastic seal of Main Jonang Takten Phuntsok Choeling"
-    />
-    <slot name="head" />
-  </head>
-  <body>
-    <Header />
-    <main class="pt-(--header-offset)">
-      <section>
-        <TitleBanner title={title} />
-        <SectionDivider class="section-divider--page" />
-        {Astro.slots.has('default') && (
+<BaseLayout title={title} description={description}>
+  <slot name="head" slot="head" />
+  
+  <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
+    <section>
+      <TitleBanner
+        title={title}
+        image={image}
+        imageAlt={imageAlt}
+        tibetanTitle={tibetanTitle}
+      />
+      <SectionDivider class="section-divider--page" />
+      
+      {Astro.slots.has("default") && (
+        fullBleed ? (
+          <slot />
+        ) : (
           <div class="section-padding max-w-6xl lg:mx-auto editorial-offset">
             <slot />
           </div>
-        )}
-        <div class="w-full">
-          <slot name="full-width" />
-          <slot name="full=width" />
-        </div>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+        )
+      )}
+
+      <div class="w-full">
+        <slot name="full-width" />
+      </div>
+    </section>
+  </main>
+</BaseLayout>

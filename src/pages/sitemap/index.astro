@@ -1,30 +1,164 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import RichTextSection from "../../components/RichTextSection.astro";
-import { FOOTER_NAVIGATION } from "../../data/navigation";
+import Dharmachakra from "../../components/icons/Dharmachakra.astro";
+import LotusFlower from "../../components/icons/LotusFlower.astro";
+import EndlessKnot from "../../components/icons/EndlessKnot.astro";
+import sitemapBannerImg from "../../assets/images/kalachakra-dzamthang-banner.webp";
+
+const sitemapSections = [
+  {
+    category: "The Monastic Seat & Lineage",
+    tibetan: "དགོན་པ་དང་བརྒྱུད་པ།",
+    badge: "Sanctuary & History",
+    links: [
+      {
+        title: "Sanctuary Home",
+        href: "/",
+        tibetan: "གཙོ་ངོས།",
+        desc: "Overview of Main Jonang Takten Phuntsok Choeling, historical timeline, lineage head, and introductory gateways.",
+      },
+      {
+        title: "The Monastery",
+        href: "/monastery",
+        tibetan: "ཇོ་ནང་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།",
+        desc: "Sanjauli Shimla complex, Dalai Lama visits, succession of lineage abbots, demographics, and liturgical calendar.",
+      },
+      {
+        title: "Holders of the Lineage",
+        href: "/teachers",
+        tibetan: "བཀའ་བབས་བརྒྱུད་པའི་བླ་མ།",
+        desc: "Biographies of the Supreme Lineage Heads, Dorje Lopöns, and resident monastic teachers in exile.",
+      },
+    ],
+  },
+  {
+    category: "Sacred Doctrine & Practice",
+    tibetan: "ལྟ་གྲུབ་དང་ཉམས་ལེན།",
+    badge: "Philosophy & Tantra",
+    links: [
+      {
+        title: "The Jonang Doctrine",
+        href: "/doctrine",
+        tibetan: "ཇོ་ནང་ལྟ་གྲུབ།",
+        desc: "Definitive Shentong (Other-Emptiness) Great Madhyamaka, the Three Turnings, and curated scholarly bibliography.",
+      },
+      {
+        title: "Kālacakra Practice",
+        href: "/kalachakra",
+        tibetan: "དཔལ་དུས་ཀྱི་འཁོར་ལོ།",
+        desc: "The Six-fold Vajrayoga (Ṣaḍaṅgayoga), generation stage, dark retreat, and 3.5-year contemplative retreat syllabus.",
+      },
+      {
+        title: "18-Year Curriculum",
+        href: "/curriculum",
+        tibetan: "ལོ་བཅོ་བརྒྱད་ཀྱི་སློབ་ཚན།",
+        desc: "Comprehensive shedra syllabus spanning classical Tibetan grammar, Pramāṇa epistemology, and the Five Great Treatises.",
+      },
+    ],
+  },
+  {
+    category: "Community & Sponsorship",
+    tibetan: "དགེ་འདུན་དང་ཞབས་འདེགས།",
+    badge: "Sangha & Support",
+    links: [
+      {
+        title: "Photo Gallery",
+        href: "/gallery",
+        tibetan: "དགོན་པའི་སྐུ་པར།",
+        desc: "Visual archive of daily life, liturgical ceremonies, scholastic study, and Himalayan community arboriculture.",
+      },
+      {
+        title: "Support the Monastery",
+        href: "/donate",
+        tibetan: "དགོན་པར་ཞབས་འདེགས།",
+        desc: "Direct support for monk sustenance, healthcare, winter heating, and registered bank wire transfer instructions.",
+      },
+    ],
+  },
+];
 ---
 
-<PageLayout title="Sitemap">
-  <RichTextSection>
-    <nav aria-label="Sitemap">
-      <p>
-        Use this sitemap to quickly find key pages across the Jonang Monastery
-        website.
-      </p>
-      <div class="grid gap-10 md:grid-cols-2">
-        {FOOTER_NAVIGATION.map((section) => (
-          <div>
-            <h2>{section.heading}</h2>
-            <ul>
-              {section.links.map((item) => (
-                <li>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+<PageLayout
+  title="Monastic Site Index"
+  tibetanTitle="དྲ་ཚིགས་ས་ཁྲ།"
+  image={sitemapBannerImg}
+  imageAlt="Panoramic Kalachakra mural painting from Dzamthang Monastery"
+>
+  <section class="section-padding">
+    <div class="mx-auto max-w-5xl space-y-12">
+      
+      <!-- Intro Callout -->
+      <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+        <div class="badge badge-saffron">
+          <span class="badge-dot"></span>
+          Navigation Index
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+          Complete Directory of Main Jonang Takten Phuntsok Choeling
+        </h2>
+
+        <p class="lead text-base sm:text-lg text-muted">
+          Use this sitemap to explore all philosophical treatises, meditation curricula, teacher biographies, liturgical schedules, and support facilities across the official monastery web resource.
+        </p>
       </div>
-    </nav>
-  </RichTextSection>
+
+      <!-- Hierarchical Sitemap Sections -->
+      <div class="space-y-10">
+        {
+          sitemapSections.map((section) => (
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-border/80 pb-3">
+                <div class="flex items-center gap-3">
+                  <Dharmachakra class="w-6 h-6 text-accent-secondary" />
+                  <div>
+                    <h3 class="text-xl sm:text-2xl font-display text-ink font-bold m-0">
+                      {section.category}
+                    </h3>
+                    <span class="text-xs font-tibetan text-accent font-bold">
+                      {section.tibetan}
+                    </span>
+                  </div>
+                </div>
+                <span class="badge badge-neutral text-caption-xs hidden sm:inline-block">
+                  {section.badge}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                {
+                  section.links.map((link) => (
+                    <a
+                      href={link.href}
+                      class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift group border border-border hover:border-accent transition-all h-full"
+                    >
+                      <div class="space-y-2">
+                        <div class="flex justify-between items-start">
+                          <span class="text-xs font-tibetan text-accent-secondary font-bold">
+                            {link.tibetan}
+                          </span>
+                          <EndlessKnot size={20} class="text-gold/50 group-hover:text-gold transition-colors" />
+                        </div>
+                        <h4 class="text-lg font-display font-bold text-ink group-hover:text-accent transition-colors m-0">
+                          {link.title} →
+                        </h4>
+                        <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+                          {link.desc}
+                        </p>
+                      </div>
+
+                      <span class="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40">
+                        Visit Page <span>→</span>
+                      </span>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
 </PageLayout>

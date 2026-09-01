@@ -1,65 +1,34 @@
 ---
 import { Image } from "astro:assets";
-
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import AnimatedDivider from "../components/AnimatedDivider.astro";
 import ThangkaCollageSection from "../components/ThangkaCollageSection.astro";
 import FrescoMuralSection from "../components/FrescoMuralSection.astro";
-import SacredCenterpiece from "../components/SacredCenterpiece.astro";
 import HeroSection from "../layouts/HeroSection.astro";
 import ProminenceSection from "../layouts/ProminenceSection.astro";
 import DonateSection from "../layouts/DonateSection.astro";
 import Dharmachakra from "../components/icons/Dharmachakra.astro";
-import LotusFlower from "../components/icons/LotusFlower.astro";
+import FlagIndia from "../components/icons/FlagIndia.astro";
+import FlagTibet from "../components/icons/FlagTibet.astro";
+import FlagMongolia from "../components/icons/FlagMongolia.astro";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
 import teachingImage from "../assets/images/lecture.webp";
 import studentsImage from "../assets/images/young-students.webp";
 import landscapeImage from "../assets/images/housing-landscape.webp";
-import libraryImage from "../assets/images/teacher-library.webp";
 import riteSutraImage from "../assets/images/rite-sutra.webp";
-
-import "../../base.css";
-
-const historicalTimeline = [
-  {
-    era: "1294",
-    title: "Establishment in Jomonang Valley",
-    desc: "Kunpang Tukje Tsondru (1243–1313) brings together seventeen Dro lineage transmissions of the Kālacakra Tantra and founds the Jonang hermitage in Tsang.",
-  },
-  {
-    era: "1292 – 1361",
-    title: "Dolpopa & the Great Kumbum",
-    desc: "Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors 'Mountain Doctrine' (Ri chos nges don rgya mtsho), formulating the Shentong Madhyamaka view.",
-  },
-  {
-    era: "1575 – 1634",
-    title: "Jetsun Tāranātha",
-    desc: "The scholar and historian establishes Takten Damcho Ling Monastery (1615), writes definitive guides on the Six-fold Vajrayoga, and compiles the 'History of Buddhism in India'.",
-  },
-  {
-    era: "17th – 20th Century",
-    title: "Suppression & Amdo Transmission",
-    desc: "Following conversion of Central Tibetan monasteries by the Ganden Phodrang government, the lineage is preserved continuously at Dzamthang, Ngawa, and Golok in Amdo.",
-  },
-  {
-    era: "1960s – Present",
-    title: "Exile Re-establishment in Shimla",
-    desc: "Lama Jinpa Gyatso establishes the Shimla monastery. In 1990, the 14th Dalai Lama designates it Main Jonang Takten Phuntsok Choeling and appoints the 9th Khalkha Jetsun Dhampa as head of the tradition in 1997.",
-  },
-];
+import logoImage from "../assets/icons/logo.webp";
 
 const portals = [
   {
-    href: STATIC_PAGE_PATHS.aboutUs,
+    href: STATIC_PAGE_PATHS.monastery,
     label: "Monastery & Community",
     tibetan: "དགོན་པ།",
     body: "History in Sanjauli, Shimla: succession of lineage abbots, resident sangha, and student demographics from the Himalayan borderlands.",
     badge: "Monastic Seat",
   },
   {
-    href: STATIC_PAGE_PATHS.jonangDoctrine,
+    href: STATIC_PAGE_PATHS.doctrine,
     label: "Shentong Philosophy",
     tibetan: "གཞན་སྟོང་།",
     body: "The Three Turnings of the Dharma Wheel, Tathāgatagarbha sutras, and the Madhyamaka distinction between Rangtong and Shentong.",
@@ -82,278 +51,401 @@ const portals = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Main Jonang Takten Phuntsok Choeling — Head seat of the Jonang tradition in exile. Preserving Shentong Madhyamaka philosophy and the Kālacakra Six-fold Vajrayoga."
-    />
-    <meta
-      name="keywords"
-      content="Jonang, Tibetan Buddhism, Kalachakra, Shentong, Shimla monastery, Dolpopa, Taranatha"
-    />
-    <title>Main Jonang Takten Phuntsok Choeling | Tibetan Buddhist Monastery</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta property="og:title" content="Main Jonang Takten Phuntsok Choeling" />
-    <meta property="og:site_name" content="Jonang Monastery" />
-    <meta property="og:url" content="https://jonang.in" />
-    <meta
-      property="og:description"
-      content="Main Jonang Takten Phuntsok Choeling in Shimla, India: Shentong Madhyamaka, Kālacakra completion stage practice, and 18-year monastic curriculum."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://jonang.in/logo512x512.jpg" />
-  </head>
-  <body>
-    <Header />
-    <HeroSection />
-    
-    <main>
-      <!-- I. Lineage Head & Historical Overview -->
-      <ProminenceSection />
+<BaseLayout>
+  <HeroSection />
+  
+  <main id="main-content" tabindex="-1" class="focus:outline-none">
+    <!-- I. Narrative Chapter 1: The Living Lineage Orientation (Impressionistic Sanctuary Layout) -->
+    <section class="px-4 py-16 sm:px-6 sm:py-22 md:px-10 md:py-28 lg:px-16 lg:py-32 relative overflow-hidden flex items-center reveal-on-scroll">
+      
+      <!-- Multi-Layered Impressionistic Atmospheric Light & Candlelight Aura -->
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(253,188,45,0.12)_0%,transparent_60%)]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-32 w-96 h-96 bg-[#992224]/8 blur-[120px] rounded-full" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(253,188,45,0.08)_0%,transparent_70%)] blur-3xl rounded-full" aria-hidden="true"></div>
 
-      <AnimatedDivider type="knot" />
+      <!-- Monumental Monastery Symbol Watermark (Centered, Fully Contained) -->
+      <div
+        class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(88vw,320px)] sm:w-[min(80vw,420px)] md:w-[min(70vw,480px)] lg:w-[min(55vw,520px)] aspect-square select-none opacity-[0.07] sm:opacity-[0.09] transition-opacity duration-700"
+        aria-hidden="true"
+      >
+        <Image
+          src={logoImage}
+          alt=""
+          width={520}
+          height={520}
+          class="w-full h-full object-contain"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
-      <!-- II. Narrative Chapter 1: The Living Lineage Orientation -->
-      <section class="section-padding reveal-on-scroll">
-        <div class="page-stack">
-          <div class="editorial-intro">
+      <div class="max-w-7xl mx-auto relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Narrative Prose & Canonical Epigraph -->
+          <div class="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
+            
+            <!-- Consecrated Eyebrow Badge -->
             <div>
-              <div class="badge badge-crimson mb-3">
-                <span class="badge-dot"></span>
-                The Definitive Middle Way
+              <div class="inline-flex items-center gap-2 rounded-full bg-[#500c0e]/8 border border-[#992224]/30 px-3.5 py-1 text-xs font-mono font-bold uppercase tracking-widest text-[#992224] backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#992224] animate-pulse"></span>
+                The Definitive Middle Way · ངེས་དོན་དབུ་མ་ཆེན་པོ།
               </div>
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight">
-                An Unbroken Lineage of Realization & Philosophy
-              </h2>
-              <p class="editorial-lede artisan-dropcap text-base sm:text-lg text-muted mt-4">
-                The Jonang tradition holds a singular place in Tibetan Buddhism, uniquely safeguarding the definitive Other-Emptiness (<em>Shentong</em>) view of primordial Buddha-nature and the complete completion-stage yogas of the Kalachakra Tantra.
-              </p>
-              <p class="text-ink">
-                Once assumed extinct following 17th-century political suppression in Central Tibet, the lineage persevered through resilient monastic sanctuaries in Amdo and Kham. Today, it flourishes once again in exile at Sanjauli, Shimla, and across international communities.
-              </p>
             </div>
-            
-            <aside class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
-              <div class="flex items-center gap-3 text-accent-secondary">
-                <Dharmachakra class="w-8 h-8" />
-                <h3 class="m-0 text-xl font-display text-ink">Core Inheritances</h3>
-              </div>
-              <ul class="space-y-3 list-none p-0 m-0 text-sm text-muted">
-                <li class="flex items-start gap-2">
-                  <span class="text-accent font-bold mt-0.5">•</span>
-                  <span><strong>Kalachakra Vajrayoga:</strong> Complete Dro lineage completion-stage system.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-accent font-bold mt-0.5">•</span>
-                  <span><strong>Definitive Shentong:</strong> Non-dual luminous wisdom free of adventitious defilements.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-accent font-bold mt-0.5">•</span>
-                  <span><strong>Living Himalayan Seat:</strong> Comprehensive 18-year education for ~120 monks.</span>
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-      </section>
 
-      <!-- III. Narrative Chapter 2: The Living Timeline (Interactive Pecha Cards) -->
-      <section class="section-padding bg-surface-subtle/50 border-y border-border reveal-on-scroll">
-        <div class="max-w-6xl mx-auto space-y-10">
-          <div class="text-center space-y-3 max-w-2xl mx-auto">
-            <div class="badge badge-saffron">
-              <span class="badge-dot"></span>
-              Historical Continuity
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal">
-              Chronicles of the Jonang Lineage
+            <!-- Monumental Heading -->
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display text-ink font-normal leading-[1.14] tracking-tight m-0">
+              An Unbroken Lineage of Realization & Philosophy
             </h2>
-            <p class="text-muted text-sm sm:text-base">
-              A historical trajectory spanning from the early Indian mahasiddhas through Tibetan golden summits, preservation in eastern retreats, to modern revival.
-            </p>
-          </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {
-              historicalTimeline.map((item, idx) => (
-                <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift border-t-4 border-t-accent relative overflow-hidden">
-                  <div class="absolute -right-2 -bottom-2 opacity-5 text-accent pointer-events-none">
-                    <LotusFlower size={96} />
-                  </div>
-                  <div>
-                    <span class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-widest block mb-1">
-                      {item.era}
-                    </span>
-                    <h3 class="text-lg font-display font-bold text-ink mb-2">{item.title}</h3>
-                    <p class="text-xs sm:text-sm text-muted leading-relaxed">{item.desc}</p>
-                  </div>
-                  <div class="text-xs font-mono font-semibold text-muted/60 pt-2 border-t border-border/60 flex items-center justify-between">
-                    <span>Phase 0{idx + 1}</span>
-                    <span>༄༅། །</span>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <AnimatedDivider type="lotus" />
-
-      <!-- IV. Narrative Chapter 3: Fresco Mural & Thangka Highlights -->
-      <section class="section-padding reveal-on-scroll">
-        <FrescoMuralSection
-          title="Indian Sources and Tibetan Exegesis"
-          body="The Jonang curriculum integrates the Kālacakra Tantra, Indian commentaries (Vimalaprabhā), and Tibetan epistemology. Maintained continuously in Tsang and Amdo, these root texts and commentaries form the basis of contemporary monastic education in Shimla."
-          imageSrc={riteSutraImage} 
-        />
-      </section>
-
-      <AnimatedDivider type="lotus" />
-
-      <section class="section-padding reveal-on-scroll">
-        <ThangkaCollageSection
-          title="Kālacakra: Subtle Physiology and Completion Stage"
-          body="The Kālacakra Tantra forms the core practice of the Jonang school. Through the Six-fold Vajrayoga (Sbyor drug), practitioners direct subtle channels (nāḍī), winds (prāṇa), and drops (bindu) to realize immutable bliss (akṣara) and empty form (śūnyatābimba)."
-          imageSrc={teachingImage}
-          imageAlt="Monastic instructor conducting a lecture on Buddhist epistemology"
-        />
-      </section>
-
-      <!-- V. Narrative Chapter 4: Monastic Community & Demographics -->
-      <section class="section-padding bg-surface-subtle/70 border-y border-border reveal-on-scroll">
-        <div class="max-w-6xl mx-auto space-y-12">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div class="lg:col-span-6 space-y-6">
-              <div class="badge badge-crimson">
-                <span class="badge-dot"></span>
-                Monastic Demographics
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal leading-tight">
-                Resident Sangha and Student Body
-              </h2>
-              <p class="text-sm sm:text-base text-muted leading-relaxed">
-                Main Jonang Takten Phuntsok Choeling in Shimla provides room, board, healthcare, and monastic education for approximately <strong>120 resident monks and staff members</strong>:
+            <!-- Illuminated Canonical Root Inscription -->
+            <div class="relative pl-5 sm:pl-6 border-l-2 border-[#fdbc2d] my-2 sm:my-3 py-1.5 bg-gradient-to-r from-[#fef8eb] to-transparent rounded-r-xl">
+              <p lang="bo" class="font-tibetan text-base sm:text-lg text-[#992224] font-bold leading-relaxed mb-1">
+                ༄༅། །རྣམ་དབྱེར་མེད་པའི་མཚན་ཉིད་ཅན། །བླ་མེད་ཆོས་ཀྱིས་སྟོང་མ་ཡིན། །
               </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
-                  <span class="text-2xl font-display font-bold text-accent block">~70</span>
-                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Assam & Tawang</span>
-                  <span class="text-[11px] text-muted block">Himalayan Border Regions</span>
-                </div>
-                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
-                  <span class="text-2xl font-display font-bold text-accent-secondary block">~30</span>
-                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Mongolia</span>
-                  <span class="text-[11px] text-muted block">Including 12 under monastic care</span>
-                </div>
-                <div class="p-4 rounded-xl bg-surface border border-border text-center space-y-1">
-                  <span class="text-2xl font-display font-bold text-accent-tertiary block">~20</span>
-                  <span class="text-xs font-semibold text-ink uppercase tracking-wider block">Tibet</span>
-                  <span class="text-[11px] text-muted block">Senior Shedra Scholars</span>
-                </div>
-              </div>
+              <p class="font-serif italic text-xs sm:text-sm text-[#6e4d52] m-0">
+                “Endowed with the quality of inseparability, ultimate reality is never empty of unsurpassable enlightened qualities.” — Ratnagotravibhāga
+              </p>
             </div>
 
-            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="surface-card overflow-hidden rounded-2xl">
-                <Image
-                  src={landscapeImage}
-                  alt="Monastic buildings situated in Sanjauli, Shimla"
-                  width={600}
-                  height={450}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="surface-card overflow-hidden rounded-2xl">
-                <Image
-                  src={studentsImage}
-                  alt="Resident monastic students during morning study"
-                  width={600}
-                  height={450}
-                  class="w-full h-full object-cover"
-                />
-              </div>
+            <!-- Narrative Body -->
+            <div class="space-y-4 text-sm sm:text-base leading-relaxed text-[#2c1d1f]">
+              <p class="editorial-lede artisan-dropcap text-base sm:text-lg text-[#553b3e] leading-relaxed m-0">
+                The Jonang tradition holds a singular sanctuary in Tibetan Buddhism, uniquely safeguarding the definitive Other-Emptiness (<em>Shentong</em>) view of primordial Buddha-nature and the complete completion-stage yogas of the Kālacakra Tantra.
+              </p>
+              <p class="m-0 text-[#423134]">
+                Once assumed dormant following 17th-century political suppression in Central Tibet, the lineage's living flame was preserved unbroken across the mountain hermitages of Amdo and Kham. Today, it flourishes in full scholastic and contemplative vigor at Main Jonang Takten Phuntsok Choeling in Shimla.
+              </p>
             </div>
 
           </div>
-        </div>
-      </section>
-
-      <!-- VI. Narrative Chapter 5: Four Portals -->
-      <section class="section-padding reveal-on-scroll">
-        <div class="max-w-6xl mx-auto space-y-10">
-          <div class="text-center space-y-2 max-w-2xl mx-auto">
-            <div class="badge badge-saffron">
-              <span class="badge-dot"></span>
-              Curricular & Doctrinal Index
-            </div>
-            <h2 class="text-3xl sm:text-4xl font-display text-ink font-normal">
-              Tradition Documentation
-            </h2>
-            <p class="text-muted text-sm sm:text-base">
-              Direct access to philosophical tenets, meditation manuals, curriculum, and historical records.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {
-              portals.map((portal) => (
-                <a
-                  href={portal.href}
-                  class="surface-card surface-card-hover p-6 flex flex-col justify-between space-y-4 group block text-left"
-                >
-                  <div class="space-y-2">
-                    <div class="flex justify-between items-center">
-                      <span class="badge badge-neutral text-[11px]">{portal.badge}</span>
-                      <span class="font-tibetan text-lg text-accent/80 font-bold">{portal.tibetan}</span>
-                    </div>
-                    <h3 class="text-xl font-display text-ink group-hover:text-accent transition-colors">
-                      {portal.label} →
+          
+          <!-- Right Column: 3 Illuminated Shrine Capsules -->
+          <div class="lg:col-span-5 flex flex-col gap-4 sm:gap-5 w-full">
+            
+            <!-- Capsule 1: Kālacakra Vajrayoga -->
+            <div class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-[#faf6f4] via-[#ffffff] to-[#f4eae6] border border-[#ebdcd7] hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#fdbc2d]/10 rounded-full blur-xl group-hover:bg-[#fdbc2d]/25 transition-all"></div>
+              <div class="relative z-10 flex items-start gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#500c0e] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform">
+                  <Dharmachakra class="w-6 h-6 animate-slow-spin" />
+                </div>
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between">
+                    <h3 class="m-0 text-base font-display font-bold text-ink group-hover:text-[#992224] transition-colors">
+                      Kālacakra Vajrayoga
                     </h3>
-                    <p class="text-xs text-muted leading-relaxed">{portal.body}</p>
+                    <span class="font-tibetan text-xs text-[#992224] font-bold">སྦྱོར་དྲུག</span>
                   </div>
-                  <span class="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    View Section <span>→</span>
-                  </span>
-                </a>
-              ))
-            }
+                  <p class="text-xs sm:text-sm text-[#6e4d52] leading-relaxed m-0">
+                    The complete Dro lineage completion stage: Six Yogas actualizing luminous empty form and immutable great bliss.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Capsule 2: Definitive Shentong -->
+            <div class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-[#faf6f4] via-[#ffffff] to-[#f4eae6] border border-[#ebdcd7] hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#992224]/10 rounded-full blur-xl group-hover:bg-[#992224]/20 transition-all"></div>
+              <div class="relative z-10 flex items-start gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#6e1416] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform">
+                  <span class="text-lg font-serif">✦</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between">
+                    <h3 class="m-0 text-base font-display font-bold text-ink group-hover:text-[#992224] transition-colors">
+                      Definitive Shentong
+                    </h3>
+                    <span class="font-tibetan text-xs text-[#992224] font-bold">གཞན་སྟོང་།</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-[#6e4d52] leading-relaxed m-0">
+                    Non-dual primordial awareness (<em>ye shes</em>) replete with inseparable, unconditioned enlightened qualities.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Capsule 3: Living Mountain Hermitage -->
+            <div class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-[#faf6f4] via-[#ffffff] to-[#f4eae6] border border-[#ebdcd7] hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+              <div class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#fdbc2d]/10 rounded-full blur-xl group-hover:bg-[#fdbc2d]/25 transition-all"></div>
+              <div class="relative z-10 flex items-start gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#500c0e] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform">
+                  <span class="font-tibetan text-sm font-bold">༄</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between">
+                    <h3 class="m-0 text-base font-display font-bold text-ink group-hover:text-[#992224] transition-colors">
+                      Living Himalayan Seat
+                    </h3>
+                    <span class="font-tibetan text-xs text-[#992224] font-bold">མ་དགོན།</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-[#6e4d52] leading-relaxed m-0">
+                    Unbroken lineage transmission in Sanjauli, Shimla: a comprehensive 18-year Shedra education for ~120 monks.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
-      <AnimatedDivider type="lotus" />
+    <AnimatedDivider type="knot" />
 
-      <!-- VII. Centerpiece: Texts, Teachers & Practice Held in Full -->
-      <section class="section-padding reveal-on-scroll">
-        <SacredCenterpiece
-          title="Lineage Transmission and Textual Preservation"
-          body="Main Jonang Takten Phuntsok Choeling maintains lineage transmissions through resident lineage holders, structured multi-year retreats, liturgical cycles, and an eighteen-year curriculum in Buddhist philosophy."
-          imageSrc={libraryImage}
-          imageAlt="Monastery scripture library and canonical collections"
-        />
-      </section>
+    <!-- II. Chronicles of the Jonang Lineage & Supreme Lineage Head -->
+    <ProminenceSection />
 
-      <AnimatedDivider type="knot" />
+    <AnimatedDivider type="lotus" />
 
-      <!-- VIII. Monastic Patronage & Support Section -->
-      <DonateSection />
-    </main>
-    
-    <Footer />
-    <script>
-      import { initScrollReveal } from "../scripts/scrollReveal.js";
-      document.addEventListener("DOMContentLoaded", initScrollReveal);
-    </script>
-  </body>
-</html>
+    <!-- III. Narrative Chapter 3: Fresco Mural & Indian Sources -->
+    <section class="section-padding reveal-on-scroll">
+      <FrescoMuralSection
+        title="Indian Sources and Tibetan Exegesis"
+        body="The Jonang curriculum integrates the Kālacakra Tantra, Indian commentaries (Vimalaprabhā), and Tibetan epistemology. Maintained continuously in Tsang and Amdo, these root texts and commentaries form the basis of contemporary monastic education in Shimla."
+        imageSrc={riteSutraImage} 
+      />
+    </section>
 
+    <AnimatedDivider type="dharma" />
+
+    <!-- IV. Narrative Chapter 4: Full-Height Kālacakra Completion Stage Section -->
+    <section class="relative w-full overflow-hidden reveal-on-scroll my-6 sm:my-10">
+      <ThangkaCollageSection
+        title="The Six Yogas of the Completion Stage"
+        body="As the contemplative heart of the Jonang lineage, the Six-fold Vajrayoga guides the practitioner through the subtle energies of the body and mind—dissolving dualistic perception to awaken the direct realization of luminous empty form and immutable bliss."
+        imageSrc={teachingImage}
+        imageAlt="Monastic instructor conducting a lecture on Buddhist epistemology"
+      />
+    </section>
+
+    <!-- V. Narrative Chapter 4: Monastic Community & Demographics -->
+    <section class="section-padding bg-surface-subtle/70 border-y border-border reveal-on-scroll">
+      <div class="max-w-6xl mx-auto space-y-10 sm:space-y-12">
+        
+        <!-- Top Editorial Header (Wide Layout) -->
+        <div class="space-y-4 max-w-3xl">
+          <div class="badge badge-crimson">
+            <span class="badge-dot"></span>
+            Monastic Demographics
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+            Resident Sangha and Student Body
+          </h2>
+          <p class="text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
+            Main Jonang Takten Phuntsok Choeling in Shimla provides room, board, healthcare, and monastic education for approximately <strong>120 resident monks and staff members</strong>:
+          </p>
+        </div>
+
+        <!-- Expansive Full-Width 3-Column Demographics Cards with Unclipped Flags -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
+          
+          <!-- 1. Indian Himalayan Borderlands -->
+          <div class="surface-card rounded-2xl md:rounded-3xl border border-border p-5 sm:p-6 shadow-card hover-lift transition-all flex flex-col justify-between space-y-5 bg-surface">
+            <!-- Fully Visible, Unclipped Flag Frame -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden bg-surface-subtle border border-border/70 flex items-center justify-center p-3 sm:p-4 shadow-inner">
+              <FlagIndia class="w-full h-full object-contain drop-shadow-sm" />
+            </div>
+
+            <!-- Demographic Details & Stats -->
+            <div class="space-y-3 pt-1">
+              <div class="flex items-center justify-between border-b border-border/60 pb-2.5">
+                <span class="text-xs font-mono font-bold tracking-widest uppercase text-ink">
+                  India
+                </span>
+                <span class="badge badge-saffron text-caption font-bold">
+                  Himalayan Borderlands
+                </span>
+              </div>
+
+              <div class="flex items-baseline justify-between">
+                <div>
+                  <span class="text-xs text-muted block">Origin Region</span>
+                  <span class="text-sm font-medium text-ink block">
+                    Assam & Tawang
+                  </span>
+                </div>
+                <div class="text-right">
+                  <span class="text-3xl sm:text-4xl font-display font-bold text-accent leading-none block">
+                    ~70
+                  </span>
+                  <span class="text-[11px] font-sans font-semibold text-muted uppercase tracking-wider">Monks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Tibet -->
+          <div class="surface-card rounded-2xl md:rounded-3xl border border-border p-5 sm:p-6 shadow-card hover-lift transition-all flex flex-col justify-between space-y-5 bg-surface">
+            <!-- Fully Visible, Unclipped Flag Frame -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden bg-surface-subtle border border-border/70 flex items-center justify-center p-3 sm:p-4 shadow-inner">
+              <FlagTibet class="w-full h-full object-contain drop-shadow-sm" />
+            </div>
+
+            <!-- Demographic Details & Stats -->
+            <div class="space-y-3 pt-1">
+              <div class="flex items-center justify-between border-b border-border/60 pb-2.5">
+                <span class="text-xs font-mono font-bold tracking-widest uppercase text-ink">
+                  Tibet
+                </span>
+                <span class="badge badge-crimson text-caption font-bold">
+                  Senior Shedra
+                </span>
+              </div>
+
+              <div class="flex items-baseline justify-between">
+                <div>
+                  <span class="text-xs text-muted block">Origin Region</span>
+                  <span class="text-sm font-medium text-ink block">
+                    Epistemology & Treatises
+                  </span>
+                </div>
+                <div class="text-right">
+                  <span class="text-3xl sm:text-4xl font-display font-bold text-accent leading-none block">
+                    ~20
+                  </span>
+                  <span class="text-[11px] font-sans font-semibold text-muted uppercase tracking-wider">Monks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Mongolia -->
+          <div class="surface-card rounded-2xl md:rounded-3xl border border-border p-5 sm:p-6 shadow-card hover-lift transition-all flex flex-col justify-between space-y-5 bg-surface">
+            <!-- Fully Visible, Unclipped Flag Frame -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden bg-surface-subtle border border-border/70 flex items-center justify-center p-3 sm:p-4 shadow-inner">
+              <FlagMongolia class="w-full h-full object-contain drop-shadow-sm" />
+            </div>
+
+            <!-- Demographic Details & Stats -->
+            <div class="space-y-3 pt-1">
+              <div class="flex items-center justify-between border-b border-border/60 pb-2.5">
+                <span class="text-xs font-mono font-bold tracking-widest uppercase text-ink">
+                  Mongolia
+                </span>
+                <span class="badge badge-neutral text-caption font-bold">
+                  Novice Wards
+                </span>
+              </div>
+
+              <div class="flex items-baseline justify-between">
+                <div>
+                  <span class="text-xs text-muted block">Origin Region</span>
+                  <span class="text-sm font-medium text-ink block">
+                    12 Novices in Full Care
+                  </span>
+                </div>
+                <div class="text-right">
+                  <span class="text-3xl sm:text-4xl font-display font-bold text-accent-secondary leading-none block">
+                    ~30
+                  </span>
+                  <span class="text-[11px] font-sans font-semibold text-muted uppercase tracking-wider">Monks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Grand Large-Scale 2-Column Showcase Images -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 pt-2">
+          <figure class="surface-card overflow-hidden rounded-2xl md:rounded-3xl shadow-card border border-border group relative m-0">
+            <div class="aspect-[16/11] sm:aspect-[4/3] w-full overflow-hidden relative">
+              <Image
+                src={landscapeImage}
+                alt="Monastic buildings situated atop the Himalayan ridge in Sanjauli, Shimla"
+                width={1200}
+                height={900}
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="eager"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white">
+                <span class="text-caption uppercase font-mono tracking-wider text-gold font-bold block mb-0.5">
+                  Monastery Sanctuary & Living Quarters
+                </span>
+                <span class="text-sm sm:text-base font-display font-medium text-white/95 leading-tight block">
+                  Sanjauli Ridge, Shimla
+                </span>
+              </div>
+            </div>
+          </figure>
+
+          <figure class="surface-card overflow-hidden rounded-2xl md:rounded-3xl shadow-card border border-border group relative m-0">
+            <div class="aspect-[16/11] sm:aspect-[4/3] w-full overflow-hidden relative">
+              <Image
+                src={studentsImage}
+                alt="Resident monastic students during morning study"
+                width={1200}
+                height={900}
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="eager"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white">
+                <span class="text-caption uppercase font-mono tracking-wider text-saffron font-bold block mb-0.5">
+                  Young Novices & Monastic Shedra
+                </span>
+                <span class="text-sm sm:text-base font-display font-medium text-white/95 leading-tight block">
+                  Preserving Language, Epistemology & Ritual Arts
+                </span>
+              </div>
+            </div>
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VI. Narrative Chapter 5: Four Portals -->
+    <section class="section-padding reveal-on-scroll">
+      <div class="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+        <div class="text-center space-y-2.5 max-w-2xl mx-auto">
+          <div class="badge badge-saffron">
+            <span class="badge-dot"></span>
+            Curricular & Doctrinal Index
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+            Tradition Documentation
+          </h2>
+          <p class="text-muted text-sm sm:text-base">
+            Direct access to philosophical tenets, meditation manuals, curriculum, and historical records.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {
+            portals.map((portal) => (
+              <a
+                href={portal.href}
+                class="surface-card surface-card-hover p-6 flex flex-col justify-between space-y-4 group block text-left h-full"
+              >
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center min-h-[28px]">
+                    <span class="badge badge-neutral text-caption">{portal.badge}</span>
+                    <span class="font-tibetan text-lg text-accent/80 font-bold">{portal.tibetan}</span>
+                  </div>
+                  <h3 class="text-xl font-display text-ink group-hover:text-accent transition-colors m-0">
+                    {portal.label} →
+                  </h3>
+                  <p class="text-xs text-muted leading-relaxed m-0">{portal.body}</p>
+                </div>
+                <span class="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2">
+                  View Section <span>→</span>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <AnimatedDivider type="knot" />
+
+    <!-- VII. Monastic Patronage & Support Section -->
+    <DonateSection />
+  </main>
+</BaseLayout>

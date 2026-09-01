@@ -1,37 +1,65 @@
 import { useEffect, useState } from "preact/hooks";
-import type { Quote } from "../../payload-types";
+import type { Quote } from "../data/quotes";
 
-function QuotePreact(
-  { quotes, length }: { quotes: Quote[]; length: number },
-) {
-  const [quote, setQuote] = useState<Quote | null>(
-    null,
-  );
+function formatTibetanVerses(rawHtml?: string | null): string {
+  if (!rawHtml) return "";
+  // Strip outer paragraph tags
+  let clean = rawHtml.replace(/^<p\b[^>]*>/i, "").replace(/<\/p>$/i, "").trim();
+  
+  // If raw string has no line breaks between verses, split after double-shads or shads
+  if (!clean.includes("<br>") && !clean.includes("<br/>") && !clean.includes("<br />")) {
+    clean = clean.replace(/(།\s*།|༎)\s*/g, "$1<br/>");
+  }
+  
+  // Clean up trailing break tags
+  clean = clean.replace(/(<br\s*\/?>)+$/i, "");
+  
+  // Map each poetic pada into a dedicated span with balanced wrapping
+  const lines = clean.split(/<br\s*\/?>/i).map((l) => l.trim()).filter(Boolean);
+  if (lines.length === 0) return rawHtml;
+  return lines.map((line) => `<span class="tibetan-pada md:whitespace-nowrap">${line}</span>`).join("");
+}
+
+interface QuoteProps {
+  quotes: Quote[];
+  length: number;
+}
+
+export default function QuotePreact({ quotes, length }: QuoteProps) {
+  const [quote, setQuote] = useState<Quote | null>(null);
 
   useEffect(() => {
-    setQuote(quotes[Math.floor(Math.random() * length)]);
-  }, []);
+    if (quotes && length > 0) {
+      setQuote(quotes[Math.floor(Math.random() * length)]);
+    }
+  }, [quotes, length]);
+
+  const activeQuote = quote || quotes[0];
 
   return (
-    <section class="section-padding relative flex w-full flex-col items-center justify-center overflow-hidden shadow-inner panel-oxblood">
-      <figure class="relative z-10 mx-auto flex w-full max-w-360 flex-col rounded-sm bg-accent-soft/30 px-6 py-12 shadow-2xl backdrop-blur-md ring-2 ring-saffron/70 ring-offset-4 ring-offset-accent before:pointer-events-none before:absolute before:inset-2 before:rounded-sm before:border before:border-gold/30 md:px-10 md:py-16 lg:flex-row lg:items-center lg:px-16 lg:py-20 xl:px-24">
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#a3282b] via-[#942023] to-[#86191c] text-white shadow-inner">
+      
+      {/* Radiant ambient warmth */}
+      <div class="pointer-events-none absolute inset-0 bg-radial from-[#fdbc2d]/15 via-transparent to-transparent blur-2xl" aria-hidden="true"></div>
+
+      <figure class="relative z-10 mx-auto flex w-full max-w-6xl flex-col rounded-2xl bg-black/25 px-6 py-8 sm:px-8 sm:py-10 shadow-2xl backdrop-blur-md border border-[#fdbc2d]/40 md:px-10 md:py-12 lg:flex-row lg:items-center lg:px-12 lg:py-12 xl:px-14">
         
         {/* Left Side: Tibetan */}
-        <div class="flex flex-1 flex-col items-center justify-center lg:pr-12 xl:pr-16">
-          {quote?.originalQuoteHtml ? (
+        <div class="flex flex-1 flex-col items-center justify-center lg:pr-8 xl:pr-10 w-full overflow-hidden">
+          {activeQuote?.originalQuoteHtml ? (
             <div
-              lang={quote.originalQuoteLang!}
-              class="w-full text-center font-tibetan text-4xl leading-[1.8] tracking-widest text-saffron drop-shadow-md sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]"
+              lang={activeQuote.originalQuoteLang || "bo"}
+              class="tibetan-verse w-full text-center text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-[2] tracking-normal text-[#fdbc2d] font-tibetan drop-shadow-sm font-bold"
               dangerouslySetInnerHTML={{
-                __html: quote.originalQuoteHtml,
+                __html: formatTibetanVerses(activeQuote.originalQuoteHtml),
               }}
             />
           ) : null}
 
-          {/* Premium Lotus Illustration */}
-          <div class="mt-8 flex items-center justify-center text-gold/80 lg:mt-12">
-            <svg class="h-10 w-10 drop-shadow-md md:h-12 md:w-12 xl:h-14 xl:w-14" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M50 85 C50 85, 20 60, 25 35 C30 20, 50 15, 50 15 C50 15, 70 20, 75 35 C80 60, 50 85, 50 85" fill="currentColor" fill-opacity="0.15" />
+          {/* Sacred Lotus Illustration */}
+          <div class="mt-4 sm:mt-6 flex items-center justify-center text-[#fdbc2d]">
+            <svg class="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 drop-shadow-sm" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M50 85 C50 85, 20 60, 25 35 C30 20, 50 15, 50 15 C50 15, 70 20, 75 35 C80 60, 50 85, 50 85" fill="currentColor" fill-opacity="0.2" />
               <path d="M50 85 C50 85, 10 50, 5 30 C0 10, 30 20, 50 40" stroke-width="2" />
               <path d="M50 85 C50 85, 90 50, 95 30 C100 10, 70 20, 50 40" stroke-width="2" />
               <path d="M50 85 C50 85, 0 65, 0 45 C0 25, 20 30, 40 50" />
@@ -41,10 +69,10 @@ function QuotePreact(
           </div>
         </div>
 
-        {/* Central Divider: Premium 8-Spoke Dharma Wheel */}
-        <div class="my-12 flex shrink-0 items-center justify-center lg:my-0 lg:mx-8 xl:mx-12">
-          <svg class="h-20 w-20 text-gold drop-shadow-lg md:h-24 md:w-24 xl:h-28 xl:w-28" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-            <circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity="0.12" stroke-width="2.5" />
+        {/* Central Divider: 8-Spoke Dharma Wheel */}
+        <div class="my-6 sm:my-8 flex shrink-0 items-center justify-center lg:my-0 lg:mx-8 xl:mx-10">
+          <svg class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-18 lg:w-18 text-[#fdbc2d] drop-shadow-lg" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity="0.18" stroke-width="2.5" />
             <circle cx="50" cy="50" r="34" stroke-width="1.5" stroke-dasharray="2 5" />
             <circle cx="50" cy="50" r="10" stroke-width="3" />
             <circle cx="50" cy="50" r="3.5" fill="currentColor" />
@@ -55,15 +83,15 @@ function QuotePreact(
         </div>
 
         {/* Right Side: Translation */}
-        <div class="flex flex-1 flex-col items-center justify-center lg:pl-12 xl:pl-16">
-          {quote && (
-            <blockquote class="w-full text-center font-display text-xl font-medium italic leading-[1.8] text-white/95 text-balance md:text-2xl lg:text-3xl xl:text-[2rem] xl:leading-[1.7]">
-              <div dangerouslySetInnerHTML={{ __html: quote.quoteHtml! }} />
+        <div class="flex flex-1 flex-col items-center justify-center lg:pl-8 xl:pl-10 w-full">
+          {activeQuote && (
+            <blockquote class="w-full text-center font-display text-base sm:text-lg md:text-xl font-normal italic leading-[1.8] text-white text-balance m-0 drop-shadow-sm">
+              <div dangerouslySetInnerHTML={{ __html: activeQuote.quoteHtml }} />
             </blockquote>
           )}
           
-          <figcaption class="mt-10 text-center text-sm font-semibold uppercase tracking-[0.25em] text-saffron/90 md:mt-12 lg:text-base">
-            &#8212; <cite class="not-italic">{quote?.source}</cite>
+          <figcaption class="mt-4 sm:mt-6 text-center text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#fdbc2d]">
+            &#8212; <cite class="not-italic">{activeQuote?.source}</cite>
           </figcaption>
         </div>
         
@@ -71,5 +99,3 @@ function QuotePreact(
     </section>
   );
 }
-
-export default QuotePreact;

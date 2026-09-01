@@ -15,7 +15,7 @@ const syllabusStages = [
     years: "Years 5 – 8",
     title: "Epistemology, Logic & Dialectics",
     tibetan: "ཚད་མ་དང་བསྡུས་གྲྭ།",
-    curriculum: "Collected Topics (bsdus grwa), Mind & Awareness (lorig), Signs & Reasoning (tarik), and Buddhist Epistemology (Pramana) through rigorous daily debating courtyard assemblies.",
+    curriculum: "Collected Topics (Bsdus grwa), Mind & Awareness (Blo rig), Signs & Reasoning (Takrig / Rtags rigs), and Buddhist Epistemology (Pramāṇa) through rigorous daily debating assemblies.",
     focus: "Debate & Dialectics",
   },
   {
@@ -23,7 +23,7 @@ const syllabusStages = [
     years: "Years 9 – 14",
     title: "The Five Great Treatises & Shentong",
     tibetan: "གཞུང་ཆེན་བཀའ་པོད་ལྔ།",
-    curriculum: "Mastery of Prajnaparamita, Madhyamaka, Abhidharma, Vinaya, alongside Dolpopa’s 'Mountain Doctrine' and definitive Shentong commentaries.",
+    curriculum: "Mastery of Prajñāpāramitā, Madhyamaka, Abhidharma, and Vinaya, alongside Kunkhyen Dolpopa’s Mountain Doctrine and definitive Shentong commentaries.",
     focus: "Scholastic Philosophy",
   },
   {
@@ -39,11 +39,11 @@ const syllabusStages = [
 const sutraFoundations = [
   {
     sno: "1",
-    name: "Duta (Collected Topics)",
+    name: "Dudra (Collected Topics)",
     tibetan: "བསྡུས་གྲྭ།",
     duration: "2 Years",
-    mainText: "Bamda's Duta (by Bamda Gelek Gyatso)",
-    partText: "Yongzin Rinpoche's Text",
+    mainText: "Bamda Gelek Gyatso’s Dudra",
+    partText: "Yongzin Rinpoche’s Text",
     desc: "Foundational logic, definitions, classifications of phenomena, and formal Tibetan debating methodology.",
   },
   {
@@ -51,8 +51,8 @@ const sutraFoundations = [
     name: "Takrig (Signs & Reasoning)",
     tibetan: "རྟགས་རིགས།",
     duration: "1 Year",
-    mainText: "Tsoknyi Gyamtso's Takrig",
-    partText: "Yongzin Rinpoche's Text",
+    mainText: "Tsoknyi Gyamtso’s Takrig",
+    partText: "Yongzin Rinpoche’s Text",
     desc: "Classification of logical proofs, valid reasons, correct relationships, and fallacious arguments.",
   },
   {
@@ -60,9 +60,9 @@ const sutraFoundations = [
     name: "Lorig (Mind & Awareness)",
     tibetan: "བློ་རིག",
     duration: "1 Year",
-    mainText: "Bamda's Lorig",
-    partText: "Yongzin Rinpoche's Text",
-    desc: "Epistemological study of consciousness, direct perception, inferential cognition, doubt, and mistaken mental states.",
+    mainText: "Bamda Gelek Gyatso’s Lorig",
+    partText: "Yongzin Rinpoche’s Text",
+    desc: "Epistemological study of consciousness, direct perception, inferential cognition, doubt, and cognitive errors.",
   },
 ];
 
@@ -77,7 +77,7 @@ const fiveTreatises = [
     title: "Prajñāpāramitā (Perfection of Wisdom)",
     tibetan: "ཕར་ཕྱིན།",
     text: "Maitreya’s Abhisamayālaṅkāra (Ornament of Realization)",
-    desc: "Detailed mapping of the bodhisattva grounds (bhumis), spiritual paths (margas), and realizations leading to omniscience.",
+    desc: "Detailed mapping of the bodhisattva grounds (bhūmis), spiritual paths (mārgas), and realizations leading to omniscience.",
   },
   {
     title: "Madhyamaka (The Middle Way)",
@@ -95,7 +95,7 @@ const fiveTreatises = [
     title: "Vinaya (Monastic Ethics & Discipline)",
     tibetan: "འདུལ་བ།",
     text: "Guṇaprabha’s Vinayasūtra (Root Discipline)",
-    desc: "Detailed study of individual liberation vows (Pratimoksha), monastic jurisprudence, and community ethical integrity.",
+    desc: "Detailed study of individual liberation vows (Prātimokṣa), monastic jurisprudence, and community ethical integrity.",
   },
 ];
 
@@ -123,7 +123,7 @@ const ritualArts = [
 ];
 ---
 
-<div class="space-y-12">
+<div class="space-y-12 sm:space-y-16">
   <!-- Educational Mission Header -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
     <div class="badge badge-crimson">
@@ -131,7 +131,7 @@ const ritualArts = [
       Monastic Syllabus
     </div>
 
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
       The 18-Year Progressive Monastic Curriculum
     </h2>
 
@@ -143,17 +143,17 @@ const ritualArts = [
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
         <span class="text-xs font-semibold text-accent uppercase block">Duration</span>
         <span class="text-2xl font-display font-bold text-ink block">18 Years</span>
-        <span class="text-[11px] text-muted block">Primary through Acharya</span>
+        <span class="text-caption text-muted block">Primary through Acharya</span>
       </div>
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
         <span class="text-xs font-semibold text-accent-secondary uppercase block">Sangha Body</span>
         <span class="text-2xl font-display font-bold text-ink block">~120 Monks</span>
-        <span class="text-[11px] text-muted block">100% Tuition-Free Support</span>
+        <span class="text-caption text-muted block">100% Tuition-Free Support</span>
       </div>
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
         <span class="text-xs font-semibold text-accent-tertiary uppercase block">Culmination</span>
         <span class="text-2xl font-display font-bold text-ink block">3.5 Years</span>
-        <span class="text-[11px] text-muted block">Solitary Kalachakra Retreat</span>
+        <span class="text-caption text-muted block">Solitary Kālacakra Retreat</span>
       </div>
     </div>
   </div>
@@ -167,10 +167,10 @@ const ritualArts = [
       </h3>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
       {
         syllabusStages.map((s) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift">
+          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift h-full">
             <div class="space-y-2">
               <div class="flex justify-between items-center text-xs font-mono text-muted">
                 <span class="font-bold text-accent">{s.stage}</span>
@@ -180,7 +180,7 @@ const ritualArts = [
               <span class="text-xs font-tibetan text-accent-secondary font-bold block">{s.tibetan}</span>
               <p class="text-xs text-muted leading-relaxed pt-1">{s.curriculum}</p>
             </div>
-            <div class="pt-3 border-t border-border text-[11px] font-semibold uppercase tracking-wider text-accent">
+            <div class="pt-3 border-t border-border text-caption font-semibold uppercase tracking-wider text-accent">
               {s.focus}
             </div>
           </div>
@@ -197,17 +197,17 @@ const ritualArts = [
     </div>
 
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
-      Studying Sutra Part: Logic, Mind & Epistemology
+      Foundational Sūtra Epistemology: Logic, Mind & Dialectics
     </h3>
 
     <p class="text-sm text-muted leading-relaxed">
       Before embarking on the Five Great Treatises, students undergo a rigorous four-year foundational sequence mastering logic, cognitive theory, and debate manuals:
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-stretch">
       {
         sutraFoundations.map((item) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between">
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between h-full">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
                 <span class="font-bold text-accent">Stage {item.sno}</span>
@@ -218,11 +218,11 @@ const ritualArts = [
               
               <div class="space-y-1.5 text-xs">
                 <div class="p-2 rounded bg-surface border border-border">
-                  <span class="text-[10px] uppercase font-bold text-accent block">Main Text:</span>
+                  <span class="text-caption-xs uppercase font-bold text-accent block">Main Text:</span>
                   <span class="font-medium text-ink">{item.mainText}</span>
                 </div>
                 <div class="p-2 rounded bg-surface border border-border">
-                  <span class="text-[10px] uppercase font-bold text-muted block">Supplementary Text:</span>
+                  <span class="text-caption-xs uppercase font-bold text-muted block">Supplementary Text:</span>
                   <span class="text-muted">{item.partText}</span>
                 </div>
               </div>
@@ -235,7 +235,7 @@ const ritualArts = [
     </div>
   </div>
 
-  <!-- The Five Great Treatises -->
+  <!-- The Five Great Treatises (Balanced 3 + 2 Architecture) -->
   <div class="surface-card p-6 sm:p-8 space-y-6">
     <div class="badge badge-saffron">
       <span class="badge-dot"></span>
@@ -246,16 +246,21 @@ const ritualArts = [
       The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
     </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
       {
-        fiveTreatises.map((t) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2 shadow-xs">
-            <div class="flex justify-between items-start">
-              <h4 class="font-display text-base font-bold text-ink">{t.title}</h4>
-              <span class="text-xs font-tibetan text-accent-secondary font-bold">{t.tibetan}</span>
+        fiveTreatises.map((t, idx) => (
+          <div class:list={[
+            "p-5 rounded-xl bg-surface-subtle border border-border space-y-2 shadow-xs hover-lift flex flex-col justify-between h-full",
+            idx < 3 ? "lg:col-span-2" : "lg:col-span-3",
+          ]}>
+            <div>
+              <div class="flex justify-between items-start mb-1">
+                <h4 class="font-display text-base font-bold text-ink">{t.title}</h4>
+                <span class="text-xs font-tibetan text-accent-secondary font-bold">{t.tibetan}</span>
+              </div>
+              <p class="text-xs font-semibold text-accent mb-2">{t.text}</p>
+              <p class="text-xs text-muted leading-relaxed m-0">{t.desc}</p>
             </div>
-            <p class="text-xs font-semibold text-accent">{t.text}</p>
-            <p class="text-xs text-muted leading-relaxed">{t.desc}</p>
           </div>
         ))
       }
@@ -273,15 +278,17 @@ const ritualArts = [
       Liturgical Arts and Ritual Music
     </h3>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
       {
         ritualArts.map((art) => (
-          <div class="p-6 rounded-xl bg-surface border border-border space-y-2 shadow-xs">
-            <div class="flex justify-between items-center mb-1">
-              <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
+          <div class="p-6 rounded-xl bg-surface border border-border space-y-2 shadow-xs hover-lift flex flex-col justify-between h-full">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
+              </div>
+              <span class="text-xs font-tibetan text-accent font-semibold block mb-2">{art.tibetan}</span>
+              <p class="text-xs text-muted leading-relaxed m-0">{art.items}</p>
             </div>
-            <span class="text-xs font-tibetan text-accent font-semibold block">{art.tibetan}</span>
-            <p class="text-xs text-muted leading-relaxed">{art.items}</p>
           </div>
         ))
       }

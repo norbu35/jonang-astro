@@ -1,20 +1,53 @@
 ---
-import vajraBellImg from '../assets/images/vajra-bell.webp';
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import vajraBellImg from "../assets/images/vajra-bell.webp";
 
 interface Props {
   title: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  tibetanTitle?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  image = vajraBellImg,
+  imageAlt = "Sacred ritual instruments",
+  tibetanTitle,
+} = Astro.props;
 ---
 
-<div
-  class="title-banner relative flex h-44 items-center justify-center overflow-hidden bg-cover bg-center md:h-52 lg:h-60"
-  style={`background-image: url('${vajraBellImg.src}')`}
->
-  <div class="title-banner__overlay" aria-hidden="true"></div>
+<div class="title-banner relative flex min-h-[290px] sm:min-h-[350px] md:min-h-[410px] lg:min-h-[450px] pt-(--header-h) pb-12 sm:pb-16 items-center justify-center overflow-hidden bg-gradient-to-b from-[#7b171a] via-[#5c1012] to-[#3b0809]">
+  <!-- Sacred Background Image (Flush against top of page under glass header) -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <Image
+      src={image}
+      alt={imageAlt}
+      widths={[640, 1024, 1600, 2048]}
+      sizes="100vw"
+      class="w-full h-full object-cover object-center transform scale-100 opacity-100"
+      loading="eager"
+      decoding="async"
+    />
+    <!-- Luminous scrim: clear image viewing with subtle top/bottom contrast for glass navbar and text -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.25)_100%)] pointer-events-none"></div>
+  </div>
+
   <div class="title-banner__ornament" aria-hidden="true"></div>
-  <h1 class="title-banner__title relative z-10 text-center font-display text-3xl font-semibold text-white md:text-4xl lg:text-5xl">
-    {title}
-  </h1>
+  
+  <div class="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-2 sm:space-y-3">
+    {tibetanTitle && (
+      <div
+        lang="bo"
+        class="font-tibetan text-xl sm:text-2xl md:text-3xl text-gold font-bold leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+      >
+        {tibetanTitle}
+      </div>
+    )}
+    <h1 class="title-banner__title font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] m-0">
+      {title}
+    </h1>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import EndlessKnot from "./icons/EndlessKnot.astro";
+import Dharmachakra from "./icons/Dharmachakra.astro";
 
 interface Props {
   title?: string;
@@ -16,125 +17,177 @@ const {
   imageAlt = "Classical Tibetan pecha scripture and liturgical commentary manuscripts",
 } = Astro.props;
 
-const canonicalCorpus = [
+const indianCorpus = [
   {
-    tradition: "Indian Root Shastras",
-    tibetan: "རྒྱ་གཞུང་།",
-    badge: "Sanskrit Canonical Roots",
-    badgeColor: "badge-saffron",
-    texts: [
-      { name: "Kālacakra Laghutantra & Vimalaprabhā", author: "Kalki Puṇḍarīka (Toh 1347)" },
-      { name: "Ratnagotravibhāga (Uttaratantra)", author: "Maitreya / Āryāsaṅga" },
-      { name: "Pramāṇavārttika (Valid Cognition)", author: "Dharmakīrti" },
-    ],
+    name: "Kālacakra Laghutantra & Vimalaprabhā",
+    author: "Kalki Puṇḍarīka",
+    meta: "Toh 1347 · Root Tantric Commentary",
   },
   {
-    tradition: "Tibetan Exegetical Treatises",
-    tibetan: "བོད་འགྲེལ།",
-    badge: "Jonang Scholastic Corpus",
-    badgeColor: "badge-crimson",
-    texts: [
-      { name: "Mountain Doctrine (Ri chos nges don)", author: "Dolpopa Sherab Gyaltsen" },
-      { name: "Essence of Other-Emptiness", author: "Jetsun Tāranātha" },
-      { name: "Dialectical Epistemology (Bsdus grwa)", author: "Bamda Gelek Gyatso" },
-    ],
+    name: "Ratnagotravibhāga (Uttaratantraśāstra)",
+    author: "Maitreya / Ārya Asaṅga",
+    meta: "Toh 4024 · Sublime Continuum",
+  },
+  {
+    name: "Pramāṇavārttika (Epistemology)",
+    author: "Dharmakīrti",
+    meta: "Toh 4210 · Valid Cognition",
+  },
+];
+
+const tibetanCorpus = [
+  {
+    name: "Mountain Doctrine (Ri chos nges don)",
+    author: "Dolpopa Sherab Gyaltsen",
+    meta: "Ocean of Definitive Meaning",
+  },
+  {
+    name: "Essence of Other-Emptiness (Gzhan stong snying po)",
+    author: "Jetsun Tāranātha",
+    meta: "Doctrinal Hermeneutics",
+  },
+  {
+    name: "Dialectical Epistemology (Bsdus grwa)",
+    author: "Bamda Gelek Gyatso",
+    meta: "Shedra Debate Manual",
   },
 ];
 ---
 
-<div class="surface-card overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 p-6 sm:p-8 md:p-12 shadow-card bg-surface/90 relative group max-w-6xl mx-auto space-y-8">
+<div class="surface-card overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 p-6 sm:p-10 md:p-12 lg:p-16 shadow-card bg-surface/95 relative group max-w-6xl mx-auto space-y-10 sm:space-y-12">
   
-  <!-- Subtle decorative ambient background glow -->
-  <div class="pointer-events-none absolute -top-24 right-1/4 w-[400px] h-[400px] bg-gold/6 blur-3xl rounded-full" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-24 left-1/4 w-[400px] h-[400px] bg-accent/5 blur-3xl rounded-full" aria-hidden="true"></div>
+  <!-- Ambient background glow accents -->
+  <div class="pointer-events-none absolute -top-32 right-1/4 w-[500px] h-[500px] bg-gold/6 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-accent/5 blur-3xl rounded-full" aria-hidden="true"></div>
 
-  <!-- Top Header Kicker & Tibetan Inscription -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5 relative z-10">
-    <div class="space-y-1">
-      <div class="flex items-center gap-2">
-        <span class="badge badge-neutral text-xs font-mono">Hermeneutics & Textual Transmission</span>
-        <span class="text-xs font-tibetan text-accent font-bold">རྒྱ་གཞུང་དང་བོད་འགྲེལ།</span>
+  <!-- I. Top Header & Narrative Context (Full Width) -->
+  <div class="space-y-5 border-b border-border/70 pb-8 relative z-10">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="badge badge-crimson text-caption">
+        <span class="badge-dot"></span>
+        Hermeneutics & Textual Transmission
       </div>
-      <h3 class="text-3xl sm:text-4xl md:text-[2.6rem] font-display text-ink font-normal leading-tight m-0">
-        {title}
-      </h3>
+      <EndlessKnot size={32} class="text-gold/50 shrink-0 hidden sm:block" />
     </div>
-    <EndlessKnot size={32} class="text-gold/50 shrink-0 hidden sm:block" />
+
+    <div class="space-y-4 max-w-4xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+        {title}
+      </h2>
+      <p class="text-base sm:text-lg text-muted leading-relaxed font-serif">
+        {body}
+      </p>
+    </div>
   </div>
 
-  <!-- Main 2-Column Presentation Grid -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative z-10">
+  <!-- II. Balanced 2-Column Core: Large Archival Image (Left) & Dual Canonical Corpora (Right) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch relative z-10">
     
-    <!-- Left Column: Archival Manuscript Image Card -->
-    <div class="lg:col-span-5 space-y-4">
-      <div class="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-border/70 shadow-md bg-surface-subtle group">
+    <!-- Left Column: Monumental Archival Image -->
+    <div class="lg:col-span-6 flex flex-col justify-between gap-3">
+      <div class="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] rounded-2xl md:rounded-3xl overflow-hidden border border-border/80 shadow-lg bg-surface-subtle group">
         <Image
           src={imageSrc}
           alt={imageAlt}
-          width={800}
-          height={600}
+          width={1200}
+          height={900}
           class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+        <!-- Atmospheric gradient scrim -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
         
-        <div class="absolute bottom-4 left-4 right-4 text-white space-y-0.5">
-          <span class="text-[11px] uppercase tracking-wider text-gold font-bold block">Pecha Manuscript Tradition</span>
-          <span class="text-xs text-white/90 leading-tight block">Woodblock canonical collections and Sanskrit translation lineage</span>
+        <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
+          <span class="text-caption uppercase tracking-widest text-gold font-mono font-bold block">
+            Pecha Manuscript Archive · དཔེ་ཆ།
+          </span>
+          <span class="text-sm sm:text-base font-display font-medium text-white/95 leading-tight block">
+            Canonical woodblock folios preserving Sanskrit translations and Jonang exegesis
+          </span>
         </div>
       </div>
 
-      <p class="text-xs text-muted leading-relaxed m-0">
-        Canonical transmission from Nalanda and Vikramashila preserved through the woodblock archives of Jomonang, Takten Damcho Ling, and Dzamthang.
+      <p class="text-xs text-muted leading-relaxed m-0 px-1">
+        Canonical lineage preserved through the historic woodblock printing repositories of Jomonang, Takten Damchö Ling, and Dzamthang.
       </p>
     </div>
 
-    <!-- Right Column: Context Prose & Comparative Corpus -->
-    <div class="lg:col-span-7 space-y-6">
-      <p class="text-base sm:text-lg text-ink/90 leading-relaxed m-0">
-        {body}
-      </p>
+    <!-- Right Column: Dual Stacked Corpus Treatises -->
+    <div class="lg:col-span-6 flex flex-col justify-between gap-6">
+      
+      <!-- Box 1: Indian Root Shastras -->
+      <div class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs">
+        <div class="flex items-center justify-between border-b border-border/60 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="badge badge-saffron text-caption-xs">Sanskrit Roots</span>
+            <h3 class="text-base font-display font-bold text-ink m-0">Indian Root Shastras</h3>
+          </div>
+          <span class="font-tibetan text-sm text-accent font-bold">རྒྱ་གཞུང་།</span>
+        </div>
 
-      <!-- 2-Box Corpus Comparison Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-        {
-          canonicalCorpus.map((col) => (
-            <div class="p-4 sm:p-5 rounded-xl bg-surface-subtle/80 border border-border space-y-3 shadow-xs">
-              <div class="flex items-center justify-between">
-                <span class:list={["badge text-[10px]", col.badgeColor]}>{col.badge}</span>
-                <span class="font-tibetan text-sm text-accent-secondary font-bold">{col.tibetan}</span>
-              </div>
-              
-              <h4 class="font-display text-base font-bold text-ink m-0">
-                {col.tradition}
-              </h4>
-
-              <ul class="m-0 p-0 list-none space-y-2 text-xs">
-                {col.texts.map((t) => (
-                  <li class="p-0 m-0 border-t border-border/50 pt-1.5 first:border-0 first:pt-0">
-                    <span class="font-semibold text-ink block">{t.name}</span>
-                    <span class="text-muted block text-[11px] italic">{t.author}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        <ul class="m-0 p-0 list-none space-y-3">
+          {
+            indianCorpus.map((item) => (
+              <li class="p-0 m-0 border-t border-border/40 pt-2.5 first:border-0 first:pt-0 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <div>
+                  <span class="font-semibold text-ink text-sm block leading-snug">{item.name}</span>
+                  <span class="text-muted text-xs italic block mt-0.5">{item.author}</span>
+                </div>
+                <span class="text-[11px] font-mono text-accent-secondary shrink-0 font-medium">{item.meta}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
 
-      <!-- Contextual Route Pathway Navigation -->
-      <div class="flex flex-wrap items-center gap-4 pt-2 border-t border-border/60 text-xs font-semibold">
-        <a href="/jonang-doctrine" class="text-accent hover:text-accent-hover transition-colors flex items-center gap-1">
-          <span>Explore Shentong Philosophy</span>
-          <span>→</span>
-        </a>
-        <span class="text-muted/40">·</span>
-        <a href="/curriculum" class="text-accent-secondary hover:text-accent-hover transition-colors flex items-center gap-1">
-          <span>View 18-Year Shedra Syllabus</span>
-          <span>→</span>
-        </a>
+      <!-- Box 2: Tibetan Exegetical Treatises -->
+      <div class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs">
+        <div class="flex items-center justify-between border-b border-border/60 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="badge badge-crimson text-caption-xs">Jonang Corpus</span>
+            <h3 class="text-base font-display font-bold text-ink m-0">Tibetan Exegetical Treatises</h3>
+          </div>
+          <span class="font-tibetan text-sm text-accent font-bold">བོད་འགྲེལ།</span>
+        </div>
+
+        <ul class="m-0 p-0 list-none space-y-3">
+          {
+            tibetanCorpus.map((item) => (
+              <li class="p-0 m-0 border-t border-border/40 pt-2.5 first:border-0 first:pt-0 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <div>
+                  <span class="font-semibold text-ink text-sm block leading-snug">{item.name}</span>
+                  <span class="text-muted text-xs italic block mt-0.5">{item.author}</span>
+                </div>
+                <span class="text-[11px] font-mono text-accent shrink-0 font-medium">{item.meta}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
+
     </div>
 
+  </div>
+
+  <!-- III. Bottom Contextual Pathways Bar -->
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border/70 relative z-10 text-xs sm:text-sm font-semibold">
+    <div class="flex items-center gap-2 text-muted">
+      <Dharmachakra class="w-4 h-4 text-gold shrink-0" />
+      <span>Curricular and philosophical reference texts</span>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+      <a href="/doctrine" class="text-accent hover:text-accent-hover transition-colors flex items-center gap-1.5 group">
+        <span>Explore Shentong Philosophy</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+      <span class="text-muted/30">·</span>
+      <a href="/curriculum" class="text-accent-secondary hover:text-accent-hover transition-colors flex items-center gap-1.5 group">
+        <span>View 18-Year Shedra Syllabus</span>
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
   </div>
 
 </div>

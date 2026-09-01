@@ -19,7 +19,7 @@ const bibliography: BibItem[] = [
     publisher: "Snow Lion / Shambhala Publications (Dist. Penguin Random House)",
     category: "Master Biography",
     categoryGroup: "academic",
-    desc: "The definitive biographical and doctrinal study of Kunchen Dolpopa, detailing the historical origins of the Shentong system and the Great Kumbum of Jomonang.",
+    desc: "The definitive biographical and doctrinal study of Kunkhyen Dolpopa, detailing the historical origins of the Shentong system and the Great Kumbum of Jomonang.",
     link: "https://search.worldcat.org/search?q=The+Buddha+from+Dolpo+Cyrus+Stearns",
     sourceName: "WorldCat Catalog",
   },
@@ -46,13 +46,13 @@ const bibliography: BibItem[] = [
     sourceName: "WorldCat Catalog",
   },
   {
-    title: "The Buddha Within: Tathagatagarbha Doctrine According to the Shentong Interpretation of the Ratnagotravibhaga",
+    title: "The Buddha Within: Tathāgatagarbha Doctrine According to the Shentong Interpretation of the Ratnagotravibhāga",
     author: "S.K. Hookham (Lama Shenpen Hookham)",
     year: "1991",
     publisher: "State University of New York (SUNY) Press",
     category: "Academic Monograph",
     categoryGroup: "academic",
-    desc: "Pioneering academic study presenting the Shentong interpretation of Buddha-nature and the Uttaratantra Shastra (Ratnagotravibhaga).",
+    desc: "Pioneering academic study presenting the Shentong interpretation of Buddha-nature and the Uttaratantraśāstra (Ratnagotravibhāga).",
     link: "https://sunypress.edu/Books/T/The-Buddha-Within",
     sourceName: "SUNY Press",
   },
@@ -118,7 +118,7 @@ const bibliography: BibItem[] = [
     publisher: "State University of New York (SUNY) Press",
     category: "Comparative Study",
     categoryGroup: "academic",
-    desc: "Explores the philosophical intersection of Tathagatagarbha, the Jonang Shentong view, and the Dzogchen framework in Mipham's writings.",
+    desc: "Explores the philosophical intersection of Tathāgatagarbha, the Jonang Shentong view, and the Dzogchen framework in Mipham's writings.",
     link: "https://sunypress.edu/Books/M/Mipam-on-Buddha-Nature",
     sourceName: "SUNY Press",
   },
@@ -162,7 +162,7 @@ const bibliography: BibItem[] = [
     publisher: "Arbeitskreis für Tibetische und Buddhistische Studien, Universität Wien (WSTB 74)",
     category: "Academic Monograph",
     categoryGroup: "academic",
-    desc: "Rigorous historical-critical inquiry into the Indian roots of Shentong terminology in Sanskrit Prajnaparamita commentaries.",
+    desc: "Rigorous historical-critical inquiry into the Indian roots of Shentong terminology in Sanskrit Prajñāpāramitā commentaries.",
     link: "https://www.istb.univie.ac.at/forschung/arbeitskreis-tibetische-buddhistische-studien/publikationen/wstb/",
     sourceName: "Univ. Wien ISTB",
   },
@@ -232,6 +232,17 @@ const bibliography: BibItem[] = [
     link: "https://search.worldcat.org/search?q=Mountain+Dharma+Thrangu+Rinpoche",
     sourceName: "WorldCat Catalog",
   },
+  {
+    title: "Dolpopa Biography Part 1: Against All Odds (Documentary)",
+    author: "Jonang Dharma Volunteers",
+    year: "Documentary Film",
+    publisher: "Jonang Dharma Volunteers / YouTube",
+    category: "Biographical Documentary",
+    categoryGroup: "contemporary",
+    desc: "Biographical documentary covering Kunkhyen Dolpopa Sherab Gyaltsen's early life, spiritual trials, Sakya training, realization of Shentong, and construction of the Great Kumbum of Jomonang.",
+    link: "https://www.youtube.com/watch?v=PKFl2_WiUd0",
+    sourceName: "YouTube Stream",
+  },
 ];
 
 const categories = [
@@ -251,16 +262,16 @@ const categories = [
 >
   <!-- Section Header -->
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-6">
-    <div class="space-y-2 max-w-3xl">
-      <div class="badge badge-saffron">
+    <div class="max-w-3xl">
+      <div class="badge badge-saffron mb-3">
         <span class="badge-dot"></span>
         Scholarly Archive & Library
       </div>
-      <h3 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0 leading-tight">
+      <h3 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal mt-0 mb-3 leading-tight">
         Bibliography on Shentong (Other-Emptiness)
       </h3>
       <p class="text-sm text-muted leading-relaxed m-0">
-        Curated repository of canonical Mahayana sutras, classical Jonang master treatises, meditation manuals, and peer-reviewed academic publications. Compiled by <strong>Jens Näsström</strong>.
+        Curated repository of canonical Mahayana sutras, classical Jonang master treatises, meditation manuals, and peer-reviewed academic publications.
       </p>
     </div>
 
@@ -272,7 +283,7 @@ const categories = [
     </div>
   </div>
 
-  <!-- Interactive Controls: Search, Category Filters & View Toggle -->
+  <!-- Interactive Controls: Search & Category Filters -->
   <div class="space-y-4">
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
       <!-- Search Box -->
@@ -292,43 +303,12 @@ const categories = [
         <button
           type="button"
           id="bib-search-clear"
-          class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-ink transition-colors"
+          class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-ink transition-colors cursor-pointer"
           aria-label="Clear search"
         >
-          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
           </svg>
-        </button>
-      </div>
-
-      <!-- View Toggle Buttons (Grid vs Table) -->
-      <div class="flex items-center gap-1.5 p-1 bg-surface-subtle rounded-xl border border-border self-start sm:self-auto">
-        <button
-          type="button"
-          id="bib-view-grid"
-          class="px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors bg-surface text-accent shadow-xs"
-          aria-label="Switch to Card Grid View"
-        >
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-          </svg>
-          <span>Cards</span>
-        </button>
-        <button
-          type="button"
-          id="bib-view-table"
-          class="px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors text-muted hover:text-ink"
-          aria-label="Switch to Table View"
-        >
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-          <span>Table</span>
         </button>
       </div>
     </div>
@@ -341,14 +321,14 @@ const categories = [
             type="button"
             data-category={cat.id}
             class:list={[
-              "bib-filter-chip px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 border",
+              "bib-filter-chip px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 border cursor-pointer",
               idx === 0
                 ? "bg-accent text-white border-accent shadow-xs"
                 : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
             ]}
           >
             <span>{cat.label}</span>
-            <span class="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-black/10 text-inherit">
+            <span class="text-caption-xs font-mono px-1.5 py-0.2 rounded-full bg-black/10 text-inherit">
               {cat.count}
             </span>
           </button>
@@ -357,102 +337,16 @@ const categories = [
     </div>
   </div>
 
-  <!-- I. CARD GRID VIEW (Default, Responsive, No Horizontal Traps) -->
-  <div
-    id="bib-grid-container"
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2"
-  >
-    {
-      bibliography.map((book, idx) => (
-        <article
-          class="bib-item surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift bg-surface shadow-xs transition-all"
-          data-category={book.categoryGroup}
-          data-title={book.title.toLowerCase()}
-          data-author={book.author.toLowerCase()}
-          data-publisher={book.publisher.toLowerCase()}
-          data-year={book.year.toLowerCase()}
-          data-desc={book.desc.toLowerCase()}
-          data-index={idx + 1}
-        >
-          <div class="space-y-3">
-            <!-- Header Meta -->
-            <div class="flex justify-between items-center text-xs font-mono">
-              <span class="font-bold text-accent">#{String(idx + 1).padStart(2, "0")}</span>
-              <span class="text-accent-secondary font-semibold bg-accent-secondary-subtle px-2 py-0.5 rounded text-[11px]">
-                {book.year}
-              </span>
-            </div>
-
-            <!-- Title & Author -->
-            <div>
-              <h4 class="font-display text-lg font-bold text-ink leading-snug m-0 mb-1.5">
-                {book.title}
-              </h4>
-              <p class="text-xs font-semibold text-accent-secondary m-0">
-                {book.author}
-              </p>
-            </div>
-
-            <!-- Badge -->
-            <div>
-              <span class="badge badge-neutral text-[11px]">
-                {book.category}
-              </span>
-            </div>
-
-            <!-- Abstract -->
-            <p class="text-xs text-muted leading-relaxed m-0 pt-1">
-              {book.desc}
-            </p>
-          </div>
-
-          <!-- Footer Actions & External Resource -->
-          <div class="pt-4 border-t border-border flex flex-col gap-2.5">
-            <div class="text-[11px] text-muted font-mono truncate">
-              {book.publisher}
-            </div>
-
-            <div class="flex items-center justify-between gap-2 pt-1">
-              <button
-                type="button"
-                class="copy-citation-btn text-[11px] font-semibold py-1.5 px-2.5 rounded-md bg-surface-subtle hover:bg-surface-muted text-ink border border-border flex items-center gap-1.5 transition-colors"
-                data-citation={`${book.author}. (${book.year}). ${book.title}. ${book.publisher}.`}
-                aria-label={`Copy citation for ${book.title}`}
-              >
-                <svg class="w-3.5 h-3.5 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                <span class="copy-label">Cite</span>
-              </button>
-
-              <a
-                href={book.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[11px] font-semibold py-1.5 px-3 rounded-md bg-accent text-white hover:bg-accent-hover flex items-center gap-1.5 transition-colors shadow-xs"
-                aria-label={`View ${book.title} on ${book.sourceName}`}
-              >
-                <span>{book.sourceName}</span>
-                <span class="text-xs">↗</span>
-              </a>
-            </div>
-          </div>
-        </article>
-      ))
-    }
-  </div>
-
-  <!-- II. CATALOG TABLE VIEW (Toggled by user) -->
-  <div id="bib-table-container" class="hidden overflow-x-auto pt-2">
+  <!-- CATALOG TABLE VIEW -->
+  <div id="bib-table-container" class="overflow-x-auto pt-2">
     <table class="w-full text-left text-xs border-collapse">
       <thead>
         <tr class="bg-surface-subtle border-b border-border text-ink font-display">
           <th class="p-3.5 w-12">#</th>
-          <th class="p-3.5">Title & Abstract</th>
+          <th class="p-3.5">Title & Summary</th>
           <th class="p-3.5 w-44">Author / Editor</th>
           <th class="p-3.5 w-40">Publisher & Year</th>
-          <th class="p-3.5 w-36 text-right">Actions</th>
+          <th class="p-3.5 w-44 text-right">Access</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-border" id="bib-table-body">
@@ -474,33 +368,26 @@ const categories = [
               <td class="p-3.5 align-top space-y-1">
                 <div class="font-bold text-ink text-sm leading-snug">{b.title}</div>
                 <div class="flex items-center gap-2">
-                  <span class="badge badge-neutral text-[10px]">{b.category}</span>
+                  <span class="badge badge-neutral text-caption-xs">{b.category}</span>
                 </div>
-                <div class="text-[11px] text-muted leading-relaxed pt-1">{b.desc}</div>
+                <div class="text-caption text-muted leading-relaxed pt-1">{b.desc}</div>
               </td>
               <td class="p-3.5 text-ink align-top font-medium">{b.author}</td>
-              <td class="p-3.5 text-muted align-top font-mono text-[11px]">
+              <td class="p-3.5 text-muted align-top font-mono text-caption">
                 <div>{b.publisher}</div>
                 <div class="text-accent-secondary font-bold mt-1">({b.year})</div>
               </td>
-              <td class="p-3.5 text-right align-top space-y-2">
+              <td class="p-3.5 text-right align-top whitespace-nowrap">
                 <a
                   href={b.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[11px] font-semibold py-1.5 px-3 rounded-md bg-accent text-white hover:bg-accent-hover inline-flex items-center gap-1 transition-colors shadow-xs w-full justify-center"
+                  class="text-caption-xs font-semibold py-1.5 px-3 rounded-lg bg-accent text-white hover:bg-accent-hover inline-flex items-center gap-1.5 transition-colors shadow-xs"
+                  aria-label={`View ${b.title} on ${b.sourceName}`}
                 >
                   <span>{b.sourceName}</span>
-                  <span class="text-xs">↗</span>
+                  <span class="text-caption-2xs">↗</span>
                 </a>
-                <button
-                  type="button"
-                  class="copy-citation-btn text-[11px] font-semibold py-1 px-2.5 rounded-md bg-surface-subtle hover:bg-surface-muted text-ink border border-border inline-flex items-center gap-1 transition-colors w-full justify-center"
-                  data-citation={`${b.author}. (${b.year}). ${b.title}. ${b.publisher}.`}
-                  aria-label={`Copy citation for ${b.title}`}
-                >
-                  <span class="copy-label">Copy Citation</span>
-                </button>
               </td>
             </tr>
           ))
@@ -509,7 +396,7 @@ const categories = [
     </table>
   </div>
 
-  <!-- Empty State (when search yields no matches) -->
+  <!-- Empty State -->
   <div id="bib-empty-state" class="hidden text-center py-16 px-4 space-y-3">
     <div class="text-3xl text-muted">༄༅།</div>
     <h4 class="font-display text-xl text-ink m-0">No Publications Matched Your Search</h4>
@@ -519,7 +406,7 @@ const categories = [
     <button
       type="button"
       id="bib-reset-btn"
-      class="mt-2 text-xs font-semibold px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors"
+      class="mt-2 text-xs font-semibold px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors cursor-pointer"
     >
       Reset Filters
     </button>
@@ -528,7 +415,7 @@ const categories = [
   <!-- Academic Attribution & Fair Use Disclaimer -->
   <div class="pt-6 border-t border-border/80 text-xs text-muted leading-relaxed space-y-2 bg-surface-subtle/50 p-5 rounded-xl">
     <div class="flex items-center gap-2 text-ink font-semibold">
-      <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="12" y1="16" x2="12" y2="12"></line>
         <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -539,22 +426,9 @@ const categories = [
       This bibliography was curated and compiled by <strong>Jens Näsström</strong> for academic and contemplative study. All excerpted titles, descriptions, and catalog references are presented for non-commercial educational research purposes under standard scholarly fair use. All copyrights to translated treatises, commentaries, and editions remain the intellectual property of their respective translators, editors, and publishers (including Snow Lion / Shambhala Publications, State University of New York Press, Padma Karpo Translation Committee, and BDK America).
     </p>
   </div>
-
-  <!-- Floating Toast Notification for Citation Copying -->
-  <div
-    id="bib-toast"
-    role="status"
-    aria-live="polite"
-    class="fixed bottom-6 right-6 z-[99999] bg-ink text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl border border-gold/30 flex items-center gap-2 opacity-0 pointer-events-none translate-y-4 transition-all duration-300"
-  >
-    <svg class="w-4 h-4 text-saffron" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-    </svg>
-    <span>Citation copied to clipboard</span>
-  </div>
 </section>
 
-<!-- Client Script for Instant Search, Category Filter, View Switcher & Copy Citation -->
+<!-- Client Script for Instant Search & Category Filter -->
 <script>
   function initBibliography() {
     const root = document.getElementById("shentong-bibliography");
@@ -564,52 +438,19 @@ const categories = [
     const searchClear = document.getElementById("bib-search-clear");
     const countBadge = document.getElementById("bib-visible-count");
     const filterChips = document.querySelectorAll(".bib-filter-chip");
-    const gridViewBtn = document.getElementById("bib-view-grid");
-    const tableViewBtn = document.getElementById("bib-view-table");
-    const gridContainer = document.getElementById("bib-grid-container");
     const tableContainer = document.getElementById("bib-table-container");
     const emptyState = document.getElementById("bib-empty-state");
     const resetBtn = document.getElementById("bib-reset-btn");
-    const toast = document.getElementById("bib-toast");
 
     let currentCategory = "all";
     let currentSearch = "";
-    let toastTimeout: any = null;
 
-    const gridCards = Array.from(document.querySelectorAll(".bib-item")) as HTMLElement[];
     const tableRows = Array.from(document.querySelectorAll(".bib-table-row")) as HTMLElement[];
 
     function filterItems() {
       let visibleCount = 0;
       const query = currentSearch.trim().toLowerCase();
 
-      // Filter Cards
-      gridCards.forEach((card) => {
-        const cat = card.dataset.category || "";
-        const title = card.dataset.title || "";
-        const author = card.dataset.author || "";
-        const publisher = card.dataset.publisher || "";
-        const year = card.dataset.year || "";
-        const desc = card.dataset.desc || "";
-
-        const matchesCat = currentCategory === "all" || cat === currentCategory;
-        const matchesSearch =
-          !query ||
-          title.includes(query) ||
-          author.includes(query) ||
-          publisher.includes(query) ||
-          year.includes(query) ||
-          desc.includes(query);
-
-        if (matchesCat && matchesSearch) {
-          card.classList.remove("hidden");
-          visibleCount++;
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-
-      // Filter Table Rows
       tableRows.forEach((row) => {
         const cat = row.dataset.category || "";
         const title = row.dataset.title || "";
@@ -629,33 +470,27 @@ const categories = [
 
         if (matchesCat && matchesSearch) {
           row.classList.remove("hidden");
+          visibleCount++;
         } else {
           row.classList.add("hidden");
         }
       });
 
-      // Update count & empty state
       if (countBadge) {
         countBadge.textContent = String(visibleCount);
       }
 
-      if (emptyState) {
+      if (emptyState && tableContainer) {
         if (visibleCount === 0) {
           emptyState.classList.remove("hidden");
-          gridContainer?.classList.add("hidden");
-          tableContainer?.classList.add("hidden");
+          tableContainer.classList.add("hidden");
         } else {
           emptyState.classList.add("hidden");
-          if (gridViewBtn?.classList.contains("bg-surface")) {
-            gridContainer?.classList.remove("hidden");
-          } else {
-            tableContainer?.classList.remove("hidden");
-          }
+          tableContainer.classList.remove("hidden");
         }
       }
     }
 
-    // Category Filter Clicks
     filterChips.forEach((chip) => {
       chip.addEventListener("click", () => {
         const cat = (chip as HTMLElement).dataset.category || "all";
@@ -673,7 +508,6 @@ const categories = [
       });
     });
 
-    // Search Input Handling
     searchInput?.addEventListener("input", (e) => {
       currentSearch = (e.target as HTMLInputElement).value;
       if (searchClear) {
@@ -710,71 +544,8 @@ const categories = [
         filterItems();
       }
     });
-
-    // View Switcher (Grid vs Table)
-    gridViewBtn?.addEventListener("click", () => {
-      gridViewBtn.classList.add("bg-surface", "text-accent", "shadow-xs");
-      gridViewBtn.classList.remove("text-muted");
-      tableViewBtn?.classList.remove("bg-surface", "text-accent", "shadow-xs");
-      tableViewBtn?.classList.add("text-muted");
-
-      if (gridCards.some((c) => !c.classList.contains("hidden"))) {
-        gridContainer?.classList.remove("hidden");
-      }
-      tableContainer?.classList.add("hidden");
-    });
-
-    tableViewBtn?.addEventListener("click", () => {
-      tableViewBtn.classList.add("bg-surface", "text-accent", "shadow-xs");
-      tableViewBtn.classList.remove("text-muted");
-      gridViewBtn?.classList.remove("bg-surface", "text-accent", "shadow-xs");
-      gridViewBtn?.classList.add("text-muted");
-
-      gridContainer?.classList.add("hidden");
-      if (tableRows.some((r) => !r.classList.contains("hidden"))) {
-        tableContainer?.classList.remove("hidden");
-      }
-    });
-
-    // Copy Citation to Clipboard
-    function showToast(message = "Citation copied to clipboard") {
-      if (!toast) return;
-      toast.querySelector("span")!.textContent = message;
-      toast.classList.remove("opacity-0", "pointer-events-none", "translate-y-4");
-      toast.classList.add("opacity-100", "translate-y-0");
-
-      if (toastTimeout) clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.add("opacity-0", "pointer-events-none", "translate-y-4");
-        toast.classList.remove("opacity-100", "translate-y-0");
-      }, 3000);
-    }
-
-    document.querySelectorAll(".copy-citation-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const citation = (btn as HTMLElement).dataset.citation;
-        if (!citation) return;
-
-        try {
-          await navigator.clipboard.writeText(citation);
-          const label = btn.querySelector(".copy-label");
-          if (label) {
-            const originalText = label.textContent;
-            label.textContent = "Copied ✓";
-            setTimeout(() => {
-              label.textContent = originalText;
-            }, 2000);
-          }
-          showToast("Citation copied to clipboard");
-        } catch (err) {
-          console.error("Failed to copy citation: ", err);
-          showToast("Failed to copy citation");
-        }
-      });
-    });
   }
 
-  // Support both standard DOMContentLoaded and Astro view transitions
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initBibliography);
   } else {

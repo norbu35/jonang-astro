@@ -2,6 +2,7 @@
 import Dharmachakra from "../icons/Dharmachakra.astro";
 import EndlessKnot from "../icons/EndlessKnot.astro";
 import ShentongBibliography from "../ShentongBibliography.astro";
+import VideoFeature from "../VideoFeature.astro";
 
 const threeTurnings = [
   {
@@ -10,39 +11,39 @@ const threeTurnings = [
     location: "Deer Park, Sarnath (Varanasi)",
     theme: "Four Noble Truths & Karma",
     tibetan: "བཀའ་དང་པོ་བདེན་བཞིའི་ཆོས་འཁོར།",
-    view: "Establishes ethical discipline, causality, impermanence, and the selflessness of individuals (pudgala-nairatmya) to overcome gross afflictive grasping.",
-    scope: "Foundational Vehicle (Hinayana / Nikaya)",
+    view: "Establishes ethical discipline, causality, impermanence, and the selflessness of persons (pudgala-nairātmya) to overcome gross afflictive grasping.",
+    scope: "Foundational Vehicle (Hīnayāna / Nikāya)",
   },
   {
     id: "second",
     turning: "Second Turning",
-    location: "Vulture Peak, Rajgir",
-    theme: "Prajnaparamita & Non-Proliferation (Rangtong)",
+    location: "Vulture Peak, Rājagṛha (Rajgir)",
+    theme: "Prajñāpāramitā & Non-Proliferation (Rangtong)",
     tibetan: "བཀའ་བར་པ་མཚན་ཉིད་མེད་པའི་ཆོས་འཁོར།",
-    view: "Demonstrates that all conditioned entities, conceptual constructs, and conventional phenomena lack intrinsic, independent existence (svabhava-sunya).",
-    scope: "Provisional Madhyamaka (Nagarjuna / Candrakirti)",
+    view: "Demonstrates that all conditioned entities, conceptual constructs, and conventional phenomena lack intrinsic, independent existence (svabhāva-śūnya).",
+    scope: "Provisional Madhyamaka (Nāgārjuna / Candrakīrti)",
   },
   {
     id: "third",
     turning: "Third Turning",
-    location: "Vaishali, Mount Malaya & Shravasti",
-    theme: "Tathagatagarbha & Definitive Other-Emptiness (Shentong)",
+    location: "Vaiśālī, Mount Malaya & Śrāvastī",
+    theme: "Tathāgatagarbha & Definitive Other-Emptiness (Shentong)",
     tibetan: "བཀའ་ཐ་མ་ལེགས་པར་རྣམ་པར་ཕྱེ་བའི་ཆོས་འཁོར།",
-    view: "Elucidates the ultimate reality as non-dual primordial wisdom (jnana), devoid of adventitious obscurations (shentong) yet perpetually complete with inseparable enlightened qualities.",
+    view: "Elucidates ultimate reality as non-dual primordial wisdom (jñāna), devoid of adventitious obscurations (gzhan stong) yet perpetually complete with inseparable enlightened qualities.",
     scope: "Definitive Great Madhyamaka (Maitreya / Dolpopa)",
   },
 ];
 
 const philosophicalMatrix = [
   {
-    category: "Relative Truth (Kun rzob)",
+    category: "Relative Truth (Kun rdzob)",
     rangtong: "Empty of inherent essence (rangtong). Dependently originated, conceptual, and devoid of intrinsic nature.",
     shentong: "Agrees completely: all conventional appearances and defilements are dependently arisen and empty of self-nature.",
   },
   {
     category: "Ultimate Truth (Don dam)",
-    rangtong: "Defined strictly as the negation of inherent existence; non-affirming negative (prasajya-pratisedha).",
-    shentong: "Definitive reality: luminous Buddha-nature (Tathagatagarbha), empty of foreign defilements but replete with unconditioned qualities.",
+    rangtong: "Defined strictly as the negation of inherent existence; non-affirming negative (prasajya-pratiṣedha).",
+    shentong: "Definitive reality: luminous Buddha-nature (Tathāgatagarbha), empty of foreign defilements but replete with unconditioned qualities.",
   },
   {
     category: "Enlightenment (Bodhi)",
@@ -53,28 +54,28 @@ const philosophicalMatrix = [
 
 const masters = [
   {
-    name: "Maitreya & Asanga",
+    name: "Maitreya & Asaṅga",
     dates: "4th Century CE",
     role: "Indian Lineage Progenitors",
-    body: "Composed the seminal treatises including the Uttaratantra Shastra (Ratnagotravibhaga) and Mahayanasutralankara, founding the Yogacara-Madhyamaka synthesis of Buddha-nature.",
+    body: "Composed the seminal treatises including the Uttaratantraśāstra (Ratnagotravibhāga) and Mahāyānasūtrālaṅkāra, founding the definitive Yogācāra-Madhyamaka synthesis of Buddha-nature.",
   },
   {
-    name: "Yumo Mikyo Dorje & Dro Lotsawa",
+    name: "Somanātha, Dro Lotsawa & Yumo Mikyö Dorje",
     dates: "11th – 12th Century",
-    role: "Tibetan Translators & Early Adepts",
-    body: "Translated the Kalachakra Mulatantra and the Vimalaprabha commentary into Tibetan, establishing the unbroken Dro lineage transmission of the Six Yogas.",
+    role: "Translators & Tantric Adepts",
+    body: "Translated the Kālacakra Mūlatantra and the Vimalaprabhā commentary into Tibetan. Yumo Mikyö Dorje subsequently unfolded the experiential Shentong completion-stage realization in dark retreat.",
   },
   {
-    name: "Kunchen Dolpopa Sherab Gyaltsen",
+    name: "Kunkhyen Dolpopa Sherab Gyaltsen",
     dates: "1292 – 1361",
     role: "The Omniscient Master of Jomonang",
     body: "Systematized the Shentong Great Madhyamaka in his monumental work 'Mountain Doctrine' (Ri chos nges don rgya mtsho) and constructed the Great Kumbum of Jomonang.",
   },
   {
-    name: "Jetsun Taranatha",
+    name: "Jetsun Tāranātha",
     dates: "1575 – 1634",
     role: "Revitalizer & Tantric Polymath",
-    body: "Prolific historian, artist, and tantric master who founded Takten Damcho Ling Monastery and composed the definitive practice commentaries for the Kalachakra completion stage.",
+    body: "Prolific historian, artist, and tantric master who founded Takten Damchö Ling Monastery and composed the definitive practice commentaries for the Kālacakra completion stage.",
   },
   {
     name: "Zanabazar (1st Jebtsundamba Khutuktu)",
@@ -85,27 +86,7 @@ const masters = [
 ];
 ---
 
-<div class="space-y-12">
-  <!-- Beginner's Orientation Callout Banner -->
-  <div class="p-4 sm:p-5 rounded-2xl bg-surface-subtle border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shrink-0">
-        ༄
-      </div>
-      <div>
-        <h4 class="text-sm font-bold text-ink m-0">Introduction to Shentong (Other-Emptiness)</h4>
-        <p class="text-xs text-muted m-0">Structured 4-pillar overview covering core doctrinal definitions.</p>
-      </div>
-    </div>
-    <a
-      href="/jonang-doctrine/beginners-introduction"
-      class="text-xs font-semibold py-2 px-3.5 rounded-lg bg-surface text-accent hover:bg-accent hover:text-white border border-border transition-colors shrink-0 flex items-center gap-1.5 shadow-xs"
-    >
-      <span>Introductory Guide</span>
-      <span>→</span>
-    </a>
-  </div>
-
+<div class="section-padding max-w-6xl mx-auto space-y-12 pb-0">
   <!-- Core Philosophical Vision Callout -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
     <div class="badge badge-crimson">
@@ -113,7 +94,7 @@ const masters = [
       Madhyamaka View
     </div>
 
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
       The Shentong (Other-Empty) View of Ultimate Reality
     </h2>
 
@@ -138,10 +119,10 @@ const masters = [
       The Mahayana sutras are classified across three hermeneutical cycles:
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
       {
         threeTurnings.map((t, idx) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift relative">
+          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift relative h-full">
             <div>
               <div class="flex justify-between items-center mb-2">
                 <span class="text-xs font-mono font-bold uppercase tracking-wider text-accent">
@@ -153,7 +134,7 @@ const masters = [
               <span class="text-xs text-accent-secondary font-tibetan block mb-3">{t.tibetan}</span>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">{t.view}</p>
             </div>
-            <div class="pt-3 border-t border-border text-[11px] font-semibold uppercase tracking-wider text-ink/70">
+            <div class="pt-3 border-t border-border text-caption font-semibold uppercase tracking-wider text-ink/70">
               {t.scope}
             </div>
           </div>
@@ -161,7 +142,50 @@ const masters = [
       }
     </div>
   </div>
+</div>
 
+<!-- Full-Width Featured Multimedia Documentary: Kunkhyen Dolpopa -->
+<section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll">
+  <!-- Ambient background glow elements -->
+  <div class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <VideoFeature
+      videoId="PKFl2_WiUd0"
+      title="Dolpopa Biography Part 1: Against All Odds"
+      tibetanTitle="༄༅། །ཀུན་མཁྱེན་དོལ་པོ་པ་ཤེས་རབ་རྒྱལ་མཚན་གྱི་རྣམ་ཐར། །"
+      subtitle="The Journey of the Buddha from Dolpo & the Genesis of Shentong Madhyamaka"
+      summary="A biographical documentary produced by Jonang Dharma Volunteers chronicling the life of Kunkhyen Dolpopa Sherab Gyaltsen (1292–1361). From his early training in the rugged valleys of Dolpo through rigorous scholastic mastery at Sakya to his breakthrough realization at Jomonang, this film explores the spiritual courage required to formulate the definitive Other-Emptiness view."
+      badge="Biographical Documentary"
+      channelName="Jonang Dharma Volunteers"
+      channelUrl="https://www.youtube.com/@JonangDharma"
+      duration="Part 1 · Documentary"
+      keyThemes={[
+        {
+          num: "01",
+          title: "Himalayan Origins & Sakya Scholasticism",
+          desc: "Early training in western Tibet and comprehensive mastery of Buddhist epistemological texts and Prajñāpāramitā.",
+        },
+        {
+          num: "02",
+          title: "The Shentong Realization",
+          desc: "Unfolding the definitive Third Turning view of Tathāgatagarbha and Kālacakra Six-fold Vajrayoga at Jomonang.",
+        },
+        {
+          num: "03",
+          title: "The Great Kumbum of Jomonang",
+          desc: "Architectural and spiritual consecration of the monumental multi-tiered stupa (1330–1333), embodying the cosmic mandala.",
+        },
+      ]}
+      actionHref="#shentong-bibliography"
+      actionLabel="Explore Dolpopa's Treatises in Bibliography"
+      id="dolpopa-documentary"
+    />
+  </div>
+</section>
+
+<div class="section-padding max-w-6xl mx-auto space-y-12 pt-0">
   <!-- Shentong vs Rangtong Comparative Matrix -->
   <div class="surface-card p-6 sm:p-8 space-y-6">
     <div class="badge badge-saffron">
@@ -186,7 +210,7 @@ const masters = [
             <th class="p-3.5 font-display font-semibold text-accent-secondary">Shentong (Other-Empty)</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-border">
+        <tbody class="divide-y border-border">
           {
             philosophicalMatrix.map((row) => (
               <tr class="hover:bg-surface-subtle/50 transition-colors">
@@ -201,7 +225,7 @@ const masters = [
     </div>
   </div>
 
-  <!-- Lineage Masters Archive -->
+  <!-- Lineage Masters Archive (Balanced 3 + 2 Architecture) -->
   <div class="space-y-6">
     <div class="badge badge-lapis">
       <span class="badge-dot"></span>
@@ -212,30 +236,42 @@ const masters = [
       Lineage Masters and Commentators
     </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
       {
-        masters.map((m) => (
-          <div class="p-6 rounded-xl bg-surface border border-border space-y-3 shadow-xs hover-lift">
-            <div class="flex justify-between items-start">
-              <div>
-                <h4 class="font-display text-lg font-bold text-ink">{m.name}</h4>
-                <span class="text-xs font-mono text-accent uppercase tracking-wider block">{m.dates}</span>
+        masters.map((m, idx) => (
+          <div class:list={[
+            "p-6 rounded-xl bg-surface border border-border space-y-3 shadow-xs hover-lift flex flex-col justify-between h-full",
+            idx < 3 ? "lg:col-span-2" : "lg:col-span-3",
+          ]}>
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <div>
+                  <h4 class="font-display text-lg font-bold text-ink m-0">{m.name}</h4>
+                  <span class="text-xs font-mono text-accent uppercase tracking-wider block mt-0.5">{m.dates}</span>
+                </div>
+                <EndlessKnot size={24} class="text-gold/60 shrink-0" />
               </div>
-              <EndlessKnot size={24} class="text-gold/60 shrink-0" />
+              <p class="text-xs font-semibold text-accent-secondary uppercase tracking-wide mb-2">{m.role}</p>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">{m.body}</p>
             </div>
-            <p class="text-xs font-semibold text-accent-secondary uppercase tracking-wide">{m.role}</p>
-            <p class="text-xs sm:text-sm text-muted leading-relaxed">{m.body}</p>
           </div>
         ))
       }
     </div>
   </div>
 
-  <!-- Union of Sutra and Tantra -->
+  <!-- Union of Sutra, Tantra & Dialectics -->
   <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent">
-    <h3 class="text-2xl font-display text-ink">Integration with Kālacakra Completion Stage</h3>
-    <p class="text-sm sm:text-base text-muted leading-relaxed">
-      The Shentong framework provides the theoretical basis for the Six-fold Vajrayoga (<em>Sbyor drug</em>) of the Kālacakra Tantra. Meditative techniques of wind control (Prāṇāyāma) and sensory withdrawal (Pratyāhāra) in dark retreat aim directly at stabilizing empty forms (<em>śūnyatābimba</em>) and actualizing immutable bliss (<em>akṣarasukha</em>).
+    <div class="badge badge-crimson">
+      <span class="badge-dot"></span>
+      Sutra & Tantra Synthesis
+    </div>
+    <h3 class="text-2xl font-display text-ink m-0">Integration of Dialectics & Kālacakra Completion Stage</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0">
+      In the Jonang tradition, scholastic debate and deep yogic contemplation operate in inseparable tandem. Textual analysis of the Five Great Treatises and Buddhist epistemological logic (<em>Pramāṇa</em>) provides the conceptual grounding required for solitary dark retreat.
+    </p>
+    <p class="text-sm sm:text-base text-ink leading-relaxed m-0">
+      The Shentong framework provides the direct theoretical matrix for the Six-fold Vajrayoga (<em>Sbyor drug</em>) of the Kālacakra Tantra. Meditative techniques of wind control (<em>Prāṇāyāma</em>) and sensory withdrawal (<em>Pratyāhāra</em>) in dark retreat aim directly at stabilizing empty forms (<em>śūnyatābimba</em>) and actualizing immutable bliss (<em>akṣarasukha</em>).
     </p>
   </div>
 

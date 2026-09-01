@@ -9,22 +9,24 @@ interface Props {
 
 const colorMap: Record<string, string> = {
   white: "#fff",
-  black: "#1b1d0e",
-  lightgrey: "#e4e4cc",
-  red: "#570013",
-  blue: "#1e3a8a",
-  yellow: "#e9c349",
-  saffron: "#8c4f10",
-  gold: "#735c00",
-  darkgrey: "#584141",
+  black: "var(--fg)",
+  ink: "var(--fg)",
+  lightgrey: "var(--surface-subtle)",
+  red: "var(--accent)",
+  blue: "var(--accent-tertiary)",
+  yellow: "var(--accent-secondary)",
+  saffron: "var(--accent-secondary)",
+  gold: "var(--accent-secondary)",
+  darkgrey: "var(--muted)",
 };
 
-const resolvedTitleColor = colorMap[titleColor ?? "black"] ?? colorMap.black;
+const resolvedTitleColor = colorMap[titleColor ?? "ink"] ?? colorMap.ink;
 ---
 
 <div class="section-header">
   <svg
     class="mx-auto mb-4 h-8 md:h-10"
+    aria-hidden="true"
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,119 +1,274 @@
 ---
 import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
-import SectionDivider from "../../components/SectionDivider.astro";
-import type { Media } from "../../../payload-types";
+import { GALLERY_ITEMS } from "../../data/gallery";
 
-const response = await fetch(`${import.meta.env.CMS_API_URL}/media`);
-const data = await response.json();
-const items: Media[] = data.docs ?? [];
+const categories = [
+  { id: "all", label: "All Works", count: GALLERY_ITEMS.length },
+  { id: "Sanctuary", label: "Sanctuary", count: GALLERY_ITEMS.filter(i => i.category === "Sanctuary").length },
+  { id: "Ritual", label: "Ritual Liturgy", count: GALLERY_ITEMS.filter(i => i.category === "Ritual").length },
+  { id: "Study", label: "Scholastic Study", count: GALLERY_ITEMS.filter(i => i.category === "Study").length },
+  { id: "Community", label: "Sangha Community", count: GALLERY_ITEMS.filter(i => i.category === "Community").length },
+];
 ---
 
-<PageLayout title="Photo Gallery">
-  <Fragment slot="head">
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/photoswipe@5/dist/photoswipe.css"
-    />
-  </Fragment>
+<PageLayout title="Photo Gallery" tibetanTitle="དགོན་པའི་སྐུ་པར།">
   <section class="section-padding textured-panel">
-    <div class="mx-auto max-w-6xl">
-      <p class="section-intro callout drop-cap text-left text-ink/85">
-        A quiet glimpse into
-        <span class="pill">daily life</span>, <span class="pill">ritual</span>,
-        and <span class="pill">study</span> at the monastery.
-      </p>
-      <SectionDivider class="section-divider--muted" />
+    <div class="mx-auto max-w-6xl space-y-8">
+      
+      <!-- Editorial Intro Callout -->
+      <div class="surface-card p-6 sm:p-8 rounded-2xl border border-border/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="badge badge-saffron text-caption">
+            <span class="badge-dot"></span>
+            Monastic Visual Archive
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-display text-ink m-0">
+            Life at Main Jonang Takten Phuntsok Choeling
+          </h2>
+          <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
+            A visual chronicle of daily life, liturgical ritual, shedra debate, and scholastic study in the Himalayan heights of Sanjauli, Shimla.
+          </p>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap items-center gap-2" id="gallery-filters">
+          {
+            categories.map((cat, idx) => (
+              <button
+                type="button"
+                data-filter={cat.id}
+                class:list={[
+                  "gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border cursor-pointer flex items-center gap-1.5",
+                  idx === 0
+                    ? "bg-accent text-white border-accent shadow-xs"
+                    : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
+                ]}
+              >
+                <span>{cat.label}</span>
+                <span class="text-caption-xs font-mono opacity-80">({cat.count})</span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+      
+      <!-- Gallery Grid -->
       <div
-        id="gallery"
-        class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mt-10"
+        id="gallery-grid"
+        class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
       >
         {
-          items.map((item) => {
-            const thumb = item.sizes?.card ?? item.sizes?.thumbnail;
-            const thumbUrl = thumb?.url ?? item.url;
-            const thumbWidth = thumb?.width ?? item.width ?? 960;
-            const thumbHeight = thumb?.height ?? item.height ?? 720;
-            const fullAsset =
-              item.url && item.width && item.height
-                ? { url: item.url, width: item.width, height: item.height }
-                : item.sizes?.tablet?.url &&
-                    item.sizes?.tablet?.width &&
-                    item.sizes?.tablet?.height
-                  ? {
-                      url: item.sizes.tablet.url,
-                      width: item.sizes.tablet.width,
-                      height: item.sizes.tablet.height,
-                    }
-                  : item.sizes?.card?.url &&
-                      item.sizes?.card?.width &&
-                      item.sizes?.card?.height
-                    ? {
-                        url: item.sizes.card.url,
-                        width: item.sizes.card.width,
-                        height: item.sizes.card.height,
-                      }
-                    : item.sizes?.thumbnail?.url &&
-                        item.sizes?.thumbnail?.width &&
-                        item.sizes?.thumbnail?.height
-                      ? {
-                          url: item.sizes.thumbnail.url,
-                          width: item.sizes.thumbnail.width,
-                          height: item.sizes.thumbnail.height,
-                        }
-                      : {
-                          url: thumbUrl,
-                          width: thumbWidth,
-                          height: thumbHeight,
-                        };
-            const fullUrl = fullAsset.url ?? thumbUrl;
-            const fullWidth = fullAsset.width ?? thumbWidth;
-            const fullHeight = fullAsset.height ?? thumbHeight;
-
-            if (!item.url || !thumbUrl) {
-              return null;
-            }
-
-            return (
-              <a
-                href={fullUrl}
-                data-pswp-width={fullWidth}
-                data-pswp-height={fullHeight}
-                data-pswp-msrc={thumbUrl}
-                data-pswp-cropped="true"
-                class="group overflow-hidden surface-card surface-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
-              >
-                <div class="aspect-[4/3] w-full">
-                  <Image
-                    src={thumbUrl}
-                    alt={item.alt}
-                    width={thumbWidth}
-                    height={thumbHeight}
-                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
+          GALLERY_ITEMS.map((item, index) => (
+            <button
+              type="button"
+              class="gallery-card group overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-card hover-lift text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold cursor-pointer flex flex-col justify-between"
+              data-index={index}
+              data-title={item.title}
+              data-category={item.category}
+              data-alt={item.alt}
+              data-src={item.image.src}
+            >
+              <div class="aspect-[4/3] w-full overflow-hidden relative bg-surface-subtle">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  width={640}
+                  height={480}
+                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading={index < 6 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                  <span class="text-white text-xs font-semibold tracking-wider uppercase drop-shadow-sm flex items-center gap-1">
+                    <span>Inspect Photo</span>
+                    <span>✦</span>
+                  </span>
                 </div>
-              </a>
-            );
-          })
+              </div>
+              <div class="p-4 bg-surface flex items-center justify-between border-t border-border/50 w-full">
+                <div>
+                  <h3 class="text-sm font-display font-semibold text-ink m-0 group-hover:text-accent transition-colors">
+                    {item.title}
+                  </h3>
+                  <span class="text-caption text-muted uppercase tracking-wider font-mono mt-0.5 block">
+                    {item.category}
+                  </span>
+                </div>
+                <span class="text-gold text-sm opacity-60 group-hover:opacity-100 transition-opacity">
+                  ༄
+                </span>
+              </div>
+            </button>
+          ))
         }
       </div>
     </div>
   </section>
+
+  <!-- Accessible Native HTML5 Modal Dialog Lightbox -->
+  <dialog
+    id="gallery-modal"
+    class="fixed inset-0 m-auto max-w-5xl w-[92vw] max-h-[90vh] bg-stone-950/95 text-white border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop:bg-black/80 backdrop:backdrop-blur-md closedby-any outline-none"
+  >
+    <div class="flex flex-col h-full justify-between gap-4">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <div>
+          <span id="modal-category" class="badge badge-saffron text-caption uppercase tracking-wider mb-1 inline-block">Category</span>
+          <h2 class="text-2xl font-display text-white font-normal mb-2" id="modal-title">Image Title</h2>
+        </div>
+        <form method="dialog">
+          <button
+            value="close"
+            class="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus-visible:ring-2 focus-visible:ring-gold"
+            aria-label="Close photo viewer"
+          >
+            ✕
+          </button>
+        </form>
+      </div>
+
+      <div class="relative flex-1 min-h-[300px] sm:min-h-[460px] flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
+        <img
+          id="modal-image"
+          src=""
+          alt=""
+          class="max-h-[65vh] w-auto max-w-full object-contain rounded-lg shadow-lg transition-opacity duration-300"
+        />
+        
+        <!-- Navigation Buttons -->
+        <button
+          type="button"
+          id="prev-btn"
+          class="absolute left-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-black/60 hover:bg-black/90 text-gold border border-gold/40 flex items-center justify-center transition-all hover:scale-105 focus-visible:ring-2 focus-visible:ring-gold text-lg"
+          aria-label="Previous image"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          id="next-btn"
+          class="absolute right-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-black/60 hover:bg-black/90 text-gold border border-gold/40 flex items-center justify-center transition-all hover:scale-105 focus-visible:ring-2 focus-visible:ring-gold text-lg"
+          aria-label="Next image"
+        >
+          →
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-white/70 pt-2 border-t border-white/10">
+        <span id="modal-counter">1 of 15</span>
+        <span class="font-mono">Use Arrow Keys ← → to navigate · Esc to close</span>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    function initGalleryModal() {
+      const modal = document.getElementById("gallery-modal") as HTMLDialogElement | null;
+      const modalImg = document.getElementById("modal-image") as HTMLImageElement | null;
+      const modalTitle = document.getElementById("modal-title");
+      const modalCategory = document.getElementById("modal-category");
+      const modalCounter = document.getElementById("modal-counter");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const allCards = Array.from(document.querySelectorAll<HTMLButtonElement>(".gallery-card"));
+      const filterBtns = document.querySelectorAll<HTMLButtonElement>(".gallery-filter-btn");
+
+      if (!modal || !modalImg || allCards.length === 0) return;
+
+      let visibleCards = [...allCards];
+      let currentIndex = 0;
+
+      // Filter handling
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter || "all";
+          
+          filterBtns.forEach((b) => {
+            b.classList.remove("bg-accent", "text-white", "border-accent", "shadow-xs");
+            b.classList.add("bg-surface-subtle", "text-muted", "border-border");
+          });
+          btn.classList.remove("bg-surface-subtle", "text-muted", "border-border");
+          btn.classList.add("bg-accent", "text-white", "border-accent", "shadow-xs");
+
+          visibleCards = [];
+          allCards.forEach((card) => {
+            const cardCat = card.dataset.category || "";
+            if (filter === "all" || cardCat === filter) {
+              card.classList.remove("hidden");
+              visibleCards.push(card);
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      function showImage(index: number) {
+        if (visibleCards.length === 0) return;
+        if (index < 0) index = visibleCards.length - 1;
+        if (index >= visibleCards.length) index = 0;
+        currentIndex = index;
+
+        const card = visibleCards[currentIndex];
+        const src = card.dataset.src || "";
+        const alt = card.dataset.alt || "";
+        const title = card.dataset.title || "";
+        const category = card.dataset.category || "";
+
+        modalImg!.src = src;
+        modalImg!.alt = alt;
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalCategory) modalCategory.textContent = category;
+        if (modalCounter) modalCounter.textContent = `${currentIndex + 1} of ${visibleCards.length}`;
+      }
+
+      allCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const vIndex = visibleCards.indexOf(card);
+          showImage(vIndex !== -1 ? vIndex : 0);
+          modal.showModal();
+          document.body.classList.add("stop-scrolling");
+        });
+      });
+
+      prevBtn?.addEventListener("click", () => showImage(currentIndex - 1));
+      nextBtn?.addEventListener("click", () => showImage(currentIndex + 1));
+
+      modal.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          showImage(currentIndex - 1);
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          showImage(currentIndex + 1);
+        }
+      });
+
+      // Close when clicking on backdrop
+      modal.addEventListener("click", (e) => {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (
+          rect.top <= e.clientY &&
+          e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX &&
+          e.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+          modal.close();
+        }
+      });
+
+      modal.addEventListener("close", () => {
+        document.body.classList.remove("stop-scrolling");
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initGalleryModal);
+    } else {
+      initGalleryModal();
+    }
+    document.addEventListener("astro:page-load", initGalleryModal);
+  </script>
 </PageLayout>
-
-<script is:inline type="module">
-  import PhotoSwipeLightbox from "https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js";
-
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: "#gallery",
-    children: "a",
-    showHideAnimationType: "fade",
-    bgOpacity: 0.9,
-    pswpModule: () =>
-      import("https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js"),
-  });
-
-  lightbox.init();
-</script>

@@ -1,7 +1,8 @@
 export const STATIC_PAGE_PATHS = {
-  aboutUs: "/about-us",
-  jonangDoctrine: "/jonang-doctrine",
-  jonangBeginners: "/jonang-doctrine/beginners-introduction",
+  monastery: "/monastery",
+  aboutUs: "/monastery",
+  doctrine: "/doctrine",
+  jonangDoctrine: "/doctrine",
   kalachakra: "/kalachakra",
   curriculum: "/curriculum",
   teachers: "/teachers",
@@ -11,9 +12,17 @@ export const STATIC_PAGE_PATHS = {
 } as const;
 
 export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
-  "about-us": STATIC_PAGE_PATHS.aboutUs,
-  "jonang-doctrine": STATIC_PAGE_PATHS.jonangDoctrine,
-  "jonang-doctrine/beginners-introduction": STATIC_PAGE_PATHS.jonangBeginners,
+  monastery: STATIC_PAGE_PATHS.monastery,
+  "the-monastery": STATIC_PAGE_PATHS.monastery,
+  "about-us": STATIC_PAGE_PATHS.monastery,
+  about: STATIC_PAGE_PATHS.monastery,
+  doctrine: STATIC_PAGE_PATHS.doctrine,
+  "the-doctrine": STATIC_PAGE_PATHS.doctrine,
+  teachings: STATIC_PAGE_PATHS.doctrine,
+  "jonang-doctrine": STATIC_PAGE_PATHS.doctrine,
+  "doctrine/beginners-introduction": STATIC_PAGE_PATHS.doctrine,
+  "jonang-doctrine/beginners-introduction": STATIC_PAGE_PATHS.doctrine,
+  "beginners-introduction": STATIC_PAGE_PATHS.doctrine,
   kalachakra: STATIC_PAGE_PATHS.kalachakra,
   curriculum: STATIC_PAGE_PATHS.curriculum,
   teachers: STATIC_PAGE_PATHS.teachers,
