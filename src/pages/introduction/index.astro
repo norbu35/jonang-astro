@@ -10,8 +10,9 @@ import PillarCard from "../../components/ui/PillarCard.astro";
 import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
 import taranathaThangka from "../../assets/images/taranatha-dzamthang-thangka.webp";
 import raudrantakaThangka from "../../assets/images/raudrantaka-dzamthang-thangka.webp";
-import shakyamuniThangka from "../../assets/images/shakyamuni_thangka.jpg";
+import buddhaEyesImg from "../../assets/images/eyes.jpeg";
 import tibetanLandscapeImg from "../../assets/images/landscape_xxl.jpeg";
+import shentongWavesImg from "../../assets/images/shentong-waves.jpg";
 import { Image } from "astro:assets";
 
 const threeVehicles = [
@@ -181,7 +182,7 @@ const comparativeFiveSchools = [
 >
   <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
     <!-- 1. FULL-WIDTH EDITORIAL HERO HEADER & ARCHITECTURAL DIRECTORY -->
-    <section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/50 border-b border-border/80 text-ink pt-[calc(var(--header-h)+2.5rem)] pb-14 sm:pb-18 md:pb-20 relative overflow-hidden">
+    <section id="shentong-sanctuary" class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/50 border-b border-border/80 text-ink pt-[calc(var(--header-h)+2.5rem)] pb-14 sm:pb-18 md:pb-20 relative overflow-hidden">
       <!-- Ambient glowing auras -->
       <div class="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full select-none" aria-hidden="true"></div>
       <div class="pointer-events-none absolute bottom-0 left-0 w-[450px] h-[450px] bg-accent/6 blur-3xl rounded-full select-none" aria-hidden="true"></div>
@@ -410,19 +411,22 @@ const comparativeFiveSchools = [
 
     <!-- II. Chapter 1: Introduction to Buddhist Fundamentals -->
     <section id="fundamentals" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-gold/6 via-surface to-accent/5 border border-gold/25 shadow-xs overflow-hidden">
-      <!-- Off-Centre Shakyamuni Buddha Background Artwork (Large Art-Directed Vignette) -->
-      <div class="pointer-events-none absolute -top-16 -right-16 sm:-top-24 sm:-right-20 md:-top-32 md:-right-24 lg:-top-36 lg:-right-20 w-[600px] h-[600px] sm:w-[850px] sm:h-[850px] md:w-[1050px] md:h-[1050px] lg:w-[1250px] lg:h-[1250px] select-none opacity-18 sm:opacity-20 md:opacity-24 mix-blend-multiply transition-opacity duration-700 [mask-image:radial-gradient(ellipse_at_55%_45%,black_40%,transparent_76%)]" aria-hidden="true">
+      <!-- Buddha Wisdom Eyes Background Artwork (Positioned at top 13-15% across chapter header) -->
+      <div class="pointer-events-none absolute top-[13%] sm:top-[14%] md:top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] sm:w-[720px] md:w-[880px] lg:w-[1000px] select-none opacity-24 sm:opacity-27 md:opacity-30 mix-blend-multiply transition-opacity duration-700 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_82%)]" aria-hidden="true">
         <Image
-          src={shakyamuniThangka}
+          src={buddhaEyesImg}
           alt=""
-          width={1400}
-          height={1400}
-          class="w-full h-full object-cover object-center filter saturate-[1.1]"
+          width={1200}
+          height={800}
+          class="w-full h-auto object-contain filter saturate-[1.15]"
         />
       </div>
 
-      <!-- Ambient Gold Aura behind Buddha -->
-      <div class="pointer-events-none absolute -top-12 right-0 w-[500px] h-[500px] sm:w-[750px] sm:h-[750px] bg-gold/15 blur-[110px] rounded-full select-none" aria-hidden="true"></div>
+      <!-- Ambient Sacred Gold Aura behind Eyes & Urna -->
+      <div class="pointer-events-none absolute top-[13%] sm:top-[14%] md:top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[320px] sm:w-[700px] sm:h-[400px] bg-gold/20 blur-[110px] rounded-full select-none" aria-hidden="true"></div>
+
+      <!-- Soft Luminous Text-Protection Scrim behind Chapter Title & Lede -->
+      <div class="pointer-events-none absolute top-2 left-2 sm:top-6 sm:left-6 max-w-3xl w-full h-52 bg-surface/75 blur-2xl rounded-3xl select-none" aria-hidden="true"></div>
 
       <!-- Asymmetric Dharmachakra Watermark on the bottom left -->
       <Dharmachakra class="w-72 h-72 text-gold/6 pointer-events-none absolute -bottom-16 -left-12 select-none" />
@@ -432,6 +436,7 @@ const comparativeFiveSchools = [
           chapter="Chapter 01"
           title="Introduction to Buddhist Fundamentals"
           lede="To understand the specialized lineage of Jonang, one must first locate it within the universal framework of Buddhist thought originating in the 6th to 5th centuries BCE with Siddhārtha Gautama, the historical Buddha Shakyamuni."
+          class="[text-shadow:_0_1px_12px_rgba(250,246,244,0.95),_0_0_2px_rgba(250,246,244,0.9)]"
         />
 
         <!-- Core Universal Pillars Grid -->
@@ -748,10 +753,21 @@ const comparativeFiveSchools = [
   </div>
 
   <!-- 2. FULL-WIDTH 2-COLUMN COMPARATIVE SANCTUARY SECTION: RANGTONG & SHENTONG (Light Monastic Theme) -->
-  <section class="w-full bg-gradient-to-b from-surface-subtle/70 via-surface to-surface-subtle/50 border-y border-border/80 text-ink py-14 sm:py-20 relative overflow-hidden my-10 sm:my-14">
+  <section id="shentong-sanctuary" class="w-full bg-gradient-to-b from-surface-subtle/70 via-surface to-surface-subtle/50 border-y border-border/80 text-ink py-14 sm:py-20 relative overflow-hidden my-10 sm:my-14">
+    <!-- Luminous Wavy Abstraction Background (Flowing Golden Saffron & Mineral Lapis Ribbons on Parchment) -->
+    <div class="pointer-events-none absolute inset-0 select-none opacity-30 sm:opacity-35 md:opacity-40 mix-blend-multiply [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)]" aria-hidden="true">
+      <Image
+        src={shentongWavesImg}
+        alt=""
+        widths={[640, 1024, 1600, 2000]}
+        sizes="100vw"
+        class="w-full h-full object-cover object-center filter saturate-[1.1] contrast-[1.05]"
+      />
+    </div>
+
     <!-- Subtle ambient lighting -->
-    <div class="pointer-events-none absolute top-1/4 right-0 w-[500px] h-[500px] bg-gold/6 blur-3xl rounded-full" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-accent/4 blur-3xl rounded-full" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute top-1/4 right-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-accent-tertiary/6 blur-3xl rounded-full" aria-hidden="true"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12 sm:space-y-14">
       
@@ -1151,45 +1167,54 @@ const comparativeFiveSchools = [
       </div>
     </section>
 
-    <!-- VIII. Chapter 7: 5-School Comparison Table -->
-    <section id="comparative-matrix" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-surface via-surface-subtle to-gold/6 border border-border/80 shadow-xs overflow-hidden">
-      <div class="relative z-10 space-y-8">
-        <ChapterHeader
-          chapter="Chapter 07"
-          title="Comparative Analysis: Jonang & The Tibetan Traditions"
-          lede="A side-by-side comparative summary outlining how Jonang relates to the other four major Tibetan Buddhist traditions:"
-        />
+  </div>
 
-        <div class="surface-card p-6 sm:p-8 space-y-6 bg-surface">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm border-collapse">
-              <thead>
-                <tr class="border-b border-border bg-surface-subtle">
-                  <th class="p-3.5 font-display font-semibold text-ink">Parameter</th>
-                  <th class="p-3.5 font-display font-semibold text-accent border-l border-r border-gold/30 bg-gold/10">Jonang</th>
-                  <th class="p-3.5 font-display font-semibold text-ink">Gelug</th>
-                  <th class="p-3.5 font-display font-semibold text-ink">Kagyu</th>
-                  <th class="p-3.5 font-display font-semibold text-ink">Nyingma</th>
-                  <th class="p-3.5 font-display font-semibold text-ink">Sakya</th>
+  <!-- FULL-WIDTH SECTION: CHAPTER 07 - COMPARATIVE ANALYSIS MATRIX -->
+  <section id="comparative-matrix" class="w-full bg-gradient-to-b from-surface-subtle/80 via-surface to-surface-subtle/60 border-y border-border/80 text-ink py-14 sm:py-20 relative overflow-hidden my-12 sm:my-16 scroll-mt-24">
+    <!-- Subtle ambient lighting -->
+    <div class="pointer-events-none absolute top-1/3 left-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-accent-tertiary/6 blur-3xl rounded-full" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+      <ChapterHeader
+        chapter="Chapter 07"
+        title="Comparative Analysis: Jonang & The Tibetan Traditions"
+        lede="A side-by-side comparative summary outlining how Jonang relates to the other four major Tibetan Buddhist traditions across philosophy, view, tantra, and practice lineages:"
+      />
+
+      <div class="surface-card p-4 sm:p-6 md:p-8 space-y-6 bg-surface/95 backdrop-blur-md border border-border/80 shadow-md overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse min-w-[760px]">
+            <thead>
+              <tr class="border-b border-border bg-surface-subtle/90">
+                <th class="p-4 font-display font-bold text-ink text-sm">Parameter</th>
+                <th class="p-4 font-display font-bold text-accent border-l border-r border-gold/30 bg-gold/12 text-sm">Jonang (ཇོ་ནང་།)</th>
+                <th class="p-4 font-display font-bold text-ink text-sm">Gelug (དགེ་ལུགས།)</th>
+                <th class="p-4 font-display font-bold text-ink text-sm">Kagyu (བཀའ་བརྒྱུད།)</th>
+                <th class="p-4 font-display font-bold text-ink text-sm">Nyingma (རྙིང་མ།)</th>
+                <th class="p-4 font-display font-bold text-ink text-sm">Sakya (ས་སྐྱ།)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border text-xs sm:text-sm">
+              {comparativeFiveSchools.map((row) => (
+                <tr class="hover:bg-surface-subtle/60 transition-colors">
+                  <td class="p-4 font-bold text-ink align-top whitespace-nowrap bg-surface-subtle/30">{row.param}</td>
+                  <td class="p-4 text-ink font-medium align-top leading-relaxed bg-gold/8 border-l border-r border-gold/25 font-serif">{row.jonang}</td>
+                  <td class="p-4 text-muted align-top leading-relaxed font-serif">{row.gelug}</td>
+                  <td class="p-4 text-muted align-top leading-relaxed font-serif">{row.kagyu}</td>
+                  <td class="p-4 text-muted align-top leading-relaxed font-serif">{row.nyingma}</td>
+                  <td class="p-4 text-muted align-top leading-relaxed font-serif">{row.sakya}</td>
                 </tr>
-              </thead>
-              <tbody class="divide-y divide-border text-xs">
-                {comparativeFiveSchools.map((row) => (
-                  <tr class="hover:bg-surface-subtle/50 transition-colors">
-                    <td class="p-3.5 font-bold text-ink align-top whitespace-nowrap">{row.param}</td>
-                    <td class="p-3.5 text-ink font-medium align-top leading-relaxed bg-gold/8 border-l border-r border-gold/25 font-serif">{row.jonang}</td>
-                    <td class="p-3.5 text-muted align-top leading-relaxed font-serif">{row.gelug}</td>
-                    <td class="p-3.5 text-muted align-top leading-relaxed font-serif">{row.kagyu}</td>
-                    <td class="p-3.5 text-muted align-top leading-relaxed font-serif">{row.nyingma}</td>
-                    <td class="p-3.5 text-muted align-top leading-relaxed font-serif">{row.sakya}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- 4. Final Container: Chapter 8 Gateways -->
+  <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20">
 
     <!-- IX. Chapter 8: Gateways to Deeper Study -->
     <section id="further-study" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-gold/15 via-surface to-accent/10 border border-gold/40 shadow-card overflow-hidden">
@@ -1279,5 +1304,6 @@ const comparativeFiveSchools = [
       </div>
     </section>
 
-  </main>
+  </div>
+</main>
 </BaseLayout>
