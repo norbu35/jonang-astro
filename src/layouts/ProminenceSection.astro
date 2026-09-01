@@ -16,10 +16,6 @@ import { STATIC_PAGE_PATHS } from "../data/staticPages";
     
     <!-- 1. Unified Section Header -->
     <div class="text-center max-w-3xl mx-auto">
-      <div class="badge badge-saffron mb-3 sm:mb-4 inline-flex">
-        <span class="badge-dot"></span>
-        Historical Trajectory & Lineage Head
-      </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-ink font-normal mb-6 sm:mb-8">
         Chronicles of the Jonang Lineage
       </h2>
@@ -71,9 +67,10 @@ import { STATIC_PAGE_PATHS } from "../data/staticPages";
             <span class="text-sm font-tibetan text-ink/80 font-bold block">{LINEAGE_HEAD.tibetanTitle}</span>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="badge badge-neutral text-xs font-mono">{LINEAGE_HEAD.dates}</span>
-          <span class="badge badge-saffron text-xs">Reincarnation of Jetsun Tāranātha</span>
+        <div class="flex items-center gap-3 text-xs">
+          <span class="font-mono text-muted">{LINEAGE_HEAD.dates}</span>
+          <span class="text-border">·</span>
+          <span class="font-serif italic text-accent font-semibold">Reincarnation of Jetsun Tāranātha</span>
         </div>
       </div>
 

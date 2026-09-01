@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import KalachakraCurriculumContent from "../../components/pages/KalachakraCurriculumContent.astro";
 
-import kalachakraThangka from "../../assets/images/kalachakra-dzamthang-banner.webp";
+import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
 ---
 
 <BaseLayout
@@ -26,13 +26,7 @@ import kalachakraThangka from "../../assets/images/kalachakra-dzamthang-banner.w
           <!-- Left Column: Editorial Lineage Presentation & Narrative -->
           <div class="lg:col-span-6 flex flex-col gap-6 sm:gap-7">
             
-            <!-- Standardized Clean Eyebrow Badge in Sangha Crimson & Gold -->
-            <div>
-              <div class="inline-flex items-center gap-2 rounded-full bg-[#500c0e] border border-[#fdbc2d]/40 px-3.5 py-1.5 backdrop-blur-md shadow-md text-xs font-mono tracking-wider text-[#fdbc2d] uppercase font-semibold">
-                <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse"></span>
-                Anuttarayoga Tantric Completion Stage
-              </div>
-            </div>
+
 
             <!-- Consecrated Tibetan Title -->
             <div
@@ -108,22 +102,22 @@ import kalachakraThangka from "../../assets/images/kalachakra-dzamthang-banner.w
                 
                 <div class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#3b0809] shadow-inner">
                   <Image
-                    src={kalachakraThangka}
-                    alt="The All-Powerful Ten-Fold Syllable Monogram of Kalachakra (Rnam bcu dbang ldan) in Jonang Dzamthang Tradition"
-                    class="absolute top-0 right-[-5.5%] h-full w-auto max-w-none transition-transform duration-1000 ease-out group-hover/thangka:scale-105 pointer-events-none"
+                    src={kalachakraEmblem}
+                    alt="The All-Powerful Ten-Fold Syllable Monogram of Kalachakra (Rnam bcu dbang ldan)"
+                    class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover/thangka:scale-105 pointer-events-none"
                     loading="eager"
                     fetchpriority="high"
                   />
 
                   <!-- Subtle bottom caption scrim -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
 
-                  <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                    <span class="text-caption uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block">
+                  <div class="absolute bottom-3 left-4 right-4 text-white space-y-0.5 pointer-events-none">
+                    <span class="text-caption-xs uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block">
                       Jonang Dzamthang Tradition · རྣམ་བཅུ་དབང་ལྡན།
                     </span>
-                    <span class="text-xs text-white/90 leading-snug block">
-                      The Ten-Fold Powerful Monogram of Kālacakra · Sacred Lineage Artwork
+                    <span class="text-[11px] text-white/90 leading-tight block">
+                      The Ten-Fold Powerful Monogram of Kālacakra
                     </span>
                   </div>
                 </div>
