@@ -107,16 +107,17 @@ const masters = [
   </div>
 
   <!-- Core Philosophical Vision Callout -->
+  <!-- Core Philosophical Vision Callout -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
       The Shentong View of Ultimate Reality
     </h2>
 
-    <p class="lead text-base sm:text-lg text-muted">
+    <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
       The Jonang tradition articulates the <em>Shentong</em> Madhyamaka framework: conventional phenomena are empty of self-nature (<em>rangtong</em>), whereas ultimate reality—Buddha-nature (<em>Tathāgatagarbha</em>)—is empty only of adventitious obscurations (<em>āgantukamala</em>).
     </p>
 
-    <p class="text-ink leading-relaxed">
+    <p class="text-ink leading-relaxed text-sm sm:text-base font-serif m-0">
       In contrast to non-affirming negation (<em>prasajya-pratiṣedha</em>) applied across all levels of truth, Jonang texts define ultimate reality as unconditioned primordial wisdom (<em>prabhāsvara-jñāna</em> / <em>ye shes</em>) endowed with inseparable enlightened qualities (<em>guṇa</em>).
     </p>
   </div>
@@ -129,26 +130,26 @@ const masters = [
         The Three Turnings of the Dharma Wheel
       </h3>
     </div>
-    <p class="text-sm text-muted">
+    <p class="text-sm sm:text-base text-muted font-serif m-0">
       The Mahayana sutras are classified across three hermeneutical cycles:
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
       {
         threeTurnings.map((t, idx) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift relative h-full">
-            <div>
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-xs font-mono font-bold uppercase tracking-wider text-accent">
+          <div class="surface-card p-6 flex flex-col justify-between gap-4 border-t-4 border-t-accent hover-lift relative h-full">
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-accent">
                   Turn 0{idx + 1}
                 </span>
-                <span class="text-xs text-muted font-mono">{t.location}</span>
+                <span class="text-xs sm:text-sm text-muted font-mono">{t.location}</span>
               </div>
-              <h4 class="font-display text-lg font-bold text-ink mb-1">{t.theme}</h4>
-              <span class="text-xs text-accent-secondary font-tibetan block mb-3">{t.tibetan}</span>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed">{t.view}</p>
+              <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{t.theme}</h4>
+              <span class="text-sm sm:text-base text-accent-secondary font-tibetan font-bold block pt-1">{t.tibetan}</span>
+              <p class="text-sm text-muted leading-relaxed font-serif m-0">{t.view}</p>
             </div>
-            <div class="pt-3 border-t border-border text-caption font-semibold uppercase tracking-wider text-ink/70">
+            <div class="pt-3 border-t border-border text-xs sm:text-sm font-semibold uppercase tracking-wider text-ink/70 font-mono">
               {t.scope}
             </div>
           </div>
@@ -202,30 +203,30 @@ const masters = [
 <div class="section-padding max-w-6xl mx-auto space-y-12 pt-0">
   <!-- Shentong vs Rangtong Comparative Matrix -->
   <div class="surface-card p-6 sm:p-8 space-y-6">
-    <h3 class="text-2xl font-display text-ink font-normal">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Comparative Framework: Rangtong and Shentong
     </h3>
 
-    <p class="text-sm text-muted leading-relaxed">
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Jonang treatises state that Shentong synthesizes Prajñāpāramitā teachings on emptiness with the Third Turning Tathāgatagarbha sutras:
     </p>
 
     <div class="overflow-x-auto">
-      <table class="w-full text-left text-sm border-collapse">
+      <table class="w-full text-left text-sm sm:text-base border-collapse">
         <thead>
           <tr class="border-b border-border bg-surface-subtle">
-            <th class="p-3.5 font-display font-semibold text-ink">Dimension</th>
-            <th class="p-3.5 font-display font-semibold text-accent">Rangtong</th>
-            <th class="p-3.5 font-display font-semibold text-accent-secondary">Shentong</th>
+            <th class="p-3.5 sm:p-4 font-display font-semibold text-ink text-sm sm:text-base">Dimension</th>
+            <th class="p-3.5 sm:p-4 font-display font-semibold text-accent text-sm sm:text-base">Rangtong</th>
+            <th class="p-3.5 sm:p-4 font-display font-semibold text-accent-secondary text-sm sm:text-base">Shentong</th>
           </tr>
         </thead>
-        <tbody class="divide-y border-border">
+        <tbody class="divide-y divide-border">
           {
             philosophicalMatrix.map((row) => (
               <tr class="hover:bg-surface-subtle/50 transition-colors">
-                <td class="p-3.5 font-semibold text-ink align-top">{row.category}</td>
-                <td class="p-3.5 text-muted align-top leading-relaxed">{row.rangtong}</td>
-                <td class="p-3.5 text-ink align-top leading-relaxed bg-accent-secondary-subtle/30">{row.shentong}</td>
+                <td class="p-3.5 sm:p-4 font-semibold text-ink align-top">{row.category}</td>
+                <td class="p-3.5 sm:p-4 text-muted align-top leading-relaxed font-serif">{row.rangtong}</td>
+                <td class="p-3.5 sm:p-4 text-ink align-top leading-relaxed font-medium bg-accent-secondary-subtle/30 font-serif">{row.shentong}</td>
               </tr>
             ))
           }
@@ -236,7 +237,7 @@ const masters = [
 
   <!-- Lineage Masters Archive (Balanced 3 + 2 Architecture) -->
   <div class="space-y-6">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Lineage Masters and Commentators
     </h3>
 
@@ -244,19 +245,19 @@ const masters = [
       {
         masters.map((m, idx) => (
           <div class:list={[
-            "p-6 rounded-xl bg-surface border border-border space-y-3 shadow-xs hover-lift flex flex-col justify-between h-full",
+            "p-6 rounded-xl bg-surface border border-border flex flex-col justify-between gap-3 shadow-xs hover-lift h-full",
             idx < 3 ? "lg:col-span-2" : "lg:col-span-3",
           ]}>
-            <div>
-              <div class="flex justify-between items-start mb-2">
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-start mb-1">
                 <div>
-                  <h4 class="font-display text-lg font-bold text-ink m-0">{m.name}</h4>
-                  <span class="text-xs font-mono text-accent uppercase tracking-wider block mt-0.5">{m.dates}</span>
+                  <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{m.name}</h4>
+                  <span class="text-xs sm:text-sm font-mono text-accent uppercase tracking-wider block mt-0.5">{m.dates}</span>
                 </div>
                 <EndlessKnot size={24} class="text-gold/60 shrink-0" />
               </div>
-              <p class="text-xs font-semibold text-accent-secondary uppercase tracking-wide mb-2">{m.role}</p>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">{m.body}</p>
+              <p class="text-xs sm:text-sm font-semibold text-accent-secondary uppercase tracking-wide m-0">{m.role}</p>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif">{m.body}</p>
             </div>
           </div>
         ))

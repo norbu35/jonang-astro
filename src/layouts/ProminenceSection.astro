@@ -15,11 +15,11 @@ import { STATIC_PAGE_PATHS } from "../data/staticPages";
   <div class="max-w-6xl mx-auto relative z-10 space-y-14 sm:space-y-20">
     
     <!-- 1. Unified Section Header -->
-    <div class="text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-ink font-normal mb-6 sm:mb-8">
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display text-ink font-normal m-0">
         Chronicles of the Jonang Lineage
       </h2>
-      <p class="text-muted text-sm sm:text-base leading-relaxed m-0 max-w-2xl mx-auto">
+      <p class="text-muted text-sm sm:text-base leading-relaxed m-0 max-w-2xl mx-auto font-serif">
         A historical trajectory spanning from early Indian mahasiddhas through the Jomonang hermitage, Eastern Tibetan preservation in Amdo, to modern exile revitalization under the supreme lineage head in Shimla.
       </p>
     </div>
@@ -29,18 +29,18 @@ import { STATIC_PAGE_PATHS } from "../data/staticPages";
       {
         HISTORICAL_TIMELINE.map((item, idx) => (
           <div class:list={[
-            "surface-card p-6 flex flex-col justify-between space-y-4 hover-lift border-t-4 border-t-accent relative overflow-hidden",
+            "surface-card p-6 flex flex-col justify-between gap-4 hover-lift border-t-4 border-t-accent relative overflow-hidden",
             idx < 3 ? "lg:col-span-2" : "lg:col-span-3",
           ]}>
             <div class="absolute -right-2 -bottom-2 opacity-5 text-accent pointer-events-none">
               <LotusFlower size={96} />
             </div>
-            <div>
-              <span class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-widest block mb-1">
+            <div class="flex flex-col gap-1.5">
+              <span class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-widest block mb-0.5">
                 {item.era}
               </span>
-              <h3 class="text-lg font-display font-bold text-ink mb-2">{item.title}</h3>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">{item.desc}</p>
+              <h3 class="text-lg sm:text-xl font-display font-bold text-ink m-0">{item.title}</h3>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{item.desc}</p>
             </div>
             <div class="text-xs font-mono font-semibold text-muted/60 pt-2 border-t border-border/60 flex items-center justify-between">
               <span>Phase 0{idx + 1}</span>

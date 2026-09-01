@@ -216,42 +216,42 @@ const retreatCurriculum = [
 
       <!-- Threefold Matrix Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
-        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] space-y-2">
+        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] flex flex-col gap-2.5">
           <div class="flex items-center justify-between">
             <span class="text-caption font-mono font-bold text-[#fdbc2d] uppercase">1. Outer Kālacakra</span>
-            <span class="text-xs font-tibetan text-[#fdbc2d] font-bold">ཕྱི་དུས་ཀྱི་འཁོར་ལོ།</span>
+            <span class="text-sm sm:text-base font-tibetan text-[#fdbc2d] font-bold">ཕྱི་དུས་ཀྱི་འཁོར་ལོ།</span>
           </div>
-          <h4 class="font-display text-base font-bold text-white m-0">The Macrocosm</h4>
-          <p class="text-xs text-white/80 leading-relaxed m-0 font-serif">
+          <h4 class="font-display text-base sm:text-lg font-bold text-white m-0">The Macrocosm</h4>
+          <p class="text-sm text-white/90 leading-relaxed m-0 font-serif">
             The external cosmos: planetary motions, astrological cycles, seasons, and the physical universe structured around Mount Meru.
           </p>
         </div>
 
-        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] space-y-2">
+        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] flex flex-col gap-2.5">
           <div class="flex items-center justify-between">
             <span class="text-caption font-mono font-bold text-[#fdbc2d] uppercase">2. Inner Kālacakra</span>
-            <span class="text-xs font-tibetan text-[#fdbc2d] font-bold">ནང་དུས་ཀྱི་འཁོར་ལོ།</span>
+            <span class="text-sm sm:text-base font-tibetan text-[#fdbc2d] font-bold">ནང་དུས་ཀྱི་འཁོར་ལོ།</span>
           </div>
-          <h4 class="font-display text-base font-bold text-white m-0">The Microcosm</h4>
-          <p class="text-xs text-white/80 leading-relaxed m-0 font-serif">
+          <h4 class="font-display text-base sm:text-lg font-bold text-white m-0">The Microcosm</h4>
+          <p class="text-sm text-white/90 leading-relaxed m-0 font-serif">
             The psycho-physical human body: the 72,000 subtle channels (<em>nāḍī</em>), 21,600 daily breaths (<em>prāṇa</em>), and essential drops (<em>bindu</em>).
           </p>
         </div>
 
-        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] space-y-2">
+        <div class="p-5 rounded-2xl bg-[#500c0e] border border-[#85181b] flex flex-col gap-2.5">
           <div class="flex items-center justify-between">
             <span class="text-caption font-mono font-bold text-[#fdbc2d] uppercase">3. Other Kālacakra</span>
-            <span class="text-xs font-tibetan text-[#fdbc2d] font-bold">གཞན་དུས་ཀྱི་འཁོར་ལོ།</span>
+            <span class="text-sm sm:text-base font-tibetan text-[#fdbc2d] font-bold">གཞན་དུས་ཀྱི་འཁོར་ལོ།</span>
           </div>
-          <h4 class="font-display text-base font-bold text-white m-0">The Spiritual Path</h4>
-          <p class="text-xs text-white/80 leading-relaxed m-0 font-serif">
+          <h4 class="font-display text-base sm:text-lg font-bold text-white m-0">The Spiritual Path</h4>
+          <p class="text-sm text-white/90 leading-relaxed m-0 font-serif">
             The contemplative method: the empowerments, generation stage deity mandalas, and the definitive Six-fold Vajrayoga completion stage.
           </p>
         </div>
       </div>
 
       <!-- Lineage Transmission Solemn Requirement Callout -->
-      <div class="p-4 sm:p-5 rounded-xl bg-[#500c0e]/90 border border-[#fdbc2d]/40 text-xs sm:text-sm text-white/90 space-y-1">
+      <div class="p-4 sm:p-5 rounded-xl bg-[#500c0e]/90 border border-[#fdbc2d]/40 text-sm text-white/90 flex flex-col gap-1.5">
         <div class="font-bold text-[#fdbc2d] flex items-center gap-2">
           <span>❖ Sacred Transmission Requirement</span>
         </div>
@@ -288,26 +288,26 @@ const retreatCurriculum = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-stretch">
       {
         commonPreliminaries.map((p) => (
-          <div class="surface-card p-5 rounded-2xl border-t-4 border-t-accent hover-lift flex flex-col justify-between space-y-4 h-full">
-            <div class="space-y-2.5">
+          <div class="surface-card p-5 rounded-2xl border-t-4 border-t-accent hover-lift flex flex-col justify-between gap-4 h-full">
+            <div class="flex flex-col gap-2">
               <div class="flex items-center justify-between border-b border-border/60 pb-2">
                 <span class="text-caption-xs font-mono font-bold text-accent uppercase">
                   Practice {p.order}
                 </span>
-                <span class="text-xs font-tibetan font-bold text-accent-secondary">
+                <span class="text-sm sm:text-base font-tibetan font-bold text-accent-secondary">
                   {p.tibetan}
                 </span>
               </div>
 
-              <h4 class="font-display text-base font-bold text-ink m-0 leading-snug">
+              <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0 leading-snug">
                 {p.name}
               </h4>
 
-              <div class="inline-block badge badge-saffron text-caption-xs font-mono font-semibold">
+              <div class="inline-block badge badge-saffron text-caption-xs font-mono font-semibold self-start">
                 {p.target}
               </div>
 
-              <p class="text-xs text-muted leading-relaxed font-serif m-0">
+              <p class="text-sm text-muted leading-relaxed font-serif m-0">
                 {p.purification}
               </p>
             </div>
@@ -471,23 +471,23 @@ const retreatCurriculum = [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
         
         <!-- Four Night Signs (Deep Midnight Lapis / Navy) -->
-        <div class="p-5 rounded-xl bg-gradient-to-b from-[#132034] via-[#0f1929] to-[#0b121e] border border-[#2a4878]/70 shadow-lg space-y-3">
+        <div class="p-5 rounded-xl bg-gradient-to-b from-[#132034] via-[#0f1929] to-[#0b121e] border border-[#2a4878]/70 shadow-lg flex flex-col gap-3">
           <div class="flex items-center justify-between border-b border-[#233c63] pb-2.5">
             <span class="text-caption font-mono font-bold text-[#93c5fd] uppercase flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-[#60a5fa]"></span>
               I. The Four Night Signs (Mun Snang)
             </span>
-            <span class="font-tibetan text-xs text-[#fdbc2d] font-bold">མུན་སྣང་བཞི།</span>
+            <span class="font-tibetan text-sm sm:text-base text-[#fdbc2d] font-bold">མུན་སྣང་བཞི།</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {nightSigns.map((s) => (
-              <div class="p-3 rounded-lg bg-[#182840]/90 border border-[#28497a]/60 space-y-1">
+              <div class="p-3 rounded-lg bg-[#182840]/90 border border-[#28497a]/60 flex flex-col gap-1">
                 <div class="flex items-center justify-between text-caption font-mono">
                   <span class="text-[#93c5fd] font-bold">{s.no} · {s.sanskrit}</span>
-                  <span class="font-tibetan text-[#fdbc2d] text-xs font-bold">{s.tibetan}</span>
+                  <span class="font-tibetan text-[#fdbc2d] text-sm font-bold">{s.tibetan}</span>
                 </div>
-                <div class="font-display text-sm font-bold text-white">{s.name}</div>
+                <div class="font-display text-base font-bold text-white">{s.name}</div>
                 <p class="text-caption-xs text-[#cbd5e1] leading-snug m-0 font-serif">{s.desc}</p>
               </div>
             ))}
@@ -495,23 +495,23 @@ const retreatCurriculum = [
         </div>
 
         <!-- Six Day Signs (Solar Saffron & Sangha Crimson) -->
-        <div class="p-5 rounded-xl bg-gradient-to-b from-[#5c1012] via-[#4f0c0e] to-[#3d0809] border border-[#fdbc2d]/40 shadow-lg space-y-3">
+        <div class="p-5 rounded-xl bg-gradient-to-b from-[#5c1012] via-[#4f0c0e] to-[#3d0809] border border-[#fdbc2d]/40 shadow-lg flex flex-col gap-3">
           <div class="flex items-center justify-between border-b border-[#85181b] pb-2.5">
             <span class="text-caption font-mono font-bold text-[#fdbc2d] uppercase flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-[#fdbc2d]"></span>
               II. The Six Day Signs (Nyin Snang)
             </span>
-            <span class="font-tibetan text-xs text-[#fdbc2d] font-bold">ཉིན་སྣང་དྲུག</span>
+            <span class="font-tibetan text-sm sm:text-base text-[#fdbc2d] font-bold">ཉིན་སྣང་དྲུག</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {daySigns.map((s) => (
-              <div class="p-3 rounded-lg bg-[#6e1416]/90 border border-[#85181b] space-y-1">
+              <div class="p-3 rounded-lg bg-[#6e1416]/90 border border-[#85181b] flex flex-col gap-1">
                 <div class="flex items-center justify-between text-caption font-mono">
                   <span class="text-[#fdbc2d] font-bold">{s.no} · {s.sanskrit}</span>
-                  <span class="font-tibetan text-[#fdbc2d] text-xs font-bold">{s.tibetan}</span>
+                  <span class="font-tibetan text-[#fdbc2d] text-sm font-bold">{s.tibetan}</span>
                 </div>
-                <div class="font-display text-sm font-bold text-white">{s.name}</div>
+                <div class="font-display text-base font-bold text-white">{s.name}</div>
                 <p class="text-caption-xs text-white/85 leading-snug m-0 font-serif">{s.desc}</p>
               </div>
             ))}
@@ -548,30 +548,30 @@ const retreatCurriculum = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
       {
         sixYogas.map((yoga) => (
-          <div class="surface-card p-6 rounded-2xl border-t-4 border-t-accent hover-lift flex flex-col justify-between space-y-4 h-full">
-            <div class="space-y-3">
+          <div class="surface-card p-6 rounded-2xl border-t-4 border-t-accent hover-lift flex flex-col justify-between gap-4 h-full">
+            <div class="flex flex-col gap-2.5">
               
               <div class="flex items-center justify-between border-b border-border/60 pb-2 text-xs font-mono">
-                <span class="font-bold text-accent px-2 py-0.5 rounded bg-accent-subtle">
+                <span class="font-bold text-accent px-2 py-0.5 rounded bg-accent-subtle text-xs sm:text-sm">
                   Branch {yoga.num} · {yoga.sanskrit}
                 </span>
-                <span class="font-tibetan font-bold text-accent-secondary text-sm">
+                <span class="font-tibetan font-bold text-accent-secondary text-base sm:text-lg">
                   {yoga.tibetan}
                 </span>
               </div>
 
               <div>
                 <span class="text-caption-xs font-mono uppercase text-muted block mb-0.5">{yoga.tier}</span>
-                <h4 class="font-display text-xl font-bold text-ink m-0">
+                <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">
                   {yoga.title}
                 </h4>
               </div>
 
-              <p class="text-xs text-muted leading-relaxed font-serif m-0">
+              <p class="text-sm text-muted leading-relaxed font-serif m-0">
                 <strong class="text-ink">Mechanic:</strong> {yoga.mechanic}
               </p>
 
-              <p class="text-xs text-muted leading-relaxed font-serif m-0">
+              <p class="text-sm text-muted leading-relaxed font-serif m-0">
                 <strong class="text-accent">Realization:</strong> {yoga.experience}
               </p>
 
@@ -609,7 +609,7 @@ const retreatCurriculum = [
         <h3 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight m-0">
           The Ultimate Fruition: Sahajakāya
         </h3>
-        <p class="text-sm sm:text-base text-[#fdbc2d] font-tibetan font-bold m-0">
+        <p class="text-base sm:text-lg text-[#fdbc2d] font-tibetan font-bold m-0">
           དཔལ་དུས་ཀྱི་འཁོར་ལོ་ལྷན་ཅིག་སྐྱེས་པའི་སྐུ་མངོན་དུ་བྱེད་པ།
         </p>
       </div>
@@ -625,9 +625,9 @@ const retreatCurriculum = [
             <span class="text-caption font-mono uppercase font-bold text-[#fdbc2d]">
               The Body of Empty Form
             </span>
-            <span class="text-xs font-tibetan text-[#fdbc2d] font-bold">སྟོང་གཟུགས་ཀྱི་སྐུ།</span>
+            <span class="text-sm sm:text-base font-tibetan text-[#fdbc2d] font-bold">སྟོང་གཟུགས་ཀྱི་སྐུ།</span>
           </div>
-          <p class="text-xs sm:text-sm text-white/85 m-0 leading-relaxed font-serif">
+          <p class="text-sm text-white/90 m-0 leading-relaxed font-serif">
             Free from coarse physical atoms; replete with the 32 major and 80 minor marks of perfect Buddhahood.
           </p>
         </div>
@@ -637,15 +637,15 @@ const retreatCurriculum = [
             <span class="text-caption font-mono uppercase font-bold text-[#fdbc2d]">
               Immutable Great Bliss
             </span>
-            <span class="text-xs font-tibetan text-[#fdbc2d] font-bold">འགྱུར་མེད་ཀྱི་བདེ་ཆེན།</span>
+            <span class="text-sm sm:text-base font-tibetan text-[#fdbc2d] font-bold">འགྱུར་མེད་ཀྱི་བདེ་ཆེན།</span>
           </div>
-          <p class="text-xs sm:text-sm text-white/85 m-0 leading-relaxed font-serif">
+          <p class="text-sm text-white/90 m-0 leading-relaxed font-serif">
             Permanent, unconditioned realization of primordial awareness (<em>ye shes</em>), the definitive Dharmakāya.
           </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3 pt-3 text-xs sm:text-sm text-white/80 border-t border-[#85181b]">
+      <div class="flex items-center gap-3 pt-3 text-sm text-white/85 border-t border-[#85181b]">
         <EndlessKnot class="w-5 h-5 text-[#fdbc2d] shrink-0" />
         <span>Continuous lineage preservation at Main Jonang Takten Phuntsok Choeling, Sanjauli, Shimla.</span>
       </div>
@@ -675,15 +675,15 @@ const retreatCurriculum = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2 items-stretch">
       {
         retreatCurriculum.map((r) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between h-full">
-            <div class="space-y-2">
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border flex flex-col justify-between gap-3 hover-lift h-full">
+            <div class="flex flex-col gap-2">
               <div class="flex justify-between items-center text-xs font-mono text-muted">
                 <span class="font-bold text-accent uppercase">{r.stage}</span>
                 <span class="text-accent-secondary font-semibold">{r.duration}</span>
               </div>
-              <h4 class="font-display text-base font-bold text-ink m-0">{r.name}</h4>
-              <span class="text-xs font-tibetan text-accent-secondary block font-bold">{r.tibetan}</span>
-              <p class="text-xs text-muted leading-relaxed font-serif m-0">{r.desc}</p>
+              <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{r.name}</h4>
+              <span class="text-sm sm:text-base font-tibetan text-accent-secondary block font-bold pt-0.5">{r.tibetan}</span>
+              <p class="text-sm text-muted leading-relaxed font-serif m-0">{r.desc}</p>
             </div>
 
             <div class="pt-3 border-t border-border/60 text-caption-xs space-y-1">

@@ -126,29 +126,29 @@ const ritualArts = [
 <div class="space-y-12 sm:space-y-16">
   <!-- Educational Mission Header -->
   <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
       The 18-Year Progressive Monastic Curriculum
     </h2>
 
-    <p class="lead text-base sm:text-lg text-muted">
+    <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
       Main Jonang Takten Phuntsok Choeling conducts an 18-year curriculum integrating Tibetan classical grammar, Buddhist epistemology (Pramāṇa), the Five Great Treatises, ritual arts, and multi-year Kālacakra retreat.
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
-        <span class="text-xs font-semibold text-accent uppercase block">Duration</span>
+        <span class="text-xs font-semibold text-accent uppercase block font-mono">Duration</span>
         <span class="text-2xl font-display font-bold text-ink block">18 Years</span>
-        <span class="text-caption text-muted block">Primary through Acharya</span>
+        <span class="text-xs text-muted block font-serif">Primary through Acharya</span>
       </div>
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
-        <span class="text-xs font-semibold text-accent-secondary uppercase block">Sangha Body</span>
+        <span class="text-xs font-semibold text-accent-secondary uppercase block font-mono">Sangha Body</span>
         <span class="text-2xl font-display font-bold text-ink block">~120 Monks</span>
-        <span class="text-caption text-muted block">100% Tuition-Free Support</span>
+        <span class="text-xs text-muted block font-serif">100% Tuition-Free Support</span>
       </div>
       <div class="p-4 rounded-xl bg-surface-subtle border border-border text-center space-y-1">
-        <span class="text-xs font-semibold text-accent-tertiary uppercase block">Culmination</span>
+        <span class="text-xs font-semibold text-accent-tertiary uppercase block font-mono">Culmination</span>
         <span class="text-2xl font-display font-bold text-ink block">3.5 Years</span>
-        <span class="text-caption text-muted block">Solitary Kālacakra Retreat</span>
+        <span class="text-xs text-muted block font-serif">Solitary Kālacakra Retreat</span>
       </div>
     </div>
   </div>
@@ -157,7 +157,7 @@ const ritualArts = [
   <div class="space-y-6">
     <div class="flex items-center gap-3">
       <Dharmachakra class="w-7 h-7 text-accent-secondary" />
-      <h3 class="text-2xl font-display text-ink m-0">
+      <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">
         The Four Academic Epochs
       </h3>
     </div>
@@ -165,17 +165,17 @@ const ritualArts = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
       {
         syllabusStages.map((s) => (
-          <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift h-full">
-            <div class="space-y-2">
-              <div class="flex justify-between items-center text-xs font-mono text-muted">
+          <div class="surface-card p-6 flex flex-col justify-between gap-4 border-t-4 border-t-accent hover-lift h-full">
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
                 <span class="font-bold text-accent">{s.stage}</span>
                 <span class="text-accent-secondary font-semibold font-mono">{s.years}</span>
               </div>
-              <h4 class="font-display text-lg font-bold text-ink leading-snug">{s.title}</h4>
-              <span class="text-xs font-tibetan text-accent-secondary font-bold block">{s.tibetan}</span>
-              <p class="text-xs text-muted leading-relaxed pt-1">{s.curriculum}</p>
+              <h4 class="font-display text-lg sm:text-xl font-bold text-ink leading-snug m-0">{s.title}</h4>
+              <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1">{s.tibetan}</span>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{s.curriculum}</p>
             </div>
-            <div class="pt-3 border-t border-border text-caption font-semibold uppercase tracking-wider text-accent">
+            <div class="pt-3 border-t border-border text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent font-mono">
               {s.focus}
             </div>
           </div>
@@ -186,38 +186,38 @@ const ritualArts = [
 
   <!-- Foundational Sutra & Dialectics Syllabus (Studying Sutra Part) -->
   <div class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Foundational Sūtra Epistemology: Logic, Mind & Dialectics
     </h3>
 
-    <p class="text-sm text-muted leading-relaxed">
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Before embarking on the Five Great Treatises, students undergo a rigorous four-year foundational sequence mastering logic, cognitive theory, and debate manuals:
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-stretch">
       {
         sutraFoundations.map((item) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between h-full">
-            <div>
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border flex flex-col justify-between gap-3 hover-lift h-full">
+            <div class="flex flex-col gap-2">
               <div class="flex justify-between items-center text-xs font-mono text-muted mb-1">
                 <span class="font-bold text-accent">Stage {item.sno}</span>
                 <span class="text-accent-secondary font-semibold font-mono">{item.duration}</span>
               </div>
-              <h4 class="font-display text-lg font-bold text-ink mb-1">{item.name}</h4>
-              <span class="text-xs font-tibetan text-accent-secondary block mb-2">{item.tibetan}</span>
+              <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{item.name}</h4>
+              <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1">{item.tibetan}</span>
               
-              <div class="space-y-1.5 text-xs">
-                <div class="p-2 rounded bg-surface border border-border">
-                  <span class="text-caption-xs uppercase font-bold text-accent block">Main Text:</span>
-                  <span class="font-medium text-ink">{item.mainText}</span>
+              <div class="flex flex-col gap-1.5 text-xs pt-1">
+                <div class="p-2.5 rounded-lg bg-surface border border-border">
+                  <span class="text-caption-xs uppercase font-bold text-accent block font-mono">Main Text:</span>
+                  <span class="font-medium text-ink font-serif text-sm">{item.mainText}</span>
                 </div>
-                <div class="p-2 rounded bg-surface border border-border">
-                  <span class="text-caption-xs uppercase font-bold text-muted block">Supplementary Text:</span>
-                  <span class="text-muted">{item.partText}</span>
+                <div class="p-2.5 rounded-lg bg-surface border border-border">
+                  <span class="text-caption-xs uppercase font-bold text-muted block font-mono">Supplementary Text:</span>
+                  <span class="text-muted font-serif text-sm">{item.partText}</span>
                 </div>
               </div>
 
-              <p class="text-xs text-muted leading-relaxed pt-2">{item.desc}</p>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{item.desc}</p>
             </div>
           </div>
         ))
@@ -227,7 +227,7 @@ const ritualArts = [
 
   <!-- The Five Great Treatises (Balanced 3 + 2 Architecture) -->
   <div class="surface-card p-6 sm:p-8 space-y-6">
-    <h3 class="text-2xl font-display text-ink font-normal">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
     </h3>
 
@@ -235,16 +235,16 @@ const ritualArts = [
       {
         fiveTreatises.map((t, idx) => (
           <div class:list={[
-            "p-5 rounded-xl bg-surface-subtle border border-border space-y-2 shadow-xs hover-lift flex flex-col justify-between h-full",
+            "p-5 rounded-xl bg-surface-subtle border border-border flex flex-col justify-between gap-2 shadow-xs hover-lift h-full",
             idx < 3 ? "lg:col-span-2" : "lg:col-span-3",
           ]}>
-            <div>
+            <div class="flex flex-col gap-1.5">
               <div class="flex justify-between items-start mb-1">
-                <h4 class="font-display text-base font-bold text-ink">{t.title}</h4>
-                <span class="text-xs font-tibetan text-accent-secondary font-bold">{t.tibetan}</span>
+                <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{t.title}</h4>
+                <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold">{t.tibetan}</span>
               </div>
-              <p class="text-xs font-semibold text-accent mb-2">{t.text}</p>
-              <p class="text-xs text-muted leading-relaxed m-0">{t.desc}</p>
+              <p class="text-xs sm:text-sm font-semibold text-accent m-0 font-serif">{t.text}</p>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{t.desc}</p>
             </div>
           </div>
         ))
@@ -254,20 +254,20 @@ const ritualArts = [
 
   <!-- Liturgical Arts & Instruments -->
   <div class="space-y-6">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Liturgical Arts and Ritual Music
     </h3>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
       {
         ritualArts.map((art) => (
-          <div class="p-6 rounded-xl bg-surface border border-border space-y-2 shadow-xs hover-lift flex flex-col justify-between h-full">
-            <div>
+          <div class="p-6 rounded-xl bg-surface border border-border flex flex-col justify-between gap-2 shadow-xs hover-lift h-full">
+            <div class="flex flex-col gap-1.5">
               <div class="flex justify-between items-center mb-1">
-                <h4 class="font-display text-base font-bold text-ink">{art.name}</h4>
+                <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{art.name}</h4>
               </div>
-              <span class="text-xs font-tibetan text-accent font-semibold block mb-2">{art.tibetan}</span>
-              <p class="text-xs text-muted leading-relaxed m-0">{art.items}</p>
+              <span class="text-sm sm:text-base font-tibetan text-accent font-bold block pt-1">{art.tibetan}</span>
+              <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{art.items}</p>
             </div>
           </div>
         ))
@@ -277,8 +277,8 @@ const ritualArts = [
 
   <!-- Meditative Retreat Track -->
   <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
-    <h3 class="text-2xl font-display text-ink">3.5-Year Kālacakra Retreat</h3>
-    <p class="text-sm sm:text-base text-muted leading-relaxed">
+    <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">3.5-Year Kālacakra Retreat</h3>
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Monks who complete the dialectical syllabus qualify to enter the retreat facility for a three-and-a-half-year cycle. Practice centers on Generation Stage deity yoga, Three Isolations dark retreat, and the completion-stage <strong>Six-fold Vajrayoga (Sbyor drug)</strong> under the direct supervision of the retreat master.
     </p>
   </div>

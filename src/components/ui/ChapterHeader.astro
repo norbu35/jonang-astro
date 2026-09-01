@@ -13,7 +13,7 @@ const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.
 
 <div id={id} class:list={["flex flex-col gap-2.5", className]}>
   {chapter && (
-    <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">
+    <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest block">
       {chapter}
     </span>
   )}
@@ -21,12 +21,12 @@ const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.
     {title}
   </h2>
   {tibetanTitle && (
-    <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]">
+    <span class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]">
       {tibetanTitle}
     </span>
   )}
   {lede && (
-    <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl m-0 pt-1">
+    <p class="text-base sm:text-lg text-muted font-serif leading-relaxed max-w-3xl m-0 pt-1">
       {lede}
     </p>
   )}
