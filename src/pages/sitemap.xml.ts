@@ -5,6 +5,7 @@ const SITE_URL = import.meta.env.SITE ?? "https://jonang.in";
 
 const paths = [
   "/",
+  STATIC_PAGE_PATHS.introduction,
   STATIC_PAGE_PATHS.monastery,
   STATIC_PAGE_PATHS.doctrine,
   STATIC_PAGE_PATHS.kalachakra,

@@ -1,0 +1,818 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import Dharmachakra from "../../components/icons/Dharmachakra.astro";
+import EndlessKnot from "../../components/icons/EndlessKnot.astro";
+import LotusFlower from "../../components/icons/LotusFlower.astro";
+import introBannerImg from "../../assets/images/jonang-refuge-tree.webp";
+import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
+import taranathaThangka from "../../assets/images/taranatha-dzamthang-thangka.webp";
+import khalkhaPortrait from "../../assets/portraits/khalkha_jetsun_dampa.webp";
+import { Image } from "astro:assets";
+
+const threeVehicles = [
+  {
+    vehicle: "Theravāda",
+    tibetan: "གནས་བརྟན་སྡེ་པ།",
+    subtitle: "Way of the Elders",
+    ideal: "Arhat (Individual Liberation)",
+    method: "Monastic discipline (Vinaya), analytical mindfulness (Vipassanā)",
+    emphasis: "Analysis of the five aggregates (skandhas), overcoming attachment, and extinguishing mental defilements (kleśas).",
+  },
+  {
+    vehicle: "Mahāyāna",
+    tibetan: "ཐེག་པ་ཆེན་པོ།",
+    subtitle: "The Great Vehicle",
+    ideal: "Bodhisattva (Universal Liberation)",
+    method: "Cultivation of altruistic awakening mind (Bodhicitta), Six Perfections (Pāramitās)",
+    emphasis: "Emptiness (Śūnyatā) of all phenomena and the indwelling essence of Buddhahood (Tathāgatagarbha) present in all beings.",
+  },
+  {
+    vehicle: "Vajrayāna",
+    tibetan: "གསང་སྔགས་རྡོ་རྗེ་ཐེག་པ།",
+    subtitle: "The Diamond Vehicle",
+    ideal: "Siddha / Fully Awakened Buddha",
+    method: "Esoteric empowerments, deity visualization, subtle body yogas (channels, winds, essences)",
+    emphasis: "Direct, swift transmutation of mundane delusion into primordial luminous wisdom (Jñāna) within a single lifetime.",
+  },
+];
+
+const fiveTraditions = [
+  {
+    name: "Nyingma",
+    tibetan: "རྙིང་མ།",
+    meaning: "The Ancient School",
+    history: "Formed during the Early Propagation (8th century) under King Trisong Detsen, Guru Padmasambhava, and Śāntarakṣita.",
+    specialty: "Revealed treasure texts (Terma) and the non-dual direct realization of Dzogchen (Great Perfection).",
+  },
+  {
+    name: "Kagyu",
+    tibetan: "བཀའ་བརྒྱུད།",
+    meaning: "The Oral Lineage",
+    history: "Transmitted from Indian Mahāsiddhas Tilopa and Nāropa to Marpa, Milarepa, and Gampopa in the 11th century.",
+    specialty: "Mahāmudrā (The Great Seal) and the Six Yogas of Nāropa subtle body energy practices.",
+  },
+  {
+    name: "Sakya",
+    tibetan: "ས་སྐྱ།",
+    meaning: "The Grey Earth School",
+    history: "Founded in 1073 by the Khön family, renowned for scholastic systematization and extensive tantric commentaries.",
+    specialty: "The Lamdré (Path and Result) system and mastery of the Hevajra Tantra.",
+  },
+  {
+    name: "Gelug",
+    tibetan: "དགེ་ལུགས།",
+    meaning: "The Virtuous School",
+    history: "Established in the early 15th century by Je Tsongkhapa, establishing major monastic universities across Tibet.",
+    specialty: "Rigorous dialectical debate, strict Vinaya monasticism, and Prāsaṅgika Mādhyamika philosophy.",
+  },
+  {
+    name: "Jonang",
+    tibetan: "ཇོ་ནང་།",
+    meaning: "The Lineage of Jomonang",
+    history: "Consolidated by Kunpang Thukje Tsöndrü and Dölpopa Sherab Gyaltsen in the 13th–14th centuries.",
+    specialty: "The definitive Shentong (Other-Emptiness) Great Middle Way and the complete Six-fold Vajrayoga of the Kālacakra Tantra.",
+  },
+];
+
+const tenDefinitiveSutras = [
+  { name: "Tathāgatagarbha Sūtra", desc: "Reveals the radiant Buddha-nature hidden within all transient defilements like a jewel in rags." },
+  { name: "Mahāyāna Mahāparinirvāṇa Sūtra", desc: "Declares ultimate reality to be eternal (nitya), blissful (sukha), true self (ātman), and pure (śubha)." },
+  { name: "Śrīmālādevī Siṃhanāda Sūtra", desc: "The Lion’s Roar of Queen Śrīmālā on the ultimate Tathāgatagarbha and the single vehicle (Ekayāna)." },
+  { name: "Aṅgulimālīya Sūtra", desc: "Elucidates that enlightenment is not created anew, but uncovered as the primordial nature of reality." },
+  { name: "Mahābherīharaka Sūtra", desc: "The Great Drum Sutra proclaiming the permanent essence of Buddhahood across all sentient realms." },
+  { name: "Avikalpapraveśa Dhāraṇī", desc: "Expounds direct entry into non-conceptual awareness beyond mental fabrications." },
+  { name: "Śūnyatānāma Mahāsūtra", desc: "Distinguishes between relative emptiness of self-nature and the ultimate reality endowed with qualities." },
+  { name: "Tathāgatamahākaruṇānirdeśa Sūtra", desc: "The great exposition of the Buddha’s unconditioned primordial compassion." },
+  { name: "Tathāgataguṇajñānācintyaviṣayāvatāranirdeśa Sūtra", desc: "Details the inconceivable wisdom and spontaneous qualities of the enlightened state." },
+  { name: "Mahāmegha Sūtra", desc: "The Great Cloud Sutra proclaiming the perpetual lifespan and indestructible nature of the Tathāgata." },
+];
+
+const sixVajraYogas = [
+  {
+    step: "01",
+    name: "Pratyāhāra (Withdrawal)",
+    tibetan: "སོ་སོར་སྡུད་པ།",
+    desc: "Retracting sensory awareness from external stimuli and directing attention into the central channel (avadhūti). In solitary dark retreat, the practitioner directly witnesses the ten visionary signs of empty form (śūnyatā-bimba)—such as smoke, mirages, fireflies, lamp flames, and blazing suns.",
+  },
+  {
+    step: "02",
+    name: "Dhyāna (Meditative Concentration)",
+    tibetan: "བསམ་གཏན།",
+    desc: "Stabilizing and integrating the visionary empty forms with non-conceptual insight (prajñā), uniting perceptual clarity with unwavering single-pointed meditative absorption.",
+  },
+  {
+    step: "03",
+    name: "Prāṇāyāma (Harnessing Life-Force)",
+    tibetan: "སྲོག་རྩོལ།",
+    desc: "Mastery over subtle energy-winds (prāṇa) via vase-breathing containment (kumbhaka), drawing coarse upper and lower breath winds into the central channel at the navel cakra.",
+  },
+  {
+    step: "04",
+    name: "Dhāraṇā (Retention)",
+    tibetan: "འཛིན་པ།",
+    desc: "Holding the subtle winds and regenerative drops (bindu) bound securely within the central channel, pacifying dualistic thought and generating immutable bliss (akṣarasukha).",
+  },
+  {
+    step: "05",
+    name: "Anusmṛti (Recollection)",
+    tibetan: "རྗེས་དྲན།",
+    desc: "Igniting the inner heat fire (caṇḍālī / tummo) through the central channel to melt the white bodhicitta drop at the crown cakra. The practitioner directly beholds the luminous, rainbow-like mandala matrix of Kālacakra.",
+  },
+  {
+    step: "06",
+    name: "Samādhi (Meditative Stabilization)",
+    tibetan: "ཏིང་ངེ་འཛིན།",
+    desc: "The consummate union of unchanging supreme bliss (paramākṣarasukha) and the ultimate devoid-form body (stong-gzugs). Coarse physical aggregates dissolve, actualizing the Primordial Buddha (Adibuddha) state.",
+  },
+];
+
+const comparativeFiveSchools = [
+  {
+    param: "Philosophical View of Reality",
+    jonang: "Shentong (Great Madhyamaka): Ultimate reality is empty of adventitious flaws, but replete with eternal Buddha-qualities.",
+    gelug: "Rangtong (Prāsaṅgika Madhyamaka): Absolute negation of inherent existence across all conventional and ultimate truths.",
+    kagyu: "Dual approach: Shentong applied in contemplative meditation (Karma Kagyu); Rangtong used in scholastic study.",
+    nyingma: "Dzogchen Primordial Purity (Ka dag) and Spontaneous Presence (Lhun grub), synthesizing clarity and emptiness.",
+    sakya: "Inseparability of Clarity and Emptiness (Gsal stong dbyer med); primarily Rangtong dialectics.",
+  },
+  {
+    param: "Primary Tantric Specialization",
+    jonang: "Kālacakra Tantra (Drō Lineage) & the Six-fold Vajrayoga of the completion stage.",
+    gelug: "Guhyasamāja, Yamāntaka, Cakrasaṃvara, and Kālacakra (Rwa Lineage).",
+    kagyu: "Cakrasaṃvara, Hevajra, Six Yogas of Nāropa, and Mahāmudrā.",
+    nyingma: "Guhyagarbha Tantra, Eight Herukas (Kāgyé), and Dzogchen Atiyoga.",
+    sakya: "Hevajra Tantra and the Lamdré (Path and Result) esoteric cycle.",
+  },
+  {
+    param: "Hermeneutical Stance on the 3 Turnings",
+    jonang: "Third Turning (Tathāgatagarbha) is definitive (nītārtha); Second Turning is provisional (neyārtha).",
+    gelug: "Second Turning (Prajñāpāramitā) is definitive (nītārtha); Third Turning requires interpretation.",
+    kagyu: "Third Turning prioritized for Buddha-nature experience; Second Turning for conceptual deconstruction.",
+    nyingma: "Third Turning prioritized for luminous nature; Second Turning for freedom from conceptual extremes.",
+    sakya: "Second Turning prioritized scholastically; non-dual synthesis in meditation.",
+  },
+  {
+    param: "Understanding of Buddha-Nature",
+    jonang: "An unconditioned, eternal, non-dual reality inherently present within all sentient beings.",
+    gelug: "A potential or capacity for awakening; a metaphor for the empty, clear-light nature of mind.",
+    kagyu: "The indwelling luminous awareness (rigpa) free from mental fabrications.",
+    nyingma: "The spontaneous presence (lhun grub) of primordial enlightened wisdom.",
+    sakya: "The natural clarity of mind inseparable from its empty nature.",
+  },
+  {
+    param: "Key Historical Masters",
+    jonang: "Yumo Mikyö Dorjé, Kunpang-pa, Dölpopa Sherab Gyaltsen, Jetsun Tāranātha.",
+    gelug: "Je Tsongkhapa, Gyaltsab Je, Khedrup Je, Dalai Lama lineage.",
+    kagyu: "Marpa the Translator, Milarepa, Gampopa, Karmapa lineage.",
+    nyingma: "Guru Padmasambhava, Vimalamitra, Longchenpa, Ju Mipham Rinpoche.",
+    sakya: "Khön Könchok Gyalpo, Sakya Paṇḍita, Drogön Chögyal Phagpa.",
+  },
+];
+---
+
+<PageLayout
+  title="Introduction to the Jonang Tradition"
+  tibetanTitle="ཇོ་ནང་ཆོས་བརྒྱུད་ངོ་སྤྲོད་མདོར་བསྡུས།"
+  image={introBannerImg}
+  imageAlt="The Jonang Lineage Refuge Tree depicting masters, yidams, and Buddha-nature teachers"
+>
+  <div class="space-y-16 sm:space-y-20">
+
+    <!-- I. Editorial Master Header -->
+    <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-[1.18] m-0">
+        The Luminous Path of Other-Emptiness
+      </h1>
+
+      <p class="editorial-lede artisan-dropcap text-base sm:text-lg text-muted leading-relaxed m-0 font-serif">
+        Welcome to the beginner’s gateway for the Jonang tradition of Tibetan Buddhism. If you are new to Buddhist philosophy or seeking to understand what distinguishes the Jonang lineage from other traditions, this comprehensive guide offers an accessible on-ramp—spanning fundamental Buddhist tenets, the emergence of Tibetan schools, the definitive Shentong view of Buddha-nature, and the contemplative Six Yogas of Kālacakra.
+      </p>
+
+      <!-- Quick Chapter Jump Bar -->
+      <div class="pt-4 border-t border-border/80">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-3">
+          Table of Contents · དཀར་ཆག
+        </span>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <a href="#fundamentals" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            1. Buddhist Fundamentals
+          </a>
+          <a href="#tibetan-landscape" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            2. The Five Traditions
+          </a>
+          <a href="#jonang-history" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            3. Genesis of Jonang
+          </a>
+          <a href="#shentong-core" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            4. Shentong vs. Rangtong
+          </a>
+          <a href="#kalachakra-engine" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            5. Kālacakra & Six Yogas
+          </a>
+          <a href="#suppression-resurgence" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            6. History & Resurgence
+          </a>
+          <a href="#comparative-matrix" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            7. 5-School Comparison
+          </a>
+          <a href="#further-study" class="px-3 py-1.5 rounded-lg bg-surface-subtle border border-border hover:border-accent hover:text-accent font-medium transition-all">
+            8. Explore Next
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- II. Chapter 1: Introduction to Buddhist Fundamentals -->
+    <section id="fundamentals" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 01</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          Introduction to Buddhist Fundamentals
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          To understand the specialized lineage of Jonang, one must first locate it within the universal framework of Buddhist thought originating in the 6th to 5th centuries BCE with Siddhārtha Gautama, the historical Buddha Shakyamuni.
+        </p>
+      </div>
+
+      <!-- Core Universal Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Four Noble Truths -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent hover-lift">
+          <div class="space-y-2">
+            <h3 class="text-lg font-display font-bold text-ink m-0">The Four Noble Truths</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">བདེན་པ་བཞི།</span>
+            <ul class="text-xs text-muted space-y-2 pt-2 list-none p-0 m-0 leading-relaxed">
+              <li><strong>1. Duḥkha:</strong> The truth of suffering and conditioned unsatisfactoriness.</li>
+              <li><strong>2. Samudaya:</strong> The origin of suffering rooted in ignorance and craving.</li>
+              <li><strong>3. Nirodha:</strong> The cessation of suffering known as Nirvāṇa.</li>
+              <li><strong>4. Mārga:</strong> The path leading to cessation (The Noble Eightfold Path).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Three Marks of Existence -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-gold hover-lift">
+          <div class="space-y-2">
+            <h3 class="text-lg font-display font-bold text-ink m-0">Three Marks of Existence</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">ཕྱག་རྒྱ་བཞི།</span>
+            <ul class="text-xs text-muted space-y-2 pt-2 list-none p-0 m-0 leading-relaxed">
+              <li><strong>Impermanence (Anicca):</strong> All compounded phenomena are in constant flux.</li>
+              <li><strong>Suffering (Duḥkha):</strong> Clinging to transient objects produces dissatisfaction.</li>
+              <li><strong>Non-Self (Anātman):</strong> Living beings possess no permanent, independent soul. Individual life is an interplay of five transient aggregates (<em>skandhas</em>).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dependent Origination -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 border-t-4 border-t-accent-secondary hover-lift">
+          <div class="space-y-2">
+            <h3 class="text-lg font-display font-bold text-ink m-0">Dependent Origination</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">རྟེན་ཅིང་འབྲེལ་བར་འབྱུང་བ།</span>
+            <p class="text-xs text-muted leading-relaxed m-0 pt-2">
+              <em>Pratītyasamutpāda</em> is the universal law that all physical and mental phenomena arise only in dependence upon causes and conditions. Nothing exists in isolation; all things are empty of independent self-existence.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- The Three Yānas Comparison Table -->
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
+          The Three Vehicles of Buddhism (Yānas)
+        </h3>
+        <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">
+          As Buddhism flourished across Asia, it adapted into three primary vehicles suited to varied spiritual temperaments:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-border bg-surface-subtle">
+                <th class="p-3.5 font-display font-semibold text-ink">Vehicle</th>
+                <th class="p-3.5 font-display font-semibold text-accent">Spiritual Ideal</th>
+                <th class="p-3.5 font-display font-semibold text-accent-secondary">Core Method</th>
+                <th class="p-3.5 font-display font-semibold text-ink">Philosophical Focus</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              {threeVehicles.map((v) => (
+                <tr class="hover:bg-surface-subtle/50 transition-colors">
+                  <td class="p-3.5 font-semibold text-ink align-top">
+                    <div>{v.vehicle}</div>
+                    <span class="text-xs text-muted block">{v.subtitle}</span>
+                    <span class="text-xs font-tibetan text-accent font-bold block mt-0.5">{v.tibetan}</span>
+                  </td>
+                  <td class="p-3.5 text-accent font-medium align-top leading-relaxed">{v.ideal}</td>
+                  <td class="p-3.5 text-muted align-top leading-relaxed">{v.method}</td>
+                  <td class="p-3.5 text-ink align-top leading-relaxed">{v.emphasis}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- The Three Turnings of the Wheel of Dharma -->
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
+          The Three Turnings of the Wheel of Dharma (Dharmacakrapravartana)
+        </h3>
+        <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">
+          Mahāyāna hermeneutics structures the Buddha’s forty-five-year teaching career into three successive turnings. This three-stage progression serves as the foundational matrix for all Tibetan doctrinal discourse:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+          
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+            <div class="flex justify-between items-center text-xs font-mono text-accent">
+              <span class="font-bold uppercase">First Turning</span>
+              <span>Sārnāth</span>
+            </div>
+            <h4 class="font-display text-base font-bold text-ink m-0">The Four Noble Truths</h4>
+            <p class="text-xs text-muted leading-relaxed m-0">
+              Established personal selflessness (<em>pudgala-nairātmya</em>), the reality of suffering, and ethical monastic discipline.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-surface-subtle border border-border space-y-2">
+            <div class="flex justify-between items-center text-xs font-mono text-accent">
+              <span class="font-bold uppercase">Second Turning</span>
+              <span>Vulture Peak</span>
+            </div>
+            <h4 class="font-display text-base font-bold text-ink m-0">The Perfection of Wisdom</h4>
+            <p class="text-xs text-muted leading-relaxed m-0">
+              Established the universal emptiness (<em>Śūnyatā</em>) of all phenomena (<em>dharma-nairātmya</em>) through the Prajñāpāramitā sūtras.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-surface-subtle border border-accent/40 space-y-2 bg-gradient-to-br from-surface-subtle to-gold/5">
+            <div class="flex justify-between items-center text-xs font-mono text-accent">
+              <span class="font-bold uppercase">Third Turning</span>
+              <span>Vaiśālī & Elsewhere</span>
+            </div>
+            <h4 class="font-display text-base font-bold text-ink m-0">Buddha-Nature (Tathāgatagarbha)</h4>
+            <p class="text-xs text-muted leading-relaxed m-0">
+              Revealed that ultimate reality is non-dual primordial luminous wisdom (<em>jñāna</em>), an eternal Buddha-nature present in all sentient beings. <strong>This turning forms the doctrinal bedrock of the Jonang tradition.</strong>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- III. Chapter 2: The Landscape of Tibetan Buddhism -->
+    <section id="tibetan-landscape" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 02</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          The Landscape of Tibetan Buddhism
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          Buddhism entered the Tibetan plateau across two historic epochs: the <strong>Early Propagation (Nyingma)</strong> in the 8th century, and the <strong>Later Propagation (Sarma)</strong> from the late 10th century onward, drawing direct Sanskrit translations from Indian monastic universities such as Nālandā and Vikramaśīla.
+        </p>
+      </div>
+
+      <!-- Five Living Lineages Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        {fiveTraditions.map((t, idx) => (
+          <div class:list={[
+            "surface-card p-5 flex flex-col justify-between space-y-3 hover-lift border-t-4",
+            idx === 4 ? "border-t-gold ring-1 ring-gold/40" : "border-t-accent",
+          ]}>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <h3 class="text-lg font-display font-bold text-ink m-0">{t.name}</h3>
+                <span class="text-xs font-tibetan text-accent font-bold">{t.tibetan}</span>
+              </div>
+              <span class="text-xs font-mono text-muted uppercase tracking-wider block mb-2">{t.meaning}</span>
+              <p class="text-xs text-muted leading-relaxed m-0 mb-3">{t.history}</p>
+            </div>
+            <div class="pt-2 border-t border-border text-xs text-ink/90 font-medium">
+              <span class="text-accent-secondary font-bold block text-caption-xs uppercase">Specialty:</span>
+              {t.specialty}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="surface-card p-6 border-l-4 border-l-border space-y-2">
+        <h4 class="text-base font-display font-bold text-ink m-0">Note on Bön:</h4>
+        <p class="text-xs sm:text-sm text-muted leading-relaxed m-0 font-serif">
+          Alongside these five Buddhist traditions stands <strong>Bön</strong>, Tibet's indigenous spiritual tradition, which evolved alongside Tibetan Buddhism while sharing similar monastic, iconographic, and philosophical frameworks.
+        </p>
+      </div>
+    </section>
+
+    <!-- IV. Chapter 3: Genesis & Historical Evolution of Jonang -->
+    <section id="jonang-history" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 03</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          Genesis and Historical Evolution of the Jonang Tradition
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          The Jonang lineage represents an unbroken stream of scholarship and contemplative realization descending from 11th-century Indian masters to the present day:
+        </p>
+      </div>
+
+      <!-- Historical Masters Stepper Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 1. Yumo Mikyö Dorjé -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift">
+          <div class="space-y-2">
+            <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">11th Century Origins</span>
+            <h3 class="text-lg font-display font-bold text-ink m-0">Yumo Mikyö Dorjé</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">ཡུ་མོ་མི་བསྐྱོད་རྡོ་རྗེ།</span>
+            <p class="text-xs text-muted leading-relaxed pt-2">
+              A direct disciple of the Kashmiri master Somanātha, Yumo Mikyö Dorjé became the first Tibetan yogi to explicitly articulate <strong>Tantric Shentong</strong> following profound realizations during solitary Kālacakra completion retreat.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Kunpang Thukje Tsöndrü -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift">
+          <div class="space-y-2">
+            <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">1243 – 1313</span>
+            <h3 class="text-lg font-display font-bold text-ink m-0">Kunpang Thukje Tsöndrü</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">ཀུན་སྤངས་ཐུགས་རྗེ་བརྩོན་འགྲུས།</span>
+            <p class="text-xs text-muted leading-relaxed pt-2">
+              Synthesized seventeen distinct transmission lines of the Kālacakra completion stage into a single coherent syllabus and founded the central hermitage in the <strong>Jomonang Valley</strong> of Tsang, from which the lineage derived its name.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Dölpopa Sherab Gyaltsen -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift border-t-4 border-t-gold">
+          <div class="space-y-2">
+            <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">1292 – 1361</span>
+            <h3 class="text-lg font-display font-bold text-ink m-0">Dölpopa Sherab Gyaltsen</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">དོལ་པོ་པ་ཤེས་རབ་རྒྱལ་མཚན།</span>
+            <p class="text-xs text-muted leading-relaxed pt-2">
+              Revered as <em>The Omniscient Buddha from Dölpo</em>. Built the monumental Jonang Kumbum stupa in 1333 and authored the foundational Shentong treatise, <em>Mountain Dharma: Ocean of Definitive Meaning (Ri chos nges don rgya mtsho)</em>.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Jetsun Tāranātha -->
+        <div class="surface-card p-6 flex flex-col justify-between space-y-4 hover-lift">
+          <div class="space-y-2">
+            <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">1575 – 1634</span>
+            <h3 class="text-lg font-display font-bold text-ink m-0">Jetsun Tāranātha</h3>
+            <span class="text-xs font-tibetan text-accent-secondary font-bold block">ཇོ་ནང་རྗེ་བཙུན་ཏཱ་ར་ནཱ་ཐ།</span>
+            <p class="text-xs text-muted leading-relaxed pt-2">
+              16th throne-holder, master historian (author of <em>History of Buddhism in India</em>, 1608), founder of Takten Damchöling monastery, and author of definitive Kālacakra practice manuals used across lineages today.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- V. Chapter 4: Doctrinal Core: Shentong vs. Rangtong -->
+    <section id="shentong-core" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 04</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          Doctrinal Core: Shentong (Other-Emptiness) vs. Rangtong
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          At the heart of the Jonang tradition’s distinct identity is its philosophical formulation of emptiness (<em>Śūnyatā</em>), articulated through the dual framework of the <strong>Two Truths</strong>:
+        </p>
+      </div>
+
+      <!-- Two Truths Architecture Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent">
+          <div class="flex justify-between items-center">
+            <h3 class="text-xl font-display font-bold text-ink m-0">Relative Reality is Rangtong</h3>
+            <span class="text-xs font-mono text-muted uppercase">Conventional Truth</span>
+          </div>
+          <p class="text-sm text-muted leading-relaxed font-serif m-0">
+            All conventional, dependent phenomena (<em>paratantra</em>) and conceptual fabrications (<em>parikalpita</em>) are <strong>empty of self-nature (Rangtong)</strong>. They are impermanent, contingent, deceptive, and completely devoid of intrinsic substance.
+          </p>
+        </div>
+
+        <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-gold bg-gradient-to-br from-surface to-gold/5">
+          <div class="flex justify-between items-center">
+            <h3 class="text-xl font-display font-bold text-ink m-0">Ultimate Reality is Shentong</h3>
+            <span class="text-xs font-mono text-accent uppercase">Ultimate Truth</span>
+          </div>
+          <p class="text-sm text-muted leading-relaxed font-serif m-0">
+            Ultimate reality (<em>parinispanna</em>)—identified with <strong>Buddha-nature (Tathāgatagarbha)</strong> and primordial luminous awareness (<em>jñāna</em>)—is <strong>empty of everything other than itself (Shentong)</strong>. It is devoid of adventitious defilements and dualistic obscurations, yet replete with unconditioned enlightened qualities of wisdom, bliss, and compassion.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Rangtong vs Shentong Detailed Comparison Table -->
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
+          Philosophical Matrix: Rangtong vs. Shentong
+        </h3>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-border bg-surface-subtle">
+                <th class="p-3.5 font-display font-semibold text-ink">Dimension</th>
+                <th class="p-3.5 font-display font-semibold text-accent">Rangtong (Self-Emptiness)</th>
+                <th class="p-3.5 font-display font-semibold text-accent-secondary">Shentong (Other-Emptiness)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+              <tr class="hover:bg-surface-subtle/50 transition-colors">
+                <td class="p-3.5 font-semibold text-ink align-top">Primary Institutional Home</td>
+                <td class="p-3.5 text-muted align-top leading-relaxed">Gelug (and scholastic branches of Sakya)</td>
+                <td class="p-3.5 text-ink align-top leading-relaxed font-medium">Jonang (with Kagyu & Nyingma contemplative variations)</td>
+              </tr>
+              <tr class="hover:bg-surface-subtle/50 transition-colors">
+                <td class="p-3.5 font-semibold text-ink align-top">Definition of Emptiness</td>
+                <td class="p-3.5 text-muted align-top leading-relaxed">Absolute negation of inherent existence across all phenomena (non-affirming negative).</td>
+                <td class="p-3.5 text-ink align-top leading-relaxed font-medium">Negation of adventitious defilements from the ultimate, unconditioned reality.</td>
+              </tr>
+              <tr class="hover:bg-surface-subtle/50 transition-colors">
+                <td class="p-3.5 font-semibold text-ink align-top">Status of Ultimate Reality</td>
+                <td class="p-3.5 text-muted align-top leading-relaxed">The mere absence of intrinsic nature; unconstructed non-affirming negative.</td>
+                <td class="p-3.5 text-ink align-top leading-relaxed font-medium">Non-dual, unconditioned primordial awareness (jñāna) endowed with inseparable enlightened qualities.</td>
+              </tr>
+              <tr class="hover:bg-surface-subtle/50 transition-colors">
+                <td class="p-3.5 font-semibold text-ink align-top">Scriptural Authority</td>
+                <td class="p-3.5 text-muted align-top leading-relaxed">Second Turning (Prajñāpāramitā Sūtras, Nāgārjuna’s Mūlamadhyamakakārikā).</td>
+                <td class="p-3.5 text-ink align-top leading-relaxed font-medium">Third Turning (Tathāgatagarbha Sūtras, Maitreya’s Ratnagotravibhāga / Uttaratantra).</td>
+              </tr>
+              <tr class="hover:bg-surface-subtle/50 transition-colors">
+                <td class="p-3.5 font-semibold text-ink align-top">Hermeneutical Stance</td>
+                <td class="p-3.5 text-muted align-top leading-relaxed">Second Turning is definitive (nītārtha); Third Turning requires interpretive deconstruction.</td>
+                <td class="p-3.5 text-ink align-top leading-relaxed font-medium">Third Turning is definitive (nītārtha); Second Turning is provisional (neyārtha) teaching on conventional reality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- The 10 Definitive Sutras Grid -->
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
+            The Ten Definitive Third Turning Sūtras (Nītārtha)
+          </h3>
+          <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">
+            Dölpopa Sherab Gyaltsen codified ten foundational Mahāyāna scriptures revealing the unconditioned reality of Buddha-nature:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          {tenDefinitiveSutras.map((s, idx) => (
+            <div class="p-4 rounded-xl bg-surface-subtle border border-border space-y-1 hover-lift">
+              <div class="flex items-center gap-2 text-xs font-mono text-accent font-bold">
+                <span>#{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
+                <span class="text-ink font-display text-sm">{s.name}</span>
+              </div>
+              <p class="text-xs text-muted leading-relaxed m-0">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VI. Chapter 5: Kālacakra Tantra & The Six Vajra Yogas -->
+    <section id="kalachakra-engine" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 05</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          The Contemplative Engine: Kālacakra Tantra & The Six Vajra Yogas
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          While Shentong provides the philosophical ground, the <strong>Kālacakra Tantra (“Wheel of Time”)</strong> serves as the contemplative engine of the Jonang tradition. Jonang is the exclusive guardian of the completion-stage yogas of the <strong>Drō lineage</strong>.
+        </p>
+      </div>
+
+      <!-- Three Dimensions of Kālacakra -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="surface-card p-6 space-y-3 border-t-4 border-t-accent hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">Cosmology</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">External Kālacakra</h3>
+          <p class="text-xs text-muted leading-relaxed m-0">
+            The physical universe, cosmic solar/lunar cycles, planetary movements, calendar mathematics, and the interaction of elemental forces.
+          </p>
+        </div>
+
+        <div class="surface-card p-6 space-y-3 border-t-4 border-t-gold hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">Psychophysiology</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">Internal Kālacakra</h3>
+          <p class="text-xs text-muted leading-relaxed m-0">
+            The human subtle body, comprising the central channel (avadhūti), subtle energy-winds (prāṇa), drops (bindu), and internal biological rhythms.
+          </p>
+        </div>
+
+        <div class="surface-card p-6 space-y-3 border-t-4 border-t-accent-secondary hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest">The Spiritual Path</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">Alternative Kālacakra</h3>
+          <p class="text-xs text-muted leading-relaxed m-0">
+            Empowerments, deity visualization, and the Six-fold Vajrayoga designed to purify external and internal realities, manifesting the Primordial Buddha state (Adibuddha).
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Six-Fold Vajrayoga Step-by-Step Cards -->
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <div class="space-y-2">
+          <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
+            The Six Branches of Completion Stage (Ṣaḍaṅgayoga / Sbyor drug)
+          </h3>
+          <p class="text-xs sm:text-sm text-muted leading-relaxed m-0">
+            The systematic progression practiced in solitary dark retreat to dissolve karmic energies and actualize the devoid-form body (stong-gzugs):
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+          {sixVajraYogas.map((y) => (
+            <div class="p-6 rounded-xl bg-surface-subtle border border-border space-y-3 hover-lift flex flex-col justify-between h-full">
+              <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs font-mono text-accent">
+                  <span class="font-bold">Yoga {y.step}</span>
+                  <span class="font-tibetan text-accent-secondary font-bold">{y.tibetan}</span>
+                </div>
+                <h4 class="font-display text-base font-bold text-ink m-0">{y.name}</h4>
+                <p class="text-xs text-muted leading-relaxed m-0 pt-1">{y.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- VII. Chapter 6: Crisis, Suppression & Modern Resurgence -->
+    <section id="suppression-resurgence" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 06</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          Crisis, Suppression, and Modern Resurgence
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          The Jonang school was a dominant intellectual and spiritual power in Central Tibet until 17th-century geopolitical conflicts transformed its trajectory:
+        </p>
+      </div>
+
+      <!-- Timeline Narrative Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="surface-card p-6 space-y-3 border-l-4 border-l-accent hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase">1642 – 1658</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">17th Century Suppression</h3>
+          <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+            Following civil war in Central Tibet between the Tsangpa dynasty and the Gelug-Mongol alliance under the 5th Dalai Lama and Güshi Khan, Jonang’s main monastery Takten Damchöling was forcibly converted. Shentong printing blocks were sealed or burned, leading historians outside Tibet to assume the tradition had vanished.
+          </p>
+        </div>
+
+        <div class="surface-card p-6 space-y-3 border-l-4 border-l-gold hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase">18th – 19th Century</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">Preservation in Amdo & Rimé</h3>
+          <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+            The tradition survived with unbroken vigor in the remote mountainous valleys of Amdo and Ngawa, centered around <strong>Dzamthang Monastery</strong>. In the 19th century, masters of the non-sectarian <strong>Rimé movement</strong> (Jamgön Kongtrül, Jamyang Khyentse Wangpo) actively revived Shentong study.
+          </p>
+        </div>
+
+        <div class="surface-card p-6 space-y-3 border-l-4 border-l-accent-secondary hover-lift">
+          <span class="text-xs font-mono font-bold text-accent uppercase">2011 – Present</span>
+          <h3 class="text-lg font-display font-bold text-ink m-0">Official Recognition & Today</h3>
+          <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+            In September 2011, H.H. the 14th Dalai Lama formally recognized Jonang as the fifth major living school of Tibetan Buddhism. Today, over 60 active monasteries support more than 10,000 monks and nuns, with Main Jonang Takten Phuntsok Choeling in Shimla serving as the lineage seat in exile.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIII. Chapter 7: 5-School Comparison Table -->
+    <section id="comparative-matrix" class="space-y-8 scroll-mt-24">
+      <div class="space-y-3">
+        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">Chapter 07</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal m-0">
+          Comparative Analysis: Jonang & The Tibetan Traditions
+        </h2>
+        <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl">
+          A side-by-side comparative summary outlining how Jonang relates to the other four major Tibetan Buddhist traditions:
+        </p>
+      </div>
+
+      <div class="surface-card p-6 sm:p-8 space-y-6">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-border bg-surface-subtle">
+                <th class="p-3.5 font-display font-semibold text-ink">Parameter</th>
+                <th class="p-3.5 font-display font-semibold text-accent">Jonang</th>
+                <th class="p-3.5 font-display font-semibold text-ink">Gelug</th>
+                <th class="p-3.5 font-display font-semibold text-ink">Kagyu</th>
+                <th class="p-3.5 font-display font-semibold text-ink">Nyingma</th>
+                <th class="p-3.5 font-display font-semibold text-ink">Sakya</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border text-xs">
+              {comparativeFiveSchools.map((row) => (
+                <tr class="hover:bg-surface-subtle/50 transition-colors">
+                  <td class="p-3.5 font-bold text-ink align-top whitespace-nowrap">{row.param}</td>
+                  <td class="p-3.5 text-accent-secondary font-medium align-top leading-relaxed bg-accent-secondary-subtle/20">{row.jonang}</td>
+                  <td class="p-3.5 text-muted align-top leading-relaxed">{row.gelug}</td>
+                  <td class="p-3.5 text-muted align-top leading-relaxed">{row.kagyu}</td>
+                  <td class="p-3.5 text-muted align-top leading-relaxed">{row.nyingma}</td>
+                  <td class="p-3.5 text-muted align-top leading-relaxed">{row.sakya}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- IX. Chapter 8: Gateways to Deeper Study -->
+    <section id="further-study" class="space-y-8 scroll-mt-24">
+      <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-gold bg-gradient-to-r from-surface to-surface-subtle">
+        <div class="space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+            Continue Your Exploration
+          </h2>
+          <p class="text-sm text-muted leading-relaxed m-0 font-serif">
+            Now that you have explored the foundational framework, dive deeper into the original treatises, meditation curricula, and living monastic life:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+          
+          <a
+            href="/doctrine"
+            class="p-5 rounded-xl bg-surface border border-border hover:border-accent hover-lift group transition-all flex flex-col justify-between space-y-3"
+          >
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">Philosophy</span>
+              <h3 class="text-base font-display font-bold text-ink group-hover:text-accent transition-colors m-0 mb-1">
+                The Shentong View →
+              </h3>
+              <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+                Advanced dialectical hermeneutics and curated academic bibliography.
+              </p>
+            </div>
+            <span class="text-xs font-semibold text-accent">Read Treatises →</span>
+          </a>
+
+          <a
+            href="/kalachakra"
+            class="p-5 rounded-xl bg-surface border border-border hover:border-accent hover-lift group transition-all flex flex-col justify-between space-y-3"
+          >
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">Tantra</span>
+              <h3 class="text-base font-display font-bold text-ink group-hover:text-accent transition-colors m-0 mb-1">
+                Kālacakra Practice →
+              </h3>
+              <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+                The 3.5-year dark retreat cycle and completion-stage manual.
+              </p>
+            </div>
+            <span class="text-xs font-semibold text-accent">Explore Retreat →</span>
+          </a>
+
+          <a
+            href="/curriculum"
+            class="p-5 rounded-xl bg-surface border border-border hover:border-accent hover-lift group transition-all flex flex-col justify-between space-y-3"
+          >
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">Education</span>
+              <h3 class="text-base font-display font-bold text-ink group-hover:text-accent transition-colors m-0 mb-1">
+                18-Year Shedra →
+              </h3>
+              <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+                Progressive curriculum from Pramāṇa epistemology to the Five Great Treatises.
+              </p>
+            </div>
+            <span class="text-xs font-semibold text-accent">View Syllabus →</span>
+          </a>
+
+          <a
+            href="/monastery"
+            class="p-5 rounded-xl bg-surface border border-border hover:border-accent hover-lift group transition-all flex flex-col justify-between space-y-3"
+          >
+            <div>
+              <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block mb-1">Sanctuary</span>
+              <h3 class="text-base font-display font-bold text-ink group-hover:text-accent transition-colors m-0 mb-1">
+                The Monastery Seat →
+              </h3>
+              <p class="text-xs text-muted leading-relaxed m-0 font-serif">
+                History of the Shimla complex, Dalai Lama visits, and liturgical calendar.
+              </p>
+            </div>
+            <span class="text-xs font-semibold text-accent">Visit Complex →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</PageLayout>

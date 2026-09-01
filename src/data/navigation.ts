@@ -20,6 +20,20 @@ export const PRIMARY_NAVIGATION: NavLink[] = [
     label: "The Jonang Doctrine",
     shortLabel: "Doctrine",
     href: STATIC_PAGE_PATHS.doctrine,
+    sublinks: [
+      {
+        label: "Beginner's Introduction",
+        href: STATIC_PAGE_PATHS.introduction,
+      },
+      {
+        label: "Shentong Philosophy",
+        href: STATIC_PAGE_PATHS.doctrine,
+      },
+      {
+        label: "Scholarly Bibliography",
+        href: "/doctrine#shentong-bibliography",
+      },
+    ],
   },
   {
     label: "Kalachakra Practice",
@@ -46,6 +60,7 @@ export const FOOTER_NAVIGATION = [
     heading: "Read the tradition",
     links: [
       { label: "Home", href: "/" },
+      { label: "Beginner's Guide", href: STATIC_PAGE_PATHS.introduction },
       { label: "The Monastery", href: STATIC_PAGE_PATHS.monastery },
       { label: "The Jonang Doctrine", href: STATIC_PAGE_PATHS.doctrine },
       { label: "Kalachakra Practice", href: STATIC_PAGE_PATHS.kalachakra },
