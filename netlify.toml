@@ -1,0 +1,19 @@
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "9"
+
+[[redirects]]
+  from = "/about-us"
+  to = "/monastery"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/jonang-doctrine"
+  to = "/doctrine"
+  status = 301
+  force = true
