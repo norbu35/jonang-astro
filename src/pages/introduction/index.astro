@@ -1,5 +1,5 @@
 ---
-import PageLayout from "../../layouts/PageLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Dharmachakra from "../../components/icons/Dharmachakra.astro";
 import EndlessKnot from "../../components/icons/EndlessKnot.astro";
 import LotusFlower from "../../components/icons/LotusFlower.astro";
@@ -7,7 +7,6 @@ import TibetanCloud from "../../components/icons/TibetanCloud.astro";
 import ChapterHeader from "../../components/ui/ChapterHeader.astro";
 import MasterCard from "../../components/ui/MasterCard.astro";
 import PillarCard from "../../components/ui/PillarCard.astro";
-import introBannerImg from "../../assets/images/jonang-refuge-tree.webp";
 import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
 import taranathaThangka from "../../assets/images/taranatha-dzamthang-thangka.webp";
 import raudrantakaThangka from "../../assets/images/raudrantaka-dzamthang-thangka.webp";
@@ -174,37 +173,40 @@ const comparativeFiveSchools = [
 ];
 ---
 
-<PageLayout
-  title="Introduction to the Jonang Tradition"
-  tibetanTitle="ཇོ་ནང་ཆོས་བརྒྱུད་ངོ་སྤྲོད་མདོར་བསྡུས།"
-  image={introBannerImg}
-  imageAlt="The Jonang Lineage Refuge Tree depicting masters, yidams, and Buddha-nature teachers"
-  fullBleed={true}
+<BaseLayout
+  title="Introduction to the Jonang Tradition · The Luminous Path of Other-Emptiness"
+  description="Beginner's foundational gateway to the Jonang lineage of Tibetan Buddhism, covering fundamental tenets, the Five Traditions, the Shentong view of Buddha-nature, and Kālacakra Tantra."
 >
-  <!-- 1. FULL-WIDTH EDITORIAL HERO HEADER & ARCHITECTURAL DIRECTORY -->
-  <section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/50 border-b border-border/80 text-ink py-12 sm:py-16 md:py-20 relative overflow-hidden">
-    <!-- Ambient glowing auras -->
-    <div class="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full select-none" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute bottom-0 left-0 w-[450px] h-[450px] bg-accent/6 blur-3xl rounded-full select-none" aria-hidden="true"></div>
+  <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
+    <!-- 1. FULL-WIDTH EDITORIAL HERO HEADER & ARCHITECTURAL DIRECTORY -->
+    <section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/50 border-b border-border/80 text-ink pt-[calc(var(--header-h)+2.5rem)] pb-14 sm:pb-18 md:pb-20 relative overflow-hidden">
+      <!-- Ambient glowing auras -->
+      <div class="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full select-none" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute bottom-0 left-0 w-[450px] h-[450px] bg-accent/6 blur-3xl rounded-full select-none" aria-hidden="true"></div>
 
-    <!-- Asymmetric Sacred Watermarks -->
-    <Dharmachakra class="w-80 h-80 text-gold/10 pointer-events-none absolute -top-12 -right-12 select-none" />
-    <TibetanCloud class="w-56 h-32 text-accent/10 pointer-events-none absolute -bottom-8 -left-8 select-none" />
+      <!-- Asymmetric Sacred Watermarks -->
+      <Dharmachakra class="w-80 h-80 text-gold/10 pointer-events-none absolute -top-12 -right-12 select-none" />
+      <TibetanCloud class="w-56 h-32 text-accent/10 pointer-events-none absolute -bottom-8 -left-8 select-none" />
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
-      
-      <!-- Top Editorial Hero Content -->
-      <div class="space-y-4 max-w-4xl">
-        <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">
-          Foundational Guide · ཇོ་ནང་ལྟ་གྲུབ་ངོ་སྤྲོད།
-        </span>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display text-ink font-normal leading-tight m-0">
-          The Luminous Path of Other-Emptiness
-        </h1>
-        <p class="text-base sm:text-lg md:text-xl text-muted font-serif leading-[1.85] m-0 pt-1">
-          Welcome to the beginner’s gateway for the Jonang tradition of Tibetan Buddhism. If you are new to Buddhist philosophy or seeking to understand what distinguishes the Jonang lineage from other traditions, this comprehensive guide offers an accessible on-ramp—spanning fundamental Buddhist tenets, the emergence of Tibetan schools, the definitive Shentong view of Buddha-nature, and the contemplative Six Yogas of Kālacakra.
-        </p>
-      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
+        
+        <!-- Top Editorial Hero Content -->
+        <div class="space-y-4 max-w-4xl">
+          <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent">
+            <span class="text-caption font-mono font-bold uppercase tracking-widest">Beginner's Guide</span>
+            <span class="text-accent/30 font-mono">/</span>
+            <span class="font-tibetan font-bold text-xs text-accent-secondary">ཇོ་ནང་ཆོས་བརྒྱུད་ངོ་སྤྲོད།</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display text-ink font-normal leading-[1.12] m-0">
+            The Luminous Path of Other-Emptiness
+          </h1>
+          <p class="font-tibetan text-base sm:text-lg text-accent-secondary font-bold m-0 pt-0.5">
+            ཇོ་ནང་གཞན་སྟོང་དབུ་མ་ཆེན་པོའི་ལྟ་གྲུབ་ངོ་སྤྲོད།
+          </p>
+          <p class="text-base sm:text-lg md:text-xl text-muted font-serif leading-[1.85] m-0 pt-1">
+            Welcome to the foundational gateway for the Jonang tradition of Tibetan Buddhism. Designed specifically for beginners and inquisitive practitioners, this structured guide provides a clear on-ramp—demystifying core Buddhist principles, the development of Tibet’s five spiritual traditions, the definitive Shentong view of ultimate Buddha-nature, and the living realization practices of Kālacakra.
+          </p>
+        </div>
 
       <!-- Redesigned Architectural Table of Contents -->
       <div class="pt-8 border-t border-border/80 space-y-5">
@@ -1233,5 +1235,5 @@ const comparativeFiveSchools = [
       </div>
     </section>
 
-  </div>
-</PageLayout>
+  </main>
+</BaseLayout>
