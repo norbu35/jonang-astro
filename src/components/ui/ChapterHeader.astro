@@ -1,0 +1,34 @@
+---
+interface Props {
+  chapter?: string;
+  title: string;
+  tibetanTitle?: string;
+  lede?: string;
+  id?: string;
+  class?: string;
+}
+
+const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.props;
+---
+
+<div id={id} class:list={["flex flex-col gap-2.5", className]}>
+  {chapter && (
+    <span class="text-xs font-mono font-bold text-accent uppercase tracking-widest block">
+      {chapter}
+    </span>
+  )}
+  <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
+    {title}
+  </h2>
+  {tibetanTitle && (
+    <span class="text-sm font-tibetan text-accent-secondary font-bold block mt-0.5">
+      {tibetanTitle}
+    </span>
+  )}
+  {lede && (
+    <p class="text-sm sm:text-base text-muted font-serif leading-relaxed max-w-3xl m-0 pt-1">
+      {lede}
+    </p>
+  )}
+  <slot />
+</div>

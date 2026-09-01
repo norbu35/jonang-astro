@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import type { Quote } from "../data/quotes";
+import { SACRED_QUOTES, type Quote } from "../data/quotes";
 
 function formatTibetanVerses(rawHtml?: string | null): string {
   if (!rawHtml) return "";
@@ -20,21 +20,15 @@ function formatTibetanVerses(rawHtml?: string | null): string {
   return lines.map((line) => `<span class="tibetan-pada md:whitespace-nowrap">${line}</span>`).join("");
 }
 
-interface QuoteProps {
-  quotes: Quote[];
-  length: number;
-}
-
-export default function QuotePreact({ quotes, length }: QuoteProps) {
+export default function QuotePreact() {
   const [quote, setQuote] = useState<Quote | null>(null);
 
   useEffect(() => {
-    if (quotes && length > 0) {
-      setQuote(quotes[Math.floor(Math.random() * length)]);
-    }
-  }, [quotes, length]);
+    const randomIndex = Math.floor(Math.random() * SACRED_QUOTES.length);
+    setQuote(SACRED_QUOTES[randomIndex]);
+  }, []);
 
-  const activeQuote = quote || quotes[0];
+  const activeQuote = quote || SACRED_QUOTES[0];
 
   return (
     <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#a3282b] via-[#942023] to-[#86191c] text-white shadow-inner">
@@ -49,7 +43,7 @@ export default function QuotePreact({ quotes, length }: QuoteProps) {
           {activeQuote?.originalQuoteHtml ? (
             <div
               lang={activeQuote.originalQuoteLang || "bo"}
-              class="tibetan-verse w-full text-center text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-[2] tracking-normal text-[#fdbc2d] font-tibetan drop-shadow-sm font-bold"
+              class="tibetan-verse w-full text-center text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-[2] tracking-normal text-[#fdbc2d] font-tibetan-scholarly drop-shadow-sm font-bold"
               dangerouslySetInnerHTML={{
                 __html: formatTibetanVerses(activeQuote.originalQuoteHtml),
               }}

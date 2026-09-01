@@ -951,6 +951,24 @@
     @apply text-lg md:text-xl leading-relaxed text-ink/85;
   }
 
+  /* Canonical Multi-Tier Tibetan Typography */
+  .font-tibetan {
+    font-family: "Noto Serif Tibetan", serif;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .font-tibetan-scholarly {
+    font-family: "Jomolhari", "Noto Serif Tibetan", serif;
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+  }
+
+  .font-tibetan-display {
+    font-family: "Monlam Uni Ouchan3", "Noto Serif Tibetan", serif;
+    line-height: 1.5;
+  }
+
   .rich-text {
     @apply text-[1.02rem] leading-[1.8] text-ink/90;
   }
