@@ -375,23 +375,23 @@ const comparativeFiveSchools = [
       </div>
 
       <!-- Five Living Lineages Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 items-stretch">
         {fiveTraditions.map((t, idx) => (
           <div class:list={[
-            "surface-card p-5 flex flex-col justify-between space-y-3 hover-lift border-t-4",
+            "surface-card p-5 flex flex-col justify-between hover-lift border-t-4 h-full",
             idx === 4 ? "border-t-gold ring-1 ring-gold/40" : "border-t-accent",
           ]}>
-            <div>
-              <div class="flex justify-between items-center mb-1">
+            <div class="space-y-2 pb-3 min-h-[10.5rem] sm:min-h-[11rem] lg:min-h-[11.5rem] flex flex-col justify-start">
+              <div class="flex justify-between items-center mb-0.5">
                 <h3 class="text-lg font-display font-bold text-ink m-0">{t.name}</h3>
                 <span class="text-xs font-tibetan text-accent font-bold">{t.tibetan}</span>
               </div>
-              <span class="text-xs font-mono text-muted uppercase tracking-wider block mb-2">{t.meaning}</span>
-              <p class="text-xs text-muted leading-relaxed m-0 mb-3">{t.history}</p>
+              <span class="text-xs font-mono text-muted uppercase tracking-wider block">{t.meaning}</span>
+              <p class="text-xs text-muted leading-relaxed m-0">{t.history}</p>
             </div>
-            <div class="pt-2 border-t border-border text-xs text-ink/90 font-medium">
-              <span class="text-accent-secondary font-bold block text-caption-xs uppercase">Specialty:</span>
-              {t.specialty}
+            <div class="pt-3 border-t border-border text-xs text-ink/90 font-medium min-h-[8.5rem] sm:min-h-[9rem] lg:min-h-[9.5rem] flex flex-col justify-start">
+              <span class="text-accent-secondary font-bold block text-caption-xs uppercase mb-1">Specialty:</span>
+              <span class="leading-relaxed">{t.specialty}</span>
             </div>
           </div>
         ))}
