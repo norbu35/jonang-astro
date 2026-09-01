@@ -46,7 +46,7 @@ export const LINEAGE_HEAD = {
   portraitCaption: "H.H. 9th Khalkha Jetsun Dampa Jampal Namdrol (1933–2012), recognized reincarnation of Jetsun Tāranātha and Supreme Head of the Jonang tradition.",
   
   narrativeParagraphs: [
-    "Jetsun Dampa Jampal Namdrol served as a vital bridge between the esoteric teachings of the Jonang tradition and the Mongolian Buddhist community. Historically, the Jebtsundamba Khutuktu lineage has been deeply intertwined with Jonang, particularly through its emphasis on the Kālacakra Tantra and the definitive view of Shentong (Other-Emptiness).",
+    "Jetsun Dampa Jampal Namdrol served as a vital bridge between the esoteric teachings of the Jonang tradition and the Mongolian Buddhist community. Historically, the Jebtsundamba Khutuktu lineage has been deeply intertwined with Jonang, particularly through its emphasis on the Kālacakra Tantra and the definitive view of Shentong.",
     "As the 9th Jebtsundamba, Jampal Namdrol upheld the spiritual legacy of the Jonang teachings, emphasizing the integration of meditative realization with compassionate action. His role as a reincarnated spiritual leader not only revitalized the religious traditions of Mongolia but also solidified the recognized status of the Jonang school within the broader Tibetan Buddhist framework.",
     "In the Jonang tradition, Jetsun Dampa’s life and deeds embodied the historical continuity between Tibetan and Mongolian Buddhism, safeguarding the sacred transmission of the Kālacakra teachings and inspiring practitioners to study Shentong Madhyamaka for the liberation of all sentient beings.",
   ],
