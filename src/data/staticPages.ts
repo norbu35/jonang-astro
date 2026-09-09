@@ -8,6 +8,7 @@ export const STATIC_PAGE_PATHS = {
   curriculum: "/curriculum",
   teachers: "/teachers",
   gallery: "/gallery",
+  livingTradition: "/living-tradition",
   donate: "/donate",
   sitemap: "/sitemap",
 } as const;
@@ -17,6 +18,10 @@ export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
   "the-monastery": STATIC_PAGE_PATHS.monastery,
   "about-us": STATIC_PAGE_PATHS.monastery,
   about: STATIC_PAGE_PATHS.monastery,
+  "living-tradition": STATIC_PAGE_PATHS.livingTradition,
+  "monastery-life": STATIC_PAGE_PATHS.livingTradition,
+  lifestyle: STATIC_PAGE_PATHS.livingTradition,
+  "daily-life": STATIC_PAGE_PATHS.livingTradition,
   introduction: STATIC_PAGE_PATHS.introduction,
   intro: STATIC_PAGE_PATHS.introduction,
   "beginners-introduction": STATIC_PAGE_PATHS.introduction,

@@ -7,6 +7,7 @@ const paths = [
   "/",
   STATIC_PAGE_PATHS.introduction,
   STATIC_PAGE_PATHS.monastery,
+  STATIC_PAGE_PATHS.livingTradition,
   STATIC_PAGE_PATHS.doctrine,
   STATIC_PAGE_PATHS.kalachakra,
   STATIC_PAGE_PATHS.curriculum,

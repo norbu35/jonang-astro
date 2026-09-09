@@ -2,8 +2,19 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import KalachakraCurriculumContent from "../../components/pages/KalachakraCurriculumContent.astro";
+import StickyPageNav from "../../components/ui/StickyPageNav.astro";
 
 import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
+
+const kalachakraNavItems = [
+  { id: "three-kalacakras", label: "01 · Three Kālacakras", short: "01 · Matrix" },
+  { id: "foundational-accumulations", label: "02 · Preliminaries (Ngöndro)", short: "02 · Ngöndro" },
+  { id: "three-isolations", label: "03 · Dark Retreat", short: "03 · Retreat" },
+  { id: "visionary-signs", label: "04 · Ten Signs", short: "04 · Signs" },
+  { id: "six-yogas", label: "05 · Six-fold Vajrayoga", short: "05 · 6 Yogas" },
+  { id: "sahajakaya", label: "06 · Sahajakāya Fruition", short: "06 · Fruition" },
+  { id: "retreat-curriculum", label: "07 · 3-Year Retreat", short: "07 · Retreat" },
+];
 ---
 
 <BaseLayout
@@ -137,6 +148,9 @@ import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
       </div>
 
     </section>
+
+    <!-- Sticky Section Navigation Rail -->
+    <StickyPageNav items={kalachakraNavItems} ariaLabel="Kalachakra Navigation & Reading Index" />
 
     <!-- II. Scholastic Contemplative Treatise Container -->
     <div id="curriculum-content" class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-14 sm:py-20">

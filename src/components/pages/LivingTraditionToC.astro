@@ -1,0 +1,15 @@
+---
+import StickyPageNav from "../ui/StickyPageNav.astro";
+
+const tocItems = [
+  { id: "monastic-clock", label: "01 · Daily Routine", short: "01 · Routine" },
+  { id: "debate-theater", label: "02 · Debate (Chö-ra)", short: "02 · Debate" },
+  { id: "kitchen-hearth", label: "03 · Kitchen Hearth", short: "03 · Hearth" },
+  { id: "sacred-crafts", label: "04 · Sacred Crafts", short: "04 · Crafts" },
+  { id: "mountain-ecology", label: "05 · Mountain Ecology", short: "05 · Ecology" },
+  { id: "monastic-lore", label: "06 · Grounded Wisdom", short: "06 · Wisdom" },
+];
+---
+
+<StickyPageNav items={tocItems} ariaLabel="Glimpses Navigation & Reading Index" />
+

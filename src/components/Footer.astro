@@ -23,7 +23,10 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
         <Image class="mx-auto invert brightness-125 drop-shadow-md" src={kalachakraMantra} alt="Kalachakra Tenfold Powerful Mantra (Namchu Wangden)" height={150} />
       </div>
       <div class="max-w-[420px] text-center text-sm italic text-white/90 md:text-left font-serif leading-relaxed">
-        <div class="mb-2 text-xs font-bold not-italic text-[#fdbc2d] font-mono tracking-wider">
+        <div class="mb-1 text-sm font-bold not-italic text-[#fdbc2d] font-tibetan tracking-normal" lang="bo">
+          {SITE_METADATA.blessing.tibetanMantra}
+        </div>
+        <div class="mb-2 text-xs font-bold not-italic text-[#fdbc2d]/90 font-mono tracking-wider">
           {SITE_METADATA.blessing.mantra}
         </div>
         {SITE_METADATA.blessing.text}

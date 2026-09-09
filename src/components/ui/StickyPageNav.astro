@@ -1,0 +1,317 @@
+---
+export interface PageNavItem {
+  id: string;
+  label: string;
+  short?: string;
+}
+
+interface Props {
+  items: PageNavItem[];
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  items,
+  ariaLabel = "Page Section Navigation & Reading Index",
+  class: className = "",
+} = Astro.props;
+---
+
+<!-- Sentinel to detect when the ToC reaches sticky position -->
+<div id="sticky-nav-sentinel" class="w-full h-px pointer-events-none -mt-px opacity-0" aria-hidden="true"></div>
+
+<nav
+  id="sticky-page-nav"
+  class:list={[
+    "sticky top-0 z-40 w-full bg-[#3b0809]/95 backdrop-blur-md border-y border-[#fdbc2d]/30 shadow-xl will-change-transform",
+    className,
+  ]}
+  aria-label={ariaLabel}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center gap-2 py-1.5 sm:py-2 min-w-0 w-full justify-start md:justify-center">
+      <!-- Horizontal Pill Rail with click-to-drag and completely hidden scrollbars -->
+      <div
+        id="page-nav-pill-rail"
+        class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 min-w-0 flex-1 justify-start md:justify-center select-none"
+      >
+        {items.map((item, index) => (
+          <a
+            href={`#${item.id}`}
+            class:list={[
+              "page-nav-pill-link shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-mono transition-colors duration-200 border border-transparent select-none",
+              index === 0
+                ? "text-gold bg-[#500c0e] border-[#fdbc2d]/60 shadow-[0_0_10px_rgba(253,188,45,0.25)] font-bold"
+                : "text-white/80 hover:text-white hover:bg-white/10",
+            ]}
+            data-target={item.id}
+          >
+            <span class="hidden sm:inline">{item.label}</span>
+            <span class="sm:hidden">{item.short ?? item.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Real-time Reading Progress Gauge (2px Gold Line) -->
+  <div class="w-full h-[2px] bg-black/40 overflow-hidden" aria-hidden="true">
+    <div
+      id="page-nav-scroll-progress"
+      class="h-full w-0 bg-gradient-to-r from-accent via-gold to-accent transition-[width] duration-100 ease-out"
+    ></div>
+  </div>
+</nav>
+
+<style>
+  #sticky-page-nav {
+    top: 0;
+    transform: translateY(0);
+    transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* When stuck and the global header is not hidden, slide down in lockstep with the header */
+  :global(body:has(#site-header:not(.header--hidden))) #sticky-page-nav.is-stuck {
+    transform: translateY(calc(var(--header-h) - 1px));
+  }
+
+  /* Click-to-drag rail & safe centering */
+  #page-nav-pill-rail {
+    justify-content: flex-start;
+    justify-content: safe center;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-x;
+  }
+
+  #page-nav-pill-rail.is-dragging {
+    cursor: grabbing !important;
+  }
+
+  #page-nav-pill-rail.is-dragging .page-nav-pill-link {
+    cursor: grabbing !important;
+  }
+
+  /* Suppress scrollbars completely */
+  #page-nav-pill-rail,
+  .no-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  #page-nav-pill-rail::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+</style>
+
+<script>
+  function initStickyPageNav() {
+    const nav = document.getElementById("sticky-page-nav");
+    const sentinel = document.getElementById("sticky-nav-sentinel");
+    const pillRail = document.getElementById("page-nav-pill-rail");
+    const progressBar = document.getElementById("page-nav-scroll-progress");
+    const links = document.querySelectorAll<HTMLAnchorElement>(".page-nav-pill-link");
+    const header = document.getElementById("site-header");
+    if (!nav || !links.length) return;
+    if ((nav as any).__initialized) return;
+    (nav as any).__initialized = true;
+
+    // 1. Stuck Sentinel Observer (detects when nav reaches sticky position)
+    if (sentinel) {
+      const stuckObserver = new IntersectionObserver(
+        ([entry]) => {
+          const isStuck = !entry.isIntersecting;
+          nav.classList.toggle("is-stuck", isStuck);
+          syncTransform();
+        },
+        { threshold: [0] }
+      );
+      stuckObserver.observe(sentinel);
+    }
+
+    // 2. Synchronize transform in lockstep with site-header transitions
+    function syncTransform() {
+      if (!header || !nav) return;
+      if (nav.classList.contains("is-stuck")) {
+        if (header.classList.contains("header--hidden")) {
+          nav.style.transform = "translateY(0px)";
+        } else {
+          nav.style.transform = "translateY(calc(var(--header-h) - 1px))";
+        }
+      } else {
+        nav.style.transform = "translateY(0px)";
+      }
+    }
+
+    if (header) {
+      const headerObserver = new MutationObserver(syncTransform);
+      headerObserver.observe(header, { attributes: true, attributeFilter: ["class"] });
+      syncTransform();
+    }
+
+    // 3. Click-to-Drag Implementation for Pill Rail
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let hasMoved = false;
+
+    if (pillRail) {
+      pillRail.addEventListener("mousedown", (e: MouseEvent) => {
+        if (e.button !== 0) return;
+        isDown = true;
+        hasMoved = false;
+        startX = e.pageX - pillRail.offsetLeft;
+        scrollLeft = pillRail.scrollLeft;
+        pillRail.classList.add("is-dragging");
+      });
+
+      window.addEventListener("mousemove", (e: MouseEvent) => {
+        if (!isDown || !pillRail) return;
+        const x = e.pageX - pillRail.offsetLeft;
+        const walk = (x - startX) * 1.35;
+        if (Math.abs(walk) > 4) {
+          hasMoved = true;
+          e.preventDefault();
+        }
+        pillRail.scrollLeft = scrollLeft - walk;
+      });
+
+      const stopDrag = () => {
+        if (!isDown) return;
+        isDown = false;
+        pillRail?.classList.remove("is-dragging");
+      };
+
+      window.addEventListener("mouseup", stopDrag);
+      window.addEventListener("blur", stopDrag);
+    }
+
+    const sectionIds = Array.from(links).map((l) => l.getAttribute("data-target") || "");
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    // 4. Scrollspy using IntersectionObserver
+    let activeId = sectionIds[0];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeId = entry.target.id;
+            updateActivePill(activeId);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+
+    function updateActivePill(id: string) {
+      links.forEach((link) => {
+        const targetId = link.getAttribute("data-target");
+        if (targetId === id) {
+          link.classList.add(
+            "text-gold",
+            "bg-[#500c0e]",
+            "border-[#fdbc2d]/60",
+            "shadow-[0_0_10px_rgba(253,188,45,0.25)]",
+            "font-bold"
+          );
+          link.classList.remove("text-white/80", "border-transparent");
+          // Smooth scroll active pill into view whenever rail overflows
+          if (pillRail && pillRail.scrollWidth > pillRail.clientWidth) {
+            const pillRect = link.getBoundingClientRect();
+            const railRect = pillRail.getBoundingClientRect();
+            const targetScroll = pillRail.scrollLeft + (pillRect.left - railRect.left) - (railRect.width / 2) + (pillRect.width / 2);
+            pillRail.scrollTo({
+              left: targetScroll,
+              behavior: "smooth",
+            });
+          }
+        } else {
+          link.classList.remove(
+            "text-gold",
+            "bg-[#500c0e]",
+            "border-[#fdbc2d]/60",
+            "shadow-[0_0_10px_rgba(253,188,45,0.25)]",
+            "font-bold"
+          );
+          link.classList.add("text-white/80", "border-transparent");
+        }
+      });
+    }
+
+    // 5. Reading Progress Bar
+    let ticking = false;
+    function updateProgress() {
+      if (!progressBar) return;
+      const startOffset = sentinel ? sentinel.getBoundingClientRect().top + window.scrollY : 0;
+      const totalDist = document.documentElement.scrollHeight - window.innerHeight - startOffset;
+      if (totalDist <= 0) {
+        progressBar.style.width = "0%";
+        ticking = false;
+        return;
+      }
+      const currentDist = window.scrollY - startOffset;
+      const progress = (currentDist / totalDist) * 100;
+      const clamped = Math.min(100, Math.max(0, progress));
+      progressBar.style.width = `${clamped}%`;
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateProgress);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    updateProgress();
+
+    // 6. Smooth Anchor Click Handler (Bypasses navigation if user was dragging)
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        if (hasMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+          setTimeout(() => {
+            hasMoved = false;
+          }, 50);
+          return;
+        }
+        e.preventDefault();
+        const targetId = link.getAttribute("data-target");
+        if (!targetId) return;
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) return;
+
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        history.replaceState(null, "", `#${targetId}`);
+        updateActivePill(targetId);
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initStickyPageNav);
+  } else {
+    initStickyPageNav();
+  }
+  document.addEventListener("astro:page-load", initStickyPageNav);
+</script>

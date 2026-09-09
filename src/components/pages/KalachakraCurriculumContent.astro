@@ -183,10 +183,10 @@ const retreatCurriculum = [
 ];
 ---
 
-<div class="space-y-16 sm:space-y-24">
+<div class="space-y-16 sm:space-y-24 editorial-offset">
   
   <!-- I. Preamble: The Tantric Matrix & Transmission Prerequisites -->
-  <section class="relative rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] border border-[#fdbc2d]/40 text-white shadow-xl overflow-hidden">
+  <section id="three-kalacakras" class="relative rounded-2xl sm:rounded-3xl p-6 sm:p-10 bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] border border-[#fdbc2d]/40 text-white shadow-xl overflow-hidden scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-[#fdbc2d]/15 blur-[120px] rounded-full" aria-hidden="true"></div>
 
     <div class="relative z-10 space-y-6">
@@ -264,7 +264,7 @@ const retreatCurriculum = [
   </section>
 
   <!-- II. Tome I: The Foundational Accumulations (Thun mong sngon 'gro) -->
-  <section class="space-y-6">
+  <section id="foundational-accumulations" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border/80 pb-4">
       <div class="space-y-1">
         <div class="inline-flex items-center gap-2 text-caption-xs font-mono font-bold uppercase tracking-wider text-accent">
@@ -323,7 +323,7 @@ const retreatCurriculum = [
   </section>
 
   <!-- III. Tome II: The Hermitage of the Three Isolations & Dark Retreat -->
-  <section class="space-y-6">
+  <section id="three-isolations" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border/80 pb-4">
       <div class="space-y-1">
         <div class="inline-flex items-center gap-2 text-caption-xs font-mono font-bold uppercase tracking-wider text-accent-secondary">
@@ -448,7 +448,7 @@ const retreatCurriculum = [
     </div>
 
     <!-- The Ten Visionary Signs of Empty Form Scholastic Table -->
-    <div class="relative w-full rounded-2xl bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border border-[#fdbc2d]/40 p-6 sm:p-8 space-y-6 shadow-xl overflow-hidden">
+    <div id="visionary-signs" class="relative w-full rounded-2xl bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border border-[#fdbc2d]/40 p-6 sm:p-8 space-y-6 shadow-xl overflow-hidden scroll-mt-[calc(var(--header-h)+4.5rem)]">
       
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#85181b] pb-4">
         <div class="space-y-1">
@@ -524,7 +524,7 @@ const retreatCurriculum = [
   </section>
 
   <!-- IV. Tome III: The Six-fold Vajrayoga (Sbyor ba yan lag drug) -->
-  <section class="space-y-6">
+  <section id="six-yogas" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border/80 pb-4">
       <div class="space-y-1">
         <div class="inline-flex items-center gap-2 text-caption-xs font-mono font-bold uppercase tracking-wider text-accent">
@@ -593,7 +593,7 @@ const retreatCurriculum = [
   </section>
 
   <!-- V. Tome IV: The Ten-Fold Powerful One & Sahajakāya Fruition -->
-  <section class="relative rounded-3xl bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border-2 border-[#fdbc2d]/60 shadow-2xl p-6 sm:p-10 md:p-12 overflow-hidden">
+  <section id="sahajakaya" class="relative rounded-3xl bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border-2 border-[#fdbc2d]/60 shadow-2xl p-6 sm:p-10 md:p-12 overflow-hidden scroll-mt-[calc(var(--header-h)+4.5rem)]">
     
     <div class="pointer-events-none absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#fdbc2d]/20 blur-[140px] rounded-full" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -bottom-40 left-1/4 w-[500px] h-[500px] bg-[#992224]/30 blur-[140px] rounded-full" aria-hidden="true"></div>
@@ -609,7 +609,7 @@ const retreatCurriculum = [
         <h3 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight m-0">
           The Ultimate Fruition: Sahajakāya
         </h3>
-        <p class="text-base sm:text-lg text-[#fdbc2d] font-tibetan font-bold m-0">
+        <p class="text-base sm:text-lg text-[#fdbc2d] font-tibetan font-bold m-0 mt-1.5">
           དཔལ་དུས་ཀྱི་འཁོར་ལོ་ལྷན་ཅིག་སྐྱེས་པའི་སྐུ་མངོན་དུ་བྱེད་པ།
         </p>
       </div>
@@ -655,7 +655,7 @@ const retreatCurriculum = [
   </section>
 
   <!-- VI. Tome V: Canonical Three-Year Retreat Curriculum -->
-  <section class="surface-card p-6 sm:p-10 rounded-2xl space-y-6 border-l-4 border-l-accent-secondary">
+  <section id="retreat-curriculum" class="surface-card p-6 sm:p-10 rounded-2xl space-y-6 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex items-center justify-between border-b border-border/80 pb-4">
       <div class="space-y-1">
         <span class="text-caption-xs font-mono uppercase font-bold text-accent-secondary tracking-wider block">

@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LivingTraditionHero from "../../components/pages/LivingTraditionHero.astro";
+import LivingTraditionToC from "../../components/pages/LivingTraditionToC.astro";
+import LivingTraditionContent from "../../components/pages/LivingTraditionContent.astro";
+---
+
+<BaseLayout
+  title="Living Tradition & Daily Life"
+  description="Explore the daily rhythm, dialectical debate kinetics, kitchen culture, sacred crafts, and mountain ecology of Main Jonang Takten Phuntsok Choeling in Shimla."
+>
+  <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
+    <!-- 1. Full-Width Viewport Hero -->
+    <LivingTraditionHero />
+
+    <!-- 2. Sticky Glass Meridian Bar (Table of Contents) -->
+    <LivingTraditionToC />
+
+    <!-- 3. Rich Lived Tradition Content -->
+    <LivingTraditionContent />
+  </main>
+</BaseLayout>

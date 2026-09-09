@@ -1,7 +1,19 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import AboutUsContent from "../../components/pages/AboutUsContent.astro";
+import StickyPageNav from "../../components/ui/StickyPageNav.astro";
 import monasteryBannerImg from "../../assets/images/housing-landscape.webp";
+
+const monasteryNavItems = [
+  { id: "monastery-overview", label: "01 · Sanctuary Seat", short: "01 · Seat" },
+  { id: "monastery-documentary", label: "02 · Tārā Ceremony", short: "02 · Film" },
+  { id: "dalai-lama-visits", label: "03 · Dalai Lama Visits", short: "03 · Visits" },
+  { id: "abbots-lineage", label: "04 · Succession of Abbots", short: "04 · Abbots" },
+  { id: "resident-sangha", label: "05 · Resident Sangha", short: "05 · Sangha" },
+  { id: "weekly-schedule", label: "06 · Weekly Prayers", short: "06 · Prayers" },
+  { id: "annual-monlam", label: "07 · Annual Monlam", short: "07 · Monlam" },
+  { id: "study-and-support", label: "08 · Study & Support", short: "08 · Support" },
+];
 ---
 
 <PageLayout
@@ -11,5 +23,7 @@ import monasteryBannerImg from "../../assets/images/housing-landscape.webp";
   imageAlt="Main Jonang Takten Phuntsok Choeling situated atop the Himalayan ridge in Shimla"
   fullBleed={true}
 >
+  <!-- Sticky Section Navigation Rail -->
+  <StickyPageNav items={monasteryNavItems} ariaLabel="Monastery Navigation & Reading Index" />
   <AboutUsContent />
 </PageLayout>

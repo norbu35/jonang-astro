@@ -206,7 +206,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Mobile Drawer Header -->
       <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse"></span>
+          <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse ring-4 ring-[#fdbc2d]/25"></span>
           <span class="text-xs font-mono uppercase tracking-wider text-[#fdbc2d] font-bold">
             Navigation Portal
           </span>
@@ -243,7 +243,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
               )}
 
               {hasSublinks(item) && (
-                <ul class="mt-1 flex list-none flex-col gap-1 pl-3 text-sm text-white/80 m-0">
+                <ul class="mt-1 flex list-none flex-col gap-1 pl-3 text-[13px] sm:text-sm text-white/75 m-0">
                   {item.sublinks?.map((sublink) => (
                     <li class="list-none m-0">
                       {sublink ? (
@@ -270,7 +270,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
         </ul>
 
         <!-- Mobile Drawer Footer CTA & Location -->
-        <div class="pt-3 border-t border-white/10 space-y-3">
+        <div class="pt-3 border-t border-white/10 space-y-3 pb-6 sm:pb-8">
           <a
             href={STATIC_PAGE_PATHS.donate}
             class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#fdbc2d] via-[#e5a823] to-[#fdbc2d] text-[#140b0a] font-bold text-xs uppercase tracking-wider py-3.5 shadow-md hover:brightness-110 active:scale-[0.99] transition-all"

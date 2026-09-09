@@ -18,14 +18,14 @@ export const HISTORICAL_TIMELINE: HistoricalEpoch[] = [
     desc: "Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors the \"Mountain Doctrine\" (Ri chos nges don rgya mtsho), formulating the definitive Shentong Madhyamaka view.",
   },
   {
-    era: "1575 – 1634",
+    era: "1575 – 1635",
     title: "Jetsun Tāranātha",
-    desc: "The scholar and historian establishes Takten Damchö Ling Monastery (1615), writes definitive treatises on the Six-fold Vajrayoga, and compiles the seminal *History of Buddhism in India*.",
+    desc: "The 16th throne-holder, scholar, and historian establishes Takten Damchö Ling Monastery (1615), writes definitive treatises on the Six-fold Vajrayoga (Mthong ba don ldan), and compiles the seminal *History of Buddhism in India* (1608).",
   },
   {
     era: "17th – 20th Century",
-    title: "Suppression & Amdo Transmission",
-    desc: "Following conversion of Central Tibetan monasteries by the Ganden Phodrang government, the lineage is preserved continuously at Dzamthang, Ngawa, and Golok in Amdo.",
+    title: "Preservation & Citadel of Amdo",
+    desc: "While Central Tibetan monasteries navigated 17th-century political realignments, the Jonang lineage's sacred contemplative transmissions, printing blocks, and scholastic legacy flourished with vibrant vitality across Amdo and Kham—safeguarded at the monumental Dzamthang Tsangwa Monastery and affiliated hermitages in Ngawa and Golok.",
   },
   {
     era: "1960s – Present",

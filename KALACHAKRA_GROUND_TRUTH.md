@@ -83,8 +83,13 @@ The core of the Kālacakra Completion Stage (*rdzogs rim / Ṣaḍaṅgayoga*), 
 
 ---
 
-### Part IV: The Ten-Fold Sovereign Syllable Monogram (*Rnam bcu dbang ldan*)
-* **The 10 Interlocking Syllables**: *HKṢMLVRYAṂ* crowned by *Nāda*, *Bindu*, and *Candra*.
+### Part IV: The Ten-Fold Sovereign Syllable Monogram (*Rnam bcu dbang ldan / Daśākāro Vaśī*)
+* **The 10 Interlocking Components**:
+  1–7. Seven stacked root consonants: *HA*, *KṢA*, *MA*, *LA*, *VA*, *RA*, *YA*
+  8. Vocalic sign: *Ā* (elongation)
+  9. Anusvāra & Candra: Crescent moon and solar disc dot (*Bindu* / *Ṃ*)
+  10. Sovereign crowning flame: *Nāda*
+* **Full Heart Mantra**: *OṂ HĀ KṢA MA LA VA RA YAṂ SVĀHĀ* (Tibetan: ༄༅། ཨོཾ་ཧཱ་ཀྵ་མ་ལ་ཝ་ར་ཡཱཾ་སྭཱ་ཧཱ།)
 * **Esoteric Symbolism**:
   - Unifies the Outer Kālacakra (elemental cosmos, planets, directions) and Inner Kālacakra (channels, winds, drops).
   - Represents the Primordial Buddha (*Ādibuddha*) endowed with all aspects of omniscient reality.

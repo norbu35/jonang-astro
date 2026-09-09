@@ -7,6 +7,7 @@ import TibetanCloud from "../../components/icons/TibetanCloud.astro";
 import ChapterHeader from "../../components/ui/ChapterHeader.astro";
 import MasterCard from "../../components/ui/MasterCard.astro";
 import PillarCard from "../../components/ui/PillarCard.astro";
+import StickyPageNav from "../../components/ui/StickyPageNav.astro";
 import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
 import taranathaThangka from "../../assets/images/taranatha-dzamthang-thangka.webp";
 import raudrantakaThangka from "../../assets/images/raudrantaka-dzamthang-thangka.webp";
@@ -14,6 +15,17 @@ import buddhaEyesImg from "../../assets/images/eyes.jpeg";
 import tibetanLandscapeImg from "../../assets/images/landscape_xxl.jpeg";
 import shentongWavesImg from "../../assets/images/shentong-waves.jpg";
 import { Image } from "astro:assets";
+
+const introductionNavItems = [
+  { id: "fundamentals", label: "01 · Fundamentals", short: "01 · Basics" },
+  { id: "tibetan-landscape", label: "02 · Five Traditions", short: "02 · Schools" },
+  { id: "jonang-history", label: "03 · Lineage History", short: "03 · History" },
+  { id: "shentong-core", label: "04 · Shentong View", short: "04 · Shentong" },
+  { id: "kalachakra-engine", label: "05 · Kālacakra Path", short: "05 · Kālacakra" },
+  { id: "suppression-resurgence", label: "06 · Resurgence", short: "06 · Resurgence" },
+  { id: "comparative-matrix", label: "07 · 5-School Matrix", short: "07 · Comparison" },
+  { id: "further-study", label: "08 · Explore Next", short: "08 · Pathways" },
+];
 
 const threeVehicles = [
   {
@@ -136,7 +148,7 @@ const comparativeFiveSchools = [
   {
     param: "Philosophical View of Reality",
     jonang: "Shentong (Great Madhyamaka): Ultimate reality is empty of adventitious flaws, but replete with eternal Buddha-qualities.",
-    gelug: "Rangtong (Prāsaṅgika Madhyamaka): Absolute negation of inherent existence across all conventional and ultimate truths.",
+    gelug: "Rangtong (Prāsaṅgika Madhyamaka): Non-implicative negation (med dgag) of inherent existence, strictly preserving conventional efficacy and dependent arising (rten 'byung).",
     kagyu: "Dual approach: Shentong applied in contemplative meditation (Karma Kagyu); Rangtong used in scholastic study.",
     nyingma: "Dzogchen Primordial Purity (Ka dag) and Spontaneous Presence (Lhun grub), synthesizing clarity and emptiness.",
     sakya: "Inseparability of Clarity and Emptiness (Gsal stong dbyer med); primarily Rangtong dialectics.",
@@ -348,10 +360,10 @@ const comparativeFiveSchools = [
                 <span class="font-tibetan text-accent-secondary font-bold text-sm">དར་རྒུད་དང་བསྐྱར་གསོན།</span>
               </div>
               <h3 class="text-base sm:text-lg font-display font-bold text-ink group-hover:text-accent transition-colors leading-snug m-0 pt-1">
-                History & Resurgence
+                Resilience & Resurgence
               </h3>
               <p class="text-sm text-muted font-serif leading-relaxed m-0">
-                17th-century Tsang crisis, Dzamthang preservation & 2011 recognition.
+                Amdo preservation, spiritual continuity & official 5th school recognition.
               </p>
             </div>
             <div class="pt-3 flex items-center justify-end text-xs sm:text-sm font-semibold text-accent/80 group-hover:text-accent transition-colors">
@@ -410,11 +422,14 @@ const comparativeFiveSchools = [
     </div>
   </section>
 
+  <!-- Sticky Section Navigation Rail -->
+  <StickyPageNav items={introductionNavItems} ariaLabel="Introduction Chapters Navigation" />
+
   <!-- 2. Upper Container: Foundations, Tibetan Landscape, History, and Primer -->
-  <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20 pt-12 sm:pt-16">
+  <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20 pt-12 sm:pt-16 editorial-offset">
 
     <!-- II. Chapter 1: Introduction to Buddhist Fundamentals -->
-    <section id="fundamentals" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-gold/6 via-surface to-accent/5 border border-gold/25 shadow-xs overflow-hidden">
+    <section id="fundamentals" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-gold/6 via-surface to-accent/5 border border-gold/25 shadow-xs overflow-hidden">
       <!-- Buddha Wisdom Eyes Background Artwork (Positioned at top 13-15% across chapter header) -->
       <div class="pointer-events-none absolute top-[13%] sm:top-[14%] md:top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] sm:w-[720px] md:w-[880px] lg:w-[1000px] select-none opacity-24 sm:opacity-27 md:opacity-30 mix-blend-multiply transition-opacity duration-700 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_82%)]" aria-hidden="true">
         <Image
@@ -587,7 +602,7 @@ const comparativeFiveSchools = [
     <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20 relative z-10">
       
       <!-- III. Chapter 2: The Landscape of Tibetan Buddhism (Separate Card) -->
-      <section id="tibetan-landscape" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-surface/95 backdrop-blur-md border border-[#244b6e]/30 shadow-card overflow-hidden">
+      <section id="tibetan-landscape" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 rounded-3xl bg-surface/95 backdrop-blur-md border border-[#244b6e]/30 shadow-card overflow-hidden">
         <!-- Asymmetric Endless Knot Watermark -->
         <EndlessKnot class="w-80 h-80 text-[#244b6e]/8 pointer-events-none absolute -top-16 -right-16 select-none" />
 
@@ -631,7 +646,7 @@ const comparativeFiveSchools = [
       </section>
 
       <!-- IV. Chapter 3: Genesis & Historical Evolution of Jonang (Separate Card) -->
-      <section id="jonang-history" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-surface/95 backdrop-blur-md border border-accent/30 shadow-card overflow-hidden">
+      <section id="jonang-history" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 rounded-3xl bg-surface/95 backdrop-blur-md border border-accent/30 shadow-card overflow-hidden">
         <!-- Asymmetric Tibetan Cloud Watermark -->
         <TibetanCloud class="w-64 h-36 text-accent/8 pointer-events-none absolute -bottom-10 -left-10 select-none" />
 
@@ -664,7 +679,7 @@ const comparativeFiveSchools = [
               bio="Revered as The Omniscient Buddha from Dölpo. Built the monumental Jonang Kumbum stupa in 1333 and authored the foundational Shentong treatise, Mountain Dharma: Ocean of Definitive Meaning (Ri chos nges don rgya mtsho)."
             />
             <MasterCard
-              dates="1575 – 1634"
+              dates="1575 – 1635"
               nameEn="Jetsun Tāranātha"
               nameBo="ཇོ་ནང་རྗེ་བཙུན་ཏཱ་ར་ནཱ་ཐ།"
               bio="16th throne-holder, master historian (author of History of Buddhism in India, 1608), founder of Takten Damchöling monastery, and author of definitive Kālacakra practice manuals used across lineages today."
@@ -708,7 +723,7 @@ const comparativeFiveSchools = [
   <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20">
 
     <!-- V. Chapter 4 Intro: Terminology Primer -->
-    <section id="shentong-core" class="space-y-8 scroll-mt-24">
+    <section id="shentong-core" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)]">
       <ChapterHeader
         chapter="Chapter 04"
         title="Doctrinal Core: Shentong vs. Rangtong"
@@ -992,7 +1007,7 @@ const comparativeFiveSchools = [
             The Ten Definitive Third Turning Sūtras (Nītārtha)
           </h3>
           <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-            Dölpopa Sherab Gyaltsen codified ten foundational Mahāyāna scriptures revealing the unconditioned reality of Buddha-nature:
+            Within his encyclopedic citations across more than twenty Third Turning sūtras in <em>Mountain Doctrine</em> (prominently featuring the <em>Laṅkāvatāra</em> and <em>Ghanavyūha</em>), Dölpopa Sherab Gyaltsen codified a core pedagogical group of <strong>Ten Sūtras of Definitive Meaning</strong> (<em>nges don mdo bcu</em>) revealing the unconditioned reality of Buddha-nature:
           </p>
         </div>
 
@@ -1011,7 +1026,7 @@ const comparativeFiveSchools = [
     </div>
 
     <!-- VI. Chapter 5: Kālacakra Tantra & The Six Vajra Yogas -->
-    <section id="kalachakra-engine" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-[#162738]/10 via-surface to-[#244b6e]/6 border border-[#244b6e]/30 shadow-xs overflow-hidden">
+    <section id="kalachakra-engine" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-[#162738]/10 via-surface to-[#244b6e]/6 border border-[#244b6e]/30 shadow-xs overflow-hidden">
       <div class="relative z-10 space-y-8">
         <ChapterHeader
           chapter="Chapter 05"
@@ -1102,12 +1117,12 @@ const comparativeFiveSchools = [
     </section>
 
     <!-- VII. Chapter 6: Crisis, Suppression & Modern Resurgence -->
-    <section id="suppression-resurgence" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-accent/8 via-surface to-surface-subtle border border-accent/25 shadow-xs overflow-hidden">
+    <section id="suppression-resurgence" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-accent/8 via-surface to-surface-subtle border border-accent/25 shadow-xs overflow-hidden">
       <div class="relative z-10 space-y-8">
         <ChapterHeader
           chapter="Chapter 06"
-          title="Crisis, Suppression, and Modern Resurgence"
-          lede="The Jonang school was a dominant intellectual and spiritual power in Central Tibet until 17th-century geopolitical conflicts transformed its trajectory:"
+          title="Spiritual Resilience and Living Resurgence"
+          lede="The history of the Jonang lineage stands as an extraordinary testament to spiritual perseverance, preserving its sacred contemplative transmission through centuries of historical change to achieve unanimous contemporary recognition:"
         />
 
         <!-- Timeline Narrative Grid -->
@@ -1115,25 +1130,25 @@ const comparativeFiveSchools = [
           
           <div class="surface-card p-6 space-y-3 border-l-4 border-l-accent hover-lift bg-surface">
             <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase">1642 – 1658</span>
-            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">17th Century Suppression</h3>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">The 17th-Century Epoch</h3>
             <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-              Following civil war in Central Tibet between the Tsangpa dynasty and the Gelug-Mongol alliance under the 5th Dalai Lama and Güshi Khan, Jonang’s main monastery Takten Damchöling was forcibly converted. Shentong printing blocks were sealed or burned, leading historians outside Tibet to assume the tradition had vanished.
+              During the complex political realignments of 17th-century Central Tibet, Jonang monastics demonstrated unwavering dedication to safeguarding the lineage. While outside observers mistakenly presumed the school had vanished from Tsang, Jonang masters ensured the complete philosophical treatises and esoteric Kālacakra transmissions were preserved intact.
             </p>
           </div>
 
           <div class="surface-card p-6 space-y-3 border-l-4 border-l-gold hover-lift bg-surface">
             <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase">18th – 19th Century</span>
-            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">Preservation in Amdo & Rimé</h3>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">Citadel of Amdo & Rimé Revival</h3>
             <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-              The tradition survived with unbroken vigor in the remote mountainous valleys of Amdo and Ngawa, centered around <strong>Dzamthang Monastery</strong>. In the 19th century, masters of the non-sectarian <strong>Rimé movement</strong> (Jamgön Kongtrül, Jamyang Khyentse Wangpo) actively revived Shentong study.
+              The tradition flourished with uninterrupted spiritual vitality in the mountain sanctuaries of Amdo, centered around the great <strong>Dzamthang Tsangwa Monastery</strong>. In the 19th century, luminaries of the non-sectarian <strong>Rimé movement</strong> (Jamgön Kongtrül, Jamyang Khyentse Wangpo) celebrated and championed Jonang Shentong scholarship.
             </p>
           </div>
 
           <div class="surface-card p-6 space-y-3 border-l-4 border-l-accent-secondary hover-lift bg-surface">
             <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase">2011 – Present</span>
-            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">Official Recognition & Today</h3>
+            <h3 class="text-lg sm:text-xl font-display font-bold text-ink leading-snug m-0">Official Recognition & Flourishing</h3>
             <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-              In September 2011, H.H. the 14th Dalai Lama formally recognized Jonang as the fifth major living school of Tibetan Buddhism. Today, over 60 active monasteries support more than 10,000 monks and nuns, with Main Jonang Takten Phuntsok Choeling in Shimla serving as the lineage seat in exile.
+              In September 2011, at the 11th Religious Conference in Dharamshala, H.H. the 14th Dalai Lama and the leadership of all Tibetan spiritual traditions formally and unanimously recognized Jonang as the fifth major living school of Tibetan Buddhism. Today, the tradition flourishes worldwide across more than 60 monasteries in Tibet and the Himalayas, with Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla serving as the supreme seat, vibrant international spiritual center, and guardian of the living Kālacakra tradition in exile.
             </p>
           </div>
 
@@ -1172,7 +1187,7 @@ const comparativeFiveSchools = [
   </div>
 
   <!-- FULL-WIDTH SECTION: CHAPTER 07 - COMPARATIVE ANALYSIS MATRIX -->
-  <section id="comparative-matrix" class="w-full bg-gradient-to-b from-surface-subtle/80 via-surface to-surface-subtle/60 border-y border-border/80 text-ink py-14 sm:py-20 relative overflow-hidden my-12 sm:my-16 scroll-mt-24">
+  <section id="comparative-matrix" class="w-full bg-gradient-to-b from-surface-subtle/80 via-surface to-surface-subtle/60 border-y border-border/80 text-ink py-14 sm:py-20 relative overflow-hidden my-12 sm:my-16 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <!-- Subtle ambient lighting -->
     <div class="pointer-events-none absolute top-1/3 left-0 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
     <div class="pointer-events-none absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-accent-tertiary/6 blur-3xl rounded-full" aria-hidden="true"></div>
@@ -1219,7 +1234,7 @@ const comparativeFiveSchools = [
   <div class="section-padding max-w-6xl mx-auto space-y-16 sm:space-y-20">
 
     <!-- IX. Chapter 8: Gateways to Deeper Study -->
-    <section id="further-study" class="space-y-8 scroll-mt-24 relative p-6 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-gold/15 via-surface to-accent/10 border border-gold/40 shadow-card overflow-hidden">
+    <section id="further-study" class="space-y-8 scroll-mt-[calc(var(--header-h)+4.5rem)] relative p-6 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-gold/15 via-surface to-accent/10 border border-gold/40 shadow-card overflow-hidden">
       <!-- Asymmetric Endless Knot Watermark -->
       <EndlessKnot class="w-80 h-80 text-gold/12 pointer-events-none absolute -bottom-16 -right-16 select-none" />
 

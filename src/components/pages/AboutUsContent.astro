@@ -140,7 +140,7 @@ const annualActivities = [
 
 <div class="section-padding max-w-6xl mx-auto space-y-12 pb-0 editorial-offset">
   <!-- Introductory Overview -->
-  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+  <div id="monastery-overview" class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
       Preserving Lineage, Scholarship, and Contemplative Practice
     </h2>
@@ -156,7 +156,7 @@ const annualActivities = [
 </div>
 
 <!-- Full-Width Featured Multimedia Ceremony: Tara Puja Assembly -->
-<section class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll">
+<section id="monastery-documentary" class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll scroll-mt-[calc(var(--header-h)+4.5rem)]">
   <!-- Ambient background glow elements -->
   <div class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
   <div class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full" aria-hidden="true"></div>
@@ -174,7 +174,7 @@ const annualActivities = [
       duration="Live Assembly Ceremony"
       actionHref="#weekly-schedule"
       actionLabel="View Monastery Liturgical Schedule"
-      id="monastery-documentary"
+      id="monastery-video"
     />
   </div>
 </section>
@@ -203,7 +203,7 @@ const annualActivities = [
   </div>
 
   <!-- Historical Milestones: Four Visits of Dalai Lama -->
-  <div class="surface-card p-6 sm:p-8 space-y-6">
+  <div id="dalai-lama-visits" class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Four Historic Visits of His Holiness the 14th Dalai Lama
     </h3>
@@ -222,7 +222,7 @@ const annualActivities = [
   </div>
 
   <!-- Monastic Abbots Lineage Timeline -->
-  <div class="space-y-6">
+  <div id="abbots-lineage" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex items-center gap-3">
       <Dharmachakra class="w-7 h-7 text-accent-secondary" />
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
@@ -249,7 +249,7 @@ const annualActivities = [
   </div>
 
   <!-- Resident Community & Demographics -->
-  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-accent-secondary">
+  <div id="resident-sangha" class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Resident Sangha Demographics
     </h3>
@@ -286,7 +286,7 @@ const annualActivities = [
   </div>
 
   <!-- Weekly Activities & Daily Prayers -->
-  <div class="surface-card p-6 sm:p-8 space-y-6" id="weekly-schedule">
+  <div id="weekly-schedule" class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Weekly Liturgical Assembly
     </h3>
@@ -314,7 +314,7 @@ const annualActivities = [
   </div>
 
   <!-- Annual Religious Activities -->
-  <div class="space-y-6">
+  <div id="annual-monlam" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Annual Ceremonies and Monlam Assemblies
     </h3>
@@ -338,7 +338,7 @@ const annualActivities = [
   </div>
 
   <!-- Curricular & Lineage Navigation -->
-  <div class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent">
+  <div id="study-and-support" class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="space-y-2">
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
         Monastic Study and Support

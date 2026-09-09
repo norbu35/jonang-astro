@@ -123,9 +123,9 @@ const ritualArts = [
 ];
 ---
 
-<div class="space-y-12 sm:space-y-16">
+<div class="space-y-12 sm:space-y-16 editorial-offset">
   <!-- Educational Mission Header -->
-  <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
+  <div id="curriculum-overview" class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
       The 18-Year Progressive Monastic Curriculum
     </h2>
@@ -154,7 +154,7 @@ const ritualArts = [
   </div>
 
   <!-- Interactive 18-Year Roadmap Timeline -->
-  <div class="space-y-6">
+  <div id="four-epochs" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex items-center gap-3">
       <Dharmachakra class="w-7 h-7 text-accent-secondary" />
       <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">
@@ -185,7 +185,7 @@ const ritualArts = [
   </div>
 
   <!-- Foundational Sutra & Dialectics Syllabus (Studying Sutra Part) -->
-  <div class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent">
+  <div id="sutra-epistemology" class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Foundational Sūtra Epistemology: Logic, Mind & Dialectics
     </h3>
@@ -226,7 +226,7 @@ const ritualArts = [
   </div>
 
   <!-- The Five Great Treatises (Balanced 3 + 2 Architecture) -->
-  <div class="surface-card p-6 sm:p-8 space-y-6">
+  <div id="five-treatises" class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
     </h3>
@@ -253,7 +253,7 @@ const ritualArts = [
   </div>
 
   <!-- Liturgical Arts & Instruments -->
-  <div class="space-y-6">
+  <div id="ritual-arts" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Liturgical Arts and Ritual Music
     </h3>
@@ -276,7 +276,7 @@ const ritualArts = [
   </div>
 
   <!-- Meditative Retreat Track -->
-  <div class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary">
+  <div id="completion-retreat" class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">3.5-Year Kālacakra Retreat</h3>
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Monks who complete the dialectical syllabus qualify to enter the retreat facility for a three-and-a-half-year cycle. Practice centers on Generation Stage deity yoga, Three Isolations dark retreat, and the completion-stage <strong>Six-fold Vajrayoga (Sbyor drug)</strong> under the direct supervision of the retreat master.

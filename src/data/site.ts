@@ -25,6 +25,7 @@ export const SITE_METADATA = {
 
   blessing: {
     mantra: "OṂ HĀ KṢA MA LA VA RA YAṂ SVĀHĀ",
+    tibetanMantra: "༄༅། ཨོཾ་ཧཱ་ཀྵ་མ་ལ་ཝ་ར་ཡཱཾ་སྭཱ་ཧཱ།",
     tibetanMantraPrefix: "༄༅།",
     text: "May the resonant power of the Kālacakra mantra radiate wisdom, compassion, and realization, awakening bodhicitta to bring liberation to all sentient beings.",
   },

@@ -20,6 +20,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# IDE / Scratch
+# IDE / Scratch / Local Store
 .serena/
-screenshot*.png
+.pnpm-store/
+[sS]creenshot*.png
