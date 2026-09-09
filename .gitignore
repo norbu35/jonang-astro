@@ -24,3 +24,6 @@ pnpm-debug.log*
 .serena/
 .pnpm-store/
 [sS]creenshot*.png
+
+# Local Netlify folder
+.netlify

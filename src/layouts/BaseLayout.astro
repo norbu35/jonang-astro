@@ -111,5 +111,9 @@ const jsonLd = {
 
       document.addEventListener("astro:page-load", initScrollReveal);
     </script>
+    <!-- Observability & Real User Monitoring (Free-tier Netlify Telemetry) -->
+    <script>
+      import "../scripts/telemetry/index.ts";
+    </script>
   </body>
 </html>

@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "telemetry:test": "tsx scripts/test-telemetry.ts",
+    "logs": "npx netlify-cli logs --follow --function telemetry",
+    "dev:functions": "npx netlify-cli functions:serve"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -20,16 +23,21 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@netlify/functions": "^6.0.0",
     "@tailwindcss/vite": "^4.1.18",
     "playwright": "^1.62.1",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwind": "^2.2.12",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "tsx": "^4.23.13"
   },
   "prettier": {
     "plugins": [
       "prettier-plugin-astro"
     ]
+  },
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

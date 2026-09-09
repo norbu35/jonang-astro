@@ -3,8 +3,16 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "24"
   PNPM_VERSION = "9"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/telemetry"
+  to = "/.netlify/functions/telemetry"
+  status = 200
 
 [[redirects]]
   from = "/about-us"
@@ -17,3 +25,4 @@
   to = "/doctrine"
   status = 301
   force = true
+
