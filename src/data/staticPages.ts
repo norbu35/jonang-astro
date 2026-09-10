@@ -11,6 +11,7 @@ export const STATIC_PAGE_PATHS = {
   livingTradition: "/living-tradition",
   donate: "/donate",
   sitemap: "/sitemap",
+  glossary: "/glossary",
 } as const;
 
 export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
@@ -41,6 +42,11 @@ export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
   photo_gallery: STATIC_PAGE_PATHS.gallery,
   donate: STATIC_PAGE_PATHS.donate,
   sitemap: STATIC_PAGE_PATHS.sitemap,
+  glossary: STATIC_PAGE_PATHS.glossary,
+  lexicon: STATIC_PAGE_PATHS.glossary,
+  terminology: STATIC_PAGE_PATHS.glossary,
+  dictionary: STATIC_PAGE_PATHS.glossary,
+  terms: STATIC_PAGE_PATHS.glossary,
 };
 
 export const STATIC_PAGE_SLUGS = new Set(Object.keys(STATIC_PAGE_BY_SLUG));

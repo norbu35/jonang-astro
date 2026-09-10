@@ -161,17 +161,23 @@ const jsonLd = {
     <slot />
     <Footer />
 
-    <!-- High Performance Intersection Observer for Scroll Reveals -->
+    <!-- High Performance Intersection Observer for Scroll Reveals & Glossary Popover Manager -->
     <script>
       import { initScrollReveal } from "../scripts/scrollReveal.js";
+      import { initGlossaryPopovers } from "../scripts/glossaryPopover.ts";
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initScrollReveal);
-      } else {
+      function initGlobalUI() {
         initScrollReveal();
+        initGlossaryPopovers();
       }
 
-      document.addEventListener("astro:page-load", initScrollReveal);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initGlobalUI);
+      } else {
+        initGlobalUI();
+      }
+
+      document.addEventListener("astro:page-load", initGlobalUI);
     </script>
     <!-- Observability & Real User Monitoring (Free-tier Netlify Telemetry) -->
     <script>

@@ -1,0 +1,48 @@
+---
+import { getGlossaryEntry } from "../../data/glossary";
+
+interface Props {
+  id: string;
+  term?: string;
+  class?: string;
+}
+
+const { id, term, class: className = "" } = Astro.props;
+
+const entry = getGlossaryEntry(id);
+
+if (!entry) {
+  console.warn(`[GlossaryTerm] Warning: No entry found in glossary data for id "${id}".`);
+}
+
+const displayText = term || entry?.termEn || id;
+---
+
+{
+  entry ? (
+    <button
+      type="button"
+      class:list={[
+        "inline-block border-b border-dotted border-accent/60 hover:border-accent text-ink hover:text-accent font-inherit text-inherit cursor-help transition-colors decoration-skip-ink-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-xs align-baseline bg-transparent p-0 text-left font-normal",
+        className,
+      ]}
+      data-glossary-term
+      data-term-id={entry.id}
+      data-term-en={entry.termEn}
+      data-term-bo={entry.termBo}
+      data-term-wylie={entry.wylie}
+      data-term-skt={entry.termSkt || ""}
+      data-short-def={entry.shortDef}
+      data-category={entry.category}
+      aria-haspopup="dialog"
+      aria-expanded="false"
+      tabindex="0"
+    >
+      <slot>{displayText}</slot>
+    </button>
+  ) : (
+    <span class={className}>
+      <slot>{displayText}</slot>
+    </span>
+  )
+}
