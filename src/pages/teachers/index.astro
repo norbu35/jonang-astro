@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BioCard from "../../components/BioCard.astro";
 import { TEACHERS } from "../../data/teachers";
+import GlossaryTerm from "../../components/ui/GlossaryTerm.astro";
 
 import refugeTreeImage from "../../assets/images/jonang-refuge-tree.webp";
 ---
@@ -48,7 +49,7 @@ import refugeTreeImage from "../../assets/images/jonang-refuge-tree.webp";
 
               <p class="font-serif text-base sm:text-lg text-white/90 leading-relaxed m-0">
                 An unbroken spiritual transmission descending from the Indian Mahasiddhas and the
-                Dro Kālacakra masters, preserved today by the resident abbots and teachers of Main
+                <GlossaryTerm id="dro-lineage" class="text-white hover:text-gold border-gold/60">Dro Kālacakra masters</GlossaryTerm>, preserved today by the resident abbots and teachers of Main
                 Jonang Takten Phuntsok Choeling in Sanjauli, Shimla.
               </p>
             </div>
@@ -70,19 +71,19 @@ import refugeTreeImage from "../../assets/images/jonang-refuge-tree.webp";
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
-                    ><strong>Indian Mahasiddhas:</strong> Shākyamuni Buddha, Shambhala Kings & Nāgārjuna.</span
+                    ><strong>Indian Mahasiddhas:</strong> Shākyamuni Buddha, <GlossaryTerm id="shambhala" class="text-white hover:text-gold border-gold/60">Shambhala Kings</GlossaryTerm> (<GlossaryTerm id="kalki" class="text-white hover:text-gold border-gold/60">Kalkī / Rigden</GlossaryTerm>) & Nāgārjuna.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
-                    ><strong>Dro Kālacakra Masters:</strong> Yumo Mikyö Dorje, Dolpopa & Jetsun Tāranātha.</span
+                    ><strong>Dro Kālacakra Masters:</strong> Yumo Mikyö Dorje, <GlossaryTerm id="dolpopa" class="text-white hover:text-gold border-gold/60">Dolpopa</GlossaryTerm> & <GlossaryTerm id="taranatha" class="text-white hover:text-gold border-gold/60">Jetsun Tāranātha</GlossaryTerm>.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
-                    ><strong>Living Seat in Exile:</strong> Supreme Lineage Head & Abbots of Shimla.</span
+                    ><strong>Living Seat in Exile:</strong> Supreme Lineage Head (<GlossaryTerm id="jetsun-dampa" class="text-white hover:text-gold border-gold/60">Jetsun Dampa</GlossaryTerm>) & Abbots of Shimla.</span
                   >
                 </li>
               </ul>

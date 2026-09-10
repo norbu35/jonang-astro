@@ -23,6 +23,7 @@ pnpm-debug.log*
 # IDE / Scratch / Local Store
 .serena/
 .pnpm-store/
+scratch/
 [sS]creenshot*.png
 
 # Local Netlify folder

@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import JonangDoctrineContent from "../../components/pages/JonangDoctrineContent.astro";
 import StickyPageNav from "../../components/ui/StickyPageNav.astro";
+import GlossaryTerm from "../../components/ui/GlossaryTerm.astro";
 
 import protectorThangka from "../../assets/images/raudrantaka-dzamthang-thangka.webp";
 
@@ -58,11 +59,9 @@ const doctrineNavItems = [
 
               <p class="font-serif text-base sm:text-lg text-white/90 leading-relaxed m-0">
                 The philosophical system of the Jonang tradition articulates the <strong
-                  >Shentong Great Madhyamaka</strong
-                >: conventional phenomena are empty of self-nature (<em>rangtong</em>), while
-                ultimate reality—unconditioned primordial wisdom and Buddha-nature (<em
-                  >Tathāgatagarbha</em
-                >)—is empty only of adventitious obscurations.
+                  ><GlossaryTerm id="shentong" class="text-white hover:text-gold border-gold/60">Shentong</GlossaryTerm> Great <GlossaryTerm id="madhyamaka" class="text-white hover:text-gold border-gold/60">Madhyamaka</GlossaryTerm></strong
+                >: conventional phenomena are empty of self-nature (<GlossaryTerm id="rangtong" class="text-white hover:text-gold border-gold/60">rangtong</GlossaryTerm>), while
+                ultimate reality—unconditioned primordial wisdom and Buddha-nature (<GlossaryTerm id="tathagatagarbha" class="text-white hover:text-gold border-gold/60">Tathāgatagarbha</GlossaryTerm>)—is empty only of adventitious obscurations (<GlossaryTerm id="agantukamala" class="text-white hover:text-gold border-gold/60">āgantukamala</GlossaryTerm>).
               </p>
             </div>
 
@@ -83,22 +82,21 @@ const doctrineNavItems = [
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
-                    ><strong>The Three Turnings of the Dharma Wheel:</strong> Third Turning Tathāgatagarbha
-                    sutras as definitive explicit meaning (<em>nītārtha</em>).</span
+                    ><strong><GlossaryTerm id="three-turnings" class="text-white hover:text-gold border-gold/60">The Three Turnings of the Dharma Wheel</GlossaryTerm>:</strong> Third Turning Tathāgatagarbha
+                    sutras as definitive explicit meaning (<GlossaryTerm id="nitartha" class="text-white hover:text-gold border-gold/60">nītārtha</GlossaryTerm>).</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
-                    ><strong>Primordial Luminous Wisdom:</strong> Ultimate reality (<em>ye shes</em
-                    >) replete with inseparable, unconditioned enlightened qualities.</span
+                    ><strong>Primordial Luminous Wisdom:</strong> Ultimate reality (<GlossaryTerm id="jnana" class="text-white hover:text-gold border-gold/60">ye shes</GlossaryTerm>) replete with inseparable, unconditioned enlightened qualities.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-[#fdbc2d] font-bold">•</span>
                   <span
                     ><strong>Union of Sutra and Tantra:</strong> Philosophical matrix actualized through
-                    the Kālacakra Six-fold Vajrayoga (<em>Sbyor drug</em>).</span
+                    the <GlossaryTerm id="kalachakra" class="text-white hover:text-gold border-gold/60">Kālacakra</GlossaryTerm> <GlossaryTerm id="six-branch-yoga" class="text-white hover:text-gold border-gold/60">Six-fold Vajrayoga</GlossaryTerm> (<em>Sbyor drug</em>).</span
                   >
                 </li>
               </ul>

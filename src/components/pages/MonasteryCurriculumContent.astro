@@ -1,5 +1,6 @@
 ---
 import Dharmachakra from "../icons/Dharmachakra.astro";
+import GlossaryTerm from "../ui/GlossaryTerm.astro";
 
 const syllabusStages = [
   {
@@ -144,8 +145,8 @@ const ritualArts = [
 
     <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
       Main Jonang Takten Phuntsok Choeling conducts an 18-year curriculum integrating Tibetan
-      classical grammar, Buddhist epistemology (Pramāṇa), the Five Great Treatises, ritual arts, and
-      multi-year Kālacakra retreat.
+      classical grammar, Buddhist epistemology (<GlossaryTerm id="pramana">Pramāṇa</GlossaryTerm>), the Five Great Treatises, ritual arts, and
+      multi-year <GlossaryTerm id="kalachakra">Kālacakra</GlossaryTerm> retreat.
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
@@ -215,7 +216,7 @@ const ritualArts = [
 
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Before embarking on the Five Great Treatises, students undergo a rigorous four-year
-      foundational sequence mastering logic, cognitive theory, and debate manuals:
+      foundational sequence mastering logic, cognitive theory, and debate manuals in the courtyard (<GlossaryTerm id="chos-rwa"><em>chos rwa</em></GlossaryTerm>), anchored in the textbooks of <GlossaryTerm id="bamda-gelek">Bamda Gelek Gyatso</GlossaryTerm>:
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-stretch">
@@ -264,6 +265,10 @@ const ritualArts = [
       The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
     </h3>
 
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
+      The scholastic core of the <GlossaryTerm id="shedra">shedra</GlossaryTerm> curriculum comprises comprehensive study of the canonical Indian root treatises and Jonang commentaries across five disciplines: <GlossaryTerm id="pramana">epistemology (Pramāṇa)</GlossaryTerm>, <GlossaryTerm id="prajnaparamita">Perfection of Wisdom (Prajñāpāramitā)</GlossaryTerm>, <GlossaryTerm id="madhyamaka">the Middle Way (Madhyamaka)</GlossaryTerm>, <GlossaryTerm id="abhidharma">phenomenology (Abhidharma)</GlossaryTerm>, and <GlossaryTerm id="vinaya">monastic discipline (Vinaya)</GlossaryTerm>, studied through traditional loose-leaf <GlossaryTerm id="pecha">pecha</GlossaryTerm> folios.
+    </p>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
       {
         fiveTreatises.map((t, idx) => (
@@ -295,6 +300,10 @@ const ritualArts = [
       Liturgical Arts and Ritual Music
     </h3>
 
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
+      Complementing philosophical debate, monks master sacred tantric arts including ritual dance (<GlossaryTerm id="cham"><em>chām</em></GlossaryTerm>), ritual offerings (<GlossaryTerm id="torma"><em>torma</em></GlossaryTerm>), and colored powder sand mandalas (<GlossaryTerm id="dul-tshon"><em>rdul tshon</em></GlossaryTerm>).
+    </p>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
       {
         ritualArts.map((art) => (
@@ -321,9 +330,9 @@ const ritualArts = [
   >
     <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">3.5-Year Kālacakra Retreat</h3>
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-      Monks who complete the dialectical syllabus qualify to enter the retreat facility for a
-      three-and-a-half-year cycle. Practice centers on Generation Stage deity yoga, Three Isolations
-      dark retreat, and the completion-stage <strong>Six-fold Vajrayoga (Sbyor drug)</strong> under the
+      Monks who complete the dialectical syllabus qualify to enter the retreat facility (<GlossaryTerm id="drupdra"><em>sgrub grwa</em></GlossaryTerm>) for a
+      three-and-a-half-year cycle. Practice centers on <GlossaryTerm id="kyerim">Generation Stage</GlossaryTerm> deity yoga, Three Isolations
+      <GlossaryTerm id="mun-khang">dark retreat</GlossaryTerm>, and the completion-stage <strong><GlossaryTerm id="six-branch-yoga">Six-fold Vajrayoga (Sbyor drug)</GlossaryTerm></strong> under the
       direct supervision of the retreat master.
     </p>
   </div>
