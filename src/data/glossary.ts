@@ -750,7 +750,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
       "The sacred courtyard where monks gather daily to test philosophical comprehension through dynamic, stylized physical debate.",
     fullDef:
       "The chos rwa ('dharma enclosure') is the vibrant heart of monastic intellectual life. Monks face each other in intense dialectical debate, punctuated by clapping hands, stamping feet, and snapping rosaries. This dynamic pedagogy ensures that scriptural understanding is not merely memorized, but scrutinized and verified with razor-sharp logic.",
-    aliases: ["Debate Courtyard", "Dharma Enclosure", "chos rwa"],
+    aliases: ["Debate Courtyard", "Dharma Enclosure", "chos rwa", "Chö-ra", "Cho-ra"],
     relatedIds: ["shedra", "pramana", "dam-bca-pa", "thal-phen-pa"],
   },
   {
