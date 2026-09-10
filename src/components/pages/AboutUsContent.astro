@@ -343,16 +343,23 @@ const annualActivities = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
       {
         weeklyPrayers.map((w) => (
-          <div class="p-5 rounded-xl bg-surface-subtle border border-border flex flex-col justify-between h-full gap-2.5 hover-lift">
+          <div class="p-5 sm:p-6 rounded-xl bg-surface-subtle border border-border flex flex-col justify-between h-full gap-3 hover-lift">
             <div class="flex flex-col gap-1.5">
-              <div class="flex justify-between items-center text-xs font-mono text-accent mb-0.5">
-                <span class="font-bold uppercase tracking-wider">{w.day}</span>
-                <span class="text-accent-secondary font-tibetan font-bold text-sm sm:text-base">
-                  {w.tibetan}
-                </span>
-              </div>
-              <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{w.prayers}</h4>
-              <p class="text-sm text-muted leading-relaxed font-serif m-0">{w.purpose}</p>
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-accent">
+                {w.day}
+              </span>
+              <h4 class="font-display text-base sm:text-lg font-bold text-ink leading-snug m-0">
+                {w.prayers}
+              </h4>
+              <span
+                lang="bo"
+                class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-0.5 leading-relaxed"
+              >
+                {w.tibetan}
+              </span>
+              <p class="text-xs sm:text-sm text-muted leading-relaxed font-serif m-0 pt-1 border-t border-border/40">
+                {w.purpose}
+              </p>
             </div>
           </div>
         ))
