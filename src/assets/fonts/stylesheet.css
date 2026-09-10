@@ -25,8 +25,33 @@
 @font-face {
   font-family: "Noto Serif Tibetan";
   src:
-    url("NotoSerifTibetan-VariableFont_wght.woff2") format("woff2");
-  font-weight: 100 900;
+    local("Noto Serif Tibetan"),
+    local("NotoSerifTibetan"),
+    url("NotoSerifTibetan-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif Tibetan";
+  src:
+    local("Noto Serif Tibetan Medium"),
+    local("NotoSerifTibetan-Medium"),
+    url("NotoSerifTibetan-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif Tibetan";
+  src:
+    local("Noto Serif Tibetan SemiBold"),
+    local("NotoSerifTibetan-SemiBold"),
+    local("Noto Serif Tibetan Bold"),
+    url("NotoSerifTibetan-SemiBold.woff2") format("woff2");
+  font-weight: 600 700;
   font-style: normal;
   font-display: swap;
 }

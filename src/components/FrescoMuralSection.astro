@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import EndlessKnot from "./icons/EndlessKnot.astro";
 import Dharmachakra from "./icons/Dharmachakra.astro";
@@ -6,7 +7,7 @@ import Dharmachakra from "./icons/Dharmachakra.astro";
 interface Props {
   title?: string;
   body?: string;
-  imageSrc: any;
+  imageSrc: ImageMetadata;
   imageAlt?: string;
 }
 
@@ -54,33 +55,44 @@ const tibetanCorpus = [
 ];
 ---
 
-<div class="surface-card overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 p-6 sm:p-10 md:p-12 lg:p-16 shadow-card bg-surface/95 relative group max-w-6xl mx-auto space-y-10 sm:space-y-12">
-  
+<div
+  class="surface-card overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 p-6 sm:p-10 md:p-12 lg:p-16 shadow-card bg-surface/95 relative group max-w-6xl mx-auto space-y-10 sm:space-y-12"
+>
   <!-- Ambient background glow accents -->
-  <div class="pointer-events-none absolute -top-32 right-1/4 w-[500px] h-[500px] bg-gold/6 blur-3xl rounded-full" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-accent/5 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-32 right-1/4 w-[500px] h-[500px] bg-gold/6 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-accent/5 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
 
   <!-- I. Top Header & Narrative Context (Full Width) -->
-    <div class="flex justify-end">
-      <EndlessKnot size={32} class="text-gold/50 shrink-0 hidden sm:block" />
-    </div>
+  <div class="flex justify-end">
+    <EndlessKnot size={32} class="text-gold/50 shrink-0 hidden sm:block" />
+  </div>
 
-    <div class="space-y-4 max-w-4xl">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8">
-        {title}
-      </h2>
-      <p class="text-base sm:text-lg text-muted leading-relaxed font-serif">
-        {body}
-      </p>
-    </div>
+  <div class="space-y-4 max-w-4xl">
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl font-display text-ink font-normal leading-tight mb-6 sm:mb-8"
+    >
+      {title}
+    </h2>
+    <p class="text-base sm:text-lg text-muted leading-relaxed font-serif">
+      {body}
+    </p>
   </div>
 
   <!-- II. Balanced 2-Column Core: Large Archival Image (Left) & Dual Canonical Corpora (Right) -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch relative z-10">
-    
     <!-- Left Column: Monumental Archival Image -->
     <div class="lg:col-span-6 flex flex-col justify-between gap-3">
-      <div class="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] rounded-2xl md:rounded-3xl overflow-hidden border border-border/80 shadow-lg bg-surface-subtle group">
+      <div
+        class="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] rounded-2xl md:rounded-3xl overflow-hidden border border-border/80 shadow-lg bg-surface-subtle group"
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -91,28 +103,35 @@ const tibetanCorpus = [
           decoding="async"
         />
         <!-- Atmospheric gradient scrim -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"></div>
-        
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none"
+        >
+        </div>
+
         <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
           <span class="text-caption uppercase tracking-widest text-gold font-mono font-bold block">
             Pecha Manuscript Archive · དཔེ་ཆ།
           </span>
-          <span class="text-sm sm:text-base font-display font-medium text-white/95 leading-tight block">
+          <span
+            class="text-sm sm:text-base font-display font-medium text-white/95 leading-tight block"
+          >
             Canonical woodblock folios preserving Sanskrit translations and Jonang exegesis
           </span>
         </div>
       </div>
 
       <p class="text-xs text-muted leading-relaxed m-0 px-1">
-        Canonical lineage preserved through the historic woodblock printing repositories of Jomonang, Takten Damchö Ling, and Dzamthang.
+        Canonical lineage preserved through the historic woodblock printing repositories of
+        Jomonang, Takten Damchö Ling, and Dzamthang.
       </p>
     </div>
 
     <!-- Right Column: Dual Stacked Corpus Treatises -->
     <div class="lg:col-span-6 flex flex-col justify-between gap-6">
-      
       <!-- Box 1: Indian Root Shastras -->
-      <div class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs">
+      <div
+        class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs"
+      >
         <div class="flex items-center justify-between border-b border-border/60 pb-3">
           <div class="flex items-center gap-2">
             <span class="badge badge-saffron text-caption-xs">Sanskrit Roots</span>
@@ -129,7 +148,9 @@ const tibetanCorpus = [
                   <span class="font-semibold text-ink text-sm block leading-snug">{item.name}</span>
                   <span class="text-muted text-xs italic block mt-0.5">{item.author}</span>
                 </div>
-                <span class="text-[11px] font-mono text-accent-secondary shrink-0 font-medium">{item.meta}</span>
+                <span class="text-[11px] font-mono text-accent-secondary shrink-0 font-medium">
+                  {item.meta}
+                </span>
               </li>
             ))
           }
@@ -137,11 +158,15 @@ const tibetanCorpus = [
       </div>
 
       <!-- Box 2: Tibetan Exegetical Treatises -->
-      <div class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs">
+      <div
+        class="surface-card bg-surface-subtle/80 border border-border/80 rounded-2xl p-5 sm:p-6 space-y-4 shadow-xs"
+      >
         <div class="flex items-center justify-between border-b border-border/60 pb-3">
           <div class="flex items-center gap-2">
             <span class="badge badge-crimson text-caption-xs">Jonang Corpus</span>
-            <h3 class="text-base font-display font-bold text-ink m-0">Tibetan Exegetical Treatises</h3>
+            <h3 class="text-base font-display font-bold text-ink m-0">
+              Tibetan Exegetical Treatises
+            </h3>
           </div>
           <span class="font-tibetan text-sm text-accent font-bold">བོད་འགྲེལ།</span>
         </div>
@@ -154,35 +179,42 @@ const tibetanCorpus = [
                   <span class="font-semibold text-ink text-sm block leading-snug">{item.name}</span>
                   <span class="text-muted text-xs italic block mt-0.5">{item.author}</span>
                 </div>
-                <span class="text-[11px] font-mono text-accent shrink-0 font-medium">{item.meta}</span>
+                <span class="text-[11px] font-mono text-accent shrink-0 font-medium">
+                  {item.meta}
+                </span>
               </li>
             ))
           }
         </ul>
       </div>
-
     </div>
-
   </div>
 
   <!-- III. Bottom Contextual Pathways Bar -->
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border/70 relative z-10 text-xs sm:text-sm font-semibold">
+  <div
+    class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border/70 relative z-10 text-xs sm:text-sm font-semibold"
+  >
     <div class="flex items-center gap-2 text-muted">
       <Dharmachakra class="w-4 h-4 text-gold shrink-0" />
       <span>Curricular and philosophical reference texts</span>
     </div>
 
     <div class="flex flex-wrap items-center gap-4 sm:gap-6">
-      <a href="/doctrine" class="text-accent hover:text-accent-hover transition-colors flex items-center gap-1.5 group">
+      <a
+        href="/doctrine"
+        class="text-accent hover:text-accent-hover transition-colors flex items-center gap-1.5 group"
+      >
         <span>Explore Shentong Philosophy</span>
         <span class="group-hover:translate-x-1 transition-transform">→</span>
       </a>
       <span class="text-muted/30">·</span>
-      <a href="/curriculum" class="text-accent-secondary hover:text-accent-hover transition-colors flex items-center gap-1.5 group">
+      <a
+        href="/curriculum"
+        class="text-accent-secondary hover:text-accent-hover transition-colors flex items-center gap-1.5 group"
+      >
         <span>View 18-Year Shedra Syllabus</span>
         <span class="group-hover:translate-x-1 transition-transform">→</span>
       </a>
     </div>
   </div>
-
 </div>

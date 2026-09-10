@@ -12,23 +12,29 @@ const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.
 ---
 
 <div id={id} class:list={["flex flex-col gap-2.5", className]}>
-  {chapter && (
-    <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest block">
-      {chapter}
-    </span>
-  )}
+  {
+    chapter && (
+      <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest block">
+        {chapter}
+      </span>
+    )
+  }
   <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
     {title}
   </h2>
-  {tibetanTitle && (
-    <span class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]">
-      {tibetanTitle}
-    </span>
-  )}
-  {lede && (
-    <p class="text-base sm:text-lg text-muted font-serif leading-relaxed max-w-3xl m-0 pt-1">
-      {lede}
-    </p>
-  )}
+  {
+    tibetanTitle && (
+      <span class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]">
+        {tibetanTitle}
+      </span>
+    )
+  }
+  {
+    lede && (
+      <p class="text-base sm:text-lg text-muted font-serif leading-relaxed max-w-3xl m-0 pt-1">
+        {lede}
+      </p>
+    )
+  }
   <slot />
 </div>

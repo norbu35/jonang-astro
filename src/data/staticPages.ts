@@ -38,7 +38,7 @@ export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
   gallery: STATIC_PAGE_PATHS.gallery,
   "photo-gallery": STATIC_PAGE_PATHS.gallery,
   photogallery: STATIC_PAGE_PATHS.gallery,
-  "photo_gallery": STATIC_PAGE_PATHS.gallery,
+  photo_gallery: STATIC_PAGE_PATHS.gallery,
   donate: STATIC_PAGE_PATHS.donate,
   sitemap: STATIC_PAGE_PATHS.sitemap,
 };

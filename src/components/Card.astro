@@ -14,19 +14,27 @@ const { img, header, body, link, alt = header } = Astro.props;
 ---
 
 <astro-card
-  class="focus group h-full w-full max-w-sm overflow-hidden bg-white artisan-card"
+  class="focus group h-full w-full max-w-sm overflow-hidden bg-surface border border-border/50 rounded-2xl artisan-card"
   tabindex="0"
   data-link={link}
   role="link"
 >
   <a href={link} tabindex="-1" class="flex h-full flex-col relative">
     <!-- Decorative Mandala Watermark -->
-    <svg class="mandala-watermark text-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-      <circle cx="50" cy="50" r="40"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"/>
-      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"/>
+    <svg
+      class="mandala-watermark text-gold"
+      viewBox="0 0 100 100"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+      aria-hidden="true"
+    >
+      <circle cx="50" cy="50" r="40"></circle>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(0 50 50)"></path>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(45 50 50)"></path>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(90 50 50)"></path>
+      <path d="M 50,10 A 20,20 0 0,1 50,50 A 20,20 0 0,1 50,10" transform="rotate(135 50 50)"
+      ></path>
     </svg>
 
     <div class="relative aspect-[4/3] overflow-hidden">
@@ -52,20 +60,45 @@ const { img, header, body, link, alt = header } = Astro.props;
         )
       }
     </div>
-    
-    <div class="relative z-10 flex flex-1 flex-col items-center justify-between gap-4 px-6 pb-8 pt-8 text-center text-ink">
+
+    <div
+      class="relative z-10 flex flex-1 flex-col items-center justify-between gap-4 px-6 pb-8 pt-8 text-center text-ink"
+    >
       <!-- Lotus/Cloud Corners -->
-      <svg class="absolute top-2 left-2 w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
-      <svg class="absolute top-2 right-2 w-4 h-4 text-gold transform scale-x-[-1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12 C4 4, 12 4, 12 4"/></svg>
-      
-      <div class="font-display text-lg font-semibold uppercase tracking-widest text-accent lg:text-xl">
+      <svg
+        class="absolute top-2 left-2 w-4 h-4 text-gold"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"><path d="M4 12 C4 4, 12 4, 12 4"></path></svg
+      >
+      <svg
+        class="absolute top-2 right-2 w-4 h-4 text-gold transform scale-x-[-1]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"><path d="M4 12 C4 4, 12 4, 12 4"></path></svg
+      >
+
+      <div
+        class="font-display text-lg font-semibold uppercase tracking-widest text-accent lg:text-xl"
+      >
         {header}
       </div>
-      
-      <svg viewBox="0 0 40 30" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="mx-auto my-4 h-5 w-7 text-gold/60">
-        <path d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10" />
+
+      <svg
+        viewBox="0 0 40 30"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+        class="mx-auto my-4 h-5 w-7 text-gold/60"
+      >
+        <path d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10"></path>
       </svg>
-      
+
       <div class="text-[1.05rem] text-ink/80 font-serif line-clamp-5">
         {body}
       </div>
@@ -78,7 +111,7 @@ const { img, header, body, link, alt = header } = Astro.props;
     connectedCallback() {
       const link = this.dataset.link;
       if (!link) return;
-      
+
       this.addEventListener("keydown", (event: KeyboardEvent) => {
         if (event.code === "Enter" || event.code === "Space") {
           event.preventDefault();

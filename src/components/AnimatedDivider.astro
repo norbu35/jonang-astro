@@ -1,34 +1,78 @@
 ---
 interface Props {
-  type?: 'lotus' | 'knot' | 'dharma';
+  type?: "lotus" | "knot" | "dharma";
   class?: string;
 }
 
-const { type = 'lotus', class: className = '' } = Astro.props;
+const { type = "lotus", class: className = "" } = Astro.props;
 ---
 
 <div class={`flex items-center justify-center my-10 sm:my-12 md:my-16 text-gold ${className}`}>
-  {type === 'lotus' && (
-    <svg aria-hidden="true" class="animate-draw-line" width="300" height="30" viewBox="0 0 300 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray: 400; stroke-dashoffset: 400;">
-      <path d="M 0,15 L 120,15" />
-      <path d="M 150,5 C 150,5 160,10 160,15 C 160,20 150,25 150,25 C 150,25 140,20 140,15 C 140,10 150,5 150,5 Z" />
-      <path d="M 140,15 C 128,12 125,15 125,15 C 125,15 128,18 140,15 Z" />
-      <path d="M 160,15 C 172,12 175,15 175,15 C 175,15 172,18 160,15 Z" />
-      <path d="M 180,15 L 300,15" />
-    </svg>
-  )}
-  {type === 'dharma' && (
-    <svg aria-hidden="true" class="animate-draw-line" width="300" height="30" viewBox="0 0 300 30" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray: 400; stroke-dashoffset: 400;">
-      <path d="M 0,15 L 125,15" />
-      <circle cx="150" cy="15" r="10" />
-      <circle cx="150" cy="15" r="3" />
-      <path d="M 150,5 L 150,25 M 140,15 L 160,15 M 143,8 L 157,22 M 143,22 L 157,8" />
-      <path d="M 175,15 L 300,15" />
-    </svg>
-  )}
-  {type === 'knot' && (
-    <svg aria-hidden="true" width="40" height="30" viewBox="0 0 40 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path class="animate-draw-knot" d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10" style="stroke-dasharray: 100; stroke-dashoffset: 100;" />
-    </svg>
-  )}
+  {
+    type === "lotus" && (
+      <svg
+        aria-hidden="true"
+        class="animate-draw-line"
+        width="300"
+        height="30"
+        viewBox="0 0 300 30"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="stroke-dasharray: 400; stroke-dashoffset: 400;"
+      >
+        <path d="M 0,15 L 120,15" />
+        <path d="M 150,5 C 150,5 160,10 160,15 C 160,20 150,25 150,25 C 150,25 140,20 140,15 C 140,10 150,5 150,5 Z" />
+        <path d="M 140,15 C 128,12 125,15 125,15 C 125,15 128,18 140,15 Z" />
+        <path d="M 160,15 C 172,12 175,15 175,15 C 175,15 172,18 160,15 Z" />
+        <path d="M 180,15 L 300,15" />
+      </svg>
+    )
+  }
+  {
+    type === "dharma" && (
+      <svg
+        aria-hidden="true"
+        class="animate-draw-line"
+        width="300"
+        height="30"
+        viewBox="0 0 300 30"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="stroke-dasharray: 400; stroke-dashoffset: 400;"
+      >
+        <path d="M 0,15 L 125,15" />
+        <circle cx="150" cy="15" r="10" />
+        <circle cx="150" cy="15" r="3" />
+        <path d="M 150,5 L 150,25 M 140,15 L 160,15 M 143,8 L 157,22 M 143,22 L 157,8" />
+        <path d="M 175,15 L 300,15" />
+      </svg>
+    )
+  }
+  {
+    type === "knot" && (
+      <svg
+        aria-hidden="true"
+        width="40"
+        height="30"
+        viewBox="0 0 40 30"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          class="animate-draw-knot"
+          d="M 10,15 L 20,5 L 30,15 L 20,25 Z M 15,10 L 25,20 M 15,20 L 25,10"
+          style="stroke-dasharray: 100; stroke-dashoffset: 100;"
+        />
+      </svg>
+    )
+  }
 </div>

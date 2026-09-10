@@ -13,38 +13,27 @@ interface Props {
   fullBleed?: boolean;
 }
 
-const {
-  title,
-  description,
-  image,
-  imageAlt,
-  tibetanTitle,
-  fullBleed = false,
-} = Astro.props;
+const { title, description, image, imageAlt, tibetanTitle, fullBleed = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <slot name="head" slot="head" />
-  
+
   <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
     <section>
-      <TitleBanner
-        title={title}
-        image={image}
-        imageAlt={imageAlt}
-        tibetanTitle={tibetanTitle}
-      />
+      <TitleBanner title={title} image={image} imageAlt={imageAlt} tibetanTitle={tibetanTitle} />
       <SectionDivider class="section-divider--page" />
-      
-      {Astro.slots.has("default") && (
-        fullBleed ? (
-          <slot />
-        ) : (
-          <div class="section-padding max-w-6xl lg:mx-auto editorial-offset">
+
+      {
+        Astro.slots.has("default") &&
+          (fullBleed ? (
             <slot />
-          </div>
-        )
-      )}
+          ) : (
+            <div class="section-padding max-w-6xl mx-auto">
+              <slot />
+            </div>
+          ))
+      }
 
       <div class="w-full">
         <slot name="full-width" />

@@ -33,29 +33,25 @@ const abbots = [
     years: "1998 – 2008",
     name: "Choekyi Nangpa Rinpoche",
     role: "1st Lineage Abbot & Dorje Lopön",
-    note:
-      "First lineage abbot of the monastery, overseeing formative expansion, shedra residency, and tantric ritual curriculum in exile. Later enthroned as Jonang Gyaltsab.",
+    note: "First lineage abbot of the monastery, overseeing formative expansion, shedra residency, and tantric ritual curriculum in exile. Later enthroned as Jonang Gyaltsab.",
   },
   {
     years: "2009 – 2014",
     name: "Geshe Kunga Rinchen",
     role: "2nd Lineage Abbot",
-    note:
-      "Appointed by His Holiness the 14th Dalai Lama as second abbot, consolidating scholastic study, debate assemblies, and monastic administration.",
+    note: "Appointed by His Holiness the 14th Dalai Lama as second abbot, consolidating scholastic study, debate assemblies, and monastic administration.",
   },
   {
     years: "2014 – 2019",
     name: "Geshe Kunga Tsamchung",
     role: "3rd Lineage Abbot",
-    note:
-      "Directed monastic education, liturgical disciplines, 3.5-year dark retreat cycles, and community welfare during a period of steady growth.",
+    note: "Directed monastic education, liturgical disciplines, 3.5-year dark retreat cycles, and community welfare during a period of steady growth.",
   },
   {
     years: "2019 – Present",
     name: "Kunga Choephel Rinpoche",
     role: "4th & Current Abbot",
-    note:
-      "The current lineage abbot appointed in accordance with the decree of His Holiness the Dalai Lama, overseeing monastic education, international centers, and sangha welfare.",
+    note: "The current lineage abbot appointed in accordance with the decree of His Holiness the Dalai Lama, overseeing monastic education, international centers, and sangha welfare.",
   },
 ];
 
@@ -63,37 +59,43 @@ const weeklyPrayers = [
   {
     day: "Monday",
     prayers: "Lama Chöpa (Guru Puja) & Medicine Buddha (Menlha) Prayers",
-    purpose: "Healing, dispelling illness and spiritual obstacles, and venerating the lineage masters.",
+    purpose:
+      "Healing, dispelling illness and spiritual obstacles, and venerating the lineage masters.",
     tibetan: "བླ་མ་མཆོད་པ་དང་སྨན་བླ།",
   },
   {
     day: "Tuesday",
     prayers: "Āryasaṅghāṭasūtra (Arya Sanghata Sutra) & Kālacakra Ngöndro",
-    purpose: "Accumulating vast transcendent merit, reciting canonical sūtras, and preliminary tantric purification.",
+    purpose:
+      "Accumulating vast transcendent merit, reciting canonical sūtras, and preliminary tantric purification.",
     tibetan: "འཕགས་པ་ཟུང་གི་མདོ་དང་དུས་འཁོར་སྔོན་འགྲོ།",
   },
   {
     day: "Wednesday",
     prayers: "Noble Tārā (Drolma), Sitātapatrā (Dukar) & Dharmapāla Tsokchod",
-    purpose: "Averting hindrances, protective deity supplications (Mahākāla & Palden Lhamo), and compassionate activity.",
+    purpose:
+      "Averting hindrances, protective deity supplications (Mahākāla & Palden Lhamo), and compassionate activity.",
     tibetan: "སྒྲོལ་མ། གདུགས་དཀར། མགོན་པོ་དང་དཔལ་ལྡན་ལྷ་མོའི་ཚོགས་མཆོད།",
   },
   {
     day: "Thursday",
     prayers: "Prajñāpāramitā Hṛdaya (Heart Sūtra) & Dhyāna Contemplation",
-    purpose: "Subduing cognitive obscurations, realizing emptiness, and cultivating calm abiding meditation.",
+    purpose:
+      "Subduing cognitive obscurations, realizing emptiness, and cultivating calm abiding meditation.",
     tibetan: "ཤེས་རབ་སྙིང་པོ་དང་ཞི་གནས་བསྒོམ་པ།",
   },
   {
     day: "Friday",
     prayers: "Machik Labdrön Chöd (Severance) & Bardo Deliverance",
-    purpose: "Severing egocentric reification through the profound Chöd cycle and dedicating merit for departed souls.",
+    purpose:
+      "Severing egocentric reification through the profound Chöd cycle and dedicating merit for departed souls.",
     tibetan: "གཅོད་དང་བར་དོའི་སྨོན་ལམ།",
   },
   {
     day: "Weekend",
     prayers: "Jonang Monlam Chenmo & Shedra Dialectical Debating",
-    purpose: "Universal peace aspiration prayers, Kalachakra protective mantras, and rigorous evening debate assemblies.",
+    purpose:
+      "Universal peace aspiration prayers, Kalachakra protective mantras, and rigorous evening debate assemblies.",
     tibetan: "ཇོ་ནང་སྨོན་ལམ་ཆེན་མོ་དང་རྩོད་པ།",
   },
 ];
@@ -138,28 +140,51 @@ const annualActivities = [
 ];
 ---
 
-<div class="section-padding max-w-6xl mx-auto space-y-12 pb-0 editorial-offset">
+<div class="section-padding max-w-6xl mx-auto space-y-12 pb-0">
   <!-- Introductory Overview -->
-  <div id="monastery-overview" class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0">
+  <div
+    id="monastery-overview"
+    class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
+    <h2
+      class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
+    >
       Preserving Lineage, Scholarship, and Contemplative Practice
     </h2>
 
     <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
-      Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla, serves as the central seat of the Jonang tradition in exile, dedicated to preserving the definitive <em>Shentong</em> philosophy and the unbroken Six Yogas of the Kalachakra Tantra.
+      Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla, serves as the central seat of the
+      Jonang tradition in exile, dedicated to preserving the definitive <em>Shentong</em> philosophy and
+      the unbroken Six Yogas of the Kalachakra Tantra.
     </p>
 
     <p class="text-ink leading-relaxed text-sm sm:text-base font-serif m-0">
-      The monastery's origins trace back to the late 1960s through the tireless efforts of Lama Jinpa Gyatso. In 1990, His Holiness the 14th Dalai Lama formally bestowed its enduring title—<em>Main Jonang Takten Phuntsok Choeling</em>—establishing it as a recognized home of monastic education. The monastery later developed under the spiritual guidance of the 9th Khalkha Jetsun Dhampa Jampal Namdrol Chokyi Gyaltsen, head of the Jonang tradition until his passing in 2012.
+      The monastery's origins trace back to the late 1960s through the tireless efforts of Lama
+      Jinpa Gyatso. In 1990, His Holiness the 14th Dalai Lama formally bestowed its enduring title—<em
+        >Main Jonang Takten Phuntsok Choeling</em
+      >—establishing it as a recognized home of monastic education. The monastery later developed
+      under the spiritual guidance of the 9th Khalkha Jetsun Dhampa Jampal Namdrol Chokyi Gyaltsen,
+      head of the Jonang tradition until his passing in 2012.
     </p>
   </div>
 </div>
 
 <!-- Full-Width Featured Multimedia Ceremony: Tara Puja Assembly -->
-<section id="monastery-documentary" class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll scroll-mt-[calc(var(--header-h)+4.5rem)]">
+<section
+  id="monastery-documentary"
+  class="w-full bg-gradient-to-b from-surface-subtle/90 via-surface to-surface-subtle/60 py-12 sm:py-16 md:py-20 border-y border-border/80 relative overflow-hidden my-10 sm:my-14 md:my-16 reveal-on-scroll scroll-mt-[calc(var(--header-h)+4.5rem)]"
+>
   <!-- Ambient background glow elements -->
-  <div class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-32 left-1/4 w-[500px] h-[500px] bg-gold/8 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-accent/6 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <VideoFeature
@@ -179,7 +204,7 @@ const annualActivities = [
   </div>
 </section>
 
-<div class="section-padding max-w-6xl mx-auto space-y-12 pt-0">
+<div class="section-padding max-w-6xl mx-auto flex flex-col gap-12 sm:gap-16 pt-0">
   <!-- Architecture & Grounds (Location & Facilities) -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
     <div class="surface-card overflow-hidden rounded-2xl shadow-card border border-border">
@@ -194,16 +219,21 @@ const annualActivities = [
       />
     </div>
 
-    <div class="space-y-4">
+    <div class="flex flex-col gap-4">
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">Sanjauli, Shimla</h3>
       <p class="text-sm sm:text-base text-muted leading-relaxed font-serif m-0">
-        Located in Sanjauli, Shimla (Himachal Pradesh, India), the monastery complex includes a main prayer hall (lhakhang), classrooms for the eighteen-year shedra, a library of classical canonical texts, and retreat quarters for three-year Kālacakra dark retreat practice.
+        Located in Sanjauli, Shimla (Himachal Pradesh, India), the monastery complex includes a main
+        prayer hall (lhakhang), classrooms for the eighteen-year shedra, a library of classical
+        canonical texts, and retreat quarters for three-year Kālacakra dark retreat practice.
       </p>
     </div>
   </div>
 
   <!-- Historical Milestones: Four Visits of Dalai Lama -->
-  <div id="dalai-lama-visits" class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div
+    id="dalai-lama-visits"
+    class="surface-card p-6 sm:p-8 flex flex-col gap-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Four Historic Visits of His Holiness the 14th Dalai Lama
     </h3>
@@ -212,7 +242,9 @@ const annualActivities = [
       {
         dalaiLamaVisits.map((v) => (
           <div class="p-5 rounded-xl bg-surface-subtle border border-border flex flex-col gap-2 hover-lift">
-            <span class="text-xl sm:text-2xl font-display font-bold text-accent block">{v.year}</span>
+            <span class="text-xl sm:text-2xl font-display font-bold text-accent block">
+              {v.year}
+            </span>
             <h4 class="font-display text-base font-bold text-ink m-0">{v.event}</h4>
             <p class="text-sm text-muted leading-relaxed m-0 font-serif">{v.desc}</p>
           </div>
@@ -222,7 +254,7 @@ const annualActivities = [
   </div>
 
   <!-- Monastic Abbots Lineage Timeline -->
-  <div id="abbots-lineage" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div id="abbots-lineage" class="flex flex-col gap-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex items-center gap-3">
       <Dharmachakra class="w-7 h-7 text-accent-secondary" />
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
@@ -249,13 +281,18 @@ const annualActivities = [
   </div>
 
   <!-- Resident Community & Demographics -->
-  <div id="resident-sangha" class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div
+    id="resident-sangha"
+    class="surface-card p-6 sm:p-8 md:p-10 space-y-6 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Resident Sangha Demographics
     </h3>
 
     <p class="text-sm sm:text-base text-muted leading-relaxed font-serif m-0">
-      The monastery provides lodging, healthcare, and monastic education for approximately <strong>120 resident monks and staff members</strong>:
+      The monastery provides lodging, healthcare, and monastic education for approximately <strong
+        >120 resident monks and staff members</strong
+      >:
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
@@ -263,7 +300,8 @@ const annualActivities = [
         <span class="text-2xl font-display font-bold text-accent block">~70 Monks</span>
         <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">Assam & Mon Tawang</h4>
         <p class="text-sm text-muted leading-relaxed font-serif m-0">
-          Students from Himalayan border communities enrolled in primary education and the eighteen-year shedra syllabus.
+          Students from Himalayan border communities enrolled in primary education and the
+          eighteen-year shedra syllabus.
         </p>
       </div>
 
@@ -271,22 +309,29 @@ const annualActivities = [
         <span class="text-2xl font-display font-bold text-accent-secondary block">~30 Monks</span>
         <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">Mongolia</h4>
         <p class="text-sm text-muted leading-relaxed font-serif m-0">
-          Monks continuing the historical affiliation established under Jetsun Tāranātha and Zanabazar, including 12 students under full monastic care.
+          Monks continuing the historical affiliation established under Jetsun Tāranātha and
+          Zanabazar, including 12 students under full monastic care.
         </p>
       </div>
 
       <div class="p-5 rounded-xl bg-surface-subtle border border-border flex flex-col gap-2">
         <span class="text-2xl font-display font-bold text-accent-tertiary block">~20 Monks</span>
-        <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">Tibet Lineage Scholars</h4>
+        <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">
+          Tibet Lineage Scholars
+        </h4>
         <p class="text-sm text-muted leading-relaxed font-serif m-0">
-          Scholars from eastern Tibet (Amdo and Kham) who oversee philosophical instruction in Shentong Madhyamaka and Kālacakra ritual liturgy.
+          Scholars from eastern Tibet (Amdo and Kham) who oversee philosophical instruction in
+          Shentong Madhyamaka and Kālacakra ritual liturgy.
         </p>
       </div>
     </div>
   </div>
 
   <!-- Weekly Activities & Daily Prayers -->
-  <div id="weekly-schedule" class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div
+    id="weekly-schedule"
+    class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
     <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
       Weekly Liturgical Assembly
     </h3>
@@ -302,7 +347,9 @@ const annualActivities = [
             <div class="flex flex-col gap-1.5">
               <div class="flex justify-between items-center text-xs font-mono text-accent mb-0.5">
                 <span class="font-bold uppercase tracking-wider">{w.day}</span>
-                <span class="text-accent-secondary font-tibetan font-bold text-sm sm:text-base">{w.tibetan}</span>
+                <span class="text-accent-secondary font-tibetan font-bold text-sm sm:text-base">
+                  {w.tibetan}
+                </span>
               </div>
               <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{w.prayers}</h4>
               <p class="text-sm text-muted leading-relaxed font-serif m-0">{w.purpose}</p>
@@ -314,10 +361,16 @@ const annualActivities = [
   </div>
 
   <!-- Annual Religious Activities -->
-  <div id="annual-monlam" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      Annual Ceremonies and Monlam Assemblies
-    </h3>
+  <div id="annual-monlam" class="flex flex-col gap-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+    <div class="flex flex-col gap-2">
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Annual Ceremonies and Monlam Assemblies
+      </h3>
+      <p class="text-sm sm:text-base text-muted font-serif m-0">
+        Major liturgical observances, monlam prayer festivals, and sacred anniversaries conducted
+        according to the Tibetan lunar calendar:
+      </p>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
@@ -328,7 +381,9 @@ const annualActivities = [
                 {a.tibetanDate}
               </span>
               <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{a.event}</h4>
-              <span class="badge badge-neutral text-caption-xs self-start mt-0.5">{a.gregorian}</span>
+              <span class="badge badge-neutral text-caption-xs self-start mt-0.5">
+                {a.gregorian}
+              </span>
               <p class="text-sm text-muted leading-relaxed font-serif m-0 pt-1">{a.desc}</p>
             </div>
           </div>
@@ -338,13 +393,17 @@ const annualActivities = [
   </div>
 
   <!-- Curricular & Lineage Navigation -->
-  <div id="study-and-support" class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div
+    id="study-and-support"
+    class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
     <div class="space-y-2">
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
         Monastic Study and Support
       </h3>
       <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-        Detailed documentation of the eighteen-year shedra syllabus, teacher biographies, and monastic sponsorship:
+        Detailed documentation of the eighteen-year shedra syllabus, teacher biographies, and
+        monastic sponsorship:
       </p>
     </div>
 
@@ -354,15 +413,22 @@ const annualActivities = [
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
-          <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block">Curriculum</span>
-          <h4 class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent transition-colors m-0">
+          <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider block"
+            >Curriculum</span
+          >
+          <h4
+            class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent transition-colors m-0"
+          >
             18-Year Syllabus →
           </h4>
           <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-            Tibetan grammar, Pramāṇa epistemology, the Five Great Treatises, and monastic ritual arts.
+            Tibetan grammar, Pramāṇa epistemology, the Five Great Treatises, and monastic ritual
+            arts.
           </p>
         </div>
-        <span class="text-xs sm:text-sm font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40">
+        <span
+          class="text-xs sm:text-sm font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
+        >
           View Complete Syllabus <span>→</span>
         </span>
       </a>
@@ -372,15 +438,23 @@ const annualActivities = [
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent-secondary group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
-          <span class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-wider block">Lineage</span>
-          <h4 class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent-secondary transition-colors m-0">
+          <span
+            class="text-xs font-mono font-bold text-accent-secondary uppercase tracking-wider block"
+            >Lineage</span
+          >
+          <h4
+            class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent-secondary transition-colors m-0"
+          >
             Resident Masters →
           </h4>
           <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-            Biographies and historical succession of the supreme lineage heads, abbots, and resident teachers.
+            Biographies and historical succession of the supreme lineage heads, abbots, and resident
+            teachers.
           </p>
         </div>
-        <span class="text-xs sm:text-sm font-semibold text-accent-secondary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40">
+        <span
+          class="text-xs sm:text-sm font-semibold text-accent-secondary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
+        >
           Read Master Biographies <span>→</span>
         </span>
       </a>
@@ -390,15 +464,23 @@ const annualActivities = [
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent-tertiary group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
-          <span class="text-xs font-mono font-bold text-accent-tertiary uppercase tracking-wider block">Sponsorship</span>
-          <h4 class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent-tertiary transition-colors m-0">
+          <span
+            class="text-xs font-mono font-bold text-accent-tertiary uppercase tracking-wider block"
+            >Sponsorship</span
+          >
+          <h4
+            class="font-display text-lg sm:text-xl font-bold text-ink group-hover:text-accent-tertiary transition-colors m-0"
+          >
             Monastic Giving →
           </h4>
           <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-            Information on meal sponsorship, healthcare funds, study materials, and direct bank wire transfers.
+            Information on meal sponsorship, healthcare funds, study materials, and direct bank wire
+            transfers.
           </p>
         </div>
-        <span class="text-xs sm:text-sm font-semibold text-accent-tertiary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40">
+        <span
+          class="text-xs sm:text-sm font-semibold text-accent-tertiary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
+        >
           Monastic Giving Options <span>→</span>
         </span>
       </a>

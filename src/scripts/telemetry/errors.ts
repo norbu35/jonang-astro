@@ -49,7 +49,11 @@ export class ErrorTracker {
     }
   }
 
-  public addBreadcrumb(category: Breadcrumb["category"], message: string, data?: Record<string, unknown>): void {
+  public addBreadcrumb(
+    category: Breadcrumb["category"],
+    message: string,
+    data?: Record<string, unknown>
+  ): void {
     this.breadcrumbs.push({
       timestamp: Date.now(),
       category,
@@ -68,12 +72,30 @@ export class ErrorTracker {
       (event: ErrorEvent) => {
         // Distinguish resource load failure (<img>, <link>, <script>) from script error
         const target = event.target as HTMLElement | null;
-        const isResource = target && target !== (window as any) && (target.tagName === "IMG" || target.tagName === "LINK" || target.tagName === "SCRIPT");
+        const isResource =
+          target &&
+          target !== (window as any) &&
+          (target.tagName === "IMG" || target.tagName === "LINK" || target.tagName === "SCRIPT");
+
+        // Suppress expected media fallbacks marked to be ignored by telemetry
+        if (
+          isResource &&
+          (target?.getAttribute("data-telemetry-ignore") === "true" ||
+            target?.getAttribute("data-fallback") === "true")
+        ) {
+          return;
+        }
 
         const captured: CapturedError = {
-          message: event.message || (isResource ? `Resource load failed: ${(target as any).src || (target as any).href}` : "Unknown Script Error"),
+          message:
+            event.message ||
+            (isResource
+              ? `Resource load failed: ${(target as any).src || (target as any).href}`
+              : "Unknown Script Error"),
           stack: event.error?.stack,
-          source: event.filename || (isResource ? (target as any).src || (target as any).href : undefined),
+          source:
+            event.filename ||
+            (isResource ? (target as any).src || (target as any).href : undefined),
           lineno: event.lineno,
           colno: event.colno,
           type: isResource ? "resource" : "runtime",
@@ -89,7 +111,8 @@ export class ErrorTracker {
     // 2. Unhandled Promise Rejections
     window.addEventListener("unhandledrejection", (event: PromiseRejectionEvent) => {
       const reason = event.reason;
-      const message = typeof reason === "string" ? reason : reason?.message || "Unhandled Promise Rejection";
+      const message =
+        typeof reason === "string" ? reason : reason?.message || "Unhandled Promise Rejection";
       const stack = reason?.stack;
 
       const captured: CapturedError = {
@@ -114,10 +137,14 @@ export class ErrorTracker {
         const href = target.getAttribute("href") || "";
         const text = (target.textContent || "").trim().slice(0, 30);
 
-        this.addBreadcrumb("ui", `click ${tag}${href ? ` -> ${href}` : ""}${text ? ` ("${text}")` : ""}`, {
-          tag,
-          role,
-        });
+        this.addBreadcrumb(
+          "ui",
+          `click ${tag}${href ? ` -> ${href}` : ""}${text ? ` ("${text}")` : ""}`,
+          {
+            tag,
+            role,
+          }
+        );
       },
       { passive: true }
     );
@@ -128,7 +155,8 @@ export class ErrorTracker {
       "scroll",
       () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const docHeight =
+          document.documentElement.scrollHeight - document.documentElement.clientHeight;
         if (docHeight <= 0) return;
         const percent = Math.round((scrollTop / docHeight) * 100);
 

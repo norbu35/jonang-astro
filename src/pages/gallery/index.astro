@@ -5,102 +5,118 @@ import { GALLERY_ITEMS } from "../../data/gallery";
 
 const categories = [
   { id: "all", label: "All Works", count: GALLERY_ITEMS.length },
-  { id: "Sanctuary", label: "Sanctuary", count: GALLERY_ITEMS.filter(i => i.category === "Sanctuary").length },
-  { id: "Ritual", label: "Ritual Liturgy", count: GALLERY_ITEMS.filter(i => i.category === "Ritual").length },
-  { id: "Study", label: "Scholastic Study", count: GALLERY_ITEMS.filter(i => i.category === "Study").length },
-  { id: "Community", label: "Sangha Community", count: GALLERY_ITEMS.filter(i => i.category === "Community").length },
+  {
+    id: "Sanctuary",
+    label: "Sanctuary",
+    count: GALLERY_ITEMS.filter((i) => i.category === "Sanctuary").length,
+  },
+  {
+    id: "Ritual",
+    label: "Ritual Liturgy",
+    count: GALLERY_ITEMS.filter((i) => i.category === "Ritual").length,
+  },
+  {
+    id: "Study",
+    label: "Scholastic Study",
+    count: GALLERY_ITEMS.filter((i) => i.category === "Study").length,
+  },
+  {
+    id: "Community",
+    label: "Sangha Community",
+    count: GALLERY_ITEMS.filter((i) => i.category === "Community").length,
+  },
 ];
 ---
 
 <PageLayout title="Photo Gallery" tibetanTitle="དགོན་པའི་སྐུ་པར།">
-  <section class="section-padding textured-panel">
-    <div class="mx-auto max-w-6xl space-y-8">
-      
-      <!-- Editorial Intro Callout -->
-      <div class="surface-card p-6 sm:p-8 rounded-2xl border border-border/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div class="space-y-2 max-w-2xl">
-          <h2 class="text-2xl sm:text-3xl font-display text-ink m-0">
-            Life at Main Jonang Takten Phuntsok Choeling
-          </h2>
-          <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-            A visual chronicle of daily life, liturgical ritual, shedra debate, and scholastic study in the Himalayan heights of Sanjauli, Shimla.
-          </p>
-        </div>
-
-        <!-- Filter Chips -->
-        <div class="flex flex-wrap items-center gap-2" id="gallery-filters">
-          {
-            categories.map((cat, idx) => (
-              <button
-                type="button"
-                data-filter={cat.id}
-                class:list={[
-                  "gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border cursor-pointer flex items-center gap-1.5",
-                  idx === 0
-                    ? "bg-accent text-white border-accent shadow-xs"
-                    : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
-                ]}
-              >
-                <span>{cat.label}</span>
-                <span class="text-caption-xs font-mono opacity-80">({cat.count})</span>
-              </button>
-            ))
-          }
-        </div>
+  <div class="space-y-8">
+    <!-- Editorial Intro Callout -->
+    <div
+      class="surface-card p-6 sm:p-8 rounded-2xl border border-border/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6"
+    >
+      <div class="space-y-2 max-w-2xl">
+        <h2 class="text-2xl sm:text-3xl font-display text-ink m-0">
+          Life at Main Jonang Takten Phuntsok Choeling
+        </h2>
+        <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
+          A visual chronicle of daily life, liturgical ritual, shedra debate, and scholastic study
+          in the Himalayan heights of Sanjauli, Shimla.
+        </p>
       </div>
-      
-      <!-- Gallery Grid -->
-      <div
-        id="gallery-grid"
-        class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
-      >
+
+      <!-- Filter Chips -->
+      <div class="flex flex-wrap items-center gap-2" id="gallery-filters">
         {
-          GALLERY_ITEMS.map((item, index) => (
+          categories.map((cat, idx) => (
             <button
               type="button"
-              class="gallery-card group overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-card hover-lift text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold cursor-pointer flex flex-col justify-between"
-              data-index={index}
-              data-title={item.title}
-              data-category={item.category}
-              data-alt={item.alt}
-              data-src={item.image.src}
+              data-filter={cat.id}
+              class:list={[
+                "gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border cursor-pointer flex items-center gap-1.5",
+                idx === 0
+                  ? "bg-accent text-white border-accent shadow-xs"
+                  : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
+              ]}
             >
-              <div class="aspect-[4/3] w-full overflow-hidden relative bg-surface-subtle">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  width={640}
-                  height={480}
-                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading={index < 6 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
-                  <span class="text-white text-xs font-semibold tracking-wider uppercase drop-shadow-sm flex items-center gap-1">
-                    <span>Inspect Photo</span>
-                    <span>✦</span>
-                  </span>
-                </div>
-              </div>
-              <div class="p-4 bg-surface flex items-center justify-between border-t border-border/50 w-full">
-                <div>
-                  <h3 class="text-sm font-display font-semibold text-ink m-0 group-hover:text-accent transition-colors">
-                    {item.title}
-                  </h3>
-                  <span class="text-caption text-muted uppercase tracking-wider font-mono mt-0.5 block">
-                    {item.category}
-                  </span>
-                </div>
-                <span class="text-gold text-sm opacity-60 group-hover:opacity-100 transition-opacity">
-                  ༄
-                </span>
-              </div>
+              <span>{cat.label}</span>
+              <span class="text-caption-xs font-mono opacity-80">({cat.count})</span>
             </button>
           ))
         }
       </div>
     </div>
-  </section>
+
+    <!-- Gallery Grid -->
+    <div
+      id="gallery-grid"
+      class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
+    >
+      {
+        GALLERY_ITEMS.map((item, index) => (
+          <button
+            type="button"
+            class="gallery-card group overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-card hover-lift text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold cursor-pointer flex flex-col justify-between"
+            data-index={index}
+            data-title={item.title}
+            data-category={item.category}
+            data-alt={item.alt}
+            data-src={item.image.src}
+          >
+            <div class="aspect-[4/3] w-full overflow-hidden relative bg-surface-subtle">
+              <Image
+                src={item.image}
+                alt={item.alt}
+                width={640}
+                height={480}
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading={index < 6 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                <span class="text-white text-xs font-semibold tracking-wider uppercase drop-shadow-sm flex items-center gap-1">
+                  <span>Inspect Photo</span>
+                  <span>✦</span>
+                </span>
+              </div>
+            </div>
+            <div class="p-4 bg-surface flex items-center justify-between border-t border-border/50 w-full">
+              <div>
+                <h3 class="text-sm font-display font-semibold text-ink m-0 group-hover:text-accent transition-colors">
+                  {item.title}
+                </h3>
+                <span class="text-caption text-muted uppercase tracking-wider font-mono mt-0.5 block">
+                  {item.category}
+                </span>
+              </div>
+              <span class="text-gold text-sm opacity-60 group-hover:opacity-100 transition-opacity">
+                ༄
+              </span>
+            </div>
+          </button>
+        ))
+      }
+    </div>
+  </div>
 
   <!-- Accessible Native HTML5 Modal Dialog Lightbox -->
   <dialog
@@ -110,8 +126,14 @@ const categories = [
     <div class="flex flex-col h-full justify-between gap-4">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
         <div>
-          <span id="modal-category" class="badge badge-saffron text-caption uppercase tracking-wider mb-1 inline-block">Category</span>
-          <h2 class="text-2xl font-display text-white font-normal mb-2" id="modal-title">Image Title</h2>
+          <span
+            id="modal-category"
+            class="badge badge-saffron text-caption uppercase tracking-wider mb-1 inline-block"
+            >Category</span
+          >
+          <h2 class="text-2xl font-display text-white font-normal mb-2" id="modal-title">
+            Image Title
+          </h2>
         </div>
         <form method="dialog">
           <button
@@ -124,14 +146,16 @@ const categories = [
         </form>
       </div>
 
-      <div class="relative flex-1 min-h-[300px] sm:min-h-[460px] flex items-center justify-center overflow-hidden rounded-xl bg-black/40">
+      <div
+        class="relative flex-1 min-h-[300px] sm:min-h-[460px] flex items-center justify-center overflow-hidden rounded-xl bg-black/40"
+      >
         <img
           id="modal-image"
           src=""
           alt=""
           class="max-h-[65vh] w-auto max-w-full object-contain rounded-lg shadow-lg transition-opacity duration-300"
         />
-        
+
         <!-- Navigation Buttons -->
         <button
           type="button"
@@ -151,7 +175,9 @@ const categories = [
         </button>
       </div>
 
-      <div class="flex items-center justify-between text-xs text-white/70 pt-2 border-t border-white/10">
+      <div
+        class="flex items-center justify-between text-xs text-white/70 pt-2 border-t border-white/10"
+      >
         <span id="modal-counter">1 of 15</span>
         <span class="font-mono">Use Arrow Keys ← → to navigate · Esc to close</span>
       </div>
@@ -179,7 +205,7 @@ const categories = [
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
           const filter = btn.dataset.filter || "all";
-          
+
           filterBtns.forEach((b) => {
             b.classList.remove("bg-accent", "text-white", "border-accent", "shadow-xs");
             b.classList.add("bg-surface-subtle", "text-muted", "border-border");
@@ -216,7 +242,8 @@ const categories = [
         modalImg!.alt = alt;
         if (modalTitle) modalTitle.textContent = title;
         if (modalCategory) modalCategory.textContent = category;
-        if (modalCounter) modalCounter.textContent = `${currentIndex + 1} of ${visibleCards.length}`;
+        if (modalCounter)
+          modalCounter.textContent = `${currentIndex + 1} of ${visibleCards.length}`;
       }
 
       allCards.forEach((card) => {
@@ -244,12 +271,11 @@ const categories = [
       // Close when clicking on backdrop
       modal.addEventListener("click", (e) => {
         const rect = modal.getBoundingClientRect();
-        const isInDialog = (
+        const isInDialog =
           rect.top <= e.clientY &&
           e.clientY <= rect.top + rect.height &&
           rect.left <= e.clientX &&
-          e.clientX <= rect.left + rect.width
-        );
+          e.clientX <= rect.left + rect.width;
         if (!isInDialog) {
           modal.close();
         }

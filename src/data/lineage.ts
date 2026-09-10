@@ -15,7 +15,7 @@ export const HISTORICAL_TIMELINE: HistoricalEpoch[] = [
   {
     era: "1292 – 1361",
     title: "Dolpopa & the Great Kumbum",
-    desc: "Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors the \"Mountain Doctrine\" (Ri chos nges don rgya mtsho), formulating the definitive Shentong Madhyamaka view.",
+    desc: 'Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors the "Mountain Doctrine" (Ri chos nges don rgya mtsho), formulating the definitive Shentong Madhyamaka view.',
   },
   {
     era: "1575 – 1635",
@@ -43,8 +43,9 @@ export const LINEAGE_HEAD = {
   title: "Reincarnation of Jetsun Tāranātha & Jonang Supreme Head (1997–2012)",
   portrait: khalkhaJetsunDhampaImg,
   portraitAlt: "H.H. 9th Khalkha Jetsun Dampa Jampal Namdrol Chökyi Gyaltsen",
-  portraitCaption: "H.H. 9th Khalkha Jetsun Dampa Jampal Namdrol (1933–2012), recognized reincarnation of Jetsun Tāranātha and Supreme Head of the Jonang tradition.",
-  
+  portraitCaption:
+    "H.H. 9th Khalkha Jetsun Dampa Jampal Namdrol (1933–2012), recognized reincarnation of Jetsun Tāranātha and Supreme Head of the Jonang tradition.",
+
   narrativeParagraphs: [
     "Jetsun Dampa Jampal Namdrol served as a vital bridge between the esoteric teachings of the Jonang tradition and the Mongolian Buddhist community. Historically, the Jebtsundamba Khutuktu lineage has been deeply intertwined with Jonang, particularly through its emphasis on the Kālacakra Tantra and the definitive view of Shentong.",
     "As the 9th Jebtsundamba, Jampal Namdrol upheld the spiritual legacy of the Jonang teachings, emphasizing the integration of meditative realization with compassionate action. His role as a reincarnated spiritual leader not only revitalized the religious traditions of Mongolia but also solidified the recognized status of the Jonang school within the broader Tibetan Buddhist framework.",

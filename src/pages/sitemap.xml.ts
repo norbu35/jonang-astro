@@ -31,7 +31,7 @@ ${paths
     (path) => `  <url>
     <loc>${toUrl(path)}</loc>
     <lastmod>${lastmod}</lastmod>
-  </url>`,
+  </url>`
   )
   .join("\n")}
 </urlset>`;

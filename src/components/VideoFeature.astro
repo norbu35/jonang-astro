@@ -51,31 +51,45 @@ const hasThemes = keyThemes && keyThemes.length > 0;
   id={id}
 >
   <!-- Ambient Altar Glow & Mandala Watermark -->
-  <div class="pointer-events-none absolute -top-32 right-1/4 w-[500px] h-[500px] bg-gold/10 blur-3xl rounded-full" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-accent/8 blur-3xl rounded-full" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-32 right-1/4 w-[500px] h-[500px] bg-gold/10 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-accent/8 blur-3xl rounded-full"
+    aria-hidden="true"
+  >
+  </div>
 
   <!-- Header & Inscription Banner -->
-  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/70 pb-6 relative z-10">
+  <div
+    class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/70 pb-6 relative z-10"
+  >
     <div class="max-w-3xl">
       <div class="flex flex-wrap items-center gap-2 mb-3">
         <span class="badge badge-crimson text-xs font-mono">
           <span class="badge-dot"></span>
           {badge}
         </span>
-        {tibetanTitle && (
-          <span class="text-xs font-tibetan text-accent font-bold">
-            {tibetanTitle}
-          </span>
-        )}
+        {
+          tibetanTitle && (
+            <span class="text-xs font-tibetan text-accent font-bold">{tibetanTitle}</span>
+          )
+        }
       </div>
-      <h3 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mt-0 mb-3">
+      <h3
+        class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight mt-0 mb-3"
+      >
         {title}
       </h3>
-      {subtitle && (
-        <p class="text-xs sm:text-sm text-accent-secondary font-semibold uppercase tracking-wider m-0">
-          {subtitle}
-        </p>
-      )}
+      {
+        subtitle && (
+          <p class="text-xs sm:text-sm text-accent-secondary font-semibold uppercase tracking-wider m-0">
+            {subtitle}
+          </p>
+        )
+      }
     </div>
 
     <div class="hidden lg:flex items-center gap-2 shrink-0">
@@ -87,7 +101,7 @@ const hasThemes = keyThemes && keyThemes.length > 0;
   {
     hasThemes ? (
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start relative z-10">
-        <!-- Left Stage: The Interactive YouTube Player -->
+        {/* Left Stage: The Interactive YouTube Player */}
         <div class="lg:col-span-7 space-y-3">
           <YouTubeEmbed
             videoId={videoId}
@@ -97,13 +111,15 @@ const hasThemes = keyThemes && keyThemes.length > 0;
             channelUrl={channelUrl}
             duration={duration}
           />
-          
-          <!-- Video Caption & Source Note -->
+
+          {/* Video Caption & Source Note */}
           <div class="flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-muted">
             {channelName && (
               <span class="flex items-center gap-1.5">
                 <Dharmachakra class="w-3.5 h-3.5 text-accent-secondary" />
-                <span>Produced by <strong>{channelName}</strong></span>
+                <span>
+                  Produced by <strong>{channelName}</strong>
+                </span>
               </span>
             )}
             <a
@@ -118,7 +134,7 @@ const hasThemes = keyThemes && keyThemes.length > 0;
           </div>
         </div>
 
-        <!-- Right Stage: Narrative Context & Documentary Chapters -->
+        {/* Right Stage: Narrative Context & Documentary Chapters */}
         <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             {summary && (
@@ -143,12 +159,8 @@ const hasThemes = keyThemes && keyThemes.length > 0;
                       {theme.num}
                     </span>
                     <div class="space-y-0.5">
-                      <h4 class="text-xs font-bold text-ink m-0 font-display">
-                        {theme.title}
-                      </h4>
-                      <p class="text-caption text-muted leading-relaxed m-0">
-                        {theme.desc}
-                      </p>
+                      <h4 class="text-xs font-bold text-ink m-0 font-display">{theme.title}</h4>
+                      <p class="text-caption text-muted leading-relaxed m-0">{theme.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -171,7 +183,7 @@ const hasThemes = keyThemes && keyThemes.length > 0;
       </div>
     ) : (
       <div class="space-y-6 relative z-10">
-        <!-- Big Full-Width Cinema Player Stage -->
+        {/* Big Full-Width Cinema Player Stage */}
         <div class="w-full space-y-3">
           <YouTubeEmbed
             videoId={videoId}
@@ -183,12 +195,14 @@ const hasThemes = keyThemes && keyThemes.length > 0;
             class="shadow-2xl hover:shadow-[0_25px_60px_rgba(198,127,27,0.25)]"
           />
 
-          <!-- Caption Bar -->
+          {/* Caption Bar */}
           <div class="flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-muted">
             {channelName && (
               <span class="flex items-center gap-1.5">
                 <Dharmachakra class="w-3.5 h-3.5 text-accent-secondary" />
-                <span>Produced by <strong>{channelName}</strong></span>
+                <span>
+                  Produced by <strong>{channelName}</strong>
+                </span>
               </span>
             )}
             <a
@@ -203,21 +217,23 @@ const hasThemes = keyThemes && keyThemes.length > 0;
           </div>
         </div>
 
-        <!-- Cinema Synopsis & Action Footer -->
+        {/* Cinema Synopsis & Action Footer */}
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
           {summary && (
-            <div class={`callout bg-surface-subtle/80 p-5 sm:p-6 rounded-2xl shadow-xs space-y-2 ${actionHref && actionLabel ? 'md:col-span-8' : 'md:col-span-12'}`}>
+            <div
+              class={`callout bg-surface-subtle/80 p-5 sm:p-6 rounded-2xl shadow-xs space-y-2 ${actionHref && actionLabel ? "md:col-span-8" : "md:col-span-12"}`}
+            >
               <span class="text-caption font-mono font-bold uppercase tracking-wider text-accent block">
                 Ceremony & Liturgical Context
               </span>
-              <p class="text-xs sm:text-sm text-ink/90 leading-relaxed m-0 font-sans">
-                {summary}
-              </p>
+              <p class="text-xs sm:text-sm text-ink/90 leading-relaxed m-0 font-sans">{summary}</p>
             </div>
           )}
 
           {actionHref && actionLabel && (
-            <div class={`flex items-center ${summary ? 'md:col-span-4 justify-start md:justify-end' : 'md:col-span-12 justify-start'}`}>
+            <div
+              class={`flex items-center ${summary ? "md:col-span-4 justify-start md:justify-end" : "md:col-span-12 justify-start"}`}
+            >
               <a
                 href={actionHref}
                 class="inline-flex items-center gap-2 rounded-xl bg-accent hover:bg-accent-hover text-white px-5 py-3 text-xs sm:text-sm font-semibold shadow-md transition-all hover:scale-[1.02]"

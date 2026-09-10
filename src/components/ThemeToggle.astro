@@ -1,0 +1,157 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  compact?: boolean;
+}
+
+const { id = "themeToggle", class: className = "", compact = false } = Astro.props;
+---
+
+<button
+  id={id}
+  type="button"
+  class:list={[
+    "theme-toggle-btn focus relative flex items-center justify-center rounded-full transition-all duration-300 group cursor-pointer select-none",
+    compact
+      ? "h-9 w-9 bg-[#6e1416]/85 hover:bg-[#85181b] text-white border border-[#fdbc2d]/40 hover:border-[#fdbc2d]/80 shadow-sm"
+      : "h-9 w-9 sm:h-10 sm:w-10 bg-[#6e1416]/90 hover:bg-[#85181b] text-white border border-[#fdbc2d]/50 hover:border-[#fdbc2d]/90 shadow-soft hover:shadow-[0_0_15px_rgba(253,188,45,0.4)]",
+    className,
+  ]}
+  aria-label="Toggle dark mode"
+  aria-pressed="false"
+  title="Toggle dark mode"
+>
+  <span class="sr-only">Toggle theme</span>
+
+  <!-- Crescent Moon Icon (Shown in Light mode) -->
+  <svg
+    class="theme-icon-moon h-4 w-4 sm:h-[18px] sm:w-[18px] text-[#fdbc2d] transition-all duration-300 group-hover:scale-110"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path
+      d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+      fill="currentColor"
+      fill-opacity="0.15"></path>
+  </svg>
+
+  <!-- Radiant Sun Icon (Shown in Dark mode) -->
+  <svg
+    class="theme-icon-sun hidden h-4 w-4 sm:h-[18px] sm:w-[18px] text-[#fdbc2d] transition-all duration-300 group-hover:rotate-45 group-hover:scale-110"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" fill="currentColor" fill-opacity="0.25"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+</button>
+
+<script>
+  function isDarkMode(): boolean {
+    const root = document.documentElement;
+    if (root.classList.contains("dark")) return true;
+    if (root.classList.contains("light")) return false;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function syncAllToggleButtons(isDark: boolean) {
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".theme-toggle-btn");
+    buttons.forEach((btn) => {
+      btn.setAttribute("aria-pressed", isDark ? "true" : "false");
+      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      btn.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+
+      const moonIcon = btn.querySelector(".theme-icon-moon");
+      const sunIcon = btn.querySelector(".theme-icon-sun");
+
+      if (moonIcon && sunIcon) {
+        if (isDark) {
+          moonIcon.classList.add("hidden");
+          sunIcon.classList.remove("hidden");
+        } else {
+          sunIcon.classList.add("hidden");
+          moonIcon.classList.remove("hidden");
+        }
+      }
+    });
+  }
+
+  function toggleTheme() {
+    const currentIsDark = isDarkMode();
+    const nextTheme = currentIsDark ? "light" : "dark";
+    const root = document.documentElement;
+
+    if (nextTheme === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+      root.setAttribute("data-theme", "light");
+    }
+
+    try {
+      localStorage.setItem("theme", nextTheme);
+    } catch {
+      // Ignore local storage errors
+    }
+
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
+    if (meta) {
+      meta.content = nextTheme;
+    }
+
+    syncAllToggleButtons(nextTheme === "dark");
+    window.dispatchEvent(new CustomEvent("theme-change", { detail: { theme: nextTheme } }));
+  }
+
+  function initThemeToggles() {
+    const isDark = isDarkMode();
+    syncAllToggleButtons(isDark);
+
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".theme-toggle-btn");
+    buttons.forEach((btn) => {
+      if (btn.dataset.initialized === "true") return;
+      btn.dataset.initialized = "true";
+      btn.addEventListener("click", toggleTheme);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThemeToggles);
+  } else {
+    initThemeToggles();
+  }
+
+  document.addEventListener("astro:page-load", initThemeToggles);
+
+  window.addEventListener("storage", (event) => {
+    if (event.key === "theme") {
+      const isDark = isDarkMode();
+      syncAllToggleButtons(isDark);
+    }
+  });
+
+  window.addEventListener("theme-change", () => {
+    syncAllToggleButtons(isDarkMode());
+  });
+</script>

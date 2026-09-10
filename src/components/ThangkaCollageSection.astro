@@ -1,18 +1,20 @@
 ---
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
 interface Props {
   title: string;
   body: string;
-  imageSrc: any; // ImageMetadata
+  imageSrc: ImageMetadata;
   imageAlt: string;
 }
 
 const { title, body, imageSrc, imageAlt } = Astro.props;
 ---
 
-<div class="relative w-full min-h-[72vh] sm:min-h-[82vh] flex items-center justify-start overflow-hidden py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-surface-subtle rounded-2xl md:rounded-3xl border border-border shadow-2xl">
-  
+<div
+  class="relative w-full min-h-[72vh] sm:min-h-[82vh] flex items-center justify-start overflow-hidden py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-surface-subtle rounded-2xl md:rounded-3xl border border-border shadow-2xl"
+>
   <!-- Full-Bleed Sanctuary Background Image at 100% Natural Brightness (Zero Darkening Overlay) -->
   <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
     <Image
@@ -27,11 +29,12 @@ const { title, body, imageSrc, imageAlt } = Astro.props;
   </div>
 
   <!-- Left-Directed Editorial Card with its Own Dedicated Background -->
-  <div class="relative z-10 w-full max-w-lg lg:max-w-xl text-left text-white space-y-5 sm:space-y-6 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl bg-[#500c0e]/92 sm:bg-[#500c0e]/90 backdrop-blur-xl border border-gold/50 shadow-2xl">
-    
-
-
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-display text-white font-normal leading-[1.15] tracking-tight drop-shadow-md mb-6 sm:mb-8">
+  <div
+    class="relative z-10 w-full max-w-lg lg:max-w-xl text-left text-white space-y-5 sm:space-y-6 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl bg-[#500c0e]/92 sm:bg-[#500c0e]/90 backdrop-blur-xl border border-gold/50 shadow-2xl"
+  >
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl font-display text-white font-normal leading-[1.15] tracking-tight drop-shadow-md mb-6 sm:mb-8"
+    >
       {title}
     </h2>
 
@@ -49,5 +52,4 @@ const { title, body, imageSrc, imageAlt } = Astro.props;
       </a>
     </div>
   </div>
-
 </div>

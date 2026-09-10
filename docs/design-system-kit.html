@@ -1,1190 +1,1501 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head><script type="application/json" data-od-external-dependencies>["https://fonts.googleapis.com/css2?family=Jomolhari&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"]</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayurveda & Dharma Sanctuary — Modern Tibetan Buddhist Design System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jomolhari&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      /* Core Tibetan Buddhist Palette (Red, Maroon, Yellow, White) */
-      --bg: #ffffff;
-      --bg-oklch: oklch(100% 0 0);
-      
-      --surface: #faf6f4;
-      --surface-oklch: oklch(96.8% 0.008 30);
-      
-      --surface-subtle: #f4eae6;
-      --surface-subtle-oklch: oklch(93.5% 0.012 30);
-      
-      --fg: #190a0c;
-      --fg-oklch: oklch(18% 0.015 25);
-      
-      --muted: #6e4d52;
-      --muted-oklch: oklch(46.5% 0.025 25);
-      
-      --border: #ebdcd7;
-      --border-oklch: oklch(89.5% 0.012 30);
-      
-      --border-strong: #d9c1bb;
-      --border-strong-oklch: oklch(82.5% 0.018 30);
-
-      /* Primary Brand Accent — Sangha Red & Crimson */
-      --accent: #992224;
-      --accent-oklch: oklch(44% 0.165 28);
-      --accent-hover: #7f1b1d;
-      --accent-subtle: #fef0f0;
-
-      /* Secondary Accent — Saffron Amber */
-      --accent-secondary: #c67f1b;
-      --accent-secondary-oklch: oklch(62% 0.145 72);
-      --accent-secondary-hover: #ab6d14;
-      --accent-secondary-subtle: #faf0e1;
-
-      /* Tertiary Accent — Mineral Lapis */
-      --accent-tertiary: #244b6e;
-      --accent-tertiary-oklch: oklch(41% 0.085 245);
-      --accent-tertiary-subtle: #e9f0f7;
-
-      /* Semantic Status */
-      --success: #2d6a4f;
-      --success-subtle: #e8f3ee;
-      --warning: #b26a00;
-      --warning-subtle: #fcf1e0;
-
-      /* Typography Stacks */
-      --font-display: 'Jomolhari', 'Noto Serif Tibetan', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-
-      /* Metrics & Posture */
-      --radius-sm: 4px;
-      --radius: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-full: 9999px;
-      --border-width: 1px;
-      --shadow-sm: 0 1px 3px rgba(26, 22, 21, 0.04), 0 1px 2px rgba(26, 22, 21, 0.02);
-      --shadow-md: 0 4px 12px rgba(26, 22, 21, 0.06), 0 1px 3px rgba(26, 22, 21, 0.04);
-      --shadow-lg: 0 12px 28px rgba(26, 22, 21, 0.08), 0 4px 10px rgba(26, 22, 21, 0.04);
-      
-      --container-max: 1240px;
-      --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Reset & Base Setup */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-      background-color: var(--bg);
-      color: var(--fg);
-    }
-
-    body {
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      background-color: var(--bg);
-      color: var(--fg);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding-bottom: 80px;
-    }
-
-    /* Typography Hierarchy */
-    h1, h2, h3, h4, .font-display {
-      font-family: var(--font-display);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--fg);
-    }
-
-    h1 {
-      font-size: clamp(2.25rem, 4vw, 3.25rem);
-      line-height: 1.2;
-    }
-
-    h2 {
-      font-size: clamp(1.75rem, 3vw, 2.25rem);
-      line-height: 1.3;
-    }
-
-    h3 {
-      font-size: 1.35rem;
-      line-height: 1.4;
-    }
-
-    p {
-      color: var(--fg);
-      font-size: 0.975rem;
-    }
-
-    p.lead {
-      font-size: 1.125rem;
-      line-height: 1.65;
-      color: var(--muted);
-    }
-
-    small, .text-muted {
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    code, pre {
-      font-family: var(--font-mono);
-      font-size: 0.825rem;
-    }
-
-    /* Layout System */
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Header & Hero Specimen */
-    .system-header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background-color: rgba(243, 238, 229, 0.94);
-    }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand-mark {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--fg);
-    }
-
-    .brand-symbol {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      color: var(--bg);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(153, 34, 36, 0.25);
-    }
-
-    .brand-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      letter-spacing: 0.02em;
-    }
-
-    .brand-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      background: var(--surface-subtle);
-      color: var(--accent);
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border);
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      list-style: none;
-    }
-
-    .nav-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-      padding: 6px 0;
-    }
-
-    .nav-link:hover {
-      color: var(--fg);
-    }
-
-    .nav-link.active {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-    }
-
-    /* Section Wrapper */
-    .section-block {
-      margin-top: 56px;
-    }
-
-    .section-header {
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .section-title {
-      font-size: 1.65rem;
-      font-family: var(--font-display);
-      color: var(--fg);
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
-
-    /* Color Swatch Grid */
-    .color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    .color-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .color-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-strong);
-    }
-
-    .color-preview {
-      height: 96px;
-      width: 100%;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .contrast-badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: var(--radius-sm);
-      backdrop-filter: blur(4px);
-    }
-
-    .color-info {
-      padding: 14px 16px;
-      background: var(--bg);
-    }
-
-    .color-name-group {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 4px;
-    }
-
-    .color-role-name {
-      font-weight: 600;
-      font-size: 0.925rem;
-      color: var(--fg);
-    }
-
-    .color-token-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .color-codes {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-      padding-top: 6px;
-      border-top: 1px dashed var(--border);
-    }
-
-    .color-meaning {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-      line-height: 1.4;
-    }
-
-    /* Buttons & Interaction Economy */
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: var(--radius);
-      font-family: var(--font-sans);
-      font-size: 0.925rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      border: 1px solid transparent;
-      outline: none;
-      min-height: 44px;
-    }
-
-    .btn:focus-visible {
-      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
-    }
-
-    /* Primary Accent Button — Sangha Crimson */
-    .btn-primary {
-      background-color: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-      box-shadow: 0 2px 6px rgba(153, 34, 36, 0.2);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      border-color: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(153, 34, 36, 0.3);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    /* Secondary Saffron Button */
-    .btn-secondary {
-      background-color: var(--surface);
-      color: var(--fg);
-      border-color: var(--border-strong);
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--surface-subtle);
-      border-color: var(--muted);
-      color: var(--fg);
-    }
-
-    /* Saffron Gold Accent Action */
-    .btn-saffron {
-      background-color: var(--accent-secondary);
-      color: #ffffff;
-      border-color: var(--accent-secondary);
-      box-shadow: 0 2px 6px rgba(198, 127, 27, 0.25);
-    }
-
-    .btn-saffron:hover {
-      background-color: var(--accent-secondary-hover);
-      border-color: var(--accent-secondary-hover);
-      transform: translateY(-1px);
-    }
-
-    /* Ghost & Text Buttons */
-    .btn-ghost {
-      background-color: transparent;
-      color: var(--fg);
-      border-color: var(--border);
-    }
-
-    .btn-ghost:hover {
-      background-color: var(--surface);
-      border-color: var(--border-strong);
-    }
-
-    .btn-text {
-      background: transparent;
-      color: var(--accent);
-      padding: 8px 12px;
-      min-height: auto;
-    }
-
-    .btn-text:hover {
-      background-color: var(--accent-subtle);
-      border-radius: var(--radius);
-    }
-
-    /* Badges & Status Chips */
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 600;
-      line-height: 1;
-      border: 1px solid transparent;
-    }
-
-    .badge-crimson {
-      background: var(--accent-subtle);
-      color: var(--accent);
-      border-color: rgba(153, 34, 36, 0.2);
-    }
-
-    .badge-saffron {
-      background: var(--accent-secondary-subtle);
-      color: #8c5307;
-      border-color: rgba(198, 127, 27, 0.25);
-    }
-
-    .badge-lapis {
-      background: var(--accent-tertiary-subtle);
-      color: var(--accent-tertiary);
-      border-color: rgba(36, 75, 110, 0.25);
-    }
-
-    .badge-neutral {
-      background: var(--surface);
-      color: var(--fg);
-      border-color: var(--border);
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    /* Specimen Cards & Live UI Preview */
-    .specimen-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      transition: all var(--transition-fast);
-    }
-
-    .card:hover {
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow-md);
-    }
-
-    .card-banner {
-      background: linear-gradient(135deg, #f0e6d6 0%, #e2d3bd 100%);
-      padding: 24px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-      min-height: 140px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .card-banner.crimson-tint {
-      background: linear-gradient(135deg, #f9eae8 0%, #eed2cf 100%);
-    }
-
-    .card-banner.lapis-tint {
-      background: linear-gradient(135deg, #eaf1f7 0%, #d4e2ed 100%);
-    }
-
-    .card-meta-top {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-body {
-      padding: 24px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .card-title {
-      font-size: 1.35rem;
-      margin-bottom: 4px;
-    }
-
-    .card-details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 8px 0;
-      padding: 12px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-
-    .detail-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .detail-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .detail-val {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--fg);
-    }
-
-    .card-footer {
-      padding: 16px 24px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .price-tag {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .price-amount {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      font-family: var(--font-display);
-    }
-
-    /* Form Controls Specimen */
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .form-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--fg);
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 10px 14px;
-      font-family: var(--font-sans);
-      font-size: 0.925rem;
-      color: var(--fg);
-      background-color: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      outline: none;
-      transition: all var(--transition-fast);
-      min-height: 44px;
-    }
-
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-subtle);
-    }
-
-    .form-input::placeholder {
-      color: var(--muted);
-    }
-
-    /* Segmented Control Specimen */
-    .segmented-control {
-      display: inline-flex;
-      background: var(--surface);
-      padding: 4px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      gap: 4px;
-    }
-
-    .segment-btn {
-      padding: 6px 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      border-radius: var(--radius-sm);
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-    }
-
-    .segment-btn.active {
-      background: var(--bg);
-      color: var(--fg);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Typography Showcase Box */
-    .type-specimen-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 32px;
-    }
-
-    .type-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 20px;
-      align-items: baseline;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .type-row:last-child {
-      border-bottom: none;
-    }
-
-    .type-meta {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* Code Export Box */
-    .code-box {
-      background: #181514;
-      color: #ede7db;
-      padding: 20px 24px;
-      border-radius: var(--radius);
-      border: 1px solid #2e2826;
-      overflow-x: auto;
-      font-family: var(--font-mono);
-      font-size: 0.825rem;
-      line-height: 1.6;
-    }
-
-    .code-keyword { color: #d48b28; }
-    .code-property { color: #e5b382; }
-    .code-value { color: #a4c2a5; }
-    .code-comment { color: #786f69; font-style: italic; }
-
-    /* Interactive Specimen Banner */
-    .hero-specimen {
-      background: radial-gradient(circle at 85% 20%, rgba(198, 127, 27, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 10% 80%, rgba(153, 34, 36, 0.06) 0%, transparent 40%),
-                  var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      margin-top: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-specimen::after {
-      content: "ཨོཾ་";
-      position: absolute;
-      right: 24px;
-      bottom: -20px;
-      font-family: var(--font-display);
-      font-size: 14rem;
-      color: rgba(26, 22, 21, 0.02);
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
+  <head>
+    <script type="application/json" data-od-external-dependencies>
+      [
+        "https://fonts.googleapis.com/css2?family=Jomolhari&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      ]
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayurveda & Dharma Sanctuary — Modern Tibetan Buddhist Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jomolhari&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Core Tibetan Buddhist Palette (Red, Maroon, Yellow, White) */
+        --bg: #ffffff;
+        --bg-oklch: oklch(100% 0 0);
+
+        --surface: #faf6f4;
+        --surface-oklch: oklch(96.8% 0.008 30);
+
+        --surface-subtle: #f4eae6;
+        --surface-subtle-oklch: oklch(93.5% 0.012 30);
+
+        --fg: #190a0c;
+        --fg-oklch: oklch(18% 0.015 25);
+
+        --muted: #6e4d52;
+        --muted-oklch: oklch(46.5% 0.025 25);
+
+        --border: #ebdcd7;
+        --border-oklch: oklch(89.5% 0.012 30);
+
+        --border-strong: #d9c1bb;
+        --border-strong-oklch: oklch(82.5% 0.018 30);
+
+        /* Primary Brand Accent — Sangha Red & Crimson */
+        --accent: #992224;
+        --accent-oklch: oklch(44% 0.165 28);
+        --accent-hover: #7f1b1d;
+        --accent-subtle: #fef0f0;
+
+        /* Secondary Accent — Saffron Amber */
+        --accent-secondary: #c67f1b;
+        --accent-secondary-oklch: oklch(62% 0.145 72);
+        --accent-secondary-hover: #ab6d14;
+        --accent-secondary-subtle: #faf0e1;
+
+        /* Tertiary Accent — Mineral Lapis */
+        --accent-tertiary: #244b6e;
+        --accent-tertiary-oklch: oklch(41% 0.085 245);
+        --accent-tertiary-subtle: #e9f0f7;
+
+        /* Semantic Status */
+        --success: #2d6a4f;
+        --success-subtle: #e8f3ee;
+        --warning: #b26a00;
+        --warning-subtle: #fcf1e0;
+
+        /* Typography Stacks */
+        --font-display: "Jomolhari", "Noto Serif Tibetan", Georgia, serif;
+        --font-sans:
+          "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        /* Metrics & Posture */
+        --radius-sm: 4px;
+        --radius: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-full: 9999px;
+        --border-width: 1px;
+        --shadow-sm: 0 1px 3px rgba(26, 22, 21, 0.04), 0 1px 2px rgba(26, 22, 21, 0.02);
+        --shadow-md: 0 4px 12px rgba(26, 22, 21, 0.06), 0 1px 3px rgba(26, 22, 21, 0.04);
+        --shadow-lg: 0 12px 28px rgba(26, 22, 21, 0.08), 0 4px 10px rgba(26, 22, 21, 0.04);
+
+        --container-max: 1240px;
+        --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .type-row {
-        grid-template-columns: 1fr;
+
+      /* Reset & Base Setup */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+        background-color: var(--bg);
+        color: var(--fg);
+      }
+
+      body {
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        background-color: var(--bg);
+        color: var(--fg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding-bottom: 80px;
+      }
+
+      /* Typography Hierarchy */
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-display {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--fg);
+      }
+
+      h1 {
+        font-size: clamp(2.25rem, 4vw, 3.25rem);
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 3vw, 2.25rem);
+        line-height: 1.3;
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        line-height: 1.4;
+      }
+
+      p {
+        color: var(--fg);
+        font-size: 0.975rem;
+      }
+
+      p.lead {
+        font-size: 1.125rem;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+
+      small,
+      .text-muted {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      code,
+      pre {
+        font-family: var(--font-mono);
+        font-size: 0.825rem;
+      }
+
+      /* Layout System */
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header & Hero Specimen */
+      .system-header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background-color: rgba(243, 238, 229, 0.94);
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand-mark {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--fg);
+      }
+
+      .brand-symbol {
+        width: 36px;
+        height: 36px;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(153, 34, 36, 0.25);
+      }
+
+      .brand-title {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-tag {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        background: var(--surface-subtle);
+        color: var(--accent);
+        padding: 2px 8px;
+        border-radius: var(--radius-full);
+        border: 1px solid var(--border);
+        font-weight: 500;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        list-style: none;
+      }
+
+      .nav-link {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+        padding: 6px 0;
+      }
+
+      .nav-link:hover {
+        color: var(--fg);
+      }
+
+      .nav-link.active {
+        color: var(--accent);
+        border-bottom: 2px solid var(--accent);
+      }
+
+      /* Section Wrapper */
+      .section-block {
+        margin-top: 56px;
+      }
+
+      .section-header {
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+        font-family: var(--font-display);
+        color: var(--fg);
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 4px;
+      }
+
+      /* Color Swatch Grid */
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .color-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition:
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .color-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-strong);
+      }
+
+      .color-preview {
+        height: 96px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .contrast-badge {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: var(--radius-sm);
+        backdrop-filter: blur(4px);
+      }
+
+      .color-info {
+        padding: 14px 16px;
+        background: var(--bg);
+      }
+
+      .color-name-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+      }
+
+      .color-role-name {
+        font-weight: 600;
+        font-size: 0.925rem;
+        color: var(--fg);
+      }
+
+      .color-token-tag {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      .color-codes {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed var(--border);
+      }
+
+      .color-meaning {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+
+      /* Buttons & Interaction Economy */
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         gap: 8px;
+        padding: 10px 20px;
+        border-radius: var(--radius);
+        font-family: var(--font-sans);
+        font-size: 0.925rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        border: 1px solid transparent;
+        outline: none;
+        min-height: 44px;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- App Header -->
-  <header class="system-header" data-od-id="system-header">
-    <div class="container">
-      <div class="header-nav">
-        <a href="#overview" class="brand-mark" data-od-id="header-brand">
-          <div class="brand-symbol">དྷ</div>
-          <div>
-            <div class="brand-title">Ayurveda & Dharma Sanctuary</div>
-            <div style="font-size: 0.75rem; color: var(--muted);">Modern Tibetan Buddhist Design System</div>
-          </div>
-        </a>
+      .btn:focus-visible {
+        box-shadow:
+          0 0 0 3px var(--bg),
+          0 0 0 5px var(--accent);
+      }
 
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <span class="brand-tag">v2.0 • Sangha Crimson & Saffron</span>
-          <a href="#tokens" class="btn btn-ghost" style="padding: 6px 14px; min-height: 36px; font-size: 0.85rem;" data-od-id="btn-inspect-tokens">
-            Tokens.css
+      /* Primary Accent Button — Sangha Crimson */
+      .btn-primary {
+        background-color: var(--accent);
+        color: #ffffff;
+        border-color: var(--accent);
+        box-shadow: 0 2px 6px rgba(153, 34, 36, 0.2);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+        border-color: var(--accent-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(153, 34, 36, 0.3);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+      }
+
+      /* Secondary Saffron Button */
+      .btn-secondary {
+        background-color: var(--surface);
+        color: var(--fg);
+        border-color: var(--border-strong);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--surface-subtle);
+        border-color: var(--muted);
+        color: var(--fg);
+      }
+
+      /* Saffron Gold Accent Action */
+      .btn-saffron {
+        background-color: var(--accent-secondary);
+        color: #ffffff;
+        border-color: var(--accent-secondary);
+        box-shadow: 0 2px 6px rgba(198, 127, 27, 0.25);
+      }
+
+      .btn-saffron:hover {
+        background-color: var(--accent-secondary-hover);
+        border-color: var(--accent-secondary-hover);
+        transform: translateY(-1px);
+      }
+
+      /* Ghost & Text Buttons */
+      .btn-ghost {
+        background-color: transparent;
+        color: var(--fg);
+        border-color: var(--border);
+      }
+
+      .btn-ghost:hover {
+        background-color: var(--surface);
+        border-color: var(--border-strong);
+      }
+
+      .btn-text {
+        background: transparent;
+        color: var(--accent);
+        padding: 8px 12px;
+        min-height: auto;
+      }
+
+      .btn-text:hover {
+        background-color: var(--accent-subtle);
+        border-radius: var(--radius);
+      }
+
+      /* Badges & Status Chips */
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: var(--radius-full);
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1;
+        border: 1px solid transparent;
+      }
+
+      .badge-crimson {
+        background: var(--accent-subtle);
+        color: var(--accent);
+        border-color: rgba(153, 34, 36, 0.2);
+      }
+
+      .badge-saffron {
+        background: var(--accent-secondary-subtle);
+        color: #8c5307;
+        border-color: rgba(198, 127, 27, 0.25);
+      }
+
+      .badge-lapis {
+        background: var(--accent-tertiary-subtle);
+        color: var(--accent-tertiary);
+        border-color: rgba(36, 75, 110, 0.25);
+      }
+
+      .badge-neutral {
+        background: var(--surface);
+        color: var(--fg);
+        border-color: var(--border);
+      }
+
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      /* Specimen Cards & Live UI Preview */
+      .specimen-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        transition: all var(--transition-fast);
+      }
+
+      .card:hover {
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow-md);
+      }
+
+      .card-banner {
+        background: linear-gradient(135deg, #f0e6d6 0%, #e2d3bd 100%);
+        padding: 24px;
+        position: relative;
+        border-bottom: 1px solid var(--border);
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .card-banner.crimson-tint {
+        background: linear-gradient(135deg, #f9eae8 0%, #eed2cf 100%);
+      }
+
+      .card-banner.lapis-tint {
+        background: linear-gradient(135deg, #eaf1f7 0%, #d4e2ed 100%);
+      }
+
+      .card-meta-top {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card-body {
+        padding: 24px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .card-title {
+        font-size: 1.35rem;
+        margin-bottom: 4px;
+      }
+
+      .card-details {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 8px 0;
+        padding: 12px;
+        background: var(--surface);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      .detail-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .detail-label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .detail-val {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--fg);
+      }
+
+      .card-footer {
+        padding: 16px 24px;
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .price-tag {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .price-amount {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--accent);
+        font-family: var(--font-display);
+      }
+
+      /* Form Controls Specimen */
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .form-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--fg);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: 10px 14px;
+        font-family: var(--font-sans);
+        font-size: 0.925rem;
+        color: var(--fg);
+        background-color: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        outline: none;
+        transition: all var(--transition-fast);
+        min-height: 44px;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-subtle);
+      }
+
+      .form-input::placeholder {
+        color: var(--muted);
+      }
+
+      /* Segmented Control Specimen */
+      .segmented-control {
+        display: inline-flex;
+        background: var(--surface);
+        padding: 4px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        gap: 4px;
+      }
+
+      .segment-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--muted);
+        border-radius: var(--radius-sm);
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+
+      .segment-btn.active {
+        background: var(--bg);
+        color: var(--fg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      /* Typography Showcase Box */
+      .type-specimen-box {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 32px;
+      }
+
+      .type-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 20px;
+        align-items: baseline;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .type-row:last-child {
+        border-bottom: none;
+      }
+
+      .type-meta {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      /* Code Export Box */
+      .code-box {
+        background: #181514;
+        color: #ede7db;
+        padding: 20px 24px;
+        border-radius: var(--radius);
+        border: 1px solid #2e2826;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 0.825rem;
+        line-height: 1.6;
+      }
+
+      .code-keyword {
+        color: #d48b28;
+      }
+      .code-property {
+        color: #e5b382;
+      }
+      .code-value {
+        color: #a4c2a5;
+      }
+      .code-comment {
+        color: #786f69;
+        font-style: italic;
+      }
+
+      /* Interactive Specimen Banner */
+      .hero-specimen {
+        background:
+          radial-gradient(circle at 85% 20%, rgba(198, 127, 27, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 10% 80%, rgba(153, 34, 36, 0.06) 0%, transparent 40%),
+          var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 48px;
+        margin-top: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-specimen::after {
+        content: "ཨོཾ་";
+        position: absolute;
+        right: 24px;
+        bottom: -20px;
+        font-family: var(--font-display);
+        font-size: 14rem;
+        color: rgba(26, 22, 21, 0.02);
+        pointer-events: none;
+        line-height: 1;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .type-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- App Header -->
+    <header class="system-header" data-od-id="system-header">
+      <div class="container">
+        <div class="header-nav">
+          <a href="#overview" class="brand-mark" data-od-id="header-brand">
+            <div class="brand-symbol">དྷ</div>
+            <div>
+              <div class="brand-title">Ayurveda & Dharma Sanctuary</div>
+              <div style="font-size: 0.75rem; color: var(--muted)">
+                Modern Tibetan Buddhist Design System
+              </div>
+            </div>
           </a>
+
+          <div style="display: flex; align-items: center; gap: 16px">
+            <span class="brand-tag">v2.0 • Sangha Crimson & Saffron</span>
+            <a
+              href="#tokens"
+              class="btn btn-ghost"
+              style="padding: 6px 14px; min-height: 36px; font-size: 0.85rem"
+              data-od-id="btn-inspect-tokens"
+            >
+              Tokens.css
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
+    <main class="container">
+      <!-- Hero Sanctuary Live Specimen -->
+      <section class="hero-specimen" data-od-id="hero-specimen">
+        <div class="hero-grid">
+          <div>
+            <div class="badge badge-crimson" style="margin-bottom: 16px">
+              <span class="badge-dot"></span>
+              Legacy of Contemplative Healing
+            </div>
+            <h1 style="margin-bottom: 16px">Solace Within Solitude & Sacred Science</h1>
+            <p class="lead" style="margin-bottom: 24px">
+              Harmonizing classical Ayurvedic medicine with the meditative stillness of Tibetan
+              Buddhist tradition. Experience bespoke therapies, mineral baths, and mindful sanctuary
+              in Wadduwa.
+            </p>
+            <div class="button-row">
+              <button class="btn btn-primary" data-od-id="cta-reserve-retreat">
+                <span>Book Sanctuary Stay</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+              <button class="btn btn-secondary" data-od-id="cta-explore-lineage">
+                View Physician Lineage
+              </button>
+            </div>
+          </div>
 
-    <!-- Hero Sanctuary Live Specimen -->
-    <section class="hero-specimen" data-od-id="hero-specimen">
-      <div class="hero-grid">
-        <div>
-          <div class="badge badge-crimson" style="margin-bottom: 16px;">
-            <span class="badge-dot"></span>
-            Legacy of Contemplative Healing
-          </div>
-          <h1 style="margin-bottom: 16px;">Solace Within Solitude & Sacred Science</h1>
-          <p class="lead" style="margin-bottom: 24px;">
-            Harmonizing classical Ayurvedic medicine with the meditative stillness of Tibetan Buddhist tradition. Experience bespoke therapies, mineral baths, and mindful sanctuary in Wadduwa.
-          </p>
-          <div class="button-row">
-            <button class="btn btn-primary" data-od-id="cta-reserve-retreat">
-              <span>Book Sanctuary Stay</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-            <button class="btn btn-secondary" data-od-id="cta-explore-lineage">
-              View Physician Lineage
-            </button>
-          </div>
-        </div>
-
-        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-md);">
-          <div style="font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-            <span>Daily Dharma & Therapy Cycle</span>
-            <span class="badge badge-saffron">Morning Phase</span>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--surface); border-radius: var(--radius); border-left: 3px solid var(--accent);">
-              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); font-weight: 600;">06:30</div>
-              <div>
-                <div style="font-size: 0.875rem; font-weight: 600;">Samatha Meditation & Herbal Tonic</div>
-                <div style="font-size: 0.775rem; color: var(--muted);">Lotus Pavilion • Ocean View</div>
+          <div
+            style="
+              background: var(--bg);
+              border: 1px solid var(--border);
+              border-radius: var(--radius-md);
+              padding: 24px;
+              box-shadow: var(--shadow-md);
+            "
+          >
+            <div
+              style="
+                font-family: var(--font-display);
+                font-size: 1.15rem;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <span>Daily Dharma & Therapy Cycle</span>
+              <span class="badge badge-saffron">Morning Phase</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 10px;
+                  background: var(--surface);
+                  border-radius: var(--radius);
+                  border-left: 3px solid var(--accent);
+                "
+              >
+                <div
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.8rem;
+                    color: var(--accent);
+                    font-weight: 600;
+                  "
+                >
+                  06:30
+                </div>
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600">
+                    Samatha Meditation & Herbal Tonic
+                  </div>
+                  <div style="font-size: 0.775rem; color: var(--muted)">
+                    Lotus Pavilion • Ocean View
+                  </div>
+                </div>
               </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--surface); border-radius: var(--radius); border-left: 3px solid var(--accent-secondary);">
-              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-secondary); font-weight: 600;">09:00</div>
-              <div>
-                <div style="font-size: 0.875rem; font-weight: 600;">Abhyanga & Shirodhara Oil Ritual</div>
-                <div style="font-size: 0.775rem; color: var(--muted);">Ayurvedic Medical Chamber 4</div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 10px;
+                  background: var(--surface);
+                  border-radius: var(--radius);
+                  border-left: 3px solid var(--accent-secondary);
+                "
+              >
+                <div
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.8rem;
+                    color: var(--accent-secondary);
+                    font-weight: 600;
+                  "
+                >
+                  09:00
+                </div>
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600">
+                    Abhyanga & Shirodhara Oil Ritual
+                  </div>
+                  <div style="font-size: 0.775rem; color: var(--muted)">
+                    Ayurvedic Medical Chamber 4
+                  </div>
+                </div>
               </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--surface); border-radius: var(--radius); border-left: 3px solid var(--accent-tertiary);">
-              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-tertiary); font-weight: 600;">16:00</div>
-              <div>
-                <div style="font-size: 0.875rem; font-weight: 600;">Tibetan Singing Bowl Sound Cleansing</div>
-                <div style="font-size: 0.775rem; color: var(--muted);">Silent Garden Colonnade</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Color Palette Section -->
-    <section class="section-block" id="palette" data-od-id="section-palette">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Harmonized Color Spectrum</h2>
-          <p class="section-subtitle">Grounded in traditional Himalayan monastic dyes, mineral lapis, and conch parchment.</p>
-        </div>
-        <div class="segmented-control" data-od-id="color-space-toggle">
-          <button class="segment-btn active">OKLch & Hex</button>
-          <button class="segment-btn">WCAG AAA Verified</button>
-        </div>
-      </div>
-
-      <div class="color-grid">
-        <!-- Sangha Crimson -->
-        <div class="color-card" data-od-id="swatch-accent">
-          <div class="color-preview" style="background: #992224;">
-            <span class="contrast-badge" style="background: rgba(0,0,0,0.5); color: #fff;">AAA • 7.8:1 on #fff</span>
-            <span style="color: rgba(255,255,255,0.85); font-family: var(--font-mono); font-size: 0.75rem;">Primary</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Sangha Crimson</span>
-              <span class="color-token-tag">--accent</span>
-            </div>
-            <p class="color-meaning">Cinnabar & madder monastic robe dye. High-signal focal point for primary CTAs and active states.</p>
-            <div class="color-codes">
-              <span>#992224</span>
-              <span>oklch(44.0% 0.165 28)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Saffron Amber -->
-        <div class="color-card" data-od-id="swatch-accent-secondary">
-          <div class="color-preview" style="background: #c67f1b;">
-            <span class="contrast-badge" style="background: rgba(0,0,0,0.5); color: #fff;">AA • 4.6:1 on #1a</span>
-            <span style="color: rgba(255,255,255,0.9); font-family: var(--font-mono); font-size: 0.75rem;">Secondary</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Saffron Amber</span>
-              <span class="color-token-tag">--accent-secondary</span>
-            </div>
-            <p class="color-meaning">Solar saffron shawl & gold temple leaf. Used for contextual highlights, badges, and warm emphasis.</p>
-            <div class="color-codes">
-              <span>#c67f1b</span>
-              <span>oklch(62.0% 0.145 72)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mineral Lapis -->
-        <div class="color-card" data-od-id="swatch-accent-tertiary">
-          <div class="color-preview" style="background: #244b6e;">
-            <span class="contrast-badge" style="background: rgba(0,0,0,0.5); color: #fff;">AAA • 8.1:1 on #fff</span>
-            <span style="color: rgba(255,255,255,0.85); font-family: var(--font-mono); font-size: 0.75rem;">Tertiary</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Mineral Lapis</span>
-              <span class="color-token-tag">--accent-tertiary</span>
-            </div>
-            <p class="color-meaning">Crushed lapis lazuli pigment. Evokes Medicine Buddha and boundless sky for quiet contemplation.</p>
-            <div class="color-codes">
-              <span>#244b6e</span>
-              <span>oklch(41.0% 0.085 245)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Conch Parchment -->
-        <div class="color-card" data-od-id="swatch-bg">
-          <div class="color-preview" style="background: #fcfbf8; border: 1px solid var(--border);">
-            <span class="contrast-badge" style="background: rgba(26,22,21,0.08); color: var(--fg);">Base Canvas</span>
-            <span style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem;">--bg</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Conch Parchment</span>
-              <span class="color-token-tag">--bg</span>
-            </div>
-            <p class="color-meaning">Handmade Tibetan paper & sacred conch white. Soft, reflective canvas avoiding clinical starkness.</p>
-            <div class="color-codes">
-              <span>#fcfbf8</span>
-              <span>oklch(98.8% 0.006 85)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sandstone Surface -->
-        <div class="color-card" data-od-id="swatch-surface">
-          <div class="color-preview" style="background: #f3eee5;">
-            <span class="contrast-badge" style="background: rgba(26,22,21,0.08); color: var(--fg);">Surface</span>
-            <span style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem;">--surface</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Sandstone Surface</span>
-              <span class="color-token-tag">--surface</span>
-            </div>
-            <p class="color-meaning">Plaster and Himalayan stone for cards, section backgrounds, and floating panels.</p>
-            <div class="color-codes">
-              <span>#f3eee5</span>
-              <span>oklch(94.8% 0.014 80)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Smoked Ink -->
-        <div class="color-card" data-od-id="swatch-fg">
-          <div class="color-preview" style="background: #1a1615;">
-            <span class="contrast-badge" style="background: rgba(255,255,255,0.2); color: #fff;">AAA • 15.2:1</span>
-            <span style="color: rgba(255,255,255,0.8); font-family: var(--font-mono); font-size: 0.75rem;">Foreground</span>
-          </div>
-          <div class="color-info">
-            <div class="color-name-group">
-              <span class="color-role-name">Smoked Ink</span>
-              <span class="color-token-tag">--fg</span>
-            </div>
-            <p class="color-meaning">Woodblock carbon ink tone for monumental titles, headlines, and crystal-clear body copy.</p>
-            <div class="color-codes">
-              <span>#1a1615</span>
-              <span>oklch(19.5% 0.008 45)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Component Matrix Section -->
-    <section class="section-block" id="components" data-od-id="section-components">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Component System & Interaction States</h2>
-          <p class="section-subtitle">Strict action economy with one primary CTA per viewport and accessible contrast pairing.</p>
-        </div>
-      </div>
-
-      <div class="specimen-grid">
-        <!-- Interactive Experience Card 1 -->
-        <div class="card" data-od-id="card-retreat-panchakarma">
-          <div class="card-banner crimson-tint">
-            <div class="card-meta-top">
-              <span class="badge badge-crimson">Comprehensive Healing</span>
-              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); font-weight: 600;">14 Days</span>
-            </div>
-            <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--accent);">Ayurvedic Lineage</div>
-            <h3 class="card-title">Classical Panchakarma & Samatha Sanctuary</h3>
-          </div>
-          <div class="card-body">
-            <p>Deep systemic cleansing guided by resident Ayurvedic Vaidyas with daily meditation sessions tailored to individual doshic constitution.</p>
-            <div class="card-details">
-              <div class="detail-item">
-                <span class="detail-label">Consultations</span>
-                <span class="detail-val">Daily Pulse & Nadi</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Immersion</span>
-                <span class="detail-val">Full Board & Herbal Elixirs</span>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 10px;
+                  background: var(--surface);
+                  border-radius: var(--radius);
+                  border-left: 3px solid var(--accent-tertiary);
+                "
+              >
+                <div
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.8rem;
+                    color: var(--accent-tertiary);
+                    font-weight: 600;
+                  "
+                >
+                  16:00
+                </div>
+                <div>
+                  <div style="font-size: 0.875rem; font-weight: 600">
+                    Tibetan Singing Bowl Sound Cleansing
+                  </div>
+                  <div style="font-size: 0.775rem; color: var(--muted)">
+                    Silent Garden Colonnade
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card-footer">
-            <div class="price-tag">
-              <span style="font-size: 0.75rem; color: var(--muted);">Starting from</span>
-              <span class="price-amount">$280 <small style="font-size: 0.8rem; color: var(--muted); font-family: var(--font-sans);">/ night</small></span>
-            </div>
-            <button class="btn btn-primary" data-od-id="btn-book-panchakarma">Reserve Program</button>
+        </div>
+      </section>
+
+      <!-- Color Palette Section -->
+      <section class="section-block" id="palette" data-od-id="section-palette">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Harmonized Color Spectrum</h2>
+            <p class="section-subtitle">
+              Grounded in traditional Himalayan monastic dyes, mineral lapis, and conch parchment.
+            </p>
+          </div>
+          <div class="segmented-control" data-od-id="color-space-toggle">
+            <button class="segment-btn active">OKLch & Hex</button>
+            <button class="segment-btn">WCAG AAA Verified</button>
           </div>
         </div>
 
-        <!-- Interactive Experience Card 2 -->
-        <div class="card" data-od-id="card-retreat-mindfulness">
-          <div class="card-banner lapis-tint">
-            <div class="card-meta-top">
-              <span class="badge badge-lapis">Silent Retreat</span>
-              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-tertiary); font-weight: 600;">7 Days</span>
+        <div class="color-grid">
+          <!-- Sangha Crimson -->
+          <div class="color-card" data-od-id="swatch-accent">
+            <div class="color-preview" style="background: #992224">
+              <span class="contrast-badge" style="background: rgba(0, 0, 0, 0.5); color: #fff"
+                >AAA • 7.8:1 on #fff</span
+              >
+              <span
+                style="
+                  color: rgba(255, 255, 255, 0.85);
+                  font-family: var(--font-mono);
+                  font-size: 0.75rem;
+                "
+                >Primary</span
+              >
             </div>
-            <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--accent-tertiary);">Mind & Breath</div>
-            <h3 class="card-title">Vipassana Ocean Solitude & Herbal Rest</h3>
-          </div>
-          <div class="card-body">
-            <p>Noble silence, mindfulness walks through herbal groves, gentle Marma therapy, and warm seaside mineral soaks.</p>
-            <div class="card-details">
-              <div class="detail-item">
-                <span class="detail-label">Guidance</span>
-                <span class="detail-val">Monastic Masters</span>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Sangha Crimson</span>
+                <span class="color-token-tag">--accent</span>
               </div>
-              <div class="detail-item">
-                <span class="detail-label">Diet</span>
-                <span class="detail-val">Sattvic Organic Kitchen</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="price-tag">
-              <span style="font-size: 0.75rem; color: var(--muted);">Starting from</span>
-              <span class="price-amount" style="color: var(--accent-tertiary);">$210 <small style="font-size: 0.8rem; color: var(--muted); font-family: var(--font-sans);">/ night</small></span>
-            </div>
-            <button class="btn btn-secondary" data-od-id="btn-details-mindfulness">Explore Pathway</button>
-          </div>
-        </div>
-
-        <!-- Interactive Reservation & Consultation Form -->
-        <div class="card" data-od-id="card-form-specimen" style="background: var(--surface);">
-          <div class="card-body">
-            <div class="badge badge-saffron" style="align-self: flex-start; margin-bottom: 8px;">Personalized Intake</div>
-            <h3 style="font-family: var(--font-display); margin-bottom: 6px;">Physician Consultation Request</h3>
-            <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px;">Our head Vaidya reviews your medical history before arrival.</p>
-
-            <div class="form-group">
-              <label class="form-label" for="full-name">Full Name</label>
-              <input type="text" id="full-name" class="form-input" placeholder="e.g. Tenzin Dorje" value="Elena Rostova" />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="focus-area">Primary Health & Spiritual Goal</label>
-              <select id="focus-area" class="form-select">
-                <option selected>Panchakarma Detox & Stress Recovery</option>
-                <option>Immune Rejuvenation (Rasayana)</option>
-                <option>Joint & Spine Therapy (Sandhigata)</option>
-                <option>Dharma Meditation & Sleep Restoration</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="duration-select">Preferred Duration</label>
-              <div class="segmented-control" style="width: 100%; display: flex;">
-                <button class="segment-btn active" style="flex: 1;">7 Nights</button>
-                <button class="segment-btn" style="flex: 1;">14 Nights</button>
-                <button class="segment-btn" style="flex: 1;">21 Nights</button>
+              <p class="color-meaning">
+                Cinnabar & madder monastic robe dye. High-signal focal point for primary CTAs and
+                active states.
+              </p>
+              <div class="color-codes">
+                <span>#992224</span>
+                <span>oklch(44.0% 0.165 28)</span>
               </div>
             </div>
+          </div>
 
-            <button class="btn btn-primary" style="width: 100%; margin-top: 8px;" data-od-id="btn-submit-consultation">
-              Submit Medical Profile
-            </button>
+          <!-- Saffron Amber -->
+          <div class="color-card" data-od-id="swatch-accent-secondary">
+            <div class="color-preview" style="background: #c67f1b">
+              <span class="contrast-badge" style="background: rgba(0, 0, 0, 0.5); color: #fff"
+                >AA • 4.6:1 on #1a</span
+              >
+              <span
+                style="
+                  color: rgba(255, 255, 255, 0.9);
+                  font-family: var(--font-mono);
+                  font-size: 0.75rem;
+                "
+                >Secondary</span
+              >
+            </div>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Saffron Amber</span>
+                <span class="color-token-tag">--accent-secondary</span>
+              </div>
+              <p class="color-meaning">
+                Solar saffron shawl & gold temple leaf. Used for contextual highlights, badges, and
+                warm emphasis.
+              </p>
+              <div class="color-codes">
+                <span>#c67f1b</span>
+                <span>oklch(62.0% 0.145 72)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mineral Lapis -->
+          <div class="color-card" data-od-id="swatch-accent-tertiary">
+            <div class="color-preview" style="background: #244b6e">
+              <span class="contrast-badge" style="background: rgba(0, 0, 0, 0.5); color: #fff"
+                >AAA • 8.1:1 on #fff</span
+              >
+              <span
+                style="
+                  color: rgba(255, 255, 255, 0.85);
+                  font-family: var(--font-mono);
+                  font-size: 0.75rem;
+                "
+                >Tertiary</span
+              >
+            </div>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Mineral Lapis</span>
+                <span class="color-token-tag">--accent-tertiary</span>
+              </div>
+              <p class="color-meaning">
+                Crushed lapis lazuli pigment. Evokes Medicine Buddha and boundless sky for quiet
+                contemplation.
+              </p>
+              <div class="color-codes">
+                <span>#244b6e</span>
+                <span>oklch(41.0% 0.085 245)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conch Parchment -->
+          <div class="color-card" data-od-id="swatch-bg">
+            <div class="color-preview" style="background: #fcfbf8; border: 1px solid var(--border)">
+              <span
+                class="contrast-badge"
+                style="background: rgba(26, 22, 21, 0.08); color: var(--fg)"
+                >Base Canvas</span
+              >
+              <span style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem"
+                >--bg</span
+              >
+            </div>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Conch Parchment</span>
+                <span class="color-token-tag">--bg</span>
+              </div>
+              <p class="color-meaning">
+                Handmade Tibetan paper & sacred conch white. Soft, reflective canvas avoiding
+                clinical starkness.
+              </p>
+              <div class="color-codes">
+                <span>#fcfbf8</span>
+                <span>oklch(98.8% 0.006 85)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sandstone Surface -->
+          <div class="color-card" data-od-id="swatch-surface">
+            <div class="color-preview" style="background: #f3eee5">
+              <span
+                class="contrast-badge"
+                style="background: rgba(26, 22, 21, 0.08); color: var(--fg)"
+                >Surface</span
+              >
+              <span style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem"
+                >--surface</span
+              >
+            </div>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Sandstone Surface</span>
+                <span class="color-token-tag">--surface</span>
+              </div>
+              <p class="color-meaning">
+                Plaster and Himalayan stone for cards, section backgrounds, and floating panels.
+              </p>
+              <div class="color-codes">
+                <span>#f3eee5</span>
+                <span>oklch(94.8% 0.014 80)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Smoked Ink -->
+          <div class="color-card" data-od-id="swatch-fg">
+            <div class="color-preview" style="background: #1a1615">
+              <span class="contrast-badge" style="background: rgba(255, 255, 255, 0.2); color: #fff"
+                >AAA • 15.2:1</span
+              >
+              <span
+                style="
+                  color: rgba(255, 255, 255, 0.8);
+                  font-family: var(--font-mono);
+                  font-size: 0.75rem;
+                "
+                >Foreground</span
+              >
+            </div>
+            <div class="color-info">
+              <div class="color-name-group">
+                <span class="color-role-name">Smoked Ink</span>
+                <span class="color-token-tag">--fg</span>
+              </div>
+              <p class="color-meaning">
+                Woodblock carbon ink tone for monumental titles, headlines, and crystal-clear body
+                copy.
+              </p>
+              <div class="color-codes">
+                <span>#1a1615</span>
+                <span>oklch(19.5% 0.008 45)</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Typography Scale Section -->
-    <section class="section-block" id="typography" data-od-id="section-typography">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Typography & Calligraphic Balance</h2>
-          <p class="section-subtitle">Jomolhari monumental serif paired with modern geometric UI typography.</p>
-        </div>
-      </div>
-
-      <div class="type-specimen-box">
-        <div class="type-row">
-          <div class="type-meta">Display Hero<br>48px / 1.2</div>
-          <div style="font-family: var(--font-display); font-size: 2.75rem; line-height: 1.2; color: var(--fg);">
-            Discover A Legacy Of Ayurvedic Excellence
+      <!-- Component Matrix Section -->
+      <section class="section-block" id="components" data-od-id="section-components">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Component System & Interaction States</h2>
+            <p class="section-subtitle">
+              Strict action economy with one primary CTA per viewport and accessible contrast
+              pairing.
+            </p>
           </div>
         </div>
 
-        <div class="type-row">
-          <div class="type-meta">Section Title<br>32px / 1.3</div>
-          <div style="font-family: var(--font-display); font-size: 2rem; color: var(--fg);">
-            Nurtured Through The Years, Tailored For You
+        <div class="specimen-grid">
+          <!-- Interactive Experience Card 1 -->
+          <div class="card" data-od-id="card-retreat-panchakarma">
+            <div class="card-banner crimson-tint">
+              <div class="card-meta-top">
+                <span class="badge badge-crimson">Comprehensive Healing</span>
+                <span
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.75rem;
+                    color: var(--accent);
+                    font-weight: 600;
+                  "
+                  >14 Days</span
+                >
+              </div>
+              <div
+                style="font-family: var(--font-display); font-size: 0.9rem; color: var(--accent)"
+              >
+                Ayurvedic Lineage
+              </div>
+              <h3 class="card-title">Classical Panchakarma & Samatha Sanctuary</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                Deep systemic cleansing guided by resident Ayurvedic Vaidyas with daily meditation
+                sessions tailored to individual doshic constitution.
+              </p>
+              <div class="card-details">
+                <div class="detail-item">
+                  <span class="detail-label">Consultations</span>
+                  <span class="detail-val">Daily Pulse & Nadi</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Immersion</span>
+                  <span class="detail-val">Full Board & Herbal Elixirs</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="price-tag">
+                <span style="font-size: 0.75rem; color: var(--muted)">Starting from</span>
+                <span class="price-amount"
+                  >$280
+                  <small
+                    style="font-size: 0.8rem; color: var(--muted); font-family: var(--font-sans)"
+                    >/ night</small
+                  ></span
+                >
+              </div>
+              <button class="btn btn-primary" data-od-id="btn-book-panchakarma">
+                Reserve Program
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Experience Card 2 -->
+          <div class="card" data-od-id="card-retreat-mindfulness">
+            <div class="card-banner lapis-tint">
+              <div class="card-meta-top">
+                <span class="badge badge-lapis">Silent Retreat</span>
+                <span
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.75rem;
+                    color: var(--accent-tertiary);
+                    font-weight: 600;
+                  "
+                  >7 Days</span
+                >
+              </div>
+              <div
+                style="
+                  font-family: var(--font-display);
+                  font-size: 0.9rem;
+                  color: var(--accent-tertiary);
+                "
+              >
+                Mind & Breath
+              </div>
+              <h3 class="card-title">Vipassana Ocean Solitude & Herbal Rest</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                Noble silence, mindfulness walks through herbal groves, gentle Marma therapy, and
+                warm seaside mineral soaks.
+              </p>
+              <div class="card-details">
+                <div class="detail-item">
+                  <span class="detail-label">Guidance</span>
+                  <span class="detail-val">Monastic Masters</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Diet</span>
+                  <span class="detail-val">Sattvic Organic Kitchen</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="price-tag">
+                <span style="font-size: 0.75rem; color: var(--muted)">Starting from</span>
+                <span class="price-amount" style="color: var(--accent-tertiary)"
+                  >$210
+                  <small
+                    style="font-size: 0.8rem; color: var(--muted); font-family: var(--font-sans)"
+                    >/ night</small
+                  ></span
+                >
+              </div>
+              <button class="btn btn-secondary" data-od-id="btn-details-mindfulness">
+                Explore Pathway
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Reservation & Consultation Form -->
+          <div class="card" data-od-id="card-form-specimen" style="background: var(--surface)">
+            <div class="card-body">
+              <div class="badge badge-saffron" style="align-self: flex-start; margin-bottom: 8px">
+                Personalized Intake
+              </div>
+              <h3 style="font-family: var(--font-display); margin-bottom: 6px">
+                Physician Consultation Request
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 16px">
+                Our head Vaidya reviews your medical history before arrival.
+              </p>
+
+              <div class="form-group">
+                <label class="form-label" for="full-name">Full Name</label>
+                <input
+                  type="text"
+                  id="full-name"
+                  class="form-input"
+                  placeholder="e.g. Tenzin Dorje"
+                  value="Elena Rostova"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="focus-area">Primary Health & Spiritual Goal</label>
+                <select id="focus-area" class="form-select">
+                  <option selected>Panchakarma Detox & Stress Recovery</option>
+                  <option>Immune Rejuvenation (Rasayana)</option>
+                  <option>Joint & Spine Therapy (Sandhigata)</option>
+                  <option>Dharma Meditation & Sleep Restoration</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="duration-select">Preferred Duration</label>
+                <div class="segmented-control" style="width: 100%; display: flex">
+                  <button class="segment-btn active" style="flex: 1">7 Nights</button>
+                  <button class="segment-btn" style="flex: 1">14 Nights</button>
+                  <button class="segment-btn" style="flex: 1">21 Nights</button>
+                </div>
+              </div>
+
+              <button
+                class="btn btn-primary"
+                style="width: 100%; margin-top: 8px"
+                data-od-id="btn-submit-consultation"
+              >
+                Submit Medical Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography Scale Section -->
+      <section class="section-block" id="typography" data-od-id="section-typography">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Typography & Calligraphic Balance</h2>
+            <p class="section-subtitle">
+              Jomolhari monumental serif paired with modern geometric UI typography.
+            </p>
           </div>
         </div>
 
-        <div class="type-row">
-          <div class="type-meta">Card Title<br>22px / 1.4</div>
-          <div style="font-family: var(--font-display); font-size: 1.375rem; color: var(--fg);">
-            Solace Within Solitude & Seaside Serenity
+        <div class="type-specimen-box">
+          <div class="type-row">
+            <div class="type-meta">Display Hero<br />48px / 1.2</div>
+            <div
+              style="
+                font-family: var(--font-display);
+                font-size: 2.75rem;
+                line-height: 1.2;
+                color: var(--fg);
+              "
+            >
+              Discover A Legacy Of Ayurvedic Excellence
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Section Title<br />32px / 1.3</div>
+            <div style="font-family: var(--font-display); font-size: 2rem; color: var(--fg)">
+              Nurtured Through The Years, Tailored For You
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Card Title<br />22px / 1.4</div>
+            <div style="font-family: var(--font-display); font-size: 1.375rem; color: var(--fg)">
+              Solace Within Solitude & Seaside Serenity
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Body Regular<br />16px / 1.65</div>
+            <div
+              style="
+                font-family: var(--font-sans);
+                font-size: 1rem;
+                line-height: 1.65;
+                color: var(--fg);
+                max-width: 780px;
+              "
+            >
+              The Siddhalepa sanctuary blends authentic Hela-Veda and Ayurvedic heritage with
+              Buddhist contemplative disciplines. Every herbal compound is prepared using classical
+              texts, wild-harvested roots, and intentional mindfulness.
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Micro / Metadata<br />13px Mono</div>
+            <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted)">
+              DOSHA: VATA-PITTA • OIL SPEC: MAHANARAYANA TAILA • DURATION: 90 MIN
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tokens Code Architecture Section -->
+      <section class="section-block" id="tokens" data-od-id="section-tokens">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Production Design Tokens CSS</h2>
+            <p class="section-subtitle">
+              Ready for direct inclusion in production stylesheets and components.
+            </p>
           </div>
         </div>
 
-        <div class="type-row">
-          <div class="type-meta">Body Regular<br>16px / 1.65</div>
-          <div style="font-family: var(--font-sans); font-size: 1rem; line-height: 1.65; color: var(--fg); max-width: 780px;">
-            The Siddhalepa sanctuary blends authentic Hela-Veda and Ayurvedic heritage with Buddhist contemplative disciplines. Every herbal compound is prepared using classical texts, wild-harvested roots, and intentional mindfulness.
-          </div>
+        <div class="code-box" data-od-id="code-tokens-css">
+          <span class="code-comment"
+            >/* ========================================================================== Tibetan
+            Buddhist Modern Design System Tokens Brand: Siddhalepa Ayurveda Resort Wadduwa (Tibetan
+            Reinterpretation)
+            ========================================================================== */</span
+          >
+
+          <span class="code-keyword">:root</span> {
+          <span class="code-comment">/* Canvas & Surfaces */</span>
+          <span class="code-property">--bg</span>: <span class="code-value">#fcfbf8</span>;
+          <span class="code-comment">/* Conch Parchment: oklch(98.8% 0.006 85) */</span>
+          <span class="code-property">--surface</span>: <span class="code-value">#f3eee5</span>;
+          <span class="code-comment">/* Sandstone Surface: oklch(94.8% 0.014 80) */</span>
+          <span class="code-property">--surface-subtle</span>:
+          <span class="code-value">#ede7db</span>;
+          <span class="code-comment">/* Monastery Stone: oklch(92.2% 0.018 80) */</span>
+
+          <span class="code-comment">/* Typography & Dividers */</span>
+          <span class="code-property">--fg</span>: <span class="code-value">#1a1615</span>;
+          <span class="code-comment">/* Smoked Woodblock Ink: oklch(19.5% 0.008 45) */</span>
+          <span class="code-property">--muted</span>: <span class="code-value">#6e665d</span>;
+          <span class="code-comment">/* Weathered Prayer Slate: oklch(51.5% 0.018 65) */</span>
+          <span class="code-property">--border</span>: <span class="code-value">#ded7c8</span>;
+          <span class="code-comment">/* Sandstone Hairline: oklch(87.5% 0.016 80) */</span>
+
+          <span class="code-comment">/* High-Signal Monastic Accents */</span>
+          <span class="code-property">--accent</span>: <span class="code-value">#992224</span>;
+          <span class="code-comment">/* Sangha Crimson / Cinnabar: oklch(44.0% 0.165 28) */</span>
+          <span class="code-property">--accent-hover</span>:
+          <span class="code-value">#7f1b1d</span>;
+          <span class="code-property">--accent-secondary</span>:
+          <span class="code-value">#c67f1b</span>;
+          <span class="code-comment">/* Saffron Amber / Gold Leaf: oklch(62.0% 0.145 72) */</span>
+          <span class="code-property">--accent-tertiary</span>:
+          <span class="code-value">#244b6e</span>;
+          <span class="code-comment">/* Mineral Lapis Lazuli: oklch(41.0% 0.085 245) */</span>
+
+          <span class="code-comment">/* Typography Stacks */</span>
+          <span class="code-property">--font-display</span>:
+          <span class="code-value">'Jomolhari', Georgia, serif</span>;
+          <span class="code-property">--font-body</span>:
+          <span class="code-value">'Plus Jakarta Sans', system-ui, sans-serif</span>;
+          <span class="code-property">--font-mono</span>:
+          <span class="code-value">'JetBrains Mono', monospace</span>;
+
+          <span class="code-comment">/* Metrics */</span>
+          <span class="code-property">--radius</span>: <span class="code-value">8px</span>;
+          <span class="code-property">--border-width</span>: <span class="code-value">1px</span>;
+          <span class="code-property">--space-unit</span>: <span class="code-value">8px</span>; }
         </div>
-
-        <div class="type-row">
-          <div class="type-meta">Micro / Metadata<br>13px Mono</div>
-          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted);">
-            DOSHA: VATA-PITTA • OIL SPEC: MAHANARAYANA TAILA • DURATION: 90 MIN
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tokens Code Architecture Section -->
-    <section class="section-block" id="tokens" data-od-id="section-tokens">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Production Design Tokens CSS</h2>
-          <p class="section-subtitle">Ready for direct inclusion in production stylesheets and components.</p>
-        </div>
-      </div>
-
-      <div class="code-box" data-od-id="code-tokens-css">
-<span class="code-comment">/* ==========================================================================
-   Tibetan Buddhist Modern Design System Tokens
-   Brand: Siddhalepa Ayurveda Resort Wadduwa (Tibetan Reinterpretation)
-   ========================================================================== */</span>
-
-<span class="code-keyword">:root</span> {
-  <span class="code-comment">/* Canvas & Surfaces */</span>
-  <span class="code-property">--bg</span>: <span class="code-value">#fcfbf8</span>;               <span class="code-comment">/* Conch Parchment: oklch(98.8% 0.006 85) */</span>
-  <span class="code-property">--surface</span>: <span class="code-value">#f3eee5</span>;          <span class="code-comment">/* Sandstone Surface: oklch(94.8% 0.014 80) */</span>
-  <span class="code-property">--surface-subtle</span>: <span class="code-value">#ede7db</span>;   <span class="code-comment">/* Monastery Stone: oklch(92.2% 0.018 80) */</span>
-  
-  <span class="code-comment">/* Typography & Dividers */</span>
-  <span class="code-property">--fg</span>: <span class="code-value">#1a1615</span>;               <span class="code-comment">/* Smoked Woodblock Ink: oklch(19.5% 0.008 45) */</span>
-  <span class="code-property">--muted</span>: <span class="code-value">#6e665d</span>;            <span class="code-comment">/* Weathered Prayer Slate: oklch(51.5% 0.018 65) */</span>
-  <span class="code-property">--border</span>: <span class="code-value">#ded7c8</span>;           <span class="code-comment">/* Sandstone Hairline: oklch(87.5% 0.016 80) */</span>
-
-  <span class="code-comment">/* High-Signal Monastic Accents */</span>
-  <span class="code-property">--accent</span>: <span class="code-value">#992224</span>;           <span class="code-comment">/* Sangha Crimson / Cinnabar: oklch(44.0% 0.165 28) */</span>
-  <span class="code-property">--accent-hover</span>: <span class="code-value">#7f1b1d</span>;
-  <span class="code-property">--accent-secondary</span>: <span class="code-value">#c67f1b</span>; <span class="code-comment">/* Saffron Amber / Gold Leaf: oklch(62.0% 0.145 72) */</span>
-  <span class="code-property">--accent-tertiary</span>: <span class="code-value">#244b6e</span>;  <span class="code-comment">/* Mineral Lapis Lazuli: oklch(41.0% 0.085 245) */</span>
-
-  <span class="code-comment">/* Typography Stacks */</span>
-  <span class="code-property">--font-display</span>: <span class="code-value">'Jomolhari', Georgia, serif</span>;
-  <span class="code-property">--font-body</span>: <span class="code-value">'Plus Jakarta Sans', system-ui, sans-serif</span>;
-  <span class="code-property">--font-mono</span>: <span class="code-value">'JetBrains Mono', monospace</span>;
-
-  <span class="code-comment">/* Metrics */</span>
-  <span class="code-property">--radius</span>: <span class="code-value">8px</span>;
-  <span class="code-property">--border-width</span>: <span class="code-value">1px</span>;
-  <span class="code-property">--space-unit</span>: <span class="code-value">8px</span>;
-}
-      </div>
-    </section>
-
-  </main>
-
-</body>
+      </section>
+    </main>
+  </body>
 </html>

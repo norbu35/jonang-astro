@@ -1,6 +1,7 @@
 ---
 import { PRIMARY_NAVIGATION } from "../data/navigation";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
+import ThemeToggle from "./ThemeToggle.astro";
 
 function hasSublinks(item: (typeof PRIMARY_NAVIGATION)[number]) {
   return Array.isArray(item.sublinks) && item.sublinks.length > 0;
@@ -24,10 +25,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
 }
 ---
 
-<header
-  id="site-header"
-  class="fixed top-0 z-[9999] w-full glass-header will-change-transform"
->
+<header id="site-header" class="fixed top-0 z-[9999] w-full glass-header will-change-transform">
   <div
     class="container relative flex items-center justify-between gap-3 sm:gap-4"
     style="height: var(--header-h)"
@@ -56,133 +54,147 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
 
       <!-- High-Contrast Luminous Brand Typography -->
       <div class="flex flex-col justify-center select-none" aria-hidden="true">
-        <span class="font-display text-[15px] sm:text-[18px] lg:text-[21px] xl:text-[22px] leading-[1.15] text-[#fcfbf8] tracking-[0.02em] font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-[#fdbc2d] transition-colors duration-200">
+        <span
+          class="font-display text-[15px] sm:text-[18px] lg:text-[21px] xl:text-[22px] leading-[1.15] text-[#fcfbf8] tracking-[0.02em] font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-[#fdbc2d] transition-colors duration-200"
+        >
           Jonang Takten<br class="hidden sm:inline" /> Phuntsok Choeling
         </span>
       </div>
     </a>
 
     <!-- Desktop Navigation Island & Actions -->
-    <nav
-      class="hidden items-center gap-2 lg:flex"
-      aria-label="Primary Navigation"
-    >
+    <nav class="hidden items-center gap-2 lg:flex" aria-label="Primary Navigation">
       <!-- Consecrated Floating Pill Bar -->
       <ul class="nav-surface flex list-none items-center gap-1 m-0 p-1">
-        {PRIMARY_NAVIGATION.map((item) => (
-          <li class="group relative list-none m-0">
-            {item.href ? (
-              <a
-                href={item.href}
-                class:list={[
-                  "nav-link flex items-center gap-1.5",
-                  isActiveItem(item) && "nav-link-active",
-                ]}
-                aria-current={isActivePath(item.href) ? "page" : undefined}
-              >
-                <span>{item.shortLabel ?? item.label}</span>
-                {hasSublinks(item) && (
-                  <svg
-                    class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5.5 7.5L10 12l4.5-4.5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                )}
-              </a>
-            ) : (
-              <button
-                type="button"
-                class="nav-link flex items-center gap-1.5 cursor-pointer"
-                aria-label={item.label}
-              >
-                <span>{item.shortLabel ?? item.label}</span>
-                {hasSublinks(item) && (
-                  <svg
-                    class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5.5 7.5L10 12l4.5-4.5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                )}
-              </button>
-            )}
+        {
+          PRIMARY_NAVIGATION.map((item) => (
+            <li class="group relative list-none m-0">
+              {item.href ? (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "nav-link flex items-center gap-1.5",
+                    isActiveItem(item) && "nav-link-active",
+                  ]}
+                  aria-current={isActivePath(item.href) ? "page" : undefined}
+                >
+                  <span>{item.shortLabel ?? item.label}</span>
+                  {hasSublinks(item) && (
+                    <svg
+                      class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5.5 7.5L10 12l4.5-4.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  )}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  class="nav-link flex items-center gap-1.5 cursor-pointer"
+                  aria-label={item.label}
+                >
+                  <span>{item.shortLabel ?? item.label}</span>
+                  {hasSublinks(item) && (
+                    <svg
+                      class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5.5 7.5L10 12l4.5-4.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  )}
+                </button>
+              )}
 
-            {/* Desktop Dropdown Menu */}
-            {hasSublinks(item) && (
-              <div
-                class="absolute left-1/2 top-full z-[1000] w-[min(22rem,90vw)] -translate-x-1/2 translate-y-2 opacity-0 pointer-events-none pt-3 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto"
-              >
-                <div class="nav-dropdown-glass p-3 shadow-2xl">
-                  <ul class="flex list-none flex-col gap-1 text-sm m-0 p-0">
-                    {item.sublinks?.map((sublink) => (
-                      <li class="list-none m-0">
-                        {sublink ? (
-                          <a
-                            href={sublink.href}
-                            class:list={[
-                              "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs text-white/90 font-medium transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
-                              isActivePath(sublink.href) && "bg-[#7b171a]/90 text-[#fdbc2d] font-bold border border-[#fdbc2d]/40",
-                            ]}
-                            aria-current={isActivePath(sublink.href) ? "page" : undefined}
-                          >
-                            <span>{sublink.label}</span>
-                            {isActivePath(sublink.href) && (
-                              <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]"></span>
-                            )}
-                          </a>
-                        ) : null}
-                      </li>
-                    ))}
-                  </ul>
+              {/* Desktop Dropdown Menu */}
+              {hasSublinks(item) && (
+                <div class="absolute left-1/2 top-full z-[1000] w-[min(22rem,90vw)] -translate-x-1/2 translate-y-2 opacity-0 pointer-events-none pt-3 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
+                  <div class="nav-dropdown-glass p-3 shadow-2xl">
+                    <ul class="flex list-none flex-col gap-1 text-sm m-0 p-0">
+                      {item.sublinks?.map((sublink) => (
+                        <li class="list-none m-0">
+                          {sublink ? (
+                            <a
+                              href={sublink.href}
+                              class:list={[
+                                "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs text-white/90 font-medium transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                                isActivePath(sublink.href) &&
+                                  "bg-[#7b171a]/90 text-[#fdbc2d] font-bold border border-[#fdbc2d]/40",
+                              ]}
+                              aria-current={isActivePath(sublink.href) ? "page" : undefined}
+                            >
+                              <span>{sublink.label}</span>
+                              {isActivePath(sublink.href) && (
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]" />
+                              )}
+                            </a>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            )}
-          </li>
-        ))}
+              )}
+            </li>
+          ))
+        }
       </ul>
+
+      <!-- Dark Mode Theme Toggle -->
+      <ThemeToggle id="themeToggleDesktop" class="ml-1" />
 
       <!-- Radiant Saffron Gold Donate CTA -->
       <a
         href={STATIC_PAGE_PATHS.donate}
-        class="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-gradient-to-r from-[#fdbc2d] via-[#e5a823] to-[#fdbc2d] text-[#140b0a] font-bold text-xs uppercase tracking-wider ml-2 shadow-[0_2px_12px_rgba(253,188,45,0.35)] hover:shadow-[0_4px_20px_rgba(253,188,45,0.55)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-white/40"
+        class="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-gradient-to-r from-[#fdbc2d] via-[#e5a823] to-[#fdbc2d] text-[#140b0a] font-bold text-xs uppercase tracking-wider ml-1 shadow-[0_2px_12px_rgba(253,188,45,0.35)] hover:shadow-[0_4px_20px_rgba(253,188,45,0.55)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-white/40"
       >
         <span>Donate</span>
       </a>
     </nav>
 
-    <!-- Frosted Glass Mobile Menu Toggle -->
-    <button
-      id="menuToggle"
-      class="focus relative flex h-11 w-11 items-center justify-center rounded-full bg-[#6e1416]/90 backdrop-blur-lg text-white shadow-soft border border-[#fdbc2d]/50 hover:bg-[#85181b] hover:border-[#fdbc2d]/80 transition-all lg:hidden group cursor-pointer"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-      aria-controls="mobileMenuPanel"
-      type="button"
-    >
-      <span class="sr-only">Open navigation menu</span>
-      <div class="flex h-[18px] w-[20px] flex-col justify-between relative" id="hamburgerIcon">
-        <span class="hamburger-bar-top block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"></span>
-        <span class="hamburger-bar-mid block h-[2px] w-full rounded-full bg-[#fdbc2d] transition-all duration-300"></span>
-        <span class="hamburger-bar-bot block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"></span>
-      </div>
-    </button>
+    <!-- Mobile Header Actions (Theme Toggle + Menu Hamburger) -->
+    <div class="flex items-center gap-2 lg:hidden">
+      <ThemeToggle id="themeToggleMobile" compact={true} />
+
+      <!-- Frosted Glass Mobile Menu Toggle -->
+      <button
+        id="menuToggle"
+        class="focus relative flex h-11 w-11 items-center justify-center rounded-full bg-[#6e1416]/90 backdrop-blur-lg text-white shadow-soft border border-[#fdbc2d]/50 hover:bg-[#85181b] hover:border-[#fdbc2d]/80 transition-all group cursor-pointer"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenuPanel"
+        type="button"
+      >
+        <span class="sr-only">Open navigation menu</span>
+        <div class="flex h-[18px] w-[20px] flex-col justify-between relative" id="hamburgerIcon">
+          <span
+            class="hamburger-bar-top block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"
+          ></span>
+          <span
+            class="hamburger-bar-mid block h-[2px] w-full rounded-full bg-[#fdbc2d] transition-all duration-300"
+          ></span>
+          <span
+            class="hamburger-bar-bot block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"
+          ></span>
+        </div>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Glassmorphic Navigation Sheet -->
@@ -191,8 +203,9 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       id="mobileMenuOverlay"
       data-open="false"
       class="fixed inset-0 bg-black/65 opacity-0 pointer-events-none backdrop-blur-md transition-opacity duration-300 data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto z-[9990]"
-    ></div>
-    
+    >
+    </div>
+
     <div
       id="mobileMenuPanel"
       data-open="false"
@@ -206,67 +219,70 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Mobile Drawer Header -->
       <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse ring-4 ring-[#fdbc2d]/25"></span>
+          <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse ring-4 ring-[#fdbc2d]/25"
+          ></span>
           <span class="text-xs font-mono uppercase tracking-wider text-[#fdbc2d] font-bold">
             Navigation Portal
           </span>
         </div>
-        <span class="text-[11px] font-mono text-white/60">
-          Jonang Sanctuary
-        </span>
+        <span class="text-[11px] font-mono text-white/60"> Jonang Sanctuary </span>
       </div>
 
       <nav aria-label="Mobile primary" class="flex flex-col gap-4">
         <ul class="flex list-none flex-col gap-1.5 text-base text-white m-0 p-0">
-          {PRIMARY_NAVIGATION.map((item) => (
-            <li class="list-none m-0">
-              {item.href ? (
-                <a
-                  href={item.href}
-                  class:list={[
-                    "flex items-center justify-between rounded-xl px-4 py-3 font-semibold text-white/90 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
-                    isActiveItem(item) && "bg-[#7b171a]/90 text-[#fdbc2d] border border-[#fdbc2d]/40 shadow-sm font-bold",
-                  ]}
-                  aria-current={isActivePath(item.href) ? "page" : undefined}
-                >
-                  <span>{item.label}</span>
-                  {isActiveItem(item) ? (
-                    <span class="w-2 h-2 rounded-full bg-[#fdbc2d] shadow-[0_0_8px_rgba(253,188,45,0.8)]"></span>
-                  ) : (
-                    <span class="text-white/40 text-xs">→</span>
-                  )}
-                </a>
-              ) : (
-                <span class="block rounded-xl px-4 py-3 font-semibold text-white">
-                  {item.label}
-                </span>
-              )}
+          {
+            PRIMARY_NAVIGATION.map((item) => (
+              <li class="list-none m-0">
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "flex items-center justify-between rounded-xl px-4 py-3 font-semibold text-white/90 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                      isActiveItem(item) &&
+                        "bg-[#7b171a]/90 text-[#fdbc2d] border border-[#fdbc2d]/40 shadow-sm font-bold",
+                    ]}
+                    aria-current={isActivePath(item.href) ? "page" : undefined}
+                  >
+                    <span>{item.label}</span>
+                    {isActiveItem(item) ? (
+                      <span class="w-2 h-2 rounded-full bg-[#fdbc2d] shadow-[0_0_8px_rgba(253,188,45,0.8)]" />
+                    ) : (
+                      <span class="text-white/40 text-xs">→</span>
+                    )}
+                  </a>
+                ) : (
+                  <span class="block rounded-xl px-4 py-3 font-semibold text-white">
+                    {item.label}
+                  </span>
+                )}
 
-              {hasSublinks(item) && (
-                <ul class="mt-1 flex list-none flex-col gap-1 pl-3 text-[13px] sm:text-sm text-white/75 m-0">
-                  {item.sublinks?.map((sublink) => (
-                    <li class="list-none m-0">
-                      {sublink ? (
-                        <a
-                          href={sublink.href}
-                          class:list={[
-                            "flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
-                            isActivePath(sublink.href) && "bg-[#7b171a]/80 text-[#fdbc2d] font-semibold border border-[#fdbc2d]/30",
-                          ]}
-                          aria-current={isActivePath(sublink.href) ? "page" : undefined}
-                        >
-                          <span>{sublink.label}</span>
-                          {isActivePath(sublink.href) && (
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]"></span>
-                          )}
-                        </a>
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
+                {hasSublinks(item) && (
+                  <ul class="mt-1 flex list-none flex-col gap-1 pl-3 text-[13px] sm:text-sm text-white/75 m-0">
+                    {item.sublinks?.map((sublink) => (
+                      <li class="list-none m-0">
+                        {sublink ? (
+                          <a
+                            href={sublink.href}
+                            class:list={[
+                              "flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                              isActivePath(sublink.href) &&
+                                "bg-[#7b171a]/80 text-[#fdbc2d] font-semibold border border-[#fdbc2d]/30",
+                            ]}
+                            aria-current={isActivePath(sublink.href) ? "page" : undefined}
+                          >
+                            <span>{sublink.label}</span>
+                            {isActivePath(sublink.href) && (
+                              <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]" />
+                            )}
+                          </a>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))
+          }
         </ul>
 
         <!-- Mobile Drawer Footer CTA & Location -->
@@ -289,10 +305,14 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
 
 <script>
   function initHeader() {
+    const header = document.querySelector("#site-header") as HTMLElement | null;
+    if (!header) return;
+    if ((header as any).__initialized) return;
+    (header as any).__initialized = true;
+
     const menuButton = document.querySelector("#menuToggle");
     const menuPanel = document.querySelector("#mobileMenuPanel");
     const menuOverlay = document.querySelector("#mobileMenuOverlay");
-    const header = document.querySelector("#site-header");
     const barTop = document.querySelector(".hamburger-bar-top") as HTMLElement | null;
     const barMid = document.querySelector(".hamburger-bar-mid") as HTMLElement | null;
     const barBot = document.querySelector(".hamburger-bar-bot") as HTMLElement | null;
@@ -318,7 +338,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
           barBot.style.transform = "none";
         }
       }
-      
+
       // Ensure header is never hidden while menu is open
       if (isOpen && header) {
         header.classList.remove("header--hidden");

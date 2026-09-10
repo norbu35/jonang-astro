@@ -19,7 +19,12 @@ const {
 ---
 
 <!-- Sentinel to detect when the ToC reaches sticky position -->
-<div id="sticky-nav-sentinel" class="w-full h-px pointer-events-none -mt-px opacity-0" aria-hidden="true"></div>
+<div
+  id="sticky-nav-sentinel"
+  class="w-full h-px pointer-events-none -mt-px opacity-0"
+  aria-hidden="true"
+>
+</div>
 
 <nav
   id="sticky-page-nav"
@@ -30,27 +35,31 @@ const {
   aria-label={ariaLabel}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="flex items-center gap-2 py-1.5 sm:py-2 min-w-0 w-full justify-start md:justify-center">
+    <div
+      class="flex items-center gap-2 py-1.5 sm:py-2 min-w-0 w-full justify-start md:justify-center"
+    >
       <!-- Horizontal Pill Rail with click-to-drag and completely hidden scrollbars -->
       <div
         id="page-nav-pill-rail"
         class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 min-w-0 flex-1 justify-start md:justify-center select-none"
       >
-        {items.map((item, index) => (
-          <a
-            href={`#${item.id}`}
-            class:list={[
-              "page-nav-pill-link shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-mono transition-colors duration-200 border border-transparent select-none",
-              index === 0
-                ? "text-gold bg-[#500c0e] border-[#fdbc2d]/60 shadow-[0_0_10px_rgba(253,188,45,0.25)] font-bold"
-                : "text-white/80 hover:text-white hover:bg-white/10",
-            ]}
-            data-target={item.id}
-          >
-            <span class="hidden sm:inline">{item.label}</span>
-            <span class="sm:hidden">{item.short ?? item.label}</span>
-          </a>
-        ))}
+        {
+          items.map((item, index) => (
+            <a
+              href={`#${item.id}`}
+              class:list={[
+                "page-nav-pill-link shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-mono transition-colors duration-200 border border-transparent select-none",
+                index === 0
+                  ? "text-gold bg-[#500c0e] border-[#fdbc2d]/60 shadow-[0_0_10px_rgba(253,188,45,0.25)] font-bold"
+                  : "text-white/80 hover:text-white hover:bg-white/10",
+              ]}
+              data-target={item.id}
+            >
+              <span class="hidden sm:inline">{item.label}</span>
+              <span class="sm:hidden">{item.short ?? item.label}</span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -60,7 +69,8 @@ const {
     <div
       id="page-nav-scroll-progress"
       class="h-full w-0 bg-gradient-to-r from-accent via-gold to-accent transition-[width] duration-100 ease-out"
-    ></div>
+    >
+    </div>
   </div>
 </nav>
 
@@ -117,15 +127,16 @@ const {
     const links = document.querySelectorAll<HTMLAnchorElement>(".page-nav-pill-link");
     const header = document.getElementById("site-header");
     if (!nav || !links.length) return;
-    if ((nav as any).__initialized) return;
-    (nav as any).__initialized = true;
+    const initializableNav = nav as HTMLElement & { __initialized?: boolean };
+    if (initializableNav.__initialized) return;
+    initializableNav.__initialized = true;
 
     // 1. Stuck Sentinel Observer (detects when nav reaches sticky position)
     if (sentinel) {
       const stuckObserver = new IntersectionObserver(
         ([entry]) => {
           const isStuck = !entry.isIntersecting;
-          nav.classList.toggle("is-stuck", isStuck);
+          initializableNav.classList.toggle("is-stuck", isStuck);
           syncTransform();
         },
         { threshold: [0] }
@@ -231,7 +242,11 @@ const {
           if (pillRail && pillRail.scrollWidth > pillRail.clientWidth) {
             const pillRect = link.getBoundingClientRect();
             const railRect = pillRail.getBoundingClientRect();
-            const targetScroll = pillRail.scrollLeft + (pillRect.left - railRect.left) - (railRect.width / 2) + (pillRect.width / 2);
+            const targetScroll =
+              pillRail.scrollLeft +
+              (pillRect.left - railRect.left) -
+              railRect.width / 2 +
+              pillRect.width / 2;
             pillRail.scrollTo({
               left: targetScroll,
               behavior: "smooth",

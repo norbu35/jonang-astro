@@ -29,22 +29,22 @@ const resolvedImageUrl = new URL(image, SITE_METADATA.siteUrl).toString();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BuddhistTemple",
-  "name": SITE_METADATA.name,
-  "alternateName": [SITE_METADATA.tibetanName, SITE_METADATA.shortName],
-  "description": SITE_METADATA.description,
-  "url": SITE_METADATA.siteUrl,
-  "logo": new URL("/logo512x512.jpg", SITE_METADATA.siteUrl).toString(),
-  "image": resolvedImageUrl,
-  "address": {
+  name: SITE_METADATA.name,
+  alternateName: [SITE_METADATA.tibetanName, SITE_METADATA.shortName],
+  description: SITE_METADATA.description,
+  url: SITE_METADATA.siteUrl,
+  logo: new URL("/logo512x512.jpg", SITE_METADATA.siteUrl).toString(),
+  image: resolvedImageUrl,
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Sanjauli",
-    "addressLocality": "Shimla",
-    "addressRegion": "Himachal Pradesh",
-    "postalCode": "171006",
-    "addressCountry": "IN",
+    streetAddress: "Sanjauli",
+    addressLocality: "Shimla",
+    addressRegion: "Himachal Pradesh",
+    postalCode: "171006",
+    addressCountry: "IN",
   },
-  "telephone": SITE_METADATA.contact.phone,
-  "email": SITE_METADATA.contact.email,
+  telephone: SITE_METADATA.contact.phone,
+  email: SITE_METADATA.contact.email,
 };
 ---
 
@@ -58,6 +58,10 @@ const jsonLd = {
     <meta name="keywords" content={SITE_METADATA.keywords} />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Font Preconnect & Network Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Favicons & App Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -84,7 +88,59 @@ const jsonLd = {
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
+    <!-- Dark Mode & Color Scheme Declaration (Modern Web Guidance) -->
+    <meta name="color-scheme" content="light dark" />
 
+    <!-- Zero-FOUC Theme Guard (Synchronous inline execution before first paint) -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const isDark = stored === "dark" || (!stored && prefersDark);
+          const root = document.documentElement;
+          if (isDark) {
+            root.classList.add("dark");
+            root.classList.remove("light");
+            root.setAttribute("data-theme", "dark");
+          } else {
+            root.classList.add("light");
+            root.classList.remove("dark");
+            root.setAttribute("data-theme", "light");
+          }
+          const meta = document.querySelector('meta[name="color-scheme"]');
+          if (meta) {
+            meta.content = stored ? (isDark ? "dark" : "light") : "light dark";
+          }
+        } catch {
+          // Ignore local storage errors
+        }
+      })();
+
+      // Dynamic system theme change listener (when no explicit local preference is pinned)
+      try {
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        mediaQuery.addEventListener("change", function (e) {
+          if (!localStorage.getItem("theme")) {
+            const root = document.documentElement;
+            if (e.matches) {
+              root.classList.add("dark");
+              root.classList.remove("light");
+              root.setAttribute("data-theme", "dark");
+            } else {
+              root.classList.add("light");
+              root.classList.remove("dark");
+              root.setAttribute("data-theme", "light");
+            }
+            window.dispatchEvent(
+              new CustomEvent("theme-change", { detail: { theme: e.matches ? "dark" : "light" } })
+            );
+          }
+        });
+      } catch {
+        // Ignore media query errors
+      }
+    </script>
 
     <slot name="head" />
   </head>

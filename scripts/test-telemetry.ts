@@ -79,7 +79,9 @@ async function runTests() {
   console.log("  ✓ Test 4 passed.\n");
 
   // Test 5: Valid Telemetry Payload with Netlify Edge Geo & Web Vitals
-  console.log("  [Test 5] Valid Web Vitals beacon parses, enriches Netlify geo, hashes IP, and logs structured JSON");
+  console.log(
+    "  [Test 5] Valid Web Vitals beacon parses, enriches Netlify geo, hashes IP, and logs structured JSON"
+  );
   const validPayload = {
     sessionId: "sid_test_12345",
     timestamp: Date.now(),
@@ -178,7 +180,11 @@ async function runTests() {
         type: "runtime",
         breadcrumbs: [
           { timestamp: Date.now() - 500, category: "ui", message: "click button#donate-now" },
-          { timestamp: Date.now() - 100, category: "navigation", message: "Navigated to /monastery" },
+          {
+            timestamp: Date.now() - 100,
+            category: "navigation",
+            message: "Navigated to /monastery",
+          },
         ],
       },
     ],

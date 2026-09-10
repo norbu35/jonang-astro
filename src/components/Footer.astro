@@ -10,20 +10,36 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 ---
 
 <Quote />
-<footer class="relative flex flex-col items-center gap-10 bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] px-6 pb-8 pt-12 text-white before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#fdbc2d]/60 before:to-transparent before:content-['']">
-  <div class="mx-auto grid w-full max-w-6xl gap-10 text-sm text-white/90 md:grid-cols-[1.1fr_1fr_0.95fr] md:items-start">
-    
+<footer
+  class="relative flex flex-col items-center gap-10 bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] px-6 pb-8 pt-12 text-white before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#fdbc2d]/60 before:to-transparent before:content-['']"
+>
+  <div
+    class="mx-auto grid w-full max-w-6xl gap-10 text-sm text-white/90 md:grid-cols-[1.1fr_1fr_0.95fr] md:items-start"
+  >
     <!-- Left Column: Blessing & Kalachakra Mantra -->
     <div class="flex flex-col items-center gap-4 md:items-start">
-      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">
-        Blessing
-      </div>
+      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">Blessing</div>
       <div class="flex flex-row gap-4 items-center">
-        <Image class="mx-auto drop-shadow-md" src={kalachakraIcon} alt="Kalachakra Deity Symbol" width={125} />
-        <Image class="mx-auto invert brightness-125 drop-shadow-md" src={kalachakraMantra} alt="Kalachakra Tenfold Powerful Mantra (Namchu Wangden)" height={150} />
+        <Image
+          class="mx-auto drop-shadow-md"
+          src={kalachakraIcon}
+          alt="Kalachakra Deity Symbol"
+          width={125}
+        />
+        <Image
+          class="mx-auto invert brightness-125 drop-shadow-md"
+          src={kalachakraMantra}
+          alt="Kalachakra Tenfold Powerful Mantra (Namchu Wangden)"
+          height={150}
+        />
       </div>
-      <div class="max-w-[420px] text-center text-sm italic text-white/90 md:text-left font-serif leading-relaxed">
-        <div class="mb-1 text-sm font-bold not-italic text-[#fdbc2d] font-tibetan tracking-normal" lang="bo">
+      <div
+        class="max-w-[420px] text-center text-sm italic text-white/90 md:text-left font-serif leading-relaxed"
+      >
+        <div
+          class="mb-1 text-sm font-bold not-italic text-[#fdbc2d] font-tibetan tracking-normal"
+          lang="bo"
+        >
           {SITE_METADATA.blessing.tibetanMantra}
         </div>
         <div class="mb-2 text-xs font-bold not-italic text-[#fdbc2d]/90 font-mono tracking-wider">
@@ -35,42 +51,49 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 
     <!-- Middle Column: Navigation Sections -->
     <div class="grid gap-8 sm:grid-cols-2">
-      {FOOTER_NAVIGATION.map((section) => (
-        <div class="flex flex-col items-center gap-4 md:items-start">
-          <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">
-            {section.heading}
+      {
+        FOOTER_NAVIGATION.map((section) => (
+          <div class="flex flex-col items-center gap-4 md:items-start">
+            <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">
+              {section.heading}
+            </div>
+            <nav aria-label={section.heading} class="w-full">
+              <ul class="m-0 flex list-none flex-col gap-3 text-sm">
+                {section.links.map((link) => (
+                  <li class="m-0 list-none">
+                    <a
+                      class="text-white/85 transition-colors hover:text-[#fdbc2d] font-medium"
+                      href={link.href}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
-          <nav aria-label={section.heading} class="w-full">
-            <ul class="m-0 flex list-none flex-col gap-3 text-sm">
-              {section.links.map((link) => (
-                <li class="m-0 list-none">
-                  <a class="text-white/85 transition-colors hover:text-[#fdbc2d] font-medium" href={link.href}>
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Right Column: Contact Coordinates & Support Button -->
     <div class="flex flex-col items-center gap-6 md:items-start">
-      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">
-        Contact
-      </div>
+      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">Contact</div>
       <address class="not-italic text-sm sm:text-base text-white/90">
         <div class="leading-relaxed font-serif">
-          {SITE_METADATA.contact.addressLines.map((line) => (
-            <div>{line}</div>
-          ))}
+          {SITE_METADATA.contact.addressLines.map((line) => <div>{line}</div>)}
         </div>
         <div class="mt-4 leading-relaxed font-medium">
-          <a href={`mailto:${SITE_METADATA.contact.email}`} class="text-white/90 hover:text-[#fdbc2d] transition-colors block">
+          <a
+            href={`mailto:${SITE_METADATA.contact.email}`}
+            class="text-white/90 hover:text-[#fdbc2d] transition-colors block"
+          >
             {SITE_METADATA.contact.email}
           </a>
-          <a href={`tel:${SITE_METADATA.contact.phone.replace(/\s+/g, "")}`} class="text-white/90 hover:text-[#fdbc2d] transition-colors block">
+          <a
+            href={`tel:${SITE_METADATA.contact.phone.replace(/\s+/g, "")}`}
+            class="text-white/90 hover:text-[#fdbc2d] transition-colors block"
+          >
             {SITE_METADATA.contact.phone}
           </a>
         </div>
@@ -85,17 +108,25 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
   </div>
 
   <!-- Bottom Legal & Registered Society Line -->
-  <div class="text-center text-sm text-white/85 xl:mt-8 space-y-3 w-full border-t border-white/10 pt-6">
-    <div class="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-[#fdbc2d]">
+  <div
+    class="text-center text-sm text-white/85 xl:mt-8 space-y-3 w-full border-t border-white/10 pt-6"
+  >
+    <div
+      class="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-[#fdbc2d]"
+    >
       <a href={STATIC_PAGE_PATHS.sitemap} class="transition-colors hover:text-white">Sitemap</a>
       <span>·</span>
-      <a href={STATIC_PAGE_PATHS.donate} class="transition-colors hover:text-white">Support Monks</a>
+      <a href={STATIC_PAGE_PATHS.donate} class="transition-colors hover:text-white">Support Monks</a
+      >
       <span>·</span>
-      <a href={STATIC_PAGE_PATHS.monastery} class="transition-colors hover:text-white">About Sanjauli</a>
+      <a href={STATIC_PAGE_PATHS.monastery} class="transition-colors hover:text-white"
+        >About Sanjauli</a
+      >
     </div>
     <div class="mt-4 text-xs text-white/70 space-y-1">
       <div>
-        &copy; {new Date().getFullYear()} {SITE_METADATA.name}. All rights reserved.
+        &copy; {new Date().getFullYear()}
+        {SITE_METADATA.name}. All rights reserved.
       </div>
       <div class="text-caption text-white/50">
         {SITE_METADATA.contact.registrationNotice}

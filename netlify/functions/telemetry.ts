@@ -151,7 +151,11 @@ async function dispatchWebhookAlert(enrichedRecord: Record<string, unknown>): Pr
           color: hasCriticalErrors ? 0x992224 : 0xfdbc2d, // Sangha Crimson or Sacred Gold
           fields: [
             { name: "Session", value: String(enrichedRecord.session || "N/A"), inline: true },
-            { name: "Country", value: String((enrichedRecord.geo as any)?.country?.code || "N/A"), inline: true },
+            {
+              name: "Country",
+              value: String((enrichedRecord.geo as any)?.country?.code || "N/A"),
+              inline: true,
+            },
             { name: "Release", value: String(enrichedRecord.release || "N/A"), inline: true },
           ],
           timestamp: new Date().toISOString(),
@@ -170,7 +174,10 @@ async function dispatchWebhookAlert(enrichedRecord: Record<string, unknown>): Pr
   }
 }
 
-export const handler: Handler = async (event: HandlerEvent, _context: HandlerContext): Promise<HandlerResponse> => {
+export const handler: Handler = async (
+  event: HandlerEvent,
+  _context: HandlerContext
+): Promise<HandlerResponse> => {
   // 1. Preflight CORS
   if (event.httpMethod === "OPTIONS") {
     return {
@@ -233,7 +240,11 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
   let level: "info" | "warn" | "error" = "info";
   if (payload.errors && payload.errors.length > 0) {
     level = "error";
-  } else if (payload.fontHealth?.status === "degraded" || payload.vitals?.lcp?.rating === "poor" || payload.vitals?.inp?.rating === "poor") {
+  } else if (
+    payload.fontHealth?.status === "degraded" ||
+    payload.vitals?.lcp?.rating === "poor" ||
+    payload.vitals?.inp?.rating === "poor"
+  ) {
     level = "warn";
   }
 
@@ -261,10 +272,7 @@ export const handler: Handler = async (event: HandlerEvent, _context: HandlerCon
   console.log(JSON.stringify(enrichedRecord));
 
   // 6. Asynchronously trigger external sinks
-  const sinkPromises = [
-    forwardToAxiom(enrichedRecord),
-    dispatchWebhookAlert(enrichedRecord),
-  ];
+  const sinkPromises = [forwardToAxiom(enrichedRecord), dispatchWebhookAlert(enrichedRecord)];
   await Promise.allSettled(sinkPromises);
 
   // 7. Return 204 No Content

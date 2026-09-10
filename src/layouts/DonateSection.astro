@@ -10,28 +10,36 @@ const causes = [
   {
     headline: "Monastic Sustenance",
     goal: "Ongoing Need",
-    description: "Provide daily meals, robes, and essential provisions for the resident sangha. Your support directly sustains those dedicating their lives to study and contemplation.",
-    imgStatic: sustenanceImage, 
+    description:
+      "Provide daily meals, robes, and essential provisions for the resident sangha. Your support directly sustains those dedicating their lives to study and contemplation.",
+    imgStatic: sustenanceImage,
   },
   {
     headline: "Healthcare & Medicine",
     goal: "Crucial Care",
-    description: "The cost of reliable medical care and winter pharmaceuticals is vital for the community. Help supply essential healthcare for elderly masters and young novices.",
+    description:
+      "The cost of reliable medical care and winter pharmaceuticals is vital for the community. Help supply essential healthcare for elderly masters and young novices.",
     imgStatic: healthcareImage,
   },
   {
     headline: "Himalayan Sanctuary Upkeep",
     goal: "Urgent Maintenance",
-    description: "Contribute to the seasonal maintenance and structural upkeep of monastic quarters in the harsh Himalayan climate, ensuring safe and warm shelter for study.",
+    description:
+      "Contribute to the seasonal maintenance and structural upkeep of monastic quarters in the harsh Himalayan climate, ensuring safe and warm shelter for study.",
     imgStatic: upkeepImage,
-  }
+  },
 ];
 ---
 
-<section id="support" class="section-padding bg-surface-muted ring-1 ring-border/20 shadow-inner scroll-mt-12">
-  <div class="mx-auto max-w-[85rem] px-4 md:px-8">
+<section
+  id="support"
+  class="section-padding bg-surface-muted ring-1 ring-border/20 shadow-inner scroll-mt-12"
+>
+  <div class="mx-auto max-w-6xl">
     <SectionTitle title="Support the Tradition" iconColor="saffron" titleColor="ink" />
-    <div class="cards-grid mt-10 md:mt-16 xl:grid-cols-3">
+    <div
+      class="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+    >
       {
         causes.map((item) => (
           <DonateCard

@@ -20,9 +20,10 @@ export function getSessionId(): string {
     const KEY = "jonang_telemetry_sid";
     let sid = sessionStorage.getItem(KEY);
     if (!sid) {
-      sid = typeof crypto !== "undefined" && crypto.randomUUID
-        ? crypto.randomUUID()
-        : "s_" + Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
+      sid =
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : "s_" + Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
       sessionStorage.setItem(KEY, sid);
     }
     return sid;

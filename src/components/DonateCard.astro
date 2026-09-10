@@ -11,32 +11,40 @@ interface Props {
 const { headline, goal, description, imgStatic } = Astro.props;
 ---
 
-<div
-  class="editorial-card group flex flex-col items-center gap-5 text-center transition-all"
->
-  <div class="relative w-full aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-border/20 shadow-sm mb-2">
+<div class="editorial-card group flex flex-col items-center gap-5 text-center transition-all">
+  <div
+    class="relative w-full aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-border/20 shadow-sm mb-2"
+  >
     <Image
       src={imgStatic}
       alt={headline}
       class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       width={600}
     />
-    <div class="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-    <div class="absolute bottom-4 left-0 right-0 text-white flex flex-col text-sm tracking-widest uppercase font-semibold text-center drop-shadow-md">
+    <div
+      class="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute bottom-4 left-0 right-0 text-white flex flex-col text-sm tracking-widest uppercase font-semibold text-center drop-shadow-md"
+    >
       <span class="text-gold/90 text-xs mb-1">Fund Focus</span>
       {goal}
     </div>
   </div>
-  
+
   <h3 class="font-display text-2xl font-medium text-ink m-0">
     {headline}
   </h3>
-  
+
   <p class="text-[0.95rem] text-muted leading-relaxed flex-1 m-0 mb-2">
     {description}
   </p>
-  
-  <a href="/donate" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-hover text-white py-3 px-4 text-xs font-semibold uppercase tracking-wider shadow-xs hover:shadow transition-all">
+
+  <a
+    href="/donate"
+    class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-hover text-white py-3 px-4 text-xs font-semibold uppercase tracking-wider shadow-xs hover:shadow transition-all"
+  >
     <span>Support This Cause</span>
     <span>→</span>
   </a>

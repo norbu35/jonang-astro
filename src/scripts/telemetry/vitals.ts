@@ -30,7 +30,10 @@ export interface NavigationTimingSnapshot {
   rtt?: number;
 }
 
-function getRating(metric: "lcp" | "inp" | "cls" | "fcp" | "ttfb", value: number): "good" | "needs-improvement" | "poor" {
+function getRating(
+  metric: "lcp" | "inp" | "cls" | "fcp" | "ttfb",
+  value: number
+): "good" | "needs-improvement" | "poor" {
   switch (metric) {
     case "lcp":
       return value <= 2500 ? "good" : value <= 4000 ? "needs-improvement" : "poor";
@@ -49,9 +52,10 @@ function getElementSelector(node?: Node | null): string | undefined {
   if (!node || !(node instanceof Element)) return undefined;
   const tag = node.tagName.toLowerCase();
   const id = node.id ? `#${node.id}` : "";
-  const className = typeof node.className === "string" && node.className.trim()
-    ? `.${node.className.trim().split(/\s+/).slice(0, 2).join(".")}`
-    : "";
+  const className =
+    typeof node.className === "string" && node.className.trim()
+      ? `.${node.className.trim().split(/\s+/).slice(0, 2).join(".")}`
+      : "";
   return `${tag}${id}${className}`;
 }
 
@@ -71,7 +75,9 @@ export class VitalsCollector {
   private initObservers(): void {
     // 1. TTFB and Navigation Performance
     try {
-      const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+      const navEntries = performance.getEntriesByType(
+        "navigation"
+      ) as PerformanceNavigationTiming[];
       if (navEntries && navEntries.length > 0) {
         const nav = navEntries[0];
         const ttfbValue = Math.round(nav.responseStart);
@@ -161,7 +167,7 @@ export class VitalsCollector {
   public getNavigationMetrics(): NavigationTimingSnapshot {
     const metrics: NavigationTimingSnapshot = {};
     try {
-      const nav = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming);
+      const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming;
       if (nav) {
         if (nav.domainLookupEnd && nav.domainLookupStart) {
           metrics.dnsTime = Math.round(nav.domainLookupEnd - nav.domainLookupStart);

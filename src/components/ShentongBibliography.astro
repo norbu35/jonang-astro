@@ -13,7 +13,8 @@ interface BibItem {
 
 const bibliography: BibItem[] = [
   {
-    title: "The Buddha from Dölpo: A Study of the Life and Thought of the Tibetan Master Dölpopa Sherab Gyaltsen",
+    title:
+      "The Buddha from Dölpo: A Study of the Life and Thought of the Tibetan Master Dölpopa Sherab Gyaltsen",
     author: "Cyrus Stearns",
     year: "2010",
     publisher: "Snow Lion / Shambhala Publications (Dist. Penguin Random House)",
@@ -35,7 +36,8 @@ const bibliography: BibItem[] = [
     sourceName: "WorldCat Catalog",
   },
   {
-    title: "Mountain Doctrine: Tibet's Fundamental Treatise on Other-Emptiness and the Buddha-Matrix",
+    title:
+      "Mountain Doctrine: Tibet's Fundamental Treatise on Other-Emptiness and the Buddha-Matrix",
     author: "Dölpopa Sherab Gyaltsen (Trans. Jeffrey Hopkins)",
     year: "2006",
     publisher: "Snow Lion Publications",
@@ -46,7 +48,8 @@ const bibliography: BibItem[] = [
     sourceName: "WorldCat Catalog",
   },
   {
-    title: "The Buddha Within: Tathāgatagarbha Doctrine According to the Shentong Interpretation of the Ratnagotravibhāga",
+    title:
+      "The Buddha Within: Tathāgatagarbha Doctrine According to the Shentong Interpretation of the Ratnagotravibhāga",
     author: "S.K. Hookham (Lama Shenpen Hookham)",
     year: "1991",
     publisher: "State University of New York (SUNY) Press",
@@ -57,7 +60,8 @@ const bibliography: BibItem[] = [
     sourceName: "SUNY Press",
   },
   {
-    title: "The Other Emptiness: Rethinking the Zhentong Buddhist Discourse in Tibet (Includes 'The Philosophical Grounds and Literary History of Zhentong')",
+    title:
+      "The Other Emptiness: Rethinking the Zhentong Buddhist Discourse in Tibet (Includes 'The Philosophical Grounds and Literary History of Zhentong')",
     author: "Michael R. Sheehy & Klaus-Dieter Mathes (Eds.)",
     year: "2019",
     publisher: "State University of New York (SUNY) Press",
@@ -90,7 +94,8 @@ const bibliography: BibItem[] = [
     sourceName: "Penguin Random House",
   },
   {
-    title: "Maitripa's Writings on the View: The Main Indian Source of the Tibetan Views of Other Emptiness and Mahamudra",
+    title:
+      "Maitripa's Writings on the View: The Main Indian Source of the Tibetan Views of Other Emptiness and Mahamudra",
     author: "Maitripa (Trans. Tony Duff)",
     year: "2010",
     publisher: "Padma Karpo Translation Committee (PKTC)",
@@ -167,7 +172,8 @@ const bibliography: BibItem[] = [
     sourceName: "Univ. Wien ISTB",
   },
   {
-    title: "A Juggernaut of the Non-Dual View: Ultimate Teachings of the Second Drukchen Gyalwang Je",
+    title:
+      "A Juggernaut of the Non-Dual View: Ultimate Teachings of the Second Drukchen Gyalwang Je",
     author: "Tony Duff",
     year: "2011",
     publisher: "Padma Karpo Translation Committee (PKTC)",
@@ -211,7 +217,8 @@ const bibliography: BibItem[] = [
     sourceName: "Great Middle Way",
   },
   {
-    title: "Rangtong & Shentong Views: A Brief Explanation of the One Taste of the Second and Third Turnings",
+    title:
+      "Rangtong & Shentong Views: A Brief Explanation of the One Taste of the Second and Third Turnings",
     author: "Jamgön Kongtrul Lodrö Thaye (Trans. Tony Duff)",
     year: "Classical / PKTC",
     publisher: "Padma Karpo Translation Committee",
@@ -236,12 +243,36 @@ const bibliography: BibItem[] = [
 
 const categories = [
   { id: "all", label: "All Works", count: bibliography.length },
-  { id: "treatise", label: "Master Treatises", count: bibliography.filter(b => b.categoryGroup === "treatise").length },
-  { id: "academic", label: "Academic Studies", count: bibliography.filter(b => b.categoryGroup === "academic").length },
-  { id: "translation", label: "Root Translations", count: bibliography.filter(b => b.categoryGroup === "translation").length },
-  { id: "canonical", label: "Canonical Sutras", count: bibliography.filter(b => b.categoryGroup === "canonical").length },
-  { id: "manual", label: "Meditation Manuals", count: bibliography.filter(b => b.categoryGroup === "manual").length },
-  { id: "contemporary", label: "Contemporary Lineage", count: bibliography.filter(b => b.categoryGroup === "contemporary").length },
+  {
+    id: "treatise",
+    label: "Master Treatises",
+    count: bibliography.filter((b) => b.categoryGroup === "treatise").length,
+  },
+  {
+    id: "academic",
+    label: "Academic Studies",
+    count: bibliography.filter((b) => b.categoryGroup === "academic").length,
+  },
+  {
+    id: "translation",
+    label: "Root Translations",
+    count: bibliography.filter((b) => b.categoryGroup === "translation").length,
+  },
+  {
+    id: "canonical",
+    label: "Canonical Sutras",
+    count: bibliography.filter((b) => b.categoryGroup === "canonical").length,
+  },
+  {
+    id: "manual",
+    label: "Meditation Manuals",
+    count: bibliography.filter((b) => b.categoryGroup === "manual").length,
+  },
+  {
+    id: "contemporary",
+    label: "Contemporary Lineage",
+    count: bibliography.filter((b) => b.categoryGroup === "contemporary").length,
+  },
 ];
 ---
 
@@ -250,20 +281,29 @@ const categories = [
   id="shentong-bibliography"
 >
   <!-- Section Header -->
-  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-6">
+  <div
+    class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-6"
+  >
     <div class="max-w-3xl">
-      <h3 class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal mt-0 mb-3 leading-tight">
+      <h3
+        class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal mt-0 mb-3 leading-tight"
+      >
         Bibliography on Shentong
       </h3>
       <p class="text-sm text-muted leading-relaxed m-0">
-        Curated repository of canonical Mahayana sutras, classical Jonang master treatises, meditation manuals, and peer-reviewed academic publications.
+        Curated repository of canonical Mahayana sutras, classical Jonang master treatises,
+        meditation manuals, and peer-reviewed academic publications.
       </p>
     </div>
 
     <div class="flex items-center gap-3 self-start md:self-end shrink-0">
       <!-- Total Counter Badge -->
-      <div class="text-xs font-mono text-muted bg-surface-subtle px-3 py-2 rounded-lg border border-border">
-        <span id="bib-visible-count" class="font-bold text-accent">{bibliography.length}</span> of {bibliography.length} Publications
+      <div
+        class="text-xs font-mono text-muted bg-surface-subtle px-3 py-2 rounded-lg border border-border"
+      >
+        <span id="bib-visible-count" class="font-bold text-accent">{bibliography.length}</span> of {
+          bibliography.length
+        } Publications
       </div>
     </div>
   </div>
@@ -273,9 +313,14 @@ const categories = [
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
       <!-- Search Box -->
       <div class="relative flex-1 max-w-md">
-        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-muted">
+        <div
+          class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-muted"
+        >
           <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+            <path
+              fill-rule="evenodd"
+              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+              clip-rule="evenodd"></path>
           </svg>
         </div>
         <input
@@ -292,7 +337,9 @@ const categories = [
           aria-label="Clear search"
         >
           <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+            <path
+              d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -324,7 +371,14 @@ const categories = [
 
   <!-- CATALOG TABLE VIEW -->
   <div id="bib-table-container" class="overflow-x-auto pt-2">
-    <table class="w-full text-left text-xs border-collapse">
+    <table class="w-full min-w-[700px] table-fixed text-left text-xs border-collapse">
+      <colgroup>
+        <col class="w-12" />
+        <col />
+        <col class="w-44" />
+        <col class="w-40" />
+        <col class="w-44" />
+      </colgroup>
       <thead>
         <tr class="bg-surface-subtle border-b border-border text-ink font-display">
           <th class="p-3.5 w-12">#</th>
@@ -386,7 +440,8 @@ const categories = [
     <div class="text-3xl text-muted">༄༅།</div>
     <h4 class="font-display text-xl text-ink m-0">No Publications Matched Your Search</h4>
     <p class="text-xs sm:text-sm text-muted max-w-md mx-auto m-0">
-      Try refining your search terms or clearing category filters to view the complete Shentong archive.
+      Try refining your search terms or clearing category filters to view the complete Shentong
+      archive.
     </p>
     <button
       type="button"
@@ -398,9 +453,18 @@ const categories = [
   </div>
 
   <!-- Academic Attribution & Fair Use Disclaimer -->
-  <div class="pt-6 border-t border-border/80 text-xs text-muted leading-relaxed space-y-2 bg-surface-subtle/50 p-5 rounded-xl">
+  <div
+    class="pt-6 border-t border-border/80 text-xs text-muted leading-relaxed space-y-2 bg-surface-subtle/50 p-5 rounded-xl"
+  >
     <div class="flex items-center gap-2 text-ink font-semibold">
-      <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <svg
+        class="w-4 h-4 text-accent"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="12" y1="16" x2="12" y2="12"></line>
         <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -408,7 +472,12 @@ const categories = [
       <span>Scholarly Citation & Copyright Notice</span>
     </div>
     <p class="m-0">
-      This bibliography was curated and compiled by <strong>Jens Näsström</strong> for academic and contemplative study. All excerpted titles, descriptions, and catalog references are presented for non-commercial educational research purposes under standard scholarly fair use. All copyrights to translated treatises, commentaries, and editions remain the intellectual property of their respective translators, editors, and publishers (including Snow Lion / Shambhala Publications, State University of New York Press, Padma Karpo Translation Committee, and BDK America).
+      This bibliography was curated and compiled by <strong>Jens Näsström</strong> for academic and contemplative
+      study. All excerpted titles, descriptions, and catalog references are presented for non-commercial
+      educational research purposes under standard scholarly fair use. All copyrights to translated treatises,
+      commentaries, and editions remain the intellectual property of their respective translators, editors,
+      and publishers (including Snow Lion / Shambhala Publications, State University of New York Press,
+      Padma Karpo Translation Committee, and BDK America).
     </p>
   </div>
 </section>
