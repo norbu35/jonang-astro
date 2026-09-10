@@ -40,12 +40,12 @@ export const PRIMARY_NAVIGATION: NavLink[] = [
         href: STATIC_PAGE_PATHS.doctrine,
       },
       {
-        label: "Glossary & Terminology",
-        href: STATIC_PAGE_PATHS.glossary,
-      },
-      {
         label: "Scholarly Bibliography",
         href: "/doctrine#shentong-bibliography",
+      },
+      {
+        label: "Glossary & Terminology",
+        href: STATIC_PAGE_PATHS.glossary,
       },
     ],
   },
