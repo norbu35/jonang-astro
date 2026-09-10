@@ -66,6 +66,13 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
 
 <script>
   function isDarkMode(): boolean {
+    try {
+      const stored = localStorage.getItem("theme");
+      if (stored === "dark") return true;
+      if (stored === "light") return false;
+    } catch {
+      // Ignore local storage errors
+    }
     const root = document.documentElement;
     if (root.classList.contains("dark")) return true;
     if (root.classList.contains("light")) return false;
@@ -126,6 +133,17 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
 
   function initThemeToggles() {
     const isDark = isDarkMode();
+    const root = document.documentElement;
+    if (isDark && !root.classList.contains("dark")) {
+      root.classList.add("dark");
+      root.classList.remove("light");
+      root.setAttribute("data-theme", "dark");
+    } else if (!isDark && !root.classList.contains("light")) {
+      root.classList.add("light");
+      root.classList.remove("dark");
+      root.setAttribute("data-theme", "light");
+    }
+
     syncAllToggleButtons(isDark);
 
     const buttons = document.querySelectorAll<HTMLButtonElement>(".theme-toggle-btn");
@@ -143,6 +161,7 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
   }
 
   document.addEventListener("astro:page-load", initThemeToggles);
+  document.addEventListener("astro:after-swap", initThemeToggles);
 
   window.addEventListener("storage", (event) => {
     if (event.key === "theme") {

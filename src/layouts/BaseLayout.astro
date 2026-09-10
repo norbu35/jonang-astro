@@ -103,9 +103,9 @@ const jsonLd = {
     <!-- Dark Mode & Color Scheme Declaration (Modern Web Guidance) -->
     <meta name="color-scheme" content="light dark" />
 
-    <!-- Zero-FOUC Theme Guard (Synchronous inline execution before first paint) -->
+    <!-- Zero-FOUC Theme Guard (Synchronous inline execution before first paint & after client-side swap) -->
     <script is:inline>
-      (function () {
+      function applyTheme() {
         try {
           const stored = localStorage.getItem("theme");
           const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -127,23 +127,17 @@ const jsonLd = {
         } catch {
           // Ignore local storage errors
         }
-      })();
+      }
+
+      applyTheme();
+      document.addEventListener("astro:after-swap", applyTheme);
 
       // Dynamic system theme change listener (when no explicit local preference is pinned)
       try {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
         mediaQuery.addEventListener("change", function (e) {
           if (!localStorage.getItem("theme")) {
-            const root = document.documentElement;
-            if (e.matches) {
-              root.classList.add("dark");
-              root.classList.remove("light");
-              root.setAttribute("data-theme", "dark");
-            } else {
-              root.classList.add("light");
-              root.classList.remove("dark");
-              root.setAttribute("data-theme", "light");
-            }
+            applyTheme();
             window.dispatchEvent(
               new CustomEvent("theme-change", { detail: { theme: e.matches ? "dark" : "light" } })
             );
