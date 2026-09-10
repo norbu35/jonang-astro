@@ -44,7 +44,7 @@ export const PRIMARY_NAVIGATION: NavLink[] = [
         href: "/doctrine#shentong-bibliography",
       },
       {
-        label: "Glossary & Terminology",
+        label: "Glossary",
         href: STATIC_PAGE_PATHS.glossary,
       },
     ],
@@ -78,7 +78,7 @@ export const FOOTER_NAVIGATION = [
       { label: "The Monastery", href: STATIC_PAGE_PATHS.monastery },
       { label: "Living Tradition", href: STATIC_PAGE_PATHS.livingTradition },
       { label: "The Jonang Doctrine", href: STATIC_PAGE_PATHS.doctrine },
-      { label: "Glossary & Terminology", href: STATIC_PAGE_PATHS.glossary },
+      { label: "Glossary", href: STATIC_PAGE_PATHS.glossary },
       { label: "Kalachakra Practice", href: STATIC_PAGE_PATHS.kalachakra },
       { label: "Curriculum", href: STATIC_PAGE_PATHS.curriculum },
     ],
