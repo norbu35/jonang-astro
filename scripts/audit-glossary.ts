@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { GLOSSARY_ENTRIES, GLOSSARY_MAP, GLOSSARY_CATEGORIES } from "../src/data/glossary";
+import { GLOSSARY_ENTRIES } from "../src/data/glossary";
 
 console.log("=== JONANG GLOSSARY AUDIT & SCANNER ===");
 console.log(`Loaded ${GLOSSARY_ENTRIES.length} entries from src/data/glossary.ts\n`);
