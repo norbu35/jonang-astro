@@ -10,12 +10,12 @@ export const HISTORICAL_TIMELINE: HistoricalEpoch[] = [
   {
     era: "1294",
     title: "Establishment in Jomonang Valley",
-    desc: "Kunpang Thukje Tsondru (1243–1313) unifies the seventeen Dro lineage transmissions of the Kālacakra Tantra and establishes the Jonang hermitage in Tsang.",
+    desc: "Kunpang Thukje Tsöndrü (1243–1313) unifies the seventeen Dro lineage transmissions of the Kālacakra Tantra and establishes the Jonang hermitage in Tsang.",
   },
   {
     era: "1292 – 1361",
-    title: "Dolpopa & the Great Kumbum",
-    desc: 'Kunkhyen Dolpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors the "Mountain Doctrine" (Ri chos nges don rgya mtsho), formulating the definitive Shentong Madhyamaka view.',
+    title: "Dölpopa & the Great Kumbum",
+    desc: 'Kunkhyen Dölpopa Sherab Gyaltsen builds the Great Stupa of Jomonang (1330–1333) and authors the "Mountain Doctrine" (Ri chos nges don rgya mtsho), formulating the definitive Shentong Madhyamaka view.',
   },
   {
     era: "1575 – 1635",
@@ -25,7 +25,7 @@ export const HISTORICAL_TIMELINE: HistoricalEpoch[] = [
   {
     era: "17th – 20th Century",
     title: "Preservation & Citadel of Amdo",
-    desc: "While Central Tibetan monasteries navigated 17th-century political realignments, the Jonang lineage's sacred contemplative transmissions, printing blocks, and scholastic legacy flourished with vibrant vitality across Amdo and Kham—safeguarded at the monumental Dzamthang Tsangwa Monastery and affiliated hermitages in Ngawa and Golok.",
+    desc: "Following the 17th-century political upheavals in Central Tibet and the conversion of its central monasteries, the Jonang contemplative lineages, scholastic commentaries, and woodblock archives were preserved in Eastern Tibet (Amdo and Kham), centered at Dzamthang Tsangwa Monastery and affiliated hermitages in Ngawa and Golok.",
   },
   {
     era: "1960s – Present",
@@ -47,9 +47,9 @@ export const LINEAGE_HEAD = {
     "H.H. 9th Khalkha Jetsun Dampa Jampal Namdrol (1933–2012), recognized reincarnation of Jetsun Tāranātha and Supreme Head of the Jonang tradition.",
 
   narrativeParagraphs: [
-    "Jetsun Dampa Jampal Namdrol served as a vital bridge between the esoteric teachings of the Jonang tradition and the Mongolian Buddhist community. Historically, the Jebtsundamba Khutuktu lineage has been deeply intertwined with Jonang, particularly through its emphasis on the Kālacakra Tantra and the definitive view of Shentong.",
-    "As the 9th Jebtsundamba, Jampal Namdrol upheld the spiritual legacy of the Jonang teachings, emphasizing the integration of meditative realization with compassionate action. His role as a reincarnated spiritual leader not only revitalized the religious traditions of Mongolia but also solidified the recognized status of the Jonang school within the broader Tibetan Buddhist framework.",
-    "In the Jonang tradition, Jetsun Dampa’s life and deeds embodied the historical continuity between Tibetan and Mongolian Buddhism, safeguarding the sacred transmission of the Kālacakra teachings and inspiring practitioners to study Shentong Madhyamaka for the liberation of all sentient beings.",
+    "Jetsun Dampa Jampal Namdrol linked the Jonang tradition in exile with the revival of Buddhism in Mongolia. The Jebtsundamba Khutuktu incarnation line shares deep historical ties with Jonang through its founder, Jetsun Tāranātha, whose works on the Kālacakra Tantra and Shentong Madhyamaka were transmitted to Mongolia.",
+    "As the 9th Jebtsundamba, Jampal Namdrol worked to restore Buddhist monastic education in Mongolia following the communist era. In 1997, the 14th Dalai Lama appointed him formal head of the Jonang tradition, officially affirming Jonang's standing alongside the other principal Tibetan Buddhist schools.",
+    "Through this appointment, he oversaw the consecration of the Main Jonang Takten Phuntsok Choeling monastery in Shimla and supported the transmission of Kālacakra practice cycles across Tibetan and Mongolian monastic communities.",
   ],
 
   pillars: [

@@ -4,6 +4,7 @@ import EndlessKnot from "../icons/EndlessKnot.astro";
 import ShentongBibliography from "../ShentongBibliography.astro";
 import VideoFeature from "../VideoFeature.astro";
 import GlossaryTerm from "../ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 const threeTurnings = [
   {
@@ -31,13 +32,14 @@ const threeTurnings = [
     theme: "Tathāgatagarbha & Definitive Shentong",
     tibetan: "བཀའ་ཐ་མ་ལེགས་པར་རྣམ་པར་ཕྱེ་བའི་ཆོས་འཁོར།",
     view: "Elucidates ultimate reality as non-dual primordial wisdom (jñāna), devoid of adventitious obscurations (gzhan stong) yet perpetually complete with inseparable enlightened qualities.",
-    scope: "Definitive Great Madhyamaka (Maitreya / Dolpopa)",
+    scope: "Definitive Great Madhyamaka (Maitreya / Dölpopa)",
   },
 ];
 
 const philosophicalMatrix = [
   {
     category: "Relative Truth (Kun rdzob)",
+    tibetan: "ཀུན་རྫོབ་བདེན་པ།",
     rangtong:
       "Empty of inherent essence (rangtong). Dependently originated, conceptual, and devoid of intrinsic nature.",
     shentong:
@@ -45,6 +47,7 @@ const philosophicalMatrix = [
   },
   {
     category: "Ultimate Truth (Don dam)",
+    tibetan: "དོན་དམ་བདེན་པ།",
     rangtong:
       "Defined strictly as the negation of inherent existence; non-affirming negative (prasajya-pratiṣedha).",
     shentong:
@@ -52,6 +55,7 @@ const philosophicalMatrix = [
   },
   {
     category: "Enlightenment (Bodhi)",
+    tibetan: "བྱང་ཆུབ་ཀྱི་གོ་འཕང་།",
     rangtong: "Cessation of all conceptual fabrications and reification of phenomena.",
     shentong:
       "The direct experiential recognition and actualization of the primordial enlightened ground that was never absent.",
@@ -61,30 +65,35 @@ const philosophicalMatrix = [
 const masters = [
   {
     name: "Maitreya & Asaṅga",
+    tibetanName: "བྱམས་པ་དང་ཐོགས་མེད།",
     dates: "4th Century CE",
     role: "Indian Lineage Progenitors",
     body: "Composed the seminal treatises including the Uttaratantraśāstra (Ratnagotravibhāga) and Mahāyānasūtrālaṅkāra, founding the definitive Yogācāra-Madhyamaka synthesis of Buddha-nature.",
   },
   {
     name: "Somanātha, Dro Lotsawa & Yumo Mikyö Dorje",
+    tibetanName: "ཟླ་མགོན་དང་འབྲོ་ལོ་ཙཱ་བ། ཡུ་མོ་མི་བསྐྱོད་རྡོ་རྗེ།",
     dates: "11th – 12th Century",
     role: "Translators & Tantric Adepts",
     body: "Translated the Kālacakra Mūlatantra and the Vimalaprabhā commentary into Tibetan. Yumo Mikyö Dorje subsequently unfolded the experiential Shentong completion-stage realization in dark retreat.",
   },
   {
-    name: "Kunkhyen Dolpopa Sherab Gyaltsen",
+    name: "Kunkhyen Dölpopa Sherab Gyaltsen",
+    tibetanName: "ཀུན་མཁྱེན་དོལ་པོ་པ་ཤེས་རབ་རྒྱལ་མཚན།",
     dates: "1292 – 1361",
     role: "The Omniscient Master of Jomonang",
     body: "Systematized the Shentong Great Madhyamaka in his monumental work 'Mountain Doctrine' (Ri chos nges don rgya mtsho) and constructed the Great Kumbum of Jomonang.",
   },
   {
     name: "Jetsun Tāranātha",
+    tibetanName: "རྗེ་བཙུན་ཏཱ་ར་ནཱ་ཐ།",
     dates: "1575 – 1635",
     role: "Revitalizer & Tantric Polymath",
     body: "Prolific historian, artist, and tantric master who founded Takten Damchö Ling Monastery and composed the definitive practice commentaries for the Kālacakra completion stage.",
   },
   {
     name: "Zanabazar (1st Jebtsundamba Khutuktu)",
+    tibetanName: "རྗེ་བཙུན་དམ་པ་སྐུ་ཕྲེང་དང་པོ་ཛྙཱ་ན་བཛྲ།",
     dates: "1635 – 1723",
     role: "1st Bogd Gegeen of Mongolia",
     body: "Recognized as the immediate rebirth of Jetsun Tāranātha by the 5th Dalai Lama, establishing the historical transmission line between Jonang and Mongolian monastic institutions.",
@@ -92,26 +101,25 @@ const masters = [
 ];
 ---
 
-<div class="section-padding max-w-6xl mx-auto space-y-12 pb-0">
+<div class="section-padding max-w-6xl mx-auto flex flex-col gap-12 sm:gap-16 pb-0">
   <!-- Beginner's Primer Callout -->
   <div
     class="surface-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-gold bg-gradient-to-r from-surface to-surface-subtle shadow-card flex flex-col md:flex-row md:items-center justify-between gap-6"
   >
-    <div class="space-y-2 max-w-2xl">
+    <div class="flex flex-col gap-2 max-w-2xl">
       <h3 class="text-xl sm:text-2xl font-display text-ink font-bold m-0">
-        New to Buddhism or the Jonang Lineage?
+        Foundational Overview of the Jonang Lineage
       </h3>
       <p class="text-sm text-muted leading-relaxed m-0 font-serif">
-        If you are looking for an accessible introduction covering basic Buddhist foundations, the
-        Five Tibetan Schools, and an easy-to-read explanation of Shentong, explore our complete
-        beginner’s guide.
+        An introductory primer detailing foundational Buddhist tenets, the Five Tibetan Traditions,
+        and the definitive Shentong view of ultimate Buddha-nature.
       </p>
     </div>
     <a
-      href="/introduction"
+      href={STATIC_PAGE_PATHS.introduction}
       class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-white hover:bg-accent-hover font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md shrink-0 self-start md:self-center hover:-translate-y-0.5"
     >
-      <span>Read Beginner's Guide</span>
+      <span>Introductory Primer</span>
       <span>→</span>
     </a>
   </div>
@@ -119,13 +127,21 @@ const masters = [
   <!-- Core Philosophical Vision Callout -->
   <div
     id="shentong-view"
-    class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+    class="surface-card p-6 sm:p-8 md:p-10 flex flex-col gap-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h2
-      class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
-    >
-      The Shentong View of Ultimate Reality
-    </h2>
+    <div class="flex flex-col gap-2.5">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
+      >
+        The Shentong View of Ultimate Reality
+      </h2>
+      <span
+        lang="bo"
+        class="font-tibetan text-base sm:text-lg text-accent font-bold block pt-0.5 leading-[1.6]"
+      >
+        དོན་དམ་གཞན་སྟོང་གི་ལྟ་བ།
+      </span>
+    </div>
 
     <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
       The Jonang tradition articulates the <GlossaryTerm id="shentong">Shentong</GlossaryTerm> <GlossaryTerm id="madhyamaka">Madhyamaka</GlossaryTerm> framework: conventional phenomena
@@ -141,16 +157,22 @@ const masters = [
   </div>
 
   <!-- Interactive Three Turnings Matrix -->
-  <div id="three-turnings" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
-    <div class="space-y-2">
+  <div id="three-turnings" class="flex flex-col gap-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+    <div class="flex flex-col gap-2.5">
       <div class="flex items-center gap-3">
         <Dharmachakra class="w-6 h-6 sm:w-7 sm:h-7 text-gold shrink-0" />
         <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
           The Three Turnings of the Dharma Wheel
         </h3>
       </div>
-      <p class="text-base sm:text-lg text-muted font-serif leading-relaxed m-0 max-w-3xl">
-        The Mahayana sutras are classified across three hermeneutical cycles:
+      <span
+        lang="bo"
+        class="font-tibetan text-sm sm:text-base text-accent font-bold block pt-0.5 leading-[1.6]"
+      >
+        ཆོས་ཀྱི་འཁོར་ལོ་རིམ་པ་གསུམ།
+      </span>
+      <p class="text-base sm:text-lg text-muted font-serif leading-relaxed m-0 max-w-3xl pt-1">
+        The Mahāyāna sūtras are classified across three progressive hermeneutical cycles.
       </p>
     </div>
 
@@ -170,11 +192,11 @@ const masters = [
               </div>
 
               <!-- Titles & Tibetan Script -->
-              <div class="space-y-1.5">
+              <div class="flex flex-col gap-1.5">
                 <h4 class="font-display text-xl sm:text-2xl font-bold text-ink leading-snug m-0">
                   {t.theme}
                 </h4>
-                <span class="text-base sm:text-lg text-accent-secondary font-tibetan font-bold block pt-0.5 leading-[1.6]">
+                <span lang="bo" class="text-base sm:text-lg text-accent-secondary font-tibetan font-bold block pt-1 leading-[1.6]">
                   {t.tibetan}
                 </span>
               </div>
@@ -218,10 +240,10 @@ const masters = [
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <VideoFeature
       videoId="PKFl2_WiUd0"
-      title="Dolpopa Biography Part 1: Against All Odds"
+      title="Dölpopa Biography Part 1: Realization & Jomonang"
       tibetanTitle="༄༅། །ཀུན་མཁྱེན་དོལ་པོ་པ་ཤེས་རབ་རྒྱལ་མཚན་གྱི་རྣམ་ཐར། །"
-      subtitle="The Journey of the Buddha from Dolpo & the Genesis of Shentong Madhyamaka"
-      summary="A biographical documentary produced by Jonang Dharma Volunteers chronicling the life of Kunkhyen Dolpopa Sherab Gyaltsen (1292–1361). From his early training in the rugged valleys of Dolpo through rigorous scholastic mastery at Sakya to his breakthrough realization at Jomonang, this film explores the spiritual courage required to formulate the definitive Shentong view."
+      subtitle="The Life of Kunkhyen Dölpopa & the Codification of Shentong Madhyamaka"
+      summary="A biographical documentary produced by Jonang Dharma Volunteers chronicling the life of Kunkhyen Dölpopa Sherab Gyaltsen (1292–1361). From his early training in Dölpo through scholastic mastery at Sakya to his breakthrough realization at Jomonang, this documentary details his formulation of the definitive Shentong view and the consecration of the Great Kumbum."
       badge="Biographical Documentary"
       channelName="Jonang Dharma Volunteers"
       channelUrl="https://www.youtube.com/@JonangDharma"
@@ -244,28 +266,38 @@ const masters = [
         },
       ]}
       actionHref="#shentong-bibliography"
-      actionLabel="Explore Dolpopa's Treatises in Bibliography"
+      actionLabel="Dölpopa Treatises in Bibliography"
       id="dolpopa-documentary"
     />
   </div>
 </section>
 
-<div class="section-padding max-w-6xl mx-auto space-y-12 pt-0">
+<div class="section-padding max-w-6xl mx-auto flex flex-col gap-12 sm:gap-16">
   <!-- Shentong vs Rangtong Comparative Matrix -->
   <div
     id="comparative-matrix"
-    class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+    class="surface-card p-6 sm:p-8 md:p-10 flex flex-col gap-6 sm:gap-8 scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      Comparative Framework: Rangtong and Shentong
-    </h3>
+    <div class="flex flex-col gap-2.5">
+      <div class="flex items-center gap-3">
+        <Dharmachakra class="w-6 h-6 sm:w-7 sm:h-7 text-gold shrink-0" />
+        <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+          Comparative Framework: Rangtong and Shentong
+        </h3>
+      </div>
+      <span
+        lang="bo"
+        class="font-tibetan text-sm sm:text-base text-accent font-bold block pt-0.5 leading-[1.6]"
+      >
+        རང་སྟོང་དང་གཞན་སྟོང་གི་ལྟ་བའི་ཁྱད་པར།
+      </span>
+      <p class="text-base sm:text-lg text-muted leading-relaxed m-0 font-serif max-w-3xl pt-1">
+        Jonang treatises synthesize <GlossaryTerm id="prajnaparamita">Prajñāpāramitā</GlossaryTerm> teachings on emptiness with
+        the Third Turning <GlossaryTerm id="tathagatagarbha">Tathāgatagarbha</GlossaryTerm> sūtras.
+      </p>
+    </div>
 
-    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-      Jonang treatises state that Shentong synthesizes <GlossaryTerm id="prajnaparamita">Prajñāpāramitā</GlossaryTerm> teachings on emptiness with
-      the Third Turning <GlossaryTerm id="tathagatagarbha">Tathāgatagarbha</GlossaryTerm> sutras:
-    </p>
-
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto rounded-xl border border-border/80">
       <table class="w-full text-left text-sm sm:text-base border-collapse">
         <thead>
           <tr class="border-b border-border bg-surface-subtle">
@@ -285,7 +317,14 @@ const masters = [
           {
             philosophicalMatrix.map((row) => (
               <tr class="hover:bg-surface-subtle/50 transition-colors">
-                <td class="p-3.5 sm:p-4 font-semibold text-ink align-top">{row.category}</td>
+                <td class="p-3.5 sm:p-4 font-semibold text-ink align-top">
+                  <div>{row.category}</div>
+                  {row.tibetan && (
+                    <span lang="bo" class="font-tibetan text-xs text-muted block pt-1 leading-[1.6]">
+                      {row.tibetan}
+                    </span>
+                  )}
+                </td>
                 <td class="p-3.5 sm:p-4 text-muted align-top leading-relaxed font-serif">
                   {row.rangtong}
                 </td>
@@ -301,10 +340,21 @@ const masters = [
   </div>
 
   <!-- Lineage Masters Archive (Balanced 3 + 2 Architecture) -->
-  <div id="lineage-masters" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      Lineage Masters and Commentators
-    </h3>
+  <div id="lineage-masters" class="flex flex-col gap-6 sm:gap-8 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+    <div class="flex flex-col gap-2.5 pb-2">
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Lineage Masters and Commentators
+      </h3>
+      <span
+        lang="bo"
+        class="font-tibetan text-sm sm:text-base text-accent font-bold block pt-0.5 leading-[1.6]"
+      >
+        བརྒྱུད་པའི་ཤིང་རྟའི་སྲོལ་འབྱེད་རྣམས་ཀྱི་མཛད་རྣམ།
+      </span>
+      <p class="text-sm sm:text-base text-muted leading-relaxed font-serif m-0 max-w-3xl pt-1">
+        Indian progenitors, translators, and Jonang omniscient masters who realized and codified the unbroken transmission of the Shentong Great Madhyamaka.
+      </p>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
       {
@@ -319,6 +369,11 @@ const masters = [
               <div class="flex justify-between items-start mb-1">
                 <div>
                   <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{m.name}</h4>
+                  {m.tibetanName && (
+                    <span lang="bo" class="font-tibetan text-sm text-accent font-medium block pt-1 leading-[1.6]">
+                      {m.tibetanName}
+                    </span>
+                  )}
                   <span class="text-xs sm:text-sm font-mono text-accent uppercase tracking-wider block mt-0.5">
                     {m.dates}
                   </span>
@@ -339,16 +394,24 @@ const masters = [
   <!-- Union of Sutra, Tantra & Dialectics -->
   <div
     id="dialectics-integration"
-    class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]"
+    class="surface-card p-6 sm:p-8 md:p-10 flex flex-col gap-5 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h3 class="text-2xl font-display text-ink m-0">
-      Integration of Dialectics & Kālacakra Completion Stage
-    </h3>
-    <p class="text-sm sm:text-base text-muted leading-relaxed m-0">
+    <div class="flex flex-col gap-2">
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Integration of Dialectics & Kālacakra Completion Stage
+      </h3>
+      <span
+        lang="bo"
+        class="font-tibetan text-sm sm:text-base text-accent font-bold block pt-0.5 leading-[1.6]"
+      >
+        མཚན་ཉིད་དང་རྫོགས་རིམ་གྱི་ཟུང་འབྲེལ།
+      </span>
+    </div>
+    <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       In the Jonang tradition, scholastic debate and deep yogic contemplation operate in inseparable
       tandem. Textual analysis of the Five Great Treatises and Buddhist epistemological logic (<GlossaryTerm id="pramana">Pramāṇa</GlossaryTerm>) provides the conceptual grounding required for solitary <GlossaryTerm id="mun-khang">dark retreat</GlossaryTerm>.
     </p>
-    <p class="text-sm sm:text-base text-ink leading-relaxed m-0">
+    <p class="text-sm sm:text-base text-ink leading-relaxed m-0 font-serif">
       The Shentong framework provides the direct theoretical matrix for the <GlossaryTerm id="six-branch-yoga">Six-fold Vajrayoga (Sbyor drug)</GlossaryTerm> of the <GlossaryTerm id="kalachakra">Kālacakra Tantra</GlossaryTerm>. Meditative techniques of wind control (<GlossaryTerm id="prana">Prāṇāyāma</GlossaryTerm>) and
       sensory withdrawal (<GlossaryTerm id="six-branch-yoga">Pratyāhāra</GlossaryTerm>) in dark retreat aim directly at stabilizing <GlossaryTerm id="stong-gzugs">empty forms (śūnyatābimba)</GlossaryTerm> and actualizing <GlossaryTerm id="mahasukha">immutable bliss (akṣarasukha)</GlossaryTerm>.
     </p>

@@ -24,7 +24,10 @@ const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.
   </h2>
   {
     tibetanTitle && (
-      <span class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]">
+      <span
+        lang="bo"
+        class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block mt-1.5 sm:mt-2 leading-[1.6]"
+      >
         {tibetanTitle}
       </span>
     )

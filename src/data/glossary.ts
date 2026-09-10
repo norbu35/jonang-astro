@@ -75,7 +75,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The highest Anuttarayoga Tantra system encompassing Outer cycles (cosmology), Inner cycles (subtle body), and Alternative cycles (meditative transformation into supreme bliss and emptiness).",
     fullDef:
-      "Kālacakra ('Wheel of Time') is the supreme tantric matrix and the crowning jewel of the Jonang lineage. It synthesizes three interdependent realms: the Outer Kālacakra (the macrocosm, celestial motions, and astrology), the Inner Kālacakra (the human microcosm, subtle channels [nāḍī], winds [prāṇa], and drops [bindu]), and the Alternative Kālacakra (the mandalas, initiations, and meditation stages that purify body and mind into the indestructible union of great bliss and empty form).",
+      "Kālacakra ('Wheel of Time') is an Anuttarayoga Tantra system central to the Jonang tradition. It synthesizes three interdependent realms: the Outer Kālacakra (the macrocosm, celestial motions, and astrology), the Inner Kālacakra (the human microcosm, subtle channels [nāḍī], winds [prāṇa], and drops [bindu]), and the Alternative Kālacakra (the mandalas, initiations, and meditation stages that purify body and mind into the indestructible union of great bliss and empty form).",
     aliases: ["Wheel of Time", "Kalachakra Tantra", "dus 'khor"],
     relatedIds: ["six-branch-yoga", "dzogrim", "kyerim", "shambhala", "dro-lineage"],
   },
@@ -103,7 +103,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The unconditioned ground and basic expanse of ultimate reality, free from conceptual elaboration and birth or cessation.",
     fullDef:
-      "Dharmadhātu refers to the true nature of phenomena, the ultimate reality in which all things abide beyond birth, death, and conceptual duality. In Jonang thought, the Dharmadhātu is not a barren nothingness or conceptual negation, but the luminous, intrinsically pure expanse inseparable from wisdom (jñāna) and Buddha-nature.",
+      "Dharmadhātu refers to the true nature of phenomena, the ultimate reality in which all things abide beyond birth, death, and conceptual duality. In Jonang thought, the Dharmadhātu is not a mere absence or non-affirming negation, but the luminous, intrinsically pure expanse inseparable from wisdom (jñāna) and Buddha-nature.",
     aliases: ["Expanse of Reality", "Realm of Dharma", "Absolute Reality"],
     relatedIds: ["shentong", "tathagatagarbha"],
   },
@@ -131,7 +131,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The first main stage of Highest Yoga Tantra involving the visualization of the deity, divine retinue, and sacred palace to transform ordinary perception.",
     fullDef:
-      "Kyerim (Generation or Development Stage) is the meditative process of systematically constructing the visualization of oneself as the meditational deity (yidam) inside the sacred mandala palace. This practice purifies ordinary grasping at mundane birth, death, and intermediate states (bardo), training the mind in divine pride and clarity prior to entering the formless energetic yogas of the completion stage.",
+      "Kyerim (Generation or Development Stage) is the meditative process of systematically constructing the visualization of oneself as the meditational deity (yidam) inside the sacred mandala palace. This practice purifies ordinary grasping at mundane birth, death, and intermediate states (bardo), training the mind in divine pride and clarity prior to entering the subtle body practices of the completion stage.",
     aliases: ["Generation Stage", "Development Stage", "Creation Stage"],
     relatedIds: ["dzogrim", "kalachakra", "six-branch-yoga"],
   },
@@ -145,7 +145,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The advanced stage of tantric meditation working directly with the subtle energetic body (winds, channels, and drops) to actualize primordial wisdom.",
     fullDef:
-      "Dzogrim (Completion or Perfection Stage) is the direct, non-conceptual culmination of Vajrayāna praxis. In the Kālacakra tradition, this takes the form of the Six-Branch Yoga, where meditation shifts from conceptual visualization to internal energetic mastery—drawing the karmic winds (prāṇa) into the central channel (avadhūti) to ignite inner heat (caṇḍālī/tummo) and realize supreme, unshakeable bliss and emptiness.",
+      "Dzogrim (Completion Stage) is the phase of Anuttarayoga Tantra practice involving the subtle channels, winds, and drops. In the Kālacakra system, this is practiced as the Six-Branch Yoga, in which karmic winds are gathered into the central channel (avadhūti) to give rise to immutable bliss and empty form.",
     aliases: ["Completion Stage", "Perfection Stage", "Dissolution Stage"],
     relatedIds: ["kyerim", "six-branch-yoga", "kalachakra", "nadi", "prana", "bindu"],
   },
@@ -201,7 +201,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The subtle energetic currents and breath that animate consciousness, mental movements, and physiological life.",
     fullDef:
-      "Prāṇa (Tibetan: rlung) is the vital wind or subtle life energy. Mind and prāṇa are regarded as rider and horse: erratic mental chatter is driven by karmic winds (las kyi rlung). Through the breath-control branch (prāṇāyāma) of the Six-Branch Yoga, these dispersed winds are gathered and dissolved into the wisdom wind (ye shes kyi rlung) within the central channel.",
+      "Prāṇa (Tibetan: rlung) is the vital wind or subtle life energy. Mind and prāṇa are compared to horse and rider: discursive thought (vikalpa / rnam rtog) is propelled by karmic winds (las kyi rlung). Through the breath-control branch (prāṇāyāma) of the Six-Branch Yoga, these dispersed winds are gathered and dissolved into the wisdom wind (ye shes kyi rlung) within the central channel.",
     aliases: ["Vital Winds", "Wind Energies", "rlung", "Vayu"],
     relatedIds: ["nadi", "bindu", "six-branch-yoga", "kalachakra"],
   },
@@ -242,7 +242,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The primary transmission lineage of the Kālacakra Tantra in Tibet, founded by translator Dro Lotsāwa Sherab Drak and preserved completely by the Jonang school.",
     fullDef:
-      "The Dro Lineage ('bro lugs) was established in Tibet by the Kashmiri master Somanātha and the great Tibetan translator Dro Lotsāwa Sherab Drak (11th century). It emphasizes the practice tradition of the Six-Branch Yoga and profound philosophical commentaries. While the rival Ra Lineage (rwa lugs) focused heavily on ritual recitation, the Dro Lineage became the primary meditative lineage of the Jonang order.",
+      "The Dro Lineage ('bro lugs) was established in Tibet by the Kashmiri master Somanātha and the great Tibetan translator Dro Lotsāwa Sherab Drak (11th century). It emphasizes the practice tradition of the Six-Branch Yoga and profound philosophical commentaries. Whereas the parallel Ra Lineage (rwa lugs) emphasized ritual recitation and wrathful rites, the Dro Lineage became the primary meditative lineage of the Jonang order.",
     aliases: ["Dro Tradition", "'bro lugs", "Dro Lotsawa Lineage"],
     relatedIds: ["ra-lineage", "kalachakra", "dolpopa"],
   },
@@ -268,7 +268,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The peerless 14th-century Jonang master known as 'The Buddha from Dölpo,' who systematically articulated the Shentong philosophy and built the Great Jonang Stūpa.",
     fullDef:
-      "Dölpopa Sherab Gyaltsen (1292–1361) was the pivotal luminary of the Jonang tradition. After extensive study across all Tibetan traditions, he arrived at Jonang and experienced a transformative breakthrough while practicing the Six-Branch Yoga. He authored the monumental 'Mountain Dharma: Ocean of Definitive Meaning' (Ri chos nges don rgya mtsho) and constructed the Kumbum Stūpa at Jomonang, establishing Jonang as a paramount seat of Buddhist scholasticism.",
+      "Dölpopa Sherab Gyaltsen (1292–1361) was a formative master of the Jonang tradition. Following studies across Sakya, Kagyu, and Kadam centers, he settled at Jomonang where he practiced the Six-Branch Yoga. He authored the treatise 'Mountain Dharma: Ocean of Definitive Meaning' (Ri chos nges don rgya mtsho) and oversaw the construction of the Great Kumbum Stūpa at Jomonang, establishing the monastery as a prominent center of Tibetan scholasticism and contemplative practice.",
     aliases: ["Dolpopa", "The Buddha from Dolpo", "Kunmkhyen Dolpopa"],
     relatedIds: ["shentong", "kumbum", "taranatha"],
   },
@@ -281,7 +281,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The renowned 16th/17th-century Jonang historian, polymath, and master who built Takten Damchö Ling and authored definitive histories of Indian Buddhism.",
     fullDef:
-      "Jetsun Tāranātha (1575–1634) was one of Tibet's most prolific scholars, meditators, and historians. He revitalized the Jonang lineage during a turbulent period, founded Takten Phuntsok Choeling (Takten Damchö Ling) in Tsang, and composed classic texts such as the 'History of Buddhism in India' (dgya gar chos 'byung) and extensive commentaries on the Kālacakra Six-Branch Yoga and the Tara tantras.",
+      "Jetsun Tāranātha (1575–1635) was one of Tibet's most prolific scholars, meditators, and historians. He revitalized the Jonang lineage during a turbulent period, founded Takten Phuntsok Choeling (Takten Damchö Ling) in Tsang, and composed classic texts such as the 'History of Buddhism in India' (rgya gar chos 'byung) and extensive commentaries on the Kālacakra Six-Branch Yoga and the Tara tantras.",
     aliases: ["Taranatha", "Kunga Nyingpo", "Jetsun Taranatha"],
     relatedIds: ["dolpopa", "kalachakra", "shentong"],
   },
@@ -294,7 +294,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The traditional unbound, oblong Tibetan manuscript or xylograph format modeled after ancient Indian palm-leaf scriptures.",
     fullDef:
-      "A pecha (dpe cha) is the sacred physical format of Tibetan religious and philosophical literature. Inherited from Indian palm-leaf (pattra) manuscripts, pechas consist of long, narrow horizontal pages wrapped inside sacred cloth cloths and secured between wooden boards. In monastic study, pechas are treated with the highest veneration as representations of the Buddha's speech (Dharma).",
+      "A pecha (dpe cha) is the sacred physical format of Tibetan religious and philosophical literature. Inherited from Indian palm-leaf (pattra) manuscripts, pechas consist of long, unbound horizontal folios wrapped in cloth covers and secured between wooden boards. In monastic practice, pechas are revered as physical representations of the Buddha's speech (Dharma).",
     aliases: ["Pothi", "Tibetan Scripture", "Xylograph Book"],
     relatedIds: ["vinaya"],
   },
@@ -307,7 +307,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "A multi-tiered octagonal stupa housing thousands of sacred frescoes, deities, and chapels symbolizing the stages of spiritual ascent.",
     fullDef:
-      "A Kumbum (literally 'one hundred thousand holy images') is an architectural masterpiece of Tibetan Buddhism. The Great Jonang Kumbum, designed and consecrated by Dölpopa in 1333, features multi-storied chapels arranged as a three-dimensional mandala representing the outer, inner, and alternative Kālacakra. Its iconographic murals remain a pinnacle of Himalayan Buddhist sacred art.",
+      "A Kumbum (literally 'one hundred thousand holy images') is a multi-tiered stupa format in Tibetan Buddhist architecture. The Great Jonang Kumbum, consecrated by Dölpopa in 1333, houses chapels arranged as a three-dimensional mandala representing the outer, inner, and alternative Kālacakra, preserving extensive 14th-century mural programs.",
     aliases: ["Great Stupa", "Jonang Kumbum", "Gyantse Kumbum style"],
     relatedIds: ["dolpopa", "kalachakra"],
   },
@@ -335,7 +335,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The altruistic aspiration to attain complete enlightenment for the benefit of all sentient beings.",
     fullDef:
-      "Bodhicitta is the heartbeat of all Mahāyāna and Vajrayāna paths. It is divided into conventional bodhicitta (comprising aspirational bodhicitta to liberate beings and practical bodhicitta through the six pāramitās) and ultimate bodhicitta, which is the direct, non-dual realization of emptiness and luminous wisdom.",
+      "Bodhicitta is the foundational motivation of the Mahāyāna and Vajrayāna paths. It is divided into conventional bodhicitta (comprising aspirational bodhicitta to liberate beings and practical bodhicitta through the six pāramitās) and ultimate bodhicitta, which is the direct, non-dual realization of emptiness and luminous wisdom.",
     aliases: ["Enlightened Mind", "Mind of Awakening", "Awakening Aspiration"],
     relatedIds: ["shentong", "tathagatagarbha"],
   },
@@ -446,7 +446,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The rigorous Buddhist science of logic and valid cognition, founded by Dignāga and Dharmakīrti.",
     fullDef:
-      "Pramāṇa (Tibetan: tshad ma, 'valid cognition') is the epistemology and formal logic system utilized throughout Tibetan monastic debate (shedra). It accepts two valid means of knowledge: direct perception (pratyakṣa) and inferential reasoning (anumāna). Jonang scholars mastered Dharmakīrti's Pramāṇavārttika to demonstrate that Shentong is not only experientially realized in tantric yoga, but also completely invulnerable to logical refutation.",
+      "Pramāṇa (Tibetan: tshad ma, 'valid cognition') is the epistemology and formal logic system utilized throughout Tibetan monastic debate (shedra). It accepts two valid means of knowledge: direct perception (pratyakṣa) and inferential reasoning (anumāna). Jonang scholars utilized Dharmakīrti's Pramāṇavārttika to defend the Shentong view against philosophical objections and demonstrate its dialectical consistency.",
     aliases: ["Valid Cognition", "Buddhist Logic", "tshad ma"],
     relatedIds: ["madhyamaka", "shedra", "chos-rwa"],
   },
@@ -488,7 +488,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "Temporary, fleeting emotional and cognitive defilements that obscure the mind's primordially pure nature without altering its intrinsic purity.",
     fullDef:
-      "Āgantukamala ('incidental or adventitious stains') is a central concept in Tathāgatagarbha and Shentong doctrine. It asserts that ignorance, desire, aversion, and karmic patterns are not intrinsic to consciousness—they are like clouds veiling the sun or dust coating a diamond. When these superficial stains are purified through the contemplative path, the innate, uncreated virtues of Buddha-nature emerge effortlessly.",
+      "Āgantukamala ('incidental or adventitious stains') is a central concept in Tathāgatagarbha and Shentong doctrine. It asserts that ignorance, desire, aversion, and karmic patterns are not intrinsic to consciousness—they are like clouds veiling the sun or dust coating a diamond. When these adventitious stains are purified through the contemplative path, the innate qualities of Buddha-nature become manifest.",
     aliases: ["Adventitious Stains", "Fleeting Defilements", "glo bur gyi dri ma"],
     relatedIds: ["tathagatagarbha", "shentong", "jnana"],
   },
@@ -544,7 +544,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The yogic practice of generating intense spiritual heat at the navel center to melt subtle drops and experience blissful non-dual awareness.",
     fullDef:
-      "Tummo (Sanskrit: Caṇḍālī, 'fierce woman') is one of the most celebrated completion-stage yogas. By focusing breath retention, subtle body postures, and visualization at the navel cakra, an inner fire blazes upward through the central channel. This melts the white bodhicitta drop at the crown, causing it to descend and trigger the Four Joys (ānanda) and the realization of ultimate emptiness.",
+      "Tummo (Sanskrit: Caṇḍālī) is a completion-stage practice found across the Anuttarayoga Tantras. By combining breath retention, subtle body postures, and visualization at the navel cakra, inner heat is directed through the central channel to melt the subtle drops, giving rise to the Four Joys (ānanda) and the realization of emptiness.",
     aliases: ["Inner Heat", "Candali", "gtum mo", "Fierce Fire"],
     relatedIds: ["prana", "bindu", "avadhuti", "mahasukha", "six-branch-yoga"],
   },
@@ -585,7 +585,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The lightproof, sealed meditation cell designed for strict 50 to 100-day dark retreats in the Kālacakra tradition.",
     fullDef:
-      "A mun khang ('dark house' or 'dark cell') is an architectural sanctuary constructed to block all external photons. In this total sensory void, the practitioner isolates the physical senses (lus dben), speech (ngag dben), and mind (yid dben). Free from visual sensory stimulation, the ocular consciousness subsides and the ten visionary signs of empty form shine forth directly from Buddha-nature.",
+      "A mun khang ('dark room') is a sealed meditation chamber constructed to exclude all external light. In sensory isolation, the practitioner settles the physical senses (lus dben), speech (ngag dben), and mind (yid dben). With external visual stimuli eliminated, visual consciousness subsides and the ten visionary signs of empty form manifest directly.",
     aliases: ["Dark Retreat", "Dark Cell", "Yang khang"],
     relatedIds: ["stong-gzugs", "six-branch-yoga", "kalachakra"],
   },
@@ -599,7 +599,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The ultimate body of enlightenment in Kālacakra, representing the indivisible union of immutable great bliss and all-pervasive empty form.",
     fullDef:
-      "Sahajakāya ('Co-emergent or Innate Body') is celebrated in the Jonang Kālacakra tradition as the crowning fruition of the spiritual path. It transcends ordinary dualisms of samsara and nirvana, embodying the Primordial Buddha (Ādibuddha) Kālacakra in full perfection, endowed with the 32 major and 80 minor marks without a single physical atom.",
+      "Sahajakāya ('Innate Body') is regarded in the Kālacakra tradition as the ultimate body of enlightenment. It transcends ordinary dualisms of saṃsāra and nirvāṇa, embodying the Primordial Buddha (Ādibuddha) Kālacakra endowed with the thirty-two major and eighty minor marks devoid of material particles.",
     aliases: ["Innate Body", "Body of Co-emergence", "lhan skyes sku"],
     relatedIds: ["mahasukha", "stong-gzugs", "kalachakra"],
   },
@@ -613,7 +613,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "An enlightened archetype or meditational deity embodying the practitioner's own innate Buddha-nature used for tantric transformation.",
     fullDef:
-      "Yidam (contracted from yid kyi dam tshig, 'mind-bond') is a personal meditational deity such as Kālacakra, Cakrasaṃvara, or Tārā. The practitioner visualizes themselves as the yidam to dissolve mundane ego-identity and actualize pure perception. In Jonang praxis, the supreme yidam is glorious Kālacakra embraced by Viśvamātā.",
+      "Yidam (contracted from yid kyi dam tshig, 'mind-bond') is a personal meditational deity such as Kālacakra, Cakrasaṃvara, or Tārā. The practitioner visualizes themselves as the yidam to dissolve mundane ordinary perception and actualize pure awareness. In the Jonang tradition, the primary meditational deity is Kālacakra in union with Viśvamātā.",
     aliases: ["Meditation Deity", "Tantric Deity", "Istadevata", "yi dam"],
     relatedIds: ["kyerim", "kalachakra", "dbang"],
   },
@@ -627,7 +627,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The synchronized physical postures, movements, and breath holds practiced to guide subtle winds into the central channel.",
     fullDef:
-      "Trulkhor ('magical wheel' or 'movement machine') consists of dynamic yogic postures, muscle locks, and breath retentions designed to eliminate energetic knots in the subtle channels. In the Jonang Kālacakra retreat curriculum, trulkhor movements are practiced to prepare the physical body for prolonged dark retreat and the Six-Branch Yoga.",
+      "Trulkhor ('magical wheel' or yantrayoga) consists of coordinated physical postures, movements, and breath retentions designed to resolve knots in the subtle channels. In the Jonang Kālacakra retreat curriculum, trulkhor exercises prepare the practitioner for prolonged retreat and the Six-Branch Yoga.",
     aliases: ["Yantra Yoga", "Tibetan Yoga", "'khrul 'khor"],
     relatedIds: ["nadi", "prana", "tummo", "six-branch-yoga"],
   },
@@ -640,7 +640,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The comprehensive preliminary practices undertaken to purify karmic obscurations and accumulate merit prior to advanced tantric initiation.",
     fullDef:
-      "Ngöndro ('preliminaries' or 'prior step') constitutes the indispensable bedrock of Tibetan Vajrayāna. It consists of the Common Preliminaries (the Four Mind-Turnings on impermanence, karma, suffering, and precious human rebirth) and the Uncommon Preliminaries: 500,000 accumulations of prostrations with refuge, bodhicitta, Vajrasattva purification, maṇḍala offerings, and Guru Yoga.",
+      "Ngöndro ('preliminaries') forms the foundation of Tibetan Vajrayāna practice. It consists of the Common Preliminaries (the Four Mind-Turnings on impermanence, karma, suffering, and precious human rebirth) and the Uncommon Preliminaries: 500,000 accumulations of prostrations with refuge, bodhicitta, Vajrasattva purification, maṇḍala offerings, and Guru Yoga.",
     aliases: ["Preliminary Practices", "Ngondro", "Foundational Accumulations", "sngon 'gro"],
     relatedIds: ["bodhicitta", "dbang", "kalachakra"],
   },
@@ -654,7 +654,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The formal ritual initiation through which a qualified master transmits the blessing and authorization to practice Vajrayāna tantras.",
     fullDef:
-      "Dbang (Sanskrit: Abhiṣeka, 'empowerment' or 'consecration') is the gateway to all tantric practice. In the Kālacakra tradition, initiation encompasses the Seven Empowerments of Entering Like a Child, the Four High and Highest Empowerments, and the Great Vajra Master Empowerment, cleansing the disciple's body, speech, mind, and drops.",
+      "Dbang (Sanskrit: Abhiṣeka) is the formal ritual empowerment required to practice the tantras. In the Kālacakra tradition, initiation encompasses the Seven Empowerments of Entering Like a Child, the Four High and Highest Empowerments, and the Great Vajra Master Empowerment, purifying the disciple's body, speech, mind, and subtle drops.",
     aliases: ["Empowerment", "Abhiseka", "Initiation", "dbang"],
     relatedIds: ["lung", "khrid", "dorje-lopon", "kalachakra"],
   },
@@ -682,7 +682,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "Step-by-step practical and experiential meditation guidance given by a master to lead disciples through actual realization.",
     fullDef:
-      "Khrid ('guidance' or 'leading step-by-step') refers to practical, experiential meditation instructions derived from the personal realization of lineage masters. Unlike dry scholastic commentaries, khrid manuals (khrid yig)—such as Tāranātha's 'Meaningful to Behold' (Mthong ba don ldan)—provide precise meditation instructions for retreatants.",
+      "Khrid ('guidance' or 'leading step-by-step') refers to practical meditation instructions derived from the realization of lineage masters. In contrast to theoretical treatises, khrid manuals (khrid yig)—such as Tāranātha's 'Meaningful to Behold' (Mthong ba don ldan)—provide step-by-step instructions for retreatants.",
     aliases: ["Pith Instruction", "Meditation Guidance", "Upadesha", "khrid"],
     relatedIds: ["dbang", "lung", "dorje-lopon", "six-branch-yoga"],
   },
@@ -710,7 +710,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "A heroic spiritual practitioner who has generated bodhicitta and dedicates their life across infinite lifetimes to freeing all sentient beings.",
     fullDef:
-      "A Bodhisattva ('awakening warrior') vows to attain full Buddhahood solely for the universal salvation of all suffering beings. Cultivating the six transcendental perfections (generosity, ethics, patience, diligence, meditation, and wisdom), Bodhisattvas traverse the ten spiritual grounds (bhūmi) until total Buddhahood is realized.",
+      "A Bodhisattva ('awakening being') vows to attain complete Buddhahood to liberate all sentient beings from saṃsāra. Cultivating the six transcendental perfections (generosity, ethics, patience, diligence, meditation, and wisdom), Bodhisattvas traverse the ten spiritual grounds (bhūmi) until Buddhahood is realized.",
     aliases: ["Awakening Being", "Spiritual Hero", "byang chub sems dpa'"],
     relatedIds: ["bodhicitta", "prajnaparamita"],
   },
@@ -749,7 +749,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The sacred courtyard where monks gather daily to test philosophical comprehension through dynamic, stylized physical debate.",
     fullDef:
-      "The chos rwa ('dharma enclosure') is the vibrant heart of monastic intellectual life. Monks face each other in intense dialectical debate, punctuated by clapping hands, stamping feet, and snapping rosaries. This dynamic pedagogy ensures that scriptural understanding is not merely memorized, but scrutinized and verified with razor-sharp logic.",
+      "The chos rwa ('dharma courtyard') is the setting for monastic dialectical debate. Monks gather daily to test philosophical interpretations and clarify doctrinal points through structured debate, accompanied by traditional physical gestures including rhythmic clapping and stepping.",
     aliases: ["Debate Courtyard", "Dharma Enclosure", "chos rwa", "Chö-ra", "Cho-ra"],
     relatedIds: ["shedra", "pramana", "dam-bca-pa", "thal-phen-pa"],
   },
@@ -762,7 +762,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The debater who sits cross-legged on a low cushion, defending a philosophical thesis against challenger attacks.",
     fullDef:
-      "In traditional Tibetan monastic debate, the dam bca' pa sits calmly and must defend their scriptural thesis against rapid-fire questions and absurd consequences (prasaṅga). They must answer strictly with precise formal formulas: 'I accept,' 'The reason is not established,' or 'There is no pervasion.'",
+      "In traditional Tibetan monastic debate, the dam bca' pa sits and defends their thesis against formal challenges and absurd consequences (prasaṅga). They respond strictly using canonical formulas: 'I accept,' 'The reason is not established,' or 'There is no pervasion.'",
     aliases: ["Defender", "Thesis Defender", "dam bca' ba"],
     relatedIds: ["chos-rwa", "thal-phen-pa", "pramana"],
   },
@@ -788,7 +788,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The sacred ritual dance performed by ordained monks in ornate brocade robes and deity masks to subdue obstacles.",
     fullDef:
-      "Cham ('cham) is a living ritual art form and dynamic meditation. Monks visualize themselves as meditational deities and wrathful protectors, moving in precise geometric patterns accompanied by cymbals, long horns (dungchen), and drums. The dance cleanses the environment of negative karmic forces and transmits blessings to the community.",
+      "Cham ('cham) is a sacred ritual dance performed by ordained monastics as an integral element of tantric liturgies. Monks visualize themselves as meditational deities and protectors, executing prescribed geometric movements accompanied by cymbals, long horns (dungchen), and drums to purify obstacles and consecrate the sacred environment.",
     aliases: ["Masked Dance", "Lama Dance", "Sacred Dance", "'cham"],
     relatedIds: ["kalachakra", "torma"],
   },
@@ -799,7 +799,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     wylie: "rdul tshon dkyil 'khor",
     category: "monastic",
     shortDef:
-      "The intricate two-dimensional sacred palace mandala meticulously created using millions of grains of colored mineral sand.",
+      "The two-dimensional mandala palace constructed from colored mineral sands.",
     fullDef:
       "A sand mandala (rdul tshon dkyil 'khor) is constructed over several days by trained monks using narrow metal funnels (chakpur). It represents the divine residence and enlightened qualities of deities like Kālacakra. Upon completion and consecration, the mandala is ritually swept up and offered to a flowing river, demonstrating the impermanence of all composite phenomena.",
     aliases: ["Sand Mandala", "Colored Sand Mandala", "rdul tshon"],
@@ -813,7 +813,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     termSkt: "Balingta",
     category: "monastic",
     shortDef:
-      "Sculpted ritual offering cakes made of roasted barley flour (tsampa) and butter, adorned with vibrant butter motifs.",
+      "Sculpted ritual offering cakes made of roasted barley flour (tsampa) and butter, decorated with colored butter sculptures (dkar rgyan).",
     fullDef:
       "Tormas (gtor ma) are physical offering sculptures central to Tibetan ritual liturgy. Modeled from dough and decorated with delicate butter ornamentation (kar rgyan), tormas serve multiple functions: as representations of deities, as feasts of spiritual sustenance for protectors, and as tools for casting out adversities.",
     aliases: ["Offering Cake", "Ritual Cake", "gtor ma"],
@@ -829,7 +829,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The ancient wooden slit-gong rhythmically struck in Buddhist monasteries to summon monks to prayer, assembly, and meditation.",
     fullDef:
-      "The gaṇḍī is a traditional carved wooden percussion beam dating back to the time of Buddha Śākyamuni in India. Kept inside the main prayer hall, its sharp, syncopated rhythm summons the Sangha to assemblies, monastic confessions (posadha), and liturgies.",
+      "The gaṇḍī is a traditional carved wooden percussion beam dating back to the time of Buddha Śākyamuni in India. Kept inside the main prayer hall, its traditional rhythmic striking summons the Sangha to assemblies, monastic confessions (poṣadha), and liturgies.",
     aliases: ["Wooden Gong", "Monastic Beam", "Gandi"],
     relatedIds: ["vinaya", "shedra"],
   },
@@ -842,7 +842,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "Small sacred plaques or miniature stupas molded from purified clay and consecrated with mantras, placed inside shrines and stupas.",
     fullDef:
-      "Tsa-tsas (tsha tsha) are sacred votive tablets stamped from metal molds using clay mixed with medicinal herbs, flower petals, and holy relics. After being painted and consecrated, thousands of tsa-tsas are entombed inside stupas, prayer walls, and pilgrimage shrines to magnify merit.",
+      "Tsa-tsas (tsha tsha) are sacred votive plaques stamped from metal molds using clay mixed with medicinal herbs, flower petals, and consecrated substances. After painting and ritual consecration, tsa-tsas are enshrined within stupas and shrines as sacred reliquary deposits (gzungs).",
     aliases: ["Clay Reliefs", "Votive Stupas", "tsha tsha"],
     relatedIds: ["kumbum", "kora"],
   },
@@ -884,7 +884,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The lineage of twenty-five enlightened Kulika kings of Shambhala who hold and protect the Kālacakra Tantra.",
     fullDef:
-      "The Kalkīs (Tibetan: Rigs ldan, 'Holders of the Castes') succeeded the Seven Dharma Kings of Shambhala, beginning with Mañjuśrī Yaśas. They unified all castes into a single vajra family through the Kālacakra initiation. According to tradition, the 25th Kalki, Raudracakrin, will usher in a golden age of Dharma.",
+      "The Kalkīs (Tibetan: Rigs ldan, 'Holders of the Castes') succeeded the Seven Dharma Kings of Shambhala, beginning with Mañjuśrī Yaśas. They unified all castes into a single vajra family through the Kālacakra initiation. According to tradition, the 25th Kalki, Raudracakrin, is prophesied to defeat degenerative forces and re-establish the Kālacakra teachings.",
     aliases: ["Rigden", "Kulika", "King of Shambhala", "rigs ldan"],
     relatedIds: ["shambhala", "kalachakra"],
   },
@@ -897,7 +897,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The great 13th-century master who unified seventeen distinct transmission lineages of the Kālacakra and founded Jonang Monastery.",
     fullDef:
-      "Kunpang Thukje Tsöndru (1243–1313) was the pivotal founding father of the Jonang tradition as an institutional center. After mastering all available Kālacakra commentary traditions in Tibet, he established the primary monastery at Jomonang in 1294, where the lineage took its name.",
+      "Kunpang Thukje Tsöndru (1243–1313) was the founder of the Jonang tradition as an independent monastic institution. After mastering all available Kālacakra commentary traditions in Tibet, he established the primary monastery at Jomonang in 1294, where the lineage took its name.",
     aliases: ["Kunpangpa", "Thukje Tsondru", "Kun spangs pa"],
     relatedIds: ["dolpopa", "kalachakra", "dro-lineage"],
   },
@@ -910,7 +910,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     shortDef:
       "The prolific 19th/20th-century Jonang polymath whose meditation manuals and commentary guides form the basis of the modern three-year retreat.",
     fullDef:
-      "Bamda Thupten Gelek Gyatso (1844–1904) was a master of the rimé (non-sectarian) movement and one of the greatest commentators on the Kālacakra. His extensive multi-volume practice manual, 'A Ray of Sunlight' (Nyin byed snang ba), provides the detailed liturgical and physical guidance utilized to this day in Jonang retreat centers.",
+      "Bamda Thupten Gelek Gyatso (1844–1904) was a master of the rimé (non-sectarian) movement and an authoritative commentator on the Kālacakra. His extensive multi-volume practice manual, 'A Ray of Sunlight' (Nyin byed snang ba), provides the detailed liturgical and physical guidance utilized to this day in Jonang retreat centers.",
     aliases: ["Bamda Gelek", "Bamda Rinpoche", "Thupten Gelek Gyatso"],
     relatedIds: ["taranatha", "kalachakra", "drupdra"],
   },
@@ -934,9 +934,9 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     wylie: "kar ma rang byung kun khyab phrin las",
     category: "lineage",
     shortDef:
-      "The legendary 20th-century meditation master and Shangpa Kagyu luminary who preserved and established the Jonang exile monastery in Shimla.",
+      "The 20th-century meditation master and Shangpa Kagyu lama who established the Jonang exile monastery in Shimla.",
     fullDef:
-      "Kyabje Kalu Rinpoche (1905–1989) was one of the earliest Tibetan masters to propagate Vajrayāna Buddhism to the West. Having trained in Jonang Kālacakra transmissions in Eastern Tibet, he took responsibility for preserving the endangered Jonang lineage in India, acquiring and establishing the Sanjauli monastery in Shimla in the 1960s before placing it under the spiritual care of the Jonang order.",
+      "Kyabje Kalu Rinpoche (1905–1989) was one of the earliest Tibetan masters to propagate Vajrayāna Buddhism to the West. Having trained in Jonang Kālacakra transmissions in Eastern Tibet, he assisted in preserving the Jonang transmissions and establishing its primary monastic seat in exile in India, acquiring and establishing the Sanjauli monastery in Shimla in the 1960s before placing it under the spiritual care of the Jonang order.",
     aliases: ["Kalu Rinpoche", "Kyabje Kalu", "Dorje Chang Kalu Rinpoche"],
     relatedIds: ["jetsun-dampa", "kalachakra"],
   },

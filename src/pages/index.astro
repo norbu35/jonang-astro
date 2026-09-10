@@ -51,7 +51,10 @@ const portals = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Main Jonang Takten Phuntsok Choeling | Tibetan Buddhist Monastery"
+  description="Official site of Main Jonang Takten Phuntsok Choeling in Shimla, India. The primary seat in exile preserving Shentong Madhyamaka philosophy and Kalachakra Six-fold Vajrayoga."
+>
   <HeroSection />
 
   <main id="main-content" tabindex="-1" class="focus:outline-none">
@@ -66,7 +69,7 @@ const portals = [
       >
       </div>
       <div
-        class="pointer-events-none absolute -bottom-32 -left-32 w-96 h-96 bg-[#992224]/8 blur-[120px] rounded-full"
+        class="pointer-events-none absolute -bottom-32 -left-32 w-96 h-96 bg-accent/8 blur-[120px] rounded-full"
         aria-hidden="true"
       >
       </div>
@@ -105,11 +108,11 @@ const portals = [
 
             <!-- Illuminated Canonical Root Inscription -->
             <div
-              class="relative pl-5 sm:pl-6 border-l-2 border-[#fdbc2d] my-2 sm:my-3 py-1.5 bg-gradient-to-r from-accent-secondary-subtle to-transparent rounded-r-xl"
+              class="relative pl-5 sm:pl-6 border-l-2 border-gold my-2 sm:my-3 py-1.5 bg-gradient-to-r from-accent-secondary-subtle to-transparent rounded-r-xl"
             >
               <p
                 lang="bo"
-                class="font-tibetan text-base sm:text-lg text-accent font-bold leading-relaxed mb-1"
+                class="font-tibetan text-base sm:text-lg text-accent font-bold leading-relaxed mb-1 pt-1"
               >
                 ༄༅། །རྣམ་དབྱེར་མེད་པའི་མཚན་ཉིད་ཅན། །བླ་མེད་ཆོས་ཀྱིས་སྟོང་མ་ཡིན། །
               </p>
@@ -129,10 +132,10 @@ const portals = [
                 complete completion-stage yogas of the Kālacakra Tantra.
               </p>
               <p class="m-0 text-muted">
-                Once assumed dormant following 17th-century political suppression in Central Tibet,
-                the lineage's living flame was preserved unbroken across the mountain hermitages of
-                Amdo and Kham. Today, it flourishes in full scholastic and contemplative vigor at
-                Main Jonang Takten Phuntsok Choeling in Shimla.
+                Though politically suppressed in 17th-century Central Tibet, the lineage was
+                maintained without interruption across the mountain hermitages of Amdo and Kham.
+                Today, it flourishes in full scholastic and contemplative vigor at Main Jonang Takten
+                Phuntsok Choeling in Shimla.
               </p>
             </div>
           </div>
@@ -141,15 +144,15 @@ const portals = [
           <div class="lg:col-span-5 flex flex-col gap-4 sm:gap-5 w-full">
             <!-- Capsule 1: Kālacakra Vajrayoga -->
             <div
-              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-gold/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
             >
               <div
-                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#fdbc2d]/10 rounded-full blur-xl group-hover:bg-[#fdbc2d]/25 transition-all"
+                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-gold/10 rounded-full blur-xl group-hover:bg-gold/25 transition-all"
               >
               </div>
               <div class="relative z-10 flex items-start gap-4">
                 <div
-                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#500c0e] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform"
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-maroon text-gold shadow-md ring-1 ring-gold/40 group-hover:scale-105 transition-transform"
                 >
                   <Dharmachakra class="w-6 h-6 animate-slow-spin" />
                 </div>
@@ -160,7 +163,7 @@ const portals = [
                     >
                       Kālacakra Vajrayoga
                     </h3>
-                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold"
+                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold pt-1"
                       >སྦྱོར་དྲུག</span
                     >
                   </div>
@@ -174,15 +177,15 @@ const portals = [
 
             <!-- Capsule 2: Definitive Shentong -->
             <div
-              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-gold/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
             >
               <div
-                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#992224]/10 rounded-full blur-xl group-hover:bg-[#992224]/20 transition-all"
+                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-accent/10 rounded-full blur-xl group-hover:bg-accent/20 transition-all"
               >
               </div>
               <div class="relative z-10 flex items-start gap-4">
                 <div
-                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#6e1416] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform"
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-maroon-light text-gold shadow-md ring-1 ring-gold/40 group-hover:scale-105 transition-transform"
                 >
                   <span class="text-lg font-serif">✦</span>
                 </div>
@@ -193,7 +196,7 @@ const portals = [
                     >
                       Definitive Shentong
                     </h3>
-                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold"
+                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold pt-1"
                       >གཞན་སྟོང་།</span
                     >
                   </div>
@@ -207,17 +210,17 @@ const portals = [
 
             <!-- Capsule 3: Living Mountain Hermitage -->
             <div
-              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-[#fdbc2d]/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+              class="group relative rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-surface via-surface-subtle to-surface border border-border hover:border-gold/80 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
             >
               <div
-                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-[#fdbc2d]/10 rounded-full blur-xl group-hover:bg-[#fdbc2d]/25 transition-all"
+                class="pointer-events-none absolute -right-6 -bottom-6 w-24 h-24 bg-gold/10 rounded-full blur-xl group-hover:bg-gold/25 transition-all"
               >
               </div>
               <div class="relative z-10 flex items-start gap-4">
                 <div
-                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#500c0e] text-[#fdbc2d] shadow-md ring-1 ring-[#fdbc2d]/40 group-hover:scale-105 transition-transform"
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-maroon text-gold shadow-md ring-1 ring-gold/40 group-hover:scale-105 transition-transform"
                 >
-                  <span class="font-tibetan text-base font-bold">༄</span>
+                  <span class="font-tibetan text-base font-bold pt-1">༄</span>
                 </div>
                 <div class="flex flex-col gap-1.5 flex-1">
                   <div class="flex items-center justify-between">
@@ -226,7 +229,7 @@ const portals = [
                     >
                       Living Himalayan Seat
                     </h3>
-                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold"
+                    <span class="font-tibetan text-sm sm:text-base text-accent font-bold pt-1"
                       >མ་དགོན།</span
                     >
                   </div>
@@ -286,7 +289,7 @@ const portals = [
             Main Jonang Takten Phuntsok Choeling in Shimla provides room, board, healthcare, and
             monastic education for approximately <strong
               >120 resident monks and staff members</strong
-            >:
+            >.
           </p>
         </div>
 
@@ -512,7 +515,7 @@ const portals = [
                 <div class="flex flex-col gap-3">
                   <div class="flex justify-between items-center min-h-[28px]">
                     <span class="badge badge-neutral text-caption">{portal.badge}</span>
-                    <span class="font-tibetan text-lg sm:text-xl text-accent/80 font-bold">
+                    <span class="font-tibetan text-lg sm:text-xl text-accent/80 font-bold pt-1">
                       {portal.tibetan}
                     </span>
                   </div>
@@ -522,7 +525,7 @@ const portals = [
                   <p class="text-sm text-muted leading-relaxed m-0 font-serif">{portal.body}</p>
                 </div>
                 <span class="text-xs sm:text-sm font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40">
-                  View Section <span>→</span>
+                  Overview <span>→</span>
                 </span>
               </a>
             ))

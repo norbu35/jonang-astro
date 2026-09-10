@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import KalachakraCurriculumContent from "../../components/pages/KalachakraCurriculumContent.astro";
 import StickyPageNav from "../../components/ui/StickyPageNav.astro";
 import GlossaryTerm from "../../components/ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 import kalachakraEmblem from "../../assets/images/kalachakra-emblem.webp";
 
@@ -23,22 +24,23 @@ const kalachakraNavItems = [
 ---
 
 <BaseLayout
-  title="Kalachakra Practice & Six-fold Vajrayoga"
-  description="The Jonang Kalachakra contemplative path: foundational accumulations (ngöndro), dark retreat sensory isolation, and the completion-stage Six-fold Vajrayoga (Sbyor drug) preserved in exile at Sanjauli, Shimla."
+  title="Kalachakra Practice & Six Yogas | Jonang Monastery"
+  description="The unbroken Dro lineage of Kalachakra Tantra preserved at Jonang Monastery: dark retreat three isolations (mun khang) and completion-stage Six-fold Vajrayoga (Sbyor drug)."
+  breadcrumbs={[{ name: "Kalachakra Practice", path: STATIC_PAGE_PATHS.kalachakra }]}
 >
   <main id="main-content" class="flex-1">
     <!-- I. Museum-Grade Art-Directed Sanctuary Hero (Sangha Red matching Footer & Gold) -->
     <section
-      class="relative w-full overflow-hidden bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border-b border-[#992224]/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
+      class="relative w-full overflow-hidden bg-gradient-to-b from-maroon-light via-maroon to-maroon-dark text-white border-b border-accent/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
     >
       <!-- Subtle ambient warmth & altar glow -->
       <div
-        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-[#fcd34d]/15 blur-[140px] rounded-full"
+        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-gold/15 blur-[140px] rounded-full"
         aria-hidden="true"
       >
       </div>
       <div
-        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-[#992224]/25 blur-[140px] rounded-full"
+        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-accent/25 blur-[140px] rounded-full"
         aria-hidden="true"
       >
       </div>
@@ -51,7 +53,7 @@ const kalachakraNavItems = [
             <!-- Consecrated Tibetan Title -->
             <div
               lang="bo"
-              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-[#fdbc2d] font-bold leading-relaxed drop-shadow-md"
+              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-gold font-bold pt-1 leading-[1.6] drop-shadow-md"
             >
               དཔལ་དུས་ཀྱི་འཁོར་ལོའི་ཟབ་ལམ་སྦྱོར་བ་ཡན་ལག་དྲུག
             </div>
@@ -74,11 +76,11 @@ const kalachakraNavItems = [
 
             <!-- Canonical Pillars Stream Card in Sangha Crimson & Gold -->
             <div
-              class="p-5 sm:p-6 rounded-2xl bg-[#500c0e]/90 border border-[#85181b] backdrop-blur-md shadow-inner flex flex-col gap-3"
+              class="p-5 sm:p-6 rounded-2xl bg-maroon/90 border border-maroon-border backdrop-blur-md shadow-inner flex flex-col gap-3"
             >
-              <div class="border-b border-[#85181b] pb-2.5">
+              <div class="border-b border-maroon-border pb-2.5">
                 <span
-                  class="text-caption uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block"
+                  class="text-caption uppercase tracking-wider text-gold font-mono font-bold block"
                 >
                   The Contemplative Path Structure
                 </span>
@@ -87,19 +89,19 @@ const kalachakraNavItems = [
                 class="m-0 p-0 list-none flex flex-col gap-2.5 text-sm text-white/90 font-serif leading-relaxed"
               >
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>The Foundational Accumulations:</strong> 500,000 preliminary practices (<GlossaryTerm id="ngondro" class="text-white hover:text-gold border-gold/60"><em>ngöndro</em></GlossaryTerm>) purifying body, speech, and mind.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>Dark Retreat & Sensory Deprivation:</strong> 50–100 days in dark cells (<GlossaryTerm id="mun-khang" class="text-white hover:text-gold border-gold/60"><em>mun khang</em></GlossaryTerm>) giving rise to the ten visionary signs of empty form.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>The Six Branches of Completion:</strong> Pratyāhāra through Samādhi, transmuting
                     coarse energies into the <GlossaryTerm id="sahajakaya" class="text-white hover:text-gold border-gold/60">Sahaja</GlossaryTerm> rainbow body.</span
@@ -112,15 +114,15 @@ const kalachakraNavItems = [
             <div class="flex flex-wrap items-center gap-4 pt-1 sm:pt-2">
               <a
                 href="#curriculum-content"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#fdbc2d] hover:bg-[#fed36c] text-[#1c1210] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                class="inline-flex items-center gap-2 px-6 py-3 min-h-[44px] rounded-full bg-gold hover:bg-accent-secondary-hover text-ink font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 <span>Read Contemplative Treatise</span>
                 <span>↓</span>
               </a>
 
               <a
-                href="/curriculum"
-                class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-white border border-white/25 hover:border-[#fdbc2d]/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md"
+                href={STATIC_PAGE_PATHS.curriculum}
+                class="inline-flex items-center gap-2 px-5 py-3 min-h-[44px] rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-white border border-white/25 hover:border-gold/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md"
               >
                 <span>View 18-Year Shedra Syllabus</span>
                 <span>→</span>
@@ -133,10 +135,10 @@ const kalachakraNavItems = [
             <div class="relative w-full max-w-lg lg:max-w-none group/thangka">
               <!-- Buddhist Sangha Crimson & Gold Filigree Frame -->
               <div
-                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-[#7b171a] via-[#5c1012] to-[#450b0c] border border-[#fdbc2d]/40 shadow-2xl backdrop-blur-md"
+                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-maroon-light via-maroon to-maroon-dark border border-gold/40 shadow-2xl backdrop-blur-md"
               >
                 <div
-                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#3b0809] shadow-inner"
+                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-maroon-dark shadow-inner"
                 >
                   <Image
                     src={kalachakraEmblem}
@@ -156,7 +158,7 @@ const kalachakraNavItems = [
                     class="absolute bottom-3 left-4 right-4 text-white space-y-0.5 pointer-events-none"
                   >
                     <span
-                      class="text-caption-xs uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block"
+                      class="text-caption-xs uppercase tracking-wider text-gold font-mono font-bold block"
                     >
                       Jonang Dzamthang Tradition
                     </span>
@@ -170,7 +172,7 @@ const kalachakraNavItems = [
               <!-- Caption Metadata Footer -->
               <div class="flex items-center justify-between text-caption text-white/80 pt-3 px-2">
                 <span>Jonang Takten Phuntsok Choeling Archival Collection</span>
-                <span class="font-mono text-[#fdbc2d]">Sanjauli, Shimla</span>
+                <span class="font-mono text-gold">Sanjauli, Shimla</span>
               </div>
             </div>
           </div>

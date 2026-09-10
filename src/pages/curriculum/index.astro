@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import MonasteryCurriculumContent from "../../components/pages/MonasteryCurriculumContent.astro";
 import StickyPageNav from "../../components/ui/StickyPageNav.astro";
 import GlossaryTerm from "../../components/ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 import taranathaThangka from "../../assets/images/taranatha-dzamthang-thangka.webp";
 
@@ -17,20 +18,24 @@ const curriculumNavItems = [
 ];
 ---
 
-<BaseLayout title="Monastic Curriculum & Dzamthang Pedagogy">
+<BaseLayout
+  title="18-Year Monastic Curriculum & Shedra | Jonang Monastery"
+  description="The 18-year progressive curriculum of Main Jonang Monastery: Tibetan grammar, Pramāṇa epistemology, the Five Great Treatises, and three-year Kalachakra retreat."
+  breadcrumbs={[{ name: "Curriculum", path: STATIC_PAGE_PATHS.curriculum }]}
+>
   <main id="main-content" class="flex-1">
     <!-- I. Museum-Grade Art-Directed Sanctuary Hero (Tibetan Monastic Crimson & Gold) -->
     <section
-      class="relative w-full overflow-hidden bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border-b border-[#992224]/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
+      class="relative w-full overflow-hidden bg-gradient-to-b from-maroon-light via-maroon to-maroon-dark text-white border-b border-accent/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
     >
       <!-- Subtle ambient sangha crimson & warm gold temple glow -->
       <div
-        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-[#fdbc2d]/20 blur-[150px] mix-blend-screen rounded-full"
+        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-gold/15 blur-[140px] rounded-full"
         aria-hidden="true"
       >
       </div>
       <div
-        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-[#500c0e]/60 blur-[130px] rounded-full"
+        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-accent/25 blur-[140px] rounded-full"
         aria-hidden="true"
       >
       </div>
@@ -43,7 +48,7 @@ const curriculumNavItems = [
             <!-- Consecrated Tibetan Title -->
             <div
               lang="bo"
-              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-[#fdbc2d] font-bold leading-relaxed drop-shadow-md"
+              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-gold font-bold pt-1 leading-[1.6] drop-shadow-md"
             >
               ཇོ་ནང་རྗེ་བཙུན་ཏཱ་ར་ནཱ་ཐའི་གསུང་འབུམ་དང་འཛམ་ཐང་ཆོས་བརྒྱུད།
             </div>
@@ -53,7 +58,7 @@ const curriculumNavItems = [
               <h1
                 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-[1.15] m-0 drop-shadow-md"
               >
-                Jetsun Tāranātha & Living Dzamthang Tradition
+                18-Year Jonang Monastic Curriculum & Dzamthang Shedra
               </h1>
 
               <p class="font-serif text-base sm:text-lg text-white/90 leading-relaxed m-0">
@@ -67,27 +72,27 @@ const curriculumNavItems = [
 
             <!-- Canonical Treatises Card (Monastic Sangha Maroon Style) -->
             <div
-              class="p-5 sm:p-6 rounded-2xl bg-[#500c0e]/90 border border-[#85181b] backdrop-blur-md shadow-inner flex flex-col gap-3"
+              class="p-5 sm:p-6 rounded-2xl bg-maroon-surface/90 border border-maroon-border backdrop-blur-md shadow-inner flex flex-col gap-3"
             >
-              <div class="border-b border-[#85181b]/60 pb-2.5">
+              <div class="border-b border-maroon-border/60 pb-2.5">
                 <span
-                  class="text-caption uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block"
+                  class="text-caption uppercase tracking-wider text-gold font-mono font-bold block"
                 >
-                  Key Canonical Treatises in the <GlossaryTerm id="shedra" class="text-[#fdbc2d] hover:text-white border-gold/60">Shedra</GlossaryTerm>
+                  Key Canonical Treatises in the <GlossaryTerm id="shedra" class="text-gold hover:text-white border-gold/60">Shedra</GlossaryTerm>
                 </span>
               </div>
               <ul
                 class="m-0 p-0 list-none flex flex-col gap-2.5 text-sm text-white/90 font-serif leading-relaxed"
               >
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>The Essence of Other-Emptiness:</strong> (<em>Gzhan stong snying po</em
                     >) — Definitive <GlossaryTerm id="shentong" class="text-white hover:text-gold border-gold/60">Shentong</GlossaryTerm> <GlossaryTerm id="madhyamaka" class="text-white hover:text-gold border-gold/60">Madhyamaka</GlossaryTerm> treatise synthesizing <GlossaryTerm id="three-turnings" class="text-white hover:text-gold border-gold/60">Third Turning</GlossaryTerm> sutras.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>Kālacakra Ritual Manuals:</strong> (<em
                       >Dpal dus kyi 'khor lo'i sgrub thabs</em
@@ -95,7 +100,7 @@ const curriculumNavItems = [
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>History of Buddhism in India:</strong> (<em>Rgya gar chos 'byung</em>)
                     — Master historical record of the transmission from the Indian Mahasiddhas.</span
@@ -108,7 +113,7 @@ const curriculumNavItems = [
             <div class="flex flex-wrap items-center gap-4 pt-1 sm:pt-2">
               <a
                 href="#curriculum-syllabus"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#fdbc2d] hover:bg-[#fed36c] text-[#1c1210] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-[0_0_20px_rgba(253,188,45,0.4)] hover:-translate-y-1 active:scale-[0.97]"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-accent-secondary-hover text-ink font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-[0_0_20px_rgba(253,188,45,0.4)] hover:-translate-y-1 active:scale-[0.97] min-h-[44px]"
               >
                 <span>Explore 18-Year Curriculum</span>
                 <span>↓</span>
@@ -118,7 +123,7 @@ const curriculumNavItems = [
                 href="https://www.himalayanart.org/items/4231/images/primary#53,-946,1271,-337"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-[#fdbc2d] border border-white/25 hover:border-[#fdbc2d]/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md active:scale-[0.97]"
+                class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-gold border border-white/25 hover:border-gold/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md active:scale-[0.97] min-h-[44px]"
               >
                 <span>Inspect Thangka (HAR 4231)</span>
                 <span>↗</span>
@@ -131,10 +136,10 @@ const curriculumNavItems = [
             <div class="relative w-full max-w-lg lg:max-w-none group/thangka">
               <!-- Buddhist Monastic Maroon & Gold Filigree Frame -->
               <div
-                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-[#7b171a] via-[#5c1012] to-[#450b0c] border border-[#fdbc2d]/40 shadow-2xl backdrop-blur-md"
+                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-maroon via-maroon-dark to-maroon-dark border border-gold/40 shadow-2xl backdrop-blur-md"
               >
                 <div
-                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#3b0809] shadow-inner"
+                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-maroon-dark shadow-inner"
                 >
                   <Image
                     src={taranathaThangka}
@@ -154,11 +159,11 @@ const curriculumNavItems = [
 
                   <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
                     <span
-                      class="text-caption uppercase tracking-wider text-[#e5b869] font-mono font-bold block"
+                      class="text-caption uppercase tracking-wider text-gold font-mono font-bold block"
                     >
                       Jonang Dzamthang Style Thangka
                     </span>
-                    <span class="text-xs text-[#d8cebe] leading-snug block">
+                    <span class="text-xs text-white/80 leading-snug block">
                       Jetsun Tāranātha · 19th Century Mineral Pigment · Rubin Museum of Art
                     </span>
                   </div>
@@ -168,7 +173,7 @@ const curriculumNavItems = [
                     href="https://www.himalayanart.org/items/4231/images/primary#53,-946,1271,-337"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="absolute top-3 right-3 bg-black/80 backdrop-blur-md rounded-full px-3 py-1.5 text-xs font-mono text-[#e5b869] border border-[#e5b869]/50 opacity-90 sm:opacity-0 sm:group-hover/thangka:opacity-100 transition-all flex items-center gap-1.5 shadow-lg hover:scale-105"
+                    class="absolute top-3 right-3 bg-black/80 backdrop-blur-md rounded-full px-3 py-1.5 text-xs font-mono text-gold border border-gold/50 opacity-90 sm:opacity-0 sm:group-hover/thangka:opacity-100 transition-all flex items-center gap-1.5 shadow-lg hover:scale-105 min-h-[36px]"
                     aria-label="Zoom into high-resolution painting on Himalayan Art Resources"
                   >
                     <span>Zoom Lineage Master</span>
@@ -178,9 +183,9 @@ const curriculumNavItems = [
               </div>
 
               <!-- Caption Metadata Footer -->
-              <div class="flex items-center justify-between text-caption text-[#aa9b8a] pt-3 px-2">
+              <div class="flex items-center justify-between text-caption text-muted pt-3 px-2">
                 <span>Jonang Dzamthang Painting Tradition</span>
-                <span class="font-mono text-[#e5b869]">HAR Item 4231</span>
+                <span class="font-mono text-gold">HAR Item 4231</span>
               </div>
             </div>
           </div>

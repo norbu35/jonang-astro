@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.netlify/
+
+Sitemap: https://jonang.in/sitemap.xml
+Host: https://jonang.in

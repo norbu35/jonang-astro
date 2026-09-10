@@ -3,6 +3,7 @@ import type { ImageMetadata } from "astro";
 import BaseLayout from "./BaseLayout.astro";
 import TitleBanner from "../components/TitleBanner.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import type { BreadcrumbItem } from "../utils/seo";
 
 interface Props {
   title: string;
@@ -11,12 +12,29 @@ interface Props {
   imageAlt?: string;
   tibetanTitle?: string;
   fullBleed?: boolean;
+  canonicalUrl?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
-const { title, description, image, imageAlt, tibetanTitle, fullBleed = false } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  tibetanTitle,
+  fullBleed = false,
+  canonicalUrl,
+  breadcrumbs,
+} = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  canonicalUrl={canonicalUrl}
+  breadcrumbs={breadcrumbs}
+>
   <slot name="head" slot="head" />
 
   <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">

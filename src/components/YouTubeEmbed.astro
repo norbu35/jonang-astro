@@ -146,7 +146,11 @@ const {
         >
           {title}
         </h3>
-        <p class="text-xs text-white/80 font-sans line-clamp-1 m-0">Click to play documentary</p>
+        {
+          channelName && (
+            <p class="text-xs text-white/80 font-sans line-clamp-1 m-0">{channelName}</p>
+          )
+        }
       </div>
 
       {

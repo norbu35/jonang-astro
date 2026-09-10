@@ -3,12 +3,14 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import Dharmachakra from "../../components/icons/Dharmachakra.astro";
 import EndlessKnot from "../../components/icons/EndlessKnot.astro";
 import sitemapBannerImg from "../../assets/images/kalachakra-banner.webp";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 const sitemapSections = [
   {
     category: "The Monastic Seat & Lineage",
     tibetan: "དགོན་པ་དང་བརྒྱུད་པ།",
     badge: "Sanctuary & History",
+    gridClass: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
     links: [
       {
         title: "Sanctuary Home",
@@ -18,19 +20,19 @@ const sitemapSections = [
       },
       {
         title: "The Monastery",
-        href: "/monastery",
+        href: STATIC_PAGE_PATHS.monastery,
         tibetan: "ཇོ་ནང་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།",
         desc: "Sanjauli Shimla complex, Dalai Lama visits, succession of lineage abbots, demographics, and liturgical calendar.",
       },
       {
         title: "Living Tradition & Daily Life",
-        href: "/living-tradition",
+        href: STATIC_PAGE_PATHS.livingTradition,
         tibetan: "ཉིན་རེའི་འཚོ་བ་དང་སྲོལ་རྒྱུན།",
         desc: "The monastic rhythm, dawn slit-gong, dialectical debate kinetics, kitchen culture, Dzamthang sacred crafts, and Himalayan ecology.",
       },
       {
         title: "Holders of the Lineage",
-        href: "/teachers",
+        href: STATIC_PAGE_PATHS.teachers,
         tibetan: "བཀའ་བབས་བརྒྱུད་པའི་བླ་མ།",
         desc: "Biographies of the Supreme Lineage Heads, Dorje Lopöns, and resident monastic teachers in exile.",
       },
@@ -40,47 +42,55 @@ const sitemapSections = [
     category: "Sacred Doctrine & Practice",
     tibetan: "ལྟ་གྲུབ་དང་ཉམས་ལེན།",
     badge: "Philosophy & Tantra",
+    gridClass: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
     links: [
       {
         title: "Beginner's Introduction",
-        href: "/introduction",
+        href: STATIC_PAGE_PATHS.introduction,
         tibetan: "ཇོ་ནང་ཆོས་བརྒྱུད་ངོ་སྤྲོད།",
         desc: "Accessible on-ramp covering Buddhist fundamentals, the five Tibetan lineages, Shentong vs Rangtong, and the Six Yogas.",
       },
       {
         title: "The Jonang Doctrine",
-        href: "/doctrine",
+        href: STATIC_PAGE_PATHS.doctrine,
         tibetan: "ཇོ་ནང་ལྟ་གྲུབ།",
         desc: "Definitive Shentong Great Madhyamaka, the Three Turnings, and curated scholarly bibliography.",
       },
       {
         title: "Kālacakra Practice",
-        href: "/kalachakra",
+        href: STATIC_PAGE_PATHS.kalachakra,
         tibetan: "དཔལ་དུས་ཀྱི་འཁོར་ལོ།",
         desc: "The Six-fold Vajrayoga (Ṣaḍaṅgayoga), generation stage, dark retreat, and 3.5-year contemplative retreat syllabus.",
       },
       {
         title: "18-Year Curriculum",
-        href: "/curriculum",
+        href: STATIC_PAGE_PATHS.curriculum,
         tibetan: "ལོ་བཅོ་བརྒྱད་ཀྱི་སློབ་ཚན།",
         desc: "Comprehensive shedra syllabus spanning classical Tibetan grammar, Pramāṇa epistemology, and the Five Great Treatises.",
       },
     ],
   },
   {
-    category: "Community & Sponsorship",
-    tibetan: "དགེ་འདུན་དང་ཞབས་འདེགས།",
+    category: "Community, Lexicon & Sponsorship",
+    tibetan: "དགེ་འདུན་དང་ཚིག་མཛོད་ཞབས་འདེགས།",
     badge: "Sangha & Support",
+    gridClass: "grid-cols-1 md:grid-cols-3",
     links: [
       {
         title: "Photo Gallery",
-        href: "/gallery",
+        href: STATIC_PAGE_PATHS.gallery,
         tibetan: "དགོན་པའི་སྐུ་པར།",
         desc: "Visual archive of daily life, liturgical ceremonies, scholastic study, and Himalayan community arboriculture.",
       },
       {
+        title: "Scholarly Glossary",
+        href: STATIC_PAGE_PATHS.glossary,
+        tibetan: "གཞུང་ལུགས་ཚིག་མཛོད།",
+        desc: "Canonical bilingual glossary of Tibetan, Sanskrit, and English terminology for Shentong Madhyamaka, Kālacakra, and monastic life.",
+      },
+      {
         title: "Support the Monastery",
-        href: "/donate",
+        href: STATIC_PAGE_PATHS.donate,
         tibetan: "དགོན་པར་ཞབས་འདེགས།",
         desc: "Direct support for monk sustenance, healthcare, winter heating, and registered bank wire transfer instructions.",
       },
@@ -90,10 +100,12 @@ const sitemapSections = [
 ---
 
 <PageLayout
-  title="Monastic Site Index"
+  title="Monastic Site Directory & Index | Jonang Monastery"
   tibetanTitle="དྲ་ཚིགས་ས་ཁྲ།"
+  description="Complete index and sitemap of Main Jonang Takten Phuntsok Choeling monastery: pages on Shentong philosophy, Kalachakra Tantra, shedra curriculum, and teachers."
   image={sitemapBannerImg}
   imageAlt="Panoramic Kalachakra mural painting from Dzamthang Monastery"
+  breadcrumbs={[{ name: "Sitemap", path: STATIC_PAGE_PATHS.sitemap }]}
 >
   <div class="space-y-12">
     <!-- Intro Callout -->
@@ -123,7 +135,10 @@ const sitemapSections = [
                   <h3 class="text-xl sm:text-2xl font-display text-ink font-bold m-0">
                     {section.category}
                   </h3>
-                  <span class="text-sm sm:text-base font-tibetan text-accent font-bold block mt-1.5 pt-0.5">
+                  <span
+                    lang="bo"
+                    class="text-sm sm:text-base font-tibetan text-accent font-bold block mt-1 pt-0.5 leading-[1.6]"
+                  >
                     {section.tibetan}
                   </span>
                 </div>
@@ -133,15 +148,18 @@ const sitemapSections = [
               </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div class={`grid gap-6 items-stretch ${section.gridClass}`}>
               {section.links.map((link) => (
                 <a
                   href={link.href}
-                  class="surface-card p-6 flex flex-col justify-between gap-4 hover-lift group border border-border hover:border-accent transition-all h-full"
+                  class="surface-card p-6 flex flex-col justify-between gap-4 hover-lift group border border-border hover:border-accent transition-all h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 >
                   <div class="flex flex-col gap-2">
                     <div class="flex justify-between items-start">
-                      <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold">
+                      <span
+                        lang="bo"
+                        class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold pt-0.5 leading-[1.6]"
+                      >
                         {link.tibetan}
                       </span>
                       <EndlessKnot

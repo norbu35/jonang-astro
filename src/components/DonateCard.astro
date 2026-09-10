@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
 interface Props {
   headline: string;
@@ -42,8 +43,8 @@ const { headline, goal, description, imgStatic } = Astro.props;
   </p>
 
   <a
-    href="/donate"
-    class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-hover text-white py-3 px-4 text-xs font-semibold uppercase tracking-wider shadow-xs hover:shadow transition-all"
+    href={STATIC_PAGE_PATHS.donate}
+    class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent hover:bg-accent-hover text-white py-3 px-4 min-h-[44px] text-xs font-semibold uppercase tracking-wider shadow-xs hover:shadow transition-all"
   >
     <span>Support This Cause</span>
     <span>→</span>

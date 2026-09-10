@@ -5,13 +5,14 @@ import { Image } from "astro:assets";
 interface Props {
   img: ImageMetadata;
   name: string;
+  tibetanName?: string;
   roles: string[];
   bio: string;
   id: string;
   portraitAlt?: string;
 }
 
-const { img, name, roles, bio, id, portraitAlt } = Astro.props;
+const { img, name, tibetanName, roles, bio, id, portraitAlt } = Astro.props;
 ---
 
 <bio-card
@@ -44,10 +45,21 @@ const { img, name, roles, bio, id, portraitAlt } = Astro.props;
   <div class="md:col-span-7 lg:col-span-7 w-full flex flex-col justify-start space-y-5 md:pt-1">
     <div>
       <h2
-        class="mt-0! mb-4 sm:mb-6 text-center font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] font-medium text-accent-secondary md:text-left tracking-tight leading-[1.1] drop-shadow-xs break-words"
+        class="mt-0! mb-2 sm:mb-3 text-center font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] font-medium text-accent-secondary md:text-left tracking-tight leading-[1.1] drop-shadow-xs break-words"
       >
         {name}
       </h2>
+
+      {
+        tibetanName && (
+          <span
+            lang="bo"
+            class="text-xl sm:text-2xl font-tibetan text-accent font-bold block text-center md:text-left mb-4 sm:mb-6 pt-1 leading-[1.6]"
+          >
+            {tibetanName}
+          </span>
+        )
+      }
 
       <div class="flex flex-wrap justify-center gap-2 md:justify-start pt-1">
         {

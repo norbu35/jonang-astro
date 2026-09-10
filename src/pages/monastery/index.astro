@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AboutUsContent from "../../components/pages/AboutUsContent.astro";
 import StickyPageNav from "../../components/ui/StickyPageNav.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 import monasteryBannerImg from "../../assets/images/housing-landscape.webp";
 
@@ -19,22 +20,23 @@ const monasteryNavItems = [
 ---
 
 <BaseLayout
-  title="The Monastery"
-  description="Explore Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla—the primary seat of the Jonang tradition in exile, preserving Shentong scholarship and the Kalachakra Six-fold Vajrayoga."
+  title="The Monastery · Shimla | Jonang Monastery"
+  description="Main Jonang Takten Phuntsok Choeling in Sanjauli, Shimla: seat of the Jonang lineage in exile, monastic assembly, sacred shrines, and institutional history."
+  breadcrumbs={[{ name: "The Monastery", path: "/monastery" }]}
 >
   <main id="main-content" class="flex-1">
     <!-- I. Museum-Grade Art-Directed Sanctuary Hero (Tibetan Monastic Crimson & Gold) -->
     <section
-      class="relative w-full overflow-hidden bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] text-white border-b border-[#992224]/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
+      class="relative w-full overflow-hidden bg-gradient-to-b from-accent-hover via-maroon-light to-maroon text-white border-b border-accent/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
     >
       <!-- Subtle ambient sangha crimson & warm gold temple glow -->
       <div
-        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-[#fdbc2d]/20 blur-[150px] mix-blend-screen rounded-full"
+        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-gold/20 blur-[150px] mix-blend-screen rounded-full"
         aria-hidden="true"
       >
       </div>
       <div
-        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-[#500c0e]/60 blur-[130px] rounded-full"
+        class="pointer-events-none absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-maroon/60 blur-[130px] rounded-full"
         aria-hidden="true"
       >
       </div>
@@ -47,7 +49,7 @@ const monasteryNavItems = [
             <!-- Consecrated Tibetan Title -->
             <div
               lang="bo"
-              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-[#fdbc2d] font-bold leading-relaxed drop-shadow-md"
+              class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-gold font-bold leading-[1.6] pt-1 drop-shadow-md"
             >
               ཇོ་ནང་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།
             </div>
@@ -57,7 +59,7 @@ const monasteryNavItems = [
               <h1
                 class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-[1.15] m-0 drop-shadow-md"
               >
-                The Monastery
+                Main Jonang Monastery
               </h1>
 
               <p class="font-serif text-base sm:text-lg text-white/90 leading-relaxed m-0">
@@ -69,11 +71,11 @@ const monasteryNavItems = [
 
             <!-- Canonical Pillars Stream Card (Monastic Sangha Maroon Style) -->
             <div
-              class="p-5 sm:p-6 rounded-2xl bg-[#500c0e]/90 border border-[#85181b] backdrop-blur-md shadow-inner flex flex-col gap-3"
+              class="p-5 sm:p-6 rounded-2xl bg-maroon/90 border border-maroon-border backdrop-blur-md shadow-inner flex flex-col gap-3"
             >
-              <div class="border-b border-[#85181b]/60 pb-2.5">
+              <div class="border-b border-maroon-border/60 pb-2.5">
                 <span
-                  class="text-caption uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block"
+                  class="text-caption uppercase tracking-wider text-gold font-mono font-bold block"
                 >
                   Sanctuary Foundation
                 </span>
@@ -82,19 +84,19 @@ const monasteryNavItems = [
                 class="m-0 p-0 list-none flex flex-col gap-2.5 text-sm text-white/90 font-serif leading-relaxed"
               >
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>Founded on Sanjauli Ridge (1963):</strong> Established by Lama Jinpa Gyatso on the tranquil pine hills overlooking Shimla.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>Seat Bestowal & Consecration (1990):</strong> Formally titled <em>Main Jonang Takten Phuntsok Choeling</em> by H.H. the 14th Dalai Lama as the primary exile seat.</span
                   >
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-[#fdbc2d] font-bold">•</span>
+                  <span class="text-gold font-bold">•</span>
                   <span
                     ><strong>Living Shedra & Dark Retreat:</strong> Houses an 18-year Buddhist philosophy syllabus, annual Monlam assemblies, and continuous 3.5-year Kālacakra meditation retreats.</span
                   >
@@ -106,15 +108,15 @@ const monasteryNavItems = [
             <div class="flex flex-wrap items-center gap-4 pt-1 sm:pt-2">
               <a
                 href="#monastery-overview"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#fdbc2d] hover:bg-[#fed36c] text-[#1c1210] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-[0_0_20px_rgba(253,188,45,0.4)] hover:-translate-y-1 active:scale-[0.97]"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold hover:bg-accent-secondary-hover text-ink font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-glow hover:-translate-y-1 active:scale-[0.97]"
               >
-                <span>Explore Sanctuary</span>
+                <span>Monastery Overview</span>
                 <span>↓</span>
               </a>
 
               <a
-                href="/living-tradition"
-                class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-[#fdbc2d] border border-white/25 hover:border-[#fdbc2d]/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md active:scale-[0.97]"
+                href={STATIC_PAGE_PATHS.livingTradition}
+                class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-gold border border-white/25 hover:border-gold/60 font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all backdrop-blur-md active:scale-[0.97]"
               >
                 <span>Living Tradition</span>
                 <span>→</span>
@@ -127,10 +129,10 @@ const monasteryNavItems = [
             <div class="relative w-full max-w-lg lg:max-w-none group/monastery">
               <!-- Buddhist Monastic Maroon & Gold Filigree Frame -->
               <div
-                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-[#7b171a] via-[#5c1012] to-[#450b0c] border border-[#fdbc2d]/40 shadow-2xl backdrop-blur-md"
+                class="relative rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 bg-gradient-to-b from-maroon-light via-maroon-surface to-maroon-dark border border-gold/40 shadow-2xl backdrop-blur-md"
               >
                 <div
-                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-[#3b0809] shadow-inner"
+                  class="relative aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-maroon-dark shadow-inner"
                 >
                   <Image
                     src={monasteryBannerImg}
@@ -150,7 +152,7 @@ const monasteryNavItems = [
 
                   <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
                     <span
-                      class="text-caption uppercase tracking-wider text-[#fdbc2d] font-mono font-bold block"
+                      class="text-caption uppercase tracking-wider text-gold font-mono font-bold block"
                     >
                       Sanjauli Ridge · Shimla, Himachal Pradesh
                     </span>
@@ -164,7 +166,7 @@ const monasteryNavItems = [
               <!-- Caption Metadata Footer -->
               <div class="flex items-center justify-between text-caption text-white/80 pt-3 px-2">
                 <span>Himalayan Ridge Elevation: ~2,200m</span>
-                <span class="font-mono text-[#fdbc2d]">Est. 1963 · Consecrated 1990</span>
+                <span class="font-mono text-gold">Est. 1963 · Consecrated 1990</span>
               </div>
             </div>
           </div>

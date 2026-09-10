@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Dharmachakra from "../icons/Dharmachakra.astro";
 import VideoFeature from "../VideoFeature.astro";
 import GlossaryTerm from "../ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 import entranceImage from "../../assets/images/main-entrance.webp";
 
@@ -20,7 +21,7 @@ const dalaiLamaVisits = [
   {
     year: "2002",
     event: "Kalachakra Empowerment",
-    desc: "Conferred the grand Kalachakra initiation, affirming the monastery's vital role in safeguarding completion-stage yogas.",
+    desc: "Conferred the Kālacakra initiation, affirming the monastery's custodianship of the completion-stage yogas in exile.",
   },
   {
     year: "2013",
@@ -197,7 +198,7 @@ const annualActivities = [
       channelUrl="https://www.youtube.com/watch?v=pr00n4no4Vc"
       duration="Live Assembly Ceremony"
       actionHref="#weekly-schedule"
-      actionLabel="View Monastery Liturgical Schedule"
+      actionLabel="Monastery Liturgical Schedule"
       id="monastery-video"
     />
   </div>
@@ -289,9 +290,7 @@ const annualActivities = [
     </h3>
 
     <p class="text-sm sm:text-base text-muted leading-relaxed font-serif m-0">
-      The monastery provides lodging, healthcare, and monastic education for approximately <strong
-        >120 resident monks and staff members</strong
-      >:
+      The monastery provides lodging, healthcare, and monastic education for approximately <strong>120 resident monks and staff members</strong>.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
@@ -336,7 +335,7 @@ const annualActivities = [
     </h3>
 
     <p class="text-sm sm:text-base text-muted font-serif m-0">
-      The resident sangha conducts communal liturgies according to the monastic calendar, including the severing of ego-grasping through Machik Labdrön’s <GlossaryTerm id="chod">Chöd</GlossaryTerm> praxis, the Dro transmission of the Kālacakra liturgy, and weekend dialectical debates:
+      The resident sangha conducts communal liturgies according to the monastic calendar, including the severing of ego-grasping through Machik Labdrön’s <GlossaryTerm id="chod">Chöd</GlossaryTerm> praxis, the Dro transmission of the Kālacakra liturgy, and weekend dialectical debates.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
@@ -352,7 +351,7 @@ const annualActivities = [
               </h4>
               <span
                 lang="bo"
-                class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-0.5 leading-relaxed"
+                class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
               >
                 {w.tibetan}
               </span>
@@ -373,7 +372,7 @@ const annualActivities = [
         Annual Ceremonies and Monlam Assemblies
       </h3>
       <p class="text-sm sm:text-base text-muted font-serif m-0">
-        Major liturgical observances, monlam prayer festivals, and sacred anniversaries conducted according to the Tibetan lunar calendar, marked by 24-hour circumambulations (<GlossaryTerm id="kora"><em>kora</em></GlossaryTerm>), continuous <GlossaryTerm id="mar-me">butter lamp offerings</GlossaryTerm>, and the construction of consecrated sand mandalas (<GlossaryTerm id="dul-tshon"><em>rdul tshon</em></GlossaryTerm>):
+        Major liturgical observances, monlam prayer festivals, and sacred anniversaries conducted according to the Tibetan lunar calendar, marked by 24-hour circumambulations (<GlossaryTerm id="kora"><em>kora</em></GlossaryTerm>), continuous <GlossaryTerm id="mar-me">butter lamp offerings</GlossaryTerm>, and the construction of consecrated sand mandalas (<GlossaryTerm id="dul-tshon"><em>rdul tshon</em></GlossaryTerm>).
       </p>
     </div>
 
@@ -408,13 +407,13 @@ const annualActivities = [
       </h3>
       <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
         Detailed documentation of the eighteen-year shedra syllabus, teacher biographies, and
-        monastic sponsorship:
+        monastic sponsorship.
       </p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2">
       <a
-        href="/curriculum"
+        href={STATIC_PAGE_PATHS.curriculum}
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
@@ -434,12 +433,12 @@ const annualActivities = [
         <span
           class="text-xs sm:text-sm font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
         >
-          View Complete Syllabus <span>→</span>
+          Complete Syllabus <span>→</span>
         </span>
       </a>
 
       <a
-        href="/teachers"
+        href={STATIC_PAGE_PATHS.teachers}
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent-secondary group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
@@ -460,12 +459,12 @@ const annualActivities = [
         <span
           class="text-xs sm:text-sm font-semibold text-accent-secondary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
         >
-          Read Master Biographies <span>→</span>
+          Master Biographies <span>→</span>
         </span>
       </a>
 
       <a
-        href="/donate"
+        href={STATIC_PAGE_PATHS.donate}
         class="p-5 rounded-xl bg-surface-subtle border border-border hover:border-accent-tertiary group transition-all flex flex-col justify-between gap-3"
       >
         <div class="flex flex-col gap-1.5">
@@ -486,7 +485,7 @@ const annualActivities = [
         <span
           class="text-xs sm:text-sm font-semibold text-accent-tertiary flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-border/40"
         >
-          Monastic Giving Options <span>→</span>
+          Monastic Giving <span>→</span>
         </span>
       </a>
     </div>

@@ -129,12 +129,12 @@ const bibliography: BibItem[] = [
   },
   {
     title: "An Instruction to Lhajé Tsultrim Ö",
-    author: "Dolpopa Sherab Gyaltsen (Trans. Cyrus Stearns)",
+    author: "Dölpopa Sherab Gyaltsen (Trans. Cyrus Stearns)",
     year: "Classical / Academic Edition",
     publisher: "Journal of the International Association of Buddhist Studies (JIABS)",
     category: "Direct Instructions",
     categoryGroup: "treatise",
-    desc: "Essential pith instruction letter composed by Dolpopa directly transmitting the realization of unconditioned luminous reality.",
+    desc: "Essential pith instruction letter composed by Dölpopa directly transmitting the realization of unconditioned luminous reality.",
     link: "https://journals.ub.uni-heidelberg.de/index.php/jiabs/article/view/8936",
     sourceName: "Univ. Heidelberg JIABS",
   },
@@ -201,18 +201,18 @@ const bibliography: BibItem[] = [
     publisher: "Padma Karpo Translation Committee (PKTC)",
     category: "Yogic Songs & Manual",
     categoryGroup: "manual",
-    desc: "Unpacking the spontaneous realization songs (dohas) of Jetsun Milarepa in the light of the Shentong experiential view.",
+    desc: "Exposition of the spontaneous realization songs (dohās) of Jetsun Milarepa in light of the Shentong contemplative view.",
     link: "https://search.worldcat.org/search?q=Theory+and+Practice+of+Other+Emptiness+Milarepa+Tony+Duff",
     sourceName: "WorldCat Catalog",
   },
   {
-    title: "The Dharma Handbook with Commentary (on Dolpopa's General Commentary on the Doctrine)",
+    title: "The Dharma Handbook with Commentary (on Dölpopa's General Commentary on the Doctrine)",
     author: "Ven. Tashi Nyima",
     year: "2018",
     publisher: "Universal Compassion / Great Middle Way",
     category: "Contemporary Commentary",
     categoryGroup: "contemporary",
-    desc: "Practical manual and commentary contextualizing Dolpopa's Bstan pa spyi 'grel for modern practitioners.",
+    desc: "Practical manual and commentary contextualizing Dölpopa's Bstan pa spyi 'grel for modern practitioners.",
     link: "https://greatmiddleway.wordpress.com/",
     sourceName: "Great Middle Way",
   },
@@ -229,13 +229,13 @@ const bibliography: BibItem[] = [
     sourceName: "PKTC Official",
   },
   {
-    title: "Dolpopa's Mountain Dharma: The Birth of the Shentong View",
+    title: "Dölpopa's Mountain Dharma: The Birth of the Shentong View",
     author: "Khenchen Thrangu Rinpoche",
     year: "2004",
     publisher: "Namo Buddha Publications",
     category: "Lineage Commentary",
     categoryGroup: "contemporary",
-    desc: "In-depth teaching by a renowned contemporary scholar unpacking the historical and contemplative genesis of Dolpopa's Shentong formulation.",
+    desc: "In-depth commentary by a contemporary scholar analyzing the historical and contemplative genesis of Dölpopa's Shentong formulation.",
     link: "https://search.worldcat.org/search?q=Mountain+Dharma+Thrangu+Rinpoche",
     sourceName: "WorldCat Catalog",
   },
@@ -333,7 +333,7 @@ const categories = [
         <button
           type="button"
           id="bib-search-clear"
-          class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-ink transition-colors cursor-pointer"
+          class="hidden absolute inset-y-0 right-0 flex items-center pr-3 text-muted hover:text-ink transition-colors cursor-pointer min-w-[40px] min-h-[40px] justify-center"
           aria-label="Clear search"
         >
           <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -353,7 +353,7 @@ const categories = [
             type="button"
             data-category={cat.id}
             class:list={[
-              "bib-filter-chip px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 border cursor-pointer",
+              "bib-filter-chip px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 border cursor-pointer min-h-[36px]",
               idx === 0
                 ? "bg-accent text-white border-accent shadow-xs"
                 : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
@@ -370,22 +370,15 @@ const categories = [
   </div>
 
   <!-- CATALOG TABLE VIEW -->
-  <div id="bib-table-container" class="overflow-x-auto pt-2">
-    <table class="w-full min-w-[700px] table-fixed text-left text-xs border-collapse">
-      <colgroup>
-        <col class="w-12" />
-        <col />
-        <col class="w-44" />
-        <col class="w-40" />
-        <col class="w-44" />
-      </colgroup>
+  <div id="bib-table-container" class="overflow-x-auto rounded-xl border border-border/80">
+    <table class="w-full text-left text-xs border-collapse">
       <thead>
         <tr class="bg-surface-subtle border-b border-border text-ink font-display">
-          <th class="p-3.5 w-12">#</th>
+          <th class="p-3.5 w-12 font-mono">#</th>
           <th class="p-3.5">Title & Summary</th>
-          <th class="p-3.5 w-44">Author / Editor</th>
-          <th class="p-3.5 w-40">Publisher & Year</th>
-          <th class="p-3.5 w-44 text-right">Access</th>
+          <th class="p-3.5 sm:w-44">Author / Editor</th>
+          <th class="p-3.5 sm:w-40">Publisher & Year</th>
+          <th class="p-3.5 text-right whitespace-nowrap">Access</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-border" id="bib-table-body">
@@ -421,7 +414,7 @@ const categories = [
                   href={b.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-caption-xs font-semibold py-1.5 px-3 rounded-lg bg-accent text-white hover:bg-accent-hover inline-flex items-center gap-1.5 transition-colors shadow-xs"
+                  class="text-caption-xs font-semibold py-1.5 px-3 rounded-lg bg-accent text-white hover:bg-accent-hover inline-flex items-center gap-1.5 transition-colors shadow-xs min-h-[36px]"
                   aria-label={`View ${b.title} on ${b.sourceName}`}
                 >
                   <span>{b.sourceName}</span>
@@ -437,16 +430,15 @@ const categories = [
 
   <!-- Empty State -->
   <div id="bib-empty-state" class="hidden text-center py-16 px-4 space-y-3">
-    <div class="text-3xl text-muted">༄༅།</div>
+    <div lang="bo" class="font-tibetan text-3xl text-muted pt-1 leading-[1.6]">༄༅།</div>
     <h4 class="font-display text-xl text-ink m-0">No Publications Matched Your Search</h4>
     <p class="text-xs sm:text-sm text-muted max-w-md mx-auto m-0">
-      Try refining your search terms or clearing category filters to view the complete Shentong
-      archive.
+      No publications correspond to the current search query or category selection.
     </p>
     <button
       type="button"
       id="bib-reset-btn"
-      class="mt-2 text-xs font-semibold px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors cursor-pointer"
+      class="mt-2 text-xs font-semibold px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors cursor-pointer min-h-[36px]"
     >
       Reset Filters
     </button>

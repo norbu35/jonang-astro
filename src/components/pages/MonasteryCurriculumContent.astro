@@ -1,6 +1,7 @@
 ---
 import Dharmachakra from "../icons/Dharmachakra.astro";
 import GlossaryTerm from "../ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 const syllabusStages = [
   {
@@ -27,7 +28,7 @@ const syllabusStages = [
     title: "The Five Great Treatises & Shentong",
     tibetan: "གཞུང་ཆེན་བཀའ་པོད་ལྔ།",
     curriculum:
-      "Mastery of Prajñāpāramitā, Madhyamaka, Abhidharma, and Vinaya, alongside Kunkhyen Dolpopa’s Mountain Doctrine and definitive Shentong commentaries.",
+      "Mastery of Prajñāpāramitā, Madhyamaka, Abhidharma, and Vinaya, alongside Kunkhyen Dölpopa’s Mountain Doctrine and definitive Shentong commentaries.",
     focus: "Scholastic Philosophy",
   },
   {
@@ -87,7 +88,7 @@ const fiveTreatises = [
   {
     title: "Madhyamaka (The Middle Way)",
     tibetan: "དབུ་མ།",
-    text: "Candrakīrti’s Madhyamakāvatāra & Dolpopa’s Mountain Doctrine",
+    text: "Candrakīrti’s Madhyamakāvatāra & Dölpopa’s Mountain Doctrine",
     desc: "Deconstructs all extremes of eternalism and nihilism, presenting the definitive union of freedom from fabrications and primordial luminous awareness.",
   },
   {
@@ -137,11 +138,19 @@ const ritualArts = [
     id="curriculum-overview"
     class="surface-card p-6 sm:p-8 md:p-10 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h2
-      class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
-    >
-      The 18-Year Progressive Monastic Curriculum
-    </h2>
+    <div class="space-y-2">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
+      >
+        The 18-Year Progressive Monastic Curriculum
+      </h2>
+      <span
+        lang="bo"
+        class="text-lg sm:text-xl font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+      >
+        ལོ་ངོ་བཅོ་བརྒྱད་ཀྱི་དགོན་པའི་སློབ་ཚན་རིམ་པ།
+      </span>
+    </div>
 
     <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
       Main Jonang Takten Phuntsok Choeling conducts an 18-year curriculum integrating Tibetan
@@ -176,7 +185,15 @@ const ritualArts = [
   <div id="four-epochs" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
     <div class="flex items-center gap-3">
       <Dharmachakra class="w-7 h-7 text-accent-secondary" />
-      <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">The Four Academic Epochs</h3>
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">The Four Academic Epochs</h3>
+        <span
+          lang="bo"
+          class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+        >
+          བསླབ་གཞི་དུས་མཚམས་རིམ་པ་བཞི།
+        </span>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
@@ -191,7 +208,10 @@ const ritualArts = [
               <h4 class="font-display text-lg sm:text-xl font-bold text-ink leading-snug m-0">
                 {s.title}
               </h4>
-              <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1">
+              <span
+                lang="bo"
+                class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+              >
                 {s.tibetan}
               </span>
               <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{s.curriculum}</p>
@@ -210,13 +230,22 @@ const ritualArts = [
     id="sutra-epistemology"
     class="surface-card p-6 sm:p-8 space-y-6 border-l-4 border-l-accent scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      Foundational Sūtra Epistemology: Logic, Mind & Dialectics
-    </h3>
+    <div>
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Foundational Sūtra Epistemology: Logic, Mind & Dialectics
+      </h3>
+      <span
+        lang="bo"
+        class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+      >
+        བསྡུས་གྲྭ་དང་ཚད་མའི་གཞུང་ལུགས།
+      </span>
+    </div>
 
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
-      Before embarking on the Five Great Treatises, students undergo a rigorous four-year
-      foundational sequence mastering logic, cognitive theory, and debate manuals in the courtyard (<GlossaryTerm id="chos-rwa"><em>chos rwa</em></GlossaryTerm>), anchored in the textbooks of <GlossaryTerm id="bamda-gelek">Bamda Gelek Gyatso</GlossaryTerm>:
+      Prior to undertaking the Five Great Treatises, students complete a four-year
+      foundational sequence in logic, cognitive definitions, and debate methodology
+      anchored in the canonical textbooks of <GlossaryTerm id="bamda-gelek">Bamda Gelek Gyatso</GlossaryTerm>.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 items-stretch">
@@ -229,7 +258,10 @@ const ritualArts = [
                 <span class="text-accent-secondary font-semibold font-mono">{item.duration}</span>
               </div>
               <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{item.name}</h4>
-              <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1">
+              <span
+                lang="bo"
+                class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+              >
                 {item.tibetan}
               </span>
 
@@ -261,9 +293,17 @@ const ritualArts = [
     id="five-treatises"
     class="surface-card p-6 sm:p-8 space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
-    </h3>
+    <div>
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        The Five Great Treatises (<em>Gzhung Chen Bka' Pod Lnga</em>)
+      </h3>
+      <span
+        lang="bo"
+        class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+      >
+        གཞུང་ཆེན་བཀའ་པོད་ལྔ།
+      </span>
+    </div>
 
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       The scholastic core of the <GlossaryTerm id="shedra">shedra</GlossaryTerm> curriculum comprises comprehensive study of the canonical Indian root treatises and Jonang commentaries across five disciplines: <GlossaryTerm id="pramana">epistemology (Pramāṇa)</GlossaryTerm>, <GlossaryTerm id="prajnaparamita">Perfection of Wisdom (Prajñāpāramitā)</GlossaryTerm>, <GlossaryTerm id="madhyamaka">the Middle Way (Madhyamaka)</GlossaryTerm>, <GlossaryTerm id="abhidharma">phenomenology (Abhidharma)</GlossaryTerm>, and <GlossaryTerm id="vinaya">monastic discipline (Vinaya)</GlossaryTerm>, studied through traditional loose-leaf <GlossaryTerm id="pecha">pecha</GlossaryTerm> folios.
@@ -279,9 +319,12 @@ const ritualArts = [
             ]}
           >
             <div class="flex flex-col gap-1.5">
-              <div class="flex justify-between items-start mb-1">
+              <div class="flex justify-between items-start gap-2 mb-1">
                 <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{t.title}</h4>
-                <span class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold">
+                <span
+                  lang="bo"
+                  class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold shrink-0 pt-0.5 leading-[1.6]"
+                >
                   {t.tibetan}
                 </span>
               </div>
@@ -296,9 +339,17 @@ const ritualArts = [
 
   <!-- Liturgical Arts & Instruments -->
   <div id="ritual-arts" class="space-y-6 scroll-mt-[calc(var(--header-h)+4.5rem)]">
-    <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-      Liturgical Arts and Ritual Music
-    </h3>
+    <div>
+      <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
+        Liturgical Arts and Ritual Music
+      </h3>
+      <span
+        lang="bo"
+        class="text-sm sm:text-base font-tibetan text-accent font-bold block pt-1 leading-[1.6]"
+      >
+        ཆོ་ག་ཕྱག་ལེན་དང་རོལ་མོའི་རིག་གནས།
+      </span>
+    </div>
 
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Complementing philosophical debate, monks master sacred tantric arts including ritual dance (<GlossaryTerm id="cham"><em>chām</em></GlossaryTerm>), ritual offerings (<GlossaryTerm id="torma"><em>torma</em></GlossaryTerm>), and colored powder sand mandalas (<GlossaryTerm id="dul-tshon"><em>rdul tshon</em></GlossaryTerm>).
@@ -312,7 +363,10 @@ const ritualArts = [
               <div class="flex justify-between items-center mb-1">
                 <h4 class="font-display text-base sm:text-lg font-bold text-ink m-0">{art.name}</h4>
               </div>
-              <span class="text-sm sm:text-base font-tibetan text-accent font-bold block pt-1">
+              <span
+                lang="bo"
+                class="text-sm sm:text-base font-tibetan text-accent font-bold block pt-1 leading-[1.6]"
+              >
                 {art.tibetan}
               </span>
               <p class="text-sm text-muted leading-relaxed m-0 font-serif pt-1">{art.items}</p>
@@ -328,7 +382,24 @@ const ritualArts = [
     id="completion-retreat"
     class="surface-card p-6 sm:p-8 space-y-4 border-l-4 border-l-accent-secondary scroll-mt-[calc(var(--header-h)+4.5rem)]"
   >
-    <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">3.5-Year Kālacakra Retreat</h3>
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h3 class="text-2xl sm:text-3xl font-display text-ink m-0">3.5-Year Kālacakra Retreat</h3>
+        <span
+          lang="bo"
+          class="text-base sm:text-lg font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+        >
+          དུས་འཁོར་ལོ་ལོ་གསུམ་ཕྱོགས་གསུམ་གྱི་སྒྲུབ་པ།
+        </span>
+      </div>
+      <a
+        href={STATIC_PAGE_PATHS.kalachakra}
+        class="inline-flex items-center gap-2 self-start px-4 py-2 rounded-lg bg-surface-subtle hover:bg-accent/10 text-accent font-mono text-xs font-semibold uppercase tracking-wider border border-border transition-colors min-h-[36px]"
+      >
+        <span>Kālacakra Tantra Overview</span>
+        <span>→</span>
+      </a>
+    </div>
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       Monks who complete the dialectical syllabus qualify to enter the retreat facility (<GlossaryTerm id="drupdra"><em>sgrub grwa</em></GlossaryTerm>) for a
       three-and-a-half-year cycle. Practice centers on <GlossaryTerm id="kyerim">Generation Stage</GlossaryTerm> deity yoga, Three Isolations

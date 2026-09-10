@@ -1,8 +1,16 @@
 ---
+import type { ImageMetadata } from "astro";
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_METADATA } from "../data/site";
+import {
+  buildCanonicalUrl,
+  getGlobalKnowledgeGraph,
+  getBreadcrumbSchema,
+  getPageSpecificSchema,
+  type BreadcrumbItem,
+} from "../utils/seo";
 import cormorantFont from "../assets/fonts/CormorantGaramond-Medium.woff2";
 import notoSerifTibetanFont from "../assets/fonts/NotoSerifTibetan-Regular.woff2";
 import "../../base.css";
@@ -10,44 +18,46 @@ import "../../base.css";
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
+  image?: ImageMetadata | string;
   canonicalUrl?: string;
   type?: "website" | "article";
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
   title,
   description = SITE_METADATA.description,
   image = "/logo512x512.jpg",
-  canonicalUrl = Astro.url.href,
+  canonicalUrl: customCanonical,
   type = "website",
+  breadcrumbs,
 } = Astro.props;
 
 const pageTitle = title
-  ? `${title} | ${SITE_METADATA.name}`
+  ? title.includes(SITE_METADATA.name) || title.includes(SITE_METADATA.shortName)
+    ? title
+    : `${title} | ${SITE_METADATA.shortName}`
   : `${SITE_METADATA.name} | Tibetan Buddhist Monastery`;
 
-const resolvedImageUrl = new URL(image, SITE_METADATA.siteUrl).toString();
+const canonicalUrl = customCanonical ?? buildCanonicalUrl(Astro.url.pathname);
 
-const jsonLd = {
+const imageSrc = typeof image === "string" ? image : (image?.src ?? "/logo512x512.jpg");
+const resolvedImageUrl = new URL(imageSrc, SITE_METADATA.siteUrl).toString();
+
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+
+const globalGraph = getGlobalKnowledgeGraph();
+const breadcrumbSchema = breadcrumbs ? getBreadcrumbSchema(breadcrumbs) : null;
+const pageSchema = getPageSpecificSchema(Astro.url.pathname);
+
+const jsonLdGraph = {
   "@context": "https://schema.org",
-  "@type": "BuddhistTemple",
-  name: SITE_METADATA.name,
-  alternateName: [SITE_METADATA.tibetanName, SITE_METADATA.shortName],
-  description: SITE_METADATA.description,
-  url: SITE_METADATA.siteUrl,
-  logo: new URL("/logo512x512.jpg", SITE_METADATA.siteUrl).toString(),
-  image: resolvedImageUrl,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Sanjauli",
-    addressLocality: "Shimla",
-    addressRegion: "Himachal Pradesh",
-    postalCode: "171006",
-    addressCountry: "IN",
-  },
-  telephone: SITE_METADATA.contact.phone,
-  email: SITE_METADATA.contact.email,
+  "@graph": [
+    ...globalGraph,
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ...(pageSchema ? [pageSchema] : []),
+  ],
 };
 ---
 
@@ -62,6 +72,9 @@ const jsonLd = {
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
+
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
 
     <!-- Font Preconnect & Network Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -97,8 +110,8 @@ const jsonLd = {
     <meta name="twitter:image" content={resolvedImageUrl} />
     <meta name="twitter:image:alt" content={SITE_METADATA.name} />
 
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    <!-- Schema.org JSON-LD Knowledge Graph -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdGraph)} />
 
     <!-- Dark Mode & Color Scheme Declaration (Modern Web Guidance) -->
     <meta name="color-scheme" content="light dark" />
@@ -153,7 +166,7 @@ const jsonLd = {
   <body class="min-h-screen bg-bg text-fg font-body antialiased flex flex-col justify-between">
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-5 focus:py-3 focus:bg-[#500c0e] focus:text-[#fdbc2d] focus:font-bold focus:text-sm focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-[#fdbc2d] focus:border focus:border-white/30 focus:outline-none"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-5 focus:py-3 focus:bg-maroon focus:text-gold focus:font-bold focus:text-sm focus:rounded-xl focus:shadow-2xl focus:ring-2 focus:ring-gold focus:border focus:border-white/30 focus:outline-none"
     >
       Skip to main content
     </a>

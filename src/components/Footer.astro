@@ -11,14 +11,14 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 
 <Quote />
 <footer
-  class="relative flex flex-col items-center gap-10 bg-gradient-to-b from-[#8f1e21] via-[#7b171a] to-[#661214] px-6 pb-8 pt-12 text-white before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#fdbc2d]/60 before:to-transparent before:content-['']"
+  class="relative flex flex-col items-center gap-10 bg-gradient-to-b from-accent-hover via-maroon-light to-maroon px-6 pb-8 pt-12 text-white before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-gold/60 before:to-transparent before:content-['']"
 >
   <div
     class="mx-auto grid w-full max-w-6xl gap-10 text-sm text-white/90 md:grid-cols-[1.1fr_1fr_0.95fr] md:items-start"
   >
     <!-- Left Column: Blessing & Kalachakra Mantra -->
     <div class="flex flex-col items-center gap-4 md:items-start">
-      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">Blessing</div>
+      <div class="text-xs font-bold uppercase tracking-wider text-gold">Blessing</div>
       <div class="flex flex-row gap-4 items-center">
         <Image
           class="mx-auto drop-shadow-md"
@@ -37,12 +37,12 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
         class="max-w-[420px] text-center text-sm italic text-white/90 md:text-left font-serif leading-relaxed"
       >
         <div
-          class="mb-1 text-sm font-bold not-italic text-[#fdbc2d] font-tibetan tracking-normal"
+          class="pt-1 mb-1 text-sm font-bold not-italic text-gold font-tibetan tracking-normal leading-[1.6]"
           lang="bo"
         >
           {SITE_METADATA.blessing.tibetanMantra}
         </div>
-        <div class="mb-2 text-xs font-bold not-italic text-[#fdbc2d]/90 font-mono tracking-wider">
+        <div class="mt-1 mb-2 text-xs font-bold not-italic text-gold/90 font-mono tracking-wider">
           {SITE_METADATA.blessing.mantra}
         </div>
         {SITE_METADATA.blessing.text}
@@ -54,7 +54,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
       {
         FOOTER_NAVIGATION.map((section) => (
           <div class="flex flex-col items-center gap-4 md:items-start">
-            <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">
+            <div class="text-xs font-bold uppercase tracking-wider text-gold">
               {section.heading}
             </div>
             <nav aria-label={section.heading} class="w-full">
@@ -62,7 +62,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
                 {section.links.map((link) => (
                   <li class="m-0 list-none">
                     <a
-                      class="text-white/85 transition-colors hover:text-[#fdbc2d] font-medium"
+                      class="text-white/85 transition-colors hover:text-gold font-medium py-0.5 inline-block"
                       href={link.href}
                     >
                       {link.label}
@@ -78,7 +78,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 
     <!-- Right Column: Contact Coordinates & Support Button -->
     <div class="flex flex-col items-center gap-6 md:items-start">
-      <div class="text-xs font-bold uppercase tracking-wider text-[#fdbc2d]">Contact</div>
+      <div class="text-xs font-bold uppercase tracking-wider text-gold">Contact</div>
       <address class="not-italic text-sm sm:text-base text-white/90">
         <div class="leading-relaxed font-serif">
           {SITE_METADATA.contact.addressLines.map((line) => <div>{line}</div>)}
@@ -86,13 +86,13 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
         <div class="mt-4 leading-relaxed font-medium">
           <a
             href={`mailto:${SITE_METADATA.contact.email}`}
-            class="text-white/90 hover:text-[#fdbc2d] transition-colors block"
+            class="text-white/90 hover:text-gold transition-colors block py-1"
           >
             {SITE_METADATA.contact.email}
           </a>
           <a
             href={`tel:${SITE_METADATA.contact.phone.replace(/\s+/g, "")}`}
-            class="text-white/90 hover:text-[#fdbc2d] transition-colors block"
+            class="text-white/90 hover:text-gold transition-colors block py-1"
           >
             {SITE_METADATA.contact.phone}
           </a>
@@ -100,7 +100,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
       </address>
       <a
         href={STATIC_PAGE_PATHS.donate}
-        class="inline-flex items-center justify-center rounded-lg bg-[#fdbc2d] hover:bg-[#fed36c] px-6 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-[#1c1210] border border-[#d99b1a] shadow-md transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fdbc2d]"
+        class="min-h-[44px] inline-flex items-center justify-center rounded-lg bg-gold hover:bg-accent-secondary-hover px-6 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-ink border border-accent-secondary shadow-md transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
       >
         Donate
       </a>
@@ -112,7 +112,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
     class="text-center text-sm text-white/85 xl:mt-8 space-y-3 w-full border-t border-white/10 pt-6"
   >
     <div
-      class="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-[#fdbc2d]"
+      class="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-gold"
     >
       <a href={STATIC_PAGE_PATHS.sitemap} class="transition-colors hover:text-white">Sitemap</a>
       <span>·</span>

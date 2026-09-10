@@ -6,6 +6,7 @@ import Dharmachakra from "../icons/Dharmachakra.astro";
 import EndlessKnot from "../icons/EndlessKnot.astro";
 import LotusFlower from "../icons/LotusFlower.astro";
 import GlossaryTerm from "../ui/GlossaryTerm.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 // Verified image assets
 import youngStudentsImg from "../../assets/images/young-students.webp";
@@ -117,7 +118,7 @@ const monasticFlavors = [
   {
     title: "Po Cha (Butter Tea)",
     tibetanTitle: "བོད་ཇ། / སྲུབ་ཇ།",
-    kicker: "Himalayan Elixir",
+    kicker: "Monastic Sustenance",
     accent: "gold" as const,
     description:
       "Compressed brick tea leaves (ja ril) boiled into a dense dark liquor, then churned with rich butter, fresh milk, and rock salt. Served scalding hot in birch-burl wooden bowls (phor pa) throughout morning assemblies.",
@@ -163,7 +164,7 @@ const sacredCrafts = [
     kicker: "Ephemeral Offering",
     accent: "secondary" as const,
     description:
-      "Consecrated roasted barley dough sculpted with astonishing geometric precision and adorned with vibrant floral medallions made from clarified, dyed butter—crafted fresh for annual Kalachakra and Monlam ceremonies.",
+      "Consecrated roasted barley dough sculpted according to canonical geometric proportions and adorned with floral medallions formed from clarified, dyed butter—crafted for annual Kālacakra and Monlam ceremonies.",
   },
 ];
 
@@ -277,7 +278,7 @@ const authenticProverbs = [
                     {slot.event}
                   </h3>
                   <span
-                    class="text-xs sm:text-sm font-tibetan text-accent-secondary font-bold"
+                    class="text-xs sm:text-sm font-tibetan text-accent-secondary font-bold pt-0.5 leading-[1.6]"
                     lang="bo"
                   >
                     {slot.tibetan}
@@ -368,7 +369,7 @@ const authenticProverbs = [
                 </span>
                 <h4 class="text-base font-display font-bold text-ink m-0">{item.symbol}</h4>
                 <span
-                  class="text-xs font-tibetan text-accent-secondary font-bold block mt-1"
+                  class="text-xs sm:text-sm font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
                   lang="bo"
                 >
                   {item.tibetan}
@@ -486,8 +487,8 @@ const authenticProverbs = [
         </h3>
 
         <p class="text-sm sm:text-base text-muted font-serif leading-relaxed m-0">
-          Unlike modern synthetic colors, the traditional palette of the Jonang arts tradition
-          relies exclusively on pulverized mountain minerals bound with purified organic hide glue:
+          Unlike modern synthetic pigments, the classical palette of the Jonang arts tradition
+          relies exclusively on pulverized mountain minerals bound with purified organic hide glue.
         </p>
 
         <div class="surface-card overflow-hidden rounded-xl border border-border">
@@ -502,28 +503,42 @@ const authenticProverbs = [
             <tbody class="divide-y divide-border text-muted">
               <tr>
                 <td class="p-3 font-medium text-ink">Lapis Lazuli</td>
-                <td class="p-3 font-tibetan font-bold text-accent" lang="bo">མཐིང་། (Mthing)</td>
+                <td class="p-3">
+                  <span lang="bo" class="font-tibetan font-bold text-accent text-sm pt-0.5 leading-[1.6]">མཐིང་།</span>
+                  <span class="font-sans text-xs text-muted font-normal ml-1.5">(Mthing)</span>
+                </td>
                 <td class="p-3">Deep ultramarine midnight blue</td>
               </tr>
               <tr>
                 <td class="p-3 font-medium text-ink">Malachite</td>
-                <td class="p-3 font-tibetan font-bold text-accent" lang="bo">སྤང་མ། (Spang ma)</td>
+                <td class="p-3">
+                  <span lang="bo" class="font-tibetan font-bold text-accent text-sm pt-0.5 leading-[1.6]">སྤང་མ།</span>
+                  <span class="font-sans text-xs text-muted font-normal ml-1.5">(Spang ma)</span>
+                </td>
                 <td class="p-3">Rich mountain emerald green</td>
               </tr>
               <tr>
                 <td class="p-3 font-medium text-ink">Cinnabar</td>
-                <td class="p-3 font-tibetan font-bold text-accent" lang="bo">མཚལ། (Mtshal)</td>
+                <td class="p-3">
+                  <span lang="bo" class="font-tibetan font-bold text-accent text-sm pt-0.5 leading-[1.6]">མཚལ།</span>
+                  <span class="font-sans text-xs text-muted font-normal ml-1.5">(Mtshal)</span>
+                </td>
                 <td class="p-3">Vivid vermilion cinnabar red</td>
               </tr>
               <tr>
                 <td class="p-3 font-medium text-ink">Orpiment</td>
-                <td class="p-3 font-tibetan font-bold text-accent" lang="bo">བ་བླ། (Ba bla)</td>
+                <td class="p-3">
+                  <span lang="bo" class="font-tibetan font-bold text-accent text-sm pt-0.5 leading-[1.6]">བ་བླ།</span>
+                  <span class="font-sans text-xs text-muted font-normal ml-1.5">(Ba bla)</span>
+                </td>
                 <td class="p-3">Opaque warm solar yellow</td>
               </tr>
               <tr>
                 <td class="p-3 font-medium text-ink">Refined Gold Leaf</td>
-                <td class="p-3 font-tibetan font-bold text-accent" lang="bo">གསེར་ཆུ། (Gser chu)</td
-                >
+                <td class="p-3">
+                  <span lang="bo" class="font-tibetan font-bold text-accent text-sm pt-0.5 leading-[1.6]">གསེར་ཆུ།</span>
+                  <span class="font-sans text-xs text-muted font-normal ml-1.5">(Gser chu)</span>
+                </td>
                 <td class="p-3">Luminous gold, agate-stone burnished</td>
               </tr>
             </tbody>
@@ -551,7 +566,7 @@ const authenticProverbs = [
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-6 space-y-4 font-serif text-sm sm:text-base leading-relaxed text-ink">
         <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
-          Ahimsa, Mountain Forest & Good Neighbors
+          Ahimsa, Mountain Ecology & Civic Harmony
         </h3>
 
         <p class="m-0">
@@ -633,7 +648,7 @@ const authenticProverbs = [
 
       <div class="md:col-span-7 space-y-3 font-serif">
         <span class="text-xs font-mono uppercase tracking-wider text-accent font-bold block">
-          The Novice Journey (Grwa Chung)
+          Novice Monastic Education (Grwa Chung)
         </span>
         <h3 class="text-xl sm:text-2xl font-display text-ink font-normal m-0">
           The Chalked Slate (Byang Shing)
@@ -668,7 +683,7 @@ const authenticProverbs = [
             <div class="surface-card p-6 rounded-xl border border-border flex flex-col justify-between space-y-4 hover-lift">
               <div class="space-y-2">
                 <div
-                  class="font-tibetan text-base sm:text-lg text-accent font-bold leading-relaxed"
+                  class="font-tibetan text-base sm:text-lg text-accent font-bold pt-1 leading-[1.7]"
                   lang="bo"
                 >
                   {item.tibetan}
@@ -692,31 +707,31 @@ const authenticProverbs = [
   >
     <div class="max-w-2xl mx-auto space-y-3">
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
-        Experience the Living Tradition
+        Preserving the Living Lineage
       </h3>
       <p class="text-sm sm:text-base text-muted font-serif leading-relaxed m-0">
-        Main Jonang Takten Phuntsok Choeling welcomes respectful pilgrims and friends from around
-        the world. Visitors are invited to observe morning prayer assemblies, witness evening
-        debates, and support the ongoing education of young novice monks.
+        Main Jonang Takten Phuntsok Choeling upholds continuous liturgical assemblies, shedra
+        dialectical debates, and solitary retreats as a living sanctuary in exile, sustaining monastic
+        formation for over one hundred resident monks.
       </p>
     </div>
 
     <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
       <a
-        href="/monastery"
-        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm transition-all hover:bg-accent-hover hover:shadow-md"
+        href={STATIC_PAGE_PATHS.monastery}
+        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-accent text-white font-medium text-sm transition-all hover:bg-accent-hover hover:shadow-md min-h-[44px]"
       >
         <span>About the Monastery</span>
       </a>
       <a
-        href="/curriculum"
-        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-surface-subtle text-ink border border-border font-medium text-sm transition-all hover:bg-surface hover:border-border-strong hover:shadow-sm"
+        href={STATIC_PAGE_PATHS.curriculum}
+        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-surface-subtle text-ink border border-border font-medium text-sm transition-all hover:bg-surface hover:border-border-strong hover:shadow-sm min-h-[44px]"
       >
         <span>18-Year Shedra Curriculum</span>
       </a>
       <a
-        href="/donate"
-        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-gold to-accent-secondary text-ink font-bold text-sm transition-all hover:brightness-105 hover:shadow-md"
+        href={STATIC_PAGE_PATHS.donate}
+        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-gold to-accent-secondary text-ink font-bold text-sm transition-all hover:brightness-105 hover:shadow-md min-h-[44px]"
       >
         <span>Support the Sangha</span>
       </a>

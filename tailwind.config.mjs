@@ -39,8 +39,8 @@ export default {
         "accent-tertiary-subtle": "var(--accent-tertiary-subtle)",
         border: "var(--border)",
         "border-strong": "var(--border-strong)",
-        gold: "var(--accent-secondary)",
-        saffron: "var(--accent-secondary)",
+        gold: "var(--gold)",
+        saffron: "var(--saffron)",
         maroon: {
           DEFAULT: "var(--maroon)",
           dark: "var(--maroon-dark)",

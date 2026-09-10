@@ -38,7 +38,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
     >
       <!-- Monastery Seal with Consecrated Gold Ring -->
       <div
-        class="flex h-14 w-14 sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem] lg:h-20 lg:w-20 xl:h-[5.25rem] xl:w-[5.25rem] shrink-0 items-center justify-center rounded-full bg-[#6e1416]/95 p-0.5 sm:p-1 shadow-lg ring-2 ring-[#fdbc2d]/70 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:ring-[#fdbc2d] group-hover:shadow-[0_0_22px_rgba(253,188,45,0.5)]"
+        class="flex h-14 w-14 sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem] lg:h-20 lg:w-20 xl:h-[5.25rem] xl:w-[5.25rem] shrink-0 items-center justify-center rounded-full bg-maroon-light/95 p-0.5 sm:p-1 shadow-lg ring-2 ring-gold/70 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:ring-gold group-hover:shadow-[0_0_22px_var(--gold)]"
         aria-hidden="true"
       >
         <img
@@ -55,7 +55,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- High-Contrast Luminous Brand Typography -->
       <div class="flex flex-col justify-center select-none" aria-hidden="true">
         <span
-          class="font-display text-[15px] sm:text-[18px] lg:text-[21px] xl:text-[22px] leading-[1.15] text-[#fcfbf8] tracking-[0.02em] font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-[#fdbc2d] transition-colors duration-200"
+          class="font-display text-[15px] sm:text-[18px] lg:text-[21px] xl:text-[22px] leading-[1.15] text-white tracking-[0.02em] font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-gold transition-colors duration-200"
         >
           Jonang Takten<br class="hidden sm:inline" /> Phuntsok Choeling
         </span>
@@ -81,7 +81,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
                   <span>{item.shortLabel ?? item.label}</span>
                   {hasSublinks(item) && (
                     <svg
-                      class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
+                      class="h-3 w-3 text-gold/70 transition-transform duration-300 group-hover:rotate-180"
                       viewBox="0 0 20 20"
                       aria-hidden="true"
                     >
@@ -105,7 +105,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
                   <span>{item.shortLabel ?? item.label}</span>
                   {hasSublinks(item) && (
                     <svg
-                      class="h-3 w-3 text-[#fdbc2d]/70 transition-transform duration-300 group-hover:rotate-180"
+                      class="h-3 w-3 text-gold/70 transition-transform duration-300 group-hover:rotate-180"
                       viewBox="0 0 20 20"
                       aria-hidden="true"
                     >
@@ -133,15 +133,15 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
                             <a
                               href={sublink.href}
                               class:list={[
-                                "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs text-white/90 font-medium transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                                "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs text-white/90 font-medium transition-all hover:bg-white/10 hover:text-gold",
                                 isActivePath(sublink.href) &&
-                                  "bg-[#7b171a]/90 text-[#fdbc2d] font-bold border border-[#fdbc2d]/40",
+                                  "bg-maroon-light/90 text-gold font-bold border border-gold/40",
                               ]}
                               aria-current={isActivePath(sublink.href) ? "page" : undefined}
                             >
                               <span>{sublink.label}</span>
                               {isActivePath(sublink.href) && (
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]" />
+                                <span class="w-1.5 h-1.5 rounded-full bg-gold" />
                               )}
                             </a>
                           ) : null}
@@ -162,7 +162,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Radiant Saffron Gold Donate CTA -->
       <a
         href={STATIC_PAGE_PATHS.donate}
-        class="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-gradient-to-r from-[#fdbc2d] via-[#e5a823] to-[#fdbc2d] text-[#140b0a] font-bold text-xs uppercase tracking-wider ml-1 shadow-[0_2px_12px_rgba(253,188,45,0.35)] hover:shadow-[0_4px_20px_rgba(253,188,45,0.55)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-white/40"
+        class="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-gradient-to-r from-gold via-accent-secondary-hover to-gold text-ink font-bold text-xs uppercase tracking-wider ml-1 shadow-[0_2px_12px_rgba(253,188,45,0.35)] hover:shadow-[0_4px_20px_rgba(253,188,45,0.55)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-white/40"
       >
         <span>Donate</span>
       </a>
@@ -175,7 +175,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Frosted Glass Mobile Menu Toggle -->
       <button
         id="menuToggle"
-        class="focus relative flex h-11 w-11 items-center justify-center rounded-full bg-[#6e1416]/90 backdrop-blur-lg text-white shadow-soft border border-[#fdbc2d]/50 hover:bg-[#85181b] hover:border-[#fdbc2d]/80 transition-all group cursor-pointer"
+        class="focus relative flex h-11 w-11 items-center justify-center rounded-full bg-maroon-light/90 backdrop-blur-lg text-white shadow-soft border border-gold/50 hover:bg-maroon-border hover:border-gold/80 transition-all group cursor-pointer"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
         aria-controls="mobileMenuPanel"
@@ -184,13 +184,13 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
         <span class="sr-only">Open navigation menu</span>
         <div class="flex h-[18px] w-[20px] flex-col justify-between relative" id="hamburgerIcon">
           <span
-            class="hamburger-bar-top block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"
+            class="hamburger-bar-top block h-[2px] w-full rounded-full bg-white transition-all duration-300 origin-center"
           ></span>
           <span
-            class="hamburger-bar-mid block h-[2px] w-full rounded-full bg-[#fdbc2d] transition-all duration-300"
+            class="hamburger-bar-mid block h-[2px] w-full rounded-full bg-gold transition-all duration-300"
           ></span>
           <span
-            class="hamburger-bar-bot block h-[2px] w-full rounded-full bg-[#fcfbf8] transition-all duration-300 origin-center"
+            class="hamburger-bar-bot block h-[2px] w-full rounded-full bg-white transition-all duration-300 origin-center"
           ></span>
         </div>
       </button>
@@ -219,9 +219,9 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Mobile Drawer Header -->
       <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#fdbc2d] animate-pulse ring-4 ring-[#fdbc2d]/25"
+          <span class="w-2 h-2 rounded-full bg-gold animate-pulse ring-4 ring-gold/25"
           ></span>
-          <span class="text-xs font-mono uppercase tracking-wider text-[#fdbc2d] font-bold">
+          <span class="text-xs font-mono uppercase tracking-wider text-gold font-bold">
             Navigation Portal
           </span>
         </div>
@@ -237,15 +237,15 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
                   <a
                     href={item.href}
                     class:list={[
-                      "flex items-center justify-between rounded-xl px-4 py-3 font-semibold text-white/90 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                      "flex items-center justify-between rounded-xl px-4 py-3 font-semibold text-white/90 transition-all hover:bg-white/10 hover:text-gold",
                       isActiveItem(item) &&
-                        "bg-[#7b171a]/90 text-[#fdbc2d] border border-[#fdbc2d]/40 shadow-sm font-bold",
+                        "bg-maroon-light/90 text-gold border border-gold/40 shadow-sm font-bold",
                     ]}
                     aria-current={isActivePath(item.href) ? "page" : undefined}
                   >
                     <span>{item.label}</span>
                     {isActiveItem(item) ? (
-                      <span class="w-2 h-2 rounded-full bg-[#fdbc2d] shadow-[0_0_8px_rgba(253,188,45,0.8)]" />
+                      <span class="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" />
                     ) : (
                       <span class="text-white/40 text-xs">→</span>
                     )}
@@ -264,15 +264,15 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
                           <a
                             href={sublink.href}
                             class:list={[
-                              "flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:bg-white/10 hover:text-[#fdbc2d]",
+                              "flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:bg-white/10 hover:text-gold",
                               isActivePath(sublink.href) &&
-                                "bg-[#7b171a]/80 text-[#fdbc2d] font-semibold border border-[#fdbc2d]/30",
+                                "bg-maroon-light/80 text-gold font-semibold border border-gold/30",
                             ]}
                             aria-current={isActivePath(sublink.href) ? "page" : undefined}
                           >
                             <span>{sublink.label}</span>
                             {isActivePath(sublink.href) && (
-                              <span class="w-1.5 h-1.5 rounded-full bg-[#fdbc2d]" />
+                              <span class="w-1.5 h-1.5 rounded-full bg-gold" />
                             )}
                           </a>
                         ) : null}
@@ -289,7 +289,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
         <div class="pt-3 border-t border-white/10 space-y-3 pb-6 sm:pb-8">
           <a
             href={STATIC_PAGE_PATHS.donate}
-            class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#fdbc2d] via-[#e5a823] to-[#fdbc2d] text-[#140b0a] font-bold text-xs uppercase tracking-wider py-3.5 shadow-md hover:brightness-110 active:scale-[0.99] transition-all"
+            class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold via-accent-secondary-hover to-gold text-ink font-bold text-xs uppercase tracking-wider py-3.5 shadow-md hover:brightness-110 active:scale-[0.99] transition-all"
           >
             <span>Support the Monastic Sangha (Donate)</span>
           </a>

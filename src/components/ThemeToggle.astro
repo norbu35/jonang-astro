@@ -14,8 +14,8 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
   class:list={[
     "theme-toggle-btn focus relative flex items-center justify-center rounded-full transition-all duration-300 group cursor-pointer select-none",
     compact
-      ? "h-9 w-9 bg-[#6e1416]/85 hover:bg-[#85181b] text-white border border-[#fdbc2d]/40 hover:border-[#fdbc2d]/80 shadow-sm"
-      : "h-9 w-9 sm:h-10 sm:w-10 bg-[#6e1416]/90 hover:bg-[#85181b] text-white border border-[#fdbc2d]/50 hover:border-[#fdbc2d]/90 shadow-soft hover:shadow-[0_0_15px_rgba(253,188,45,0.4)]",
+      ? "h-10 w-10 bg-maroon-light/85 hover:bg-maroon-border text-white border border-gold/40 hover:border-gold/80 shadow-sm"
+      : "h-10 w-10 sm:h-10 sm:w-10 bg-maroon-light/90 hover:bg-maroon-border text-white border border-gold/50 hover:border-gold/90 shadow-soft hover:shadow-[0_0_15px_var(--gold)]",
     className,
   ]}
   aria-label="Toggle dark mode"
@@ -26,7 +26,7 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
 
   <!-- Crescent Moon Icon (Shown in Light mode) -->
   <svg
-    class="theme-icon-moon h-4 w-4 sm:h-[18px] sm:w-[18px] text-[#fdbc2d] transition-all duration-300 group-hover:scale-110"
+    class="theme-icon-moon h-4 w-4 sm:h-[18px] sm:w-[18px] text-gold transition-all duration-300 group-hover:scale-110"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -43,7 +43,7 @@ const { id = "themeToggle", class: className = "", compact = false } = Astro.pro
 
   <!-- Radiant Sun Icon (Shown in Dark mode) -->
   <svg
-    class="theme-icon-sun hidden h-4 w-4 sm:h-[18px] sm:w-[18px] text-[#fdbc2d] transition-all duration-300 group-hover:rotate-45 group-hover:scale-110"
+    class="theme-icon-sun hidden h-4 w-4 sm:h-[18px] sm:w-[18px] text-gold transition-all duration-300 group-hover:rotate-45 group-hover:scale-110"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"

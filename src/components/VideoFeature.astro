@@ -28,10 +28,10 @@ interface Props {
 
 const {
   videoId = "PKFl2_WiUd0",
-  title = "Dolpopa Biography Part 1: Against All Odds",
+  title = "Dolpopa Biography Part 1: Early Realization & Jomonang",
   tibetanTitle = "༄༅། །ཀུན་མཁྱེན་དོལ་པོ་པ་ཤེས་རབ་རྒྱལ་མཚན་གྱི་རྣམ་ཐར། །",
-  subtitle = "The Journey of the Buddha from Dolpo & the Genesis of Shentong Madhyamaka",
-  summary = "A biographical documentary chronicling the life of Kunkhyen Dolpopa Sherab Gyaltsen (1292–1361). From his early training in the rugged valleys of Dolpo through rigorous scholastic mastery at Sakya to his realization at Jomonang, this film explores the spiritual courage required to formulate the definitive Shentong view.",
+  subtitle = "The Life of Kunkhyen Dölpopa & the Codification of Shentong Madhyamaka",
+  summary = "A biographical documentary chronicling the life of Kunkhyen Dölpopa Sherab Gyaltsen (1292–1361). From his early training in Dölpo through scholastic mastery at Sakya to his realization at Jomonang, this documentary details his formulation of the definitive Shentong view and the construction of the Great Kumbum.",
   badge = "Biographical Documentary",
   channelName = "Jonang Dharma Volunteers",
   channelUrl = "https://www.youtube.com/@JonangDharma",
@@ -74,7 +74,7 @@ const hasThemes = keyThemes && keyThemes.length > 0;
         </span>
         {
           tibetanTitle && (
-            <span class="text-xs font-tibetan text-accent font-bold">{tibetanTitle}</span>
+            <span class="text-xs font-tibetan text-accent font-bold pt-0.5 leading-[1.6]">{tibetanTitle}</span>
           )
         }
       </div>
@@ -135,10 +135,10 @@ const hasThemes = keyThemes && keyThemes.length > 0;
         </div>
 
         {/* Right Stage: Narrative Context & Documentary Chapters */}
-        <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-          <div class="space-y-4">
+        <div class="lg:col-span-5 flex flex-col justify-between gap-6">
+          <div class="flex flex-col gap-4">
             {summary && (
-              <div class="callout bg-surface-subtle/80 p-5 sm:p-6 rounded-2xl shadow-xs space-y-2.5">
+              <div class="callout bg-surface-subtle/80 p-5 sm:p-6 rounded-2xl shadow-xs flex flex-col gap-2">
                 <span class="text-caption font-mono font-bold uppercase tracking-wider text-accent block">
                   Featured Documentary Overview
                 </span>
@@ -148,17 +148,17 @@ const hasThemes = keyThemes && keyThemes.length > 0;
               </div>
             )}
 
-            <div class="space-y-2.5">
+            <div class="flex flex-col gap-2.5">
               <span class="text-xs font-semibold uppercase tracking-wider text-muted block">
                 Featured Chapter Themes
               </span>
-              <div class="space-y-2">
+              <div class="flex flex-col gap-2">
                 {keyThemes.map((theme) => (
                   <div class="p-3.5 rounded-xl bg-surface-subtle border border-border/70 flex items-start gap-3 hover-lift transition-all">
                     <span class="text-xs font-mono font-bold text-accent px-2 py-0.5 rounded bg-surface border border-border/50 shrink-0">
                       {theme.num}
                     </span>
-                    <div class="space-y-0.5">
+                    <div class="flex flex-col gap-1">
                       <h4 class="text-xs font-bold text-ink m-0 font-display">{theme.title}</h4>
                       <p class="text-caption text-muted leading-relaxed m-0">{theme.desc}</p>
                     </div>

@@ -3,6 +3,7 @@ import PageLayout from "../../layouts/PageLayout.astro";
 import { getAllGlossaryEntries, GLOSSARY_CATEGORIES } from "../../data/glossary";
 import ChapterHeader from "../../components/ui/ChapterHeader.astro";
 import Dharmachakra from "../../components/icons/Dharmachakra.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 const terms = getAllGlossaryEntries();
 
@@ -11,9 +12,10 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
 ---
 
 <PageLayout
-  title="Glossary"
+  title="Tibetan Buddhist Lexicon & Glossary | Jonang Monastery"
   tibetanTitle="ཚིག་མཛོད།"
-  description="Comprehensive lexicon and glossary of Jonang philosophy, Shentong view, Kalachakra completion stage, and monastic vocabulary."
+  description="Authoritative lexicon of Jonang Tibetan Buddhism: 67+ canonical terms across Shentong philosophy, Kalachakra completion yoga, and monastic terminology."
+  breadcrumbs={[{ name: "Glossary", path: STATIC_PAGE_PATHS.glossary }]}
 >
   <div class="space-y-10 py-6 sm:py-8">
     <!-- Chapter Header -->
@@ -52,7 +54,7 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
           <button
             type="button"
             id="glossary-clear"
-            class="absolute right-3 px-2 py-1 text-xs font-mono uppercase text-muted hover:text-ink hidden transition-colors"
+            class="absolute right-3 px-2.5 py-1 text-xs font-mono uppercase text-muted hover:text-ink hidden transition-colors min-h-[36px] min-w-[40px] inline-flex items-center justify-center cursor-pointer"
           >
             Clear
           </button>
@@ -66,14 +68,14 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
             <button
               type="button"
               data-cat-filter={cat.id}
-              class={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider font-semibold border transition-all cursor-pointer ${
+              class={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider font-semibold border transition-all cursor-pointer min-h-[36px] inline-flex items-center ${
                 cat.id === "all"
                   ? "bg-accent text-white border-accent shadow-xs"
                   : "bg-surface-subtle text-muted hover:text-ink border-border hover:border-accent/40"
               }`}
             >
               <span>{cat.labelEn}</span>
-              <span class="font-tibetan ml-1 text-sm font-normal opacity-85">({cat.labelBo})</span>
+              <span lang="bo" class="font-tibetan ml-1 text-sm font-normal opacity-85">({cat.labelBo})</span>
             </button>
           ))
         }
@@ -82,12 +84,12 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
       <!-- Alphabetical Jump Bar & Result Count -->
       <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/80 text-xs font-mono">
         <div class="flex flex-wrap items-center gap-1.5" id="alphabet-bar">
-          <span class="text-muted font-bold mr-1 uppercase">Jump:</span>
+          <span class="text-muted font-bold mr-1 uppercase">Index:</span>
           {
             alphabet.map((letter) => (
               <a
                 href={`#letter-${letter}`}
-                class="px-2 py-0.5 rounded hover:bg-accent/10 hover:text-accent text-muted transition-colors"
+                class="px-2.5 py-1 rounded hover:bg-accent/10 hover:text-accent text-muted transition-colors min-h-[32px] min-w-[32px] inline-flex items-center justify-center"
               >
                 {letter}
               </a>
@@ -108,12 +110,12 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
       <Dharmachakra class="w-8 h-8 text-muted mx-auto" />
       <h3 class="font-display text-xl text-ink m-0">No matching terminology found</h3>
       <p class="text-sm text-muted font-serif max-w-md mx-auto m-0">
-        We could not find any terms matching your current search or category filter.
+        No glossary terms match the specified search query or category filter.
       </p>
       <button
         type="button"
         id="reset-search-btn"
-        class="mt-2 px-4 py-2 rounded-xl bg-accent text-white text-xs font-mono uppercase tracking-wider font-bold hover:bg-accent-secondary hover:text-ink transition-colors"
+        class="mt-2 px-4 py-2 rounded-xl bg-accent text-white text-xs font-mono uppercase tracking-wider font-bold hover:bg-accent-secondary hover:text-ink transition-colors min-h-[36px] cursor-pointer"
       >
         Reset Filters
       </button>
@@ -154,7 +156,10 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
 
                 <!-- Titles & Tibetan Script -->
                 <div class="space-y-1">
-                  <span class="text-lg sm:text-xl text-accent font-tibetan font-bold block pt-1 leading-[1.6]">
+                  <span
+                    lang="bo"
+                    class="text-lg sm:text-xl text-accent font-tibetan font-bold block pt-1 leading-[1.6]"
+                  >
                     {term.termBo}
                   </span>
                   <h3 class="font-display text-2xl sm:text-3xl font-bold text-ink leading-tight m-0">
@@ -187,7 +192,7 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
                   {term.relatedIds.map((rId) => (
                     <a
                       href={`#${rId}`}
-                      class="px-2 py-0.5 rounded bg-surface-subtle border border-border/80 hover:border-accent hover:text-accent text-xs font-mono text-ink/80 transition-colors"
+                      class="px-2.5 py-1 rounded bg-surface-subtle border border-border/80 hover:border-accent hover:text-accent text-xs font-mono text-ink/80 transition-colors min-h-[30px] inline-flex items-center"
                     >
                       {rId}
                     </a>

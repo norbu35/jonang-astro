@@ -35,17 +35,17 @@ const initialQuote = preparedQuotes[0];
 
 <section
   id="sacred-quote-section"
-  class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#a3282b] via-[#942023] to-[#86191c] text-white shadow-inner"
+  class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 relative flex w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-accent via-accent-hover to-maroon-border text-white shadow-inner"
 >
   <!-- Radiant ambient warmth -->
   <div
-    class="pointer-events-none absolute inset-0 bg-radial from-[#fdbc2d]/15 via-transparent to-transparent blur-2xl"
+    class="pointer-events-none absolute inset-0 bg-radial from-gold/15 via-transparent to-transparent blur-2xl"
     aria-hidden="true"
   >
   </div>
 
   <figure
-    class="relative z-10 mx-auto flex w-full max-w-6xl flex-col rounded-2xl bg-black/25 px-6 py-8 sm:px-8 sm:py-10 shadow-2xl backdrop-blur-md border border-[#fdbc2d]/40 md:px-10 md:py-12 lg:flex-row lg:items-center lg:px-12 lg:py-12 xl:px-14"
+    class="relative z-10 mx-auto flex w-full max-w-6xl flex-col rounded-2xl bg-black/25 px-6 py-8 sm:px-8 sm:py-10 shadow-2xl backdrop-blur-md border border-gold/40 md:px-10 md:py-12 lg:flex-row lg:items-center lg:px-12 lg:py-12 xl:px-14"
   >
     <!-- Left Side: Tibetan -->
     <div
@@ -54,12 +54,12 @@ const initialQuote = preparedQuotes[0];
       <div
         id="quote-tibetan"
         lang={initialQuote.lang}
-        class="tibetan-verse w-full text-center text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-[2] tracking-normal text-[#fdbc2d] font-tibetan-scholarly drop-shadow-sm font-bold"
+        class="tibetan-verse w-full text-center text-sm sm:text-base md:text-lg lg:text-[1.25rem] leading-[2] tracking-normal text-gold font-tibetan-scholarly drop-shadow-sm font-bold pt-1"
         set:html={initialQuote.tibetanHtml}
       />
 
       <!-- Sacred Lotus Illustration -->
-      <div class="mt-4 sm:mt-6 flex items-center justify-center text-[#fdbc2d]">
+      <div class="mt-4 sm:mt-6 flex items-center justify-center text-gold">
         <svg
           class="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 drop-shadow-sm"
           viewBox="0 0 100 100"
@@ -83,7 +83,7 @@ const initialQuote = preparedQuotes[0];
     <!-- Central Divider: 8-Spoke Dharma Wheel -->
     <div class="my-6 sm:my-8 flex shrink-0 items-center justify-center lg:my-0 lg:mx-8 xl:mx-10">
       <svg
-        class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-18 lg:w-18 text-[#fdbc2d] drop-shadow-lg"
+        class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-18 lg:w-18 text-gold drop-shadow-lg"
         viewBox="0 0 100 100"
         fill="none"
         stroke="currentColor"
@@ -117,7 +117,7 @@ const initialQuote = preparedQuotes[0];
       </blockquote>
 
       <figcaption
-        class="mt-4 sm:mt-6 text-center text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#fdbc2d]"
+        class="mt-4 sm:mt-6 text-center text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-gold"
       >
         &#8212; <cite id="quote-source" class="not-italic">{initialQuote.source}</cite>
       </figcaption>

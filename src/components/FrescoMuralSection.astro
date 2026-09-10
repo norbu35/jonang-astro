@@ -3,6 +3,7 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import EndlessKnot from "./icons/EndlessKnot.astro";
 import Dharmachakra from "./icons/Dharmachakra.astro";
+import { STATIC_PAGE_PATHS } from "../data/staticPages";
 
 interface Props {
   title?: string;
@@ -140,7 +141,7 @@ const tibetanCorpus = [
             <span class="badge badge-saffron text-caption-xs">Sanskrit Roots</span>
             <h3 class="text-base font-display font-bold text-ink m-0">Indian Root Shastras</h3>
           </div>
-          <span class="font-tibetan text-sm text-accent font-bold">རྒྱ་གཞུང་།</span>
+          <span class="font-tibetan text-sm text-accent font-bold pt-1">རྒྱ་གཞུང་།</span>
         </div>
 
         <ul class="m-0 p-0 list-none space-y-3">
@@ -171,7 +172,7 @@ const tibetanCorpus = [
               Tibetan Exegetical Treatises
             </h3>
           </div>
-          <span class="font-tibetan text-sm text-accent font-bold">བོད་འགྲེལ།</span>
+          <span class="font-tibetan text-sm text-accent font-bold pt-1">བོད་འགྲེལ།</span>
         </div>
 
         <ul class="m-0 p-0 list-none space-y-3">
@@ -204,18 +205,18 @@ const tibetanCorpus = [
 
     <div class="flex flex-wrap items-center gap-4 sm:gap-6">
       <a
-        href="/doctrine"
+        href={STATIC_PAGE_PATHS.doctrine}
         class="text-accent hover:text-accent-hover transition-colors flex items-center gap-1.5 group"
       >
-        <span>Explore Shentong Philosophy</span>
+        <span>Shentong Philosophy</span>
         <span class="group-hover:translate-x-1 transition-transform">→</span>
       </a>
       <span class="text-muted/30">·</span>
       <a
-        href="/curriculum"
+        href={STATIC_PAGE_PATHS.curriculum}
         class="text-accent-secondary hover:text-accent-hover transition-colors flex items-center gap-1.5 group"
       >
-        <span>View 18-Year Shedra Syllabus</span>
+        <span>18-Year Shedra Syllabus</span>
         <span class="group-hover:translate-x-1 transition-transform">→</span>
       </a>
     </div>

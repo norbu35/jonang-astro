@@ -1,22 +1,31 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import butterLampImg from "../../assets/images/butter-lamp.webp";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
+import { DONATION_BANK_DETAILS, POSTAL_DONATION_DETAILS } from "../../data/donations";
 ---
 
 <PageLayout
-  title="Support the Monastery"
+  title="Support the Monks & Monastery | Jonang Monastery"
   tibetanTitle="དགོན་པར་ཞབས་འདེགས།"
+  description="Support the resident monks and preservation of the Jonang lineage at Sanjauli, Shimla. Direct donations for monastic education, healthcare, and daily sustenance."
   image={butterLampImg}
   imageAlt="Altar butter lamps illuminated for world peace and monastery support"
+  breadcrumbs={[{ name: "Donate", path: STATIC_PAGE_PATHS.donate }]}
 >
   <div class="space-y-10">
     <!-- Context Callout -->
     <div class="surface-card p-6 sm:p-8 md:p-10 space-y-6">
-      <h2
-        class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
-      >
-        Direct Support for Monastic Living & Education
-      </h2>
+      <div class="space-y-1.5">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-display text-ink font-normal leading-tight m-0"
+        >
+          Direct Support for Monastic Living & Education
+        </h2>
+        <p lang="bo" class="font-tibetan text-base text-gold pt-1 leading-[1.6] m-0">
+          སྦྱིན་པའི་ཉམས་ལེན་དང་དགོན་པའི་ཞབས་འདེགས།
+        </p>
+      </div>
 
       <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
         Main Jonang Takten Phuntsok Choeling is home to over one hundred monks from Tibet, Mongolia,
@@ -45,7 +54,12 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
       >
         <div class="flex flex-col gap-4">
           <div class="badge badge-saffron self-start">International & Domestic Wire</div>
-          <h3 class="text-xl sm:text-2xl font-display text-ink m-0">Direct Bank Transfer</h3>
+          <div class="space-y-1">
+            <h3 class="text-xl sm:text-2xl font-display text-ink m-0">Direct Bank Transfer</h3>
+            <p lang="bo" class="font-tibetan text-xs text-muted/90 pt-0.5 leading-[1.6] m-0">
+              དངུལ་ཁང་བརྒྱུད་གཏོང་གི་གནས་ཚུལ།
+            </p>
+          </div>
           <p class="text-sm text-muted m-0 font-serif leading-relaxed">
             Wire donations directly to the official registered society account in India. For
             domestic transfers within India, donations support the monastery under charitable trust
@@ -62,14 +76,14 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
                 >Account Name</span
               >
               <span class="font-semibold text-ink text-left sm:text-right font-sans text-xs"
-                >Jonang Takten Phuntsok Choeling Cultural Society</span
+                >{DONATION_BANK_DETAILS.accountName}</span
               >
             </div>
             <div class="flex justify-between py-1.5 border-b border-border/60">
               <span class="text-muted text-caption-xs uppercase font-sans font-semibold"
                 >Bank Name</span
               >
-              <span class="font-semibold text-ink">State Bank of India</span>
+              <span class="font-semibold text-ink">{DONATION_BANK_DETAILS.bankName}</span>
             </div>
             <div class="flex justify-between items-center py-1.5 border-b border-border/60">
               <span class="text-muted text-caption-xs uppercase font-sans font-semibold"
@@ -77,12 +91,12 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
               >
               <div class="flex items-center gap-2">
                 <span class="font-bold text-accent select-all font-mono" id="acc-num"
-                  >4008 4616 933</span
+                  >{DONATION_BANK_DETAILS.accountNumber}</span
                 >
                 <button
                   type="button"
-                  class="copy-btn text-caption-xs px-2 py-0.5 rounded bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer"
-                  data-copy="40084616933"
+                  class="copy-btn text-caption-xs px-2.5 py-1 min-h-[36px] min-w-[50px] inline-flex items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer font-sans font-medium"
+                  data-copy={DONATION_BANK_DETAILS.accountNumber.replace(/\s+/g, "")}
                   aria-label="Copy Account Number"
                 >
                   Copy
@@ -95,12 +109,12 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
               >
               <div class="flex items-center gap-2">
                 <span class="font-semibold text-ink select-all font-mono" id="swift-code"
-                  >SBININBB104</span
+                  >{DONATION_BANK_DETAILS.swiftCode}</span
                 >
                 <button
                   type="button"
-                  class="copy-btn text-caption-xs px-2 py-0.5 rounded bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer"
-                  data-copy="SBININBB104"
+                  class="copy-btn text-caption-xs px-2.5 py-1 min-h-[36px] min-w-[50px] inline-flex items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer font-sans font-medium"
+                  data-copy={DONATION_BANK_DETAILS.swiftCode}
                   aria-label="Copy SWIFT Code"
                 >
                   Copy
@@ -113,12 +127,12 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
               >
               <div class="flex items-center gap-2">
                 <span class="font-semibold text-ink select-all font-mono" id="ifsc-code"
-                  >SBIN0000691</span
+                  >{DONATION_BANK_DETAILS.ifscCode}</span
                 >
                 <button
                   type="button"
-                  class="copy-btn text-caption-xs px-2 py-0.5 rounded bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer"
-                  data-copy="SBIN0000691"
+                  class="copy-btn text-caption-xs px-2.5 py-1 min-h-[36px] min-w-[50px] inline-flex items-center justify-center rounded-lg bg-surface hover:bg-accent hover:text-white border border-border transition-colors cursor-pointer font-sans font-medium"
+                  data-copy={DONATION_BANK_DETAILS.ifscCode.replace(/\s+/g, "")}
                   aria-label="Copy IFSC Code"
                 >
                   Copy
@@ -129,15 +143,15 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
               <span class="text-muted text-caption-xs uppercase font-sans font-semibold"
                 >Branch Code</span
               >
-              <span class="font-semibold text-ink">00691 (The Mall, Shimla)</span>
+              <span class="font-semibold text-ink">{DONATION_BANK_DETAILS.branchCode}</span>
             </div>
           </div>
         </div>
 
         <p class="text-xs text-muted m-0 pt-2 border-t border-border/60">
           After initiating a transfer, please send a brief notification email with your reference to <a
-            href="mailto:office@jonangmonastery.com"
-            class="text-accent underline font-semibold">office@jonangmonastery.com</a
+            href={`mailto:${POSTAL_DONATION_DETAILS.officeEmail}`}
+            class="text-accent underline font-semibold">{POSTAL_DONATION_DETAILS.officeEmail}</a
           > so our office can issue a formal receipt.
         </p>
       </div>
@@ -148,7 +162,12 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
       >
         <div class="flex flex-col gap-4">
           <div class="badge badge-neutral self-start">Postal Draft</div>
-          <h3 class="text-xl sm:text-2xl font-display text-ink m-0">Cheque & Postal Delivery</h3>
+          <div class="space-y-1">
+            <h3 class="text-xl sm:text-2xl font-display text-ink m-0">Cheque & Postal Delivery</h3>
+            <p lang="bo" class="font-tibetan text-xs text-muted/90 pt-0.5 leading-[1.6] m-0">
+              སྦྲག་ཐོག་འབྱོར་ཐོ་དང་ཞལ་འདེབས།
+            </p>
+          </div>
           <p class="text-sm text-muted m-0 font-serif leading-relaxed">
             Cheques or bank drafts should be drawn in favor of the registered cultural society and
             mailed to our office address in Shimla.
@@ -162,7 +181,7 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
                 >Payable To</span
               >
               <p class="font-semibold text-ink m-0 font-serif">
-                Jonang Takten Phuntsok Choeling Cultural Society
+                {POSTAL_DONATION_DETAILS.payableTo}
               </p>
             </div>
             <div class="pt-3 border-t border-border/60">
@@ -170,9 +189,9 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
                 >Postal Address</span
               >
               <address class="not-italic text-ink leading-relaxed font-serif text-sm">
-                Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery<br />
-                Sanjauli, Shimla, Himachal Pradesh<br />
-                PIN: 171006, India
+                {POSTAL_DONATION_DETAILS.addressLines.map((line) => (
+                  <span>{line}<br /></span>
+                ))}
               </address>
             </div>
           </div>
@@ -184,13 +203,16 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
             Direct Monastery Inquiries
           </h4>
           <div class="text-xs sm:text-sm text-ink space-y-1 font-serif">
-            <div><strong>Office Telephone:</strong> +91 177 2841410</div>
-            <div><strong>Mobile / Line:</strong> +91 177 2645280</div>
+            {POSTAL_DONATION_DETAILS.telephones.map((phone) => (
+              <div>
+                <strong>{phone.label}:</strong> {phone.number}
+              </div>
+            ))}
             <div>
               <strong>Email:</strong>
               <a
-                href="mailto:office@jonangmonastery.com"
-                class="text-accent hover:underline font-mono">office@jonangmonastery.com</a
+                href={`mailto:${POSTAL_DONATION_DETAILS.officeEmail}`}
+                class="text-accent hover:underline font-mono">{POSTAL_DONATION_DETAILS.officeEmail}</a
               >
             </div>
           </div>
@@ -200,12 +222,14 @@ import butterLampImg from "../../assets/images/butter-lamp.webp";
 
     <!-- Transparency Note -->
     <div
-      class="callout text-sm text-muted bg-surface-subtle p-5 sm:p-6 rounded-2xl border border-border"
+      class="callout text-sm text-muted bg-surface-subtle p-5 sm:p-6 rounded-2xl border border-border space-y-2.5"
     >
-      <strong>Specific Dedications:</strong> If you wish your contribution to be allocated toward a particular
-      project—such as monk medical care, kitchen provisions, winter heating, or student study materials—please
-      specify your intention in your bank transfer memo or accompanying email. Every donation is used
-      strictly for its designated monastic purpose.
+      <p class="m-0">
+        <strong class="text-ink">Designated Offerings:</strong> Contributions may be allocated toward specific needs—including monastic healthcare, nutritional provisions, seasonal heating, or shedra study materials. Donors should indicate their intended allocation in the bank remittance memo or notification email. All contributions are applied strictly to their designated purpose.
+      </p>
+      <p class="text-xs text-muted/80 m-0 pt-2 border-t border-border/60">
+        <strong>Regulatory Compliance & Verification:</strong> Jonang Takten Phuntsok Choeling Cultural Society is an officially registered non-profit charitable society in Himachal Pradesh, India. All contributions directly sustain the resident sangha and educational programs. For official receipts or remittance verification queries, donors may contact the monastery administrative office directly.
+      </p>
     </div>
   </div>
 

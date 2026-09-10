@@ -2,33 +2,43 @@
 import { Image } from "astro:assets";
 import PageLayout from "../../layouts/PageLayout.astro";
 import { GALLERY_ITEMS } from "../../data/gallery";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 
 const categories = [
-  { id: "all", label: "All Works", count: GALLERY_ITEMS.length },
+  { id: "all", label: "All Works", labelBo: "ཚང་མ།", count: GALLERY_ITEMS.length },
   {
     id: "Sanctuary",
     label: "Sanctuary",
+    labelBo: "ལྷ་ཁང་།",
     count: GALLERY_ITEMS.filter((i) => i.category === "Sanctuary").length,
   },
   {
     id: "Ritual",
     label: "Ritual Liturgy",
+    labelBo: "ཆོ་ག",
     count: GALLERY_ITEMS.filter((i) => i.category === "Ritual").length,
   },
   {
     id: "Study",
     label: "Scholastic Study",
+    labelBo: "བཤད་གྲྭ།",
     count: GALLERY_ITEMS.filter((i) => i.category === "Study").length,
   },
   {
     id: "Community",
     label: "Sangha Community",
+    labelBo: "དགེ་འདུན།",
     count: GALLERY_ITEMS.filter((i) => i.category === "Community").length,
   },
 ];
 ---
 
-<PageLayout title="Photo Gallery" tibetanTitle="དགོན་པའི་སྐུ་པར།">
+<PageLayout
+  title="Photo Gallery · Monastic Sacred Art | Jonang Monastery"
+  tibetanTitle="དགོན་པའི་སྐུ་པར།"
+  description="Visual chronicle of Main Jonang Takten Phuntsok Choeling: sacred thangkas, sand mandalas, shedra debate kinetics, butter sculpture, and monastery landscape."
+  breadcrumbs={[{ name: "Photo Gallery", path: STATIC_PAGE_PATHS.gallery }]}
+>
   <div class="space-y-8">
     <!-- Editorial Intro Callout -->
     <div
@@ -52,13 +62,16 @@ const categories = [
               type="button"
               data-filter={cat.id}
               class:list={[
-                "gallery-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all border cursor-pointer flex items-center gap-1.5",
+                "gallery-filter-btn px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-semibold tracking-wide transition-all border cursor-pointer flex items-center gap-1.5",
                 idx === 0
                   ? "bg-accent text-white border-accent shadow-xs"
                   : "bg-surface-subtle text-muted hover:text-ink hover:bg-surface border-border",
               ]}
             >
               <span>{cat.label}</span>
+              <span lang="bo" class="font-tibetan text-xs opacity-85 ml-0.5 pt-0.5 leading-[1.6]">
+                {cat.labelBo}
+              </span>
               <span class="text-caption-xs font-mono opacity-80">({cat.count})</span>
             </button>
           ))
@@ -78,6 +91,7 @@ const categories = [
             class="gallery-card group overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-card hover-lift text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold cursor-pointer flex flex-col justify-between"
             data-index={index}
             data-title={item.title}
+            data-title-bo={item.titleBo || ""}
             data-category={item.category}
             data-alt={item.alt}
             data-src={item.image.src}
@@ -94,7 +108,7 @@ const categories = [
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
                 <span class="text-white text-xs font-semibold tracking-wider uppercase drop-shadow-sm flex items-center gap-1">
-                  <span>Inspect Photo</span>
+                  <span>View</span>
                   <span>✦</span>
                 </span>
               </div>
@@ -104,6 +118,11 @@ const categories = [
                 <h3 class="text-sm font-display font-semibold text-ink m-0 group-hover:text-accent transition-colors">
                   {item.title}
                 </h3>
+                {item.titleBo && (
+                  <p lang="bo" class="font-tibetan text-xs text-muted/90 pt-0.5 leading-[1.6] m-0">
+                    {item.titleBo}
+                  </p>
+                )}
                 <span class="text-caption text-muted uppercase tracking-wider font-mono mt-0.5 block">
                   {item.category}
                 </span>
@@ -121,7 +140,7 @@ const categories = [
   <!-- Accessible Native HTML5 Modal Dialog Lightbox -->
   <dialog
     id="gallery-modal"
-    class="fixed inset-0 m-auto max-w-5xl w-[92vw] max-h-[90vh] bg-stone-950/95 text-white border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop:bg-black/80 backdrop:backdrop-blur-md closedby-any outline-none"
+    class="fixed inset-0 m-auto max-w-5xl w-[92vw] max-h-[90vh] bg-maroon-dark/95 text-white border border-gold/30 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop:bg-black/80 backdrop:backdrop-blur-md closedby-any outline-none"
   >
     <div class="flex flex-col h-full justify-between gap-4">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
@@ -131,14 +150,20 @@ const categories = [
             class="badge badge-saffron text-caption uppercase tracking-wider mb-1 inline-block"
             >Category</span
           >
-          <h2 class="text-2xl font-display text-white font-normal mb-2" id="modal-title">
+          <h2 class="text-2xl font-display text-white font-normal mb-1" id="modal-title">
             Image Title
           </h2>
+          <p
+            id="modal-title-bo"
+            lang="bo"
+            class="font-tibetan text-base text-gold/90 pt-0.5 leading-[1.6] m-0 empty:hidden"
+          >
+          </p>
         </div>
         <form method="dialog">
           <button
             value="close"
-            class="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus-visible:ring-2 focus-visible:ring-gold"
+            class="h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus-visible:ring-2 focus-visible:ring-gold cursor-pointer text-base"
             aria-label="Close photo viewer"
           >
             ✕
@@ -179,7 +204,7 @@ const categories = [
         class="flex items-center justify-between text-xs text-white/70 pt-2 border-t border-white/10"
       >
         <span id="modal-counter">1 of 15</span>
-        <span class="font-mono">Use Arrow Keys ← → to navigate · Esc to close</span>
+        <span class="font-mono">← → Navigate · Esc Close</span>
       </div>
     </div>
   </dialog>
@@ -189,6 +214,7 @@ const categories = [
       const modal = document.getElementById("gallery-modal") as HTMLDialogElement | null;
       const modalImg = document.getElementById("modal-image") as HTMLImageElement | null;
       const modalTitle = document.getElementById("modal-title");
+      const modalTitleBo = document.getElementById("modal-title-bo");
       const modalCategory = document.getElementById("modal-category");
       const modalCounter = document.getElementById("modal-counter");
       const prevBtn = document.getElementById("prev-btn");
@@ -236,11 +262,13 @@ const categories = [
         const src = card.dataset.src || "";
         const alt = card.dataset.alt || "";
         const title = card.dataset.title || "";
+        const titleBo = card.dataset.titleBo || "";
         const category = card.dataset.category || "";
 
         modalImg!.src = src;
         modalImg!.alt = alt;
         if (modalTitle) modalTitle.textContent = title;
+        if (modalTitleBo) modalTitleBo.textContent = titleBo;
         if (modalCategory) modalCategory.textContent = category;
         if (modalCounter)
           modalCounter.textContent = `${currentIndex + 1} of ${visibleCards.length}`;

@@ -6,6 +6,7 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   site: "https://jonang.in",
   output: "static",
+  trailingSlash: "never",
   redirects: {
     "/about-us": "/monastery",
     "/jonang-doctrine": "/doctrine",

@@ -13,6 +13,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "telemetry:test": "tsx scripts/test-telemetry.ts",
+    "seo:audit": "tsx scripts/audit-seo.ts",
     "logs": "npx netlify-cli logs --follow --function telemetry",
     "dev:functions": "npx netlify-cli functions:serve"
   },

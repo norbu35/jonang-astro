@@ -3,11 +3,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import LivingTraditionHero from "../../components/pages/LivingTraditionHero.astro";
 import LivingTraditionToC from "../../components/pages/LivingTraditionToC.astro";
 import LivingTraditionContent from "../../components/pages/LivingTraditionContent.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
 ---
 
 <BaseLayout
-  title="Living Tradition & Daily Life"
-  description="Explore the daily rhythm, dialectical debate kinetics, kitchen culture, sacred crafts, and mountain ecology of Main Jonang Takten Phuntsok Choeling in Shimla."
+  title="Living Tradition & Daily Life | Jonang Monastery"
+  description="Experience daily life at Main Jonang Monastery: pre-dawn puja, dialectical debate in the courtyard, sacred butter sculpture arts, and Himalayan sangha community."
+  breadcrumbs={[{ name: "Living Tradition", path: STATIC_PAGE_PATHS.livingTradition }]}
 >
   <main id="main-content" tabindex="-1" class="flex-1 focus:outline-none">
     <!-- 1. Full-Width Viewport Hero -->
