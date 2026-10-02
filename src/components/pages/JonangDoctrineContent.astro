@@ -144,15 +144,29 @@ const masters = [
     </div>
 
     <p class="lead text-base sm:text-lg text-muted font-serif leading-relaxed m-0">
-      The Jonang tradition articulates the <GlossaryTerm id="shentong">Shentong</GlossaryTerm> <GlossaryTerm id="madhyamaka">Madhyamaka</GlossaryTerm> framework: conventional phenomena
-      are empty of self-nature (<GlossaryTerm id="rangtong">rangtong</GlossaryTerm>), whereas ultimate reality—Buddha-nature (<GlossaryTerm id="tathagatagarbha">Tathāgatagarbha</GlossaryTerm>)—is empty only of adventitious obscurations (<GlossaryTerm id="agantukamala">āgantukamala</GlossaryTerm>).
+      The Jonang tradition articulates the <GlossaryTerm id="shentong">Shentong</GlossaryTerm>
+      <GlossaryTerm id="madhyamaka">Madhyamaka</GlossaryTerm> framework: conventional phenomena are empty
+      of self-nature (<GlossaryTerm id="rangtong">rangtong</GlossaryTerm>), whereas ultimate
+      reality—Buddha-nature (<GlossaryTerm id="tathagatagarbha">Tathāgatagarbha</GlossaryTerm>)—is
+      empty only of adventitious obscurations (<GlossaryTerm id="agantukamala"
+        >āgantukamala</GlossaryTerm
+      >).
     </p>
 
     <p class="text-ink leading-relaxed text-sm sm:text-base font-serif m-0">
       In contrast to non-affirming negation (<em>prasajya-pratiṣedha</em>) applied across all levels
       of truth, Jonang texts define ultimate reality as unconditioned primordial wisdom (<em
         >prabhāsvara-jñāna</em
-      > / <GlossaryTerm id="jnana">ye shes</GlossaryTerm>) in the expanse of reality (<GlossaryTerm id="dharmadhatu">Dharmadhātu</GlossaryTerm>), endowed with reflexive awareness (<GlossaryTerm id="rangrik"><em>rang rig</em></GlossaryTerm>) and inseparable enlightened qualities (<em>guṇa</em>). Distinguishing the pure wisdom-ground from the ordinary storehouse consciousness (<GlossaryTerm id="kunzhi"><em>kun gzhi</em> / ālayavijñāna</GlossaryTerm>), Jonang transcends the conceptual limitations of Mind-Only (<GlossaryTerm id="cittamatra">Cittamātra</GlossaryTerm>) by unifying ultimate emptiness with radiant awareness.
+      > / <GlossaryTerm id="jnana">ye shes</GlossaryTerm>) in the expanse of reality (<GlossaryTerm
+        id="dharmadhatu">Dharmadhātu</GlossaryTerm
+      >), endowed with reflexive awareness (<GlossaryTerm id="rangrik"
+        ><em>rang rig</em></GlossaryTerm
+      >) and inseparable enlightened qualities (<em>guṇa</em>). Distinguishing the pure
+      wisdom-ground from the ordinary storehouse consciousness (<GlossaryTerm id="kunzhi"
+        ><em>kun gzhi</em> / ālayavijñāna</GlossaryTerm
+      >), Jonang transcends the conceptual limitations of Mind-Only (<GlossaryTerm id="cittamatra"
+        >Cittamātra</GlossaryTerm
+      >) by unifying ultimate emptiness with radiant awareness.
     </p>
   </div>
 
@@ -181,7 +195,7 @@ const masters = [
         threeTurnings.map((t, idx) => (
           <div class="surface-card p-6 sm:p-7 rounded-2xl border border-border border-t-4 border-t-accent hover-lift flex flex-col justify-between h-full bg-surface shadow-xs">
             <div class="flex flex-col gap-4">
-              <!-- Top Metadata Header -->
+              {/* Top Metadata Header */}
               <div class="flex items-baseline justify-between gap-2 border-b border-border/80 pb-3">
                 <span class="px-2.5 py-0.5 rounded bg-accent/10 text-accent font-mono text-xs font-bold uppercase tracking-wider shrink-0">
                   Turning 0{idx + 1}
@@ -191,23 +205,24 @@ const masters = [
                 </span>
               </div>
 
-              <!-- Titles & Tibetan Script -->
+              {/* Titles & Tibetan Script */}
               <div class="flex flex-col gap-1.5">
                 <h4 class="font-display text-xl sm:text-2xl font-bold text-ink leading-snug m-0">
                   {t.theme}
                 </h4>
-                <span lang="bo" class="text-base sm:text-lg text-accent-secondary font-tibetan font-bold block pt-1 leading-[1.6]">
+                <span
+                  lang="bo"
+                  class="text-base sm:text-lg text-accent-secondary font-tibetan font-bold block pt-1 leading-[1.6]"
+                >
                   {t.tibetan}
                 </span>
               </div>
 
-              <!-- Main Explanation Subtext -->
-              <p class="text-base text-ink/80 leading-relaxed font-serif m-0 pt-1">
-                {t.view}
-              </p>
+              {/* Main Explanation Subtext */}
+              <p class="text-base text-ink/80 leading-relaxed font-serif m-0 pt-1">{t.view}</p>
             </div>
 
-            <!-- Hermeneutical Scope Footer -->
+            {/* Hermeneutical Scope Footer */}
             <div class="pt-4 border-t border-border/80 mt-6">
               <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent block">
                 {t.scope}
@@ -292,8 +307,10 @@ const masters = [
         རང་སྟོང་དང་གཞན་སྟོང་གི་ལྟ་བའི་ཁྱད་པར།
       </span>
       <p class="text-base sm:text-lg text-muted leading-relaxed m-0 font-serif max-w-3xl pt-1">
-        Jonang treatises synthesize <GlossaryTerm id="prajnaparamita">Prajñāpāramitā</GlossaryTerm> teachings on emptiness with
-        the Third Turning <GlossaryTerm id="tathagatagarbha">Tathāgatagarbha</GlossaryTerm> sūtras.
+        Jonang treatises synthesize <GlossaryTerm id="prajnaparamita">Prajñāpāramitā</GlossaryTerm> teachings
+        on emptiness with the Third Turning <GlossaryTerm id="tathagatagarbha"
+          >Tathāgatagarbha</GlossaryTerm
+        > sūtras.
       </p>
     </div>
 
@@ -320,7 +337,10 @@ const masters = [
                 <td class="p-3.5 sm:p-4 font-semibold text-ink align-top">
                   <div>{row.category}</div>
                   {row.tibetan && (
-                    <span lang="bo" class="font-tibetan text-xs text-muted block pt-1 leading-[1.6]">
+                    <span
+                      lang="bo"
+                      class="font-tibetan text-xs text-muted block pt-1 leading-[1.6]"
+                    >
                       {row.tibetan}
                     </span>
                   )}
@@ -340,7 +360,10 @@ const masters = [
   </div>
 
   <!-- Lineage Masters Archive (Balanced 3 + 2 Architecture) -->
-  <div id="lineage-masters" class="flex flex-col gap-6 sm:gap-8 scroll-mt-[calc(var(--header-h)+4.5rem)]">
+  <div
+    id="lineage-masters"
+    class="flex flex-col gap-6 sm:gap-8 scroll-mt-[calc(var(--header-h)+4.5rem)]"
+  >
     <div class="flex flex-col gap-2.5 pb-2">
       <h3 class="text-2xl sm:text-3xl font-display text-ink font-normal m-0">
         Lineage Masters and Commentators
@@ -352,7 +375,8 @@ const masters = [
         བརྒྱུད་པའི་ཤིང་རྟའི་སྲོལ་འབྱེད་རྣམས་ཀྱི་མཛད་རྣམ།
       </span>
       <p class="text-sm sm:text-base text-muted leading-relaxed font-serif m-0 max-w-3xl pt-1">
-        Indian progenitors, translators, and Jonang omniscient masters who realized and codified the unbroken transmission of the Shentong Great Madhyamaka.
+        Indian progenitors, translators, and Jonang omniscient masters who realized and codified the
+        unbroken transmission of the Shentong Great Madhyamaka.
       </p>
     </div>
 
@@ -370,7 +394,10 @@ const masters = [
                 <div>
                   <h4 class="font-display text-lg sm:text-xl font-bold text-ink m-0">{m.name}</h4>
                   {m.tibetanName && (
-                    <span lang="bo" class="font-tibetan text-sm text-accent font-medium block pt-1 leading-[1.6]">
+                    <span
+                      lang="bo"
+                      class="font-tibetan text-sm text-accent font-medium block pt-1 leading-[1.6]"
+                    >
                       {m.tibetanName}
                     </span>
                   )}
@@ -409,11 +436,21 @@ const masters = [
     </div>
     <p class="text-sm sm:text-base text-muted leading-relaxed m-0 font-serif">
       In the Jonang tradition, scholastic debate and deep yogic contemplation operate in inseparable
-      tandem. Textual analysis of the Five Great Treatises and Buddhist epistemological logic (<GlossaryTerm id="pramana">Pramāṇa</GlossaryTerm>) provides the conceptual grounding required for solitary <GlossaryTerm id="mun-khang">dark retreat</GlossaryTerm>.
+      tandem. Textual analysis of the Five Great Treatises and Buddhist epistemological logic (<GlossaryTerm
+        id="pramana">Pramāṇa</GlossaryTerm
+      >) provides the conceptual grounding required for solitary <GlossaryTerm id="mun-khang"
+        >dark retreat</GlossaryTerm
+      >.
     </p>
     <p class="text-sm sm:text-base text-ink leading-relaxed m-0 font-serif">
-      The Shentong framework provides the direct theoretical matrix for the <GlossaryTerm id="six-branch-yoga">Six-fold Vajrayoga (Sbyor drug)</GlossaryTerm> of the <GlossaryTerm id="kalachakra">Kālacakra Tantra</GlossaryTerm>. Meditative techniques of wind control (<GlossaryTerm id="prana">Prāṇāyāma</GlossaryTerm>) and
-      sensory withdrawal (<GlossaryTerm id="six-branch-yoga">Pratyāhāra</GlossaryTerm>) in dark retreat aim directly at stabilizing <GlossaryTerm id="stong-gzugs">empty forms (śūnyatābimba)</GlossaryTerm> and actualizing <GlossaryTerm id="mahasukha">immutable bliss (akṣarasukha)</GlossaryTerm>.
+      The Shentong framework provides the direct theoretical matrix for the <GlossaryTerm
+        id="six-branch-yoga">Six-fold Vajrayoga (Sbyor drug)</GlossaryTerm
+      > of the <GlossaryTerm id="kalachakra">Kālacakra Tantra</GlossaryTerm>. Meditative techniques
+      of wind control (<GlossaryTerm id="prana">Prāṇāyāma</GlossaryTerm>) and sensory withdrawal (<GlossaryTerm
+        id="six-branch-yoga">Pratyāhāra</GlossaryTerm
+      >) in dark retreat aim directly at stabilizing <GlossaryTerm id="stong-gzugs"
+        >empty forms (śūnyatābimba)</GlossaryTerm
+      > and actualizing <GlossaryTerm id="mahasukha">immutable bliss (akṣarasukha)</GlossaryTerm>.
     </p>
   </div>
 

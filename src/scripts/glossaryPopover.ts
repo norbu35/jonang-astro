@@ -75,12 +75,25 @@ function createPopoverElement(): HTMLElement {
   return el;
 }
 
+function getOrCreatePopover(): HTMLElement {
+  if (!popoverEl || !document.body.contains(popoverEl)) {
+    const existing = document.getElementById("glossary-popover-card");
+    if (existing && document.body.contains(existing)) {
+      popoverEl = existing;
+    } else {
+      if (existing) existing.remove();
+      popoverEl = createPopoverElement();
+    }
+  }
+  return popoverEl;
+}
+
 function positionPopover(trigger: HTMLElement) {
-  if (!popoverEl) return;
+  const el = getOrCreatePopover();
 
   const triggerRect = trigger.getBoundingClientRect();
   const popoverWidth = Math.min(384, window.innerWidth - 32);
-  const popoverHeight = popoverEl.offsetHeight || 220;
+  const popoverHeight = el.offsetHeight || 220;
   const padding = 16;
   const margin = 8;
 
@@ -100,8 +113,8 @@ function positionPopover(trigger: HTMLElement) {
     }
   }
 
-  popoverEl.style.left = `${Math.round(left)}px`;
-  popoverEl.style.top = `${Math.round(top)}px`;
+  el.style.left = `${Math.round(left)}px`;
+  el.style.top = `${Math.round(top)}px`;
 }
 
 export function showPopover(trigger: HTMLElement) {
@@ -110,10 +123,7 @@ export function showPopover(trigger: HTMLElement) {
     hideTimer = null;
   }
 
-  if (!popoverEl) {
-    popoverEl = createPopoverElement();
-  }
-
+  const el = getOrCreatePopover();
   activeTrigger = trigger;
 
   const termId = trigger.getAttribute("data-term-id") || "";
@@ -124,13 +134,13 @@ export function showPopover(trigger: HTMLElement) {
   const shortDef = trigger.getAttribute("data-short-def") || "";
   const category = trigger.getAttribute("data-category") || "term";
 
-  const catEl = popoverEl.querySelector("[data-popover-category]");
-  const tibetanEl = popoverEl.querySelector("[data-popover-tibetan]");
-  const titleEl = popoverEl.querySelector("[data-popover-title]");
-  const wylieEl = popoverEl.querySelector("[data-popover-wylie]");
-  const sktEl = popoverEl.querySelector("[data-popover-skt]");
-  const defEl = popoverEl.querySelector("[data-popover-def]");
-  const linkEl = popoverEl.querySelector<HTMLAnchorElement>("[data-popover-link]");
+  const catEl = el.querySelector("[data-popover-category]");
+  const tibetanEl = el.querySelector("[data-popover-tibetan]");
+  const titleEl = el.querySelector("[data-popover-title]");
+  const wylieEl = el.querySelector("[data-popover-wylie]");
+  const sktEl = el.querySelector("[data-popover-skt]");
+  const defEl = el.querySelector("[data-popover-def]");
+  const linkEl = el.querySelector<HTMLAnchorElement>("[data-popover-link]");
 
   if (catEl) catEl.textContent = category;
   if (tibetanEl) {
@@ -156,8 +166,8 @@ export function showPopover(trigger: HTMLElement) {
 
   // Show & Position
   positionPopover(trigger);
-  popoverEl.classList.remove("opacity-0", "pointer-events-none", "-translate-y-1");
-  popoverEl.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
+  el.classList.remove("opacity-0", "pointer-events-none", "-translate-y-1");
+  el.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
 }
 
 function scheduleHide() {
@@ -268,4 +278,19 @@ export function initGlossaryPopovers() {
     },
     { passive: true }
   );
+
+  // Astro ClientRouter / View Transitions lifecycle
+  document.addEventListener("astro:before-swap", () => {
+    hidePopover();
+    if (popoverEl) {
+      popoverEl.remove();
+      popoverEl = null;
+    }
+    activeTrigger = null;
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    hidePopover();
+    activeTrigger = null;
+  });
 }

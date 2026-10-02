@@ -189,9 +189,14 @@ import { DONATION_BANK_DETAILS, POSTAL_DONATION_DETAILS } from "../../data/donat
                 >Postal Address</span
               >
               <address class="not-italic text-ink leading-relaxed font-serif text-sm">
-                {POSTAL_DONATION_DETAILS.addressLines.map((line) => (
-                  <span>{line}<br /></span>
-                ))}
+                {
+                  POSTAL_DONATION_DETAILS.addressLines.map((line) => (
+                    <span>
+                      {line}
+                      <br />
+                    </span>
+                  ))
+                }
               </address>
             </div>
           </div>
@@ -203,16 +208,19 @@ import { DONATION_BANK_DETAILS, POSTAL_DONATION_DETAILS } from "../../data/donat
             Direct Monastery Inquiries
           </h4>
           <div class="text-xs sm:text-sm text-ink space-y-1 font-serif">
-            {POSTAL_DONATION_DETAILS.telephones.map((phone) => (
-              <div>
-                <strong>{phone.label}:</strong> {phone.number}
-              </div>
-            ))}
+            {
+              POSTAL_DONATION_DETAILS.telephones.map((phone) => (
+                <div>
+                  <strong>{phone.label}:</strong> {phone.number}
+                </div>
+              ))
+            }
             <div>
               <strong>Email:</strong>
               <a
                 href={`mailto:${POSTAL_DONATION_DETAILS.officeEmail}`}
-                class="text-accent hover:underline font-mono">{POSTAL_DONATION_DETAILS.officeEmail}</a
+                class="text-accent hover:underline font-mono"
+                >{POSTAL_DONATION_DETAILS.officeEmail}</a
               >
             </div>
           </div>
@@ -225,10 +233,17 @@ import { DONATION_BANK_DETAILS, POSTAL_DONATION_DETAILS } from "../../data/donat
       class="callout text-sm text-muted bg-surface-subtle p-5 sm:p-6 rounded-2xl border border-border space-y-2.5"
     >
       <p class="m-0">
-        <strong class="text-ink">Designated Offerings:</strong> Contributions may be allocated toward specific needs—including monastic healthcare, nutritional provisions, seasonal heating, or shedra study materials. Donors should indicate their intended allocation in the bank remittance memo or notification email. All contributions are applied strictly to their designated purpose.
+        <strong class="text-ink">Designated Offerings:</strong> Contributions may be allocated toward
+        specific needs—including monastic healthcare, nutritional provisions, seasonal heating, or shedra
+        study materials. Donors should indicate their intended allocation in the bank remittance memo
+        or notification email. All contributions are applied strictly to their designated purpose.
       </p>
       <p class="text-xs text-muted/80 m-0 pt-2 border-t border-border/60">
-        <strong>Regulatory Compliance & Verification:</strong> Jonang Takten Phuntsok Choeling Cultural Society is an officially registered non-profit charitable society in Himachal Pradesh, India. All contributions directly sustain the resident sangha and educational programs. For official receipts or remittance verification queries, donors may contact the monastery administrative office directly.
+        <strong>Regulatory Compliance & Verification:</strong> Jonang Takten Phuntsok Choeling Cultural
+        Society is an officially registered non-profit charitable society in Himachal Pradesh, India.
+        All contributions directly sustain the resident sangha and educational programs. For official
+        receipts or remittance verification queries, donors may contact the monastery administrative office
+        directly.
       </p>
     </div>
   </div>

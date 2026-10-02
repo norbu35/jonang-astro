@@ -10,8 +10,14 @@ interface Candidate {
 }
 
 const UI_DIRECTIVE_PATTERNS = [
-  { name: "select_below", regex: /\bselect\s+(?:a|an|the|any)\b.*?\b(?:below|here|above|following)\b/i },
-  { name: "choose_below", regex: /\bchoose\s+(?:a|an|the|any)\b.*?\b(?:below|here|above|following)\b/i },
+  {
+    name: "select_below",
+    regex: /\bselect\s+(?:a|an|the|any)\b.*?\b(?:below|here|above|following)\b/i,
+  },
+  {
+    name: "choose_below",
+    regex: /\bchoose\s+(?:a|an|the|any)\b.*?\b(?:below|here|above|following)\b/i,
+  },
   { name: "click_to", regex: /\bclick\s+(?:here|below|on|any)\b/i },
   { name: "navigate_to", regex: /\bnavigate\s+(?:to|through|below|their)\b/i },
   { name: "browse_below", regex: /\bbrowse\s+(?:through|below|our)\b/i },
@@ -153,5 +159,7 @@ const outPath = path.resolve("scratch/editorial_candidates.json");
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, JSON.stringify(candidates, null, 2), "utf-8");
 
-console.log(`Scan completed. Found ${candidates.length} editorial candidates across ${files.length} files.`);
+console.log(
+  `Scan completed. Found ${candidates.length} editorial candidates across ${files.length} files.`
+);
 console.log(`Saved results to ${outPath}`);

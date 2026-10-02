@@ -1,0 +1,774 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ChapterHeader from "../../components/ui/ChapterHeader.astro";
+import { STATIC_PAGE_PATHS } from "../../data/staticPages";
+
+const telemetryMeta = {
+  dataset: "jonang-telemetry",
+  platform: "Netlify Edge Functions + Axiom Cloud (AWS us-east-1)",
+  windowStart: "2026-09-09",
+  windowEnd: "2026-09-27",
+  windowDays: 18,
+  totalEvents: 1430,
+  uniqueVisitors: 407,
+  uniqueSessions: 373,
+  uniqueCountries: 43,
+  eventsPerVisitor: "3.51",
+  eventsPerSession: "3.83",
+};
+
+const topCountries = [
+  { code: "US", name: "United States", views: 563, visitors: 182, pct: 39.4, flag: "🇺🇸" },
+  {
+    code: "RU",
+    name: "Russia (Kalmykia & Buryatia)",
+    views: 159,
+    visitors: 37,
+    pct: 11.1,
+    flag: "🇷🇺",
+  },
+  { code: "IN", name: "India (Monastery & HP)", views: 125, visitors: 42, pct: 8.7, flag: "🇮🇳" },
+  { code: "CN", name: "China & Tibetan Plateau", views: 83, visitors: 24, pct: 5.8, flag: "🇨🇳" },
+  { code: "SG", name: "Singapore", views: 70, visitors: 8, pct: 4.9, flag: "🇸🇬" },
+  { code: "NL", name: "The Netherlands", views: 67, visitors: 6, pct: 4.7, flag: "🇳🇱" },
+  {
+    code: "MN",
+    name: "Mongolia (Zanabazar Heritage)",
+    views: 57,
+    visitors: 8,
+    pct: 4.0,
+    flag: "🇲🇳",
+  },
+  { code: "CA", name: "Canada", views: 35, visitors: 11, pct: 2.4, flag: "🇨🇦" },
+  { code: "AU", name: "Australia", views: 27, visitors: 7, pct: 1.9, flag: "🇦🇺" },
+  { code: "BR", name: "Brazil", views: 23, visitors: 6, pct: 1.6, flag: "🇧🇷" },
+  { code: "DE", name: "Germany", views: 22, visitors: 7, pct: 1.5, flag: "🇩🇪" },
+  { code: "MY", name: "Malaysia", views: 22, visitors: 5, pct: 1.5, flag: "🇲🇾" },
+  { code: "GB", name: "United Kingdom", views: 14, visitors: 3, pct: 1.0, flag: "🇬🇧" },
+  { code: "SE", name: "Sweden", views: 13, visitors: 2, pct: 0.9, flag: "🇸🇪" },
+  { code: "HK", name: "Hong Kong", views: 13, visitors: 3, pct: 0.9, flag: "🇭🇰" },
+  { code: "TH", name: "Thailand", views: 13, visitors: 3, pct: 0.9, flag: "🇹🇭" },
+];
+
+const topCities = [
+  { city: "Columbus", country: "United States", views: 190, visitors: 12 },
+  { city: "Ashburn", country: "United States", views: 174, visitors: 28 },
+  { city: "Nizhniy Novgorod", country: "Russia", views: 125, visitors: 27 },
+  { city: "Amsterdam", country: "The Netherlands", views: 61, visitors: 3 },
+  { city: "Ulan Bator", country: "Mongolia", views: 57, visitors: 8 },
+  { city: "Singapore", country: "Singapore", views: 42, visitors: 3 },
+  { city: "Gold Coast", country: "Australia", views: 26, visitors: 6 },
+  { city: "Beijing", country: "China", views: 24, visitors: 5 },
+  { city: "Taizhou", country: "China", views: 22, visitors: 2 },
+  { city: "Kuala Lumpur", country: "Malaysia", views: 21, visitors: 4 },
+  { city: "Mandi (HP)", country: "India", views: 21, visitors: 3 },
+  { city: "Vancouver", country: "Canada", views: 18, visitors: 1 },
+  { city: "Liberdade", country: "Brazil", views: 18, visitors: 2 },
+  { city: "Hyderabad", country: "India", views: 16, visitors: 3 },
+  { city: "New Delhi", country: "India", views: 15, visitors: 7 },
+  { city: "Shimla (Sanjauli)", country: "India", views: 13, visitors: 5 },
+  { city: "Stockholm", country: "Sweden", views: 13, visitors: 2 },
+  { city: "Bangkok", country: "Thailand", views: 13, visitors: 3 },
+];
+
+const topRoutes = [
+  {
+    path: "/",
+    title: "Sanctuary Home & Monastery Introduction",
+    views: 634,
+    visitors: 163,
+    pct: 44.3,
+  },
+  {
+    path: "/monastery",
+    title: "Takten Phuntsok Choeling History & Grounds",
+    views: 166,
+    visitors: 71,
+    pct: 11.6,
+  },
+  {
+    path: "/teachers",
+    title: "Lineage Masters & Successive Lineage Holders",
+    views: 119,
+    visitors: 37,
+    pct: 8.3,
+  },
+  {
+    path: "/gallery",
+    title: "Monastery & Sacred Art Thangka Gallery",
+    views: 116,
+    visitors: 28,
+    pct: 8.1,
+  },
+  {
+    path: "/doctrine",
+    title: "Shentong Great Madhyamaka Philosophy",
+    views: 114,
+    visitors: 53,
+    pct: 8.0,
+  },
+  {
+    path: "/kalachakra",
+    title: "Kālacakra Tantra & Six-Fold Vajrayoga",
+    views: 97,
+    visitors: 41,
+    pct: 6.8,
+  },
+  {
+    path: "/introduction",
+    title: "Historical Introduction & Beginner's Guide",
+    views: 66,
+    visitors: 28,
+    pct: 4.6,
+  },
+  {
+    path: "/curriculum",
+    title: "Monastic Shedra Studies & 5-Part Accumulations",
+    views: 46,
+    visitors: 19,
+    pct: 3.2,
+  },
+  {
+    path: "/donate",
+    title: "Sangha Care, Kitchen & Shedra Support",
+    views: 28,
+    visitors: 11,
+    pct: 2.0,
+  },
+  {
+    path: "/living-tradition",
+    title: "Monastic Daily Life & Living Practice",
+    views: 25,
+    visitors: 15,
+    pct: 1.7,
+  },
+  {
+    path: "/glossary",
+    title: "Dharma & Tibetan Philosophical Lexicon",
+    views: 9,
+    visitors: 3,
+    pct: 0.6,
+  },
+  {
+    path: "/sitemap",
+    title: "Canonical Site Index & Knowledge Map",
+    views: 5,
+    visitors: 4,
+    pct: 0.3,
+  },
+];
+
+const cwvMetrics = [
+  {
+    name: "CLS",
+    label: "Cumulative Layout Shift",
+    target: "≤ 0.100",
+    p50: "0.033",
+    p75: "0.074",
+    p90: "1.010",
+    grade: "Good",
+    gradeClass: "badge-success",
+    goodPct: 80.8,
+    niPct: 6.9,
+    poorPct: 12.3,
+    insight:
+      "Exceptional visual stability. Rigid dual-tier typography layout constraints prevent unexpected reflow.",
+  },
+  {
+    name: "INP",
+    label: "Interaction to Next Paint",
+    target: "≤ 200 ms",
+    p50: "96 ms",
+    p75: "280 ms",
+    p90: "424 ms",
+    grade: "Needs Improvement",
+    gradeClass: "badge-warning",
+    goodPct: 67.9,
+    niPct: 24.0,
+    poorPct: 8.1,
+    insight:
+      "Interactive Preact hydration is lightweight, though heavy modal and audio triggers lag on 3G devices.",
+  },
+  {
+    name: "LCP",
+    label: "Largest Contentful Paint",
+    target: "≤ 2,500 ms",
+    p50: "1,839 ms",
+    p75: "3,328 ms",
+    p90: "6,656 ms",
+    grade: "Needs Improvement",
+    gradeClass: "badge-warning",
+    goodPct: 62.4,
+    niPct: 17.9,
+    poorPct: 19.6,
+    insight:
+      "High-resolution hero WebP artwork and custom Tibetan font loading delay the primary contentful paint.",
+  },
+  {
+    name: "FCP",
+    label: "First Contentful Paint",
+    target: "≤ 1,800 ms",
+    p50: "1,599 ms",
+    p75: "3,135 ms",
+    p90: "5,907 ms",
+    grade: "Needs Improvement",
+    gradeClass: "badge-warning",
+    goodPct: 52.7,
+    niPct: 21.3,
+    poorPct: 26.1,
+    insight:
+      "Initial HTML render is fast on 4G, but overseas TLS handshakes across international transits add delay.",
+  },
+  {
+    name: "TTFB",
+    label: "Time to First Byte",
+    target: "≤ 800 ms",
+    p50: "656 ms",
+    p75: "1,506 ms",
+    p90: "2,895 ms",
+    grade: "Needs Improvement",
+    gradeClass: "badge-warning",
+    goodPct: 54.3,
+    niPct: 23.2,
+    poorPct: 22.6,
+    insight:
+      "Global routing to origin servers from distant regions (Russia, Mongolia, Brazil) influences edge TTFB.",
+  },
+];
+
+const fontAudit = {
+  total: 234,
+  ok: 140,
+  degraded: 94,
+  okPct: "59.8%",
+  degradedPct: "40.2%",
+  items: [
+    {
+      name: "Jomolhari",
+      role: "Classical Scripture & Pecha Citations",
+      loaded: 73,
+      fallback: 161,
+      rate: "31.2%",
+      fileSize: "~1.1 MB",
+    },
+    {
+      name: "Noto Serif Tibetan",
+      role: "Default UI Labels, Master Names & Cards",
+      loaded: 37,
+      fallback: 197,
+      rate: "15.8%",
+      fileSize: "~780 KB",
+    },
+    {
+      name: "Monlam Uni Ouchan3",
+      role: "Calligraphic Headline Display Calligraphy",
+      loaded: 19,
+      fallback: 215,
+      rate: "8.1%",
+      fileSize: "~2.8 MB",
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Global Sangha Reach & Observability Intelligence | Jonang Monastery"
+  description="Transparent, privacy-preserving telemetry and real-user performance data for Jonang Takten Phuntsok Choeling: international readership, Tibetan font health, and Core Web Vitals."
+  breadcrumbs={[
+    { name: "Home", path: "/" },
+    { name: "Sangha Reach & Intelligence", path: STATIC_PAGE_PATHS.intelligence },
+  ]}
+>
+  <main id="main-content" class="flex-1">
+    <!-- Sanctuary Hero Section -->
+    <section
+      class="relative w-full overflow-hidden bg-gradient-to-b from-maroon-light via-maroon to-maroon-dark text-white border-b border-accent/50 pt-[calc(var(--header-h)+2rem)] sm:pt-[calc(var(--header-h)+2.5rem)] lg:pt-[calc(var(--header-h)+3.5rem)] pb-12 sm:pb-16"
+    >
+      <div
+        class="pointer-events-none absolute -top-40 right-1/4 w-[600px] h-[600px] bg-gold/15 blur-[160px] mix-blend-screen rounded-full"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        <div class="flex flex-col gap-6 max-w-4xl">
+          <!-- Tibetan Consecrated Title -->
+          <div
+            lang="bo"
+            class="font-tibetan text-2xl sm:text-3xl lg:text-4xl text-gold font-bold pt-1 leading-[1.6] drop-shadow-md"
+          >
+            ཇོ་ནང་དྲ་གནས་ཀྱི་གནས་སྡུད།
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h1
+              class="font-display text-4xl sm:text-5xl lg:text-6xl font-medium text-white tracking-tight leading-[1.15] m-0 drop-shadow-md"
+            >
+              Global Sangha Reach & Telemetry Intelligence
+            </h1>
+
+            <p class="font-serif text-base sm:text-lg text-white/90 leading-relaxed m-0 pt-1">
+              Transparent, privacy-first telemetry tracking how the teachings, sacred scripture, and
+              monastic curriculum of <strong>Jonang Takten Phuntsok Choeling</strong> are received across
+              the worldwide Buddhist diaspora.
+            </p>
+          </div>
+
+          <!-- Privacy & Ethics Declaration Card -->
+          <div
+            class="p-4 sm:p-5 rounded-xl bg-maroon/85 border border-gold/30 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-3 w-3 rounded-full bg-emerald-400 ring-4 ring-emerald-400/25 animate-pulse"
+              ></span>
+              <div class="flex flex-col">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider text-gold">
+                  Privacy-First Monastic Telemetry
+                </span>
+                <span class="text-xs text-white/80 font-serif">
+                  Daily-rotating salted SHA-256 visitor hashing · Zero cookies · Zero personal
+                  tracking · GDPR & CCPA compliant
+                </span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-white/70 shrink-0">
+              <span class="px-2 py-0.5 rounded bg-white/10 border border-white/20"
+                >Live Pipeline</span
+              >
+              <span>Axiom Cloud</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Analytics Body Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 space-y-16">
+      <!-- Executive KPI Cards -->
+      <section aria-label="Executive Indicators">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div
+            class="surface-card p-5 sm:p-6 rounded-2xl border border-border shadow-card flex flex-col gap-1.5"
+          >
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+              >Total Ingested Beacons</span
+            >
+            <span class="text-3xl sm:text-4xl font-display font-bold text-accent"
+              >{telemetryMeta.totalEvents.toLocaleString()}</span
+            >
+            <span class="text-xs font-mono text-muted"
+              >{telemetryMeta.eventsPerVisitor} beacons per visitor</span
+            >
+          </div>
+
+          <div
+            class="surface-card p-5 sm:p-6 rounded-2xl border border-border shadow-card flex flex-col gap-1.5"
+          >
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+              >Unique Practitioners</span
+            >
+            <span class="text-3xl sm:text-4xl font-display font-bold text-accent-secondary"
+              >{telemetryMeta.uniqueVisitors.toLocaleString()}</span
+            >
+            <span class="text-xs font-mono text-muted">Salted daily SHA-256 hashes</span>
+          </div>
+
+          <div
+            class="surface-card p-5 sm:p-6 rounded-2xl border border-border shadow-card flex flex-col gap-1.5"
+          >
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+              >Deep Reading Sessions</span
+            >
+            <span class="text-3xl sm:text-4xl font-display font-bold text-ink"
+              >{telemetryMeta.uniqueSessions.toLocaleString()}</span
+            >
+            <span class="text-xs font-mono text-muted"
+              >{telemetryMeta.eventsPerSession} events per session</span
+            >
+          </div>
+
+          <div
+            class="surface-card p-5 sm:p-6 rounded-2xl border border-border shadow-card flex flex-col gap-1.5"
+          >
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+              >Global Reach</span
+            >
+            <span class="text-3xl sm:text-4xl font-display font-bold text-accent-tertiary"
+              >{telemetryMeta.uniqueCountries} Nations</span
+            >
+            <span class="text-xs font-mono text-muted">Across 5 continents</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 01: Geographic Distribution & Diaspora Reach -->
+      <section class="space-y-8" id="geographic-reach">
+        <ChapterHeader
+          chapter="Chapter 01"
+          title="Geographic Intelligence & Worldwide Sangha"
+          tibetanTitle="རྒྱལ་སྤྱིའི་དད་ལྡན་ཚོགས་པའི་ཁྱབ་ཁོངས།"
+          lede="The Jonang tradition holds profound historical bonds across the Himalayan plateau, Mongolia, and the Russian Buddhist republics of Kalmykia and Buryatia, alongside an expanding modern sangha in the West."
+        />
+
+        <!-- Country Distribution Matrix -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left: Top Countries Visual Bars -->
+          <div
+            class="lg:col-span-7 surface-card p-6 sm:p-8 rounded-2xl border border-border shadow-card space-y-4"
+          >
+            <div class="flex items-center justify-between border-b border-border pb-3">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+                >Sovereign Nation</span
+              >
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-muted"
+                >Views / Readership Share</span
+              >
+            </div>
+
+            <div class="flex flex-col gap-3">
+              {
+                topCountries.map((c) => (
+                  <div class="flex flex-col gap-1">
+                    <div class="flex items-center justify-between text-xs sm:text-sm font-sans">
+                      <span class="font-medium text-ink flex items-center gap-2">
+                        <span class="text-base">{c.flag}</span>
+                        <span>{c.name}</span>
+                      </span>
+                      <span class="font-mono text-muted">
+                        <strong class="text-ink font-bold">{c.views}</strong> views ({c.pct}%)
+                      </span>
+                    </div>
+                    {/* Progress Bar */}
+                    <div class="w-full h-2 rounded-full bg-surface-subtle overflow-hidden">
+                      <div
+                        class="h-full bg-gradient-to-r from-accent to-accent-secondary rounded-full transition-all duration-500"
+                        style={`width: ${Math.max(3, c.pct * 2.2)}%;`}
+                      />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Right: Metropolitan Centers & Lineage Relevance -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <div
+              class="surface-card p-6 rounded-2xl border border-border shadow-card space-y-4 flex-1"
+            >
+              <h3 class="text-lg font-display text-ink font-bold m-0 border-b border-border pb-2.5">
+                Top Metropolitan Reading Hubs
+              </h3>
+              <ul class="m-0 p-0 list-none flex flex-col gap-2.5 text-xs sm:text-sm font-sans">
+                {
+                  topCities.slice(0, 10).map((city) => (
+                    <li class="flex items-center justify-between border-b border-border/50 pb-2">
+                      <span class="text-ink font-medium">
+                        {city.city}, <span class="text-muted text-xs">{city.country}</span>
+                      </span>
+                      <span class="font-mono text-xs text-accent font-bold">
+                        {city.views} views ({city.visitors} vis)
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <!-- Historical Note on Mongolia & Kalmykia -->
+            <div
+              class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-ink space-y-2"
+            >
+              <div class="flex items-center gap-2">
+                <span class="text-accent font-bold text-sm">❖</span>
+                <span class="text-xs font-mono font-bold uppercase tracking-wider text-accent">
+                  Historical Lineage Heritage
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm font-serif text-muted leading-relaxed m-0">
+                The presence of readers in <strong>Ulaanbaatar (57 views)</strong> and <strong
+                  >Russia (159 views)</strong
+                > reflects the enduring spiritual imprint of <em>Jetsun Tāranātha</em> and the First Bogd
+                Gegeen <em>Zanabazar</em>, through whom Jonang Kalachakra transmissions were woven
+                into the spiritual history of Mongolia, Buryatia, and Kalmykia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 02: Canonical Doctrinal Journey -->
+      <section class="space-y-8" id="doctrinal-routes">
+        <ChapterHeader
+          chapter="Chapter 02"
+          title="Canonical Content Engagement & Route Distribution"
+          tibetanTitle="གཞུང་ལུགས་བལྟ་ཀློག་གི་གནས་བབ།"
+          lede="Reader interest focuses extensively on the monastery sanctuary grounds, the Shentong philosophical treatises, the living lineages of masters, and the Kālacakra Tantra."
+        />
+
+        <div
+          class="surface-card p-6 sm:p-8 rounded-2xl border border-border shadow-card overflow-x-auto"
+        >
+          <table class="w-full text-left text-xs sm:text-sm font-sans border-collapse">
+            <thead>
+              <tr
+                class="border-b border-border text-muted font-mono uppercase tracking-wider text-[11px]"
+              >
+                <th class="py-3 px-3">Canonical Route</th>
+                <th class="py-3 px-3">Page Focus & Doctrinal Content</th>
+                <th class="py-3 px-3 text-right">Pageviews</th>
+                <th class="py-3 px-3 text-right">Unique Readers</th>
+                <th class="py-3 px-3 text-right">Traffic Share</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border/60">
+              {
+                topRoutes.map((r) => (
+                  <tr class="hover:bg-surface-subtle/60 transition-colors">
+                    <td class="py-3 px-3 font-mono font-bold text-accent">
+                      <a href={r.path} class="hover:underline hover:text-gold">
+                        {r.path}
+                      </a>
+                    </td>
+                    <td class="py-3 px-3 font-serif text-ink">{r.title}</td>
+                    <td class="py-3 px-3 font-mono text-right text-ink font-bold">{r.views}</td>
+                    <td class="py-3 px-3 font-mono text-right text-muted">{r.visitors}</td>
+                    <td class="py-3 px-3 font-mono text-right text-accent-secondary font-bold">
+                      {r.pct}%
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Chapter 03: Tibetan Font Health & Cultural Script Integrity -->
+      <section class="space-y-8" id="tibetan-font-health">
+        <ChapterHeader
+          chapter="Chapter 03"
+          title="Sacred Script & Tibetan Typography Health"
+          tibetanTitle="བོད་ཡིག་ཡིག་གཟུགས་ཀྱི་དྲ་རྒྱའི་བདེ་ཐང་།"
+          lede="Rigorous automated client-side font audits measure whether browsers successfully download and render classical Tibetan typefaces or degrade into system fallbacks."
+        />
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div
+            class="lg:col-span-5 surface-card p-6 sm:p-8 rounded-2xl border border-border shadow-card space-y-6"
+          >
+            <h3 class="text-xl font-display text-ink font-bold m-0 border-b border-border pb-3">
+              Client Rendering Audit Summary
+            </h3>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex flex-col gap-1"
+              >
+                <span
+                  class="text-xs font-mono uppercase tracking-wider text-emerald-800 dark:text-emerald-300 font-bold"
+                  >Status OK</span
+                >
+                <span class="text-3xl font-display font-bold text-emerald-700 dark:text-emerald-400"
+                  >{fontAudit.ok}</span
+                >
+                <span class="text-xs font-mono text-muted"
+                  >{fontAudit.okPct} of verified sessions</span
+                >
+              </div>
+
+              <div
+                class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex flex-col gap-1"
+              >
+                <span
+                  class="text-xs font-mono uppercase tracking-wider text-rose-800 dark:text-rose-300 font-bold"
+                  >Status Degraded</span
+                >
+                <span class="text-3xl font-display font-bold text-rose-700 dark:text-rose-400"
+                  >{fontAudit.degraded}</span
+                >
+                <span class="text-xs font-mono text-muted"
+                  >{fontAudit.degradedPct} font timeout fallbacks</span
+                >
+              </div>
+            </div>
+
+            <div class="text-xs sm:text-sm font-serif text-muted leading-relaxed space-y-3 pt-2">
+              <p class="m-0">
+                <strong>Why font health matters:</strong> Classical Jonang pecha verses and tantric root
+                texts require ligatures, vowel sub-joining, and proper vertical metrics. If web fonts
+                fail, standard OS fallback fonts often distort stacked characters.
+              </p>
+              <p class="m-0">
+                Client telemetry reveals a 40.2% degradation rate caused by large raw WOFF2 font
+                files timing out on mobile networks. Preloading and glyph-range subsetting have been
+                prioritized to resolve this.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="lg:col-span-7 surface-card p-6 sm:p-8 rounded-2xl border border-border shadow-card space-y-5"
+          >
+            <h3 class="text-xl font-display text-ink font-bold m-0 border-b border-border pb-3">
+              Per-Font Family Delivery Success Rate
+            </h3>
+
+            <div class="flex flex-col gap-5">
+              {
+                fontAudit.items.map((f) => (
+                  <div class="p-4 rounded-xl bg-surface-subtle border border-border/80 space-y-2">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <span class="font-display font-bold text-base text-ink block">
+                          {f.name}
+                        </span>
+                        <span class="text-xs text-muted font-sans">
+                          {f.role} · Weight: {f.fileSize}
+                        </span>
+                      </div>
+                      <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-accent/10 text-accent">
+                        {f.rate} Success
+                      </span>
+                    </div>
+
+                    <div class="w-full h-2 rounded-full bg-border/60 overflow-hidden">
+                      <div
+                        class="h-full bg-accent rounded-full transition-all duration-500"
+                        style={`width: ${f.rate};`}
+                      />
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] font-mono text-muted">
+                      <span>Loaded: {f.loaded} clients</span>
+                      <span>System Fallback: {f.fallback} clients</span>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 04: Real User Monitoring & Performance -->
+      <section class="space-y-8" id="web-vitals">
+        <ChapterHeader
+          chapter="Chapter 04"
+          title="Real User Monitoring & Core Web Vitals"
+          tibetanTitle="དྲ་ཚིགས་མྱུར་ཚད་དང་སྤུས་ཚད་ཀྱི་ཚད་གཞི།"
+          lede="Continuous Real User Monitoring (RUM) tracks actual reader experience across global network conditions, measuring rendering speed, visual stability, and interaction responsiveness."
+        />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            cwvMetrics.map((m) => (
+              <div class="surface-card p-6 rounded-2xl border border-border shadow-card flex flex-col justify-between gap-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-lg font-mono font-bold text-ink">{m.name}</span>
+                    <span
+                      class:list={[
+                        "text-xs font-mono font-bold px-2.5 py-0.5 rounded-full uppercase",
+                        m.grade === "Good"
+                          ? "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
+                          : "bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30",
+                      ]}
+                    >
+                      {m.grade}
+                    </span>
+                  </div>
+                  <span class="text-xs text-muted font-sans block">
+                    {m.label} (Google Target: {m.target})
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 py-3 border-y border-border/60 text-center font-mono text-xs">
+                  <div>
+                    <span class="text-muted text-[10px] block">p50</span>
+                    <strong class="text-ink">{m.p50}</strong>
+                  </div>
+                  <div>
+                    <span class="text-muted text-[10px] block">p75 (CWV)</span>
+                    <strong class="text-accent">{m.p75}</strong>
+                  </div>
+                  <div>
+                    <span class="text-muted text-[10px] block">p90</span>
+                    <strong class="text-ink">{m.p90}</strong>
+                  </div>
+                </div>
+
+                {/* Distribution Bar */}
+                <div class="space-y-1">
+                  <div class="flex h-2 w-full rounded-full overflow-hidden">
+                    <div
+                      class="bg-emerald-500 h-full"
+                      style={`width: ${m.goodPct}%;`}
+                      title={`Good: ${m.goodPct}%`}
+                    />
+                    <div
+                      class="bg-amber-500 h-full"
+                      style={`width: ${m.niPct}%;`}
+                      title={`Needs Imp: ${m.niPct}%`}
+                    />
+                    <div
+                      class="bg-rose-500 h-full"
+                      style={`width: ${m.poorPct}%;`}
+                      title={`Poor: ${m.poorPct}%`}
+                    />
+                  </div>
+                  <div class="flex justify-between text-[10px] font-mono text-muted">
+                    <span class="text-emerald-700 dark:text-emerald-400 font-bold">
+                      {m.goodPct}% Good
+                    </span>
+                    <span class="text-rose-700 dark:text-rose-400 font-bold">
+                      {m.poorPct}% Poor
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-xs font-serif text-muted m-0 pt-1 leading-relaxed">{m.insight}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Chapter 05: Telemetry CLI & Pipeline -->
+      <section
+        class="surface-card p-6 sm:p-8 md:p-10 rounded-2xl border border-border shadow-card space-y-6"
+      >
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border pb-4"
+        >
+          <div>
+            <h3 class="text-2xl font-display text-ink font-bold m-0">Terminal Telemetry Console</h3>
+            <p class="text-sm font-serif text-muted m-0 pt-1">
+              Monastery administrators and systems developers can generate real-time ANSI terminal
+              reports with one command.
+            </p>
+          </div>
+
+          <div
+            class="px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-xs font-bold"
+          >
+            pnpm run telemetry
+          </div>
+        </div>
+
+        <pre
+          class="bg-ink text-white/90 p-4 sm:p-5 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed border border-white/10"><code># Run the live telemetry terminal console
+pnpm run telemetry
+
+# Output preview:
+# ╔══════════════════════════════════════════════════════════════════════════════════════╗
+# ║  JONANG TAKTEN PHUNTSOK CHOELING — PRODUCTION TELEMETRY DASHBOARD                    ║
+# ║  Site: https://jonang.in  •  Dataset: jonang-telemetry  •  Platform: Netlify Edge    ║
+# ╚══════════════════════════════════════════════════════════════════════════════════════╝
+# Ingested: 1,430 events | Unique Readers: 407 | Sessions: 373 | Nations: 43</code></pre>
+      </section>
+    </div>
+  </main>
+</BaseLayout>

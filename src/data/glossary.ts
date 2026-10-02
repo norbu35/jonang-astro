@@ -798,8 +798,7 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
     termBo: "རྡུལ་ཚོན་དཀྱིལ་འཁོར།",
     wylie: "rdul tshon dkyil 'khor",
     category: "monastic",
-    shortDef:
-      "The two-dimensional mandala palace constructed from colored mineral sands.",
+    shortDef: "The two-dimensional mandala palace constructed from colored mineral sands.",
     fullDef:
       "A sand mandala (rdul tshon dkyil 'khor) is constructed over several days by trained monks using narrow metal funnels (chakpur). It represents the divine residence and enlightened qualities of deities like Kālacakra. Upon completion and consecration, the mandala is ritually swept up and offered to a flowing river, demonstrating the impermanence of all composite phenomena.",
     aliases: ["Sand Mandala", "Colored Sand Mandala", "rdul tshon"],

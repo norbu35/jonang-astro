@@ -12,9 +12,15 @@ export const STATIC_PAGE_PATHS = {
   donate: "/donate",
   sitemap: "/sitemap",
   glossary: "/glossary",
+  intelligence: "/intelligence",
+  telemetry: "/intelligence",
 } as const;
 
 export const STATIC_PAGE_BY_SLUG: Record<string, string> = {
+  intelligence: STATIC_PAGE_PATHS.intelligence,
+  telemetry: STATIC_PAGE_PATHS.telemetry,
+  analytics: STATIC_PAGE_PATHS.intelligence,
+  "sangha-reach": STATIC_PAGE_PATHS.intelligence,
   monastery: STATIC_PAGE_PATHS.monastery,
   "the-monastery": STATIC_PAGE_PATHS.monastery,
   "about-us": STATIC_PAGE_PATHS.monastery,

@@ -180,9 +180,9 @@ export class ErrorTracker {
     try {
       await document.fonts.ready;
 
-      const notoCheck = document.fonts.check("16px 'Noto Serif Tibetan'");
-      const jomolhariCheck = document.fonts.check("16px 'Jomolhari'");
-      const monlamCheck = document.fonts.check("16px 'Monlam Uni Ouchan3'");
+      const notoCheck = document.fonts.check("16px 'Noto Serif Tibetan'", "ཨོཾ");
+      const jomolhariCheck = document.fonts.check("16px 'Jomolhari'", "ཨོཾ");
+      const monlamCheck = document.fonts.check("16px 'Monlam Uni Ouchan3'", "ཨོཾ");
 
       const notoLoaded = notoCheck;
       const jomolhariLoaded = jomolhariCheck;

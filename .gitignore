@@ -22,6 +22,7 @@ pnpm-debug.log*
 
 # IDE / Scratch / Local Store
 .serena/
+.omo/
 .pnpm-store/
 scratch/
 [sS]creenshot*.png

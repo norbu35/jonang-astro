@@ -219,8 +219,7 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
       <!-- Mobile Drawer Header -->
       <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-gold animate-pulse ring-4 ring-gold/25"
-          ></span>
+          <span class="w-2 h-2 rounded-full bg-gold animate-pulse ring-4 ring-gold/25"></span>
           <span class="text-xs font-mono uppercase tracking-wider text-gold font-bold">
             Navigation Portal
           </span>
@@ -362,6 +361,31 @@ function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
+      }
+    });
+
+    // In-page anchor click handler (e.g. #shentong-bibliography)
+    document.addEventListener("click", (event) => {
+      const link = (event.target as HTMLElement)?.closest<HTMLAnchorElement>("a[href*='#']");
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+
+      const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+      const targetPath = url.pathname.replace(/\/+$/, "") || "/";
+
+      if (currentPath === targetPath && url.hash) {
+        event.preventDefault();
+        setMenuOpen(false);
+        const targetId = url.hash.slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.pushState(null, "", url.hash);
+        }
       }
     });
 

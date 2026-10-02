@@ -88,6 +88,7 @@ export const FOOTER_NAVIGATION = [
     links: [
       { label: "Teachers", href: STATIC_PAGE_PATHS.teachers },
       { label: "Photo Gallery", href: STATIC_PAGE_PATHS.gallery },
+      { label: "Sangha Reach & Telemetry", href: STATIC_PAGE_PATHS.intelligence },
       { label: "Donate", href: STATIC_PAGE_PATHS.donate },
       { label: "Sitemap", href: STATIC_PAGE_PATHS.sitemap },
     ],

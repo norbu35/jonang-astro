@@ -53,7 +53,9 @@ for (const entry of GLOSSARY_ENTRIES) {
     for (const alias of entry.aliases) {
       const lowerAlias = alias.toLowerCase().trim();
       if (seenAliases.has(lowerAlias) && seenAliases.get(lowerAlias) !== entry.id) {
-        console.warn(`[WARN] Alias collision: "${alias}" used in both "${seenAliases.get(lowerAlias)}" and "${entry.id}"`);
+        console.warn(
+          `[WARN] Alias collision: "${alias}" used in both "${seenAliases.get(lowerAlias)}" and "${entry.id}"`
+        );
       } else {
         seenAliases.set(lowerAlias, entry.id);
       }
@@ -100,7 +102,9 @@ for (const file of contentFiles) {
   while ((match = glossaryTermRegex.exec(content)) !== null) {
     const termId = match[1].toLowerCase().trim();
     if (!validIds.has(termId)) {
-      console.error(`[ERROR] Broken GlossaryTerm in ${file}: id="${match[1]}" does not exist in glossary data!`);
+      console.error(
+        `[ERROR] Broken GlossaryTerm in ${file}: id="${match[1]}" does not exist in glossary data!`
+      );
       hasErrors = true;
     } else {
       const stat = termUsageMap.get(termId);

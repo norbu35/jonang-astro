@@ -12,6 +12,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "telemetry": "tsx scripts/telemetry-cli.ts",
+    "telemetry:query": "tsx scripts/query-telemetry.ts",
     "telemetry:test": "tsx scripts/test-telemetry.ts",
     "seo:audit": "tsx scripts/audit-seo.ts",
     "logs": "npx netlify-cli logs --follow --function telemetry",

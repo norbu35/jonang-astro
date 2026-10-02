@@ -10,6 +10,7 @@ export default defineConfig({
   redirects: {
     "/about-us": "/monastery",
     "/jonang-doctrine": "/doctrine",
+    "/telemetry": "/intelligence",
   },
   integrations: [preact()],
   vite: {

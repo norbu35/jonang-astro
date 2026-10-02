@@ -27,7 +27,9 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
     />
 
     <!-- Interactive Search & Filter Controls -->
-    <div class="surface-card p-5 sm:p-7 rounded-2xl border border-border shadow-xs space-y-5 bg-surface">
+    <div
+      class="surface-card p-5 sm:p-7 rounded-2xl border border-border shadow-xs space-y-5 bg-surface"
+    >
       <!-- Search Input -->
       <div class="relative">
         <label for="glossary-search" class="sr-only">Search glossary terms</label>
@@ -42,8 +44,7 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <input
             type="search"
@@ -75,14 +76,18 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
               }`}
             >
               <span>{cat.labelEn}</span>
-              <span lang="bo" class="font-tibetan ml-1 text-sm font-normal opacity-85">({cat.labelBo})</span>
+              <span lang="bo" class="font-tibetan ml-1 text-sm font-normal opacity-85">
+                ({cat.labelBo})
+              </span>
             </button>
           ))
         }
       </div>
 
       <!-- Alphabetical Jump Bar & Result Count -->
-      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/80 text-xs font-mono">
+      <div
+        class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/80 text-xs font-mono"
+      >
         <div class="flex flex-wrap items-center gap-1.5" id="alphabet-bar">
           <span class="text-muted font-bold mr-1 uppercase">Index:</span>
           {
@@ -136,7 +141,7 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
               class="glossary-card surface-card p-6 sm:p-7 rounded-2xl border border-border border-t-4 border-t-accent hover-lift flex flex-col justify-between h-full bg-surface shadow-xs scroll-mt-28 transition-all duration-300"
             >
               <div class="space-y-3">
-                <!-- Card Header -->
+                {/* Card Header */}
                 <div class="flex items-baseline justify-between gap-2 border-b border-border/80 pb-3">
                   <span class="px-2.5 py-0.5 rounded bg-accent/10 text-accent font-mono text-xs font-bold uppercase tracking-wider">
                     {term.category}
@@ -149,12 +154,17 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
                   >
                     <span>#{term.id}</span>
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                      />
                     </svg>
                   </a>
                 </div>
 
-                <!-- Titles & Tibetan Script -->
+                {/* Titles & Tibetan Script */}
                 <div class="space-y-1">
                   <span
                     lang="bo"
@@ -177,13 +187,13 @@ const alphabet = Array.from(new Set(terms.map((t) => t.termEn[0].toUpperCase()))
                   </div>
                 </div>
 
-                <!-- Comprehensive Doctrinal Definition -->
+                {/* Comprehensive Doctrinal Definition */}
                 <p class="text-base text-ink/85 leading-relaxed font-serif m-0 pt-2">
                   {term.fullDef}
                 </p>
               </div>
 
-              <!-- Related Terminology Cross-Links -->
+              {/* Related Terminology Cross-Links */}
               {term.relatedIds && term.relatedIds.length > 0 && (
                 <div class="pt-4 mt-6 border-t border-border/80 flex flex-wrap items-center gap-2">
                   <span class="text-xs font-mono uppercase text-muted font-semibold mr-1">
