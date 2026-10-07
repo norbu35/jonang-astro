@@ -1,135 +1,78 @@
-/**
- * Reliable full-session telemetry transport.
- * Implements modern web guidance: uses fetchLater() where available (Chrome 135+),
- * falling back to fetch() with keepalive or navigator.sendBeacon().
- */
-
+/** Bounded batches with one flush timer and stable IDs across delivery retries. */
 const ENDPOINT = "/api/telemetry";
+const MAX_RECORDS = 20;
+const MAX_BYTES = 48_000;
+let pending: Record<string, unknown>[] = [];
+let timer: ReturnType<typeof setTimeout> | undefined;
+let sending = false;
+let retries = 0;
+let fallbackSession: string | undefined;
 
-// In-memory telemetry buffer for the current page session
-let activePayload: Record<string, unknown> = {};
-let abortController: AbortController | null = null;
-let isUnloading = false;
-
-/**
- * Retrieve or generate an ephemeral session ID stored in sessionStorage.
- * This is zero-PII and expires when the browser tab is closed.
- */
+export const newId = () => crypto.randomUUID();
 export function getSessionId(): string {
+  if (fallbackSession) return fallbackSession;
   try {
-    const KEY = "jonang_telemetry_sid";
-    let sid = sessionStorage.getItem(KEY);
-    if (!sid) {
-      sid =
-        typeof crypto !== "undefined" && crypto.randomUUID
-          ? crypto.randomUUID()
-          : "s_" + Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
-      sessionStorage.setItem(KEY, sid);
-    }
-    return sid;
+    const key = "jonang_telemetry_sid";
+    const id = sessionStorage.getItem(key) || newId();
+    sessionStorage.setItem(key, id);
+    return (fallbackSession = id);
   } catch {
-    return "ephemeral_" + Math.random().toString(36).slice(2, 10);
+    return (fallbackSession = newId());
   }
 }
 
-/**
- * Low-level dispatch supporting modern fetchLater API with reliable keepalive fallback.
- */
-function sendPayload(payload: Record<string, unknown>, immediate = false): void {
-  const body = JSON.stringify(payload);
-
-  // If immediate (e.g., critical error), fire immediately via keepalive fetch
-  if (immediate) {
-    try {
-      if ("fetch" in window) {
-        fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body,
-          keepalive: true,
-        }).catch(() => {});
-        return;
-      }
-    } catch {}
-  }
-
-  // Cancel prior pending scheduled request if active
-  if (abortController) {
-    try {
-      abortController.abort();
-    } catch {}
-  }
-  abortController = new AbortController();
-
-  // 1. Modern fetchLater() API (Chrome 135+)
-  if (typeof (globalThis as any).fetchLater === "function") {
-    try {
-      (globalThis as any).fetchLater(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body,
-        signal: abortController.signal,
-      });
-      return;
-    } catch {
-      // Quota exceeded or fetchLater failed, fall through to fallback
-    }
-  }
-
-  // 2. Reliable keepalive / sendBeacon fallback on visibility change / unload
-  const sendNow = () => {
-    if (abortController?.signal.aborted) return;
-    try {
-      if ("fetch" in window) {
-        fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body,
-          keepalive: true,
-        }).catch(() => {});
-      } else if (navigator.sendBeacon) {
-        navigator.sendBeacon(ENDPOINT, body);
-      }
-    } catch {}
-  };
-
-  if (document.visibilityState === "hidden" || isUnloading) {
-    queueMicrotask(sendNow);
-  } else {
-    // Schedule flush when tab becomes hidden or closes
-    const onVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        sendNow();
-        document.removeEventListener("visibilitychange", onVisibilityChange);
-      }
-    };
-    document.addEventListener("visibilitychange", onVisibilityChange, { once: true });
-  }
-}
-
-/**
- * Update the active payload and schedule delivery.
- */
 export function queueTelemetry(data: Record<string, unknown>, immediate = false): void {
-  activePayload = {
-    ...activePayload,
-    ...data,
-    timestamp: Date.now(),
-    url: window.location.href,
-    pathname: window.location.pathname,
-  };
-
-  sendPayload(activePayload, immediate);
+  const record = { ...data, id: newId(), timestamp: Date.now() };
+  if (new Blob([JSON.stringify({ records: [record] })]).size > MAX_BYTES) return;
+  pending.push(record);
+  if (pending.length > 100) pending.shift();
+  if (immediate || pending.length >= MAX_RECORDS) void flushTelemetry();
+  else schedule();
 }
-
-/**
- * Handle page teardown safely.
- */
-if (typeof window !== "undefined") {
-  window.addEventListener("pagehide", () => {
-    isUnloading = true;
-    if (Object.keys(activePayload).length > 0) {
-      sendPayload(activePayload, true);
+function schedule() {
+  if (!timer && pending.length)
+    timer = setTimeout(() => {
+      timer = undefined;
+      void flushTelemetry();
+    }, 5000);
+}
+export async function flushTelemetry(unloading = false): Promise<void> {
+  if (timer) clearTimeout(timer);
+  timer = undefined;
+  if ((sending && !unloading) || !pending.length) return;
+  const batch: Record<string, unknown>[] = [];
+  while (pending.length && batch.length < MAX_RECORDS) {
+    const next = pending[0];
+    if (new Blob([JSON.stringify({ records: [...batch, next] })]).size > MAX_BYTES) break;
+    batch.push(pending.shift()!);
+  }
+  const body = JSON.stringify({ records: batch });
+  if (
+    unloading &&
+    navigator.sendBeacon?.(ENDPOINT, new Blob([body], { type: "application/json" }))
+  ) {
+    schedule();
+    return;
+  }
+  sending = true;
+  try {
+    const response = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+      credentials: "omit",
+    });
+    if (!response.ok) throw new Error(`Telemetry HTTP ${response.status}`);
+    retries = 0;
+  } catch {
+    if (++retries <= 3) pending = [...batch, ...pending].slice(0, 100);
+    else {
+      pending = [];
+      retries = 0;
     }
-  });
+  } finally {
+    sending = false;
+    schedule();
+  }
 }

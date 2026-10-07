@@ -1,0 +1,90 @@
+[
+  {
+    "browser": "chromium",
+    "width": 375,
+    "colorScheme": "light",
+    "violations": [],
+    "font": {
+      "actual": 315,
+      "reference": 315,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "chromium",
+    "width": 375,
+    "colorScheme": "dark",
+    "violations": [],
+    "font": {
+      "actual": 315,
+      "reference": 315,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "chromium",
+    "width": 1440,
+    "colorScheme": "light",
+    "violations": [],
+    "font": {
+      "actual": 315,
+      "reference": 315,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "chromium",
+    "width": 1440,
+    "colorScheme": "dark",
+    "violations": [],
+    "font": {
+      "actual": 315,
+      "reference": 315,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "webkit",
+    "width": 375,
+    "colorScheme": "light",
+    "violations": [],
+    "font": {
+      "actual": 314.47967529296875,
+      "reference": 314.47967529296875,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "webkit",
+    "width": 375,
+    "colorScheme": "dark",
+    "violations": [],
+    "font": {
+      "actual": 314.47967529296875,
+      "reference": 314.47967529296875,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "webkit",
+    "width": 1440,
+    "colorScheme": "light",
+    "violations": [],
+    "font": {
+      "actual": 314.47967529296875,
+      "reference": 314.47967529296875,
+      "fallback": 352.451171875
+    }
+  },
+  {
+    "browser": "webkit",
+    "width": 1440,
+    "colorScheme": "dark",
+    "violations": [],
+    "font": {
+      "actual": 314.47967529296875,
+      "reference": 314.47967529296875,
+      "fallback": 352.451171875
+    }
+  }
+]

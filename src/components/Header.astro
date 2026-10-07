@@ -1,459 +1,396 @@
 ---
 import { PRIMARY_NAVIGATION } from "../data/navigation";
-import { STATIC_PAGE_PATHS } from "../data/staticPages";
 import ThemeToggle from "./ThemeToggle.astro";
-
-function hasSublinks(item: (typeof PRIMARY_NAVIGATION)[number]) {
-  return Array.isArray(item.sublinks) && item.sublinks.length > 0;
-}
-
-function normalizePath(path: string) {
-  return path.replace(/\/+$/, "") || "/";
-}
-
-const pathname = normalizePath(Astro.url.pathname);
-
-function isActivePath(href?: string) {
-  if (!href) return false;
-  const target = normalizePath(href);
-  return pathname === target || (target !== "/" && pathname.startsWith(`${target}/`));
-}
-
-function isActiveItem(item: (typeof PRIMARY_NAVIGATION)[number]) {
-  if (isActivePath(item.href)) return true;
-  return item.sublinks?.some((sublink) => isActivePath(sublink.href)) ?? false;
-}
+const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isActive = (href: string) => pathname === href;
 ---
 
-<header id="site-header" class="fixed top-0 z-[9999] w-full glass-header will-change-transform">
-  <div
-    class="container relative flex items-center justify-between gap-3 sm:gap-4"
-    style="height: var(--header-h)"
-  >
-    <!-- Brand Emblem & Monastery Title -->
-    <a
-      href="/"
-      class="focus flex items-center gap-3 sm:gap-3.5 group transition-transform duration-200 hover:scale-[1.01]"
-      aria-label="Jonang Takten Phuntsok Choeling Monastery Homepage"
-    >
-      <!-- Monastery Seal with Consecrated Gold Ring -->
-      <div
-        class="flex h-14 w-14 sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem] lg:h-20 lg:w-20 xl:h-[5.25rem] xl:w-[5.25rem] shrink-0 items-center justify-center rounded-full bg-maroon-light/95 p-0.5 sm:p-1 shadow-lg ring-2 ring-gold/70 backdrop-blur-md transition-all duration-300 group-hover:scale-105 group-hover:ring-gold group-hover:shadow-[0_0_22px_var(--gold)]"
-        aria-hidden="true"
-      >
-        <img
-          src="/logo512x512.jpg"
-          alt="Jonang Monastery Seal"
-          width="512"
-          height="512"
-          class="w-full h-full object-contain rounded-full"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
-      <!-- High-Contrast Luminous Brand Typography -->
-      <div class="flex flex-col justify-center select-none" aria-hidden="true">
-        <span
-          class="font-display text-[15px] sm:text-[18px] lg:text-[21px] xl:text-[22px] leading-[1.15] text-white tracking-[0.02em] font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-gold transition-colors duration-200"
-        >
-          Jonang Takten<br class="hidden sm:inline" /> Phuntsok Choeling
-        </span>
-      </div>
+<header id="site-header" class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-brand" aria-label="Jonang Takten Phuntsok Choeling home">
+      <img src="/logo512x512.jpg" alt="" width="56" height="56" />
+      <span>Jonang Takten<br />Phuntsok Choeling</span>
     </a>
-
-    <!-- Desktop Navigation Island & Actions -->
-    <nav class="hidden items-center gap-2 lg:flex" aria-label="Primary Navigation">
-      <!-- Consecrated Floating Pill Bar -->
-      <ul class="nav-surface flex list-none items-center gap-1 m-0 p-1">
+    <nav class="desktop-navigation" aria-label="Primary navigation">
+      <ul>
         {
           PRIMARY_NAVIGATION.map((item) => (
-            <li class="group relative list-none m-0">
-              {item.href ? (
-                <a
-                  href={item.href}
-                  class:list={[
-                    "nav-link flex items-center gap-1.5",
-                    isActiveItem(item) && "nav-link-active",
-                  ]}
-                  aria-current={isActivePath(item.href) ? "page" : undefined}
-                >
-                  <span>{item.shortLabel ?? item.label}</span>
-                  {hasSublinks(item) && (
-                    <svg
-                      class="h-3 w-3 text-gold/70 transition-transform duration-300 group-hover:rotate-180"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M5.5 7.5L10 12l4.5-4.5"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  )}
-                </a>
+            <li>
+              {item.sublinks?.length ? (
+                <details class="header-dropdown">
+                  <summary>{item.shortLabel ?? item.label}</summary>
+                  <ul>
+                    {item.sublinks.map((link) => (
+                      <li>
+                        <a href={link.href} aria-current={isActive(link.href) ? "page" : undefined}>
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
               ) : (
-                <button
-                  type="button"
-                  class="nav-link flex items-center gap-1.5 cursor-pointer"
-                  aria-label={item.label}
-                >
-                  <span>{item.shortLabel ?? item.label}</span>
-                  {hasSublinks(item) && (
-                    <svg
-                      class="h-3 w-3 text-gold/70 transition-transform duration-300 group-hover:rotate-180"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M5.5 7.5L10 12l4.5-4.5"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  )}
-                </button>
-              )}
-
-              {/* Desktop Dropdown Menu */}
-              {hasSublinks(item) && (
-                <div class="absolute left-1/2 top-full z-[1000] w-[min(22rem,90vw)] -translate-x-1/2 translate-y-2 opacity-0 pointer-events-none pt-3 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
-                  <div class="nav-dropdown-glass p-3 shadow-2xl">
-                    <ul class="flex list-none flex-col gap-1 text-sm m-0 p-0">
-                      {item.sublinks?.map((sublink) => (
-                        <li class="list-none m-0">
-                          {sublink ? (
-                            <a
-                              href={sublink.href}
-                              class:list={[
-                                "flex items-center justify-between rounded-xl px-3.5 py-2.5 text-xs text-white/90 font-medium transition-all hover:bg-white/10 hover:text-gold",
-                                isActivePath(sublink.href) &&
-                                  "bg-maroon-light/90 text-gold font-bold border border-gold/40",
-                              ]}
-                              aria-current={isActivePath(sublink.href) ? "page" : undefined}
-                            >
-                              <span>{sublink.label}</span>
-                              {isActivePath(sublink.href) && (
-                                <span class="w-1.5 h-1.5 rounded-full bg-gold" />
-                              )}
-                            </a>
-                          ) : null}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                  {item.shortLabel ?? item.label}
+                </a>
               )}
             </li>
           ))
         }
       </ul>
-
-      <!-- Dark Mode Theme Toggle -->
-      <ThemeToggle id="themeToggleDesktop" class="ml-1" />
-
-      <!-- Radiant Saffron Gold Donate CTA -->
-      <a
-        href={STATIC_PAGE_PATHS.donate}
-        class="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-full bg-gradient-to-r from-gold via-accent-secondary-hover to-gold text-ink font-bold text-xs uppercase tracking-wider ml-1 shadow-[0_2px_12px_rgba(253,188,45,0.35)] hover:shadow-[0_4px_20px_rgba(253,188,45,0.55)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-white/40"
-      >
-        <span>Donate</span>
-      </a>
+      <ThemeToggle id="themeToggleDesktop" />
+      <a href="/donate" class="header-donate">Support</a>
     </nav>
-
-    <!-- Mobile Header Actions (Theme Toggle + Menu Hamburger) -->
-    <div class="flex items-center gap-2 lg:hidden">
+    <div class="mobile-header-actions">
       <ThemeToggle id="themeToggleMobile" compact={true} />
-
-      <!-- Frosted Glass Mobile Menu Toggle -->
       <button
         id="menuToggle"
-        class="focus relative flex h-11 w-11 items-center justify-center rounded-full bg-maroon-light/90 backdrop-blur-lg text-white shadow-soft border border-gold/50 hover:bg-maroon-border hover:border-gold/80 transition-all group cursor-pointer"
-        aria-label="Toggle navigation menu"
+        type="button"
         aria-expanded="false"
         aria-controls="mobileMenuPanel"
-        type="button"
+        aria-label="Open navigation menu">Menu <span aria-hidden="true">☰</span></button
       >
-        <span class="sr-only">Open navigation menu</span>
-        <div class="flex h-[18px] w-[20px] flex-col justify-between relative" id="hamburgerIcon">
-          <span
-            class="hamburger-bar-top block h-[2px] w-full rounded-full bg-white transition-all duration-300 origin-center"
-          ></span>
-          <span
-            class="hamburger-bar-mid block h-[2px] w-full rounded-full bg-gold transition-all duration-300"
-          ></span>
-          <span
-            class="hamburger-bar-bot block h-[2px] w-full rounded-full bg-white transition-all duration-300 origin-center"
-          ></span>
-        </div>
-      </button>
     </div>
   </div>
-
-  <!-- Mobile Glassmorphic Navigation Sheet -->
-  <div class="lg:hidden">
-    <div
-      id="mobileMenuOverlay"
-      data-open="false"
-      class="fixed inset-0 bg-black/65 opacity-0 pointer-events-none backdrop-blur-md transition-opacity duration-300 data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto z-[9990]"
-    >
+  <dialog id="mobileMenuPanel" aria-label="Site navigation">
+    <div class="menu-heading">
+      <span>Explore Jonang</span><button
+        id="menuClose"
+        type="button"
+        aria-label="Close navigation menu"
+        autofocus>Close <span aria-hidden="true">×</span></button
+      >
     </div>
-
-    <div
-      id="mobileMenuPanel"
-      data-open="false"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Site navigation"
-      class="fixed left-3 right-3 max-h-[82vh] overflow-y-auto mobile-menu-glass rounded-2xl px-5 py-6 opacity-0 pointer-events-none translate-y-3 transition-all duration-300 data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto data-[open=true]:translate-y-0 sm:left-6 sm:right-6 z-[9995]"
-      style="top: calc(var(--header-h) + 0.5rem)"
-    >
-      <!-- Mobile Drawer Header -->
-      <div class="flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-gold animate-pulse ring-4 ring-gold/25"></span>
-          <span class="text-xs font-mono uppercase tracking-wider text-gold font-bold">
-            Navigation Portal
-          </span>
-        </div>
-        <span class="text-[11px] font-mono text-white/60"> Jonang Sanctuary </span>
-      </div>
-
-      <nav aria-label="Mobile primary" class="flex flex-col gap-4">
-        <ul class="flex list-none flex-col gap-1.5 text-base text-white m-0 p-0">
-          {
-            PRIMARY_NAVIGATION.map((item) => (
-              <li class="list-none m-0">
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    class:list={[
-                      "flex items-center justify-between rounded-xl px-4 py-3 font-semibold text-white/90 transition-all hover:bg-white/10 hover:text-gold",
-                      isActiveItem(item) &&
-                        "bg-maroon-light/90 text-gold border border-gold/40 shadow-sm font-bold",
-                    ]}
-                    aria-current={isActivePath(item.href) ? "page" : undefined}
-                  >
-                    <span>{item.label}</span>
-                    {isActiveItem(item) ? (
-                      <span class="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" />
-                    ) : (
-                      <span class="text-white/40 text-xs">→</span>
-                    )}
-                  </a>
-                ) : (
-                  <span class="block rounded-xl px-4 py-3 font-semibold text-white">
-                    {item.label}
-                  </span>
-                )}
-
-                {hasSublinks(item) && (
-                  <ul class="mt-1 flex list-none flex-col gap-1 pl-3 text-[13px] sm:text-sm text-white/75 m-0">
-                    {item.sublinks?.map((sublink) => (
-                      <li class="list-none m-0">
-                        {sublink ? (
-                          <a
-                            href={sublink.href}
-                            class:list={[
-                              "flex items-center justify-between rounded-lg px-3 py-2 transition-all hover:bg-white/10 hover:text-gold",
-                              isActivePath(sublink.href) &&
-                                "bg-maroon-light/80 text-gold font-semibold border border-gold/30",
-                            ]}
-                            aria-current={isActivePath(sublink.href) ? "page" : undefined}
-                          >
-                            <span>{sublink.label}</span>
-                            {isActivePath(sublink.href) && (
-                              <span class="w-1.5 h-1.5 rounded-full bg-gold" />
-                            )}
-                          </a>
-                        ) : null}
+    <nav aria-label="Mobile primary navigation">
+      <ul>
+        {
+          PRIMARY_NAVIGATION.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+              {item.sublinks?.length && (
+                <ul>
+                  {item.sublinks
+                    .filter((link) => link.href !== item.href)
+                    .map((link) => (
+                      <li>
+                        <a href={link.href}>{link.label}</a>
                       </li>
                     ))}
-                  </ul>
-                )}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a href="/donate" class="header-donate">Support the monastery</a>
+  </dialog>
+  <noscript>
+    <style>
+      .mobile-header-actions #menuToggle {
+        display: none;
+      }
+    </style>
+    <details class="fallback-navigation">
+      <summary>Explore Jonang</summary><nav aria-label="Navigation without JavaScript">
+        <ul>
+          {
+            PRIMARY_NAVIGATION.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+                {item.sublinks?.map((link) => (
+                  <a href={link.href}>{link.label}</a>
+                ))}
               </li>
             ))
-          }
+          }<li><a href="/donate">Support the monastery</a></li>
         </ul>
-
-        <!-- Mobile Drawer Footer CTA & Location -->
-        <div class="pt-3 border-t border-white/10 space-y-3 pb-6 sm:pb-8">
-          <a
-            href={STATIC_PAGE_PATHS.donate}
-            class="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold via-accent-secondary-hover to-gold text-ink font-bold text-xs uppercase tracking-wider py-3.5 shadow-md hover:brightness-110 active:scale-[0.99] transition-all"
-          >
-            <span>Support the Monastic Sangha (Donate)</span>
-          </a>
-
-          <div class="text-center text-[11px] text-white/60 font-mono">
-            Sanjauli, Shimla, Himachal Pradesh 171006, India
-          </div>
-        </div>
       </nav>
-    </div>
-  </div>
+    </details>
+  </noscript>
 </header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 9999;
+    background: #500c0e;
+    color: #fff;
+    border-bottom: 1px solid #9e6530;
+  }
+  .header-inner {
+    width: min(100% - 2rem, 1160px);
+    height: var(--header-h);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  .header-brand img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .header-brand span {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 1.15rem;
+    line-height: 1.15;
+  }
+  .desktop-navigation {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .desktop-navigation > ul {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .desktop-navigation a,
+  summary {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a {
+    color: #fff;
+  }
+  .desktop-navigation a:hover,
+  summary:hover {
+    color: #fdbc2d;
+  }
+  .site-header :is(a, button, summary):focus-visible {
+    outline: 2px solid #fdbc2d;
+    outline-offset: 4px;
+  }
+  .header-dropdown {
+    position: relative;
+  }
+  summary {
+    cursor: pointer;
+    padding-block: 0.75rem;
+  }
+  .header-dropdown > ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 15rem;
+    padding: 0.5rem;
+    background: #500c0e;
+    border: 1px solid #9e6530;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px #0004;
+  }
+  .header-dropdown a {
+    display: block;
+    padding: 0.7rem;
+  }
+  .header-dropdown a:hover {
+    background: #6e1416;
+  }
+  .header-donate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    background: #fdbc2d;
+    color: #190a0c;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .desktop-navigation .header-donate:hover {
+    color: #190a0c;
+    background: #ffd476;
+  }
+  .mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  button {
+    cursor: pointer;
+    min-height: 44px;
+    padding: 0.6rem 0.7rem;
+    color: #fff;
+    font-size: 0.8125rem;
+    border: 1px solid #b17956;
+    border-radius: 4px;
+    background: transparent;
+  }
+  button span {
+    margin-left: 0.4rem;
+  }
+  dialog {
+    position: fixed;
+    inset: 1rem;
+    width: min(100% - 2rem, 32rem);
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 1.5rem;
+    border: 1px solid #b17956;
+    border-radius: 6px;
+    background: #500c0e;
+    color: #fff;
+    overflow-y: auto;
+  }
+  dialog::backdrop {
+    background: #0009;
+  }
+  .menu-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #b17956;
+    color: #fdbc2d;
+  }
+  dialog nav {
+    margin-block: 1rem;
+  }
+  dialog nav a {
+    display: block;
+    padding: 0.65rem 0;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  dialog nav ul ul {
+    padding-left: 1rem;
+  }
+  dialog nav ul ul a {
+    font-size: 0.875rem;
+    color: #f4dbcf;
+  }
+  dialog nav a:hover {
+    text-decoration: underline;
+  }
+  .fallback-navigation {
+    padding: 0.5rem 1rem;
+    background: #500c0e;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  .fallback-navigation a {
+    display: block;
+    padding: 0.5rem;
+  }
+  @media (min-width: 1280px) {
+    .desktop-navigation {
+      display: flex;
+    }
+    .mobile-header-actions,
+    .fallback-navigation {
+      display: none;
+    }
+  }
+  @media (max-width: 359px) {
+    .header-brand span {
+      font-size: 0.9375rem;
+    }
+    .header-brand img {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+    .header-brand {
+      gap: 0.5rem;
+    }
+    .header-inner {
+      gap: 0.5rem;
+    }
+  }
+</style>
 
 <script>
   function initHeader() {
-    const header = document.querySelector("#site-header") as HTMLElement | null;
-    if (!header) return;
-    if ((header as any).__initialized) return;
-    (header as any).__initialized = true;
-
-    const menuButton = document.querySelector("#menuToggle");
-    const menuPanel = document.querySelector("#mobileMenuPanel");
-    const menuOverlay = document.querySelector("#mobileMenuOverlay");
-    const barTop = document.querySelector(".hamburger-bar-top") as HTMLElement | null;
-    const barMid = document.querySelector(".hamburger-bar-mid") as HTMLElement | null;
-    const barBot = document.querySelector(".hamburger-bar-bot") as HTMLElement | null;
-
-    function setMenuOpen(isOpen: boolean) {
-      if (!menuButton || !menuPanel || !menuOverlay) return;
-
-      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      menuPanel.setAttribute("data-open", isOpen ? "true" : "false");
-      menuPanel.setAttribute("aria-hidden", isOpen ? "false" : "true");
-      menuOverlay.setAttribute("data-open", isOpen ? "true" : "false");
-      document.body.classList.toggle("stop-scrolling", isOpen);
-
-      // Animate hamburger bars into 'X'
-      if (barTop && barMid && barBot) {
-        if (isOpen) {
-          barTop.style.transform = "translateY(8px) rotate(45deg)";
-          barMid.style.opacity = "0";
-          barBot.style.transform = "translateY(-8px) rotate(-45deg)";
-        } else {
-          barTop.style.transform = "none";
-          barMid.style.opacity = "1";
-          barBot.style.transform = "none";
-        }
-      }
-
-      // Ensure header is never hidden while menu is open
-      if (isOpen && header) {
-        header.classList.remove("header--hidden");
-      }
-    }
-
-    menuButton?.addEventListener("click", () => {
-      const isOpen = menuPanel?.getAttribute("data-open") === "true";
-      setMenuOpen(!isOpen);
+    const menu = document.querySelector<HTMLDialogElement>("#mobileMenuPanel");
+    const opener = document.querySelector<HTMLButtonElement>("#menuToggle");
+    if (!menu || !opener || menu.dataset.initialized) return;
+    menu.dataset.initialized = "true";
+    opener.addEventListener("click", () => {
+      menu.showModal();
+      opener.setAttribute("aria-expanded", "true");
+      document.body.classList.add("stop-scrolling");
     });
-
-    menuOverlay?.addEventListener("click", () => setMenuOpen(false));
-
-    menuPanel?.addEventListener("click", (event) => {
-      const target = event.target;
-      if (target instanceof HTMLElement && target.closest("a")) {
-        setMenuOpen(false);
-      }
-    });
-
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-      }
-    });
-
-    // In-page anchor click handler (e.g. #shentong-bibliography)
-    document.addEventListener("click", (event) => {
-      const link = (event.target as HTMLElement)?.closest<HTMLAnchorElement>("a[href*='#']");
-      if (!link) return;
-      const href = link.getAttribute("href");
-      if (!href) return;
-
-      const url = new URL(href, window.location.href);
-      if (url.origin !== window.location.origin) return;
-
-      const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
-      const targetPath = url.pathname.replace(/\/+$/, "") || "/";
-
-      if (currentPath === targetPath && url.hash) {
+    menu.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab") return;
+      const controls = Array.from(
+        menu.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+      );
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
-        setMenuOpen(false);
-        const targetId = url.hash.slice(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-          history.pushState(null, "", url.hash);
-        }
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
       }
     });
-
-    // Smart Auto-Hiding & Dynamic Glass State on Scroll
-    let lastScrollY = window.scrollY;
-    let isTicking = false;
-    const threshold = 10;
-    const topSafeZone = 64;
-
-    function onScroll() {
-      const currentScrollY = window.scrollY;
-      const isMobileMenuOpen = menuPanel?.getAttribute("data-open") === "true";
-
-      // Dynamic Scrolled Glass State (Enhances blur & depth when scrolling over content)
-      if (header) {
-        if (currentScrollY > 12) {
-          header.classList.add("header--scrolled");
-        } else {
-          header.classList.remove("header--scrolled");
+    const close = () => {
+      if (menu.open) menu.close();
+    };
+    document.querySelector("#menuClose")?.addEventListener("click", close);
+    menu.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).closest("a")) close();
+      if (event.target === menu) {
+        const rect = menu.getBoundingClientRect();
+        if (
+          event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom
+        )
+          close();
+      }
+    });
+    menu.addEventListener("close", () => {
+      opener.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("stop-scrolling");
+      if (opener.getClientRects().length) opener.focus();
+    });
+    window.matchMedia("(min-width: 1280px)").addEventListener("change", (event) => {
+      if (event.matches) close();
+    });
+    document.addEventListener("astro:before-swap", close, { once: true });
+    document.querySelectorAll<HTMLDetailsElement>(".header-dropdown").forEach((dropdown) => {
+      dropdown.addEventListener("toggle", () => {
+        if (dropdown.open)
+          document.querySelectorAll<HTMLDetailsElement>(".header-dropdown").forEach((other) => {
+            if (other !== dropdown) other.open = false;
+          });
+      });
+      dropdown.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          dropdown.open = false;
+          dropdown.querySelector("summary")?.focus();
         }
-      }
-
-      if (isMobileMenuOpen) {
-        header?.classList.remove("header--hidden");
-        lastScrollY = currentScrollY;
-        isTicking = false;
-        return;
-      }
-
-      if (currentScrollY <= topSafeZone) {
-        header?.classList.remove("header--hidden");
-      } else if (currentScrollY > lastScrollY + threshold) {
-        // Scrolling DOWN -> Hide navbar smoothly with spring transition
-        header?.classList.add("header--hidden");
-      } else if (currentScrollY < lastScrollY - threshold) {
-        // Scrolling UP -> Reveal navbar smoothly with spring transition
-        header?.classList.remove("header--hidden");
-      }
-
-      lastScrollY = currentScrollY;
-      isTicking = false;
-    }
-
-    // Set initial scrolled state on load
-    if (header) {
-      if (window.scrollY > 12) {
-        header.classList.add("header--scrolled");
-      } else {
-        header.classList.remove("header--scrolled");
-      }
-    }
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!isTicking) {
-          window.requestAnimationFrame(onScroll);
-          isTicking = true;
-        }
-      },
-      { passive: true }
-    );
+      });
+      document.addEventListener("click", (event) => {
+        if (!dropdown.contains(event.target as Node)) dropdown.open = false;
+      });
+    });
   }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHeader);
-  } else {
-    initHeader();
-  }
+  initHeader();
   document.addEventListener("astro:page-load", initHeader);
 </script>

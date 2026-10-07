@@ -9,27 +9,21 @@ interface Props {
   class?: string;
 }
 
-const { dates, nameEn, nameBo, bio, highlighted = false, tag, class: className = "" } = Astro.props;
+const { dates, nameEn, nameBo, bio, tag, class: className = "" } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "surface-card p-6 flex flex-col justify-between hover-lift",
-    highlighted && "border-t-4 border-t-gold",
-    className,
-  ]}
->
+<div class:list={["p-6 flex flex-col justify-between border border-border bg-surface", className]}>
   <div class="flex flex-col gap-2">
     {
       dates && (
-        <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest">
+        <span class="text-xs sm:text-sm font-mono font-bold text-muted uppercase tracking-widest">
           {dates}
         </span>
       )
     }
     {
       tag && !dates && (
-        <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest">
+        <span class="text-xs sm:text-sm font-mono font-bold text-muted uppercase tracking-widest">
           {tag}
         </span>
       )
@@ -39,7 +33,7 @@ const { dates, nameEn, nameBo, bio, highlighted = false, tag, class: className =
     </h3>
     <span
       lang="bo"
-      class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+      class="text-sm sm:text-base font-tibetan text-muted font-bold block pt-1 leading-[1.6]"
     >
       {nameBo}
     </span>

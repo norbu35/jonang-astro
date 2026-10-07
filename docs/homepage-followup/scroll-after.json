@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/",
+    "p95FrameMs": 17.399999998509884,
+    "framesOver50ms": 0,
+    "longTasks": 0,
+    "maxLongTaskMs": 0,
+    "headingGap": 48
+  },
+  {
+    "path": "/introduction",
+    "p95FrameMs": 20,
+    "framesOver50ms": 0,
+    "longTasks": 0,
+    "maxLongTaskMs": 0,
+    "headingGap": null
+  },
+  {
+    "path": "/monastery",
+    "p95FrameMs": 30.600000001490116,
+    "framesOver50ms": 0,
+    "longTasks": 0,
+    "maxLongTaskMs": 0,
+    "headingGap": null
+  }
+]

@@ -11,7 +11,7 @@ interface Props {
 const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.props;
 ---
 
-<div id={id} class:list={["flex flex-col gap-2.5", className]}>
+<div id={id} class:list={["chapter-header flex flex-col gap-2.5", className]}>
   {
     chapter && (
       <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest block">
@@ -41,3 +41,9 @@ const { chapter, title, tibetanTitle, lede, id, class: className = "" } = Astro.
   }
   <slot />
 </div>
+
+<style>
+  .chapter-header:has(+ :is(.grid, ul, ol)) {
+    padding-block-end: 1rem;
+  }
+</style>

@@ -1,284 +1,234 @@
-import type { Handler, HandlerEvent, HandlerContext, HandlerResponse } from "@netlify/functions";
-import { createHash } from "node:crypto";
+import { getContext, type Handler } from "@netlify/functions";
+import { createHash, randomUUID } from "node:crypto";
 
-interface TelemetryMetric {
-  value: number;
-  rating?: "good" | "needs-improvement" | "poor";
-  element?: string;
-  target?: string;
+type Data = Record<string, unknown>;
+const object = (value: unknown): value is Data =>
+  !!value && typeof value === "object" && !Array.isArray(value);
+const text = (value: unknown, limit = 200) =>
+  typeof value === "string"
+    ? value
+        .replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi, "[email]")
+        .replace(/(https?:\/\/[^\s?#]+)[?#][^\s]*/g, "$1")
+        .slice(0, limit)
+    : undefined;
+const number = (value: unknown) =>
+  typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : undefined;
+const path = (value: unknown) =>
+  typeof value === "string" && value.startsWith("/")
+    ? value.split(/[?#]/)[0].slice(0, 200)
+    : undefined;
+function pick(value: unknown, keys: string[]): Data | undefined {
+  if (!object(value)) return undefined;
+  return Object.fromEntries(
+    keys
+      .filter((key) => ["string", "number", "boolean"].includes(typeof value[key]))
+      .map((key) => [
+        key,
+        typeof value[key] === "string"
+          ? text(value[key])
+          : typeof value[key] === "number"
+            ? number(value[key])
+            : value[key],
+      ])
+  );
 }
-
-interface TelemetryError {
-  message: string;
-  stack?: string;
-  source?: string;
-  lineno?: number;
-  colno?: number;
-  type: "runtime" | "unhandledrejection" | "resource" | "font";
-  breadcrumbs?: Array<{
-    timestamp: number;
-    category: string;
-    message: string;
-    data?: Record<string, unknown>;
-  }>;
-}
-
-interface TelemetryPayload {
-  sessionId: string;
-  timestamp: number;
-  url: string;
-  pathname: string;
-  referrer?: string;
-  vitals?: {
-    lcp?: TelemetryMetric;
-    inp?: TelemetryMetric;
-    cls?: TelemetryMetric;
-    fcp?: TelemetryMetric;
-    ttfb?: TelemetryMetric;
-  };
-  navigation?: {
-    dnsTime?: number;
-    tcpTime?: number;
-    tlsTime?: number;
-    domInteractive?: number;
-    domComplete?: number;
-    loadTime?: number;
-    effectiveType?: string;
-    downlink?: number;
-    rtt?: number;
-  };
-  errors?: TelemetryError[];
-  fontHealth?: {
-    notoSerifTibetanLoaded: boolean;
-    jomolhariLoaded: boolean;
-    monlamUniLoaded: boolean;
-    status: "ok" | "degraded";
-  };
-  events?: Array<{
-    name: string;
-    timestamp: number;
-    data?: Record<string, unknown>;
-  }>;
-}
-
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Cache-Control": "no-store, no-cache, must-revalidate",
-};
-
-/**
- * Anonymize client IP using daily rotating salt for strict GDPR/CCPA compliance.
- */
-function hashClientIdentifier(ip: string, userAgent: string): string {
-  const dateBucket = new Date().toISOString().slice(0, 10);
-  const secret = process.env.TELEMETRY_SALT || "jonang-telemetry-default-salt";
-  return createHash("sha256")
-    .update(`${ip}:${userAgent}:${dateBucket}:${secret}`)
-    .digest("hex")
-    .slice(0, 16);
-}
-
-/**
- * Safely parse Netlify's x-nf-geo header if present.
- */
-function parseNetlifyGeo(rawGeo?: string): Record<string, unknown> | null {
-  if (!rawGeo) return null;
+function referrer(value: unknown) {
+  if (typeof value !== "string") return undefined;
+  if (value.startsWith("/")) return path(value);
   try {
-    if (rawGeo.startsWith("{")) {
-      return JSON.parse(rawGeo);
-    }
-    const decoded = Buffer.from(rawGeo, "base64").toString("utf8");
-    return JSON.parse(decoded);
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) ? url.origin : undefined;
   } catch {
-    return null;
+    return undefined;
   }
 }
-
-/**
- * Optional async dispatch to Axiom (Generous free tier: 500GB/month).
- */
-async function forwardToAxiom(enrichedRecord: Record<string, unknown>): Promise<void> {
+export function normalizeRecord(raw: unknown): Data | null {
+  if (!object(raw) || !text(raw.sessionId, 80) || !path(raw.pathname)) return null;
+  const kinds = ["page_view", "engagement", "event", "vital", "error", "font_health"];
+  const legacy = raw.schemaVersion !== 2;
+  if (
+    !legacy &&
+    (!kinds.includes(String(raw.kind)) || !text(raw.id, 80) || !text(raw.documentId, 80))
+  )
+    return null;
+  if (!legacy && raw.kind !== "vital" && !text(raw.pageViewId, 80)) return null;
+  const record: Data = {
+    schema_version: legacy ? "1.0" : "2.0",
+    id: text(raw.id, 80) || randomUUID(),
+    kind: legacy ? "legacy_snapshot" : raw.kind,
+    session: text(raw.sessionId, 80),
+    pageViewId: text(raw.pageViewId, 80),
+    documentId: text(raw.documentId, 80),
+    automated: raw.automated === true,
+    pathname: path(raw.pathname),
+    referrer: referrer(raw.referrer),
+    clientTimestamp: number(raw.timestamp),
+    client: pick(raw.client, ["browser", "device", "language", "viewport", "automated"]),
+    campaign: pick(raw.campaign, ["utm_source", "utm_medium", "utm_campaign"]),
+    engagement: pick(raw.engagement, [
+      "engagedMs",
+      "maxScrollPercent",
+      "longTasks",
+      "totalBlockingMs",
+    ]),
+    metric: pick(raw.metric, ["name", "value", "rating", "metricId", "navigationType"]),
+    fontHealth: pick(raw.fontHealth, [
+      "notoSerifTibetanLoaded",
+      "jomolhariLoaded",
+      "monlamUniLoaded",
+      "status",
+    ]),
+  };
+  if (object(raw.event))
+    record.event = {
+      name: text(raw.event.name, 50),
+      data: pick(raw.event.data, ["destination", "section", "percent", "theme", "action"]),
+    };
+  if (Array.isArray(raw.errors))
+    record.errors = raw.errors
+      .slice(0, 20)
+      .filter(object)
+      .map((error) => ({
+        type: text(error.type, 30),
+        message: text(error.message, 300),
+        source: text(error.source, 200),
+        stack: text(error.stack, 1000),
+      }));
+  // Legacy snapshots stay distinguishable from pageviews during rolling deploys.
+  if (legacy && object(raw.vitals))
+    record.vitals = Object.fromEntries(
+      Object.entries(raw.vitals)
+        .filter(([key]) => ["lcp", "inp", "cls", "fcp", "ttfb"].includes(key))
+        .map(([key, value]) => [key, pick(value, ["value", "rating"])])
+    );
+  return record;
+}
+function geoFromHeader(value?: string): Data | undefined {
+  try {
+    const raw = JSON.parse(
+      value?.startsWith("{") ? value : Buffer.from(value || "", "base64").toString()
+    );
+    if (!object(raw)) return undefined;
+    return {
+      country: pick(raw.country, ["code", "name"]),
+      subdivision: pick(raw.subdivision, ["code", "name"]),
+      city: text(raw.city, 80),
+    };
+  } catch {
+    return undefined;
+  }
+}
+export const handler: Handler = async (event) => {
+  const origin = event.headers.origin;
+  const host = event.headers.host;
+  if (
+    origin &&
+    origin !== "https://jonang.in" &&
+    origin !== `https://${host}` &&
+    origin !== `http://${host}`
+  )
+    return { statusCode: 403, body: "" };
+  const headers = {
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": origin || "https://jonang.in",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    Vary: "Origin",
+  };
+  const response = (statusCode: number) => ({ statusCode, headers, body: "" });
+  if (event.httpMethod === "OPTIONS") return response(204);
+  if (event.httpMethod !== "POST") return response(405);
+  if (!event.body) return response(400);
+  if (event.body.length > 90_000) return response(413);
+  const body = event.isBase64Encoded
+    ? Buffer.from(event.body, "base64").toString("utf8")
+    : event.body;
+  if (Buffer.byteLength(body) > 65_536) return response(413);
+  let input: unknown;
+  try {
+    input = JSON.parse(body);
+  } catch {
+    return response(400);
+  }
+  const rawRecords = object(input) && Array.isArray(input.records) ? input.records : [input];
+  if (!rawRecords.length || rawRecords.length > 20) return response(400);
+  const records = rawRecords.map(normalizeRecord);
+  if (records.some((record) => !record)) return response(400);
+  let edgeGeo: string | undefined;
+  let edgeIp: string | undefined;
+  try {
+    const context = getContext();
+    edgeGeo = JSON.stringify(context.geo);
+    edgeIp = context.ip;
+  } catch {
+    /* Local and legacy runtimes may only supply headers. */
+  }
+  const secret = process.env.TELEMETRY_SALT;
+  const ip = edgeIp || event.headers["client-ip"] || event.headers["x-nf-client-connection-ip"];
+  const visitor =
+    secret && ip
+      ? createHash("sha256")
+          .update(`${ip}:${new Date().toISOString().slice(0, 10)}:${secret}`)
+          .digest("hex")
+          .slice(0, 16)
+      : undefined;
+  const enriched = records.map<Data>((record) => ({
+    ...record,
+    timestamp: new Date().toISOString(),
+    site: "jonang.in",
+    release: process.env.COMMIT_REF?.slice(0, 7) || process.env.DEPLOY_ID || "dev",
+    visitor,
+    geo: geoFromHeader(edgeGeo || event.headers["x-nf-geo"]),
+  }));
+  enriched.forEach((record) => console.log(JSON.stringify(record)));
   const token = process.env.AXIOM_TOKEN;
   const dataset = process.env.AXIOM_DATASET;
-  if (!token || !dataset) return;
-
-  try {
-    await fetch(`https://api.axiom.co/v1/datasets/${dataset}/ingest`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([enrichedRecord]),
-      signal: AbortSignal.timeout(1500),
-    });
-  } catch (err) {
-    console.error("[Telemetry] Failed to forward to Axiom:", err);
-  }
-}
-
-/**
- * Optional async webhook dispatch for critical client-side crashes or font degradation.
- */
-async function dispatchWebhookAlert(enrichedRecord: Record<string, unknown>): Promise<void> {
-  const webhookUrl = process.env.WEBHOOK_ALERT_URL;
-  if (!webhookUrl) return;
-
-  const errors = (enrichedRecord.errors as TelemetryError[]) || [];
-  const fontHealth = enrichedRecord.fontHealth as { status: string } | undefined;
-
-  const hasCriticalErrors = errors.length > 0;
-  const hasFontDegradation = fontHealth && fontHealth.status === "degraded";
-
-  if (!hasCriticalErrors && !hasFontDegradation) return;
-
-  try {
-    const title = hasCriticalErrors
-      ? `🚨 [Client Exception] ${errors[0]?.message?.slice(0, 100) || "Unknown Error"}`
-      : `⚠️ [Tibetan Font Degradation] Sacred script failed to render`;
-
-    const description = hasCriticalErrors
-      ? `**Route:** \`${enrichedRecord.pathname}\`\n**Type:** \`${errors[0]?.type}\`\n**Stack:**\`\`\`\n${errors[0]?.stack?.slice(0, 400) || "No stack"}\`\`\``
-      : `**Route:** \`${enrichedRecord.pathname}\`\nTibetan typefaces failed to load, falling back to system serif.`;
-
-    const payload = {
-      embeds: [
+  if (token && dataset) {
+    try {
+      const result = await fetch(
+        `https://api.axiom.co/v1/datasets/${encodeURIComponent(dataset)}/ingest`,
         {
-          title,
-          description,
-          color: hasCriticalErrors ? 0x992224 : 0xfdbc2d, // Sangha Crimson or Sacred Gold
-          fields: [
-            { name: "Session", value: String(enrichedRecord.session || "N/A"), inline: true },
-            {
-              name: "Country",
-              value: String((enrichedRecord.geo as any)?.country?.code || "N/A"),
-              inline: true,
-            },
-            { name: "Release", value: String(enrichedRecord.release || "N/A"), inline: true },
-          ],
-          timestamp: new Date().toISOString(),
-        },
-      ],
-    };
-
-    await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(1500),
-    });
-  } catch (err) {
-    console.error("[Telemetry] Webhook alert dispatch failed:", err);
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify(enriched),
+          signal: AbortSignal.timeout(3000),
+        }
+      );
+      if (!result.ok) {
+        console.error(`[Telemetry] Axiom HTTP ${result.status}`);
+        return response(502);
+      }
+    } catch {
+      console.error("[Telemetry] Axiom delivery failed");
+      return response(502);
+    }
   }
-}
-
-export const handler: Handler = async (
-  event: HandlerEvent,
-  _context: HandlerContext
-): Promise<HandlerResponse> => {
-  // 1. Preflight CORS
-  if (event.httpMethod === "OPTIONS") {
-    return {
-      statusCode: 204,
-      headers: CORS_HEADERS,
-      body: "",
-    };
+  // Preserve the existing optional alert sink; failures do not discard analytics.
+  if (process.env.WEBHOOK_ALERT_URL) {
+    const alert = enriched.find(
+      (record) =>
+        record.kind === "error" ||
+        (object(record.fontHealth) && record.fontHealth.status === "degraded")
+    );
+    if (alert)
+      try {
+        await fetch(process.env.WEBHOOK_ALERT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            embeds: [
+              {
+                title: "Jonang site diagnostic",
+                description: `Route: ${alert.pathname} · ${alert.kind}`,
+                timestamp: alert.timestamp,
+              },
+            ],
+          }),
+          signal: AbortSignal.timeout(1500),
+        });
+      } catch {
+        console.error("[Telemetry] Alert delivery failed");
+      }
   }
-
-  // 2. Enforce POST
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ error: "Method Not Allowed" }),
-    };
-  }
-
-  // 3. Size and content validation
-  if (!event.body) {
-    return {
-      statusCode: 400,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ error: "Empty payload" }),
-    };
-  }
-
-  // 64 KB limit to prevent abuse
-  if (event.body.length > 65536) {
-    return {
-      statusCode: 413,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ error: "Payload Too Large" }),
-    };
-  }
-
-  let payload: TelemetryPayload;
-  try {
-    const rawContent = event.isBase64Encoded
-      ? Buffer.from(event.body, "base64").toString("utf8")
-      : event.body;
-    payload = JSON.parse(rawContent);
-  } catch {
-    return {
-      statusCode: 400,
-      headers: CORS_HEADERS,
-      body: JSON.stringify({ error: "Invalid JSON" }),
-    };
-  }
-
-  // 4. Extract Edge Metadata
-  const headers = event.headers || {};
-  const rawIp = headers["client-ip"] || headers["x-forwarded-for"] || "127.0.0.1";
-  const userAgent = headers["user-agent"] || "unknown";
-  const anonymizedHash = hashClientIdentifier(rawIp.split(",")[0].trim(), userAgent);
-  const geo = parseNetlifyGeo(headers["x-nf-geo"]);
-  const release = process.env.COMMIT_REF?.slice(0, 7) || process.env.DEPLOY_ID || "dev";
-
-  // Determine severity level
-  let level: "info" | "warn" | "error" = "info";
-  if (payload.errors && payload.errors.length > 0) {
-    level = "error";
-  } else if (
-    payload.fontHealth?.status === "degraded" ||
-    payload.vitals?.lcp?.rating === "poor" ||
-    payload.vitals?.inp?.rating === "poor"
-  ) {
-    level = "warn";
-  }
-
-  const enrichedRecord = {
-    schema_version: "1.0",
-    timestamp: new Date().toISOString(),
-    level,
-    release,
-    site: "jonang.in",
-    visitor: anonymizedHash,
-    session: payload.sessionId,
-    url: payload.url,
-    pathname: payload.pathname,
-    referrer: payload.referrer || headers["referer"] || null,
-    geo,
-    vitals: payload.vitals || null,
-    navigation: payload.navigation || null,
-    errors: payload.errors || [],
-    fontHealth: payload.fontHealth || null,
-    customEvents: payload.events || [],
-  };
-
-  // 5. Output Canonical Structured JSON to stdout
-  // Streams directly to Netlify CLI (netlify logs:listen) and Netlify Function Console
-  console.log(JSON.stringify(enrichedRecord));
-
-  // 6. Asynchronously trigger external sinks
-  const sinkPromises = [forwardToAxiom(enrichedRecord), dispatchWebhookAlert(enrichedRecord)];
-  await Promise.allSettled(sinkPromises);
-
-  // 7. Return 204 No Content
-  return {
-    statusCode: 204,
-    headers: CORS_HEADERS,
-    body: "",
-  };
+  return response(204);
 };

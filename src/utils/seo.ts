@@ -20,12 +20,7 @@ export function getGlobalKnowledgeGraph() {
     "@id": `${SITE_METADATA.siteUrl}/#website`,
     url: `${SITE_METADATA.siteUrl}/`,
     name: SITE_METADATA.name,
-    alternateName: [
-      SITE_METADATA.tibetanName,
-      SITE_METADATA.shortName,
-      "Jonang Monastery",
-      "Sanjauli Monastery",
-    ],
+    alternateName: [SITE_METADATA.tibetanName, SITE_METADATA.shortName, "Sanjauli Monastery"],
     description: SITE_METADATA.description,
     inLanguage: ["en", "bo"],
     publisher: {
@@ -41,7 +36,6 @@ export function getGlobalKnowledgeGraph() {
       SITE_METADATA.tibetanName,
       SITE_METADATA.shortName,
       "Jonang Takten Phuntsok Choeling",
-      "Jonang Monastery",
       "Sanjauli Monastery",
       "ཇོ་ནང་མ་དགོན་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།",
     ],
@@ -57,15 +51,8 @@ export function getGlobalKnowledgeGraph() {
       postalCode: "171006",
       addressCountry: "IN",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: SITE_METADATA.geo.latitude,
-      longitude: SITE_METADATA.geo.longitude,
-    },
     telephone: SITE_METADATA.contact.phone,
     email: SITE_METADATA.contact.email,
-    foundingDate: SITE_METADATA.foundingDate,
-    sameAs: [...SITE_METADATA.sameAs],
     knowsAbout: [
       "Jonang Tibetan Buddhism",
       "Shentong Madhyamaka",

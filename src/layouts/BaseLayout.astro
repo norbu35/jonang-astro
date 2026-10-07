@@ -13,7 +13,6 @@ import {
 } from "../utils/seo";
 import cormorantFont from "../assets/fonts/CormorantGaramond-Medium.woff2";
 import notoSerifTibetanFont from "../assets/fonts/NotoSerifTibetan-Regular.woff2";
-import monlamFont from "../assets/fonts/MonlamUniOuchan3-Regular.woff2";
 import "../../base.css";
 
 interface Props {
@@ -88,7 +87,6 @@ const jsonLdGraph = {
     <!-- Critical Canonical Font Preloads (Eliminates FOUT on first paint) -->
     <link rel="preload" href={cormorantFont} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={notoSerifTibetanFont} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={monlamFont} as="font" type="font/woff2" crossorigin />
 
     <!-- Favicons & App Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -187,19 +185,8 @@ const jsonLdGraph = {
         const targetEl = document.getElementById(targetId);
         if (!targetEl) return;
 
-        const scrollToTarget = () => {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        };
-
-        // Immediate scroll
-        scrollToTarget();
-
-        // Staggered scrolls to compensate for async image & font layout expansions
-        requestAnimationFrame(() => {
-          setTimeout(scrollToTarget, 120);
-        });
-        setTimeout(scrollToTarget, 400);
-        setTimeout(scrollToTarget, 800);
+        // One correction after a route swap; never restart scrolling after user input.
+        targetEl.scrollIntoView({ behavior: "instant", block: "start" });
       }
 
       function initGlobalUI() {

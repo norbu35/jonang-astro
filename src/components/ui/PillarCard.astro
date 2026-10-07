@@ -8,34 +8,14 @@ interface Props {
   class?: string;
 }
 
-const {
-  title,
-  tibetanTitle,
-  kicker,
-  accent = "accent",
-  description,
-  class: className = "",
-} = Astro.props;
-
-const borderAccentMap = {
-  accent: "border-t-accent",
-  gold: "border-t-gold",
-  secondary: "border-t-accent-secondary",
-  neutral: "border-t-border",
-};
+const { title, tibetanTitle, kicker, description, class: className = "" } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "surface-card p-6 flex flex-col justify-between border-t-4 hover-lift",
-    borderAccentMap[accent] ?? borderAccentMap.accent,
-    className,
-  ]}
->
+<div class:list={["p-6 flex flex-col justify-between border border-border bg-surface", className]}>
   <div class="flex flex-col gap-2">
     {
       kicker && (
-        <span class="text-xs sm:text-sm font-mono font-bold text-accent uppercase tracking-widest">
+        <span class="text-xs sm:text-sm font-mono font-bold text-muted uppercase tracking-widest">
           {kicker}
         </span>
       )
@@ -47,7 +27,7 @@ const borderAccentMap = {
       tibetanTitle && (
         <span
           lang="bo"
-          class="text-sm sm:text-base font-tibetan text-accent-secondary font-bold block pt-1 leading-[1.6]"
+          class="text-sm sm:text-base font-tibetan text-muted font-bold block pt-1 leading-[1.6]"
         >
           {tibetanTitle}
         </span>

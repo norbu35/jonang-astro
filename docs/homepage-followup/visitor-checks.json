@@ -1,0 +1,47 @@
+[
+  {
+    "browser": "chromium",
+    "gap": {
+      "learning": 32,
+      "history": 32,
+      "edge": "0px"
+    },
+    "requests": 6,
+    "records": 22,
+    "pageviews": 3,
+    "retry": "pass",
+    "journeys": "pass",
+    "queryRedaction": "pass",
+    "errors": []
+  },
+  {
+    "browser": "firefox",
+    "gap": {
+      "learning": 31.999954223632812,
+      "history": 32,
+      "edge": "0px"
+    },
+    "requests": 6,
+    "records": 22,
+    "pageviews": 3,
+    "retry": "pass",
+    "journeys": "pass",
+    "queryRedaction": "pass",
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "gap": {
+      "learning": 32,
+      "history": 32,
+      "edge": "0px"
+    },
+    "requests": 6,
+    "records": 22,
+    "pageviews": 3,
+    "retry": "pass",
+    "journeys": "pass",
+    "queryRedaction": "pass",
+    "errors": []
+  }
+]

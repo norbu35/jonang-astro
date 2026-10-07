@@ -4,9 +4,9 @@ export const SITE_METADATA = {
   tibetanName: "༄༅།། འཕགས་ཡུལ་ཇོ་ནང་མ་དགོན་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།",
   subheading: "Seat of the Unbroken Kālacakra and Shentong Lineage",
   tagline:
-    "Head seat of the Jonang tradition in exile. Preserving Shentong Madhyamaka philosophy and the unbroken Kālacakra Six-fold Vajrayoga.",
+    "A Tibetan Buddhist monastery in Shimla, India, dedicated to learning and practice in the Jonang tradition.",
   description:
-    "Main Jonang Takten Phuntsok Choeling Tibetan Buddhist Monastery in Sanjauli, Shimla, India. Preserving the definitive Shentong view of primordial wisdom, the Kālacakra completion stage practice, and an 18-year monastic curriculum.",
+    "Main Jonang Takten Phuntsok Choeling, a Tibetan Buddhist monastery in Sanjauli, Shimla, India. Discover the Jonang tradition, monastic life and ways to contact and support the monastery.",
   keywords:
     "Jonang, Tibetan Buddhism, Kalachakra, Shentong, Shimla monastery, Dolpopa, Taranatha, Vajrayoga, Tibetan Monastery India",
   siteUrl: "https://jonang.in",
@@ -36,14 +36,7 @@ export const SITE_METADATA = {
   foundingDate: "1963",
   rededicationDate: "1990-07-06",
 
-  sameAs: [
-    "https://en.wikipedia.org/wiki/Jonang",
-    "https://en.wikipedia.org/wiki/Dolpopa_Sherab_Gyaltsen",
-    "https://en.wikipedia.org/wiki/Taranatha",
-    "https://en.wikipedia.org/wiki/Kalachakra",
-    "https://www.wikidata.org/wiki/Q1414436",
-    "https://library.bdrc.io/show/bdr:G4",
-  ],
+  sameAs: [],
 
   blessing: {
     mantra: "OṂ ĀḤ HŪṂ HOḤ HA KṢA MA LA VA RA YA SVĀHĀ",

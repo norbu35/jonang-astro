@@ -11,62 +11,30 @@ export type NavLink = SiteLink & {
 };
 
 export const PRIMARY_NAVIGATION: NavLink[] = [
+  { label: "Start here", href: STATIC_PAGE_PATHS.introduction },
   {
-    label: "The Monastery",
+    label: "The monastery",
     shortLabel: "Monastery",
     href: STATIC_PAGE_PATHS.monastery,
     sublinks: [
-      {
-        label: "About the Monastery",
-        href: STATIC_PAGE_PATHS.monastery,
-      },
-      {
-        label: "Living Tradition & Daily Life",
-        href: STATIC_PAGE_PATHS.livingTradition,
-      },
+      { label: "About the monastery", href: STATIC_PAGE_PATHS.monastery },
+      { label: "Daily life", href: STATIC_PAGE_PATHS.livingTradition },
     ],
   },
   {
-    label: "The Jonang Doctrine",
-    shortLabel: "Doctrine",
+    label: "Explore the teachings",
+    shortLabel: "Teachings",
     href: STATIC_PAGE_PATHS.doctrine,
     sublinks: [
-      {
-        label: "Beginner's Introduction",
-        href: STATIC_PAGE_PATHS.introduction,
-      },
-      {
-        label: "Shentong Philosophy",
-        href: STATIC_PAGE_PATHS.doctrine,
-      },
-      {
-        label: "Scholarly Bibliography",
-        href: "/doctrine#shentong-bibliography",
-      },
-      {
-        label: "Glossary",
-        href: STATIC_PAGE_PATHS.glossary,
-      },
+      { label: "Shentong philosophy", href: STATIC_PAGE_PATHS.doctrine },
+      { label: "Kālacakra practice", href: STATIC_PAGE_PATHS.kalachakra },
+      { label: "Monastic education", href: STATIC_PAGE_PATHS.curriculum },
+      { label: "Glossary", href: STATIC_PAGE_PATHS.glossary },
     ],
   },
-  {
-    label: "Kalachakra Practice",
-    shortLabel: "Kalachakra",
-    href: STATIC_PAGE_PATHS.kalachakra,
-  },
-  {
-    label: "Curriculum",
-    href: STATIC_PAGE_PATHS.curriculum,
-  },
-  {
-    label: "Teachers",
-    href: STATIC_PAGE_PATHS.teachers,
-  },
-  {
-    label: "Photo Gallery",
-    shortLabel: "Gallery",
-    href: STATIC_PAGE_PATHS.gallery,
-  },
+  { label: "Teachers", href: STATIC_PAGE_PATHS.teachers },
+  { label: "Photo gallery", shortLabel: "Gallery", href: STATIC_PAGE_PATHS.gallery },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const FOOTER_NAVIGATION = [
@@ -88,7 +56,7 @@ export const FOOTER_NAVIGATION = [
     links: [
       { label: "Teachers", href: STATIC_PAGE_PATHS.teachers },
       { label: "Photo Gallery", href: STATIC_PAGE_PATHS.gallery },
-      { label: "Sangha Reach & Telemetry", href: STATIC_PAGE_PATHS.intelligence },
+      { label: "Website readership", href: STATIC_PAGE_PATHS.intelligence },
       { label: "Donate", href: STATIC_PAGE_PATHS.donate },
       { label: "Sitemap", href: STATIC_PAGE_PATHS.sitemap },
     ],

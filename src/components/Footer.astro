@@ -3,13 +3,11 @@ import { Image } from "astro:assets";
 import { SITE_METADATA } from "../data/site";
 import { FOOTER_NAVIGATION } from "../data/navigation";
 import { STATIC_PAGE_PATHS } from "../data/staticPages";
-import Quote from "./Quote.astro";
 
 import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
 import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 ---
 
-<Quote />
 <footer
   class="relative flex flex-col items-center gap-10 bg-gradient-to-b from-accent-hover via-maroon-light to-maroon px-6 pb-8 pt-12 text-white before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-gold/60 before:to-transparent before:content-['']"
 >
@@ -23,13 +21,13 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
         <Image
           class="mx-auto drop-shadow-md"
           src={kalachakraIcon}
-          alt="Kalachakra Deity Symbol"
+          alt="Kālacakra emblem"
           width={125}
         />
         <Image
           class="mx-auto invert brightness-125 drop-shadow-md"
           src={kalachakraMantra}
-          alt="Kalachakra Tenfold Powerful Mantra (Namchu Wangden)"
+          alt="Tibetan mantra calligraphy"
           height={150}
         />
       </div>
@@ -100,7 +98,7 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
       </address>
       <a
         href={STATIC_PAGE_PATHS.donate}
-        class="min-h-[44px] inline-flex items-center justify-center rounded-lg bg-gold hover:bg-accent-secondary-hover px-6 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-ink border border-accent-secondary shadow-md transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+        class="min-h-[44px] inline-flex items-center justify-center rounded-lg bg-gold hover:bg-accent-secondary-hover px-6 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-[#190a0c] border border-accent-secondary shadow-md transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
       >
         Donate
       </a>
@@ -127,9 +125,6 @@ import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
       <div>
         &copy; {new Date().getFullYear()}
         {SITE_METADATA.name}. All rights reserved.
-      </div>
-      <div class="text-caption text-white/50">
-        {SITE_METADATA.contact.registrationNotice}
       </div>
     </div>
   </div>

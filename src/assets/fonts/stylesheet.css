@@ -3,11 +3,9 @@
 @font-face {
   font-family: "Cormorant Garamond";
   src:
-    local("Cormorant Garamond Medium"),
-    local("CormorantGaramond-Medium"),
     url("CormorantGaramond-Medium.woff2") format("woff2"),
     url("CormorantGaramond-Medium.woff") format("woff");
-  font-weight: 400 700;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -51,7 +49,7 @@
     local("NotoSerifTibetan-SemiBold"),
     local("Noto Serif Tibetan Bold"),
     url("NotoSerifTibetan-SemiBold.woff2") format("woff2");
-  font-weight: 600 700;
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }

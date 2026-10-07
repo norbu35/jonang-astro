@@ -250,7 +250,7 @@
   html {
     font-size: 16px;
     line-height: 1.65;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     text-rendering: optimizeLegibility;
     scroll-padding-top: var(--header-offset);
     background-color: var(--bg);

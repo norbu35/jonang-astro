@@ -102,6 +102,7 @@ export class ErrorTracker {
           breadcrumbs: [...this.breadcrumbs],
         };
 
+        if (this.capturedErrors.length >= 20) return;
         this.capturedErrors.push(captured);
         this.onErrorCallback(this.capturedErrors, this.fontHealth);
       },
@@ -122,53 +123,10 @@ export class ErrorTracker {
         breadcrumbs: [...this.breadcrumbs],
       };
 
+      if (this.capturedErrors.length >= 20) return;
       this.capturedErrors.push(captured);
       this.onErrorCallback(this.capturedErrors, this.fontHealth);
     });
-
-    // 3. Track User Action Breadcrumbs (Clicks & Navigation)
-    document.addEventListener(
-      "click",
-      (e) => {
-        const target = e.target as HTMLElement | null;
-        if (!target) return;
-        const tag = target.tagName?.toLowerCase() || "element";
-        const role = target.getAttribute("role") || "";
-        const href = target.getAttribute("href") || "";
-        const text = (target.textContent || "").trim().slice(0, 30);
-
-        this.addBreadcrumb(
-          "ui",
-          `click ${tag}${href ? ` -> ${href}` : ""}${text ? ` ("${text}")` : ""}`,
-          {
-            tag,
-            role,
-          }
-        );
-      },
-      { passive: true }
-    );
-
-    // 4. Track Scroll Milestones (25%, 50%, 75%, 100%)
-    const milestones = new Set<number>();
-    window.addEventListener(
-      "scroll",
-      () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight =
-          document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (docHeight <= 0) return;
-        const percent = Math.round((scrollTop / docHeight) * 100);
-
-        for (const m of [25, 50, 75, 100]) {
-          if (percent >= m && !milestones.has(m)) {
-            milestones.add(m);
-            this.addBreadcrumb("scroll", `Scrolled ${m}% of document`);
-          }
-        }
-      },
-      { passive: true }
-    );
   }
 
   /**
@@ -180,28 +138,21 @@ export class ErrorTracker {
     try {
       await document.fonts.ready;
 
-      const notoCheck = document.fonts.check("16px 'Noto Serif Tibetan'", "ཨོཾ");
-      const jomolhariCheck = document.fonts.check("16px 'Jomolhari'", "ཨོཾ");
-      const monlamCheck = document.fonts.check("16px 'Monlam Uni Ouchan3'", "ཨོཾ");
-
-      const notoLoaded = notoCheck;
-      const jomolhariLoaded = jomolhariCheck;
-      const monlamLoaded = monlamCheck;
-
-      // Noto Serif Tibetan is our default primary font; if it fails, typography degrades
-      const isDegraded = !notoLoaded && !jomolhariLoaded;
-
+      const loaded = (family: string) =>
+        [...document.fonts].some(
+          (face) => face.family.replace(/["']/g, "") === family && face.status === "loaded"
+        );
+      const families = ["Noto Serif Tibetan", "Jomolhari", "Monlam Uni Ouchan3"];
+      const required = [...document.querySelectorAll('[lang="bo"]')]
+        .map((el) => getComputedStyle(el).fontFamily.split(",")[0].trim().replace(/["']/g, ""))
+        .filter((family) => families.includes(family));
       this.fontHealth = {
-        notoSerifTibetanLoaded: notoLoaded,
-        jomolhariLoaded,
-        monlamUniLoaded: monlamLoaded,
-        status: isDegraded ? "degraded" : "ok",
+        notoSerifTibetanLoaded: loaded(families[0]),
+        jomolhariLoaded: loaded(families[1]),
+        monlamUniLoaded: loaded(families[2]),
+        status: required.some((family) => !loaded(family)) ? "degraded" : "ok",
       };
-
-      if (isDegraded) {
-        this.addBreadcrumb("ui", "Tibetan font fallback triggered; primary webfonts unavailable");
-        this.onErrorCallback(this.capturedErrors, this.fontHealth);
-      }
+      this.onErrorCallback(this.capturedErrors, this.fontHealth);
     } catch {}
   }
 

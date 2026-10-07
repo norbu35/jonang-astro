@@ -1,16 +1,7 @@
-/**
- * Accessible, high-performance global Glossary Popover Manager
- * Conforms to WCAG 2.1 AA (1.4.13 Content on Hover or Focus):
- * - Dismissible (via Escape or tap outside)
- * - Hoverable (pointer can move into popover without closing)
- * - Persistent (stays open until pointer leaves or dismissed)
- * - Viewport-aware boundary flipping (never clips offscreen)
- * - Fully compatible with Astro View Transitions (astro:page-load)
- */
+/** Click-operated nonmodal definition dialog with a predictable keyboard path. */
 
 let popoverEl: HTMLElement | null = null;
 let activeTrigger: HTMLElement | null = null;
-let hideTimer: number | null = null;
 let isInitialized = false;
 
 function createPopoverElement(): HTMLElement {
@@ -18,21 +9,22 @@ function createPopoverElement(): HTMLElement {
   el.id = "glossary-popover-card";
   el.className =
     "fixed z-[10000] max-w-sm sm:max-w-md w-[calc(100vw-2rem)] sm:w-96 rounded-2xl border border-border bg-surface shadow-2xl p-4 sm:p-5 opacity-0 pointer-events-none transition-all duration-150 ease-out transform -translate-y-1";
+  el.hidden = true;
   el.setAttribute("role", "dialog");
   el.setAttribute("aria-modal", "false");
   el.setAttribute("aria-label", "Glossary term definition");
 
   el.innerHTML = `
     <div class="flex items-center justify-between gap-2 border-b border-border/80 pb-2 mb-2.5">
-      <span data-popover-category class="px-2 py-0.5 rounded bg-accent/10 text-accent font-mono text-[11px] font-bold uppercase tracking-wider"></span>
-      <button type="button" data-popover-close class="p-1 text-muted hover:text-ink rounded hover:bg-surface-subtle transition-colors" aria-label="Close definition">
+      <span data-popover-category class="px-2 py-0.5 rounded bg-accent/10 text-ink font-mono text-[11px] font-bold uppercase tracking-wider"></span>
+      <button type="button" data-popover-close class="min-h-[44px] min-w-[44px] p-1 text-muted hover:text-ink rounded hover:bg-surface-subtle transition-colors" aria-label="Close definition">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
     <div class="space-y-1">
-      <span data-popover-tibetan class="font-tibetan text-accent text-base sm:text-lg font-bold block leading-[1.6]"></span>
+      <span lang="bo" data-popover-tibetan class="font-tibetan text-ink text-base sm:text-lg font-bold block leading-[1.6]"></span>
       <h4 data-popover-title class="font-display text-xl sm:text-2xl font-bold text-ink leading-tight m-0"></h4>
       <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-mono text-muted pt-0.5">
         <span data-popover-wylie></span>
@@ -41,7 +33,7 @@ function createPopoverElement(): HTMLElement {
     </div>
     <p data-popover-def class="font-serif text-sm sm:text-base text-ink/80 leading-relaxed pt-3 border-t border-border/60 mt-3 m-0"></p>
     <div class="pt-3 mt-3 border-t border-border/60 flex items-center justify-between">
-      <a data-popover-link href="/glossary" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-accent hover:text-gold transition-colors focus-visible:outline-none focus-visible:underline">
+      <a data-popover-link href="/glossary" class="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-mono font-bold uppercase tracking-wider text-ink hover:underline transition-colors focus-visible:outline-none focus-visible:underline">
         <span>View in Glossary</span>
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -51,23 +43,13 @@ function createPopoverElement(): HTMLElement {
     </div>
   `;
 
-  // Bridge hover from trigger to popover
-  el.addEventListener("mouseenter", () => {
-    if (hideTimer) {
-      clearTimeout(hideTimer);
-      hideTimer = null;
-    }
-  });
-
-  el.addEventListener("mouseleave", () => {
-    scheduleHide();
-  });
-
   const closeBtn = el.querySelector("[data-popover-close]");
   if (closeBtn) {
     closeBtn.addEventListener("click", (e) => {
       e.stopPropagation();
+      const trigger = activeTrigger;
       hidePopover();
+      trigger?.focus();
     });
   }
 
@@ -113,18 +95,19 @@ function positionPopover(trigger: HTMLElement) {
     }
   }
 
+  top = Math.max(padding, Math.min(top, window.innerHeight - popoverHeight - padding));
+  el.style.maxHeight = `${window.innerHeight - padding * 2}px`;
+  el.style.overflowY = "auto";
   el.style.left = `${Math.round(left)}px`;
   el.style.top = `${Math.round(top)}px`;
 }
 
 export function showPopover(trigger: HTMLElement) {
-  if (hideTimer) {
-    clearTimeout(hideTimer);
-    hideTimer = null;
-  }
-
+  if (activeTrigger && activeTrigger !== trigger) hidePopover();
   const el = getOrCreatePopover();
   activeTrigger = trigger;
+  trigger.after(el);
+  el.hidden = false;
 
   const termId = trigger.getAttribute("data-term-id") || "";
   const termEn = trigger.getAttribute("data-term-en") || "";
@@ -163,26 +146,18 @@ export function showPopover(trigger: HTMLElement) {
 
   // Update trigger ARIA
   trigger.setAttribute("aria-expanded", "true");
+  trigger.setAttribute("aria-controls", el.id);
 
   // Show & Position
   positionPopover(trigger);
   el.classList.remove("opacity-0", "pointer-events-none", "-translate-y-1");
   el.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
-}
-
-function scheduleHide() {
-  if (hideTimer) clearTimeout(hideTimer);
-  hideTimer = window.setTimeout(() => {
-    hidePopover();
-  }, 220);
+  el.querySelector<HTMLButtonElement>("[data-popover-close]")?.focus();
 }
 
 export function hidePopover() {
-  if (hideTimer) {
-    clearTimeout(hideTimer);
-    hideTimer = null;
-  }
   if (!popoverEl) return;
+  popoverEl.hidden = true;
 
   popoverEl.classList.remove("opacity-100", "pointer-events-auto", "translate-y-0");
   popoverEl.classList.add("opacity-0", "pointer-events-none", "-translate-y-1");
@@ -194,67 +169,34 @@ export function hidePopover() {
 }
 
 export function initGlossaryPopovers() {
-  // Global event delegation for hover, focus, and clicks
   if (isInitialized) return;
   isInitialized = true;
 
-  document.addEventListener("mouseover", (e) => {
-    const target = (e.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
+  document.addEventListener("click", (event) => {
+    const target = (event.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
     if (target) {
-      showPopover(target);
-    }
-  });
-
-  document.addEventListener("mouseout", (e) => {
-    const target = (e.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
-    if (target) {
-      scheduleHide();
-    }
-  });
-
-  document.addEventListener("focusin", (e) => {
-    const target = (e.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
-    if (target) {
-      showPopover(target);
-    }
-  });
-
-  document.addEventListener("focusout", (e) => {
-    const target = (e.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
-    if (target) {
-      scheduleHide();
-    }
-  });
-
-  // Touch / click handling
-  document.addEventListener("click", (e) => {
-    const target = (e.target as HTMLElement)?.closest<HTMLElement>("[data-glossary-term]");
-    if (target) {
-      // If clicking trigger on mobile or keyboard
-      if (activeTrigger === target && popoverEl && !popoverEl.classList.contains("opacity-0")) {
-        // Second tap closes or allows link
-        return;
-      }
-      e.preventDefault();
-      showPopover(target);
-      return;
-    }
-
-    // Light dismiss: clicked outside popover and trigger
-    if (popoverEl && !popoverEl.contains(e.target as Node)) {
+      if (activeTrigger === target) hidePopover();
+      else showPopover(target);
+    } else if (popoverEl && !popoverEl.contains(event.target as Node)) {
       hidePopover();
     }
   });
 
-  // Keyboard dismiss (ESC)
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (popoverEl && !popoverEl.classList.contains("opacity-0")) {
-        hidePopover();
-        if (activeTrigger) {
-          activeTrigger.focus();
-        }
-      }
+  document.addEventListener("focusin", (event) => {
+    if (
+      activeTrigger &&
+      event.target !== activeTrigger &&
+      !popoverEl?.contains(event.target as Node)
+    )
+      hidePopover();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && activeTrigger) {
+      const trigger = activeTrigger;
+      hidePopover();
+      trigger.focus();
+      event.preventDefault();
     }
   });
 
